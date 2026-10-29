@@ -20,15 +20,29 @@ import 'journal_exchange_keys.dart';
 abstract final class JournalBlockCraftCodec {
   /// 将借用的[document]捕获为独立本地JSON；正文不增加ID字段，身份表独立保存。
   static Map<String, dynamic> captureDocument(Document document) =>
-      Map<String, dynamic>.from(
-        jsonDecode(jsonEncode(document.toJson())) as Map,
-      );
+      Map<String, dynamic>.from(jsonDecode(jsonEncode(document.toJson())) as Map);
 
-  /// 捕获借用的[document]的持久身份；表按当前节点路径存储，不改变编辑树或业务属性。
-  static String captureIdentities(Document document) => jsonEncode({
-    for (final node in journalContentNodes([document.root]))
-      node.path.join('.'): node.attributes['bc.id'] ?? node.id,
-  });
+  /// 捕获借用的[document]的持久身份；表按当前路径存储，不改变编辑树或业务属性。
+  /// bodyContent 投影中的新段落若继承来源 ID，使用其运行时身份区分，避免回车后重复。
+  static String captureIdentities(Document document) {
+    final identities = <String, String>{};
+    final used = <String>{};
+    final body = document.root.attributes['guidance_body_template'] is String;
+    for (final node in journalContentNodes([document.root])) {
+      var id = node.attributes['bc.id'] as String? ?? node.id;
+      // 普通回车可能复制来源属性，正文适配模式按运行时身份区分新段落。
+      if (body && used.contains(id)) {
+        id = 'new-${node.id}';
+        var suffix = 0;
+        while (used.contains(id)) {
+          id = 'new-${node.id}-${++suffix}';
+        }
+      }
+      used.add(id);
+      identities[node.path.join('.')] = id;
+    }
+    return jsonEncode(identities);
+  }
 
   /// 把[encoded]身份表恢复到借用的[document]的运行时ID；非法路径/重复ID整次报错。
   /// 仅在视图/监听尚未装配时调用，不写正文属性或取得文档所有权。
@@ -41,18 +55,14 @@ abstract final class JournalBlockCraftCodec {
     final pending = <Node, String>{};
     for (final entry in value.entries) {
       if (entry.key is! String ||
-          !RegExp(
-            r'^(?:[0-9]+(?:\.[0-9]+)*)?$',
-          ).hasMatch(entry.key as String) ||
+          !RegExp(r'^(?:[0-9]+(?:\.[0-9]+)*)?$').hasMatch(entry.key as String) ||
           entry.value is! String ||
           (entry.value as String).isEmpty ||
           (entry.value as String).length > 256 ||
           !ids.add(entry.value as String)) {
         throw const FormatException('文档块身份表无效');
       }
-      final path = (entry.key as String).isEmpty
-          ? <int>[]
-          : (entry.key as String).split('.').map(int.parse).toList();
+      final path = (entry.key as String).isEmpty ? <int>[] : (entry.key as String).split('.').map(int.parse).toList();
       final node = document.nodeAtPath(path);
       if (node == null) throw const FormatException('文档块身份路径无效');
       pending[node] = entry.value as String;
@@ -65,9 +75,7 @@ abstract final class JournalBlockCraftCodec {
   /// 将已校验的[draft]导出为独立桌面根快照；包含可见栏目及已转换的关闭栏目恢复信息。
   /// 文字/对象读取正文，不使用纯文本或HTML中转；非法或未知块抛FormatException。
   static Map<String, dynamic> exportDraft(JournalDraft draft) {
-    final document = Document.fromJson(
-      jsonDecode(draft.documentJson) as Map<String, dynamic>,
-    );
+    final document = Document.fromJson(jsonDecode(draft.documentJson) as Map<String, dynamic>);
     try {
       restoreIdentities(document, draft.blockCraftIdsJson);
       validateJournalDocument(document);
@@ -80,27 +88,15 @@ abstract final class JournalBlockCraftCodec {
         sections.add({'key': key});
         if (!plain) {
           children.add({
-            'id':
-                section.attributes['guidance_heading_id'] ??
-                'section-${section.attributes['bc.id'] ?? section.id}',
+            'id': section.attributes['guidance_heading_id'] ?? 'section-${section.attributes['bc.id'] ?? section.id}',
             'flavour': 'paragraph',
             'nodeType': 'editable',
-            'props':
-                section.attributes['guidance_heading_props'] ??
-                {'heading': 2, 'depth': 0},
+            'props': section.attributes['guidance_heading_props'] ?? {'heading': 2, 'depth': 0},
             'meta': {
-              journalBlockCraftNamespace: {
-                'version': 1,
-                'role': 'section',
-                'section': key,
-              },
+              journalBlockCraftNamespace: {'version': 1, 'role': 'section', 'section': key},
             },
             'children': section.attributes['guidance_heading_delta'] is List
-                ? BlockCraftJsonCodec.encodeInline(
-                    Delta.fromJson(
-                      section.attributes['guidance_heading_delta'],
-                    ),
-                  )
+                ? BlockCraftJsonCodec.encodeInline(Delta.fromJson(section.attributes['guidance_heading_delta']))
                 : [
                     {
                       'insert': switch (key) {
@@ -115,12 +111,9 @@ abstract final class JournalBlockCraftCodec {
         Node? previous;
         for (final child in section.children) {
           final block = _exportBlock(child, key);
-          if (child.type == 'numbered_list' &&
-              previous?.type != 'numbered_list') {
+          if (child.type == 'numbered_list' && previous?.type != 'numbered_list') {
             (block['props'] as Map<String, dynamic>).addAll(<String, dynamic>{
-              'start': child.attributes['number'] is int
-                  ? child.attributes['number']
-                  : 1,
+              'start': child.attributes['number'] is int ? child.attributes['number'] : 1,
               'continuePrevious': false,
             });
           }
@@ -146,8 +139,7 @@ abstract final class JournalBlockCraftCodec {
             {
               'key': section.attributes['section'],
               'children': [
-                for (final child in section.children)
-                  _exportBlock(child, section.attributes['section'] as String),
+                for (final child in section.children) _exportBlock(child, section.attributes['section'] as String),
               ],
             },
         ],
@@ -157,9 +149,7 @@ abstract final class JournalBlockCraftCodec {
         'id': root.attributes['bc.id'] ?? 'root-${draft.id}',
         'flavour': 'root',
         'nodeType': 'root',
-        'props': props.isEmpty && !plain
-            ? {'fs': 16, 'lh': 2, 'color': '#3e4650'}
-            : props,
+        'props': props.isEmpty && !plain ? {'fs': 16, 'lh': 2, 'color': '#3e4650'} : props,
         'meta': metadata,
         'children': children,
       };
@@ -214,13 +204,10 @@ abstract final class JournalBlockCraftCodec {
             }.contains(entry.key))
           entry.key: entry.value,
     };
-    final taskAsTodo =
-        node.attributes[guidanceEntryAttribute] == 'task' &&
-        node.type != 'todo_list';
+    final taskAsTodo = node.attributes[guidanceEntryAttribute] == 'task' && node.type != 'todo_list';
     if (taskAsTodo) {
       block['flavour'] = 'todo';
-      (block['props'] as Map)['checked'] =
-          node.attributes['guidance_done'] == true ? 1 : 0;
+      (block['props'] as Map)['checked'] = node.attributes['guidance_done'] == true ? 1 : 0;
     }
     meta[journalBlockCraftNamespace] = {
       'version': 1,
@@ -228,8 +215,7 @@ abstract final class JournalBlockCraftCodec {
       'section': section,
       'business': business,
       if (taskAsTodo) 'taskSourceType': node.type,
-      if (taskAsTodo && node.attributes['number'] != null)
-        'taskNumber': node.attributes['number'],
+      if (taskAsTodo && node.attributes['number'] != null) 'taskNumber': node.attributes['number'],
     };
     block['meta'] = meta;
     return block;
@@ -238,23 +224,17 @@ abstract final class JournalBlockCraftCodec {
   /// 将[snapshot]转换为可编辑的独立日记草稿；普通桌面文档默认进入今日记录。
   /// [now]用于无业务封套时的建档日期，默认当前设备时间；不会写存储或替换当前日记。
   /// 业务版本、日期或正文不合法时整次抛FormatException，调用方保留原文。
-  static JournalDraft importSnapshot(
-    Map<String, dynamic> snapshot, {
-    DateTime? now,
-  }) {
+  static JournalDraft importSnapshot(Map<String, dynamic> snapshot, {DateTime? now}) {
     BlockCraftJsonCodec.validate(snapshot);
     final localNow = now ?? DateTime.now();
     final metadata = Map<String, dynamic>.from(snapshot['meta'] as Map);
     final info = _extension(metadata);
-    final draft = info['draft'] is Map
-        ? Map<String, dynamic>.from(info['draft'] as Map)
-        : null;
+    final draft = info['draft'] is Map ? Map<String, dynamic>.from(info['draft'] as Map) : null;
     final rootShell = {...snapshot, 'children': <Object>[]};
     final root = BlockCraftJsonCodec.decodeBlock(rootShell);
     root.updateAttributes({
       journalDesktopImportAttribute: true,
-      journalPlainDesktopAttribute:
-          info.isEmpty || info['plainDesktop'] == true,
+      journalPlainDesktopAttribute: info.isEmpty || info['plainDesktop'] == true,
     });
     final sectionNodes = <String, Node>{};
 
@@ -264,10 +244,7 @@ abstract final class JournalBlockCraftCodec {
         throw const FormatException('未知今日导向栏目');
       }
       return sectionNodes.putIfAbsent(key, () {
-        final result = Node(
-          type: journalSectionType,
-          attributes: {'section': key},
-        );
+        final result = Node(type: journalSectionType, attributes: {'section': key});
         root.insert(result);
         return result;
       });
@@ -285,9 +262,7 @@ abstract final class JournalBlockCraftCodec {
           'bc.id': id.startsWith('section-') ? id.substring(8) : id,
           'guidance_heading_id': id,
           'guidance_heading_props': block['props'],
-          'guidance_heading_delta': BlockCraftJsonCodec.decodeInline(
-            block['children'] as List,
-          ).toJson(),
+          'guidance_heading_delta': BlockCraftJsonCodec.decodeInline(block['children'] as List).toJson(),
         });
         continue;
       }
@@ -300,10 +275,7 @@ abstract final class JournalBlockCraftCodec {
     for (final raw in info['closedSections'] as List? ?? []) {
       final item = raw as Map;
       final key = item['key'];
-      if (key is! String ||
-          !journalSections.contains(key) ||
-          key == 'record' ||
-          sectionNodes.containsKey(key)) {
+      if (key is! String || !journalSections.contains(key) || key == 'record' || sectionNodes.containsKey(key)) {
         throw const FormatException('关闭栏目恢复信息冲突');
       }
       final node = Node(type: journalSectionType, attributes: {'section': key});
@@ -315,26 +287,16 @@ abstract final class JournalBlockCraftCodec {
       if (node.children.isEmpty) node.insert(paragraphNode());
       hidden.add(node.toJson());
     }
-    root.updateAttributes({
-      if (hidden.isNotEmpty) journalClosedSectionsAttribute: hidden,
-    });
+    root.updateAttributes({if (hidden.isNotEmpty) journalClosedSectionsAttribute: hidden});
     final document = Document(root: root);
     try {
       validateJournalDocument(document);
       final result = JournalDraft(
-        id:
-            draft?['id'] as String? ??
-            'import-${localNow.microsecondsSinceEpoch}',
+        id: draft?['id'] as String? ?? 'import-${localNow.microsecondsSinceEpoch}',
         date: draft?['date'] as String? ?? journalDate(localNow),
-        createdAt: draft == null
-            ? localNow.toUtc()
-            : DateTime.parse(draft['createdAt'] as String).toUtc(),
-        updatedAt: draft == null
-            ? localNow.toUtc()
-            : DateTime.parse(draft['updatedAt'] as String).toUtc(),
-        timezoneOffsetMinutes:
-            draft?['timezoneOffsetMinutes'] as int? ??
-            localNow.timeZoneOffset.inMinutes,
+        createdAt: draft == null ? localNow.toUtc() : DateTime.parse(draft['createdAt'] as String).toUtc(),
+        updatedAt: draft == null ? localNow.toUtc() : DateTime.parse(draft['updatedAt'] as String).toUtc(),
+        timezoneOffsetMinutes: draft?['timezoneOffsetMinutes'] as int? ?? localNow.timeZoneOffset.inMinutes,
         documentJson: jsonEncode(captureDocument(document)),
         blockCraftIdsJson: captureIdentities(document),
       );
@@ -347,18 +309,11 @@ abstract final class JournalBlockCraftCodec {
   /// 将[block]的业务身份附回实际转换节点；桌面修改的正文及勾选状态优先于来源显示值。
   static Node _importBlock(Map<String, dynamic> block) {
     final ext = _extension(Map<String, dynamic>.from(block['meta'] as Map));
-    final node = BlockCraftJsonCodec.decodeBlock({
-      ...block,
-      if (block['nodeType'] == 'block') 'children': <Object>[],
-    });
-    final business = ext['business'] is Map
-        ? Map<String, dynamic>.from(ext['business'] as Map)
-        : <String, dynamic>{};
+    final node = BlockCraftJsonCodec.decodeBlock({...block, if (block['nodeType'] == 'block') 'children': <Object>[]});
+    final business = ext['business'] is Map ? Map<String, dynamic>.from(ext['business'] as Map) : <String, dynamic>{};
     if (business.keys.any(
       (key) =>
-          !key.startsWith('guidance_') ||
-          key == journalClosedSectionsAttribute ||
-          key == journalDesktopImportAttribute,
+          !key.startsWith('guidance_') || key == journalClosedSectionsAttribute || key == journalDesktopImportAttribute,
     )) {
       throw const FormatException('今日导向业务属性无效');
     }
@@ -366,13 +321,7 @@ abstract final class JournalBlockCraftCodec {
     Node result = node;
     if (block['flavour'] == 'todo' && ext['taskSourceType'] is String) {
       final type = ext['taskSourceType'] as String;
-      if (!{
-        'paragraph',
-        'heading',
-        'bulleted_list',
-        'numbered_list',
-        'quote',
-      }.contains(type)) {
+      if (!{'paragraph', 'heading', 'bulleted_list', 'numbered_list', 'quote'}.contains(type)) {
         throw const FormatException('本地待办来源类型无效');
       }
       result = Node(
@@ -380,13 +329,9 @@ abstract final class JournalBlockCraftCodec {
         id: node.id,
         attributes: {
           ...node.attributes,
-          if (type == 'heading')
-            'level': (block['props'] as Map)['heading'] ?? 1,
-          if (type == 'numbered_list' && ext['taskNumber'] != null)
-            'number': ext['taskNumber'],
-          'guidance_done':
-              (block['props'] as Map)['checked'] == 1 ||
-              (block['props'] as Map)['checked'] == true,
+          if (type == 'heading') 'level': (block['props'] as Map)['heading'] ?? 1,
+          if (type == 'numbered_list' && ext['taskNumber'] != null) 'number': ext['taskNumber'],
+          'guidance_done': (block['props'] as Map)['checked'] == 1 || (block['props'] as Map)['checked'] == true,
         },
       );
       result.updateAttributes({
@@ -408,9 +353,7 @@ abstract final class JournalBlockCraftCodec {
       for (final run in result.delta!.whereType<TextInsert>()) {
         final attrs = {...?run.attributes};
         final raw = attrs['cses_mention_attributes'];
-        final mention = raw is String
-            ? (jsonDecode(raw) as Map)['d:mobileGuidanceMention']
-            : null;
+        final mention = raw is String ? (jsonDecode(raw) as Map)['d:mobileGuidanceMention'] : null;
         if (mention is Map) {
           final value = {
             ...mention,

@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:cses_editor/cses_editor.dart'
     show CollabMentionUser, CollabMentionDirectory;
+import 'package:cses_offline_example/daily_guidance/guidance_host.dart';
+import 'package:cses_offline_example/daily_guidance/ui/journal_bottom_sheet.dart';
+import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show SchedulerPhase;
-
-import 'guidance_host.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 /// Demo宿主在借用 [context] 上选择人员；[directory] 提供当前企业查询。
 /// [canEdit] 为借用的权限信号，false禁止确认；本函数不访问编辑器内部状态。
@@ -28,21 +30,14 @@ Future<CollabMentionUser?> showDemoMentionPicker(
   String keyword = '',
 }) async {
   if (!canEdit.value) return null;
-  ModalRoute<CollabMentionUser>? route;
-  final result = await showModalBottomSheet<CollabMentionUser>(
+  final result = await showJournalSheet<CollabMentionUser>(
     context: context,
-    isScrollControlled: true,
-    useSafeArea: true,
-    builder: (context) {
-      route = ModalRoute.of(context);
-      return _MentionPicker(
-        canEdit: canEdit,
-        directory: directory,
-        keyword: keyword,
-      );
-    },
+    builder: (context) => _MentionPicker(
+      canEdit: canEdit,
+      directory: directory,
+      keyword: keyword,
+    ),
   );
-  await route?.completed;
   return canEdit.value ? result : null;
 }
 
@@ -173,122 +168,94 @@ class _MentionPickerState extends State<_MentionPicker> {
   @override
   Widget build(BuildContext context) {
     final enabled = widget.canEdit.value;
-    return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
-      child: SizedBox(
-        height: MediaQuery.sizeOf(context).height * .6,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 8, 0),
-              child: Row(
+    return JournalBottomSheet(
+      title: '@用户',
+      icon: LucideIcons.userRound,
+      closeKey: const ValueKey('mention-close'),
+      expand: true,
+      scrollBody: false,
+      header: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+        child: TextField(
+          key: const ValueKey('mention-search'),
+          controller: _input,
+          enabled: enabled,
+          onChanged: _changed,
+          decoration: const InputDecoration(
+            labelText: '搜索人员',
+            prefixIcon: Icon(LucideIcons.search),
+          ),
+        ),
+      ),
+      child: !enabled
+          ? const Center(child: Text('当前不可编辑'))
+          : _error != null
+          ? Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Expanded(
-                    child: Text(
-                      '@用户',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    key: const ValueKey('mention-close'),
-                    tooltip: '关闭',
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.close),
+                  Text(_error!),
+                  TextButton(
+                    key: const ValueKey('mention-retry'),
+                    onPressed: () {
+                      setState(() {
+                        _loading = true;
+                        _error = null;
+                      });
+                      unawaited(_search(++_generation));
+                    },
+                    child: const Text('重试'),
                   ),
                 ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: TextField(
-                key: const ValueKey('mention-search'),
-                controller: _input,
-                enabled: enabled,
-                onChanged: _changed,
-                decoration: const InputDecoration(
-                  labelText: '搜索人员',
-                  prefixIcon: Icon(Icons.search),
-                ),
-              ),
-            ),
-            Expanded(
-              child: !enabled
-                  ? const Center(child: Text('当前不可编辑'))
-                  : _error != null
-                  ? Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
+            )
+          : _loading
+          ? const Center(child: CircularProgressIndicator())
+          : _users.isEmpty
+          ? const Center(child: Text('没有匹配的人员'))
+          : ListView.builder(
+              key: const PageStorageKey('mention-users'),
+              itemCount: _users.length,
+              itemBuilder: (context, index) {
+                final user = _users[index];
+                return Semantics(
+                  button: true,
+                  enabled: widget.canEdit.value,
+                  child: InkWell(
+                    key: ValueKey('mention-user-${user.id}'),
+                    onTap: widget.canEdit.value
+                        ? () => Navigator.pop(context, user)
+                        : null,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      child: Row(
                         children: [
-                          Text(_error!),
-                          TextButton(
-                            key: const ValueKey('mention-retry'),
-                            onPressed: () {
-                              setState(() {
-                                _loading = true;
-                                _error = null;
-                              });
-                              unawaited(_search(++_generation));
-                            },
-                            child: const Text('重试'),
+                          DemoMentionAvatar(
+                            userId: user.id,
+                            name: user.name,
+                            avatarUrl: user.avatarUrl,
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(user.name),
+                                if (user.department != null)
+                                  Text(user.department!),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                    )
-                  : _loading
-                  ? const Center(child: CircularProgressIndicator())
-                  : _users.isEmpty
-                  ? const Center(child: Text('没有匹配的人员'))
-                  : ListView.builder(
-                      key: const PageStorageKey('mention-users'),
-                      itemCount: _users.length,
-                      itemBuilder: (context, index) {
-                        final user = _users[index];
-                        return Semantics(
-                          button: true,
-                          enabled: widget.canEdit.value,
-                          child: InkWell(
-                            key: ValueKey('mention-user-${user.id}'),
-                            onTap: widget.canEdit.value
-                                ? () => Navigator.pop(context, user)
-                                : null,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 12,
-                              ),
-                              child: Row(
-                                children: [
-                                  DemoMentionAvatar(
-                                    userId: user.id,
-                                    name: user.name,
-                                    avatarUrl: user.avatarUrl,
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(user.name),
-                                        if (user.department != null)
-                                          Text(user.department!),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
                     ),
+                  ),
+                );
+              },
             ),
-          ],
-        ),
-      ),
     );
   }
 }

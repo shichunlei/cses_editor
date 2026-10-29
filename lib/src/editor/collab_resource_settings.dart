@@ -6,6 +6,7 @@ import 'package:cses_editor/src/model/collab_resource.dart';
 import 'package:cses_editor/src/ui/modal/collab_dialog.dart';
 import 'package:cses_editor/src/ui/modal/collab_modal.dart';
 import 'package:cses_editor/src/ui/modal/collab_modal_field.dart';
+import 'package:cses_editor/src/ui/modal/collab_modal_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -256,7 +257,10 @@ class _ResourceSettingsState extends State<_ResourceSettings> {
         if (_error != null)
           Text(
             _error!,
-            style: const TextStyle(color: Colors.red, fontSize: 12),
+            style: TextStyle(
+              color: CollabModalColors.of(context).danger,
+              fontSize: 12,
+            ),
           ),
       ],
     ),

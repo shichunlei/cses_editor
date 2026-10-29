@@ -1,3 +1,4 @@
+import 'journal_test_preview.dart';
 import 'dart:convert';
 
 import 'package:appflowy_editor/appflowy_editor.dart';
@@ -170,10 +171,10 @@ Future<EditorState> _reopen(WidgetTester tester) async {
   );
   expect(
     tester
-        .widget<TextButton>(find.byKey(const ValueKey('journal-preview')))
+        .widget<TextButton>(find.byKey(const ValueKey('journal-save')))
         .onPressed,
     isNotNull,
-    reason: 'preview switch completed',
+    reason: 'editing route remains active',
   );
   await tester.tap(find.byKey(const ValueKey('journal-back')));
   await tester.pumpAndSettle();
@@ -288,11 +289,11 @@ void main() {
       await tester.tap(find.byTooltip('重做'));
       await tester.pumpAndSettle();
       final rules = _rules(tester);
-      await tester.tap(find.byKey(const ValueKey('journal-preview')));
+      await openOrCloseJournalPreview(tester);
       await tester.pumpAndSettle();
       expect(_rules(tester), rules);
       expect(find.byKey(const ValueKey('editor-mobile-toolbar')), findsNothing);
-      await tester.tap(find.byKey(const ValueKey('journal-preview')));
+      await openOrCloseJournalPreview(tester);
       await tester.pumpAndSettle();
       final reopened = await _reopen(tester);
       expect(reopened.getNodeAtPath([0, 0])!.attributes['level'], 6);
@@ -374,10 +375,10 @@ void main() {
     final snapshot = state.document.toJson();
     await tester.pump(const Duration(seconds: 1));
     expect(store.value.documentJson, jsonEncode(snapshot));
-    await tester.tap(find.byKey(const ValueKey('journal-preview')));
+    await openOrCloseJournalPreview(tester);
     await tester.pumpAndSettle();
     expect(_spans(_paragraph(tester).text).first.style, style);
-    await tester.tap(find.byKey(const ValueKey('journal-preview')));
+    await openOrCloseJournalPreview(tester);
     await tester.pumpAndSettle();
     expect((await _reopen(tester)).document.toJson(), snapshot);
     expect(_spans(_paragraph(tester).text).first.style, style);

@@ -1,0 +1,22 @@
+RUN narrow-largest
+Running Gradle task 'assembleDebug'...                             43.1s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          23.6s
+D/ProfileInstaller(22850): Installing profile for com.cses.offline.modal_ui_verification
+I/flutter (22850): DEVICE_LAYOUT_ERROR ══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY ╞══════════════════════
+I/flutter (22850): A RenderFlex overflowed by 21 pixels on the bottom.
+I/flutter (22850): The overflowing RenderFlex has an orientation of Axis.vertical.
+I/flutter (22850): The edge of the RenderFlex that is overflowing has been marked in
+I/flutter (22850): usually caused by the contents being too big for the RenderFlex.
+I/flutter (22850): to force the children of the RenderFlex to fit within the
+I/flutter (22850): The specific RenderFlex in question is: RenderFlex#06e82 relayoutBoundary=up3 OVERFLOWING:
+I/flutter (22850): DEVICE_METRICS narrow-largest-mention-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=2.0
+I/flutter (22850): DEVICE_CAPTURE:narrow-largest-mention-keyboard
+SAVED native narrow-largest-mention-keyboard
+I/flutter (22850): DEVICE_LAYOUT_ERROR ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════════════════
+I/flutter (22850):   Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on
+I/flutter (22850):   Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on the bottom.>
+I/flutter (22850):   Test failed. See exception logs above.
+I/flutter (22850): 00:10 +1 -1: Some tests failed.
+  Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on
+RESTORED {"density": "Physical density: 480", "font_scale": "1.0"}

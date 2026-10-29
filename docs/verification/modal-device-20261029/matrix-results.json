@@ -1,0 +1,25 @@
+{
+  "device": "vivo V2353A Android 14",
+  "cases": [
+    {
+      "width_dp": 360,
+      "font_scale": 1.0,
+      "result": "passed",
+      "phase": "initial matrix"
+    },
+    {
+      "width_dp": 320,
+      "font_scale": 1.6,
+      "result": "passed",
+      "phase": "initial matrix"
+    },
+    {
+      "width_dp": 320,
+      "font_scale": 2.0,
+      "result": "passed",
+      "phase": "final after both fixes"
+    }
+  ],
+  "native_screenshots": 16,
+  "source_identity": "source-identity.json"
+}

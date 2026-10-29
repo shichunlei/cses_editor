@@ -1,0 +1,19 @@
+Computing fixes in example...
+Applying fixes...
+
+lib/daily_guidance/body_content_codec.dart
+  curly_braces_in_flow_control_structures - 9 fixes
+
+lib/daily_guidance/guidance_api.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/daily_guidance/guidance_entries.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/daily_guidance/local_journal_page.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/main.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+16 fixes made in 5 files.

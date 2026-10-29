@@ -1,28 +1,38 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
+import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
+import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';
+import 'package:cses_offline_example/daily_guidance/ui/journal_bottom_sheet.dart';
+import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import 'guidance_host.dart';
-import 'mention_picker.dart';
 import 'journal_draft.dart';
+import 'journal_exchange_keys.dart';
 import 'journal_store.dart';
 import 'journal_surface.dart';
 import 'local_journal_controller.dart';
-import 'journal_blockcraft_codec.dart';
-import 'journal_json_files.dart';
-import 'journal_exchange_keys.dart';
+import 'mention_picker.dart';
 
-/// 后台将独立[snapshot]转换为可持久化草稿，不持有页面或编辑器资源。
-JournalDraft _importJournalSnapshot(Map<String, dynamic> snapshot) =>
-    JournalBlockCraftCodec.importSnapshot(snapshot);
+/// 首页传入的固定页面模式；只能通过打开新页面选择，不提供页内切换。
+///
+/// ```dart
+/// LocalJournalPage(store: store, mode: JournalPageMode.preview);
+/// ```
+enum JournalPageMode {
+  /// 创建可编辑会话，保留原有保存与键盘菜单。
+  edit,
 
-/// 独立的离线横线日记页面，拥有加载、正文、自动保存和预览快照的完整生命周期。
+  /// 创建只读会话，不显示编辑操作，也不提交或自动保存。
+  preview,
+}
+
+/// 今日导向/成果记事本页面，拥有加载、正文、显式/自动保存及预览的生命周期。
 ///
 /// ```dart
 /// import 'package:flutter/material.dart';
@@ -34,23 +44,28 @@ JournalDraft _importJournalSnapshot(Map<String, dynamic> snapshot) =>
 /// }
 /// ```
 class LocalJournalPage extends StatefulWidget {
-  /// [key]控制页面身份；[store]是当前账号独占的本地草稿端口，由宿主持有。
+  /// [key]控制页面身份；[store]是当前账号和文档独占的存储端口，由宿主持有。
   /// 同一store只能打开一个日记页面，读取失败不会新建覆盖原记录。
+  /// [mode] 固定初始编辑/预览模式，默认编辑；改变模式须重新打开路由。
   /// [mentionDirectory]由宿主提供人员查询，null使用空目录；仅查询人员，不包含部门引用。
   /// [hostServices]默认空端口；其选人回调在本页权限保护下执行，null使用内置面板。
   /// [sessionIdentity]用于身份失效检查，null为固定本地身份；变化后须重新打开页面。
-  /// [storageScope]隔离导入草稿，默认local，宿主应传入账号与企业分区。
-  /// store、分区、服务或文件端口在页面存活期间替换会冻结旧页面，避免混用会话。
-  /// [jsonFiles]借用导入导出文件端口，默认系统文件框；导入始终创建独立存储和路由。
+  /// [storageScope] 为宿主账号及文档分区，默认 local；借用端口替换会冻结旧会话。
+  /// [currentUser] 是宿主提供的当前用户资料，仅预览封面下展示；null 不显示用户栏。
+  /// 服务存储 ApiJournalStore 使用显式保存，其他本地存储保留原自动保存行为。
   const LocalJournalPage({
     super.key,
     required this.store,
+    this.mode = JournalPageMode.edit,
     this.mentionDirectory,
     this.hostServices = const CollabHostServices(),
     this.sessionIdentity,
     this.storageScope = 'local',
-    this.jsonFiles = const DeviceJournalJsonFiles(),
+    this.currentUser,
   });
+
+  /// 宿主当前用户的不可变展示快照；不从正文或全局账号读取，不写入 JSON。
+  final CollabMentionUser? currentUser;
 
   /// 页面借用的业务端口；默认空服务，不加载网络或账号；自定义选人仍受页面权限保护。
   final CollabHostServices hostServices;
@@ -67,29 +82,45 @@ class LocalJournalPage extends StatefulWidget {
   /// 页面借用的单写入者存储，路由关闭时不释放宿主资源。
   final JournalStore store;
 
-  /// 页面借用的文件交换端口，不由页面释放。
-  final JournalJsonFiles jsonFiles;
+  /// 宿主在路由创建时选择的固定模式；当前页面不能切换。
+  final JournalPageMode mode;
 
-  /// 创建管理异步加载、退场保存和预览资源的状态。
+  /// 创建管理异步加载、固定模式和退场资源的状态。
   @override
   createState() => _LocalJournalPageState();
 }
 
-/// 拥有日记控制器和独立预览，应用进入后台时尽早持久化当前修订。
+/// 拥有固定模式的日记控制器；预览不分配第二份可变会话，也不提交数据。
 class _LocalJournalPageState extends State<LocalJournalPage>
     with WidgetsBindingObserver {
   LocalJournalController? _journal;
-  DocumentEditorController? _preview;
   String? _loadError;
   bool _loading = false;
-  bool _switching = false;
   bool _leaving = false;
   bool _canPop = false;
   bool _chooseDate = false;
 
-  /// 文件框/转换期间串行化导入导出、编辑和退场，异步返回后复核账号及会话。
-  bool _exchanging = false;
-  Selection? _selection;
+  /// 本次预览的演示点赞状态，不写入正文 JSON 或冒用后台计数。
+  bool _previewLiked = false;
+
+  /// 分享面板打开期间阻止重复打开；面板和剪贴板异步结果只作用于原会话。
+  bool _sharing = false;
+
+  /// 显式保存期间串行化编辑和退场，异步返回后复核文档、页面及会话。
+  bool _submitting = false;
+
+  /// 在初始化时捕获的模式，不跟随后续组件参数改变。
+  late final JournalPageMode _mode;
+
+  /// 当前会话的永久只读权限。
+  bool get _readOnly => _mode == JournalPageMode.preview;
+
+  /// 当前页面是否通过固定身份的服务适配器加载和保存。
+  bool get _remote => widget.store is ApiJournalStore;
+
+  /// 头部标题只取 orientType 映射；本地存储延续今日导向标题。
+  String get _title =>
+      _remote ? (widget.store as ApiJournalStore).title : '今日导向';
 
   /// 本页原生提及专用目录；不与其他文档或账号共享缓存，不拥有HTTP连接。
   late final CollabMentionDirectory _mentionDirectory;
@@ -144,11 +175,12 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   @override
   void didUpdateWidget(covariant LocalJournalPage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (!identical(oldWidget.store, widget.store) ||
+    if (oldWidget.currentUser?.id != widget.currentUser?.id ||
+        oldWidget.mode != widget.mode ||
+        !identical(oldWidget.store, widget.store) ||
         oldWidget.storageScope != widget.storageScope ||
         !identical(oldWidget.hostServices, widget.hostServices) ||
-        !identical(oldWidget.mentionDirectory, widget.mentionDirectory) ||
-        !identical(oldWidget.jsonFiles, widget.jsonFiles)) {
+        !identical(oldWidget.mentionDirectory, widget.mentionDirectory)) {
       _revokeSession();
     } else {
       _checkSession();
@@ -159,6 +191,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   @override
   void initState() {
     super.initState();
+    _mode = widget.mode;
     _sessionIdentity = widget.sessionIdentity?.call();
     _mentionDirectory =
         widget.mentionDirectory ?? const EmptyMentionDirectory();
@@ -184,6 +217,8 @@ class _LocalJournalPageState extends State<LocalJournalPage>
       final journal = await LocalJournalController.open(
         store: widget.store,
         services: _services,
+        autoSave: !_remote && !_readOnly,
+        readOnly: _readOnly,
       );
       if (!mounted || !_checkSession()) {
         await journal.close();
@@ -202,12 +237,16 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   /// 在[state]进入非前台状态时保存；flush自行转存储异常为可重试状态。
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state != AppLifecycleState.resumed && _journal != null) {
+    if (!_readOnly &&
+        !_remote &&
+        _sameAccount &&
+        state != AppLifecycleState.resumed &&
+        _journal != null) {
       unawaited(_journal!.flush());
     }
   }
 
-  /// 先注销观察者，视图卸载后按预览、正文顺序关闭本页资源。
+  /// 先注销观察者，视图卸载后关闭本页独占的正文会话。
   @override
   void dispose() {
     _sessionWatch?.cancel();
@@ -230,14 +269,8 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     super.dispose();
   }
 
-  /// 完整卸载视图后释放快照与正文；会话关闭会等待仍在进行的保存。
-  Future<void> _release() async {
-    try {
-      await _preview?.close();
-    } finally {
-      await _journal?.close();
-    }
-  }
+  /// 完整卸载视图后释放本页正文，编辑会话按所属模式等待保存。
+  Future<void> _release() async => _journal?.close();
 
   /// 读取[journal]可见的可选栏目身份，不读取正文内容或序列化文档。
   String _sectionSignature(LocalJournalController journal) =>
@@ -254,16 +287,63 @@ class _LocalJournalPageState extends State<LocalJournalPage>
 
   /// 正常退出前冻结输入并等待最新修订落盘；失败留在当前页供重试，不丢失内存正文。
   Future<void> _leave() async {
-    if (_leaving || _switching || _picking || _exchanging) return;
+    if (_leaving || _picking || _submitting) return;
     setState(() => _leaving = true);
     final journal = _journal;
+    if (!_readOnly &&
+        _remote &&
+        journal != null &&
+        journal.dirty &&
+        _sameAccount) {
+      final save = await showJournalDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          scrollable: true,
+          icon: const Icon(LucideIcons.save),
+          title: const Text('有尚未保存的修改'),
+          content: const Text('是否保存后离开？'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('继续编辑'),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.error,
+              ),
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('放弃修改'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('保存后离开'),
+            ),
+          ],
+        ),
+      );
+      if (!mounted) return;
+      if (save == null || !_checkSession()) {
+        setState(() => _leaving = false);
+        return;
+      }
+      if (!save) {
+        setState(() => _canPop = true);
+        await WidgetsBinding.instance.endOfFrame;
+        if (mounted) Navigator.of(context).pop();
+        return;
+      }
+    }
     journal?.editor.editorState.service.keyboardService?.closeKeyboard();
     FocusManager.instance.primaryFocus?.unfocus();
     if (journal != null) journal.editor.editorState.editable = false;
-    final saved = journal == null || await journal.flush();
+    final saved =
+        _readOnly || journal == null || !_sameAccount || await journal.flush();
     if (!mounted) return;
     if (!saved) {
-      journal.editor.editorState.editable = _checkSession();
+      journal.editor.editorState.editable = !_readOnly && _checkSession();
       setState(() => _leaving = false);
       return;
     }
@@ -272,92 +352,28 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     if (mounted) Navigator.of(context).pop();
   }
 
-  /// 收起输入连接后创建同源只读快照；返回编辑时恢复原选区，过期回调不再操作资源。
-  Future<void> _togglePreview() async {
+  /// 结束输入后提交当前正文，异步返回仅更新原页面、文档和宿主会话。
+  /// 请求失败由控制器保留正文及重试状态；不创建文件或替代路由。
+  Future<void> _saveContent() async {
     final journal = _journal;
     if (journal == null ||
-        _switching ||
-        _leaving ||
+        _readOnly ||
+        _submitting ||
         _picking ||
-        _exchanging ||
+        _leaving ||
         !_checkSession()) {
       return;
     }
-    setState(() {
-      _switching = true;
-      _chooseDate = false;
-    });
-    try {
-      final state = journal.editor.editorState;
-      if (_preview == null) _selection = state.selection;
-      state.service.keyboardService?.closeKeyboard();
-      FocusManager.instance.primaryFocus?.unfocus();
-      await SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
-      if (!mounted ||
-          !_checkSession() ||
-          !identical(_journal, journal) ||
-          journal.closed) {
-        return;
-      }
-      if (_preview == null) {
-        state.selection = null;
-        final preview = DocumentEditorController(
-          document: Document.fromJson(
-            jsonDecode(jsonEncode(state.document.toJson()))
-                as Map<String, dynamic>,
-          ),
-          commandContext: EditorCommandContext(
-            configuration: journalEditorConfiguration(state.document),
-            localOnly: true,
-            services: _services,
-          ),
-        );
-        preview.editorState.editable = false;
-        setState(() => _preview = preview);
-      } else {
-        final old = _preview!;
-        setState(() => _preview = null);
-        await WidgetsBinding.instance.endOfFrame;
-        await old.close();
-        if (mounted && _checkSession() && !state.isDisposed) {
-          state.selection = _selection;
-        }
-      }
-    } catch (_) {
-      if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('预览切换失败，请重试')));
-      }
-    } finally {
-      if (mounted) setState(() => _switching = false);
-    }
-  }
-
-  /// 执行[action]对应的导出或独立打开；捕获完成输入后的快照，异步迟到不回写其他账号。
-  /// 文件取消保持原文，转换/写入失败显示可重试提示；导入不覆盖当前日记。
-  Future<void> _exchangeJson(String action) async {
-    final journal = _journal;
-    if (journal == null ||
-        _exchanging ||
-        _picking ||
-        _leaving ||
-        _switching ||
-        _preview != null ||
-        !_sameAccount) {
-      return;
-    }
-    setState(() => _exchanging = true);
+    setState(() => _submitting = true);
     final state = journal.editor.editorState;
     final paused = state.localTransactionsPaused;
 
-    /// 判断本次文件操作是否仍属于活动页面与原业务身份。
+    /// 检查此次提交是否仍属于原文档和会话。
     bool current() =>
         mounted &&
         _checkSession() &&
         identical(_journal, journal) &&
         !journal.closed;
-
     try {
       state.service.keyboardService?.closeKeyboard();
       FocusManager.instance.primaryFocus?.unfocus();
@@ -365,58 +381,90 @@ class _LocalJournalPageState extends State<LocalJournalPage>
       await WidgetsBinding.instance.endOfFrame;
       if (!current()) return;
       state.localTransactionsPaused = true;
-      if (action == 'export') {
-        final snapshot = await journal.exportBlockCraftSnapshotAsync();
-        if (!current()) return;
-        final saved = await widget.jsonFiles.save(
-          snapshot,
-          '今日导向-${journal.date}.json',
-        );
-        if (mounted && current() && saved) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text('JSON已导出')));
-        }
-      } else {
-        final snapshot = await widget.jsonFiles.pick();
-        if (!current() || snapshot == null) return;
-        final draft = await compute(_importJournalSnapshot, snapshot);
-        if (!current()) return;
-        final store = await widget.jsonFiles.createImportedStore(
-          draft,
-          widget.storageScope,
-        );
-        if (!mounted || !current()) return;
-        state.localTransactionsPaused = paused;
-        await Navigator.of(context).push<void>(
-          MaterialPageRoute(
-            builder: (_) => LocalJournalPage(
-              store: store,
-              mentionDirectory: widget.mentionDirectory,
-              hostServices: widget.hostServices,
-              sessionIdentity: widget.sessionIdentity,
-              storageScope: widget.storageScope,
-              jsonFiles: widget.jsonFiles,
-            ),
-          ),
-        );
+      final saved = await journal.flush();
+      if (mounted && current() && saved) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(_remote ? '已保存到后台' : '已保存到本机')));
       }
-    } catch (error) {
+    } catch (_) {
       if (mounted && current()) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              error is FormatException ? error.message : 'JSON操作失败，原内容已保留，请重试',
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('保存失败，内容已保留，请重试')));
       }
     } finally {
-      if (!state.isDisposed) {
-        state.localTransactionsPaused = paused;
-        if (!_sameAccount) state.editable = false;
+      if (!state.isDisposed) state.localTransactionsPaused = paused;
+      if (mounted) setState(() => _submitting = false);
+    }
+  }
+
+  /// 为当前只读文档打开分享面板；复制可见正文，不包含隐藏栏目或接口元数据。
+  /// 面板由当前路由拥有，等待关闭后复核页面、账号及文档，不产生保存请求。
+  Future<void> _sharePreview() async {
+    final journal = _journal;
+    if (!_readOnly ||
+        journal == null ||
+        _sharing ||
+        _leaving ||
+        !_checkSession()) {
+      return;
+    }
+    setState(() => _sharing = true);
+
+    /// 判断分享是否仍属于同一页面、文档及宿主会话。
+    bool current() =>
+        mounted &&
+        _checkSession() &&
+        identical(_journal, journal) &&
+        !journal.closed &&
+        !_leaving;
+    try {
+      final copy = await showJournalSheet<bool>(
+        context: context,
+        builder: (context) => JournalBottomSheet(
+          title: '分享',
+          icon: LucideIcons.share2,
+          child: OutlinedButton.icon(
+            key: const ValueKey('journal-share-copy'),
+            onPressed: () => Navigator.pop(context, true),
+            icon: const Icon(LucideIcons.copy, size: 18),
+            label: const Text('复制正文'),
+          ),
+        ),
+      );
+      if (copy != true || !current()) return;
+      final nodes = journalContentNodes(
+        journal.editor.editorState.document.root.children,
+      ).where((node) => node.delta != null).toList();
+      final body = nodes.isEmpty
+          ? ''
+          : journalSelectionPlainText(
+              nodes,
+              Selection(
+                start: Position(path: nodes.first.path),
+                end: Position(
+                  path: nodes.last.path,
+                  offset: nodes.last.delta!.length,
+                ),
+              ),
+            );
+      await Clipboard.setData(
+        ClipboardData(text: '$_title\n${journal.date}\n$body'),
+      );
+      if (mounted && current()) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('正文已复制，可粘贴分享')));
       }
-      if (mounted) setState(() => _exchanging = false);
+    } catch (_) {
+      if (mounted && current()) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('复制失败，请重试')));
+      }
+    } finally {
+      if (mounted) setState(() => _sharing = false);
     }
   }
 
@@ -424,8 +472,9 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   Future<void> _section(String kind, {bool close = false}) async {
     final journal = _journal;
     if (journal == null ||
+        _submitting ||
         _picking ||
-        _preview != null ||
+        _readOnly ||
         _leaving ||
         !_sameAccount) {
       return;
@@ -463,10 +512,10 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     if (!mounted ||
         journal == null ||
         journal.closed ||
+        _submitting ||
         _picking ||
         _leaving ||
-        _switching ||
-        _preview != null ||
+        _readOnly ||
         !_sameAccount ||
         !canEdit.value) {
       return null;
@@ -493,8 +542,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
           !identical(_journal, journal) ||
           journal.closed ||
           _leaving ||
-          _switching ||
-          _preview != null ||
+          _readOnly ||
           !canEdit.value) {
         revoke();
       }
@@ -541,10 +589,10 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   Future<void> _pickPeople({required String kind}) async {
     final journal = _journal;
     if (journal == null ||
+        _submitting ||
         _picking ||
-        _preview != null ||
+        _readOnly ||
         _leaving ||
-        _switching ||
         !_sameAccount) {
       return;
     }
@@ -563,8 +611,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         !state.isDisposed &&
         state.editable &&
         !_leaving &&
-        !_switching &&
-        _preview == null;
+        !_readOnly;
 
     state.service.keyboardService?.closeKeyboard();
     FocusManager.instance.primaryFocus?.unfocus();
@@ -603,7 +650,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   /// 为[journal]构建键盘上方的四个宿主动作，已存在的可选栏目不重复提供添加入口。
   /// 各动作的Future包含选人、写入及输入恢复，外壳据此串行化其他工具栏操作。
   List<EditorKeyboardAction> _keyboardActions(LocalJournalController journal) {
-    final enabled = !_picking && !_leaving && !_switching && _sameAccount;
+    final enabled = !_submitting && !_picking && !_leaving && _sameAccount;
     return [
       if (!journal.hasSection('reflection'))
         EditorKeyboardAction(
@@ -652,6 +699,23 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         },
         child: Scaffold(
           backgroundColor: const Color(0xfffaf8f0),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: _readOnly && journal != null && !_sessionRevoked
+              ? _JournalPreviewActions(
+                  liked: _previewLiked,
+                  onShare: _leaving || _sharing
+                      ? null
+                      : () => unawaited(_sharePreview()),
+                  onLike: _leaving
+                      ? null
+                      : () {
+                          if (_checkSession()) {
+                            setState(() => _previewLiked = !_previewLiked);
+                          }
+                        },
+                )
+              : null,
           appBar: AppBar(
             titleSpacing: 0,
             leadingWidth: 48,
@@ -659,59 +723,34 @@ class _LocalJournalPageState extends State<LocalJournalPage>
             backgroundColor: const Color(0xfffaf8f0),
             leading: IconButton(
               key: const ValueKey('journal-back'),
-              tooltip: '返回并保存',
+              tooltip: _remote || _readOnly ? '返回' : '返回并保存',
               onPressed: _leaving ? null : () => unawaited(_leave()),
               icon: const Icon(LucideIcons.chevronLeft),
             ),
-            title: Text(
-              journal
-                          ?.editor
-                          .editorState
-                          .document
-                          .root
-                          .attributes[journalPlainDesktopAttribute] ==
-                      true
-                  ? '导入文档'
-                  : '今日导向',
-            ),
+            title: Text(_title),
             actions: [
-              if (journal != null) ...[
-                PopupMenuButton<String>(
-                  key: const ValueKey('journal-json-menu'),
-                  tooltip: 'JSON导入导出',
-                  enabled:
-                      !_exchanging &&
-                      !_leaving &&
-                      !_switching &&
-                      !_picking &&
-                      _preview == null,
-                  onSelected: (action) => unawaited(_exchangeJson(action)),
-                  icon: const Icon(LucideIcons.fileJson),
-                  itemBuilder: (_) => const [
-                    PopupMenuItem(value: 'export', child: Text('导出桌面JSON')),
-                    PopupMenuItem(value: 'import', child: Text('打开桌面JSON')),
-                  ],
+              if (journal != null && !_readOnly) ...[
+                TextButton(
+                  key: const ValueKey('journal-save'),
+                  onPressed:
+                      _submitting || _leaving || _picking || !_sameAccount
+                      ? null
+                      : () => unawaited(_saveContent()),
+                  child: Text(_submitting ? '保存中…' : '保存'),
                 ),
                 IconButton(
                   tooltip: '撤销',
-                  onPressed: _preview != null || _leaving
+                  onPressed: _readOnly || _leaving || _submitting
                       ? null
                       : journal.editor.editorState.undoManager.undo,
                   icon: const Icon(LucideIcons.undo2),
                 ),
                 IconButton(
                   tooltip: '重做',
-                  onPressed: _preview != null || _leaving
+                  onPressed: _readOnly || _leaving || _submitting
                       ? null
                       : journal.editor.editorState.undoManager.redo,
                   icon: const Icon(LucideIcons.redo2),
-                ),
-                TextButton(
-                  key: const ValueKey('journal-preview'),
-                  onPressed: _switching || _leaving
-                      ? null
-                      : () => unawaited(_togglePreview()),
-                  child: Text(_preview == null ? '预览' : '编辑'),
                 ),
               ],
             ],
@@ -743,38 +782,35 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                     children: [
                       ListenableBuilder(
                         listenable: journal,
-                        builder: (context, _) => Semantics(
-                          liveRegion: true,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  journal.error ??
-                                      (journal.saving
-                                          ? '正在保存到本机…'
-                                          : journal.dirty
-                                          ? '尚未保存'
-                                          : '已保存到本机'),
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: journal.error == null
-                                        ? const Color(0xff8a8175)
-                                        : Colors.red.shade700,
-                                  ),
+                        builder: (context, _) => journal.error == null
+                            ? const SizedBox.shrink()
+                            : Semantics(
+                                liveRegion: true,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        journal.error!,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.red.shade700,
+                                        ),
+                                      ),
+                                    ),
+                                    TextButton(
+                                      key: const ValueKey('journal-retry-save'),
+                                      onPressed:
+                                          journal.saving ||
+                                              _submitting ||
+                                              !_sameAccount
+                                          ? null
+                                          : () => unawaited(_saveContent()),
+                                      child: const Text('重试保存'),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              if (journal.error != null)
-                                TextButton(
-                                  key: const ValueKey('journal-retry-save'),
-                                  onPressed: journal.saving
-                                      ? null
-                                      : () => unawaited(journal.flush()),
-                                  child: const Text('重试保存'),
-                                ),
-                            ],
-                          ),
-                        ),
                       ),
                       Expanded(
                         child: Align(
@@ -782,22 +818,23 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                           child: ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 680),
                             child: JournalSurface(
-                              key: ObjectKey(_preview ?? journal.editor),
-                              editorState:
-                                  (_preview ?? journal.editor).editorState,
-                              preview: _preview != null || _leaving,
-                              onCloseSection: _preview != null || _leaving
+                              key: ObjectKey(journal.editor),
+                              editorState: journal.editor.editorState,
+                              preview: _readOnly || _leaving,
+                              onCloseSection:
+                                  _readOnly || _leaving || _submitting
                                   ? null
                                   : (kind) =>
                                         unawaited(_section(kind, close: true)),
                               keyboardActions:
-                                  journal
-                                          .editor
-                                          .editorState
-                                          .document
-                                          .root
-                                          .attributes[journalPlainDesktopAttribute] ==
-                                      true
+                                  _readOnly ||
+                                      journal
+                                              .editor
+                                              .editorState
+                                              .document
+                                              .root
+                                              .attributes[journalPlainDesktopAttribute] ==
+                                          true
                                   ? const []
                                   : _keyboardActions(journal),
                               header:
@@ -812,9 +849,15 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                                   : ListenableBuilder(
                                       listenable: journal,
                                       builder: (context, _) => _JournalHeader(
+                                        title: _title,
+                                        currentUser: _readOnly
+                                            ? widget.currentUser
+                                            : null,
+                                        services: _services,
                                         date: journal.date,
                                         chooseDate: _chooseDate,
-                                        onChoose: _preview != null || _leaving
+                                        onChoose:
+                                            _readOnly || _leaving || _submitting
                                             ? null
                                             : () => setState(
                                                 () =>
@@ -839,10 +882,82 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   }
 }
 
+/// 预览路由独有的悬浮操作组，不持有正文、网络客户端或可编辑状态。
+class _JournalPreviewActions extends StatelessWidget {
+  /// [liked] 为本次预览的演示状态；[onShare]/[onLike] 由页面持有，null 禁用对应动作。
+  const _JournalPreviewActions({
+    required this.liked,
+    this.onShare,
+    this.onLike,
+  });
+
+  /// 当前预览是否已点赞，不代表后台持久化状态。
+  final bool liked;
+
+  /// 页面拥有的分享动作，null 表示正在分享或退出。
+  final VoidCallback? onShare;
+
+  /// 页面拥有的本地点赞/取消动作，null 表示正在退出。
+  final VoidCallback? onLike;
+
+  /// 在 [context] 中构建带阴影的圆角按钮，不占据正文布局或接管滚动手势。
+  @override
+  Widget build(BuildContext context) => Padding(
+    key: const ValueKey('journal-preview-actions'),
+    padding: const EdgeInsets.symmetric(horizontal: 16),
+    child: Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 12,
+      runSpacing: 8,
+      children: [
+        FilledButton.icon(
+          key: const ValueKey('journal-share'),
+          onPressed: onShare,
+          style: FilledButton.styleFrom(
+            backgroundColor: const Color(0xff6254ed),
+            foregroundColor: Colors.white,
+            minimumSize: const Size(132, 48),
+            elevation: 4,
+            shadowColor: const Color(0x406254ed),
+            shape: const StadiumBorder(),
+          ),
+          icon: const Icon(LucideIcons.forward, size: 18),
+          label: const Text('分享'),
+        ),
+        Semantics(
+          toggled: liked,
+          label: liked ? '取消点赞' : '点赞',
+          child: FilledButton.icon(
+            key: const ValueKey('journal-like'),
+            onPressed: onLike,
+            style: FilledButton.styleFrom(
+              backgroundColor: const Color(0xfffffdf5),
+              foregroundColor: const Color(0xff32302a),
+              minimumSize: const Size(132, 48),
+              elevation: 3,
+              shadowColor: const Color(0x26000000),
+              shape: const StadiumBorder(),
+            ),
+            icon: Icon(
+              LucideIcons.thumbsUp,
+              size: 18,
+              color: liked ? const Color(0xff6254ed) : const Color(0xffe7a597),
+            ),
+            label: Text(liked ? '1' : '0'),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 /// 编辑和预览共用的雪山封面，素材随宿主打包，不进入草稿或发起网络请求。
 class _JournalCover extends StatelessWidget {
   /// 构建固定封面，不持有编辑会话或外部图片资源。
-  const _JournalCover();
+  const _JournalCover({this.title = '今日导向'});
+
+  /// 与接口 orientType 一致的封面文字，不改变模板正文。
+  final String title;
 
   /// 使用[context]的可用宽度和字号安排图片与标题，底部渐变保证文字对比度。
   @override
@@ -884,14 +999,14 @@ class _JournalCover extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 18),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 18),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '今日导向',
+                      title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -923,11 +1038,102 @@ class _JournalCover extends StatelessWidget {
   }
 }
 
-/// 编辑与预览相同的纸张标题和日期，可在编辑态展开行内日历。
+/// 预览封面下的当前用户资料行，借用宿主头像组件且不读取账号或修改正文。
+class _JournalPreviewUserInfo extends StatelessWidget {
+  /// [user] 为宿主当前用户；[services] 提供可选头像构建器。
+  /// 所有资料只读，图片及组件资源由 Flutter 生命周期管理。
+  const _JournalPreviewUserInfo({required this.user, required this.services});
+
+  /// 当前用户资料快照，仅展示明确提供的字段。
+  final CollabMentionUser user;
+
+  /// 页面借用的宿主服务，不取得其资源所有权。
+  final CollabHostServices services;
+
+  /// 在 [context] 中按封面宽度排布头像、姓名和部门职位，长文案省略。
+  @override
+  Widget build(BuildContext context) {
+    final subtitle = [user.department, user.position]
+        .whereType<String>()
+        .map((value) => value.trim())
+        .where((value) => value.isNotEmpty)
+        .join(' · ');
+    final avatar =
+        services.mentionAvatarBuilder?.call(
+          context,
+          userId: user.id,
+          name: user.name,
+          size: 36,
+          avatarUrl: user.avatarUrl,
+        ) ??
+        DemoMentionAvatar(
+          userId: user.id,
+          name: user.name,
+          size: 36,
+          avatarUrl: user.avatarUrl,
+        );
+    return DecoratedBox(
+      key: const ValueKey('journal-preview-user'),
+      decoration: const BoxDecoration(
+        border: Border(bottom: BorderSide(color: Color(0xffe9e4d8), width: .5)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        child: Row(
+          children: [
+            ExcludeSemantics(
+              child: SizedBox.square(dimension: 36, child: avatar),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    user.name,
+                    key: const ValueKey('journal-preview-user-name'),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff32302a),
+                    ),
+                  ),
+                  if (subtitle.isNotEmpty) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff938d80),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// 编辑与预览共用纸张标题和日期；预览可在封面下展示宿主当前用户。
 class _JournalHeader extends StatelessWidget {
-  /// [date]为YYYY-MM-DD，[chooseDate]控制日历，[onChoose]为空时只读，[onDate]提交所选日期。
+  /// [date]为YYYY-MM-DD，[title]与 orientType 对应；[chooseDate]控制日历，
+  /// [onChoose]为空时只读，[onDate]提交所选日期。
+  /// [currentUser] 是预览专属的可选用户资料，默认隐藏。
+  /// [services] 借用宿主头像端口，默认空服务，不创建账号或客户端。
   const _JournalHeader({
     required this.date,
+    this.title = '今日导向',
+    this.currentUser,
+    this.services = const CollabHostServices(),
     required this.chooseDate,
     required this.onChoose,
     required this.onDate,
@@ -935,6 +1141,15 @@ class _JournalHeader extends StatelessWidget {
 
   /// 已保存的记录日期。
   final String date;
+
+  /// 与页面头部一致的业务标题。
+  final String title;
+
+  /// 仅预览传入的当前用户资料；null 保留原封面布局。
+  final CollabMentionUser? currentUser;
+
+  /// 借用的头像展示服务，不获取资源所有权。
+  final CollabHostServices services;
 
   /// 编辑态是否展开日历。
   final bool chooseDate;
@@ -967,7 +1182,9 @@ class _JournalHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const _JournalCover(),
+        _JournalCover(title: title),
+        if (currentUser case final user?)
+          _JournalPreviewUserInfo(user: user, services: services),
         const SizedBox(height: 24),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),

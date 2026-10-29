@@ -3,10 +3,10 @@ import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'journal_draft.dart';
-import 'journal_exchange_keys.dart';
 import 'guidance_entries.dart';
+import 'journal_draft.dart';
 import 'journal_editing.dart';
+import 'journal_exchange_keys.dart';
 import 'journal_list_markers.dart';
 import 'journal_ruled_content.dart';
 
@@ -36,7 +36,7 @@ class JournalSurface extends StatelessWidget {
   /// 借用的唯一正文会话，调用方必须在视图移除后释放。
   final EditorState editorState;
 
-  /// true为预览；不改变正文、字号或纸张尺寸。
+  /// true 为只读预览，收紧栏目尾部留白；不修改正文、字号或纸张宽度。
   final bool preview;
 
   /// 可选栏目关闭回调；null时不显示关闭按钮，回调由业务页面持有。
@@ -60,7 +60,7 @@ class JournalSurface extends StatelessWidget {
       plain
           ? const TextStyle(fontSize: 16, color: Colors.black)
           : const TextStyle(fontSize: 16, height: 2, color: Color(0xff3e4650)),
-    );
+    ).copyWith(fontFamily: Theme.of(context).textTheme.bodyMedium?.fontFamily);
     return ColoredBox(
       color: plain ? Colors.white : const Color(0xfffaf8f0),
       child: DocumentEditorView(
@@ -68,7 +68,14 @@ class JournalSurface extends StatelessWidget {
         preview: preview,
         header: header,
         editorKey: const ValueKey('journal-editor'),
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
+        // padding 会作用于每个根栏目；悬浮按钮留白仅放在整篇文档的末尾。
+        padding: EdgeInsets.fromLTRB(20, 0, 20, preview ? 0 : 40),
+        footer: preview
+            ? SizedBox(
+                key: const ValueKey('journal-preview-bottom-space'),
+                height: 96 * MediaQuery.textScalerOf(context).scale(16) / 16,
+              )
+            : null,
         onUserMention: (state) =>
             handleEditorUserMentionTrigger(context, state),
         configuration: EditorViewConfiguration(
@@ -104,6 +111,7 @@ class JournalSurface extends StatelessWidget {
                 minimumBodyHeight: 0,
               ),
               journalSectionType: _JournalSectionBuilder(
+                preview: preview,
                 onClose: preview ? null : onCloseSection,
               ),
               ParagraphBlockKeys.type: ParagraphBlockComponentBuilder(
@@ -156,8 +164,11 @@ class JournalSurface extends StatelessWidget {
 
 /// 为动态栏目注册纯结构渲染器，标题不进入可编辑正文。
 class _JournalSectionBuilder extends BlockComponentBuilder {
-  /// [onClose]由页面处理栏目关闭；null不展示按钮。
-  _JournalSectionBuilder({this.onClose});
+  /// [preview] 收紧只读栏目留白；[onClose] 由页面处理栏目关闭，null 不展示按钮。
+  _JournalSectionBuilder({this.preview = false, this.onClose});
+
+  /// 本构建器所属视图的固定预览模式，不从可变编辑权限推断。
+  final bool preview;
 
   /// 借用的业务关闭动作。
   final ValueChanged<String>? onClose;
@@ -168,6 +179,7 @@ class _JournalSectionBuilder extends BlockComponentBuilder {
     key: context.node.key,
     node: context.node,
     configuration: configuration,
+    preview: preview,
     onClose: onClose,
   );
 }
@@ -175,18 +187,22 @@ class _JournalSectionBuilder extends BlockComponentBuilder {
 /// 单个栏目外壳，使用一个编辑器渲染其全部子段落。
 class _JournalSection extends BlockComponentStatelessWidget {
   /// [key]保持栏目身份，[node]为受保护的栏目，[configuration]为渲染配置。
-  /// [onClose]可空，由宿主负责保存关闭草稿及撤销。
+  /// [preview] 仅改变只读留白，不修改节点；[onClose] 可空，由宿主负责保存关闭草稿及撤销。
   const _JournalSection({
     super.key,
     required super.node,
     required super.configuration,
+    this.preview = false,
     this.onClose,
   });
+
+  /// true 时收紧栏目末尾的纯空段落和书写留白，仅影响展示。
+  final bool preview;
 
   /// 可选业务关闭回调，不释放。
   final ValueChanged<String>? onClose;
 
-  /// 在[context]构建动态标题、实际正文行线和最少三行书写空间。
+  /// 在 [context] 构建栏目和横格；编辑保留三行书写区，预览收紧末尾纯空段落。
   @override
   Widget build(BuildContext context) {
     final editor = context.read<EditorState>();
@@ -202,15 +218,23 @@ class _JournalSection extends BlockComponentStatelessWidget {
     final titleDelta = node.attributes['guidance_heading_delta'];
     final title = titleDelta is List
         ? Delta.fromJson(titleDelta).toPlainText()
-        : switch (node.attributes['section']) {
-            'record' => '今日记录',
-            'reflection' => '感悟',
-            _ => '自检',
-          };
+        : node.attributes['guidance_section_label'] as String? ??
+              switch (node.attributes['section']) {
+                'record' => '今日记录',
+                'reflection' => '感悟',
+                _ => '自检',
+              };
     final lineHeight = MediaQuery.textScalerOf(context).scale(16) * 2;
+    // 只从视图列表移除末尾普通空段落，正文、撤销历史和保存 JSON 均保留。
+    final children = preview ? List<Node>.of(node.children) : node.children;
+    if (preview) {
+      while (children.length > 1 && _previewBlankParagraph(children.last)) {
+        children.removeLast();
+      }
+    }
     return Padding(
       key: ValueKey('journal-section-${node.attributes['section']}'),
-      padding: const EdgeInsets.only(bottom: 28),
+      padding: EdgeInsets.only(bottom: preview ? lineHeight : 28),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -227,7 +251,11 @@ class _JournalSection extends BlockComponentStatelessWidget {
                     ),
                   ),
                 ),
-                if (node.attributes['section'] != 'record' && onClose != null)
+                if (node.attributes['section'] != 'record' &&
+                    !(node.attributes['section'] as String).startsWith(
+                      'custom:',
+                    ) &&
+                    onClose != null)
                   InkWell(
                     key: ValueKey(
                       'journal-close-${node.attributes['section']}',
@@ -263,13 +291,13 @@ class _JournalSection extends BlockComponentStatelessWidget {
                 : null,
 
             textLines: false,
-            minimumHeight: lineHeight * 3,
+            minimumHeight: preview ? 0 : lineHeight * 3,
             lineHeight: lineHeight,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
-                for (final child in node.children)
+                for (final child in children)
                   JournalRuledContent(
                     key: ValueKey('journal-lines-${child.id}'),
                     lineHeight: lineHeight,
@@ -286,3 +314,12 @@ class _JournalSection extends BlockComponentStatelessWidget {
     );
   }
 }
+
+/// 判断借用的 [node] 是否为可在预览栏目末尾折叠的普通空段落。
+/// 保留带任务/人员业务标记、子块或非空文本的块；不修改原节点或属性。
+bool _previewBlankParagraph(Node node) =>
+    node.type == ParagraphBlockKeys.type &&
+    node.children.isEmpty &&
+    node.attributes[guidanceEntryAttribute] == null &&
+    node.delta != null &&
+    node.delta!.toPlainText().trim().isEmpty;

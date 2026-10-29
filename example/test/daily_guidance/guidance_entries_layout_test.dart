@@ -1,3 +1,4 @@
+import 'journal_test_preview.dart';
 import 'dart:convert';
 import 'dart:ui' show BoxHeightStyle;
 
@@ -242,7 +243,7 @@ void main() {
       expect(state.document.root.children.single.children.length, 2);
       expect(node.delta!.toPlainText(), '原文');
       expect(business.delta!.toPlainText(), '\uFFFC ');
-      await tester.tap(find.byKey(const ValueKey('journal-preview')));
+      await openOrCloseJournalPreview(tester);
       await tester.pumpAndSettle();
       expect(_state(tester).editable, isFalse);
       expect(find.text('张三'), findsOneWidget);
@@ -295,7 +296,7 @@ void main() {
                 jsonDecode(store.value.documentJson).toString(),
                 contains('guidance_done: true'),
               );
-              await tester.tap(find.byKey(const ValueKey('journal-preview')));
+              await openOrCloseJournalPreview(tester);
               await tester.pumpAndSettle();
               expect(_state(tester).editable, isFalse);
               expect(_geometry(tester, scale, wrapped), edit);

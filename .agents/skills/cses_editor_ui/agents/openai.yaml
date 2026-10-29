@@ -1,0 +1,6 @@
+interface:
+  display_name: "cses_editor_ui"
+  short_description: "适配 cses_editor 与 example 的 UI 规则，复用弹窗并保留宿主风格与编辑会话"
+
+policy:
+  allow_implicit_invocation: true

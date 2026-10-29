@@ -1,0 +1,20 @@
+[
+  {
+    "scenario": "normal",
+    "density": "physical",
+    "font_scale": "1.0",
+    "exit_code": 0
+  },
+  {
+    "scenario": "narrow-large",
+    "density": "540",
+    "font_scale": "1.6",
+    "exit_code": 0
+  },
+  {
+    "scenario": "narrow-largest",
+    "density": "540",
+    "font_scale": "2.0",
+    "exit_code": 1
+  }
+]

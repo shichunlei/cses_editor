@@ -1,0 +1,38 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_modal_ui_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_modal_ui_test.dart: sheet isolates theme and returns after disposal: dark=false
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: (setUpAll)
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_modal_ui_test.dart: sheet isolates theme and returns after disposal: dark=true
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:02 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:02 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions float, toggle locally and copy readable text without saving
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions float, toggle locally and copy readable text without saving
+00:03 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions float, toggle locally and copy readable text without saving
+00:03 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions float, toggle locally and copy readable text without saving
+00:03 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom pilot action preserves source and resumes input
+00:04 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom pilot action preserves source and resumes input
+00:04 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: business entry layout scale=1.0 wrapped=true longName=false
+00:04 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker cancel resumes input without writing
+00:05 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker cancel resumes input without writing
+00:05 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: business entry layout scale=2.0 wrapped=false longName=false
+00:05 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker rejects account round trips
+00:05 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker rejects account round trips
+00:05 +26: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: business entry layout scale=2.0 wrapped=true longName=true
+00:05 +27: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom help action preserves source and resumes input
+00:05 +28: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker cannot restore input after account changes
+00:05 +29: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed cookie permanently
+00:06 +30: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:06 +31: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed company permanently
+00:06 +32: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker releases its permission watch on cancel and page removal
+00:06 +33: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:07 +34: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: (tearDownAll)
+00:07 +34: All tests passed!

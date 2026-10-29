@@ -1,0 +1,629 @@
+{
+  "id": "6ae2bd12ae4da0b3be935160",
+  "bizType": "DAILY_RESULT",
+  "orientType": "RESULT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "dailyOrient": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "dailyResult": {
+    "content": "KJDCJODCJDCK \nMDKLD\nKLDJDCF ",
+    "mentions": []
+  },
+  "thinking": {
+    "content": "XSNJKJCDSJJCKLJCDSKLDC,MN\nXBSGJHSDCDH \nXOIKCSCDSMK  \nmdskljfo ",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "@CDCKD;OSDCKP[CK  @威震天 DMJKLDJODC\n换届大会覅电话费雕刻机费很大错机动车库垃圾袋分岔路口出发点汇顶科技吃饭大V领的开发v出纳",
+    "mentions": [
+      {
+        "mentionId": "6ae2bd06bc2701ed9ddf443c",
+        "mentionName": "CDCKD;OSDCKP[CK"
+      },
+      {
+        "mentionId": "5ffd465e263864787b87aa01",
+        "mentionName": "威震天"
+      }
+    ]
+  },
+  "helpItems": [
+    {
+      "content": "@威震天 SJIDLJDCOIDNCS",
+      "mentions": [
+        {
+          "mentionId": "5ffd465e263864787b87aa01",
+          "mentionName": "威震天"
+        }
+      ],
+      "sortNo": 1
+    },
+    {
+      "content": "@擎天柱 ewhbjkfdhfiohf bnm",
+      "mentions": [
+        {
+          "mentionId": "678",
+          "mentionName": "擎天柱"
+        }
+      ],
+      "sortNo": 2
+    }
+  ],
+  "navigatorItems": [],
+  "customData": {
+    "local_KYlqAwkdYUsE_BTzfk": {
+      "content": "11111",
+      "mentions": []
+    }
+  },
+  "bodyContent": {
+    "id": "cses-daily-fill-v7:64118eebd2b665246b7880eb:5ffd465e263864787b87aa01:2026-10-29:result",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {
+      "background": "#FAF7EF",
+      "color": "#39414C",
+      "fs": 16,
+      "lh": 2,
+      "showHeader": false
+    },
+    "meta": {
+      "dailyDate": "2026-10-29",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "result"
+    },
+    "children": [
+      {
+        "id": "qjuGUrpNQQW3iZCblv",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "backColor": "#E9D8D3",
+          "bgi": "url(\"/assets/daily-fill/mountain-cover.svg\") center / cover",
+          "p": [
+            40,
+            32,
+            40
+          ],
+          "textFill": "#30364A"
+        },
+        "meta": {
+          "dailySlot": "daily-cover",
+          "incl": [
+            "paragraph",
+            "bullet",
+            "ordered",
+            "todo",
+            "attachment",
+            "video",
+            "audio",
+            "task"
+          ],
+          "tplFieldName": "日成果",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "f2wC0o_sLxB-8UJC8S",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "lh": 1.5,
+              "pfs": 1.75,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {
+              "lock": "daily-template",
+              "lockKind": "template"
+            },
+            "children": [
+              {
+                "insert": "今日成果"
+              }
+            ]
+          },
+          {
+            "id": "6MICo2noF1-dW7vEEc",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {
+              "plh": "记录今天完成的事，以及带来的成果…",
+              "plhMode": "always"
+            },
+            "children": [
+              {
+                "insert": "KJDCJODCJDCK "
+              }
+            ]
+          },
+          {
+            "id": "RCE-8iUEOINu5MdnIz",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "help"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "威震天"
+                },
+                "attributes": {
+                  "companyId": "64118eebd2b665246b7880eb",
+                  "deptId": "65f2a1bc6339554c37bd0dba",
+                  "deptName": "总经办",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "mentionId": "5ffd465e263864787b87aa01",
+                  "mentionType": "user",
+                  "orgId": "641287f6d2b665246b78e763",
+                  "orgName": "CEO",
+                  "parentId": "65f2a1bc6339554c37bd0dba",
+                  "seq": 55000,
+                  "type": "Boss",
+                  "userId": "5ffd465e263864787b87aa01",
+                  "userName": "威震天"
+                }
+              },
+              {
+                "insert": " SJIDLJDCOIDNCS"
+              }
+            ]
+          },
+          {
+            "id": "6UIuNCQn_PHH2cXegp",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "order": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "MDKLD"
+              }
+            ]
+          },
+          {
+            "id": "dNS13Xj2AlF7KRhlNf",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "order": 1,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "KLDJDCF "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "zTUM0TCoKZda4XA8Mn",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "backColor": "#FAF7EF",
+          "p": [
+            56,
+            32,
+            16
+          ]
+        },
+        "meta": {
+          "lock": "daily-template",
+          "lockKind": "template"
+        },
+        "children": [
+          {
+            "id": "_KhFxb9n9vs7O9P0wf",
+            "flavour": "date-card",
+            "nodeType": "void",
+            "props": {
+              "bg": "transparent",
+              "bw": "0px solid",
+              "date": "2026-10-29T12:00:00",
+              "fg": "#39414C",
+              "format": "full",
+              "height": 136,
+              "style": "masthead",
+              "width": 206
+            },
+            "meta": {
+              "dailyDate": true
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "0Y9tQBJTjAr-077i9B",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "backColor": "#FAF7EF",
+          "background": "repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, #DFD9CC 31px, #DFD9CC 32px)",
+          "p": [
+            0,
+            40,
+            40
+          ]
+        },
+        "meta": {
+          "dailySlot": "daily-body",
+          "incl": [
+            "paragraph",
+            "bullet",
+            "ordered",
+            "todo",
+            "attachment",
+            "video",
+            "audio",
+            "task"
+          ],
+          "tplFieldName": "日成果",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "wdcK4ATBXpBn7Kdp1k",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "热风南方科技大V佛大V发大V发"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "geqFIl8dveaUQ1_9Zq",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "p": [
+            80,
+            40,
+            40
+          ],
+          "textFill": "#2B2623",
+          "textFont": "14px 400 normal",
+          "textSpacing": "0em 2.86"
+        },
+        "meta": {
+          "dailySection": "reflection",
+          "incl": [
+            "paragraph",
+            "bullet",
+            "ordered",
+            "todo",
+            "attachment",
+            "video",
+            "audio",
+            "task"
+          ],
+          "tplFieldName": "感悟",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "UqVp3OkVO7-l3Kx2vN",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {
+              "plh": "写下感悟…",
+              "plhMode": "always"
+            },
+            "children": [
+              {
+                "insert": "XSNJKJCDSJJCKLJCDSKLDC,MN"
+              }
+            ]
+          },
+          {
+            "id": "RxRgXzoUn04RqCMoJr",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "XBSGJHSDCDH "
+              }
+            ]
+          },
+          {
+            "id": "3E6YpBZqhF5sN8HhLh",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "XOIKCSCDSMK  "
+              }
+            ]
+          },
+          {
+            "id": "s0PZpB90Sx8pK-19R5",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "help"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "擎天柱"
+                },
+                "attributes": {
+                  "mentionId": "678",
+                  "companyId": "64118eebd2b665246b7880eb",
+                  "deptId": "65f2a1bc6339554c37bd0dba",
+                  "deptName": "总经办",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "641287f6d2b665246b78e763",
+                  "orgName": "CEO",
+                  "parentId": "65f2a1bc6339554c37bd0dba",
+                  "seq": 55000,
+                  "type": "Boss",
+                  "userId": "678",
+                  "userName": "擎天柱",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " ewhbjkfdhfiohf bnm"
+              }
+            ]
+          },
+          {
+            "id": "PLGzQsOpZI5gcgaRtT",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "mdskljfo "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "84nj3577M1jT__leda",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "p": [
+            80,
+            40,
+            40
+          ],
+          "textFill": "#2B2623",
+          "textFont": "14px 400 normal",
+          "textSpacing": "0em 2.86"
+        },
+        "meta": {
+          "dailySection": "self-check",
+          "incl": [
+            "paragraph",
+            "bullet",
+            "ordered",
+            "todo",
+            "attachment",
+            "video",
+            "audio",
+            "task"
+          ],
+          "tplFieldName": "自检",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "VMdy7ivYzb73UPsoOT",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {
+              "plh": "写下自检…",
+              "plhMode": "always"
+            },
+            "children": [
+              {
+                "insert": {
+                  "mention": "CDCKD;OSDCKP[CK"
+                },
+                "attributes": {
+                  "mentionId": "6ae2bd06bc2701ed9ddf443c",
+                  "mentionType": "task"
+                }
+              },
+              {
+                "insert": "  "
+              },
+              {
+                "insert": {
+                  "mention": "威震天"
+                },
+                "attributes": {
+                  "companyId": "64118eebd2b665246b7880eb",
+                  "deptId": "65f2a1bc6339554c37bd0dba",
+                  "deptName": "总经办",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "mentionId": "5ffd465e263864787b87aa01",
+                  "mentionType": "user",
+                  "orgId": "641287f6d2b665246b78e763",
+                  "orgName": "CEO",
+                  "parentId": "65f2a1bc6339554c37bd0dba",
+                  "seq": 55000,
+                  "type": "Boss",
+                  "userId": "5ffd465e263864787b87aa01",
+                  "userName": "威震天"
+                }
+              },
+              {
+                "insert": " DMJKLDJODC"
+              }
+            ]
+          },
+          {
+            "id": "LHLuUdOgHTTzAVv0vM",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "换届大会覅电话费雕刻机费很大错机动车库垃圾袋分岔路口出发点汇顶科技吃饭大V领的开发v出纳"
+              }
+            ]
+          },
+          {
+            "id": "QNistKp6jDJprUYQL2",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "4jHe2lAHx3RpGDUpuO",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "p": [
+            80,
+            40,
+            40
+          ],
+          "textFill": "#2B2623",
+          "textFont": "14px 400 normal",
+          "textSpacing": "0em 2.86"
+        },
+        "meta": {
+          "dailyCustomField": {
+            "key": "local_KYlqAwkdYUsE_BTzfk",
+            "label": "金额",
+            "type": "number"
+          },
+          "dailySection": "custom",
+          "incl": [
+            "paragraph",
+            "bullet",
+            "ordered",
+            "todo",
+            "attachment",
+            "video",
+            "audio",
+            "task"
+          ],
+          "tplFieldName": "金额",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "DKXdfMOabPAUK35vnb",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psa": 0,
+              "psb": 0
+            },
+            "meta": {
+              "plh": "写下金额…",
+              "plhMode": "always"
+            },
+            "children": [
+              {
+                "insert": "11111"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

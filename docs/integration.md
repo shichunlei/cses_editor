@@ -185,8 +185,35 @@ final viewConfiguration = EditorViewConfiguration(
 
 普通编辑接入到这里即可完成。若App还要今日导向栏目、日期、封面、领航员/都来帮及日记工作流，它们属于宿主业务：迁入 `example/lib/daily_guidance/`、对应业务测试及封面资源，调整包名和宿主直接依赖。迁入后是宿主源码，不把 `cses_offline_example`当成运行时依赖，也不将该业务回填核心包。
 
-今日导向专用入口 `LocalJournalPage`的 `store`、`storageScope`、`sessionIdentity`、`mentionDirectory`、`hostServices`、`jsonFiles`由宿主稳定注入；单草稿只打开一个活动页面，身份变化后旧页永久冻结，改分区必须重建路由。该业务页的存储与转换契约见[数据格式](data-format.md)。
+今日导向专用入口 `LocalJournalPage`的 `store`、`storageScope`、`sessionIdentity`、`mentionDirectory`、`hostServices`由宿主稳定注入；单草稿只打开一个活动页面，身份变化后旧页永久冻结，改分区必须重建路由。示例通过 `ApiJournalStore(api: api, recordId: id)` 使用固定记录身份的 `GuidanceApi`，页面自动选择显式服务保存模式。真实接入实现 `fetch` 和 `save`，客户端认证与释放由宿主负责。`fetch` 返回包含 id、orientType、bodyContent 的记录；`save` 接收仅含 bodyContent 的补丁，不由编辑器拼装其他业务字段。存储实例须在路由 builder 外创建并保持稳定。该业务页的存储与转换契约见[数据格式](data-format.md)。
 
 文件目录、WebView、视频、URL打开等仍会使用普通Flutter平台插件，“不带协同原生库”不等于没有任何平台插件。宿主启用网络/媒体能力时按Android/iOS目标配置正常的平台权限和能力；正文离线编辑与本文私有文件保存不需要外部存储权限或协同服务。
 
 网络图片/SVG使用App私有文件缓存，无SQLite；默认最多200张/128MiB，30天尝试刷新，断网可回退旧缓存。未加载或已被系统清理的远程资源仍需网络，不保证所有外链媒体离线可用。通用资源和生成数据已随包提供，普通构建不要求桌面工程、Node或重新生成目录。
+
+
+今日导向路由使用 `LocalJournalPage(store: store, mode: JournalPageMode.edit)` 或 `mode: JournalPageMode.preview`。模式默认 edit 兼容既有调用；首页显式传入模式。当前路由不接受编辑/预览切换，改变 mode 必须创建新路由，否则旧会话冻结。预览会话在控制器层固定 readOnly，隐藏保存、撤销/重做、栏目关闭、日期修改及键盘编辑操作，加载、切后台、返回和销毁均不提交数据。两个入口可读取同一服务记录，存储实例仍由宿主持有。
+
+头像继续使用公开 `CollabHostServices.mentionAvatarBuilder` 注入。example 提供 `createDemoGuidanceHostServices(avatarUrls: {...})` 演示按用户 ID 注入图片地址，映射创建时复制，无地址/加载失败使用姓名首字。服务实例由首页持有，进入编辑和预览时稳定传入；核心编辑器不拼接用户图片地址、不查询全局账号。真实宿主可替换为自己的头像 Widget、缓存和鉴权实现。
+
+今日导向预览页底部提供悬浮分享与点赞按钮。当前 example 的分享打开“复制正文”面板，点赞为本次预览内的 0/1 演示状态，不调用后端互动服务、不写入正文 JSON；重新打开页面重置点赞。正文为悬浮按钮保留可滚动底部空间，编辑页不显示该按钮组。
+
+预览封面下方的当前用户栏由宿主显式传入 `LocalJournalPage.currentUser`（`CollabMentionUser`，包含 id、name、avatarUrl、department、position）。未传 currentUser 时隐藏整行；用户栏不显示右侧时间。头像优先使用注入的头像构建器，无头像构建器时使用 example 的姓名首字/显式图片地址展示。资料不解析 moke 顶层字段，也不写入 bodyContent。切换当前用户 ID 会冻结旧页面，须重新打开路由。
+
+```dart
+LocalJournalPage(
+  store: store,
+  mode: JournalPageMode.preview,
+  currentUser: const CollabMentionUser(
+    id: 'current-user',
+    name: '当前用户',
+    department: '技术部',
+    position: '前端开发',
+  ),
+  hostServices: services,
+);
+```
+
+example 首页注入虚构用户“示例小陈 / 示例团队 · 前端开发”，仅显示头像、姓名及部门职位，右侧不显示时间。编辑页不显示此栏。
+
+预览栏目之间的间隔最多两行：不补足编辑态的三行书写区，栏目末尾普通空段落仅在预览展示时折叠，正文 JSON 保留。悬浮操作所需底部留白放在整篇文档 footer 中，不通过根块 padding 重复加在每个栏目后。编辑态仍保持原书写空间。

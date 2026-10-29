@@ -1,0 +1,228 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits only bodyContent on save
+00:02 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits only bodyContent on save
+00:02 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits only bodyContent on save
+00:02 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits only bodyContent on save
+00:02 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +26: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +27: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +28: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +29: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +30: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +31: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +32: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +33: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +34: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +35: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +36: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +37: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +38: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +39: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +40: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +41: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +42: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +43: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +44: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +45: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +46: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +47: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +48: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +49: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +50: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +51: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +52: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +53: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +54: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +55: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +56: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +57: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +58: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +59: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +60: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +61: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +62: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +63: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +64: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +65: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:05 +66: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:05 +67: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:05 +68: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:05 +69: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:05 +70: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:05 +71: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:05 +72: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +73: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +74: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +75: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +76: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +77: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +78: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +79: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +80: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +81: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +82: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +83: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +84: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +85: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +86: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +87: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +88: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +89: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +90: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +91: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +92: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +93: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +94: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +95: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:05 +96: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +97: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +98: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +99: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +100: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +101: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +102: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +103: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +104: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +105: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:06 +106: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +107: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +108: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +109: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +110: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +111: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +112: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +113: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +114: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +115: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +116: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +117: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +118: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +119: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +120: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +121: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +122: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +123: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +124: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +125: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +126: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +127: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +128: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +129: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +130: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +131: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +132: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +133: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +134: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +135: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +136: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +137: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +138: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +139: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +140: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +141: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +142: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +143: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +144: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +145: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +146: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:07 +147: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker rejects account round trips
+00:07 +148: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:07 +149: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:07 +150: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:07 +151: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:07 +152: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:08 +153: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +154: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +154: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production cut shortcut reports a failed clipboard write and keeps the saved mention
+DocEditor: 复制或剪切失败: PlatformException(clipboard-unavailable, null, null, null)
+#0      JSONMethodCodec.decodeEnvelope (package:flutter/src/services/message_codecs.dart:168:7)
+#1      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:366:18)
+<asynchronous suspension>
+#2      Clipboard.setData (package:flutter/src/services/clipboard.dart:36:5)
+<asynchronous suspension>
+#3      LocalJournalController.copySelection (package:cses_offline_example/daily_guidance/local_journal_controller.dart:225:7)
+<asynchronous suspension>
+#4      _DocumentEditorViewState._copy (package:cses_editor/src/editor/document_editor_view.dart:231:7)
+<asynchronous suspension>
+
+00:08 +155: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +156: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +157: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +158: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +159: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +160: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +161: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +162: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +163: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +164: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +165: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +166: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +167: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +168: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +169: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +170: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +171: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +172: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +173: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: ctrl+shift+v pastes plain text atomically, saves and supports undo: 甲
+乙丙
+00:10 +174: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +175: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +176: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +176: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: rejected shortcut paste shows a retry message and keeps the saved original
+DocEditor: 粘贴失败: Bad state: 粘贴内容超出日记支持的格式或容量
+#0      LocalJournalController.pasteFromClipboard (package:cses_offline_example/daily_guidance/local_journal_controller.dart:279:7)
+<asynchronous suspension>
+#1      _DocumentEditorViewState._paste (package:cses_editor/src/editor/document_editor_view.dart:209:7)
+<asynchronous suspension>
+
+00:10 +177: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +178: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +179: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +180: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +181: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:10 +182: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +183: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +184: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +185: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +186: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +187: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +188: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: empty numbered_list Enter returns to paragraph and supports undo/redo
+00:11 +189: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:11 +190: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:11 +191: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:11 +192: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:11 +193: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:11 +194: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:11 +195: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:11 +196: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "\n\n" / 2.0
+00:11 +197: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: text/background colors, code and scripts render and persist
+00:11 +198: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: text/background colors, code and scripts render and persist
+00:12 +199: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: font size uses real selection and keeps list marker centered
+00:13 +200: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: malformed/unsupported persisted heading levels are rejected
+00:13 +201: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: paragraph alignment and flat indent preserve business identity
+00:13 +202: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: heading alignment and flat indent preserve business identity
+00:14 +203: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: bulleted_list alignment and flat indent preserve business identity
+00:14 +204: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: numbered_list alignment and flat indent preserve business identity
+00:15 +205: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: todo_list alignment and flat indent preserve business identity
+00:15 +206: All tests passed!

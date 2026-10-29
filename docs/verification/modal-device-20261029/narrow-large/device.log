@@ -1,0 +1,229 @@
+Running Gradle task 'assembleDebug'...                             22.1s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          29.2s
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:56185/ZYWLhcaZlIw=/
+VMServiceFlutterDriver: Isolate found with number: 2986370572341059
+VMServiceFlutterDriver: Isolate 2986370572341059 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter (13447): 00:00 +0: modal device layout narrow-large
+VMServiceFlutterDriver: Connected to Flutter application.
+W/FinalizerDaemon(13447): type=1400 audit(0.0:464316): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c69,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.cses.offline.modal_ui_verification
+V/ImeFocusController(13447): onWindowFocus: DecorView@2ce4df1[MainActivity] softInputMode=STATE_UNSPECIFIED|ADJUST_RESIZE|IS_FORWARD_NAVIGATION
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+W/WindowOnBackDispatcher(13447): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(13447): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:77e5cb73: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController(13447): show(ime(), fromIme=true)
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:77e5cb73: onShown
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:943f7432: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(13447): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@5bdea94
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:e7964628: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:943f7432: onHidden
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:a52c251b: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+I/AssistStructure(13447): Flattened final assist data: 420 bytes, containing 1 windows, 3 views
+D/InsetsController(13447): show(ime(), fromIme=true)
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:a52c251b: onShown
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/flutter (13447): DEVICE_METRICS narrow-large-mention-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-mention-keyboard
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:f4f85157: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(13447): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@b4892cf
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:45fd7ceb: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/InsetsController(13447): show(ime(), fromIme=true)
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:f4f85157: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:45fd7ceb: onShown
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:b60dd98e: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:649e2e50: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(13447): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@8411a43
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:da2d96d: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/InsetsController(13447): show(ime(), fromIme=true)
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:b60dd98e: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:da2d96d: onShown
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:1b8a2d2f: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(13447): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@a65e352
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:a35bf090: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:1b8a2d2f: onHidden
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/flutter (13447): DEVICE_METRICS narrow-large-leave-dialog width=320.0 height=713.4814814814815 keyboard=0.0 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-leave-dialog
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:1a2e0c85: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+E/flutter (18972): [ERROR:flutter/shell/common/host_state.cc(18)] SetCurrentAppForegroundState: 1
+W/WindowOnBackDispatcher(13447): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(13447): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+E/flutter (18972): [ERROR:flutter/txt/src/txt/fontmgr_default_android.cc(504)] value vivo
+I/flutter (18972): [INFO:flutter/shell/common/switches.cc(669)] settings.enable_surface_control:0, settings.surface_control_max_buffer_num:3,settings.create_join_raster_group_name:flutter_voip
+I/flutter (18972): [INFO:flutter/shell/common/switches.cc(697)] settings.enable_impeller_raster_cache:0, settings.enable_font_prerender:0, settings.share_glyph_atlas:0, settings.enable_vsync_period_fix:0, settings.enable_ios_gpu_glyph_atlas_purge_on_destroy:0
+I/flutter (18972): [INFO:flutter/shell/common/switches.cc(794)] settings.enable_vulkan_partial_repaint:0, settings.enable_vulkan_vma_pool:0, settings.enable_vulkan_set_present_time:1, settings.vulkan_swapchain_extra_image_count:3, settings.enable_occlusion_culling:0, settings.impeller_use_sdfs:0, settings.impeller_use_skia_raster_snapshot:0
+E/flutter (18972): [ERROR:flutter/txt/src/txt/fontmgr_default_android.cc(520)] fontXmlName /data/user/0/com.tencent.mm/code_cache/flutter_V2353A/com.tencent.mm/flutter_custom_fonts2.xml
+E/flutter (18972): [ERROR:flutter/txt/src/txt/fontmgr_default_android.cc(688)] use default font mgr
+I/flutter (18972): [INFO:flutter/shell/platform/android/flutter_main.cc(259)] set slow runner report callback
+I/flutter (18972): [IMPORTANT:flutter/shell/platform/android/vsync_waiter_android.cc(378)] [VsyncPeriod] declared refresh rate changed: 60 -> 60
+I/flutter (18972): [INFO:flutter/fml/platform/android/message_loop_android.cc(22)] prepare main_looper: 1
+I/flutter (18972): [INFO:flutter/fml/message_loop.cc(117)] start create platform thread message loop
+I/flutter (18972): [INFO:flutter/fml/platform/android/message_loop_android.cc(49)] AcquireLooperForMainThread success
+I/flutter (18972): [INFO:flutter/fml/message_loop.cc(119)] create platform thread message loop end
+I/flutter (18972): [INFO:flutter/fml/message_loop.cc(124)] start AttachLoopToPlatformThread
+I/flutter (18972): [INFO:flutter/fml/message_loop.cc(126)] AttachLoopToPlatformThread reset tls_message_loop. g_platform_thread_loop:0x7c9dad7150 tls_message_loop:0x0
+I/DartVM  (18972): Dart_RegisterMMProfileSamplesReportCallback: callback 524123631572
+I/flutter (18972): [INFO:/data/landun/workspace/wxa_lite_app/wxa_lite_app/third_party/luggage/fml/message_loop.cc(31)] create MessageLoop for current thread
+I/flutter (18972): [INFO:/data/landun/workspace/wxa_lite_app/wxa_lite_app/third_party/luggage/fml/message_loop.cc(31)] create MessageLoop for current thread
+I/flutter (13447): DEVICE_METRICS narrow-large-share width=320.0 height=713.4814814814815 keyboard=0.0 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-share
+I/flutter (18972): [I][MicroMsg.Flutter.EmojiPlatformResPathProvider]: configInit
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.SystemEmojiProcessor]: try to init system emoji res , path:/data/user/0/com.tencent.mm/app_font/color_emoji
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.SystemEmojiProcessor]: check , read emoji headerinfo bytes count:16
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.SystemEmojiProcessor]: supportVersion:1,emojiVersion:1480413681119, headerSize:13475
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.SystemEmojiProcessor]: oldEmojiHeader try to convert2EmojiResHeader
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.SystemEmojiProcessor]: emojiheader parse done, emoji item count:488 , softbankItem count:223, nameIdxItem count:223
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.QQSmileyManager]: initXMLSmiley texts.length:105 _textsCh.length:105
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.QQSmileyManager]: initXMLSmiley success
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.QQSmileyManager]: updateSmiley: failed new config file not exists, path:/data/user/0/com.tencent.mm/files/public/emoji/newemoji/newemoji-config.xml
+W/WindowOnBackDispatcher(13447): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(13447): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:9c46fa23: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+I/AssistStructure(13447): Flattened final assist data: 420 bytes, containing 1 windows, 3 views
+D/InsetsController(13447): show(ime(), fromIme=true)
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:9c46fa23: onShown
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/flutter (13447): DEVICE_METRICS narrow-large-people-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-people-keyboard
+I/flutter (13447): DEVICE_METRICS narrow-large-people-scrolled width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-people-scrolled
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:32c57a0a: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(13447): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@584981e
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:83557bc2: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(13447): com.cses.offline.modal_ui_verification:32c57a0a: onHidden
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+D/FlutterJNI(13447): Sending viewport metrics to the engine.
+I/flutter (13447): 00:32 +1: (tearDownAll)
+I/flutter (13447): 00:32 +2: All tests passed!
+All tests passed.

@@ -1,0 +1,272 @@
+Running Gradle task 'assembleDebug'...                             55.9s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          44.5s
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:52572/q079DMy3S2Q=/
+VMServiceFlutterDriver: Isolate found with number: 6404571909190775
+VMServiceFlutterDriver: Isolate 6404571909190775 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+VMServiceFlutterDriver: Connected to Flutter application.
+I/flutter ( 6227): 00:00 +0: modal device layout normal
+W/FinalizerDaemon( 6227): type=1400 audit(0.0:462872): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c67,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.cses.offline.modal_ui_verification
+V/ImeFocusController( 6227): onWindowFocus: DecorView@d41cfe[MainActivity] softInputMode=STATE_UNSPECIFIED|ADJUST_RESIZE|IS_FORWARD_NAVIGATION
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/CompatibilityChangeReporter( 6227): Compat change id reported: 236825255; UID 10323; state: ENABLED
+W/libc    ( 6227): Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+W/ui_verification( 6227): type=1400 audit(0.0:462873): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=422 scontext=u:r:untrusted_app:s0:c67,c257,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.cses.offline.modal_ui_verification
+E/qdgralloc( 6227): GetGpuPixelFormat: No map for format: 0x38
+E/AdrenoUtils( 6227): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 1
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 56 usage 300: 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/qdgralloc( 6227): GetGpuPixelFormat: No map for format: 0x3b
+E/AdrenoUtils( 6227): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 1
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 59 usage 300: 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/qdgralloc( 6227): GetGpuPixelFormat: No map for format: 0x38
+E/AdrenoUtils( 6227): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 1
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 56 usage 300: 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/qdgralloc( 6227): GetGpuPixelFormat: No map for format: 0x3b
+E/AdrenoUtils( 6227): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 1
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 59 usage 300: 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/WindowOnBackDispatcher( 6227): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 6227): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:3cd2c46b: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController( 6227): show(ime(), fromIme=true)
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:3cd2c46b: onShown
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:3f90feae: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher( 6227): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@b3419ce
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:2a73acfc: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:3f90feae: onHidden
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:a223410: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+I/AssistStructure( 6227): Flattened final assist data: 420 bytes, containing 1 windows, 3 views
+D/InsetsController( 6227): show(ime(), fromIme=true)
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:a223410: onShown
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/flutter ( 6227): DEVICE_METRICS normal-mention-keyboard width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-mention-keyboard
+D/VCode/native( 6227): track_event send
+W/libc    ( 6227): Access denied finding property "vendor.vivo.imageencoder.dump"
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:7d629850: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher( 6227): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@9051971
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:36e82ff5: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:7d629850: onHidden
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:d68ad67b: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController( 6227): show(ime(), fromIme=true)
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:d68ad67b: onShown
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:cd3228b4: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:eaba6cc1: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher( 6227): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@92de845
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:4be516f2: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/InsetsController( 6227): show(ime(), fromIme=true)
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:cd3228b4: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:4be516f2: onShown
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:ff2fd2bc: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher( 6227): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@8411a43
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:c4124676: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:ff2fd2bc: onHidden
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/flutter ( 6227): DEVICE_METRICS normal-leave-dialog width=360.0 height=802.6666666666666 keyboard=0.0 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-leave-dialog
+D/VCode/native( 6227): track_event send
+W/libc    ( 6227): Access denied finding property "vendor.vivo.imageencoder.dump"
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:78491124: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher( 6227): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 6227): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/flutter ( 6227): DEVICE_METRICS normal-share width=360.0 height=802.6666666666666 keyboard=0.0 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-share
+D/VCode/native( 6227): track_event send
+W/libc    ( 6227): Access denied finding property "vendor.vivo.imageencoder.dump"
+W/WindowOnBackDispatcher( 6227): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 6227): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:2ed2104a: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+I/AssistStructure( 6227): Flattened final assist data: 420 bytes, containing 1 windows, 3 views
+D/InsetsController( 6227): show(ime(), fromIme=true)
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:2ed2104a: onShown
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/flutter ( 6227): DEVICE_METRICS normal-people-keyboard width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-people-keyboard
+D/VCode/native( 6227): track_event send
+W/libc    ( 6227): Access denied finding property "vendor.vivo.imageencoder.dump"
+I/flutter ( 6227): DEVICE_METRICS normal-people-scrolled width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-people-scrolled
+D/VCode/native( 6227): track_event send
+W/libc    ( 6227): Access denied finding property "vendor.vivo.imageencoder.dump"
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:ea60c902: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher( 6227): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@41fbd15
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:ca1c117b: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker( 6227): com.cses.offline.modal_ui_verification:ea60c902: onHidden
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+D/FlutterJNI( 6227): Sending viewport metrics to the engine.
+E/qdgralloc( 6227): GetSize: Unrecognized pixel format: 0x38
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 5
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/qdgralloc( 6227): GetSize: Unrecognized pixel format: 0x3b
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 5
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/qdgralloc( 6227): GetSize: Unrecognized pixel format: 0x38
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 5
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/qdgralloc( 6227): GetSize: Unrecognized pixel format: 0x3b
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 5
+E/GraphicBufferAllocator( 6227): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc( 6227): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+I/flutter ( 6227): 00:34 +1: (tearDownAll)
+I/flutter ( 6227): 00:34 +2: All tests passed!
+All tests passed.

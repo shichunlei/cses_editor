@@ -109,7 +109,7 @@ void main() {
   );
 
   testWidgets(
-    'preview cannot mount after identity changes during keyboard hide',
+    'save cannot acknowledge a session changed during keyboard hide',
     (tester) async {
       var identity = 'first';
       final state = await _open(tester, _Store(), () => identity);
@@ -127,7 +127,7 @@ void main() {
         () => TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
             .setMockMethodCallHandler(SystemChannels.textInput, null),
       );
-      await tester.tap(find.byKey(const ValueKey('journal-preview')));
+      await tester.tap(find.byKey(const ValueKey('journal-save')));
       await tester.pump();
       expect(waiting, isTrue);
       identity = 'second';

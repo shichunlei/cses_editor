@@ -1,0 +1,13 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart
+00:00 +0: bodyContent projects to existing journal sections and round trips exactly
+00:00 +1: live edits, menus, date and custom fields save in original body format
+00:00 +2: close and reopen retain hidden content and allow restoring the same section
+00:00 +3: ORIENT uses existing notebook and submits only bodyContent on save
+00:01 +4: RESULT uses existing notebook and submits only bodyContent on save
+00:02 +5: late fetch never mounts content after identity change
+00:02 +6: native Enter and undo retain unique backend identities
+00:02 +7: invalid bodies and mismatched record types are rejected without mutation
+00:02 +8: fetch failure retries without replacing data with a blank journal
+00:02 +9: late save completion cannot acknowledge another host session
+00:02 +10: API document retains native keyboard menus and custom people actions
+00:03 +11: All tests passed!

@@ -1,3 +1,4 @@
+import 'journal_test_preview.dart';
 import 'fixtures.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -544,7 +545,7 @@ void main() {
               (index) => (index + 1) * 32 * scale,
             );
             expect(_lines(tester), expected);
-            await tester.tap(find.byKey(const ValueKey('journal-preview')));
+            await openOrCloseJournalPreview(tester);
             await tester.pumpAndSettle();
             expect(_editor(tester).editorState.editable, isFalse);
             expect(_lines(tester), expected);

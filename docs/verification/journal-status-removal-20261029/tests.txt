@@ -1,0 +1,18 @@
+Waiting for another flutter command to release the startup lock...
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: bodyContent projects to existing journal sections and round trips exactly
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: live edits, menus, date and custom fields save in original body format
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits only bodyContent on save
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 280.0/2.0
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: RESULT uses existing notebook and submits only bodyContent on save
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: date changes persist and back waits for save before restoring the same sections
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: date changes persist and back waits for save before restoring the same sections
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: date changes persist and back waits for save before restoring the same sections
+00:02 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: date changes persist and back waits for save before restoring the same sections
+00:02 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: date changes persist and back waits for save before restoring the same sections
+00:02 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: late save completion cannot acknowledge another host session
+00:02 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: late save completion cannot acknowledge another host session
+00:02 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:03 +15: All tests passed!

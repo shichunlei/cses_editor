@@ -1,0 +1,11 @@
+Formatted example/lib/main.dart
+Formatted example/lib/daily_guidance/guidance_host.dart
+Formatted 4 files (2 changed) in 0.03 seconds.
+Formatted example/lib/daily_guidance/guidance_entries.dart
+Formatted 1 file (1 changed) in 0.01 seconds.
+Formatted example/test/daily_guidance/mention_avatar_test.dart
+Formatted example/test/daily_guidance/journal_page_mode_test.dart
+Formatted 2 files (2 changed) in 0.03 seconds.
+Formatted example/test/daily_guidance/mention_avatar_test.dart
+Formatted 2 files (1 changed) in 0.02 seconds.
+Formatted 1 file (0 changed) in 0.01 seconds.

@@ -1,0 +1,18 @@
+RUN narrow-largest
+Running Gradle task 'assembleDebug'...                             42.4s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          17.8s
+I/flutter (25370): DEVICE_METRICS narrow-largest-home width=320.0 height=713.4814814814815 keyboard=0.0 font=2.0
+I/flutter (25370): DEVICE_CAPTURE:narrow-largest-home
+SAVED native narrow-largest-home
+I/flutter (25370): DEVICE_METRICS narrow-largest-mention-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=2.0
+I/flutter (25370): DEVICE_CAPTURE:narrow-largest-mention-keyboard
+SAVED native narrow-largest-mention-keyboard
+I/flutter (25370): DEVICE_METRICS narrow-largest-leave-dialog width=320.0 height=713.4814814814815 keyboard=0.0 font=2.0
+I/flutter (25370): DEVICE_CAPTURE:narrow-largest-leave-dialog
+SAVED native narrow-largest-leave-dialog
+I/flutter (25370): The hit test result at that offset is: HitTestResult(HitTestEntry<HitTestTarget>#28753(TextSpan(debugLabel: ((dense bodyMedium 2021).merge((blackMountainView bodyMedium).apply)).copyWith, inherit: false, color: Color(alpha: 1.0000, red: 1.0000, green: 0.9294, blue: 0.9059, colorSpace: ColorSpace.sRGB), family: Roboto, size: 14.0, weight: 400, letterSpacing: 0.3, baseline: ideographic, height: 1.4x, leadingDistribution: even, decoration: Color(alpha: 1.0000, red: 0.1373, green: 0.1020, blue: 0.0863, colorSpace: ColorSpace.sRGB) TextDecoration.none, "已保存到后台")), RenderParagraph#3552c@Offset(136.0, 26.7), RenderPadding#0fcee@Offset(136.0, 40.7), RenderFlex#ad01a@Offset(136.0, 40.7), RenderWrap#2ece2@Offset(136.0, 40.7), RenderPadding#89d59@Offset(160.0, 40.7), RenderPadding#aa6aa@Offset(160.0, 40.7), _RenderInkFeatures#cba38@Offset(160.0, 40.7), RenderPhysicalModel#7e71a@Offset(160.0, 40.7), RenderPointerListener#7d8b9@Offset(160.0, 40.7), RenderSemanticsGestureHandler#12a54@Offset(160.0, 40.7), Rend
+I/flutter (25370): DEVICE_LAYOUT_ERROR ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════════════════
+I/flutter (25370):   Test failed. See exception logs above.
+I/flutter (25370): 00:21 +1 -1: Some tests failed.
+RESTORED {"density": "Physical density: 480", "font_scale": "1.0"}

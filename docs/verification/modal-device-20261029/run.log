@@ -1,0 +1,53 @@
+RUN normal
+Running Gradle task 'assembleDebug'...                             20.8s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          34.6s
+I/flutter (10713): DEVICE_METRICS normal-mention-keyboard width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter (10713): DEVICE_CAPTURE:normal-mention-keyboard
+SAVED native normal-mention-keyboard
+I/flutter (10713): DEVICE_METRICS normal-leave-dialog width=360.0 height=802.6666666666666 keyboard=0.0 font=1.0
+I/flutter (10713): DEVICE_CAPTURE:normal-leave-dialog
+SAVED native normal-leave-dialog
+I/flutter (10713): DEVICE_METRICS normal-share width=360.0 height=802.6666666666666 keyboard=0.0 font=1.0
+I/flutter (10713): DEVICE_CAPTURE:normal-share
+SAVED native normal-share
+I/flutter (10713): DEVICE_METRICS normal-people-keyboard width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter (10713): DEVICE_CAPTURE:normal-people-keyboard
+SAVED native normal-people-keyboard
+I/flutter (10713): DEVICE_METRICS normal-people-scrolled width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter (10713): DEVICE_CAPTURE:normal-people-scrolled
+SAVED native normal-people-scrolled
+All tests passed.
+I/flutter (10713): 00:32 +2: All tests passed!
+RUN narrow-large
+Running Gradle task 'assembleDebug'...                             22.1s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          29.2s
+I/flutter (13447): DEVICE_METRICS narrow-large-mention-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-mention-keyboard
+SAVED native narrow-large-mention-keyboard
+I/flutter (13447): DEVICE_METRICS narrow-large-leave-dialog width=320.0 height=713.4814814814815 keyboard=0.0 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-leave-dialog
+SAVED native narrow-large-leave-dialog
+I/flutter (13447): DEVICE_METRICS narrow-large-share width=320.0 height=713.4814814814815 keyboard=0.0 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-share
+SAVED native narrow-large-share
+I/flutter (18972): [I][MicroMsg.Flutter.Emoji.QQSmileyManager]: updateSmiley: failed new config file not exists, path:/data/user/0/com.tencent.mm/files/public/emoji/newemoji/newemoji-config.xml
+I/flutter (13447): DEVICE_METRICS narrow-large-people-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-people-keyboard
+SAVED native narrow-large-people-keyboard
+I/flutter (13447): DEVICE_METRICS narrow-large-people-scrolled width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=1.6
+I/flutter (13447): DEVICE_CAPTURE:narrow-large-people-scrolled
+SAVED native narrow-large-people-scrolled
+I/flutter (13447): 00:32 +2: All tests passed!
+All tests passed.
+RUN narrow-largest
+Running Gradle task 'assembleDebug'...                             19.2s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          36.3s
+D/ProfileInstaller(17231): Installing profile for com.cses.offline.modal_ui_verification
+I/flutter (17231):   Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on the bottom.>
+I/flutter (17231):   Test failed. See exception logs above.
+I/flutter (17231): 00:07 +1 -1: Some tests failed.
+  Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on
+RESTORED {"density": "Physical density: 480", "font_scale": "1.0"}

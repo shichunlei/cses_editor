@@ -1,0 +1,5 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_modal_ui_test.dart
+00:00 +0: sheet isolates theme and returns after disposal: dark=false
+00:00 +1: sheet isolates theme and returns after disposal: dark=true
+00:00 +2: people search and actions stay fixed with keyboard and large text
+00:01 +3: All tests passed!

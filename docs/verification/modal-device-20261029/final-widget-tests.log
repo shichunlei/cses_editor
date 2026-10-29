@@ -1,0 +1,24 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_device_layout_regression_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_device_layout_regression_test.dart: home remains scrollable at device large-font keyboard dimensions
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_modal_ui_test.dart: sheet isolates theme and returns after disposal: dark=false
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions float, toggle locally and copy readable text without saving
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 390.0/2.0
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: actions fit small preview with enlarged text and stay absent in editing
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker cancel resumes input without writing
+00:03 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker rejects account round trips
+00:03 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom pilot action preserves source and resumes input
+00:04 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker cancel resumes input without writing
+00:04 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker rejects account round trips
+00:04 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom help action preserves source and resumes input
+00:05 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker cannot restore input after account changes
+00:05 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed cookie permanently
+00:05 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:05 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed company permanently
+00:05 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker releases its permission watch on cancel and page removal
+00:06 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:06 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: (tearDownAll)
+00:06 +21: All tests passed!

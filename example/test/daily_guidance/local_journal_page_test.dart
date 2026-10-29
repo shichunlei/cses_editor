@@ -1,3 +1,4 @@
+import 'journal_test_preview.dart';
 import 'fixtures.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
@@ -108,7 +109,7 @@ void main() {
             .map((r) => r.debugLineOffsets)
             .toList();
         expect(editLines.any((lines) => lines.length > 1), isTrue);
-        await tester.tap(find.byKey(const ValueKey('journal-preview')));
+        await openOrCloseJournalPreview(tester);
         await tester.pumpAndSettle();
         expect(_state(tester).editable, isFalse);
         expect(

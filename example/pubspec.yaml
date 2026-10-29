@@ -38,3 +38,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/daily_guidance_mountain.png
+    - 文档完整数据结构.json

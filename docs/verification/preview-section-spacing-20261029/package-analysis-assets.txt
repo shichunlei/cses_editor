@@ -1,0 +1,5 @@
+Analyzing example...
+
+warning • The asset file 'moke.json' doesn't exist. Try creating the file or fixing the path to the file • pubspec.yaml:41:7 • asset_does_not_exist
+
+1 issue found. (ran in 3.5s)

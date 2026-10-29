@@ -1,0 +1,7 @@
+Formatted example/test/daily_guidance/journal_test_preview.dart
+Formatted 25 files (1 changed) in 0.16 seconds.
+Formatted example/lib/daily_guidance/local_journal_page.dart
+Formatted example/test/daily_guidance/journal_page_mode_test.dart
+Formatted 2 files (2 changed) in 0.04 seconds.
+Formatted 1 file (0 changed) in 0.01 seconds.
+Formatted 2 files (0 changed) in 0.02 seconds.

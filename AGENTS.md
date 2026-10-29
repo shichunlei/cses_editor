@@ -10,3 +10,7 @@
 修改后格式化手写文件，在所属包分析并运行目标测试。公开API变更同时验证消费者，完成前git diff --check。验证记录归档docs/verification/<功能>-YYYYMMDD并更新索引。
 块协议变更前查询桌面配置仓库的@ccc/blockcraft latest，核对声明/锁定/安装版及随包技能、迁移和实现，并更新docs/block-adaptation.md；查询失败明确待核对。
 提交信息用中文。保留其他工作区修改，不因维护fork而批量清理上游代码。
+
+# UI 开发规范
+
+本项目新增、修改或审查 Flutter UI（根包与 example）时，必须先读取并遵循 [.agents/skills/cses_editor_ui/SKILL.md](.agents/skills/cses_editor_ui/SKILL.md)，按需读取其场景参考。职责划分：根包复用公共展示组件，example 保留今日导向页面风格与宿主职责，跨包只使用公开入口。用户明确的新要求优先；不要求为接入规范批量改写无关既有 UI。

@@ -1,0 +1,9 @@
+RUN narrow-largest
+Running Gradle task 'assembleDebug'...                              9.6s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          20.0s
+I/flutter (18757):   Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on the bottom.>
+I/flutter (18757):   Test failed. See exception logs above.
+I/flutter (18757): 00:07 +1 -1: Some tests failed.
+  Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on
+RESTORED {"density": "Physical density: 480", "font_scale": "1.0"}

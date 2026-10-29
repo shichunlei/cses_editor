@@ -1,0 +1,57 @@
+RUN normal
+Running Gradle task 'assembleDebug'...                             55.9s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          44.5s
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/AdrenoUtils( 6227): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc( 6227): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 1
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+I/flutter ( 6227): DEVICE_METRICS normal-mention-keyboard width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-mention-keyboard
+SAVED native normal-mention-keyboard
+I/flutter ( 6227): DEVICE_METRICS normal-leave-dialog width=360.0 height=802.6666666666666 keyboard=0.0 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-leave-dialog
+SAVED native normal-leave-dialog
+I/flutter ( 6227): DEVICE_METRICS normal-share width=360.0 height=802.6666666666666 keyboard=0.0 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-share
+SAVED native normal-share
+I/flutter ( 6227): DEVICE_METRICS normal-people-keyboard width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-people-keyboard
+SAVED native normal-people-keyboard
+I/flutter ( 6227): DEVICE_METRICS normal-people-scrolled width=360.0 height=802.6666666666666 keyboard=284.3333333333333 font=1.0
+I/flutter ( 6227): DEVICE_CAPTURE:normal-people-scrolled
+SAVED native normal-people-scrolled
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/Gralloc4( 6227): isSupported(1, 1, 56, 1, ...) failed with 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/Gralloc4( 6227): isSupported(1, 1, 59, 1, ...) failed with 5
+E/AHardwareBuffer( 6227): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+I/flutter ( 6227): 00:34 +2: All tests passed!
+All tests passed.
+RUN narrow-large
+Running Gradle task 'assembleDebug'...
+RUN narrow-largest
+RESTORED {"density": "Physical density: 480", "font_scale": "1.0"}
+Traceback (most recent call last):
+  File "/System/Volumes/Data/workspace/cses_editor/docs/verification/modal-device-20261029/run-device-ui.py", line 90, in <module>
+    main()
+    ~~~~^^
+  File "/System/Volumes/Data/workspace/cses_editor/docs/verification/modal-device-20261029/run-device-ui.py", line 60, in main
+    for line in proc.stdout:
+                ^^^^^^^^^^^
+KeyboardInterrupt

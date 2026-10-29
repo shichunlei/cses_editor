@@ -7,6 +7,7 @@ import 'package:cses_editor/src/ui/modal/collab_cached_image.dart';
 import 'package:cses_editor/src/ui/modal/collab_dialog.dart';
 import 'package:cses_editor/src/ui/modal/collab_modal.dart';
 import 'package:cses_editor/src/ui/modal/collab_modal_field.dart';
+import 'package:cses_editor/src/ui/modal/collab_modal_colors.dart';
 import 'package:cses_editor/src/ui/modal/collab_modal_segments.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -347,7 +348,10 @@ class _CollabImageEditDialogState extends State<_CollabImageEditDialog> {
         if (!(widget.canSave?.call() ?? true))
           const Text('内容已锁定或权限已变化，请关闭后重新打开'),
         if (errorText != null)
-          Text(errorText!, style: const TextStyle(color: Colors.red)),
+          Text(
+            errorText!,
+            style: TextStyle(color: CollabModalColors.of(context).danger),
+          ),
       ],
     ),
     actions: [

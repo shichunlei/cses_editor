@@ -14,9 +14,9 @@ import 'journal_draft.dart';
 /// }
 /// ```
 abstract interface class JournalStore {
-  /// 读取本机当前分区草稿，无记录返回null；损坏或读取失败须抛错，禁止自动覆盖。
+  /// 读取当前文档草稿，无记录返回null；损坏或读取失败须抛错，禁止自动覆盖。
   Future<JournalDraft?> read();
 
-  /// 原子持久化独立[draft]，Future完成表示本机落盘；失败抛错并保留旧记录。
+  /// 原子持久化独立[draft]，Future完成表示存储确认成功（本机落盘或后台接受）；失败抛错并保留旧记录。
   Future<void> write(JournalDraft draft);
 }

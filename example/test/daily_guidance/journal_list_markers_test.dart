@@ -1,3 +1,4 @@
+import 'journal_test_preview.dart';
 import 'dart:ui' show BoxHeightStyle;
 
 import 'package:appflowy_editor/appflowy_editor.dart';
@@ -139,7 +140,7 @@ void main() {
             expect(first.attributes[TodoListBlockKeys.checked], isTrue);
             expect(store.value!.documentJson, contains('"checked":true'));
             _checkAlignment(tester);
-            await tester.tap(find.byKey(const ValueKey('journal-preview')));
+            await openOrCloseJournalPreview(tester);
             await tester.pumpAndSettle();
             expect(_state(tester).editable, isFalse);
             expect(_checkAlignment(tester), edit);

@@ -1,0 +1,183 @@
+Running Gradle task 'assembleDebug'...                             43.1s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          23.6s
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:61211/93v1MTgfiGE=/
+VMServiceFlutterDriver: Isolate found with number: 674486867124015
+VMServiceFlutterDriver: Isolate 674486867124015 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+D/ProfileInstaller(22850): Installing profile for com.cses.offline.modal_ui_verification
+I/flutter (22850): 00:00 +0: modal device layout narrow-largest
+VMServiceFlutterDriver: Connected to Flutter application.
+I/flutter (22850): DEVICE_LAYOUT_ERROR ══╡ EXCEPTION CAUGHT BY RENDERING LIBRARY ╞══════════════════════
+I/flutter (22850): The following assertion was thrown during layout:
+I/flutter (22850): A RenderFlex overflowed by 21 pixels on the bottom.
+I/flutter (22850):
+I/flutter (22850): The relevant error-causing widget was:
+I/flutter (22850):   Column
+I/flutter (22850):   Column:file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/lib/main.dart:123:16
+I/flutter (22850):
+I/flutter (22850): The overflowing RenderFlex has an orientation of Axis.vertical.
+I/flutter (22850): The edge of the RenderFlex that is overflowing has been marked in
+I/flutter (22850): the rendering with a yellow and black striped pattern. This is
+I/flutter (22850): usually caused by the contents being too big for the RenderFlex.
+I/flutter (22850): Consider applying a flex factor (e.g. using an Expanded widget)
+I/flutter (22850): to force the children of the RenderFlex to fit within the
+I/flutter (22850): available space instead of being sized to their natural size.
+I/flutter (22850): This is considered an error condition because it indicates that
+I/flutter (22850): there is content that cannot be seen. If the content is
+I/flutter (22850): legitimately bigger than the available space, consider clipping
+I/flutter (22850): it with a ClipRect widget before putting it in the flex, or using
+I/flutter (22850): a scrollable container rather than a Flex, like a ListView.
+I/flutter (22850): The specific RenderFlex in question is: RenderFlex#06e82 relayoutBoundary=up3 OVERFLOWING:
+I/flutter (22850):   parentData: offset=Offset(24.0, 24.0) (can use size)
+I/flutter (22850):   constraints: BoxConstraints(0.0<=w<=272.0, 0.0<=h<=573.3)
+I/flutter (22850):   size: Size(272.0, 573.3)
+I/flutter (22850):   direction: vertical
+I/flutter (22850):   mainAxisAlignment: start
+I/flutter (22850):   mainAxisSize: min
+I/flutter (22850):   crossAxisAlignment: center
+I/flutter (22850):   verticalDirection: down
+I/flutter (22850):   spacing: 0.0
+I/flutter (22850): ◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤
+I/flutter (22850): ═════════════════════════════════════════════════════════════════
+I/flutter (22850):
+I/Choreographer(22850): Skipped 60 frames!  The application may be doing too much work on its main thread.
+V/ImeFocusController(22850): onWindowFocus: DecorView@817ef36[MainActivity] softInputMode=STATE_UNSPECIFIED|ADJUST_RESIZE|IS_FORWARD_NAVIGATION
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+W/WindowOnBackDispatcher(22850): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(22850): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/ImeTracker(22850): com.cses.offline.modal_ui_verification:4d32a522: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController(22850): show(ime(), fromIme=true)
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+W/FinalizerDaemon(22850): type=1400 audit(0.0:466114): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c72,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.cses.offline.modal_ui_verification
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+I/ImeTracker(22850): com.cses.offline.modal_ui_verification:4d32a522: onShown
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+I/ImeTracker(22850): com.cses.offline.modal_ui_verification:c4a4f6a5: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+W/WindowOnBackDispatcher(22850): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@554ae63
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+I/ImeTracker(22850): com.cses.offline.modal_ui_verification:7ca5ebb8: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(22850): com.cses.offline.modal_ui_verification:c4a4f6a5: onHidden
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+I/ImeTracker(22850): com.cses.offline.modal_ui_verification:edfc10e0: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController(22850): show(ime(), fromIme=true)
+I/AssistStructure(22850): Flattened final assist data: 420 bytes, containing 1 windows, 3 views
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+I/ImeTracker(22850): com.cses.offline.modal_ui_verification:edfc10e0: onShown
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+D/FlutterJNI(22850): Sending viewport metrics to the engine.
+I/flutter (22850): DEVICE_METRICS narrow-largest-mention-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=2.0
+I/flutter (22850): DEVICE_CAPTURE:narrow-largest-mention-keyboard
+I/flutter (22850): DEVICE_LAYOUT_ERROR ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════════════════
+I/flutter (22850): The following TestFailure was thrown running a test:
+I/flutter (22850): Expected: null
+I/flutter (22850):   Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on
+I/flutter (22850): the bottom.>
+I/flutter (22850):
+I/flutter (22850): When the exception was thrown, this was the stack:
+I/flutter (22850): #4      _capture (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:95:3)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:124:5)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #6      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #7      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #8      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1706:12)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850):
+I/flutter (22850): This was caught by the test expectation on the following line:
+I/flutter (22850):   file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart line 95
+I/flutter (22850): The test description was:
+I/flutter (22850):   modal device layout narrow-largest
+I/flutter (22850): ═════════════════════════════════════════════════════════════════
+I/flutter (22850):
+I/flutter (22850): ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+I/flutter (22850): The following TestFailure was thrown running a test:
+I/flutter (22850): Expected: null
+I/flutter (22850):   Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on the bottom.>
+I/flutter (22850):
+I/flutter (22850): When the exception was thrown, this was the stack:
+I/flutter (22850): #4      _capture (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:95:3)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:124:5)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #6      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #7      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850): #8      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1706:12)
+I/flutter (22850): <asynchronous suspension>
+I/flutter (22850):
+I/flutter (22850): This was caught by the test expectation on the following line:
+I/flutter (22850):   file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart line 95
+I/flutter (22850): The test description was:
+I/flutter (22850):   modal device layout narrow-largest
+I/flutter (22850): ════════════════════════════════════════════════════════════════════════════════════════════════════
+I/flutter (22850): 00:10 +0: modal device layout narrow-largest [E]
+I/flutter (22850):   Test failed. See exception logs above.
+I/flutter (22850):   The test description was: modal device layout narrow-largest
+I/flutter (22850):
+I/flutter (22850): 00:10 +0 -1: (tearDownAll)
+I/flutter (22850): 00:10 +1 -1: Some tests failed.
+Failure Details:
+Failure in method: modal device layout narrow-largest
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<A RenderFlex overflowed by 21 pixels on
+the bottom.>
+
+When the exception was thrown, this was the stack:
+#4      _capture (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:95:3)
+<asynchronous suspension>
+#5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:124:5)
+<asynchronous suspension>
+#6      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#7      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+#8      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1706:12)
+<asynchronous suspension>
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart line 95
+The test description was:
+  modal device layout narrow-largest
+═════════════════════════════════════════════════════════════════
+
+end of failure 1

@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:cses_offline_example/daily_guidance/ui/journal_bottom_sheet.dart';
+import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 /// 今日导向引用的真实人员或部门快照；部门引用不会自动展开为所有成员。
 ///
@@ -125,17 +128,11 @@ Future<List<GuidancePerson>?> showGuidancePeoplePicker(
     return !revoked;
   }
 
-  ModalRoute<List<GuidancePerson>>? route;
-  final result = await showModalBottomSheet<List<GuidancePerson>>(
+  final result = await showJournalSheet<List<GuidancePerson>>(
     context: context,
-    isScrollControlled: true,
-    useSafeArea: true,
-    builder: (context) {
-      route = ModalRoute.of(context);
-      return _GuidancePeoplePicker(directory: directory, canEdit: allowed);
-    },
+    builder: (context) =>
+        _GuidancePeoplePicker(directory: directory, canEdit: allowed),
   );
-  await route?.completed;
   return allowed() ? result : null;
 }
 
@@ -326,189 +323,135 @@ class _GuidancePeoplePickerState extends State<_GuidancePeoplePicker> {
     super.dispose();
   }
 
-  /// 在借用 [context] 内按可用高度布局；标题/确认固定，其余内容随键盘滚动。
+  /// 在借用 [context] 内按可用高度布局；标题、搜索和确认固定，仅目录内容在键盘上方滚动。
   @override
   Widget build(BuildContext context) {
     final enabled = !_revoked && widget.canEdit();
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final keyboard = MediaQuery.viewInsetsOf(context).bottom;
-        final available = (constraints.maxHeight - keyboard).clamp(
-          0.0,
-          constraints.maxHeight,
-        );
-        return Padding(
-          padding: EdgeInsets.only(bottom: keyboard),
-          child: SizedBox(
-            height: available * .9,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 4, 0),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        child: Text(
-                          '选择用户和部门',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+    return JournalBottomSheet(
+      title: '用户和部门',
+      icon: LucideIcons.users,
+      closeKey: const ValueKey('guidance-people-close'),
+      expand: true,
+      scrollBody: false,
+      header: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+        child: TextField(
+          key: const ValueKey('guidance-people-search'),
+          controller: _input,
+          enabled: enabled,
+          onChanged: _changed,
+          decoration: const InputDecoration(
+            labelText: '搜索用户或部门',
+            prefixIcon: Icon(LucideIcons.search),
+          ),
+        ),
+      ),
+      footer: Text('已选 ${_selected.length} 项'),
+      actions: [
+        FilledButton(
+          key: const ValueKey('guidance-people-confirm'),
+          onPressed: enabled && _selected.isNotEmpty ? _confirm : null,
+          child: const Text('确认'),
+        ),
+      ],
+      child: CustomScrollView(
+        key: const PageStorageKey('guidance-people-list'),
+        slivers: [
+          if (_selected.isNotEmpty)
+            SliverToBoxAdapter(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: _selected.values
+                      .map(
+                        (person) => Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: InputChip(
+                            label: Text(person.name),
+                            onDeleted: enabled ? () => _toggle(person) : null,
                           ),
                         ),
-                      ),
-                      IconButton(
-                        key: const ValueKey('guidance-people-close'),
-                        tooltip: '关闭',
-                        onPressed: () => Navigator.pop(context),
-                        icon: const Icon(Icons.close),
-                      ),
-                    ],
-                  ),
+                      )
+                      .toList(),
                 ),
-                Expanded(
-                  child: CustomScrollView(
-                    key: const PageStorageKey('guidance-people-list'),
-                    slivers: [
-                      SliverPadding(
-                        padding: const EdgeInsets.all(16),
-                        sliver: SliverToBoxAdapter(
-                          child: TextField(
-                            key: const ValueKey('guidance-people-search'),
-                            controller: _input,
-                            enabled: enabled,
-                            onChanged: _changed,
-                            decoration: const InputDecoration(
-                              labelText: '搜索用户或部门',
-                              prefixIcon: Icon(Icons.search),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (_selected.isNotEmpty)
-                        SliverToBoxAdapter(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: Row(
-                              children: _selected.values
-                                  .map(
-                                    (person) => Padding(
-                                      padding: const EdgeInsets.only(right: 8),
-                                      child: InputChip(
-                                        label: Text(person.name),
-                                        onDeleted: enabled
-                                            ? () => _toggle(person)
-                                            : null,
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ),
-                        ),
-                      SliverToBoxAdapter(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Row(
-                            children: [
-                              TextButton(
-                                onPressed: enabled
-                                    ? () => _navigate(null)
-                                    : null,
-                                child: const Text('全部组织'),
-                              ),
-                              for (var i = 0; i < _path.length; i++) ...[
-                                const Icon(Icons.chevron_right, size: 16),
-                                TextButton(
-                                  onPressed: enabled
-                                      ? () => _navigate(null, depth: i + 1)
-                                      : null,
-                                  child: Text(_path[i].name),
-                                ),
-                              ],
-                            ],
-                          ),
-                        ),
-                      ),
-                      if (!enabled ||
-                          _error != null ||
-                          _loading ||
-                          _searching ||
-                          _visible.isEmpty)
-                        SliverToBoxAdapter(
-                          child: Padding(
-                            padding: const EdgeInsets.all(24),
-                            child: Center(
-                              child: !enabled
-                                  ? const Text('当前不可编辑，请关闭后重新打开')
-                                  : _error != null
-                                  ? Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(_error!),
-                                        TextButton(
-                                          key: const ValueKey(
-                                            'guidance-people-retry',
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              _loading = true;
-                                              _error = null;
-                                            });
-                                            unawaited(_load());
-                                          },
-                                          child: const Text('重试'),
-                                        ),
-                                      ],
-                                    )
-                                  : _loading || _searching
-                                  ? const CircularProgressIndicator()
-                                  : Text(
-                                      _input.text.trim().isEmpty
-                                          ? '当前组织暂无成员'
-                                          : '没有匹配的用户或部门',
-                                    ),
-                            ),
-                          ),
-                        )
-                      else
-                        SliverList.builder(
-                          itemCount: _visible.length,
-                          itemBuilder: (context, index) =>
-                              _personRow(_visible[index]),
-                        ),
-                    ],
+              ),
+            ),
+          SliverToBoxAdapter(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  TextButton(
+                    onPressed: enabled ? () => _navigate(null) : null,
+                    child: const Text('全部组织'),
                   ),
-                ),
-                SafeArea(
-                  top: false,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                    child: Row(
-                      children: [
-                        Expanded(child: Text('已选 ${_selected.length} 项')),
-                        FilledButton(
-                          key: const ValueKey('guidance-people-confirm'),
-                          onPressed: enabled && _selected.isNotEmpty
-                              ? _confirm
-                              : null,
-                          child: const Text('确认'),
-                        ),
-                      ],
+                  for (var i = 0; i < _path.length; i++) ...[
+                    const Icon(LucideIcons.chevronRight, size: 16),
+                    TextButton(
+                      onPressed: enabled
+                          ? () => _navigate(null, depth: i + 1)
+                          : null,
+                      child: Text(_path[i].name),
                     ),
-                  ),
-                ),
-              ],
+                  ],
+                ],
+              ),
             ),
           ),
-        );
-      },
+          if (!enabled ||
+              _error != null ||
+              _loading ||
+              _searching ||
+              _visible.isEmpty)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Center(
+                  child: !enabled
+                      ? const Text('当前不可编辑，请关闭后重新打开')
+                      : _error != null
+                      ? Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(_error!),
+                            TextButton(
+                              key: const ValueKey('guidance-people-retry'),
+                              onPressed: () {
+                                setState(() {
+                                  _loading = true;
+                                  _error = null;
+                                });
+                                unawaited(_load());
+                              },
+                              child: const Text('重试'),
+                            ),
+                          ],
+                        )
+                      : _loading || _searching
+                      ? const CircularProgressIndicator()
+                      : Text(
+                          _input.text.trim().isEmpty
+                              ? '当前组织暂无成员'
+                              : '没有匹配的用户或部门',
+                        ),
+                ),
+              ),
+            )
+          else
+            SliverList.builder(
+              itemCount: _visible.length,
+              itemBuilder: (context, index) => _personRow(_visible[index]),
+            ),
+        ],
+      ),
     );
   }
 
   /// 构建 [person] 的勾选/钻取行，长名称可换行，部门整体选择与进入分开。
-  Widget _personRow(GuidancePerson person) => Padding(
+  Widget _personRow(GuidancePerson person) => Container(
+    constraints: const BoxConstraints(minHeight: 51),
     key: ValueKey('guidance-person-${person.identity}'),
     padding: const EdgeInsets.symmetric(horizontal: 8),
     child: Row(
@@ -518,14 +461,18 @@ class _GuidancePeoplePickerState extends State<_GuidancePeoplePicker> {
           child: Checkbox(
             key: ValueKey('guidance-select-${person.identity}'),
             value: _selected.containsKey(person.identity),
-            onChanged: (_) => _toggle(person),
+            onChanged: _revoked || !widget.canEdit()
+                ? null
+                : (_) => _toggle(person),
           ),
         ),
         Expanded(
           child: InkWell(
-            onTap: () => person.type == 'department'
-                ? _navigate(person)
-                : _toggle(person),
+            onTap: _revoked || !widget.canEdit()
+                ? null
+                : () => person.type == 'department'
+                      ? _navigate(person)
+                      : _toggle(person),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: Column(
@@ -547,8 +494,10 @@ class _GuidancePeoplePickerState extends State<_GuidancePeoplePicker> {
           IconButton(
             key: ValueKey('guidance-open-${person.identity}'),
             tooltip: '进入${person.name}',
-            onPressed: () => _navigate(person),
-            icon: const Icon(Icons.chevron_right),
+            onPressed: _revoked || !widget.canEdit()
+                ? null
+                : () => _navigate(person),
+            icon: const Icon(LucideIcons.chevronRight),
           ),
       ],
     ),

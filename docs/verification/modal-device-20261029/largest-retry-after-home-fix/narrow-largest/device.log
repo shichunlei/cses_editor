@@ -1,0 +1,232 @@
+Running Gradle task 'assembleDebug'...                             42.4s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          17.8s
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:62697/1VUlYtb6C00=/
+VMServiceFlutterDriver: Isolate found with number: 8212882060981767
+VMServiceFlutterDriver: Isolate 8212882060981767 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter (25370): 00:00 +0: modal device layout narrow-largest
+VMServiceFlutterDriver: Connected to Flutter application.
+W/FinalizerDaemon(25370): type=1400 audit(0.0:466594): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c73,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.cses.offline.modal_ui_verification
+V/ImeFocusController(25370): onWindowFocus: DecorView@dd6377d[MainActivity] softInputMode=STATE_UNSPECIFIED|ADJUST_RESIZE|IS_FORWARD_NAVIGATION
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/flutter (25370): DEVICE_METRICS narrow-largest-home width=320.0 height=713.4814814814815 keyboard=0.0 font=2.0
+I/flutter (25370): DEVICE_CAPTURE:narrow-largest-home
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+W/WindowOnBackDispatcher(25370): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(25370): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:532f630c: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController(25370): show(ime(), fromIme=true)
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:532f630c: onShown
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:634ce796: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(25370): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@1fdf653
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:a87541e9: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:634ce796: onHidden
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:f3b01f9c: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+I/AssistStructure(25370): Flattened final assist data: 420 bytes, containing 1 windows, 3 views
+D/InsetsController(25370): show(ime(), fromIme=true)
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:f3b01f9c: onShown
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/flutter (25370): DEVICE_METRICS narrow-largest-mention-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=2.0
+I/flutter (25370): DEVICE_CAPTURE:narrow-largest-mention-keyboard
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:8e4c2023: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(25370): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@4559f4a
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:dd2bfc2e: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/InsetsController(25370): show(ime(), fromIme=true)
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:8e4c2023: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:dd2bfc2e: onShown
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:d898f07d: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:a33b285b: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(25370): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@7532f4e
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:c161d731: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/InsetsController(25370): show(ime(), fromIme=true)
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:d898f07d: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:c161d731: onShown
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:596f0bca: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(25370): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@73c4203
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:e2a30261: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:596f0bca: onHidden
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+D/FlutterJNI(25370): Sending viewport metrics to the engine.
+I/flutter (25370): DEVICE_METRICS narrow-largest-leave-dialog width=320.0 height=713.4814814814815 keyboard=0.0 font=2.0
+I/flutter (25370): DEVICE_CAPTURE:narrow-largest-leave-dialog
+I/ImeTracker(25370): com.cses.offline.modal_ui_verification:a7cf9917: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+I/flutter (25370):
+I/flutter (25370): Warning: A call to tap() with finder "Found 1 widget with key [<'preview-daily-guidance'>]: [
+I/flutter (25370):   OutlinedButton-[<'preview-daily-guidance'>](dependencies: [IconTheme, InheritedCupertinoTheme, MediaQuery, _InheritedTheme, _LocalizationsScope-[GlobalKey#2ce31]], state: _ButtonStyleState#ccd71),
+I/flutter (25370): ]" derived an Offset (Offset(160.0, 686.1)) that would not hit test on the specified widget.
+I/flutter (25370): Maybe the widget is actually off-screen, or another widget is obscuring it, or the widget cannot receive pointer events.
+I/flutter (25370): The finder corresponds to this RenderBox: RenderSemanticsAnnotations#fb843 relayoutBoundary=up14
+I/flutter (25370): The hit test result at that offset is: HitTestResult(HitTestEntry<HitTestTarget>#28753(TextSpan(debugLabel: ((dense bodyMedium 2021).merge((blackMountainView bodyMedium).apply)).copyWith, inherit: false, color: Color(alpha: 1.0000, red: 1.0000, green: 0.9294, blue: 0.9059, colorSpace: ColorSpace.sRGB), family: Roboto, size: 14.0, weight: 400, letterSpacing: 0.3, baseline: ideographic, height: 1.4x, leadingDistribution: even, decoration: Color(alpha: 1.0000, red: 0.1373, green: 0.1020, blue: 0.0863, colorSpace: ColorSpace.sRGB) TextDecoration.none, "已保存到后台")), RenderParagraph#3552c@Offset(136.0, 26.7), RenderPadding#0fcee@Offset(136.0, 40.7), RenderFlex#ad01a@Offset(136.0, 40.7), RenderWrap#2ece2@Offset(136.0, 40.7), RenderPadding#89d59@Offset(160.0, 40.7), RenderPadding#aa6aa@Offset(160.0, 40.7), _RenderInkFeatures#cba38@Offset(160.0, 40.7), RenderPhysicalModel#7e71a@Offset(160.0, 40.7), RenderPointerListener#7d8b9@Offset(160.0, 40.7), RenderSemanticsGestureHandler#12a54@Offset(160.0, 40.7), Rend
+I/flutter (25370): #0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2165:25)
+I/flutter (25370): #1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+I/flutter (25370): #2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+I/flutter (25370): #3      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:150:18)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #6      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1706:12)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): To silence this warning, pass "warnIfMissed: false" to "tap()".
+I/flutter (25370): To make this warning fatal, set WidgetController.hitTestWarningShouldBeFatal to true.
+I/flutter (25370):
+I/flutter (25370): DEVICE_LAYOUT_ERROR ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════════════════
+I/flutter (25370): The following assertion was thrown running a test:
+I/flutter (25370): The finder "Found 0 widgets with key [<'journal-share'>]: []"
+I/flutter (25370): (used in a call to "tap()") could not find any matching widgets.
+I/flutter (25370):
+I/flutter (25370): When the exception was thrown, this was the stack:
+I/flutter (25370): #0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2095:7)
+I/flutter (25370): #1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+I/flutter (25370): #2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+I/flutter (25370): #3      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:152:18)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #6      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1706:12)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370):
+I/flutter (25370): The test description was:
+I/flutter (25370):   modal device layout narrow-largest
+I/flutter (25370): ═════════════════════════════════════════════════════════════════
+I/flutter (25370):
+I/flutter (25370): ══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+I/flutter (25370): The following assertion was thrown running a test:
+I/flutter (25370): The finder "Found 0 widgets with key [<'journal-share'>]: []" (used in a call to "tap()") could not
+I/flutter (25370): find any matching widgets.
+I/flutter (25370):
+I/flutter (25370): When the exception was thrown, this was the stack:
+I/flutter (25370): #0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2095:7)
+I/flutter (25370): #1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+I/flutter (25370): #2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+I/flutter (25370): #3      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:152:18)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370): #6      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1706:12)
+I/flutter (25370): <asynchronous suspension>
+I/flutter (25370):
+I/flutter (25370): The test description was:
+I/flutter (25370):   modal device layout narrow-largest
+I/flutter (25370): ════════════════════════════════════════════════════════════════════════════════════════════════════
+I/flutter (25370): 00:21 +0: modal device layout narrow-largest [E]
+I/flutter (25370):   Test failed. See exception logs above.
+I/flutter (25370):   The test description was: modal device layout narrow-largest
+I/flutter (25370):
+I/flutter (25370): 00:21 +0 -1: (tearDownAll)
+I/flutter (25370): 00:21 +1 -1: Some tests failed.
+Failure Details:
+Failure in method: modal device layout narrow-largest
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with key [<'journal-share'>]: []"
+(used in a call to "tap()") could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2095:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+#3      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/.dart_tool/modal-device-example/integration_test/modal_ui_device_test.dart:152:18)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1706:12)
+<asynchronous suspension>
+
+The test description was:
+  modal device layout narrow-largest
+═════════════════════════════════════════════════════════════════
+
+end of failure 1

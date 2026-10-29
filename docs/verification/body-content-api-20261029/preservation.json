@@ -1,0 +1,22 @@
+{
+  "user_files": {
+    "example/moke.json": {
+      "worktree_sha256": "da3b86b0af0a4cd6fa616f029f74734b572a7d88a98e81345e8bef101ce445d6",
+      "index_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "example/日成果-2026-10-23-完整文档结构.json": {
+      "worktree_sha256": "b659f21fe8e5d9cabed3a84de1c6d1ffdf10057c591b969b24f8a6753d2137ad",
+      "index_blob": "c1d2033e6c00cead50c7c104d32172607b881f7b"
+    }
+  },
+  "user_files_written_by_this_task": false,
+  "root_core_files_changed": false,
+  "desktop_dependency_upgraded": false,
+  "api_save_keys": [
+    "bodyContent"
+  ],
+  "header_title": {
+    "ORIENT": "今日导向",
+    "RESULT": "今日成果"
+  }
+}

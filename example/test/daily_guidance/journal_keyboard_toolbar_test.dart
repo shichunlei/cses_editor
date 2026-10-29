@@ -1,3 +1,4 @@
+import 'journal_test_preview.dart';
 import 'dart:io';
 import 'dart:ui' as ui;
 
@@ -460,11 +461,11 @@ void main() {
     await tester.pumpAndSettle();
     expect(state.getNodeAtPath([0, 0])!.type, TodoListBlockKeys.type);
     expect(state.getNodeAtPath([0, 0])!.delta!.toPlainText(), '记录\uFFFC ');
-    await tester.tap(find.byKey(const ValueKey('journal-preview')));
+    await openOrCloseJournalPreview(tester);
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('editor-mobile-toolbar')), findsNothing);
     expect(find.text('测试同事'), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('journal-preview')));
+    await openOrCloseJournalPreview(tester);
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('journal-back')));
     await tester.pumpAndSettle();

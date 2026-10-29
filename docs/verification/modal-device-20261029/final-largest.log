@@ -1,0 +1,25 @@
+RUN narrow-largest
+Running Gradle task 'assembleDebug'...                             42.7s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          16.5s
+I/flutter (28100): DEVICE_METRICS narrow-largest-home width=320.0 height=713.4814814814815 keyboard=0.0 font=2.0
+I/flutter (28100): DEVICE_CAPTURE:narrow-largest-home
+SAVED native narrow-largest-home
+I/flutter (28100): DEVICE_METRICS narrow-largest-mention-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=2.0
+I/flutter (28100): DEVICE_CAPTURE:narrow-largest-mention-keyboard
+SAVED native narrow-largest-mention-keyboard
+I/flutter (28100): DEVICE_METRICS narrow-largest-leave-dialog width=320.0 height=713.4814814814815 keyboard=0.0 font=2.0
+I/flutter (28100): DEVICE_CAPTURE:narrow-largest-leave-dialog
+SAVED native narrow-largest-leave-dialog
+I/flutter (28100): DEVICE_METRICS narrow-largest-share width=320.0 height=713.4814814814815 keyboard=0.0 font=2.0
+I/flutter (28100): DEVICE_CAPTURE:narrow-largest-share
+SAVED native narrow-largest-share
+I/flutter (28100): DEVICE_METRICS narrow-largest-people-keyboard width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=2.0
+I/flutter (28100): DEVICE_CAPTURE:narrow-largest-people-keyboard
+SAVED native narrow-largest-people-keyboard
+I/flutter (28100): DEVICE_METRICS narrow-largest-people-scrolled width=320.0 height=713.4814814814815 keyboard=252.74074074074073 font=2.0
+I/flutter (28100): DEVICE_CAPTURE:narrow-largest-people-scrolled
+SAVED native narrow-largest-people-scrolled
+I/flutter (28100): 00:40 +2: All tests passed!
+All tests passed.
+RESTORED {"density": "Physical density: 480", "font_scale": "1.0"}

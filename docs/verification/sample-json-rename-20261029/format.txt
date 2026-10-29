@@ -1,0 +1,3 @@
+Formatted example/test/daily_guidance/journal_page_mode_test.dart
+Formatted example/test/daily_guidance/body_content_api_test.dart
+Formatted 4 files (2 changed) in 0.03 seconds.

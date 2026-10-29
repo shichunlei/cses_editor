@@ -1,0 +1,23 @@
+{
+  "restored_to_HEAD": [
+    "README.md",
+    "docs/block-adaptation.md",
+    "docs/data-format.md",
+    "docs/integration.md",
+    "docs/verification/README.md",
+    "example/integration_test/daily_guidance_device_test.dart",
+    "example/lib/daily_guidance/journal_store.dart",
+    "example/lib/daily_guidance/local_journal_controller.dart",
+    "example/lib/daily_guidance/local_journal_page.dart",
+    "example/lib/main.dart",
+    "example/pubspec.yaml",
+    "example/test/daily_guidance/journal_blockcraft_codec_test.dart",
+    "lib/src/editor/blockcraft_json_codec.dart",
+    "lib/src/editor/blockcraft_snapshot_view.dart"
+  ],
+  "user_files_unchanged": true,
+  "user_file_hashes": {
+    "example/moke.json": "da3b86b0af0a4cd6fa616f029f74734b572a7d88a98e81345e8bef101ce445d6",
+    "example/日成果-2026-10-23-完整文档结构.json": "b659f21fe8e5d9cabed3a84de1c6d1ffdf10057c591b969b24f8a6753d2137ad"
+  }
+}

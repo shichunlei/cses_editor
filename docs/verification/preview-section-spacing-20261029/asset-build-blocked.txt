@@ -1,0 +1,5 @@
+Waiting for another flutter command to release the startup lock...
+Error detected in pubspec.yaml:
+No file or variants found for asset: moke.json.
+
+Error: Failed to build asset bundle

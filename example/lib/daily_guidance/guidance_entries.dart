@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/material.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 
 import 'guidance_people.dart';
@@ -54,8 +55,45 @@ Delta guidanceMentionDelta(List<GuidancePerson> people) {
   return delta;
 }
 
+/// 校验借用的 [attributes] 并读取人员/任务/会议/文档引用的稳定身份与名称。
+/// 保留原生引用格式，非人员类型不交给人员解析器；不创建账号或详情资源。
+///
+/// ```dart
+/// final reference = readJournalNativeMention({'cses_inline_mention': '任务',
+///   'cses_mention_id': 'task-1', 'cses_mention_type': 'task'});
+/// print(reference.name);
+/// ```
+({String id, String name}) readJournalNativeMention(Map<String, dynamic> attributes) {
+  final type = attributes['cses_mention_type'] ?? 'user';
+  if (type == 'user') {
+    final person = EditorUserMention.read(attributes);
+    return (id: person.id, name: person.name);
+  }
+  final id = attributes['cses_mention_id'];
+  final name = attributes['cses_inline_mention'];
+  final raw = attributes['cses_mention_attributes'];
+  if (!const ['task', 'meeting', 'doc', 'department'].contains(type) ||
+      id is! String ||
+      id.trim().isEmpty ||
+      name is! String ||
+      name.trim().isEmpty ||
+      (raw != null && raw is! String)) {
+    throw const FormatException('引用身份无效');
+  }
+  if (raw is String) {
+    if (utf8.encode(raw).length > 1024) throw const FormatException('引用属性过长');
+    final data = jsonDecode(raw);
+    if (data is! Map ||
+        (data['mentionId'] != null && data['mentionId'] != id) ||
+        (data['mentionType'] != null && data['mentionType'] != type)) {
+      throw const FormatException('引用身份不一致');
+    }
+  }
+  return (id: id, name: name);
+}
+
 /// 使用[context]中的编辑比例渲染[node]在[index]处的[text]；[before]/[after]为默认格式结果。
-/// 旧业务引用沿用名称显示，其他内容使用编辑器通用装饰器，保留标题、字色、背景及角标。
+/// 旧用户引用也使用宿主头像槽，其他内容使用通用装饰器，保留标题、字色、背景及角标。
 /// 不创建业务资源或修改正文，原生头像及点击由所属会话的宿主服务决定。
 InlineSpan decorateGuidanceMention(
   BuildContext context,
@@ -65,32 +103,46 @@ InlineSpan decorateGuidanceMention(
   TextSpan before,
   TextSpan after,
 ) {
-  final decorated = decorateEditorTextSpan(
-    context,
-    node,
-    index,
-    text,
-    before,
-    after,
-  );
+  final decorated = decorateEditorTextSpan(context, node, index, text, before, after);
   if (text.attributes?[guidanceMentionAttribute] == null) return decorated;
   final style = decorated.style ?? after.style;
   final person = readGuidanceMention(text.attributes!);
+  final builder = EditorCommandContext.of(context.read<EditorState>()).services.mentionAvatarBuilder;
+  final size = style?.fontSize ?? 16.0;
+
+  /// 构建当前位置的宿主头像与原引用名称，不向正文写回展示属性。
+  Widget reference() {
+    final label = Text(
+      '@${person.name}',
+      textScaler: TextScaler.noScaling,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: (style ?? const TextStyle(fontSize: 16, height: 2)).copyWith(color: const Color(0xff367cc0)),
+    );
+    if (person.type != 'user' || builder == null) return label;
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: (MediaQuery.sizeOf(context).width - 40).clamp(40.0, double.infinity)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ExcludeSemantics(
+            child: SizedBox.square(
+              dimension: size,
+              child: builder(context, userId: person.id, name: person.name, size: size),
+            ),
+          ),
+          const SizedBox(width: 4),
+          Flexible(child: label),
+        ],
+      ),
+    );
+  }
+
   return TextSpan(
     children: [
       for (final rune in text.text.runes)
         if (rune == 0xfffc)
-          WidgetSpan(
-            alignment: PlaceholderAlignment.middle,
-            child: Text(
-              '@${person.name}',
-              textScaler: TextScaler.noScaling,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: (style ?? const TextStyle(fontSize: 16, height: 2))
-                  .copyWith(color: const Color(0xff367cc0)),
-            ),
-          )
+          WidgetSpan(alignment: PlaceholderAlignment.middle, child: reference())
         else
           TextSpan(text: String.fromCharCode(rune), style: style),
     ],
@@ -107,8 +159,7 @@ InlineSpan decorateGuidanceMention(
 /// ```
 class GuidanceTextBlockBuilder extends BlockComponentBuilder {
   /// [standard]为已配置标题/对齐的原生构建器；只借用，不接管资源。
-  GuidanceTextBlockBuilder(this.standard)
-    : super(configuration: standard.configuration);
+  GuidanceTextBlockBuilder(this.standard) : super(configuration: standard.configuration);
 
   /// 借用的原生文字构建器，负责输入、选区及具体列表标记。
   final BlockComponentBuilder standard;
@@ -122,22 +173,14 @@ class GuidanceTextBlockBuilder extends BlockComponentBuilder {
   BlockComponentWidget build(BlockComponentContext context) {
     final body = standard.build(context);
     if (context.node.attributes[guidanceEntryAttribute] == null) return body;
-    return _GuidanceEntry(
-      node: context.node,
-      configuration: configuration,
-      body: body,
-    );
+    return _GuidanceEntry(node: context.node, configuration: configuration, body: body);
   }
 }
 
 /// 业务行外壳；唯一node.key由内部段落持有，确保选区和IME仍定位原生文字。
 class _GuidanceEntry extends BlockComponentStatelessWidget {
   /// [node]为借用的业务行，[configuration]沿用同源纸张样式；[body]保留原生输入和选区。
-  const _GuidanceEntry({
-    required super.node,
-    required super.configuration,
-    required this.body,
-  });
+  const _GuidanceEntry({required super.node, required super.configuration, required this.body});
 
   /// 拥有唯一node.key的原生文字组件，外壳不得复用该Key。
   final BlockComponentWidget body;
@@ -149,21 +192,12 @@ class _GuidanceEntry extends BlockComponentStatelessWidget {
     final kind = node.attributes[guidanceEntryAttribute];
     final scale = state.editorStyle.textScaleFactor;
     final done = node.attributes['guidance_done'] == true;
-    final color = kind == 'help'
-        ? const Color(0xffbb8a1d)
-        : const Color(0xff367cc0);
+    final color = kind == 'help' ? const Color(0xffbb8a1d) : const Color(0xff367cc0);
     final base = configuration.textStyle(node);
     final first = node.delta?.whereType<TextInsert>().firstOrNull;
     final decorated = first == null
         ? null
-        : decorateEditorTextSpan(
-            context,
-            node,
-            0,
-            first,
-            TextSpan(style: base),
-            TextSpan(style: base),
-          );
+        : decorateEditorTextSpan(context, node, 0, first, TextSpan(style: base), TextSpan(style: base));
     final textStyle = decorated?.style ?? base;
     final marker = SizedBox(
       height: (textStyle.fontSize ?? 16) * (textStyle.height ?? 2) * scale,
@@ -178,16 +212,13 @@ class _GuidanceEntry extends BlockComponentStatelessWidget {
                   behavior: HitTestBehavior.opaque,
                   onTap: state.editable
                       ? () async {
-                          await state.apply(
-                            state.transaction
-                              ..updateNode(node, {'guidance_done': !done}),
-                          );
+                          await state.apply(state.transaction..updateNode(node, {'guidance_done': !done}));
                         }
                       : null,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: Icon(
-                      done ? Icons.check_circle : Icons.radio_button_unchecked,
+                      done ? LucideIcons.circleCheck : LucideIcons.circle,
                       size: 18 * scale,
                       color: done ? color : const Color(0xffb4b4ab),
                     ),
@@ -196,10 +227,7 @@ class _GuidanceEntry extends BlockComponentStatelessWidget {
               )
             : Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: .12),
-                  borderRadius: BorderRadius.circular(3),
-                ),
+                decoration: BoxDecoration(color: color.withValues(alpha: .12), borderRadius: BorderRadius.circular(3)),
                 child: Text(
                   kind == 'help' ? '都来帮' : '领航员',
                   textScaler: TextScaler.linear(scale),
@@ -233,7 +261,7 @@ String journalSelectionPlainText(List<Node> nodes, Selection selection) {
       if (op.text.contains('\uFFFC')) {
         final attributes = op.attributes ?? {};
         final name = attributes[guidanceMentionAttribute] == null
-            ? EditorUserMention.read(attributes).name
+            ? readJournalNativeMention(attributes).name
             : readGuidanceMention(attributes).name;
         text.write(op.text.replaceAll('\uFFFC', '@$name'));
       } else {

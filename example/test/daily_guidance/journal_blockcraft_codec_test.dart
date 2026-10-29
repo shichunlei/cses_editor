@@ -5,11 +5,8 @@ import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_offline_example/daily_guidance/journal_blockcraft_codec.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
 import 'package:cses_offline_example/daily_guidance/journal_exchange_keys.dart';
-import 'package:cses_offline_example/daily_guidance/journal_json_files.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_controller.dart';
-import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// 交换回归的独立内存存储，按生产模型执行持久化往返。
@@ -28,36 +25,6 @@ class _Store implements JournalStore {
   @override
   Future<void> write(JournalDraft value) async =>
       draft = JournalDraft.fromJson(value.toJson());
-}
-
-/// 文件框替身；验证页面调用实际转换、独立存储和导出，而不操作系统文件。
-class _Files implements JournalJsonFiles {
-  /// 待选取的独立桌面快照。
-  Map<String, dynamic>? imported;
-
-  /// 最后一次系统保存框接收的JSON。
-  Map<String, dynamic>? exported;
-
-  /// 导入后打开的独立存储。
-  _Store? child;
-
-  /// 返回测试提供的桌面根快照。
-  @override
-  Future<Map<String, dynamic>?> pick() async => imported;
-
-  /// 保存独立[snapshot]并接受建议[fileName]，模拟完成下载。
-  @override
-  Future<bool> save(Map<String, dynamic> snapshot, String fileName) async {
-    exported = jsonDecode(jsonEncode(snapshot)) as Map<String, dynamic>;
-    return true;
-  }
-
-  /// 为[draft]创建独立存储；[scope]为调用页面的账号分区。
-  @override
-  Future<JournalStore> createImportedStore(
-    JournalDraft draft,
-    String scope,
-  ) async => child = _Store(draft);
 }
 
 /// 读取前轮使用生产模型生成的虚构三栏、用户和业务条目示例。
@@ -216,68 +183,6 @@ void main() {
       } finally {
         body.dispose();
       }
-    },
-  );
-
-  testWidgets(
-    'JSON menu exports live edits and opens a desktop snapshot in a separate editable route',
-    (tester) async {
-      final store = _Store(_sample());
-      final files = _Files()
-        ..imported = JournalBlockCraftCodec.exportDraft(_sample());
-      await tester.binding.setSurfaceSize(const Size(600, 1100));
-      await tester.pumpWidget(
-        MaterialApp(
-          home: LocalJournalPage(store: store, jsonFiles: files),
-        ),
-      );
-      await tester.pumpAndSettle();
-      final state = tester
-          .widget<AppFlowyEditor>(find.byType(AppFlowyEditor))
-          .editorState;
-      final node = state.getNodeAtPath([0, 0])!;
-      await state.apply(state.transaction..insertText(node, 0, '实时编辑 '));
-      await tester.tap(find.byKey(const ValueKey('journal-json-menu')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('导出桌面JSON'));
-      await tester.pumpAndSettle();
-      await tester.runAsync(() async {
-        for (
-          var attempt = 0;
-          attempt < 100 && files.exported == null;
-          attempt++
-        ) {
-          await Future<void>.delayed(const Duration(milliseconds: 20));
-        }
-      });
-      await tester.pumpAndSettle();
-      expect(jsonEncode(files.exported), contains('实时编辑'));
-      await tester.tap(find.byKey(const ValueKey('journal-json-menu')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('打开桌面JSON'));
-      await tester.pumpAndSettle();
-      await tester.runAsync(() async {
-        for (var attempt = 0; attempt < 100 && files.child == null; attempt++) {
-          await Future<void>.delayed(const Duration(milliseconds: 20));
-        }
-      });
-      await tester.pumpAndSettle();
-      expect(files.child, isNotNull);
-      expect(find.byType(AppFlowyEditor), findsOneWidget);
-      final imported = tester
-          .widget<AppFlowyEditor>(find.byType(AppFlowyEditor))
-          .editorState;
-      expect(identical(imported, state), false);
-      expect(
-        imported.document.root.attributes[journalDesktopImportAttribute],
-        true,
-      );
-      final text = imported.getNodeAtPath([0, 0])!;
-      await imported.apply(imported.transaction..insertText(text, 0, '反向编辑 '));
-      expect(text.delta!.toPlainText(), startsWith('反向编辑'));
-      await tester.pumpWidget(const SizedBox());
-      await tester.pumpAndSettle();
-      await tester.binding.setSurfaceSize(null);
     },
   );
 

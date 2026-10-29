@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_offline_example/main.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:path_provider/path_provider.dart';
 
 /// 从[tester]借用当前页面的编辑状态，不获取其释放所有权。
 EditorState _state(WidgetTester tester) =>
@@ -68,7 +66,7 @@ Future<void> _hideKeyboard(WidgetTester tester, EditorState state) async {
 /// 在真实设备验证编辑历史、键盘、提及/业务行、栏目、日期、预览和草稿恢复。
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  testWidgets('standalone daily guidance persists on the device', (
+  testWidgets('daily guidance saves bodyContent through the host API', (
     tester,
   ) async {
     await tester.pumpWidget(const OfflineExampleApp());
@@ -92,44 +90,31 @@ void main() {
     await tester.pumpAndSettle();
     expect(_text(state), contains(marker));
 
-    await tester.tap(find.byKey(const ValueKey('journal-preview')));
+    await tester.tap(find.byKey(const ValueKey('journal-save')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('journal-back')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('preview-daily-guidance')));
     await tester.pumpAndSettle();
     expect(_state(tester).editable, isFalse);
+    expect(find.byKey(const ValueKey('journal-save')), findsNothing);
+    expect(find.byKey(const ValueKey('journal-preview')), findsNothing);
     expect(_text(_state(tester)), contains(marker));
     await binding.convertFlutterSurfaceToImage();
     await tester.pumpAndSettle();
     await binding.takeScreenshot('device-preview');
-    await tester.tap(find.byKey(const ValueKey('journal-preview')));
+    await tester.tap(find.byKey(const ValueKey('journal-back')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('open-daily-guidance')));
     await tester.pumpAndSettle();
     expect(_state(tester).editable, isTrue);
 
-    await tester.tap(find.byKey(const ValueKey('journal-json-menu')));
-    await tester.pumpAndSettle();
-    expect(find.text('导出桌面JSON'), findsOneWidget);
-    expect(find.text('打开桌面JSON'), findsOneWidget);
-    await tester.tapAt(const Offset(20, 250));
+    expect(find.byKey(const ValueKey('journal-json-menu')), findsNothing);
+    await tester.tap(find.byKey(const ValueKey('journal-save')));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('journal-back')));
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('open-daily-guidance')), findsOneWidget);
-
-    // 实际设备私有目录中的文件必须已经包含已完成的编辑事务。
-    final directory = await getApplicationDocumentsDirectory();
-    final files = await Directory(
-      '${directory.path}/daily-guidance',
-    ).list().toList();
-    final drafts = files
-        .whereType<File>()
-        .where((file) => file.path.endsWith('.json'))
-        .toList();
-    expect(drafts, isNotEmpty);
-    var saved = false;
-    for (final file in drafts) {
-      final content = await file.readAsString();
-      jsonDecode(content);
-      if (content.contains(marker)) saved = true;
-    }
-    expect(saved, isTrue);
 
     await tester.tap(find.byKey(const ValueKey('open-daily-guidance')));
     await tester.pumpAndSettle();
@@ -193,7 +178,11 @@ void main() {
           state,
           state.document.root.children.first.children.first,
         );
-        await _toolbar(tester, 'editor-keyboard-host-guidance-add-$kind');
+        if (!state.document.root.children.any(
+          (node) => node.attributes['section'] == kind,
+        )) {
+          await _toolbar(tester, 'editor-keyboard-host-guidance-add-$kind');
+        }
         final section = state.document.root.children.firstWhere(
           (node) => node.attributes['section'] == kind,
         );
@@ -202,7 +191,7 @@ void main() {
           skipHistoryDebounce: true,
         );
       }
-      expect(state.document.root.children.length, 3);
+      expect(state.document.root.children.length, 4);
       await _hideKeyboard(tester, state);
       final close = find.byKey(const ValueKey('journal-close-reflection'));
       await tester.ensureVisible(close);
@@ -233,9 +222,14 @@ void main() {
       await tester.pumpAndSettle();
       expect(calendar, findsNothing);
 
-      await tester.tap(find.byKey(const ValueKey('journal-preview')));
+      await tester.tap(find.byKey(const ValueKey('journal-save')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('journal-back')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('preview-daily-guidance')));
       await tester.pumpAndSettle();
       expect(_state(tester).editable, isFalse);
+      expect(find.byKey(const ValueKey('journal-save')), findsNothing);
       expect(_text(_state(tester)), contains(marker));
       expect(_text(_state(tester)), contains('reflection栏目正文'));
       await binding.takeScreenshot('device-sections-preview');
@@ -244,21 +238,21 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('open-daily-guidance')));
       await tester.pumpAndSettle();
       final restored = _state(tester);
-      expect(restored.document.root.children.length, 3);
+      expect(restored.document.root.children.length, 4);
       expect(_text(restored), contains('self-check栏目正文'));
       final content = jsonEncode(restored.document.toJson());
       for (final value in ['sample-lin', 'sample-chen', 'pilot', 'help']) {
         expect(content, contains(value));
       }
-      final directory = await getApplicationDocumentsDirectory();
-      final draft =
-          jsonDecode(
-                await File(
-                  '${directory.path}/daily-guidance/offline-example.json',
-                ).readAsString(),
-              )
-              as Map<String, dynamic>;
-      expect((draft['date'] as String).endsWith('-15'), isTrue);
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Semantics &&
+              (widget.properties.label?.startsWith('记录日期 ') ?? false) &&
+              (widget.properties.label?.endsWith('-15') ?? false),
+        ),
+        findsOneWidget,
+      );
       await binding.takeScreenshot('device-full-reopened');
       expect(tester.takeException(), isNull);
       await tester.tap(find.byKey(const ValueKey('journal-back')));

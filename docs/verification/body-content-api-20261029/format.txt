@@ -1,0 +1,19 @@
+Formatted example/lib/daily_guidance/body_content_codec.dart
+Formatted example/lib/daily_guidance/guidance_api.dart
+Formatted example/lib/daily_guidance/journal_draft.dart
+Formatted example/lib/daily_guidance/guidance_entries.dart
+Formatted example/lib/daily_guidance/journal_surface.dart
+Formatted example/lib/daily_guidance/local_journal_controller.dart
+Formatted example/lib/daily_guidance/local_journal_page.dart
+Formatted example/lib/main.dart
+Formatted 9 files (8 changed) in 0.09 seconds.
+Formatted example/test/daily_guidance/body_content_api_test.dart
+Formatted 1 file (1 changed) in 0.01 seconds.
+Formatted example/lib/daily_guidance/body_content_codec.dart
+Formatted example/integration_test/daily_guidance_device_test.dart
+Formatted 23 files (2 changed) in 0.11 seconds.
+Formatted example/test/daily_guidance/body_content_api_test.dart
+Formatted 2 files (1 changed) in 0.02 seconds.
+Formatted example/lib/daily_guidance/journal_blockcraft_codec.dart
+Formatted example/test/daily_guidance/body_content_api_test.dart
+Formatted 2 files (2 changed) in 0.03 seconds.

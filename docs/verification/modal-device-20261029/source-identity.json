@@ -1,0 +1,17 @@
+{
+  "lib/main.dart": {
+    "workspace_sha256": "3938efcf0272634e341eb2ca94c1e9dcb384de3bcbb17bdec0b14f8c41cff0cd",
+    "device_build_source_sha256": "3938efcf0272634e341eb2ca94c1e9dcb384de3bcbb17bdec0b14f8c41cff0cd",
+    "identical": true
+  },
+  "lib/daily_guidance/guidance_people.dart": {
+    "workspace_sha256": "900899b241a36749da6efc9584cd1a40157f16bf9120c8117d85181c0387205e",
+    "device_build_source_sha256": "900899b241a36749da6efc9584cd1a40157f16bf9120c8117d85181c0387205e",
+    "identical": true
+  },
+  "integration_test/modal_ui_device_test.dart": {
+    "workspace_sha256": "5df69ced5efd6c043946fb6c9a087e488ad863bee6754dc3889f89dfb5993a86",
+    "device_build_source_sha256": "5df69ced5efd6c043946fb6c9a087e488ad863bee6754dc3889f89dfb5993a86",
+    "identical": true
+  }
+}

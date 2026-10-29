@@ -5,13 +5,13 @@ import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/foundation.dart';
 
-import 'journal_draft.dart';
 import 'guidance_entries.dart';
 import 'guidance_people.dart';
+import 'journal_blockcraft_codec.dart';
+import 'journal_draft.dart';
+import 'journal_exchange_keys.dart';
 import 'journal_input.dart';
 import 'journal_store.dart';
-import 'journal_blockcraft_codec.dart';
-import 'journal_exchange_keys.dart';
 
 /// 单个日记路由拥有的正文与自动保存会话，借用存储，不创建网络或协同资源。
 ///
@@ -29,22 +29,21 @@ import 'journal_exchange_keys.dart';
 final class LocalJournalController extends ChangeNotifier {
   /// 接管由[draft]恢复的文档与监听；[store]仍由宿主持有，[saveDelay]为去抖间隔。
   /// [services]借用此页面的业务端口，不获取目录、认证或头像资源所有权。
+  /// [autoSave] 控制自动提交；手动模式仅等待已发出的请求。
+  /// [readOnly] 固定只读权限，拒绝正文、日期及持久化操作。
   LocalJournalController._(
     JournalStore store,
     JournalDraft draft,
     Duration saveDelay,
     CollabHostServices? services,
+    this.autoSave,
+    this.readOnly,
   ) : _store = store,
       _draft = draft,
       _saveDelay = saveDelay {
-    final document = Document.fromJson(
-      jsonDecode(_draft.documentJson) as Map<String, dynamic>,
-    );
+    final document = Document.fromJson(jsonDecode(_draft.documentJson) as Map<String, dynamic>);
     try {
-      JournalBlockCraftCodec.restoreIdentities(
-        document,
-        draft.blockCraftIdsJson,
-      );
+      JournalBlockCraftCodec.restoreIdentities(document, draft.blockCraftIdsJson);
     } catch (_) {
       document.dispose();
       rethrow;
@@ -59,6 +58,7 @@ final class LocalJournalController extends ChangeNotifier {
         copySelection: copySelection,
       ),
     );
+    editor.editorState.editable = !readOnly;
     editor.editorState.transactionGuard = _allows;
     editor.addListener(_changed);
   }
@@ -66,24 +66,32 @@ final class LocalJournalController extends ChangeNotifier {
   /// 从借用的[store]读取草稿后创建会话；无草稿以[now]或当前设备日期新建并安排保存。
   /// [saveDelay]默认500毫秒且不能为负。读取/校验失败直接抛错，不创建替代草稿。
   /// [services]为可选页面实例服务；null使用空端口，关闭会话不会释放宿主资源。
+  /// [autoSave] 默认 true；false 时仅显式 flush 提交，不在关闭时补提交。
+  /// [readOnly] 默认 false；true 时不自动保存，也拒绝事务、日期修改和显式提交。
   static Future<LocalJournalController> open({
     required JournalStore store,
     DateTime? now,
     Duration saveDelay = const Duration(milliseconds: 500),
     CollabHostServices? services,
+    bool autoSave = true,
+    bool readOnly = false,
   }) async {
     if (saveDelay.isNegative) throw ArgumentError.value(saveDelay, 'saveDelay');
     final saved = await store.read();
-    final draft = saved == null
-        ? JournalDraft.blank(now ?? DateTime.now())
-        : JournalDraft.fromJson(saved.toJson());
-    final result = LocalJournalController._(store, draft, saveDelay, services);
-    if (saved == null || saved.needsMigration) result._changed();
+    final draft = saved == null ? JournalDraft.blank(now ?? DateTime.now()) : JournalDraft.fromJson(saved.toJson());
+    final result = LocalJournalController._(store, draft, saveDelay, services, autoSave && !readOnly, readOnly);
+    if (!readOnly && (saved == null || saved.needsMigration)) result._changed();
     return result;
   }
 
   /// 此会话独占的选人目标令牌，防止其他会话复用捕获结果。
   final Object _targetOwner = Object();
+
+  /// 是否安排去抖和关闭保存；服务端显式保存模式为 false。
+  final bool autoSave;
+
+  /// 初始只读权限，创建后不可变；即使视图错误解锁也不能写入或提交。
+  final bool readOnly;
 
   final JournalStore _store;
   JournalDraft _draft;
@@ -139,15 +147,13 @@ final class LocalJournalController extends ChangeNotifier {
     updatedAt: DateTime.now().toUtc(),
     timezoneOffsetMinutes: _draft.timezoneOffsetMinutes,
     documentJson: jsonEncode(editor.editorState.document.toJson()),
-    blockCraftIdsJson: JournalBlockCraftCodec.captureIdentities(
-      editor.editorState.document,
-    ),
+    blockCraftIdsJson: JournalBlockCraftCodec.captureIdentities(editor.editorState.document),
   );
 
   /// 修改记录日期[value]并安排保存，格式必须为真实YYYY-MM-DD，否则抛ArgumentError。
   void setDate(String value) {
     if (!isJournalDate(value)) throw ArgumentError.value(value, 'value');
-    if (closed || date == value) return;
+    if (readOnly || closed || date == value) return;
     _draft = JournalDraft(
       id: _draft.id,
       date: value,
@@ -171,17 +177,14 @@ final class LocalJournalController extends ChangeNotifier {
     if (nodes.isEmpty ||
         nodes.any(
           (node) =>
-              node.parent?.type != journalSectionType ||
-              node.parent != nodes.first.parent ||
-              !isJournalTextNode(node),
+              node.parent?.type != journalSectionType || node.parent != nodes.first.parent || !isJournalTextNode(node),
         )) {
       throw StateError('当前选区不支持复制');
     }
     final text = journalSelectionPlainText(nodes, range);
     if (text.contains('\uFFFC')) throw StateError('选区含无法复制的对象');
     if (cut &&
-        (text.replaceAll('\n', '').length >
-                journalConfiguration.maxCharacters ||
+        (text.replaceAll('\n', '').length > journalConfiguration.maxCharacters ||
             text.split('\n').length > journalConfiguration.maxBlocks)) {
       throw StateError('展开引用后的内容超过本页粘贴容量，原文已保留');
     }
@@ -202,11 +205,7 @@ final class LocalJournalController extends ChangeNotifier {
     try {
       await AppFlowyClipboard.setData(text: text);
       if (!cut) return;
-      if (closed ||
-          invalidated ||
-          !state.editable ||
-          _revision != revision ||
-          (state.selection?.normalized != range)) {
+      if (closed || invalidated || !state.editable || _revision != revision || (state.selection?.normalized != range)) {
         throw StateError('正文、选区或编辑权限已变化，剪切未删除原文');
       }
       if (state.undoManager.undoStack.isNonEmpty) {
@@ -242,17 +241,14 @@ final class LocalJournalController extends ChangeNotifier {
     if (nodes.isEmpty ||
         nodes.any(
           (node) =>
-              node.parent?.type != journalSectionType ||
-              node.parent != nodes.first.parent ||
-              !isJournalTextNode(node),
+              node.parent?.type != journalSectionType || node.parent != nodes.first.parent || !isJournalTextNode(node),
         )) {
       return;
     }
     final normalized = text.replaceAll('\r\n', '\n').replaceAll('\r', '\n');
     final lines = normalized.split('\n');
     if (normalized.contains('\uFFFC') ||
-        normalized.replaceAll('\n', '').length >
-            journalConfiguration.maxCharacters ||
+        normalized.replaceAll('\n', '').length > journalConfiguration.maxCharacters ||
         lines.length > journalConfiguration.maxBlocks) {
       throw StateError('粘贴内容超出日记支持的格式或容量');
     }
@@ -270,20 +266,13 @@ final class LocalJournalController extends ChangeNotifier {
       if (i == lines.length - 1) delta.addAll(suffix);
       inserted.add(paragraphNode(delta: delta));
     }
-    final transaction = state.transaction
-      ..updateNode(first, {blockComponentDelta: replacement.toJson()});
+    final transaction = state.transaction..updateNode(first, {blockComponentDelta: replacement.toJson()});
     // 保留首段后，后续节点全部在其后删除/插入；路径已经是目标坐标，不再做自动变换。
     if (nodes.length > 1) {
-      transaction.add(
-        DeleteOperation(nodes[1].path, nodes.skip(1).toList()),
-        transform: false,
-      );
+      transaction.add(DeleteOperation(nodes[1].path, nodes.skip(1).toList()), transform: false);
     }
     if (inserted.isNotEmpty) {
-      transaction.add(
-        InsertOperation(first.path.next, inserted),
-        transform: false,
-      );
+      transaction.add(InsertOperation(first.path.next, inserted), transform: false);
     }
     transaction
       ..afterSelection = Selection.collapsed(
@@ -303,18 +292,19 @@ final class LocalJournalController extends ChangeNotifier {
     await state.apply(transaction, skipHistoryDebounce: true);
   }
 
-  /// 正文事务或日期变化后更新修订号并安排去抖保存；旧任务成功不能标记新修订已保存。
+  /// 正文或日期变化后更新修订号，自动模式安排去抖；旧任务成功不能标记新修订已保存。
   void _changed() {
-    if (closed) return;
+    if (closed || readOnly) return;
     _revision++;
     _timer?.cancel();
-    _timer = Timer(_saveDelay, () => unawaited(flush()));
+    if (autoSave) _timer = Timer(_saveDelay, () => unawaited(flush()));
     notifyListeners();
   }
 
   /// 取消去抖并串行保存直至覆盖当前修订，失败返回false并保留dirty与错误，不抛存储异常。
   /// 多个调用者共享在途任务；退出应等待true后再销毁路由。
   Future<bool> flush() {
+    if (readOnly) return Future.value(true);
     _timer?.cancel();
     _timer = null;
     if (_disposed) return Future.value(!dirty);
@@ -351,32 +341,20 @@ final class LocalJournalController extends ChangeNotifier {
   /// 在事务提交前校验[transaction]的栏目边界、受控对象和总容量。
   /// 普通结构编辑只能在一个栏目内；栏目增删须携带根版本及关闭草稿更新，撤销同样校验。
   bool _allows(Transaction transaction) {
-    if (closed) return false;
-    if (editor
-            .editorState
-            .document
-            .root
-            .attributes[journalDesktopImportAttribute] ==
-        true) {
+    if (closed || readOnly) return false;
+    if (editor.editorState.document.root.attributes[journalDesktopImportAttribute] == true) {
       return _allowsImported(transaction);
     }
     normalizeJournalTextInput(editor.editorState, transaction);
     final sectionCommand = transaction.operations.any(
-      (op) =>
-          op is UpdateOperation &&
-          op.path.isEmpty &&
-          op.attributes.containsKey('guidance_section_revision'),
+      (op) => op is UpdateOperation && op.path.isEmpty && op.attributes.containsKey('guidance_section_revision'),
     );
     final sectionCount = editor.editorState.document.root.children.length;
     for (final op in transaction.operations) {
-      if (op.path.length != 2 ||
-          op.path.first < 0 ||
-          op.path.first >= sectionCount) {
+      if (op.path.length != 2 || op.path.first < 0 || op.path.first >= sectionCount) {
         if (!sectionCommand || op.path.length > 1) return false;
       }
-      if (op is InsertOperation &&
-          op.path.length == 2 &&
-          op.nodes.any((node) => !isJournalTextNode(node))) {
+      if (op is InsertOperation && op.path.length == 2 && op.nodes.any((node) => !isJournalTextNode(node))) {
         return false;
       }
       if (op is UpdateTextOperation && !validJournalDelta(op.delta)) {
@@ -387,23 +365,17 @@ final class LocalJournalController extends ChangeNotifier {
       return _allowsText(transaction);
     }
     if (!sectionCommand &&
-        transaction.operations.any(
-          (op) => op is InsertOperation || op is DeleteOperation,
-        ) &&
+        transaction.operations.any((op) => op is InsertOperation || op is DeleteOperation) &&
         transaction.operations.map((op) => op.path.first).toSet().length > 1) {
       return false;
     }
     final copy = Document.fromJson(
-      jsonDecode(jsonEncode(editor.editorState.document.toJson()))
-          as Map<String, dynamic>,
+      jsonDecode(jsonEncode(editor.editorState.document.toJson())) as Map<String, dynamic>,
     );
     try {
       for (final op in transaction.operations) {
         final ok = switch (op) {
-          InsertOperation() => copy.insert(
-            op.path,
-            op.nodes.map((node) => node.copyWith()),
-          ),
+          InsertOperation() => copy.insert(op.path, op.nodes.map((node) => node.copyWith())),
           DeleteOperation() => copy.delete(op.path, op.nodes.length),
           UpdateOperation() => copy.update(op.path, op.attributes),
           UpdateTextOperation() => copy.updateText(op.path, op.delta),
@@ -425,24 +397,16 @@ final class LocalJournalController extends ChangeNotifier {
   bool _allowsImported(Transaction transaction) {
     final document = editor.editorState.document;
     final sectionCommand = transaction.operations.any(
-      (op) =>
-          op is UpdateOperation &&
-          op.path.isEmpty &&
-          op.attributes.containsKey('guidance_section_revision'),
+      (op) => op is UpdateOperation && op.path.isEmpty && op.attributes.containsKey('guidance_section_revision'),
     );
     final sections = <int>{};
-    final copy = Document.fromJson(
-      jsonDecode(jsonEncode(document.toJson())) as Map<String, dynamic>,
-    );
+    final copy = Document.fromJson(jsonDecode(jsonEncode(document.toJson())) as Map<String, dynamic>);
     final pendingIds = <Node, String>{};
 
     /// 检查借用副本中的[node]及其当前祖先，不把插入位置的已有兄弟当作祖先。
     bool locked(Node? node) {
       while (node != null) {
-        final lock = BlockCraftJsonCodec.properties(
-          node,
-          metadata: true,
-        )['lock'];
+        final lock = BlockCraftJsonCodec.properties(node, metadata: true)['lock'];
         if (lock is String && lock.isNotEmpty) return true;
         node = node.parent;
       }
@@ -450,27 +414,18 @@ final class LocalJournalController extends ChangeNotifier {
     }
 
     /// 返回借用[node]的桌面身份，尚未导出的本地节点使用运行时身份。
-    String identity(Node node) =>
-        node.attributes['bc.id'] as String? ?? node.id;
+    String identity(Node node) => node.attributes['bc.id'] as String? ?? node.id;
 
     try {
-      JournalBlockCraftCodec.restoreIdentities(
-        copy,
-        JournalBlockCraftCodec.captureIdentities(document),
-      );
+      JournalBlockCraftCodec.restoreIdentities(copy, JournalBlockCraftCodec.captureIdentities(document));
       final counts = <String, int>{};
       final deletions = <String, int>{};
       for (final node in journalContentNodes([copy.root])) {
         counts.update(identity(node), (count) => count + 1, ifAbsent: () => 1);
       }
-      for (final operation
-          in transaction.operations.whereType<DeleteOperation>()) {
+      for (final operation in transaction.operations.whereType<DeleteOperation>()) {
         for (final node in journalContentNodes(operation.nodes)) {
-          deletions.update(
-            identity(node),
-            (count) => count + 1,
-            ifAbsent: () => 1,
-          );
+          deletions.update(identity(node), (count) => count + 1, ifAbsent: () => 1);
         }
       }
       for (final op in transaction.operations) {
@@ -480,10 +435,7 @@ final class LocalJournalController extends ChangeNotifier {
         if (op is InsertOperation) {
           if (op.path.isEmpty) return false;
           final parent = copy.nodeAtPath(op.path.parent);
-          if (parent == null ||
-              op.path.last < 0 ||
-              op.path.last > parent.children.length ||
-              locked(parent)) {
+          if (parent == null || op.path.last < 0 || op.path.last > parent.children.length || locked(parent)) {
             return false;
           }
           final inserted = op.nodes.map((node) => node.copyWith()).toList();
@@ -514,15 +466,10 @@ final class LocalJournalController extends ChangeNotifier {
           if (!copy.insert(op.path, inserted)) return false;
         } else if (op is DeleteOperation) {
           final parent = copy.nodeAtPath(op.path.parent);
-          if (parent == null ||
-              op.path.last < 0 ||
-              op.path.last + op.nodes.length > parent.children.length) {
+          if (parent == null || op.path.last < 0 || op.path.last + op.nodes.length > parent.children.length) {
             return false;
           }
-          final removed = parent.children
-              .skip(op.path.last)
-              .take(op.nodes.length)
-              .toList();
+          final removed = parent.children.skip(op.path.last).take(op.nodes.length).toList();
           for (final node in journalContentNodes(removed)) {
             if (locked(node)) return false;
             final id = identity(node);
@@ -547,17 +494,12 @@ final class LocalJournalController extends ChangeNotifier {
         }
       }
       final finalIds = <String>{};
-      if (journalContentNodes([
-        copy.root,
-      ]).any((node) => !finalIds.add(identity(node)))) {
+      if (journalContentNodes([copy.root]).any((node) => !finalIds.add(identity(node)))) {
         return false;
       }
       validateJournalDocument(copy);
       for (final entry in pendingIds.entries) {
-        entry.key.updateAttributes({
-          'bc.id': entry.value,
-          'cses_collab_block_id': entry.value,
-        });
+        entry.key.updateAttributes({'bc.id': entry.value, 'cses_collab_block_id': entry.value});
       }
       return true;
     } catch (_) {
@@ -572,20 +514,10 @@ final class LocalJournalController extends ChangeNotifier {
     try {
       var length = editor.editorState.document.root.children.fold<int>(
         0,
-        (sum, section) =>
-            sum +
-            section.children.fold<int>(
-              0,
-              (sum, node) => sum + node.delta!.length,
-            ),
+        (sum, section) => sum + section.children.fold<int>(0, (sum, node) => sum + node.delta!.length),
       );
-      for (final section in closedJournalSections(
-        editor.editorState.document,
-      )) {
-        length += section.children.fold<int>(
-          0,
-          (sum, node) => sum + node.delta!.length,
-        );
+      for (final section in closedJournalSections(editor.editorState.document)) {
+        length += section.children.fold<int>(0, (sum, node) => sum + node.delta!.length);
       }
       var references =
           [
@@ -594,27 +526,20 @@ final class LocalJournalController extends ChangeNotifier {
           ].fold<int>(
             0,
             (sum, section) =>
-                sum +
-                section.children.fold<int>(
-                  0,
-                  (sum, node) => sum + journalDeltaMentionCount(node.delta!),
-                ),
+                sum + section.children.fold<int>(0, (sum, node) => sum + journalDeltaMentionCount(node.delta!)),
           );
       final changed = <String, Delta>{};
       for (final op in transaction.operations.cast<UpdateTextOperation>()) {
         final key = op.path.join('/');
-        final before =
-            changed[key] ?? editor.editorState.getNodeAtPath(op.path)?.delta;
+        final before = changed[key] ?? editor.editorState.getNodeAtPath(op.path)?.delta;
         if (before == null) return false;
         final after = before.compose(op.delta);
-        if (!after.every((op) => op is TextInsert) ||
-            !validJournalDelta(after, complete: true)) {
+        if (!after.every((op) => op is TextInsert) || !validJournalDelta(after, complete: true)) {
           return false;
         }
         changed[key] = after;
         length += after.length - before.length;
-        references +=
-            journalDeltaMentionCount(after) - journalDeltaMentionCount(before);
+        references += journalDeltaMentionCount(after) - journalDeltaMentionCount(before);
       }
       return length <= journalConfiguration.maxCharacters && references <= 500;
     } catch (_) {
@@ -623,36 +548,24 @@ final class LocalJournalController extends ChangeNotifier {
   }
 
   /// 当前可见栏目是否包含[kind]，不以固定下标判断。
-  bool hasSection(String kind) => editor.editorState.document.root.children.any(
-    (node) => node.attributes['section'] == kind,
-  );
+  bool hasSection(String kind) =>
+      editor.editorState.document.root.children.any((node) => node.attributes['section'] == kind);
 
   /// 添加或恢复[kind]栏目；仅接受感悟/自检，已有时不重复。关闭正文可完整撤销恢复。
   Future<void> addSection(String kind) async {
-    if (closed ||
-        !editor.editorState.editable ||
-        !journalSections.skip(1).contains(kind) ||
-        hasSection(kind)) {
+    if (closed || !editor.editorState.editable || !journalSections.skip(1).contains(kind) || hasSection(kind)) {
       return;
     }
     final state = editor.editorState;
     final hidden = closedJournalSections(state.document);
     final section =
-        hidden
-            .where((node) => node.attributes['section'] == kind)
-            .firstOrNull ??
-        Node(
-          type: journalSectionType,
-          attributes: {'section': kind},
-          children: [paragraphNode()],
-        );
+        hidden.where((node) => node.attributes['section'] == kind).firstOrNull ??
+        Node(type: journalSectionType, attributes: {'section': kind}, children: [paragraphNode()]);
     hidden.removeWhere((node) => node.attributes['section'] == kind);
     final transaction = _sectionTransaction(hidden);
     final index = state.document.root.children.length;
     transaction.add(InsertOperation([index], [section]), transform: false);
-    transaction.afterSelection = Selection.collapsed(
-      Position(path: [index, 0]),
-    );
+    transaction.afterSelection = Selection.collapsed(Position(path: [index, 0]));
     await _applyCommand(transaction);
   }
 
@@ -660,14 +573,9 @@ final class LocalJournalController extends ChangeNotifier {
   Future<void> closeSection(String kind) async {
     if (closed || !editor.editorState.editable || kind == 'record') return;
     final state = editor.editorState;
-    final section = state.document.root.children
-        .where((node) => node.attributes['section'] == kind)
-        .firstOrNull;
+    final section = state.document.root.children.where((node) => node.attributes['section'] == kind).firstOrNull;
     if (section == null) return;
-    final hidden = [
-      ...closedJournalSections(state.document),
-      section.copyWith(),
-    ];
+    final hidden = [...closedJournalSections(state.document), section.copyWith()];
     final transaction = _sectionTransaction(hidden);
     transaction.add(DeleteOperation(section.path, [section]), transform: false);
     transaction.afterSelection = Selection.collapsed(Position(path: [0, 0]));
@@ -678,11 +586,8 @@ final class LocalJournalController extends ChangeNotifier {
   Transaction _sectionTransaction(List<Node> hidden) {
     final root = editor.editorState.document.root;
     return editor.editorState.transaction..updateNode(root, {
-      journalClosedSectionsAttribute: hidden
-          .map((node) => node.toJson())
-          .toList(),
-      'guidance_section_revision':
-          (root.attributes['guidance_section_revision'] as int? ?? 0) + 1,
+      journalClosedSectionsAttribute: hidden.map((node) => node.toJson()).toList(),
+      'guidance_section_revision': (root.attributes['guidance_section_revision'] as int? ?? 0) + 1,
     });
   }
 
@@ -691,31 +596,18 @@ final class LocalJournalController extends ChangeNotifier {
     if (closed) return null;
     final state = editor.editorState;
     final last = state.document.root.children.first.children.last;
-    final selection =
-        state.selection ??
-        Selection.collapsed(
-          Position(path: last.path, offset: last.delta!.length),
-        );
+    final selection = state.selection ?? Selection.collapsed(Position(path: last.path, offset: last.delta!.length));
     if (!selection.isSingle) return null;
     final node = state.getNodeAtPath(selection.start.path);
     if (node == null || !isJournalTextNode(node)) return null;
-    return GuidanceInsertionTarget._(
-      selection: selection,
-      nodeId: node.id,
-      revision: _revision,
-      owner: _targetOwner,
-    );
+    return GuidanceInsertionTarget._(selection: selection, nodeId: node.id, revision: _revision, owner: _targetOwner);
   }
 
   /// 在仍有效的[target]插入[people]；[kind]为空表示句内@，其余为task/help/pilot可写条目。
   /// 一次多选生成一条；task保留旧格式，help/pilot仅接受人员并写原生@，拒绝组织。
   /// 现有文字转任务保留正文，都来帮/领航员另起业务行。迟到结果抛StateError；
   /// 人数不在1至100、无效类型或help/pilot含组织时抛ArgumentError，不修改正文。
-  Future<void> insertPeople(
-    GuidanceInsertionTarget target,
-    List<GuidancePerson> people, {
-    String? kind,
-  }) async {
+  Future<void> insertPeople(GuidanceInsertionTarget target, List<GuidancePerson> people, {String? kind}) async {
     if (people.isEmpty || people.length > 100) {
       throw ArgumentError('无效的人员数量');
     }
@@ -729,11 +621,7 @@ final class LocalJournalController extends ChangeNotifier {
       }
       final mentions = Delta();
       for (final person in users.values) {
-        mentions.addAll(
-          EditorUserMention.createDelta(
-            CollabMentionUser(id: person.id, name: person.name),
-          ),
-        );
+        mentions.addAll(EditorUserMention.createDelta(CollabMentionUser(id: person.id, name: person.name)));
       }
       await _insertMentions(target, mentions, kind: kind);
       return;
@@ -744,28 +632,16 @@ final class LocalJournalController extends ChangeNotifier {
   /// 在仍有效的[target]后创建[kind]业务行，内容为[user]的原生人员提及和空格。
   /// [kind]仅接受help/pilot；身份或类型非法抛ArgumentError，目标过期抛StateError。
   /// 不替换来源正文，整条创建为一次可撤销事务；不接受组织或旧自定义对象。
-  Future<void> insertUserEntry(
-    GuidanceInsertionTarget target,
-    CollabMentionUser user, {
-    required String kind,
-  }) async {
+  Future<void> insertUserEntry(GuidanceInsertionTarget target, CollabMentionUser user, {required String kind}) async {
     if (kind != 'help' && kind != 'pilot') {
       throw ArgumentError.value(kind, 'kind', '仅支持都来帮或领航员');
     }
-    await _insertMentions(
-      target,
-      EditorUserMention.createDelta(user),
-      kind: kind,
-    );
+    await _insertMentions(target, EditorUserMention.createDelta(user), kind: kind);
   }
 
   /// 将独立的[mentions]写到[target]，以[kind]决定句内替换或业务行；校验修订及所属会话。
   /// [kind]为空为句内@，否则仅接受task/help/pilot；拒绝过期或不可写目标并保留正文。
-  Future<void> _insertMentions(
-    GuidanceInsertionTarget target,
-    Delta mentions, {
-    String? kind,
-  }) async {
+  Future<void> _insertMentions(GuidanceInsertionTarget target, Delta mentions, {String? kind}) async {
     if (closed ||
         !editor.editorState.editable ||
         target.revision != _revision ||
@@ -794,8 +670,7 @@ final class LocalJournalController extends ChangeNotifier {
         Position(path: node.path, offset: range.start.offset + mentionLength),
       );
     } else {
-      final replace =
-          kind == 'task' && node!.attributes[guidanceEntryAttribute] == null;
+      final replace = kind == 'task' && node!.attributes[guidanceEntryAttribute] == null;
       final delta = Delta()..addAll(mentions);
       if (replace) delta.addAll(node.delta!);
       final entry = paragraphNode(
@@ -811,9 +686,7 @@ final class LocalJournalController extends ChangeNotifier {
       }
       final path = replace ? node.path : node!.path.next;
       transaction.add(InsertOperation(path, [entry]), transform: false);
-      transaction.afterSelection = Selection.collapsed(
-        Position(path: path, offset: delta.length),
-      );
+      transaction.afterSelection = Selection.collapsed(Position(path: path, offset: delta.length));
     }
     await _applyCommand(transaction);
   }
@@ -834,7 +707,7 @@ final class LocalJournalController extends ChangeNotifier {
   }
 
   /// 视图卸载后冻结编辑，等待在途保存并释放正文、监听和定时器；重复关闭安全。
-  /// 保存失败仍保留旧磁盘草稿，正常导航应先通过flush确认成功。
+  /// 手动模式不提交未保存修改；导航由页面显式确认保存或放弃。
   Future<void> close() => _closing ??= _close();
 
   /// 发起与close相同的冻结和清理；需要确认最后一次保存完成的所有者应显式等待close。
@@ -858,10 +731,14 @@ final class LocalJournalController extends ChangeNotifier {
     super.dispose();
   }
 
-  /// 按冻结正文、保存、注销监听、释放正文的顺序关闭自有资源。
+  /// 冻结正文，自动模式保存、手动模式等待在途请求，再注销监听并释放自有正文。
   Future<void> _close() async {
     editor.editorState.editable = false;
-    await flush();
+    if (autoSave) {
+      await flush();
+    } else {
+      await _saving;
+    }
     editor.removeListener(_changed);
     await editor.close();
     _disposed = true;
