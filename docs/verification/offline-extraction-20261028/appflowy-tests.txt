@@ -1,0 +1,10 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/undo_manager_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/undo_manager_test.dart: (setUpAll)
+00:00 +0: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/undo_manager_test.dart: HistoryItem #1
+00:00 +1: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/undo_manager_test.dart: HistoryItem #2
+00:00 +2: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/undo_manager_test.dart: HistoryItem sealed
+00:00 +3: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/undo_manager_test.dart: (tearDownAll)
+00:00 +3: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/external_history_test.dart: external owner suppresses local recording and receives undo/redo commands
+00:00 +4: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/legacy/external_history_test.dart: detaching owner cannot replay stale transactions and local undo still works
+00:01 +5: /System/Volumes/Data/workspace/cses_offline_editor/packages/appflowy_editor/test/editor/editor_component/ime/delta_input_service_test.dart: DeltaTextInputService actions
+00:01 +6: All tests passed!

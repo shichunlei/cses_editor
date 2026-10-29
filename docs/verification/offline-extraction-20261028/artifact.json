@@ -1,0 +1,8 @@
+{
+  "path": "example/build/app/outputs/flutter-apk/app-debug.apk",
+  "sha256": "8c8f58a200b6482af98a0fc2f2feebdd55bdfd1ae4631f375221721c663b102d",
+  "bytes": 180734140,
+  "target": "Android arm64 debug",
+  "entrypoint": "lib/main.dart",
+  "applicationId": "com.cses.offline.cses_offline_example"
+}

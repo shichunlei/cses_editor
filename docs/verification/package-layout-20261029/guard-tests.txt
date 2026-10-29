@@ -1,0 +1,19 @@
+test_any_declared_external_path_is_rejected (test_verify_independence.IndependenceAuditTest.test_any_declared_external_path_is_rejected) ... ok
+test_clean_graph_and_provenance_comments_pass (test_verify_independence.IndependenceAuditTest.test_clean_graph_and_provenance_comments_pass) ... ok
+test_example_must_resolve_editor_at_root (test_verify_independence.IndependenceAuditTest.test_example_must_resolve_editor_at_root) ... ok
+test_file_uri_inside_project_and_escaped_space_pass (test_verify_independence.IndependenceAuditTest.test_file_uri_inside_project_and_escaped_space_pass) ... ok
+test_git_cache_runtime_changes_are_rejected (test_verify_independence.IndependenceAuditTest.test_git_cache_runtime_changes_are_rejected) ... ok
+test_git_dependency_runtime_sources_are_checked (test_verify_independence.IndependenceAuditTest.test_git_dependency_runtime_sources_are_checked) ... ok
+test_git_dependency_url_must_match (test_verify_independence.IndependenceAuditTest.test_git_dependency_url_must_match) ... ok
+test_indirect_sqlite_variant_is_rejected (test_verify_independence.IndependenceAuditTest.test_indirect_sqlite_variant_is_rejected) ... ok
+test_local_conditional_import_is_checked (test_verify_independence.IndependenceAuditTest.test_local_conditional_import_is_checked) ... ok
+test_native_configuration_is_checked (test_verify_independence.IndependenceAuditTest.test_native_configuration_is_checked) ... ok
+test_pinned_clean_git_dependency_is_accepted (test_verify_independence.IndependenceAuditTest.test_pinned_clean_git_dependency_is_accepted) ... ok
+test_source_symlink_cannot_reach_original_workspace (test_verify_independence.IndependenceAuditTest.test_source_symlink_cannot_reach_original_workspace) ... ok
+test_transitive_external_locked_path_is_rejected (test_verify_independence.IndependenceAuditTest.test_transitive_external_locked_path_is_rejected) ... ok
+test_vendored_directory_is_rejected (test_verify_independence.IndependenceAuditTest.test_vendored_directory_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 3.288s
+
+OK

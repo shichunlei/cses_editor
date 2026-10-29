@@ -1,0 +1,10 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_offline_editor/packages/cses_editor/test/collab_image_cache_test.dart
+00:00 +0: raster and SVG bytes survive a new cache and client without network
+00:00 +1: full query strings isolate cached sources
+00:00 +2: stale images remain readable during network failure
+00:00 +3: expired content refreshes atomically when network returns
+00:00 +4: entry and byte budgets prune old cached files
+00:00 +5: cache failure does not prevent image download
+图片缓存不可用: FileSystemException: no cache, path = ''
+00:00 +6: failed downloads never become cached images
+00:00 +7: All tests passed!

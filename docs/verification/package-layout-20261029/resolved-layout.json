@@ -1,0 +1,10 @@
+{
+  ".": {
+    "root_uri": "../",
+    "resolved": "/System/Volumes/Data/workspace/cses_editor"
+  },
+  "example": {
+    "root_uri": "../../",
+    "resolved": "/System/Volumes/Data/workspace/cses_editor"
+  }
+}

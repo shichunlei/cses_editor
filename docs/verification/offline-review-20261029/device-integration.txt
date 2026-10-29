@@ -1,0 +1,239 @@
+Resolving dependencies...
+Downloading packages...
+  clock 1.1.2 (1.1.3 available)
+  code_assets 1.2.1 (2.1.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  flutter_svg 2.3.0 (2.3.2 available)
+  hooks 2.0.2 (2.2.0 available)
+  intl 0.20.2 (0.20.3 available)
+  matcher 0.12.19 (0.12.20 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.0 (1.19.0 available)
+  metalink 2.1.0 (2.2.0 available)
+  objective_c 9.5.0 (9.6.2 available)
+  petitparser 7.0.2 (7.1.0 available)
+  qr 3.0.2 (4.0.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  stack_trace 1.12.1 (1.12.2 available)
+  test_api 0.7.11 (0.7.15 available)
+  vector_math 2.2.0 (2.4.4 available)
+  video_player_avfoundation 2.12.1 (2.12.3 available)
+  web 1.1.1 (1.1.2 available)
+  webview_flutter_wkwebview 3.26.2 (3.27.2 available)
+  xml 7.0.1 (7.1.0 available)
+Got dependencies!
+21 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): keyboard_height_plugin
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing 
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             55.6s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          26.4s
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:53434/i2vhG9zUFYU=/
+VMServiceFlutterDriver: Isolate found with number: 8762299921785319
+VMServiceFlutterDriver: Isolate 8762299921785319 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+D/ProfileInstaller(28442): Installing profile for com.cses.offline.cses_offline_example.review
+I/flutter (28442): 00:00 +0: standalone daily guidance persists on the device
+VMServiceFlutterDriver: Connected to Flutter application.
+V/ImeFocusController(28442): onWindowFocus: DecorView@bdb089f[MainActivity] softInputMode=STATE_UNSPECIFIED|ADJUST_RESIZE|IS_FORWARD_NAVIGATION
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+W/WindowOnBackDispatcher(28442): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(28442): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:a41c9438: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController(28442): show(ime(), fromIme=true)
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:a41c9438: onShown
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+E/AccessibilityBridge(28442): Scroll index is out of bounds.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:4dff9421: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(28442): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@99bc6d3
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+W/FinalizerDaemon(28442): type=1400 audit(0.0:445413): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c62,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.cses.offline.cses_offline_example.review
+E/AccessibilityBridge(28442): Scroll index is out of bounds.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:36b03b9b: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:4dff9421: onHidden
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:6e310fa2: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController(28442): show(ime(), fromIme=true)
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:6e310fa2: onShown
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+E/AccessibilityBridge(28442): Scroll index is out of bounds.
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:f5362755: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:1143c5dd: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(28442): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@f3d004
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:ee815b2f: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:f5362755: onHidden
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/CompatibilityChangeReporter(28442): Compat change id reported: 236825255; UID 10318; state: ENABLED
+W/libc    (28442): Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+W/_example.review(28442): type=1400 audit(0.0:445416): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=422 scontext=u:r:untrusted_app:s0:c62,c257,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.cses.offline.cses_offline_example.review
+E/qdgralloc(28442): GetGpuPixelFormat: No map for format: 0x38
+E/AdrenoUtils(28442): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils(28442): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc(28442): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4(28442): isSupported(1, 1, 56, 1, ...) failed with 1
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 56 usage 300: 1
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/qdgralloc(28442): GetGpuPixelFormat: No map for format: 0x3b
+E/AdrenoUtils(28442): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils(28442): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc(28442): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4(28442): isSupported(1, 1, 59, 1, ...) failed with 1
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 59 usage 300: 1
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/qdgralloc(28442): GetGpuPixelFormat: No map for format: 0x38
+E/AdrenoUtils(28442): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils(28442): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc(28442): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4(28442): isSupported(1, 1, 56, 1, ...) failed with 1
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 56 usage 300: 1
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+E/qdgralloc(28442): GetGpuPixelFormat: No map for format: 0x3b
+E/AdrenoUtils(28442): <validate_memory_layout_input_parmas:2193>: Unknown Format 0
+E/AdrenoUtils(28442): <adreno_init_memory_layout:5347>: Memory Layout input parameter validation failed!
+E/qdgralloc(28442): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4(28442): isSupported(1, 1, 59, 1, ...) failed with 1
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 59 usage 300: 1
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -1), handle=0x0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+D/VCode/native(28442): track_event send
+W/libc    (28442): Access denied finding property "vendor.vivo.imageencoder.dump"
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:70ec8f15: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:c36a9d60: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+D/InsetsController(28442): show(ime(), fromIme=true)
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+E/AccessibilityBridge(28442): Scroll index is out of bounds.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:c36a9d60: onShown
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+E/AccessibilityBridge(28442): Scroll index is out of bounds.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:c9cf149f: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+W/WindowOnBackDispatcher(28442): sendCancelIfRunning: isInProgress=falsecallback=ImeCallback=ImeOnBackInvokedCallback@62166620 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@1ca42f4
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+E/AccessibilityBridge(28442): Scroll index is out of bounds.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:1a4fed93: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+I/ImeTracker(28442): com.cses.offline.cses_offline_example.review:c9cf149f: onHidden
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+D/FlutterJNI(28442): Sending viewport metrics to the engine.
+W/WindowOnBackDispatcher(28442): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(28442): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/VCode/native(28442): track_event send
+W/libc    (28442): Access denied finding property "vendor.vivo.imageencoder.dump"
+E/qdgralloc(28442): GetSize: Unrecognized pixel format: 0x38
+E/Gralloc4(28442): isSupported(1, 1, 56, 1, ...) failed with 5
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 5
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/qdgralloc(28442): GetSize: Unrecognized pixel format: 0x3b
+E/Gralloc4(28442): isSupported(1, 1, 59, 1, ...) failed with 5
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 5
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/qdgralloc(28442): GetSize: Unrecognized pixel format: 0x38
+E/Gralloc4(28442): isSupported(1, 1, 56, 1, ...) failed with 5
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 5
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+E/qdgralloc(28442): GetSize: Unrecognized pixel format: 0x3b
+E/Gralloc4(28442): isSupported(1, 1, 59, 1, ...) failed with 5
+E/GraphicBufferAllocator(28442): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 5
+E/AHardwareBuffer(28442): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -5), handle=0x0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+W/qdgralloc(28442): getInterlacedFlag: getMetaData returned -22, defaulting to interlaced_flag = 0
+I/flutter (28442): 00:11 +1: (tearDownAll)
+I/flutter (28442): 00:12 +2: All tests passed!
+All tests passed.

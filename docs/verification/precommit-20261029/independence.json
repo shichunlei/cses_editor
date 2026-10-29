@@ -1,0 +1,21 @@
+{
+  "source_boundary": true,
+  "checked_dart_files": 603,
+  "checked_build_configs": 9,
+  "git_dependencies": {
+    ".": {
+      "url": "https://github.com/shichunlei/appflowy-editor.git",
+      "ref": "9e7593134457eac9193a61ee4023a75de55fcc68",
+      "resolved-ref": "9e7593134457eac9193a61ee4023a75de55fcc68",
+      "path": "."
+    },
+    "example": {
+      "url": "https://github.com/shichunlei/appflowy-editor.git",
+      "ref": "9e7593134457eac9193a61ee4023a75de55fcc68",
+      "resolved-ref": "9e7593134457eac9193a61ee4023a75de55fcc68",
+      "path": "."
+    }
+  },
+  "issues": [],
+  "passed": true
+}

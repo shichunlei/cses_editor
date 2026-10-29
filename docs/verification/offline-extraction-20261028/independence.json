@@ -1,0 +1,13 @@
+{
+  "source_boundary": true,
+  "issues": [],
+  "apk": "example/build/app/outputs/flutter-apk/app-debug.apk",
+  "libraries": [
+    "lib/arm64-v8a/libVkLayer_khronos_validation.so",
+    "lib/arm64-v8a/libdartjni.so",
+    "lib/arm64-v8a/libflutter.so",
+    "lib/armeabi-v7a/libdartjni.so",
+    "lib/x86_64/libdartjni.so"
+  ],
+  "passed": true
+}

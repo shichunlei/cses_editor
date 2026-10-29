@@ -1,0 +1,25 @@
+{
+  "copy_root": "/var/folders/km/_j0ys7ss7kd3wtbvnd4xmgjr0000gn/T/cses-offline-review-final-isk9jh2c",
+  "packages": [
+    {
+      "package": "packages/appflowy_editor",
+      "offline_pub_get_exit": 0
+    },
+    {
+      "package": "packages/cses_editor",
+      "offline_pub_get_exit": 0
+    },
+    {
+      "package": "example",
+      "offline_pub_get_exit": 0
+    }
+  ],
+  "host_boundary_test_exit": 0,
+  "audit": {
+    "source_boundary": true,
+    "checked_dart_files": 818,
+    "checked_build_configs": 9,
+    "issues": [],
+    "passed": true
+  }
+}

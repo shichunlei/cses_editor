@@ -1,0 +1,10 @@
+{
+  "src/editor/blockcraft_snapshot_presets.g.dart": {
+    "source_sha256": "8acc29ee8ccd48307457d01cdc0ab0df895d5fde2452f60184cad7af7e1e4a38",
+    "destination_sha256": "8acc29ee8ccd48307457d01cdc0ab0df895d5fde2452f60184cad7af7e1e4a38"
+  },
+  "src/model/collab_emoji_catalog.g.dart": {
+    "source_sha256": "7f70f2cdeff31cf0fc201144b80daf8e486371737402db1b2565eb1f2cfe2794",
+    "destination_sha256": "7f70f2cdeff31cf0fc201144b80daf8e486371737402db1b2565eb1f2cfe2794"
+  }
+}

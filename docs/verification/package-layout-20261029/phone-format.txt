@@ -1,0 +1,2 @@
+Formatted example/integration_test/daily_guidance_device_test.dart
+Formatted 2 files (1 changed) in 0.01 seconds.

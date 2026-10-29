@@ -1,0 +1,20 @@
+{
+  "root": "/System/Volumes/Data/workspace/cses_editor",
+  "scanned_text_files": 263,
+  "old_root_exists": false,
+  "legacy_packages_directory_exists": false,
+  "issues": [],
+  "allowed_asset_references": [
+    {
+      "file": "lib/src/ui/modal/collab_mermaid_visual.dart",
+      "line": 123,
+      "reason": "Flutter package asset URI, not a disk dependency"
+    }
+  ],
+  "resolved_roots": {
+    ".": "/System/Volumes/Data/workspace/cses_editor",
+    "example": "/System/Volumes/Data/workspace/cses_editor"
+  },
+  "passed": true,
+  "historical_records": "docs/verification and source provenance retain original paths as evidence"
+}

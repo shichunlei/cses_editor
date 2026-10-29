@@ -1,0 +1,31 @@
+# Dart / Flutter generated files and local dependency caches
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+**/doc/api/
+
+# Root library lockfile; applications manage their own lockfile policy.
+/pubspec.lock
+
+# Local IDE settings
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local operating system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

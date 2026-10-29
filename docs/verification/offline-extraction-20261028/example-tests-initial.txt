@@ -1,0 +1,248 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +0 -1: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +0 -1: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: journal formats, mentions, todo states, business ids and date survive both directions [E]
+  PathNotFoundException: Cannot open file, path = '../docs/verification/offline-journal-20261023/daily-guidance-sample.json' (OS Error: No such file or directory, errno = 2)
+  dart:io                                                       _File.readAsStringSync
+  test/daily_guidance/journal_blockcraft_codec_test.dart 68:11  _sample
+  test/daily_guidance/journal_blockcraft_codec_test.dart 78:22  main.<fn>
+  
+00:01 +1 -1: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +2 -1: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +3 -1: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +3 -1: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following PathNotFoundException was thrown running a test:
+Cannot open file, path = '../docs/verification/offline-journal-20261023/daily-guidance-sample.json'
+(OS Error: No such file or directory, errno = 2)
+
+When the exception was thrown, this was the stack:
+#0      _File.throwIfError (dart:io/file_impl.dart:779:7)
+#1      _File.openSync (dart:io/file_impl.dart:572:5)
+#2      _File.readAsBytesSync (dart:io/file_impl.dart:660:18)
+#3      _File.readAsStringSync (dart:io/file_impl.dart:715:18)
+#4      _sample (file:///System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart:68:11)
+#5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart:227:28)
+#6      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#7      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +3 -2: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +3 -2: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route [E]
+  Test failed. See exception logs above.
+  The test description was: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+  
+00:01 +3 -3: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +3 -3: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: real controller export has no debounce delay and returns detached JSON [E]
+  PathNotFoundException: Cannot open file, path = '../docs/verification/offline-journal-20261023/daily-guidance-sample.json' (OS Error: No such file or directory, errno = 2)
+  dart:io                                                        _File.readAsStringSync
+  test/daily_guidance/journal_blockcraft_codec_test.dart 68:11   _sample
+  test/daily_guidance/journal_blockcraft_codec_test.dart 290:23  main.<fn>
+  
+00:01 +3 -4: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +3 -4: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: stable block ids survive saving and reopening without entering business attributes [E]
+  PathNotFoundException: Cannot open file, path = '../docs/verification/offline-journal-20261023/daily-guidance-sample.json' (OS Error: No such file or directory, errno = 2)
+  dart:io                                                        _File.readAsStringSync
+  test/daily_guidance/journal_blockcraft_codec_test.dart 68:11   _sample
+  test/daily_guidance/journal_blockcraft_codec_test.dart 310:28  main.<fn>
+  
+00:01 +3 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +3 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: desktop blocks outside journal capabilities are converted into real nested native nodes [E]
+  PathNotFoundException: Cannot open file, path = '../test/fixtures/desktop-json-blocks.json' (OS Error: No such file or directory, errno = 2)
+  dart:io                                                        _File.readAsStringSync
+  test/daily_guidance/journal_blockcraft_codec_test.dart 340:19  main.<fn>
+  
+00:02 +4 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +5 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +6 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +7 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +8 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +9 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +10 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +11 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +12 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +13 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +14 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +15 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +16 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +17 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +18 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +19 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +20 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +21 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +22 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +23 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +24 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:03 +25 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:03 +26 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:03 +27 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:03 +28 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +29 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +30 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +31 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +32 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +33 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +34 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +35 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +36 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_mention_input_test.dart: IME insertion beside mention preserves identity and inherited style: bold=false
+00:04 +37 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 280.0/2.0
+00:04 +38 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 280.0/2.0
+00:04 +39 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +40 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +41 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +42 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +43 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +44 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +45 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +46 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +47 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +48 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +49 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +50 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +51 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +52 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:04 +53 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +54 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +55 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +56 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +57 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +58 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +59 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +60 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +61 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +62 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +63 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +64 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:05 +65 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +66 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +67 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +68 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +69 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +70 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +71 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +72 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +73 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +74 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_integrity_test.dart: production journal Tab stays flat in section through history and exchange
+00:05 +75 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +76 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +77 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +78 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +79 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +80 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +81 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +82 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +83 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +84 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +85 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +86 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:05 +87 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +88 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +89 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +90 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +91 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +92 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +93 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +94 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +95 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +96 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +97 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +98 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +99 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +100 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +101 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +102 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +103 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +104 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +105 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +106 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +107 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +108 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +109 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +110 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +111 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +112 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +113 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +114 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +115 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:06 +116 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:07 +117 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:07 +118 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:07 +119 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:07 +120 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:08 +121 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +122 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +123 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +124 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +125 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +125 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production cut shortcut reports a failed clipboard write and keeps the saved mention
+DocEditor: 复制或剪切失败: PlatformException(clipboard-unavailable, null, null, null)
+#0      JSONMethodCodec.decodeEnvelope (package:flutter/src/services/message_codecs.dart:168:7)
+#1      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:366:18)
+<asynchronous suspension>
+#2      Clipboard.setData (package:flutter/src/services/clipboard.dart:36:5)
+<asynchronous suspension>
+#3      LocalJournalController.copySelection (package:cses_offline_example/daily_guidance/local_journal_controller.dart:203:7)
+<asynchronous suspension>
+#4      _DocumentEditorViewState._copy (package:cses_editor/src/editor/document_editor_view.dart:231:7)
+<asynchronous suspension>
+
+00:08 +126 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:08 +127 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +128 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +129 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +130 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +131 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +132 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_regressions_test.dart: ctrl+shift+v pastes plain text atomically, saves and supports undo: 13800138000
+00:10 +133 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +134 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +135 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +136 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +136 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_regressions_test.dart: rejected shortcut paste shows a retry message and keeps the saved original
+DocEditor: 粘贴失败: Bad state: 粘贴内容超出日记支持的格式或容量
+#0      LocalJournalController.pasteFromClipboard (package:cses_offline_example/daily_guidance/local_journal_controller.dart:257:7)
+<asynchronous suspension>
+#1      _DocumentEditorViewState._paste (package:cses_editor/src/editor/document_editor_view.dart:209:7)
+<asynchronous suspension>
+
+00:10 +137 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +138 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +139 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +140 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +141 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:10 +142 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:11 +143 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:11 +144 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:11 +145 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:11 +146 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:11 +147 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_regressions_test.dart: empty numbered_list Enter returns to paragraph and supports undo/redo
+00:11 +148 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:12 +149 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:12 +150 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:12 +151 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:12 +152 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:12 +153 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:12 +154 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:13 +155 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:13 +156 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "首行\n\n末行" / 2.0
+00:13 +157 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: text/background colors, code and scripts render and persist
+00:14 +158 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: font size uses real selection and keeps list marker centered
+00:15 +159 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: malformed/unsupported persisted heading levels are rejected
+00:15 +160 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: paragraph alignment and flat indent preserve business identity
+00:15 +161 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: heading alignment and flat indent preserve business identity
+00:16 +162 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: bulleted_list alignment and flat indent preserve business identity
+00:17 +163 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: numbered_list alignment and flat indent preserve business identity
+00:18 +164 -5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: todo_list alignment and flat indent preserve business identity
+00:19 +165 -5: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+  /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: desktop blocks outside journal capabilities are converted into real nested native nodes
+  /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: journal formats, mentions, todo states, business ids and date survive both directions
+  /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: real controller export has no debounce delay and returns detached JSON
+  /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: stable block ids survive saving and reopening without entering business attributes

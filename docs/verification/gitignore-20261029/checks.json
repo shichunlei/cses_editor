@@ -1,0 +1,42 @@
+{
+  "nine_files_unchanged_unstaged_and_ignored": true,
+  "example_lockfile_staged_and_not_ignored": true,
+  "root_ignore_rules": true,
+  "source_assets_and_verification_not_ignored": true,
+  "unstaged_full_diff_check": {
+    "exit_code": 0,
+    "diagnostic_lines": 0,
+    "files": []
+  },
+  "staged_full_diff_check": {
+    "exit_code": 2,
+    "diagnostic_lines": 144,
+    "files": [
+      "assets/mermaid/mermaid.min.js",
+      "docs/verification/appflowy-git-20261029/android-build.txt",
+      "docs/verification/appflowy-git-20261029/core-analysis.txt",
+      "docs/verification/appflowy-git-20261029/example-analysis.txt",
+      "docs/verification/offline-extraction-20261028/android-build-final.txt",
+      "docs/verification/offline-extraction-20261028/android-build.txt",
+      "docs/verification/offline-extraction-20261028/appflowy-analysis.txt",
+      "docs/verification/offline-extraction-20261028/core-analysis-final.txt",
+      "docs/verification/offline-extraction-20261028/core-analysis.txt",
+      "docs/verification/offline-extraction-20261028/device-integration.txt",
+      "docs/verification/offline-extraction-20261028/example-analysis.txt",
+      "docs/verification/offline-extraction-20261028/example-tests-initial.txt",
+      "docs/verification/offline-extraction-20261028/example-tests.txt",
+      "docs/verification/offline-review-20261029/android-build.txt",
+      "docs/verification/offline-review-20261029/core-analysis.txt",
+      "docs/verification/offline-review-20261029/device-integration.txt",
+      "docs/verification/offline-review-20261029/example-analysis.txt",
+      "docs/verification/package-layout-20261029/android-build.txt",
+      "docs/verification/package-layout-20261029/core-analysis.txt",
+      "docs/verification/package-layout-20261029/example-analysis.txt",
+      "docs/verification/package-layout-20261029/example-tests.txt",
+      "docs/verification/package-layout-20261029/phone-1/device-integration.txt",
+      "docs/verification/package-layout-20261029/phone-2/device-integration.txt",
+      "docs/verification/package-layout-20261029/phone-analysis.txt",
+      "docs/verification/package-layout-20261029/phone-normal-build.txt"
+    ]
+  }
+}

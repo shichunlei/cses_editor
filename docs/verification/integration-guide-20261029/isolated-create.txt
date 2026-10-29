@@ -1,0 +1,17 @@
+Creating project cses_editor_host_sample...
+Resolving dependencies in `cses_editor_host_sample`...
+Downloading packages...
+Got dependencies in `cses_editor_host_sample`.
+Wrote 34 files.
+
+All done!
+You can find general documentation for Flutter at: https://docs.flutter.dev/
+Detailed API documentation is available at: https://api.flutter.dev/
+If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
+
+In order to run your empty application, type:
+
+  $ cd cses_editor_host_sample
+  $ flutter run
+
+Your empty application code is in cses_editor_host_sample/lib/main.dart.

@@ -1,0 +1,11 @@
+{
+  "path": "example/build/app/outputs/flutter-apk/app-debug.apk",
+  "sha256": "7d4ebb8458ed0d2b726d17406f3de5ade3d3580e62b642b5a07b61bf2360e06a",
+  "bytes": 109930656,
+  "required_assets": {
+    "assets/flutter_assets/packages/cses_editor/assets/mermaid/index.html": true,
+    "assets/flutter_assets/packages/cses_editor/assets/mermaid/mermaid.min.js": true,
+    "assets/flutter_assets/assets/images/daily_guidance_mountain.png": true
+  },
+  "clean_build": true
+}

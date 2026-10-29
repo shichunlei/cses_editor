@@ -1,0 +1,8 @@
+{
+  "production_files_unchanged": 187,
+  "tested_template_matches_current": true,
+  "document_links_passed": true,
+  "isolated_build_passed": true,
+  "example_dependency": false,
+  "collaboration_native_dependency": false
+}

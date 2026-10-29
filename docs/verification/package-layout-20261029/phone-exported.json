@@ -1,0 +1,75 @@
+{
+  "id": "root-journal-1793255918989056",
+  "flavour": "root",
+  "nodeType": "root",
+  "props": {
+    "fs": 16,
+    "lh": 2,
+    "color": "#3e4650"
+  },
+  "meta": {
+    "mobileGuidance": {
+      "version": 1,
+      "role": "document",
+      "plainDesktop": false,
+      "draft": {
+        "id": "journal-1793255918989056",
+        "date": "2026-10-29",
+        "createdAt": "2026-10-29T06:38:38.989056Z",
+        "updatedAt": "2026-10-29T06:40:11.221513Z",
+        "timezoneOffsetMinutes": 480
+      },
+      "sections": [
+        {
+          "key": "record"
+        }
+      ],
+      "closedSections": []
+    }
+  },
+  "children": [
+    {
+      "id": "section-8_aVTx",
+      "flavour": "paragraph",
+      "nodeType": "editable",
+      "props": {
+        "heading": 2,
+        "depth": 0
+      },
+      "meta": {
+        "mobileGuidance": {
+          "version": 1,
+          "role": "section",
+          "section": "record"
+        }
+      },
+      "children": [
+        {
+          "insert": "今日记录"
+        }
+      ]
+    },
+    {
+      "id": "DHZgIJ",
+      "flavour": "todo",
+      "nodeType": "editable",
+      "props": {
+        "checked": 1,
+        "depth": 0
+      },
+      "meta": {
+        "mobileGuidance": {
+          "version": 1,
+          "role": "content",
+          "section": "record",
+          "business": {}
+        }
+      },
+      "children": [
+        {
+          "insert": "Layout migration phone test你好"
+        }
+      ]
+    }
+  ]
+}

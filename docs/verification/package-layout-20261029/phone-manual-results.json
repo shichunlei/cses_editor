@@ -1,0 +1,42 @@
+{
+  "original": {
+    "device_path": "app_flutter/daily-guidance/offline-example.json",
+    "sha256": "4e2fc561aca44988b3673a2d76ff7b001b2cb9336cf7aaf310869068642d07b1",
+    "marker_present": true
+  },
+  "imported": {
+    "device_path": "files/journal-imports/3d5b171a584a4dba6e4adeebdfdc107f1fa3476ad4b26c6c9f2f4b086c4dedad/import-1793256062710058.json",
+    "sha256": "e724f90885b21484e0392cb128406ac394d996ee8592279a8ea33ffb73f1cce8",
+    "marker_present": true
+  },
+  "export": {
+    "bytes": 1469,
+    "checked_todo": true,
+    "file": "phone-exported.json"
+  },
+  "installed_apk": {
+    "application_id": "com.cses.offline.cses_offline_example",
+    "local_path": "/System/Volumes/Data/workspace/cses_editor/example/build/app/outputs/flutter-apk/app-debug.apk",
+    "sha256": "7d4ebb8458ed0d2b726d17406f3de5ade3d3580e62b642b5a07b61bf2360e06a",
+    "installed_sha256": "7d4ebb8458ed0d2b726d17406f3de5ade3d3580e62b642b5a07b61bf2360e06a",
+    "matches": true
+  },
+  "manual_checks": [
+    "Android key input text",
+    "Sogou Chinese pinyin nihao -> 你好 candidate committed",
+    "toolbar todo conversion",
+    "checkbox checked",
+    "preview",
+    "save and force-stop/relaunch/reopen",
+    "Android DocumentsUI JSON export",
+    "select exported JSON to import separate draft",
+    "return to original draft"
+  ],
+  "json_round_trip": {
+    "text_preserved": true,
+    "checked_preserved": true,
+    "date_preserved": true,
+    "separate_store": true,
+    "original_preserved": true
+  }
+}

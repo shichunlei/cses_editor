@@ -1,0 +1,36 @@
+{
+  "url": "https://github.com/shichunlei/appflowy-editor.git",
+  "revision": "9e7593134457eac9193a61ee4023a75de55fcc68",
+  "comparison": {
+    "lib": {
+      "local_files": 404,
+      "remote_files": 404,
+      "different": [],
+      "only_local": [],
+      "only_remote": []
+    },
+    "assets": {
+      "local_files": 72,
+      "remote_files": 72,
+      "different": [],
+      "only_local": [],
+      "only_remote": []
+    },
+    "test": {
+      "local_files": 215,
+      "remote_files": 215,
+      "different": [],
+      "only_local": [],
+      "only_remote": []
+    },
+    "pubspec.yaml": {
+      "identical": true
+    },
+    "LICENSE": {
+      "identical": true
+    },
+    "UPSTREAM.md": {
+      "identical": true
+    }
+  }
+}

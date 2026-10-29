@@ -1,0 +1,213 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +1: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +2: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +3: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +4: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +5: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:02 +6: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:02 +7: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:02 +8: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +9: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +10: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +11: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +12: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +13: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +14: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +15: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +16: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +17: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +18: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +19: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +20: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +21: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +22: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +23: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +24: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +25: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +26: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +27: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +28: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +29: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +30: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +31: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +32: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +33: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +34: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +35: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +36: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:04 +37: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +38: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +39: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +40: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +41: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +42: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +43: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +44: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +45: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +46: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +47: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +48: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +49: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +50: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +51: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +52: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +53: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +54: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +55: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +56: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +57: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +58: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +59: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +60: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +61: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:05 +62: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +63: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +64: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +65: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +66: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +67: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +68: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +69: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +70: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +71: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +72: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +73: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +74: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +75: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +76: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +77: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +78: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +79: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +80: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +81: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +82: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +83: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +84: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +85: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +86: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +87: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +88: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +89: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +90: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +91: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +92: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +93: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +94: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +95: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +96: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +97: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +98: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:06 +99: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +100: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +101: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +102: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +103: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +104: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +105: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +106: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +107: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +108: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +109: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +110: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +111: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +112: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +113: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +114: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +115: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +116: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +117: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +118: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +119: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +120: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +121: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +122: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +123: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +124: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:07 +125: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:08 +126: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:08 +127: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:08 +128: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:08 +129: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:08 +130: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:08 +131: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +132: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +133: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +134: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +135: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +136: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +137: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +138: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +139: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +139: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production cut shortcut reports a failed clipboard write and keeps the saved mention
+DocEditor: 复制或剪切失败: PlatformException(clipboard-unavailable, null, null, null)
+#0      JSONMethodCodec.decodeEnvelope (package:flutter/src/services/message_codecs.dart:168:7)
+#1      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:366:18)
+<asynchronous suspension>
+#2      Clipboard.setData (package:flutter/src/services/clipboard.dart:36:5)
+<asynchronous suspension>
+#3      LocalJournalController.copySelection (package:cses_offline_example/daily_guidance/local_journal_controller.dart:203:7)
+<asynchronous suspension>
+#4      _DocumentEditorViewState._copy (package:cses_editor/src/editor/document_editor_view.dart:231:7)
+<asynchronous suspension>
+
+00:09 +140: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +141: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_blockcraft_codec_test.dart: JSON menu exports live edits and opens a desktop snapshot in a separate editable route
+00:09 +142: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +143: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +144: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +145: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:09 +146: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +147: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +148: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +149: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:10 +150: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:11 +151: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:11 +152: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:11 +153: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:11 +154: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:11 +155: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:11 +156: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:11 +157: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:11 +158: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:11 +159: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:11 +159: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_regressions_test.dart: rejected shortcut paste shows a retry message and keeps the saved original
+DocEditor: 粘贴失败: Bad state: 粘贴内容超出日记支持的格式或容量
+#0      LocalJournalController.pasteFromClipboard (package:cses_offline_example/daily_guidance/local_journal_controller.dart:257:7)
+<asynchronous suspension>
+#1      _DocumentEditorViewState._paste (package:cses_editor/src/editor/document_editor_view.dart:209:7)
+<asynchronous suspension>
+
+00:12 +160: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +161: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +162: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +163: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +164: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +165: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +166: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +167: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +168: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +169: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +170: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +171: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:12 +172: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:13 +173: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:13 +174: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:13 +175: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:13 +176: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "第一行\n\n\n" / 1.0
+00:13 +177: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:13 +178: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:13 +179: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:13 +180: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:14 +181: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:14 +182: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:14 +183: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:14 +184: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: text/background colors, code and scripts render and persist
+00:15 +185: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: font size uses real selection and keeps list marker centered
+00:16 +186: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: malformed/unsupported persisted heading levels are rejected
+00:16 +187: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: paragraph alignment and flat indent preserve business identity
+00:16 +188: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: heading alignment and flat indent preserve business identity
+00:17 +189: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: bulleted_list alignment and flat indent preserve business identity
+00:18 +190: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: numbered_list alignment and flat indent preserve business identity
+00:18 +191: /System/Volumes/Data/workspace/cses_offline_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: todo_list alignment and flat indent preserve business identity
+00:19 +192: All tests passed!

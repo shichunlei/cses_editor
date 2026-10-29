@@ -1,0 +1,5 @@
+首轮Android设备集成测试：编辑、撤销/重做、预览、JSON入口、实际文件写入和重开断言均执行完成，并生成预览与重开截图。
+测试结束校验失败：A SemanticsHandle was active at the end of the test.
+定位：测试执行期间并发运行了uiautomator dump，触发设备无障碍语义开启，影响Flutter测试结束时的句柄计数。
+纠正：设备集成测试运行期间不再查询UI层级；不关闭生产无障碍能力、不跳过句柄断言、不修改Flutter SDK。
+首轮完整驱动日志含其他App进程输出，未纳入交付；此处保留原失败与处理经过。

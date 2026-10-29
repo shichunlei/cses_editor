@@ -1,0 +1,6 @@
+2026-10-28 Asia/Shanghai
+桌面配置仓库：http://npm.runtongqiuben.com/
+命令：npm view @ccc/blockcraft version --registry=http://npm.runtongqiuben.com/ --fetch-retries=0 --fetch-timeout=15000 --cache=/tmp/cses-offline-npm-20261028
+结果：ECONNRESET / socket hang up。实时latest待核对。
+桌面声明/Yarn锁：0.11.33；安装：0.11.17。本轮未升级。
+本地参考发布包：0.11.31，不能代替实时latest。

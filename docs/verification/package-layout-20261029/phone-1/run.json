@@ -1,0 +1,11 @@
+{
+  "copy_root": "/var/folders/km/_j0ys7ss7kd3wtbvnd4xmgjr0000gn/T/cses-layout-phone-1-j0fph_gw",
+  "application_id": "com.cses.offline.cses_offline_example.layoutcheck1",
+  "label": "今日导向·结构验证1",
+  "existing_app_data_touched": false,
+  "status": "finished",
+  "driver_exit": 1,
+  "pid": "28678",
+  "first_failure": "Missing per-test Android screenshot initialization",
+  "cleanup_note": "Flutter driver used namespace for cleanup; normal app package was absent and uninstall returned DELETE_FAILED_INTERNAL_ERROR. The isolated copy now uses its own namespace as well as applicationId."
+}

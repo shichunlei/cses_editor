@@ -1,0 +1,7 @@
+{
+  "normal_app_update": "not_completed",
+  "reason": "Phone installer foreground belonged to cses_mobile_collab_demo, not the independent editor. No action was taken on that prompt. Only this project local waiting adb install client was cancelled.",
+  "local_waiting_client_pid": 71415,
+  "review_app_integration_passed": true,
+  "existing_draft_hash_verification": "unavailable"
+}

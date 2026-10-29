@@ -1,0 +1,13 @@
+test_any_declared_external_path_is_rejected (test_verify_independence.IndependenceAuditTest.test_any_declared_external_path_is_rejected) ... ok
+test_clean_graph_and_provenance_comments_pass (test_verify_independence.IndependenceAuditTest.test_clean_graph_and_provenance_comments_pass) ... ok
+test_file_uri_inside_project_and_escaped_space_pass (test_verify_independence.IndependenceAuditTest.test_file_uri_inside_project_and_escaped_space_pass) ... ok
+test_fork_conditional_import_is_checked (test_verify_independence.IndependenceAuditTest.test_fork_conditional_import_is_checked) ... ok
+test_indirect_sqlite_variant_is_rejected (test_verify_independence.IndependenceAuditTest.test_indirect_sqlite_variant_is_rejected) ... ok
+test_native_configuration_is_checked (test_verify_independence.IndependenceAuditTest.test_native_configuration_is_checked) ... ok
+test_source_symlink_cannot_reach_original_workspace (test_verify_independence.IndependenceAuditTest.test_source_symlink_cannot_reach_original_workspace) ... ok
+test_transitive_external_locked_path_is_rejected (test_verify_independence.IndependenceAuditTest.test_transitive_external_locked_path_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.097s
+
+OK

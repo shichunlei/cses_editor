@@ -1,0 +1,94 @@
+Computing fixes in cses_editor...
+Applying fixes...
+
+lib/src/editor/appflowy_block_editor_adapter.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/blockcraft_json_codec.dart
+  curly_braces_in_flow_control_structures - 11 fixes
+
+lib/src/editor/blockcraft_snapshot_view.dart
+  curly_braces_in_flow_control_structures - 5 fixes
+
+lib/src/editor/collab_block_actions.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_block_locks.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_callout_block.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_column_block.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_date_card_block.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_date_card_settings.dart
+  curly_braces_in_flow_control_structures - 3 fixes
+
+lib/src/editor/collab_divider_settings.dart
+  curly_braces_in_flow_control_structures - 8 fixes
+
+lib/src/editor/collab_image_block.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_link_actions.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/src/editor/collab_person_card_block.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_person_card_settings.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_text_box_block.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/collab_text_box_settings.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/src/editor/collab_weather_block.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/src/editor/collab_weather_content.dart
+  curly_braces_in_flow_control_structures - 3 fixes
+
+lib/src/editor/collab_weather_settings.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/core/document_editor_controller.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/core/editor_configuration.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/src/editor/document_editor_view.dart
+  curly_braces_in_flow_control_structures - 4 fixes
+
+lib/src/editor/editor_shortcut_toolbar.dart
+  curly_braces_in_flow_control_structures - 29 fixes
+
+lib/src/editor/editor_text_presentation.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/src/editor/editor_user_mentions.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/src/model/collab_columns.dart
+  curly_braces_in_flow_control_structures - 4 fixes
+
+lib/src/model/collab_date_card.dart
+  curly_braces_in_flow_control_structures - 4 fixes
+
+lib/src/model/collab_person_card.dart
+  curly_braces_in_flow_control_structures - 4 fixes
+
+lib/src/model/collab_text_box.dart
+  curly_braces_in_flow_control_structures - 6 fixes
+
+lib/src/model/collab_weather.dart
+  curly_braces_in_flow_control_structures - 4 fixes
+
+108 fixes made in 30 files.

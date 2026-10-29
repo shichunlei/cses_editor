@@ -1,0 +1,95 @@
+{
+  "source_revision": "b39f50c7cdea08393f8ae856ae64dfbe10e542f1",
+  "files": [
+    {
+      "file": "file_journal_store.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "d379dc2488dfeec027649b46747cd091ce125deb41174ada9667ab672137e96c"
+    },
+    {
+      "file": "guidance_entries.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "2fb6fc416a1a85e4515a65e9a589e389d7e653fccc13b59c494e9736e13a5a0e"
+    },
+    {
+      "file": "guidance_people.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": false,
+      "source_sha256": "79b0fc3364ef7fa114146cbec6272effdfcf9e06c256b34133de4e718306fcdb"
+    },
+    {
+      "file": "journal_blockcraft_codec.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "a6ea7d8a96015f33da5f8815a0eb6e077f9e71bdf902ef204e6ce227750922ae"
+    },
+    {
+      "file": "journal_draft.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "66001bbc78f7a9e2e57d5346ba9d5ba167f69a11368aeab980917e2802cada69"
+    },
+    {
+      "file": "journal_editing.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "d6a2c7e2dfc144e5aac0c4aef209250ea413786330b2d311bf69d4e945a509b8"
+    },
+    {
+      "file": "journal_exchange_keys.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "03365bddc142e86885ef95c2f8a625baf86eba469ad43ddc44e92622974b173d"
+    },
+    {
+      "file": "journal_input.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "1298f166501e81085d9ef5f3c7aeeacb9b5c2fc38421b25cb4789b801dd2ab46"
+    },
+    {
+      "file": "journal_json_files.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "1cc8e6e488f89d3771fe3e58afe4ae1424d93cdb4f3b3ff86b857fe2ac714537"
+    },
+    {
+      "file": "journal_list_markers.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "7f73a84f15e4950cd2dca9ff8414b7c2b72b3248e91f35c07b25ae9c61781b25"
+    },
+    {
+      "file": "journal_ruled_content.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "b99367a854e0434d1cc8aeefdd89f158de8eb95d4c2d0f65ca2ca638c8861c61"
+    },
+    {
+      "file": "journal_store.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "ff8a703c1068125717c323d66d9e9e1f63943a8d2d34cdd39f7bf597bd731ebe"
+    },
+    {
+      "file": "journal_surface.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "4e657d8bf3094356852fa6d2f1afc841a9aa630edc9c687b4370ace54e4e383c"
+    },
+    {
+      "file": "local_journal_controller.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": true,
+      "source_sha256": "7dd23c485660e126d07ee86d7a2bbd67f082e2e722af85cebfea41ecc56e09f6"
+    },
+    {
+      "file": "local_journal_page.dart",
+      "present": true,
+      "unchanged_after_package_rename_and_format": false,
+      "source_sha256": "c35fa1b834e04afb43394338ede340236ee37a51d3cfece20845afc838cc775e"
+    }
+  ]
+}

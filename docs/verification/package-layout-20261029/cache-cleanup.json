@@ -1,0 +1,6 @@
+{
+  "cleaned_generated_example_build_and_dart_cache": true,
+  "cleaned_local_gradle_cache": true,
+  "old_root_had_only_empty_generated_directories": true,
+  "old_root_absent_after_clean_build": true
+}
