@@ -1,0 +1,18 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart
+00:00 +0: (setUpAll)
+00:00 +0: toolbar is reachable at 320.0/1.0
+00:02 +1: toolbar is reachable at 390.0/2.0
+00:02 +2: pilot native picker cancel resumes input without writing
+00:03 +3: pilot native picker rejects account round trips
+00:03 +4: custom pilot action preserves source and resumes input
+00:04 +5: help native picker cancel resumes input without writing
+00:05 +6: help native picker rejects account round trips
+00:05 +7: custom help action preserves source and resumes input
+00:05 +8: native picker cannot restore input after account changes
+00:06 +9: review regression: native picker revokes a changed cookie permanently
+00:06 +10: review regression: native picker revokes a changed user permanently
+00:06 +11: review regression: native picker revokes a changed company permanently
+00:06 +12: native picker releases its permission watch on cancel and page removal
+00:07 +13: native mention and Todo survive preview and saving
+00:07 +14: (tearDownAll)
+00:07 +14: All tests passed!
