@@ -49,3 +49,21 @@
 - [弹窗窄屏、大字及真实键盘：Android真机验证与修复](modal-device-20261029/report.md)
 
 - [今日导向与UI改动提交前检查](ui-commit-20261029/report.md)
+
+- [预览沉浸式页面与安全区](preview-immersive-20261030/report.md)
+
+- [预览滚动时隐藏分享和点赞](preview-scroll-actions-20261030/report.md)
+
+- [回滚预览滚动隐藏按钮](preview-scroll-actions-rollback-20261030/report.md)
+
+- [编辑与预览统一栏目间距](edit-section-spacing-20261030/report.md)
+
+- [今日导向完整图片与品牌分享](journal-image-share-20261030/report.md)
+
+- [分享图片 logo 米色底](share-brand-beige-20261030/report.md)
+
+- [分享图正文与 logo 紧凑衔接](share-brand-spacing-20261030/report.md)
+
+- [当前样例分享图间距确认](share-brand-confirmation-20261030/report.md)
+
+- [今日导向预览与图片分享提交前验证](daily-guidance-commit-20261030/report.md)

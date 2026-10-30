@@ -1,0 +1,3 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart
+00:00 +0: actions fit small preview with enlarged text and stay absent in editing
+00:01 +1: All tests passed!

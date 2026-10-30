@@ -1,0 +1,8 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions hide through scrolling, restore and preserve read-only actions
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions hide through scrolling, restore and preserve read-only actions
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:02 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: actions fit small preview with enlarged text and stay absent in editing
+00:02 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: actions fit small preview with enlarged text and stay absent in editing
+00:02 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: home exposes separate preview and edit routes for the same API record
+00:02 +6: All tests passed!

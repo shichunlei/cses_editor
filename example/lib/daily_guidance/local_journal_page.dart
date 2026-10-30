@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
-import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';
-import 'package:cses_offline_example/daily_guidance/ui/journal_bottom_sheet.dart';
+import 'package:cses_offline_example/daily_guidance/journal_share_page.dart';
+import 'package:cses_offline_example/daily_guidance/journal_image_actions.dart';
 import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +52,7 @@ class LocalJournalPage extends StatefulWidget {
   /// [sessionIdentity]用于身份失效检查，null为固定本地身份；变化后须重新打开页面。
   /// [storageScope] 为宿主账号及文档分区，默认 local；借用端口替换会冻结旧会话。
   /// [currentUser] 是宿主提供的当前用户资料，仅预览封面下展示；null 不显示用户栏。
+  /// [imageActions]借用宿主图片分享端口，默认使用当前平台实现，不持有账号。
   /// 服务存储 ApiJournalStore 使用显式保存，其他本地存储保留原自动保存行为。
   const LocalJournalPage({
     super.key,
@@ -62,7 +63,11 @@ class LocalJournalPage extends StatefulWidget {
     this.sessionIdentity,
     this.storageScope = 'local',
     this.currentUser,
+    this.imageActions = const JournalImageActions(),
   });
+
+  /// 图片分享/保存端口，由宿主创建并持有。
+  final JournalImageActions imageActions;
 
   /// 宿主当前用户的不可变展示快照；不从正文或全局账号读取，不写入 JSON。
   final CollabMentionUser? currentUser;
@@ -103,7 +108,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   /// 本次预览的演示点赞状态，不写入正文 JSON 或冒用后台计数。
   bool _previewLiked = false;
 
-  /// 分享面板打开期间阻止重复打开；面板和剪贴板异步结果只作用于原会话。
+  /// 分享预览打开期间阻止重复打开；截图与平台操作异步结果只作用于原会话。
   bool _sharing = false;
 
   /// 显式保存期间串行化编辑和退场，异步返回后复核文档、页面及会话。
@@ -180,6 +185,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         !identical(oldWidget.store, widget.store) ||
         oldWidget.storageScope != widget.storageScope ||
         !identical(oldWidget.hostServices, widget.hostServices) ||
+        !identical(oldWidget.imageActions, widget.imageActions) ||
         !identical(oldWidget.mentionDirectory, widget.mentionDirectory)) {
       _revokeSession();
     } else {
@@ -399,8 +405,8 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
   }
 
-  /// 为当前只读文档打开分享面板；复制可见正文，不包含隐藏栏目或接口元数据。
-  /// 面板由当前路由拥有，等待关闭后复核页面、账号及文档，不产生保存请求。
+  /// 为当前只读文档打开完整截图和品牌分享页；路由独占快照，不保存或滚动原文档。
+  /// 异步完成及平台操作前校验原页面、账号及文档；关闭后恢复分享入口。
   Future<void> _sharePreview() async {
     final journal = _journal;
     if (!_readOnly ||
@@ -412,57 +418,44 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
     setState(() => _sharing = true);
 
-    /// 判断分享是否仍属于同一页面、文档及宿主会话。
+    /// 判断截图和分享是否仍属于同一页面、文档及宿主会话。
     bool current() =>
         mounted &&
         _checkSession() &&
         identical(_journal, journal) &&
         !journal.closed &&
         !_leaving;
-    try {
-      final copy = await showJournalSheet<bool>(
-        context: context,
-        builder: (context) => JournalBottomSheet(
-          title: '分享',
-          icon: LucideIcons.share2,
-          child: OutlinedButton.icon(
-            key: const ValueKey('journal-share-copy'),
-            onPressed: () => Navigator.pop(context, true),
-            icon: const Icon(LucideIcons.copy, size: 18),
-            label: const Text('复制正文'),
-          ),
-        ),
-      );
-      if (copy != true || !current()) return;
-      final nodes = journalContentNodes(
-        journal.editor.editorState.document.root.children,
-      ).where((node) => node.delta != null).toList();
-      final body = nodes.isEmpty
-          ? ''
-          : journalSelectionPlainText(
-              nodes,
-              Selection(
-                start: Position(path: nodes.first.path),
-                end: Position(
-                  path: nodes.last.path,
-                  offset: nodes.last.delta!.length,
-                ),
+    final snapshot = journal.editor.editorState.document.toJson();
+    final route = MaterialPageRoute<void>(
+      builder: (_) => JournalSharePage(
+        document: snapshot,
+        commandContext: journal.editor.commandContext,
+        isCurrent: current,
+        width: MediaQuery.sizeOf(context).width.clamp(0, 680).toDouble(),
+        actions: widget.imageActions,
+        header:
+            journal
+                    .editor
+                    .editorState
+                    .document
+                    .root
+                    .attributes[journalPlainDesktopAttribute] ==
+                true
+            ? const SizedBox.shrink()
+            : _JournalHeader(
+                title: _title,
+                currentUser: widget.currentUser,
+                services: _services,
+                date: journal.date,
+                chooseDate: false,
+                onChoose: null,
+                onDate: (_) {},
               ),
-            );
-      await Clipboard.setData(
-        ClipboardData(text: '$_title\n${journal.date}\n$body'),
-      );
-      if (mounted && current()) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('正文已复制，可粘贴分享')));
-      }
-    } catch (_) {
-      if (mounted && current()) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('复制失败，请重试')));
-      }
+      ),
+    );
+    try {
+      await Navigator.of(context).push(route);
+      await route.completed;
     } finally {
       if (mounted) setState(() => _sharing = false);
     }
@@ -685,7 +678,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     ];
   }
 
-  /// 在[context]构建独立路由，保存状态与页面纸张分离，预览使用同样的栏目和日期头部。
+  /// 在[context]构建独立路由，保存状态与页面纸张分离，预览让纸张延伸到系统状态栏下，返回入口悬浮在封面上。
   @override
   Widget build(BuildContext context) {
     final journal = _journal;
@@ -699,6 +692,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         },
         child: Scaffold(
           backgroundColor: const Color(0xfffaf8f0),
+          extendBodyBehindAppBar: _readOnly,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: _readOnly && journal != null && !_sessionRevoked
@@ -718,16 +712,37 @@ class _LocalJournalPageState extends State<LocalJournalPage>
               : null,
           appBar: AppBar(
             titleSpacing: 0,
-            leadingWidth: 48,
+            leadingWidth: _readOnly ? 56 : 48,
             titleTextStyle: Theme.of(context).textTheme.titleMedium,
-            backgroundColor: const Color(0xfffaf8f0),
-            leading: IconButton(
-              key: const ValueKey('journal-back'),
-              tooltip: _remote || _readOnly ? '返回' : '返回并保存',
-              onPressed: _leaving ? null : () => unawaited(_leave()),
-              icon: const Icon(LucideIcons.chevronLeft),
+            backgroundColor: _readOnly
+                ? Colors.transparent
+                : const Color(0xfffaf8f0),
+            elevation: _readOnly ? 0 : null,
+            scrolledUnderElevation: _readOnly ? 0 : null,
+            forceMaterialTransparency: _readOnly,
+            systemOverlayStyle: _readOnly
+                ? SystemUiOverlayStyle.dark.copyWith(
+                    statusBarColor: Colors.transparent,
+                    systemStatusBarContrastEnforced: false,
+                  )
+                : null,
+            leading: Padding(
+              padding: _readOnly ? const EdgeInsets.all(4) : EdgeInsets.zero,
+              child: IconButton(
+                key: const ValueKey('journal-back'),
+                tooltip: _remote || _readOnly ? '返回' : '返回并保存',
+                style: _readOnly
+                    ? IconButton.styleFrom(
+                        backgroundColor: const Color(0x66000000),
+                        foregroundColor: Colors.white,
+                        shape: const CircleBorder(),
+                      )
+                    : null,
+                onPressed: _leaving ? null : () => unawaited(_leave()),
+                icon: const Icon(LucideIcons.chevronLeft),
+              ),
             ),
-            title: Text(_title),
+            title: _readOnly ? null : Text(_title),
             actions: [
               if (journal != null && !_readOnly) ...[
                 TextButton(
@@ -778,6 +793,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                         ),
                 )
               : SafeArea(
+                  top: !_readOnly,
                   child: Column(
                     children: [
                       ListenableBuilder(

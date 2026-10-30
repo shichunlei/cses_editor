@@ -1,0 +1,6 @@
+Waiting for another flutter command to release the startup lock...
+Analyzing 4 items...
+
+   info • Use the null-aware marker '?' rather than a null check via an 'if'. Try using '?' • lib/daily_guidance/journal_surface.dart:424:15 • use_null_aware_elements
+
+1 issue found. (ran in 16.4s)

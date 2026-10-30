@@ -1,0 +1,14 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: home exposes separate preview and edit routes for the same API record
+00:03 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:03 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: actions fit small preview with enlarged text and stay absent in editing
+00:03 +12: All tests passed!

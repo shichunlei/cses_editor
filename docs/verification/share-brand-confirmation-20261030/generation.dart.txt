@@ -1,0 +1,142 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:ui' as ui;
+
+import 'package:cses_editor/cses_editor.dart';
+import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
+import 'package:cses_offline_example/daily_guidance/guidance_host.dart';
+import 'package:cses_offline_example/daily_guidance/journal_image_actions.dart';
+import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+/// 本轮预览拥有的图片接收端口，不打开系统分享或写入用户后台。
+class _Export extends JournalImageActions {
+  /// Flutter 当前分享页生成的原始 PNG，由本轮预览持有。
+  Uint8List? png;
+
+  /// 接收 [bytes] 和 [target]，异步返回已接收；不向外部发送图片。
+  @override
+  Future<bool> perform(Uint8List bytes, JournalImageTarget target) async {
+    png = bytes;
+    return true;
+  }
+}
+
+/// 使用当前样例数据和真实分享组件生成全文 PNG 及底部查看窗口，不修改业务代码。
+void main() {
+  testWidgets('render current sample share and show the footer spacing', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.runAsync(() async {
+      await ui.loadFontFromList(
+        await File('/System/Library/Fonts/STHeiti Medium.ttc').readAsBytes(),
+        fontFamily: 'CurrentSharePreview',
+      );
+      await (FontLoader('packages/lucide_icons_flutter/Lucide')..addFont(
+            rootBundle.load('packages/lucide_icons_flutter/assets/lucide.ttf'),
+          ))
+          .load();
+    });
+    final record =
+        jsonDecode(File('文档完整数据结构.json').readAsStringSync())
+            as Map<String, dynamic>;
+    final api = MockGuidanceApi(record: record, latency: Duration.zero);
+    final output = _Export();
+    await tester.pumpWidget(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: 'CurrentSharePreview'),
+        home: LocalJournalPage(
+          store: ApiJournalStore(api: api, recordId: record['id'] as String),
+          mode: JournalPageMode.preview,
+          currentUser: const CollabMentionUser(
+            id: 'sample-chen',
+            name: '示例小陈',
+            department: '示例团队',
+            position: '前端开发',
+          ),
+          hostServices: createDemoGuidanceHostServices(),
+          imageActions: output,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('journal-share')));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 350));
+    for (
+      var i = 0;
+      i < 120 &&
+          find.byKey(const ValueKey('journal-share-image')).evaluate().isEmpty;
+      i++
+    ) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 25)),
+      );
+      await tester.pump();
+    }
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('journal-share-image')), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('journal-share-save')));
+    await tester.pumpAndSettle();
+    expect(output.png, isNotNull);
+    expect(await api.fetch(record['id'] as String), record);
+    await tester.runAsync(
+      () => File(
+        '../docs/verification/share-brand-confirmation-20261030/full-share.png',
+      ).writeAsBytes(output.png!),
+    );
+    await tester.pumpWidget(const SizedBox());
+    await tester.pumpAndSettle();
+
+    // 直接显示同一张 PNG 的底部窗口，未重新排版或修改导出的像素。
+    await tester.binding.setSurfaceSize(const Size(390, 600));
+    final boundary = GlobalKey();
+    await tester.pumpWidget(
+      RepaintBoundary(
+        key: boundary,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            backgroundColor: const Color(0xfffaf8f0),
+            body: SingleChildScrollView(
+              child: Image.memory(
+                output.png!,
+                width: 390,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -5000),
+    );
+    await tester.pumpAndSettle();
+    await tester.runAsync(() async {
+      final picture =
+          await (boundary.currentContext!.findRenderObject()!
+                  as RenderRepaintBoundary)
+              .toImage(pixelRatio: 2);
+      try {
+        final data = await picture.toByteData(format: ui.ImageByteFormat.png);
+        await File(
+          '../docs/verification/share-brand-confirmation-20261030/footer-detail.png',
+        ).writeAsBytes(data!.buffer.asUint8List());
+      } finally {
+        picture.dispose();
+      }
+    });
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(const SizedBox());
+    await tester.pumpAndSettle();
+  });
+}

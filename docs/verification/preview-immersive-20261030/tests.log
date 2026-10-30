@@ -1,0 +1,13 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions float, toggle locally and copy readable text without saving
+00:01 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview actions float, toggle locally and copy readable text without saving
+00:02 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:02 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:03 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:03 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_spacing_test.dart: preview section gaps stay within two lines at (390.0, 1.0)
+00:03 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_spacing_test.dart: preview section gaps stay within two lines at (390.0, 1.0)
+00:03 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_user_test.dart: current user is optional and hidden in editing; long labels fit narrow preview
+00:03 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: home exposes separate preview and edit routes for the same API record
+00:03 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: home exposes separate preview and edit routes for the same API record
+00:03 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: home exposes separate preview and edit routes for the same API record
+00:04 +11: All tests passed!

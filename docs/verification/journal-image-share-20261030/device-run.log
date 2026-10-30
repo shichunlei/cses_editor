@@ -1,0 +1,193 @@
+Launching lib/main.dart on MTN AN00 in debug mode...
+Running Gradle task 'assembleDebug'...                             35.8s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...
+W/FlutterAnimationAdvance(17931): FlutterAnimationAdvance getInstance()
+Installing build/app/outputs/flutter-apk/app-debug.apk...           4.8s
+W/FlutterAnimationAdvance(13164): FlutterAnimationAdvance getInstance()
+I/FlutterActivityAndFragmentDelegate(13164): If you are attempting to set --enable-dart-profiling via Intent extras to launch a Flutter component outside of using the Flutter CLI, note that support for setting engine flags on Android via Intent will soon be dropped; see https://github.com/flutter/flutter/issues/180686 for more information on this breaking change. To migrate, set --enable-dart-profiling or any other flags specified via Intent extras on the command line instead or see https://github.com/flutter/flutter/blob/main/docs/engine/Flutter-Android-Engine-Flags.md for alternative methods.
+D/FlutterJNI(13164): Beginning load of flutter...
+D/FlutterJNI(13164): flutter (null) was loaded normally!
+I/flutter (13164): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+D/FlutterRenderer(13164): Width is zero. 0,0
+Syncing files to device MTN AN00...
+I/HnPgAppThreadImpl(13164): late FAS register
+I/Choreographer(13164): Skipped 152 frames!  The application may be doing too much work on its main thread.
+I/AnimationPromotionUtils(13164): com.cses.offline.cses_offline_example ensureViewAnimationPromotionEnabled: 0
+D/PhoneWindow(13164): onViewRootImplSet activityToken android.os.BinderProxy@3dd7755,activityClientRecord ActivityRecord{1452a5b token=android.os.BinderProxy@3dd7755 {com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity}},isHnNavigationHide false isHidePrivateFlag = false
+D/HwPhoneWindow(13164): onViewRootImplSet activityToken android.os.BinderProxy@3dd7755,activityClientRecord ActivityRecord{1452a5b token=android.os.BinderProxy@3dd7755 {com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity}},isHwNavigationHide false
+D/HiTouch_PressGestureDetector(13164): onAttached:1
+I/WindowExtensionsImpl(13164): isActivityEmbeddingEnabled
+I/WindowExtensionsImpl(13164): Initializing Window Extensions, vendor API level=9, activity embedding enabled=true
+I/SurfaceView(13164): 10944703 attach
+I/VRI[MainActivity](13164): addSurfaceChangedCallback: callback = io.flutter.embedding.android.FlutterSurfaceView{a700bf V.E...... ......I. 0,0-0,0}
+I/SurfaceView(13164): 10944703 win vis 0
+D/FullScreenUtils(13164): isNeedToHideStatusBar: splitscreenstate=0
+D/FlutterRenderer(13164): Width is zero. 0,0
+W/libc    (13164): Access denied finding property "ro.debuggable"
+W/offline_example(13164): type=1400 audit(0.0:588145): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c37,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+D/VRI[MainActivity](13164): relayoutWindow: mRelayoutRequested = true
+W/libc    (13164): Access denied finding property "ro.debuggable"
+W/offline_example(13164): type=1400 audit(0.0:588146): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c37,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+W/libc    (13164): Access denied finding property "sys.use_pre_composite.switch"
+I/BufferQueueConsumer(13164): [](id:336c00000000,api:0,p:-1,c:13164) connect: controlledByApp=false
+W/offline_example(13164): type=1400 audit(0.0:588147): avc:  denied  { read } for  name="u:object_r:agp_support_pre_composite_prop:s0" dev="tmpfs" ino=214 scontext=u:r:untrusted_app:s0:c37,c257,c512,c768 tcontext=u:object_r:agp_support_pre_composite_prop:s0 tclass=file permissive=0
+I/BufferQueueCore(13164): BLASTBufferQueue : comm:offline_example isTargetApp:0
+W/libc    (13164): Access denied finding property "ro.debuggable"
+W/offline_example(13164): type=1400 audit(0.0:588148): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c37,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+I/VariableRefreshRateUtils(13164): isEnabled featureEnabled: 0 logMode: 1
+D/FullScreenUtils(13164): isNeedToHideStatusBar: splitscreenstate=0
+V/VRI[MainActivity](13164): Visible with new config: {1.0 460mcc7mnc [zh_CN_#Hans] ldltr sw369dp w369dp h812dp 520dpi nrml long hdr widecg port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1200, 2640) mAppBounds=Rect(0, 0 - 1200, 2640) mMaxBounds=Rect(0, 0 - 1200, 2640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0 mPopOverMode=undefined} suim:1 fontWeightScale:100 changeUserFlag:0 changeUiModeFlag:0 fullScreenVideoFlag:0 splitScreenState:0 landScapeFreeformFlag:1 hoverMode:0 changeIconStyleFlag:0 changeThemeStyleFlag:0 transparentMode:2097152 s.2 fontWeightAdjustment=0}
+V/VRI[MainActivity](13164): Applying new config to window com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity, globalConfig: {1.0 460mcc7mnc [zh_CN_#Hans] ldltr sw369dp w369dp h812dp 520dpi nrml long hdr widecg port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1200, 2640) mAppBounds=Rect(0, 0 - 1200, 2640) mMaxBounds=Rect(0, 0 - 1200, 2640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mPopOverMode=undefined} suim:1 fontWeightScale:100 changeUserFlag:0 changeUiModeFlag:0 fullScreenVideoFlag:0 splitScreenState:0 landScapeFreeformFlag:1 hoverMode:0 changeIconStyleFlag:0 changeThemeStyleFlag:0 transparentMode:2097152 s.4590 fontWeightAdjustment=0}, overrideConfig: {1.0 460mcc7mnc [zh_CN_#Hans] ldltr sw369dp w369dp h812dp 520dpi nrml long hdr widecg port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1200, 2640) mAppBounds=Rect(0, 0 - 1200, 2640) mMaxBounds=Rect(0, 0 - 1200, 2640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0 mPopOverMode=undefined} suim:1 fontWeightScale:100 changeUserFlag:0 changeUiModeFlag:0 fullScreenVideoFlag:0 splitScreenState:0 landScapeFreeformFlag:1 hoverMode:0 changeIconStyleFlag:0 changeThemeStyleFlag:0 transparentMode:2097152 s.2 fontWeightAdjustment=0}
+D/libEGL  (13164): [eglCreateWindowSurface] start window is 0xb40000774aef3620
+I/BufferQueueProducer(13164): [VRI[MainActivity]#0(BLAST Consumer)0](id:336c00000000,api:0,p:-1,c:13164) connect: api=1 producerControlledByApp=true
+D/FlutterJNI(13164): Sending viewport metrics to the engine.
+I/SurfaceView(13164): 10944703 setWindowStopped false
+W/ViewTreeObserver(13164): onPreDraw return false io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2@154e9db
+W/libc    (13164): Access denied finding property "ro.debuggable"
+I/BufferQueueConsumer(13164): [](id:336c00000001,api:0,p:-1,c:13164) connect: controlledByApp=false
+W/offline_example(13164): type=1400 audit(0.0:588149): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c37,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+I/SurfaceView(13164): 10944703 create Surface(name=a700bf SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity])/@0xaca7c78 Surface(name=Background for a700bf SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity])/@0x6f3bf51 Surface(name=a700bf SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity](BLAST))/@0x3b953b6 android.graphics.BLASTBufferQueue@22e48b7
+I/BufferQueueProducer(13164): [a700bf SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity]#1(BLAST Consumer)1](id:336c00000001,api:0,p:-1,c:13164) connect: api=1 producerControlledByApp=true
+W/qdgralloc(13164): GetSize: Pixel format: 0x3b is not supported by gralloc
+W/qdgralloc(13164): gralloc failed to allocate buffer for size 0 format 59 AWxAH 1x1 usage 2816
+E/Gralloc4(13164): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator(13164): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 2
+D/GraphicBufferAllocator(13164): Allocated buffers:
+D/GraphicBufferAllocator(13164): Total allocated (estimate): 0.00 KB
+E/AHardwareBuffer(13164): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+W/qdgralloc(13164): GetSize: Pixel format: 0x3b is not supported by gralloc
+W/qdgralloc(13164): gralloc failed to allocate buffer for size 0 format 59 AWxAH 1x1 usage 2816
+E/Gralloc4(13164): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator(13164): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 2
+D/GraphicBufferAllocator(13164): Allocated buffers:
+D/GraphicBufferAllocator(13164): Total allocated (estimate): 0.00 KB
+E/AHardwareBuffer(13164): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+W/qdgralloc(13164): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(13164): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(13164): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(13164): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(13164): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+I/SurfaceView(13164): updateSurface: handleSyncNoBuffer
+I/SurfaceCallbackHelper(13164): Run surfaceRedrawNeededAsync of app because callback is Callback2
+E/RtgSchedIpcFile(13164): RtgSchedIpcFile xxx failed to open /proc/13164/rtg
+E/RtgSchedIpcFile(13164): RtgSchedIpcFile xxx success to open /proc/rtg_gki/ioctl.
+I/RmeSchedManager(13164): init Rme, version is: v1.0
+I/RmeSchedManager(13164): init Rme, version is: v1.0
+I/RtgSchedEvent(13164): current pid:13164 AppType:-1
+I/HnContentRecognizerManager(13164): CacheHandlerThread onLooperPrepared, mHandler created
+W/libc    (13164): Access denied finding property "ro.debuggable"
+D/HWUI    (13164): disableOutlineDraw is true
+I/offline_example(13164): Compiler allocated 8003KB to compile void android.view.ViewRootImpl.performTraversals()
+I/DE_TS HnDisplayEngineManager(13164): init eye protection mode:com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity
+I/SurfaceControl(13164): nativeRelease 0xb4000075eaea0830 count: 5 name: com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity#32986
+D/VRI[MainActivity](13164): relayoutWindow: mRelayoutRequested = true
+D/FullScreenUtils(13164): isNeedToHideStatusBar: splitscreenstate=0
+W/ViewTreeObserver(13164): onPreDraw return false io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2@154e9db
+D/RtgSchedIpcFile(13164): setCommandByIoctl failed ret:-1, cmdid:22, errno:103
+I/SurfaceControl(13164): nativeRelease 0xb4000075eae9fcf0 count: 1 name: Surface(name=f9c7047 StatusBar)/@0x394236a - animation-leash of insets_animation#32987
+I/SurfaceControl(13164): nativeRelease 0xb4000075eaea0950 count: 1 name: Surface(name=81afc96 NavigationBar0)/@0x1490c36 - animation-leash of insets_animation#32988
+D/RtgSchedIpcFile(13164): setCommandByIoctl failed ret:-1, cmdid:23, errno:103
+D/WindowLayoutComponentImpl(13164): Register WindowLayoutInfoListener on Context=com.cses.offline.cses_offline_example.MainActivity@ee6f2ea, of which baseContext=android.app.ContextImpl@e1e0789
+I/HwForceDarkManager(13164): setAllowedHwForceDark:false package:com.cses.offline.cses_offline_example mCurrProcessState:0 mIsPackageNameChange:false hwForceDarkState:0 isViewAllowedForceDark:true isLastHonorForceDark:false
+W/libc    (13164): Access denied finding property "ro.debuggable"
+I/HwViewRootImpl(13164): removeInvalidNode jank list is null
+D/FlutterJNI(13164): Sending viewport metrics to the engine.
+I/FixedFlowFrameManager(13164): new FixedFlowFrameManager
+E/FixedFlowFrameManager(13164): initAndCheck: configType is 0, skip FixedFlowFrame
+I/VRI[MainActivity](13164): send MSG_WINDOW_FOCUS_CHANGED msg
+I/InputEventReceiver(13164): consumeEvents focus, 1
+V/ImeFocusController(13164): onWindowFocus: com.android.internal.policy.DecorView{411f3a8 V.E...... R....... 0,0-1200,2640}[MainActivity] softInputMode=STATE_UNSPECIFIED|ADJUST_RESIZE|IS_FORWARD_NAVIGATION
+V/InputMethodManager(13164): Restarting due to mRestartOnNextWindowFocus as true
+W/InputMethodManager(13164): startInputReason = 1
+I/ImeTracker(13164): com.cses.offline.cses_offline_example:a20682d7: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/InputMethodManager(13164): handleMessage: MSG_SET_ACTIVE true, was false
+V/InputMethodManager(13164): Starting input: Bind result=InputBindResult{result=SUCCESS_WAITING_IME_SESSION method=null id=com.sohu.inputmethod.sogou.honor/.SogouIME sequence=3510 result=1 isInputMethodSuppressingSpellChecker=false}
+I/InputMethodManager(13164): handleMessage: MSG_BIND 3510,com.sohu.inputmethod.sogou.honor/.SogouIME
+W/InputMethodManager(13164): startInputReason = 6
+V/InputMethodManager(13164): Starting input: finished by someone else. view=DecorView{411f3a8},focus=false,windowFocus=true,window=android.view.ViewRootImpl$W@ece9d43,displayId=0,temporaryDetach=false,hasImeFocus=true servedView=DecorView{411f3a8},focus=false,windowFocus=true,window=android.view.ViewRootImpl$W@ece9d43,displayId=0,temporaryDetach=false,hasImeFocus=true mServedConnecting=false
+D/RtgSchedIpcFile(13164): setCommandByIoctl failed ret:-1, cmdid:22, errno:103
+I/SurfaceControl(13164): nativeRelease 0xb4000075eaeb1090 count: 1 name: Surface(name=f9c7047 StatusBar)/@0x394236a - animation-leash of insets_animation#32987
+I/SurfaceControl(13164): nativeRelease 0xb4000075eaeb3250 count: 1 name: Surface(name=81afc96 NavigationBar0)/@0x1490c36 - animation-leash of insets_animation#32988
+D/RtgSchedIpcFile(13164): setCommandByIoctl failed ret:-1, cmdid:23, errno:103
+Syncing files to device MTN AN00...                                326ms
+
+Flutter run key commands.
+r Hot reload. 🔥🔥🔥
+R Hot restart.
+h List all available interactive commands.
+d Detach (terminate "flutter run" but leave application running).
+c Clear the screen
+q Quit (terminate the application on the device).
+
+A Dart VM Service on MTN AN00 is available at: http://127.0.0.1:52285/ATSITEFEhys=/
+The Flutter DevTools debugger and profiler on MTN AN00 is available at: http://127.0.0.1:52285/ATSITEFEhys=/devtools/?uri=ws://127.0.0.1:52285/ATSITEFEhys=/ws
+I/AwareBitmapCacher(13164): init lrucache size: 3145728 pid=13164
+V/Resource(13164): printErrorResource, maybe not an error because module has entative action to load resource.
+D/ProfileInstaller(13164): Installing profile for com.cses.offline.cses_offline_example
+I/[Smart Gc](13164): heap expand: 67108864
+W/FinalizerDaemon(13164): type=1400 audit(0.0:588153): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c37,c257,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0
+W/libc    (13164): Access denied finding property "ro.debuggable"
+W/offline_example(13164): type=1400 audit(0.0:588154): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c37,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+I/Hwaps   (13164): APS: EventAnalyzed: initAPS: version is 11.0.0.4
+D/Hwaps   (13164): Fpsrequest create,type:EXACTLY_IDENTIFY
+D/Hwaps   (13164): Fpsrequest create,type:EXACTLY_IDENTIFY
+D/Hwaps   (13164): Fpsrequest create,type:OPENGL_SETTING
+D/Hwaps   (13164): FpsController create
+D/Hwaps   (13164): APS: EventAnalyzed: reInitFpsPara :mBaseFps = 120; mMaxFps = 120
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+D/HwViewRootImpl(13164): GPLOG: params  TraceInputParams 0 pkg empty self com.cses.offline.cses_offline_example
+W/offline_example(13164): Missing inline cache for int android.view.InputEventAssigner.processEvent(android.view.InputEvent)
+W/offline_example(13164): Missing inline cache for int android.view.InputEventAssigner.processEvent(android.view.InputEvent)
+W/offline_example(13164): Missing inline cache for int android.view.InputEventAssigner.processEvent(android.view.InputEvent)
+W/offline_example(13164): Missing inline cache for int android.view.ViewRootImpl$EarlyPostImeInputStage.processMotionEvent(android.view.ViewRootImpl$QueuedInputEvent)
+W/offline_example(13164): Missing inline cache for int android.view.ViewRootImpl$EarlyPostImeInputStage.processMotionEvent(android.view.ViewRootImpl$QueuedInputEvent)
+W/offline_example(13164): Missing inline cache for int android.view.ViewRootImpl$EarlyPostImeInputStage.processPointerEvent(android.view.ViewRootImpl$QueuedInputEvent)
+D/Hwaps   (13164): APS: EventAnalyzed: registerCallbackInApsManagerService, mPkgName:com.cses.offline.cses_offline_example; result = false
+W/HwApsManager(13164): HwApsManagerService, registerCallback, start !
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+I/HiTouch_PressGestureDetector(13164): checkDoublePointerLimit: false
+W/HiTouch_PressGestureDetector(13164): [HiTouch Stop]checkDoublePointerMove
+
+Application finished.

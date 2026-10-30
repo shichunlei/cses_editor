@@ -1,0 +1,32 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart
+00:00 +0: preview shares the full branded PNG to each target without saving the document
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+pumpAndSettle timed out
+
+When the exception was thrown, this was the stack:
+#0      WidgetTester.pumpAndSettle.<anonymous closure> (package:flutter_test/src/widget_tester.dart:717:11)
+<asynchronous suspension>
+#1      TestAsyncUtils.guard.<anonymous closure> (package:flutter_test/src/test_async_utils.dart:130:27)
+<asynchronous suspension>
+#2      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart:164:7)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  preview shares the full branded PNG to each target without saving the document
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:07 +0 -1: preview shares the full branded PNG to each target without saving the document [E]
+  Test failed. See exception logs above.
+  The test description was: preview shares the full branded PNG to each target without saving the document
+
+00:07 +0 -1: actions fit small preview with enlarged text and stay absent in editing
+00:08 +1 -1: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document

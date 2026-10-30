@@ -1,0 +1,454 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_conversion_test.dart: T menu directly converts bulleted_list to numbered_list in journal section
+00:02 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/mention_avatar_test.dart: JournalPageMode.edit shares avatars across user/help/pilot and keeps original task icon
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/mention_avatar_test.dart: JournalPageMode.edit shares avatars across user/help/pilot and keeps original task icon
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits only bodyContent on save
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:02 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +26: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:03 +27: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +28: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +29: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +30: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +31: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +32: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +33: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +34: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +35: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +36: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +37: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +38: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +39: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +40: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_entries_layout_test.dart: 真实页面自定义都来帮确认后保留原文并插入、保存、预览和取消
+00:04 +41: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:05 +42: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:05 +43: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:05 +44: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:05 +45: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:05 +46: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:05 +47: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:06 +48: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:06 +49: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:06 +50: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:06 +51: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +52: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +53: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +54: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +55: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +56: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +57: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +58: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +59: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +60: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +61: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +62: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +63: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +64: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:06 +65: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:07 +66: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:07 +67: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:07 +68: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: same paper layout in edit and preview at 390.0/1.0
+00:07 +69: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +70: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +71: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +72: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +73: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +74: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +75: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +76: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +77: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:07 +78: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:08 +79: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:08 +80: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:08 +81: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:08 +82: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:08 +83: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:08 +84: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:08 +85: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:08 +86: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +87: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +88: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +89: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +90: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +91: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +92: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +93: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +94: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +95: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +96: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +97: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +98: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +99: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +100: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +101: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +102: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +103: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +104: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +105: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +106: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +107: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +108: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +109: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +110: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +111: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +112: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +113: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +114: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +115: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +116: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +117: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +118: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +119: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +120: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +121: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +122: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +123: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +124: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +125: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +126: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +127: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +128: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +129: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +130: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +131: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +132: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +133: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +134: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +135: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +136: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +137: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker cancel resumes input without writing
+00:10 +138: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker cancel resumes input without writing
+00:10 +139: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker cancel resumes input without writing
+00:10 +140: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker cancel resumes input without writing
+00:10 +141: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +142: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +143: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +144: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +145: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +146: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +147: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +148: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +149: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +150: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +151: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +152: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +153: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +154: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +155: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +156: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:10 +157: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:11 +158: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:11 +159: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:11 +160: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:11 +161: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+00:11 +162: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: [
+            472.71428571428567,
+            504.71428571428567,
+            536.7142857142857,
+            568.7142857142857,
+            600.7142857142857
+          ]
+  Actual: [
+            416.71428571428567,
+            448.71428571428567,
+            480.71428571428567,
+            512.7142857142857,
+            544.7142857142857
+          ]
+   Which: at location [0] is <416.71428571428567> instead of <472.71428571428567>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart:146:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart line 146
+The test description was:
+  list markers align with first text line at scale 1.0 / wrap false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:11 +162 -1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:11 +162 -1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false [E]
+  Test failed. See exception logs above.
+  The test description was: list markers align with first text line at scale 1.0 / wrap false
+
+00:11 +163 -1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:11 +163 -1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: [
+            472.71428571428567,
+            536.7142857142857,
+            600.7142857142857,
+            664.7142857142857,
+            728.7142857142857
+          ]
+  Actual: [
+            416.71428571428567,
+            480.71428571428567,
+            544.7142857142857,
+            608.7142857142857,
+            672.7142857142857
+          ]
+   Which: at location [0] is <416.71428571428567> instead of <472.71428571428567>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart:146:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart line 146
+The test description was:
+  list markers align with first text line at scale 1.0 / wrap true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:11 +163 -2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:11 +163 -2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap true [E]
+  Test failed. See exception logs above.
+  The test description was: list markers align with first text line at scale 1.0 / wrap true
+
+00:12 +164 -2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production copy shortcut expands mention and the result pastes as valid text
+00:12 +165 -2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +165 -2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 2.0 / wrap false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: [
+            722.5142857142857,
+            786.5142857142857,
+            850.5142857142857,
+            914.5142857142857,
+            978.5142857142857
+          ]
+  Actual: [
+            666.5142857142857,
+            730.5142857142857,
+            794.5142857142857,
+            858.5142857142857,
+            922.5142857142857
+          ]
+   Which: at location [0] is <666.5142857142857> instead of <722.5142857142857>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart:146:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart line 146
+The test description was:
+  list markers align with first text line at scale 2.0 / wrap false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:12 +165 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +165 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 2.0 / wrap false [E]
+  Test failed. See exception logs above.
+  The test description was: list markers align with first text line at scale 2.0 / wrap false
+
+00:12 +166 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +166 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_clipboard_ui_test.dart: production cut shortcut reports a failed clipboard write and keeps the saved mention
+DocEditor: 复制或剪切失败: PlatformException(clipboard-unavailable, null, null, null)
+#0      JSONMethodCodec.decodeEnvelope (package:flutter/src/services/message_codecs.dart:168:7)
+#1      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:366:18)
+<asynchronous suspension>
+#2      Clipboard.setData (package:flutter/src/services/clipboard.dart:36:5)
+<asynchronous suspension>
+#3      LocalJournalController.copySelection (package:cses_offline_example/daily_guidance/local_journal_controller.dart:206:7)
+<asynchronous suspension>
+#4      _DocumentEditorViewState._copy (package:cses_editor/src/editor/document_editor_view.dart:231:7)
+<asynchronous suspension>
+
+00:12 +167 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +168 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +169 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +170 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +170 -3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 2.0 / wrap true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: [
+            722.5142857142857,
+            978.5142857142857,
+            1234.5142857142857,
+            1554.5142857142857,
+            1874.5142857142857
+          ]
+  Actual: [
+            666.5142857142857,
+            922.5142857142857,
+            1178.5142857142857,
+            1498.5142857142857,
+            1818.5142857142857
+          ]
+   Which: at location [0] is <666.5142857142857> instead of <722.5142857142857>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart:146:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart line 146
+The test description was:
+  list markers align with first text line at scale 2.0 / wrap true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:12 +170 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +170 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 2.0 / wrap true [E]
+  Test failed. See exception logs above.
+  The test description was: list markers align with first text line at scale 2.0 / wrap true
+
+00:12 +171 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +172 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:12 +173 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:13 +174 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:13 +175 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:13 +176 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:13 +177 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:13 +178 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:14 +179 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:14 +180 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: journal spacing renders saves reopens and resets
+00:14 +181 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: ctrl+shift+v pastes plain text atomically, saves and supports undo: https://example.com
+00:14 +182 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:14 +183 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:14 +184 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:14 +185 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:14 +186 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:14 +187 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:14 +188 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +188 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: rejected shortcut paste shows a retry message and keeps the saved original
+DocEditor: 粘贴失败: Bad state: 粘贴内容超出日记支持的格式或容量
+#0      LocalJournalController.pasteFromClipboard (package:cses_offline_example/daily_guidance/local_journal_controller.dart:253:7)
+<asynchronous suspension>
+#1      _DocumentEditorViewState._paste (package:cses_editor/src/editor/document_editor_view.dart:209:7)
+<asynchronous suspension>
+
+00:15 +189 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +190 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +191 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +192 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +193 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +194 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +195 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +196 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +197 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +198 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (320.0, 1.0)
+00:15 +199 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:15 +200 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:16 +201 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:16 +202 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:16 +202 -4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "第一行\n" / 1.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: [32.0, 64.0, 96.0]
+  Actual: [32.0, 64.0]
+   Which: at location [2] is [32.0, 64.0] which shorter than expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart:547:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart line 547
+The test description was:
+  all soft lines remain ruled in edit and preview: "第一行\n" / 1.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:16 +202 -5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:16 +202 -5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "第一行\n" / 1.0 [E]
+  Test failed. See exception logs above.
+  The test description was: all soft lines remain ruled in edit and preview: "第一行\n" / 1.0
+
+00:16 +203 -5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:16 +204 -5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:16 +205 -5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:16 +205 -5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "第一行\n" / 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: [64.0, 128.0, 192.0]
+  Actual: [64.0, 128.0]
+   Which: at location [2] is [64.0, 128.0] which shorter than expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart:547:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart line 547
+The test description was:
+  all soft lines remain ruled in edit and preview: "第一行\n" / 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:16 +205 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:16 +205 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "第一行\n" / 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: all soft lines remain ruled in edit and preview: "第一行\n" / 2.0
+
+00:17 +206 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: H1-H6 render and survive preview/reopen at (390.0, 2.0)
+00:17 +207 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_regressions_test.dart: all soft lines remain ruled in edit and preview: "\n\n" / 2.0
+00:17 +208 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: text/background colors, code and scripts render and persist
+00:17 +209 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: text/background colors, code and scripts render and persist
+00:18 +210 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: font size uses real selection and keeps list marker centered
+00:18 +211 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: malformed/unsupported persisted heading levels are rejected
+00:18 +212 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: paragraph alignment and flat indent preserve business identity
+00:19 +213 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: heading alignment and flat indent preserve business identity
+00:19 +214 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: bulleted_list alignment and flat indent preserve business identity
+00:20 +215 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: numbered_list alignment and flat indent preserve business identity
+00:21 +216 -6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_format_toolbar_test.dart: todo_list alignment and flat indent preserve business identity
+00:21 +217 -6: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap false
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 1.0 / wrap true
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 2.0 / wrap false
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_list_markers_test.dart: list markers align with first text line at scale 2.0 / wrap true
+  ... and 2 more

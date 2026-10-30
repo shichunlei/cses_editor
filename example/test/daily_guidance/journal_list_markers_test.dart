@@ -29,9 +29,12 @@ class _Store implements JournalStore {
 EditorState _state(WidgetTester tester) =>
     tester.widget<AppFlowyEditor>(find.byType(AppFlowyEditor)).editorState;
 
-/// 在[tester]里核对每个列表图形中心与正文第一行的实际行框中心，返回全页标记中心纵坐标。
+/// 在 [tester] 核对列表标记与正文首行中心，返回相对栏目顶部的纵坐标，排除页头差异。
 List<double> _checkAlignment(WidgetTester tester) {
   final centers = <double>[];
+  final sectionTop = tester
+      .getTopLeft(find.byKey(const ValueKey('journal-section-record')))
+      .dy;
   for (final node in _state(tester).document.root.children.first.children) {
     final body = tester
         .renderObjectList<RenderParagraph>(
@@ -61,7 +64,7 @@ List<double> _checkAlignment(WidgetTester tester) {
       closeTo(textCenter, .1),
       reason: '${node.type}对齐第一行，不能居中于整个多行段落',
     );
-    centers.add(markerCenter);
+    centers.add(markerCenter - sectionTop);
   }
   return centers;
 }

@@ -537,9 +537,8 @@ void main() {
                 ..insertText(state.getNodeAtPath([0, 0])!, 0, text),
             );
             await tester.pumpAndSettle();
-            final count = text.split('\n').length < 3
-                ? 3
-                : text.split('\n').length;
+            // 按实际软换行绘制，不再为短正文补足三行书写区。
+            final count = text.split('\n').length;
             final expected = List.generate(
               count,
               (index) => (index + 1) * 32 * scale,

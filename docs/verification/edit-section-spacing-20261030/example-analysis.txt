@@ -1,0 +1,7 @@
+Analyzing example...
+
+   info • 'type' is deprecated and shouldn't be used. Has no effect, saveFile() never used it. This parameter will be removed in file_picker v14.0.0. Try replacing the use of the deprecated member with the replacement • lib/daily_guidance/journal_image_actions.dart:33:9 • deprecated_member_use
+   info • 'allowedExtensions' is deprecated and shouldn't be used. Has no effect, saveFile() never used it. This parameter will be removed in file_picker v14.0.0. Try replacing the use of the deprecated member with the replacement • lib/daily_guidance/journal_image_actions.dart:34:9 • deprecated_member_use
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/daily_guidance/local_journal_page.dart:417:7 • curly_braces_in_flow_control_structures
+
+3 issues found. (ran in 19.4s)

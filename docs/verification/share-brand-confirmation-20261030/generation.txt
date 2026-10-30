@@ -1,0 +1,3 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/share_spacing_confirmation_tmp_test.dart
+00:00 +0: render current sample share and show the footer spacing
+00:02 +1: All tests passed!

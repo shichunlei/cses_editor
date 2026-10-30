@@ -46,7 +46,8 @@
 
 `example/lib/daily_guidance/local_journal_page.dart` 负责页面导航、编辑/预览、离开确认、分享及预览操作；`journal_surface.dart` 负责正文纸张展示；`guidance_entries.dart` 负责业务条目；`mention_picker.dart` 负责宿主候选选择。其他入口按当前调用链检索。
 
-- 页面继续使用现有纸张色、封面、栏目和预览交互；弹窗规则不覆盖正文排版与业务配色。
+- 页面继续使用现有纸张色、封面、栏目和预览交互；弹窗规则不覆盖正文排版与业务配色。分享图片的品牌页脚及 logo 白底与正文纸张保持相同米色，正文到 logo 的留白只由品牌页脚提供，末栏目不再重复补空白。
+- 编辑/预览共用最多两行的栏目留白，文档尾部留白放 footer 一次；编辑保留实际空段落，不通过折叠输入节点来伪造相同内容高度。间距、空段落输入和撤销验证使用 `example/test/daily_guidance/journal_preview_spacing_test.dart`。
 - 宿主弹窗路由与局部主题位于 `example/lib/daily_guidance/ui/journal_modal.dart`，底部外壳与标题分别位于 `journal_bottom_sheet.dart`、`journal_modal_header.dart`；离开确认、分享及两类人员选择复用这些组件。保留保存/放弃/继续编辑返回值、关闭及会话检查，不跨包导入根库内部弹窗。
 - 不将本轮 skill 引入描述为已完成所有既有 UI 的迁移；具体入口迁移需要相应代码和验证证据。
 

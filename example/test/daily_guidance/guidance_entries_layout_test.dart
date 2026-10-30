@@ -79,9 +79,12 @@ EditorState _state(WidgetTester tester) =>
     tester.widget<AppFlowyEditor>(find.byType(AppFlowyEditor)).editorState;
 
 /// 在 [tester] 中核对 [scale] 的首行圆环/标签、行线、选区位置及提及原子偏移。
-/// [wrapped] 决定是否要求发生自动换行；返回可跨编辑/预览比较的布局快照。
+/// [wrapped] 决定是否要求发生自动换行；返回相对栏目顶部的布局快照，排除沉浸式页头的位置差异。
 List<double> _geometry(WidgetTester tester, double scale, bool wrapped) {
   final result = <double>[];
+  final sectionTop = tester
+      .getTopLeft(find.byKey(const ValueKey('journal-section-record')))
+      .dy;
   for (final node in _state(tester).document.root.children.single.children) {
     final region = find.byKey(ValueKey('journal-lines-${node.id}'));
     final body = tester
@@ -161,7 +164,7 @@ List<double> _geometry(WidgetTester tester, double scale, bool wrapped) {
       body.size.width,
       body.size.height,
       firstHeight,
-      center,
+      center - sectionTop,
       ...rule.debugLineOffsets,
     ]);
   }
