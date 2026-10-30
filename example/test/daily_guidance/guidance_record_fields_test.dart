@@ -64,17 +64,21 @@ void main() {
       'content':
           'XSNJKJCDSJJCKLJCDSKLDC,MN\nXBSGJHSDCDH \nXOIKCSCDSMK  \n@擎天柱 ewhbjkfdhfiohf bnm\nmdskljfo ',
       'mentions': [
-        {'mentionId': '678', 'mentionName': '擎天柱'},
+        {'mentionId': '678', 'mentionName': '擎天柱', 'mentionType': 'user'},
       ],
     });
-    expect(fields['dailyResultContent'], {
+    expect(fields['dailyResult'], {
       'content':
           'KJDCJODCJDCK \n@威震天 SJIDLJDCOIDNCS\nMDKLD\nKLDJDCF \n热风南方科技大V佛大V发大V发',
       'mentions': [
-        {'mentionId': '5ffd465e263864787b87aa01', 'mentionName': '威震天'},
+        {
+          'mentionId': '5ffd465e263864787b87aa01',
+          'mentionName': '威震天',
+          'mentionType': 'user',
+        },
       ],
     });
-    expect(fields, containsPair('dailyOrientContent', null));
+    expect(fields, containsPair('dailyOrient', null));
     expect(jsonEncode(record), before);
   });
 
@@ -146,32 +150,32 @@ void main() {
       expect(fields['thinking'], {
         'content': '  开头\n@同事@同事@任务\n\n@手输 结尾  \n@同事 帮忙\n@任务 领航',
         'mentions': [
-          {'mentionId': 'user-1', 'mentionName': '同事'},
-          {'mentionId': 'task-1', 'mentionName': '任务'},
+          {'mentionId': 'user-1', 'mentionName': '同事', 'mentionType': 'user'},
+          {'mentionId': 'task-1', 'mentionName': '任务', 'mentionType': 'task'},
         ],
       });
-      expect(fields['dailyOrientContent'], {
+      expect(fields['dailyOrient'], {
         'content': '@任务\n@同事',
         'mentions': [
-          {'mentionId': 'task-1', 'mentionName': '任务'},
-          {'mentionId': 'user-1', 'mentionName': '同事'},
+          {'mentionId': 'task-1', 'mentionName': '任务', 'mentionType': 'task'},
+          {'mentionId': 'user-1', 'mentionName': '同事', 'mentionType': 'user'},
         ],
       });
       expect(fields['selfCheck']['mentions'], [
-        {'mentionId': 'user-1', 'mentionName': '同事'},
+        {'mentionId': 'user-1', 'mentionName': '同事', 'mentionType': 'user'},
       ]);
       expect(fields['helpItems'], [
         {
           'content': '@同事 帮忙',
           'mentions': [
-            {'mentionId': 'user-1', 'mentionName': '同事'},
+            {'mentionId': 'user-1', 'mentionName': '同事', 'mentionType': 'user'},
           ],
           'sortNo': 1,
         },
         {
           'content': '@任务',
           'mentions': [
-            {'mentionId': 'task-1', 'mentionName': '任务'},
+            {'mentionId': 'task-1', 'mentionName': '任务', 'mentionType': 'task'},
           ],
           'sortNo': 2,
         },
@@ -180,14 +184,14 @@ void main() {
         {
           'content': '@任务 领航',
           'mentions': [
-            {'mentionId': 'task-1', 'mentionName': '任务'},
+            {'mentionId': 'task-1', 'mentionName': '任务', 'mentionType': 'task'},
           ],
           'sortNo': 1,
         },
         {
           'content': '@同事',
           'mentions': [
-            {'mentionId': 'user-1', 'mentionName': '同事'},
+            {'mentionId': 'user-1', 'mentionName': '同事', 'mentionType': 'user'},
           ],
           'sortNo': 2,
         },
@@ -195,8 +199,8 @@ void main() {
       expect(fields['customData']['stable-key'], {
         'content': '@任务@同事',
         'mentions': [
-          {'mentionId': 'task-1', 'mentionName': '任务'},
-          {'mentionId': 'user-1', 'mentionName': '同事'},
+          {'mentionId': 'task-1', 'mentionName': '任务', 'mentionType': 'task'},
+          {'mentionId': 'user-1', 'mentionName': '同事', 'mentionType': 'user'},
         ],
       });
     },
@@ -207,12 +211,8 @@ void main() {
       '$type saves matching record field and explicitly clears opposite type',
       () async {
         final record = _record()..['orientType'] = type;
-        final target = type == 'ORIENT'
-            ? 'dailyOrientContent'
-            : 'dailyResultContent';
-        final other = type == 'ORIENT'
-            ? 'dailyResultContent'
-            : 'dailyOrientContent';
+        final target = type == 'ORIENT' ? 'dailyOrient' : 'dailyResult';
+        final other = type == 'ORIENT' ? 'dailyResult' : 'dailyOrient';
         record[target] = {'content': '旧摘要', 'mentions': []};
         record[other] = {'content': '另一类型原值', 'mentions': []};
         final api = MockGuidanceApi(record: record, latency: Duration.zero);
@@ -269,7 +269,7 @@ void main() {
     final expected = {
       'content': '@同事 领航',
       'mentions': [
-        {'mentionId': 'user-1', 'mentionName': '同事'},
+        {'mentionId': 'user-1', 'mentionName': '同事', 'mentionType': 'user'},
       ],
     };
     expect(fields['selfCheck'], expected);
@@ -278,9 +278,174 @@ void main() {
       {...expected, 'sortNo': 1},
       {...expected, 'sortNo': 2},
     ]);
-    expect(fields['dailyResultContent'], {'content': '', 'mentions': []});
+    expect(fields['dailyResult'], {'content': '', 'mentions': []});
     expect(jsonEncode(body), before);
   });
+
+  test(
+    'all fields retain four mention types and deduplicate by type and ID',
+    () {
+      const types = ['user', 'task', 'meeting', 'doc'];
+      final runs = <Object>[
+        for (final type in types) ...[
+          _mention('shared-id', type, type),
+          _mention('shared-id', '后来的名称', type),
+        ],
+      ];
+      final body = <String, dynamic>{
+        'nodeType': 'root',
+        'children': [
+          for (final section in [
+            'record',
+            'reflection',
+            'self-check',
+            'custom',
+          ])
+            _region(section, [
+              _paragraph([
+                {
+                  'insert': {
+                    'dailyTag': section == 'reflection' ? 'pilot' : 'help',
+                  },
+                },
+                ...runs,
+              ]),
+            ], key: section == 'custom' ? 'typed-key' : null),
+        ],
+      };
+      final before = jsonEncode(body);
+      final expected = [
+        for (final type in types)
+          {'mentionId': 'shared-id', 'mentionName': type, 'mentionType': type},
+      ];
+      for (final orient in ['ORIENT', 'RESULT']) {
+        final fields = GuidanceRecordFields.extract(body, orientType: orient);
+        final main = orient == 'ORIENT' ? 'dailyOrient' : 'dailyResult';
+        for (final key in [main, 'thinking', 'selfCheck']) {
+          expect(fields[key]['mentions'], expected, reason: key);
+        }
+        expect(fields['customData']['typed-key']['mentions'], expected);
+        expect(fields['helpItems'], hasLength(3));
+        expect(fields['navigatorItems'], hasLength(1));
+        for (final item in [
+          ...fields['helpItems'],
+          ...fields['navigatorItems'],
+        ]) {
+          expect(item['mentions'], expected);
+        }
+        expect(fields[main]['content'], contains('@后来的名称'));
+      }
+      expect(jsonEncode(body), before);
+    },
+  );
+
+  test(
+    'missing mentionType defaults to user and namespaced attributes are read',
+    () {
+      final body = <String, dynamic>{
+        'nodeType': 'root',
+        'children': [
+          _region('self-check', [
+            _paragraph([
+              {
+                'insert': {'mention': '旧用户'},
+                'attributes': {'mentionId': 'shared-id'},
+              },
+              _mention('shared-id', '新用户名称', 'user'),
+              _mention('shared-id', '同ID任务', 'task'),
+              {
+                'insert': {'mention': '旧会议'},
+                'attributes': {
+                  'd:mentionId': 'meeting-id',
+                  'd:mentionType': 'meeting',
+                },
+              },
+            ]),
+          ]),
+        ],
+      };
+      final before = jsonEncode(body);
+      final fields = GuidanceRecordFields.extract(body, orientType: 'ORIENT');
+      expect(fields['selfCheck']['mentions'], [
+        {'mentionId': 'shared-id', 'mentionName': '旧用户', 'mentionType': 'user'},
+        {
+          'mentionId': 'shared-id',
+          'mentionName': '同ID任务',
+          'mentionType': 'task',
+        },
+        {
+          'mentionId': 'meeting-id',
+          'mentionName': '旧会议',
+          'mentionType': 'meeting',
+        },
+      ]);
+      expect(jsonEncode(body), before);
+    },
+  );
+
+  test(
+    'saving legacy body without types submits explicit user mentions',
+    () async {
+      final record = _record();
+
+      /// 仅修改本测试拥有的 [value]，模拟旧正文未携带引用类型。
+      void removeTypes(Object? value) {
+        if (value is Map) {
+          value.remove('mentionType');
+          value.remove('d:mentionType');
+          for (final child in value.values) {
+            removeTypes(child);
+          }
+        } else if (value is List) {
+          for (final child in value) {
+            removeTypes(child);
+          }
+        }
+      }
+
+      removeTypes(record['bodyContent']);
+      final api = MockGuidanceApi(record: record, latency: Duration.zero);
+      final store = ApiJournalStore(api: api, recordId: record['id'] as String);
+      final draft = await store.read();
+      await store.write(draft);
+      final saved = await api.fetch(record['id'] as String);
+      expect(saved['selfCheck']['mentions'], [
+        {
+          'mentionId': '6ae2bd06bc2701ed9ddf443c',
+          'mentionName': 'CDCKD;OSDCKP[CK',
+          'mentionType': 'user',
+        },
+        {
+          'mentionId': '5ffd465e263864787b87aa01',
+          'mentionName': '威震天',
+          'mentionType': 'user',
+        },
+      ]);
+      expect(saved['bodyContent'], record['bodyContent']);
+    },
+  );
+
+  for (final invalid in ['', 'department', 42]) {
+    test('unsupported mention type $invalid is rejected', () {
+      final body = <String, dynamic>{
+        'nodeType': 'root',
+        'children': [
+          _region('record', [
+            _paragraph([
+              {
+                'insert': {'mention': '引用'},
+                'attributes': {'mentionId': 'id-1', 'mentionType': invalid},
+              },
+            ]),
+          ]),
+        ],
+      };
+      expect(
+        () => GuidanceRecordFields.extract(body, orientType: 'ORIENT'),
+        throwsFormatException,
+      );
+    });
+  }
 
   test('unknown orientType is rejected without changing body', () {
     final body = <String, dynamic>{'nodeType': 'root', 'children': []};
@@ -309,25 +474,19 @@ void main() {
       }
       await store.write(BodyContentCodec.decode(body));
       final saved = await api.fetch(record['id'] as String);
-      expect(saved.keys.toSet(), {
-        ...record.keys,
-        'dailyOrientContent',
-        'dailyResultContent',
-      });
+      expect(saved.keys.toSet(), record.keys.toSet());
       for (final key in [
         'id',
         'bizType',
         'orientType',
         'todoContent',
-        'dailyOrient',
         'expectedEffectContent',
-        'dailyResult',
         'extension',
       ]) {
         expect(saved[key], record[key]);
       }
-      expect(saved['dailyResultContent'], {'content': '', 'mentions': []});
-      expect(saved, containsPair('dailyOrientContent', null));
+      expect(saved['dailyResult'], {'content': '', 'mentions': []});
+      expect(saved, containsPair('dailyOrient', null));
       expect(saved['thinking'], {'content': '', 'mentions': []});
       expect(saved['selfCheck'], {'content': '', 'mentions': []});
       expect(saved['helpItems'], isEmpty);
@@ -341,6 +500,61 @@ void main() {
       });
     },
   );
+
+  test('saved record follows final sample field and mention schema', () async {
+    final sample = _record();
+    final api = MockGuidanceApi(record: sample, latency: Duration.zero);
+    final store = ApiJournalStore(api: api, recordId: sample['id'] as String);
+    final draft = await store.read();
+    await store.write(draft);
+    final submitted = await api.fetch(sample['id'] as String);
+    expect(submitted.keys.toSet(), sample.keys.toSet());
+    expect(submitted['dailyOrient'], isNull);
+    final contents = <Map>[
+      for (final key in [
+        'todoContent',
+        'dailyResult',
+        'expectedEffectContent',
+        'thinking',
+        'selfCheck',
+      ])
+        submitted[key] as Map,
+      ...(submitted['helpItems'] as List).cast<Map>(),
+      ...(submitted['navigatorItems'] as List).cast<Map>(),
+      ...(submitted['customData'] as Map).values.cast<Map>(),
+    ];
+    for (final content in contents) {
+      expect(content['content'], isA<String>());
+      expect(content['mentions'], isA<List>());
+      for (final mention in content['mentions'] as List) {
+        expect((mention as Map).keys.toSet(), {
+          'mentionId',
+          'mentionName',
+          'mentionType',
+        });
+        expect(mention['mentionId'], isA<String>());
+        expect(mention['mentionName'], isA<String>());
+        expect([
+          'user',
+          'task',
+          'meeting',
+          'doc',
+        ], contains(mention['mentionType']));
+      }
+    }
+    for (final key in ['helpItems', 'navigatorItems']) {
+      final items = submitted[key] as List;
+      for (var index = 0; index < items.length; index++) {
+        expect((items[index] as Map).keys.toSet(), {
+          'content',
+          'mentions',
+          'sortNo',
+        });
+        expect(items[index]['sortNo'], index + 1);
+      }
+    }
+    expect(submitted['bodyContent'], sample['bodyContent']);
+  });
 
   test(
     'mock rejects partial and mismatched submissions without replacing record',

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';
+import 'package:cses_offline_example/daily_guidance/guidance_record_fields.dart';
 import 'package:cses_offline_example/daily_guidance/journal_blockcraft_codec.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
 
@@ -21,11 +22,13 @@ const journalBodyRegionAttribute = 'guidance_body_region';
 abstract final class BodyContentCodec {
   /// 从借用的 [body] 创建独立草稿；[now] 仅用于建档时间，不替代接口记录日期。
   /// 原区域/锁/扩展属性保存在会话中，未支持的可编辑块或非法数据整次拒绝。
+  /// 分配编辑树前校验引用类型，不支持时抛出 UnsupportedGuidanceMentionType。
   static JournalDraft decode(Map<String, dynamic> body, {DateTime? now}) {
     final source = _copy(body);
     final normalized = _copy(body);
     _normalizeTags(normalized);
     BlockCraftJsonCodec.validate(normalized);
+    GuidanceRecordFields.validateMentionTypes(source);
     if ((source['meta'] as Map)['dailyTemplate'] != 'daily-writing') {
       throw const FormatException('不支持的今日导向模板');
     }
@@ -46,7 +49,11 @@ abstract final class BodyContentCodec {
         key,
         () => Node(
           type: journalSectionType,
-          attributes: {'section': key, if (key.startsWith('custom:')) 'guidance_section_label': meta['tplFieldName']},
+          attributes: {
+            'section': key,
+            if (key.startsWith('custom:'))
+              'guidance_section_label': meta['tplFieldName'],
+          },
         ),
       );
       final regionId = region['id'] as String;
@@ -54,7 +61,8 @@ abstract final class BodyContentCodec {
       for (final rawBlock in region['children'] as List) {
         final block = Map<String, dynamic>.from(rawBlock as Map);
         if (_locked(block)) {
-          if (meta['dailySlot'] == 'daily-cover' && (block['meta'] as Map)['lockKind'] == 'template') {
+          if (meta['dailySlot'] == 'daily-cover' &&
+              (block['meta'] as Map)['lockKind'] == 'template') {
             continue;
           }
           throw const FormatException('填写区含不支持的锁定正文');
@@ -67,7 +75,11 @@ abstract final class BodyContentCodec {
         final node = BlockCraftJsonCodec.decodeBlock(sanitized);
         node.updateAttributes({
           journalBodyRegionAttribute: regionId,
-          if (tag != null) ...{guidanceEntryAttribute: tag, 'guidance_entry_id': block['id'], 'guidance_done': false},
+          if (tag != null) ...{
+            guidanceEntryAttribute: tag,
+            'guidance_entry_id': block['id'],
+            'guidance_done': false,
+          },
         });
         if (!isJournalTextNode(node)) throw const FormatException('正文含不支持的格式');
         section.insert(node);
@@ -79,24 +91,40 @@ abstract final class BodyContentCodec {
     final ordered = [record, ...sections.values];
     for (final section in ordered) {
       if (section.children.isEmpty) {
-        section.insert(paragraphNode(attributes: {'guidance_body_placeholder': true}));
+        section.insert(
+          paragraphNode(attributes: {'guidance_body_placeholder': true}),
+        );
       }
     }
     final view = (source['meta'] as Map)['mobileGuidanceView'];
     if (view != null && view is! Map) throw const FormatException('栏目视图状态无效');
     final hiddenKeys = view is Map ? view['hiddenSections'] : null;
     if (hiddenKeys != null &&
-        (hiddenKeys is! List || hiddenKeys.any((key) => !const ['reflection', 'self-check'].contains(key)))) {
+        (hiddenKeys is! List ||
+            hiddenKeys.any(
+              (key) => !const ['reflection', 'self-check'].contains(key),
+            ))) {
       throw const FormatException('隐藏栏目状态无效');
     }
     final hidden = ordered
-        .where((section) => (hiddenKeys as List? ?? []).contains(section.attributes['section']))
+        .where(
+          (section) => (hiddenKeys as List? ?? []).contains(
+            section.attributes['section'],
+          ),
+        )
         .toList();
     final root = Node(
       type: 'page',
       attributes: {
-        journalBodyTemplateAttribute: jsonEncode({'source': source, 'baseline': baseline, 'regions': regions}),
-        if (hidden.isNotEmpty) journalClosedSectionsAttribute: hidden.map((node) => node.toJson()).toList(),
+        journalBodyTemplateAttribute: jsonEncode({
+          'source': source,
+          'baseline': baseline,
+          'regions': regions,
+        }),
+        if (hidden.isNotEmpty)
+          journalClosedSectionsAttribute: hidden
+              .map((node) => node.toJson())
+              .toList(),
       },
       children: ordered.where((node) => !hidden.contains(node)).toList(),
     );
@@ -121,9 +149,14 @@ abstract final class BodyContentCodec {
   /// 将借用的实时 [draft] 还原为独立 bodyContent；原模板、标题、属性及引用保持，
   /// 仅更新编辑过的正文/日期；隐藏栏目保留内容并使用根 meta 的可选视图扩展恢复。
   static Map<String, dynamic> encode(JournalDraft draft) {
-    final document = Document.fromJson(jsonDecode(draft.documentJson) as Map<String, dynamic>);
+    final document = Document.fromJson(
+      jsonDecode(draft.documentJson) as Map<String, dynamic>,
+    );
     try {
-      JournalBlockCraftCodec.restoreIdentities(document, draft.blockCraftIdsJson);
+      JournalBlockCraftCodec.restoreIdentities(
+        document,
+        draft.blockCraftIdsJson,
+      );
       validateJournalDocument(document);
       final raw = document.root.attributes[journalBodyTemplateAttribute];
       if (raw is! String) throw const FormatException('缺少正文来源模板');
@@ -145,7 +178,10 @@ abstract final class BodyContentCodec {
       final ids = <String>{};
       for (final section in [...document.root.children, ...hidden]) {
         final key = section.attributes['section'] as String;
-        var choices = regionKeys.entries.where((entry) => entry.value == key).map((entry) => entry.key).toList();
+        var choices = regionKeys.entries
+            .where((entry) => entry.value == key)
+            .map((entry) => entry.key)
+            .toList();
         if (choices.isEmpty) {
           final regionId = 'region-${section.id}';
           final region = <String, dynamic>{
@@ -153,7 +189,11 @@ abstract final class BodyContentCodec {
             'flavour': 'render-unit',
             'nodeType': 'block',
             'props': <String, dynamic>{},
-            'meta': {'dailySection': key, 'tplRegion': true, 'tplFieldName': key == 'reflection' ? '感悟' : '自检'},
+            'meta': {
+              'dailySection': key,
+              'tplRegion': true,
+              'tplFieldName': key == 'reflection' ? '感悟' : '自检',
+            },
             'children': <Object>[],
           };
           (source['children'] as List).add(region);
@@ -162,7 +202,8 @@ abstract final class BodyContentCodec {
         }
         var destination = choices.first;
         for (final node in section.children) {
-          if (node.attributes['guidance_body_placeholder'] == true && node.delta!.isEmpty) {
+          if (node.attributes['guidance_body_placeholder'] == true &&
+              node.delta!.isEmpty) {
             continue;
           }
           final preferred = node.attributes[journalBodyRegionAttribute];
@@ -175,7 +216,8 @@ abstract final class BodyContentCodec {
               throw const FormatException('正文块身份冲突');
             }
           }
-          if (baseline[identity] == _fingerprint(block) && originals[identity] != null) {
+          if (baseline[identity] == _fingerprint(block) &&
+              originals[identity] != null) {
             block = _copy(originals[identity]!);
           }
           grouped.putIfAbsent(destination, () => []).add(block);
@@ -195,9 +237,13 @@ abstract final class BodyContentCodec {
         metadata['dailyDate'] = draft.date;
         _updateDates(source, draft.date);
       }
-      final hiddenKeys = hidden.map((section) => section.attributes['section']).toList();
+      final hiddenKeys = hidden
+          .map((section) => section.attributes['section'])
+          .toList();
       final rawView = metadata['mobileGuidanceView'];
-      final view = rawView is Map ? Map<String, dynamic>.from(rawView) : <String, dynamic>{};
+      final view = rawView is Map
+          ? Map<String, dynamic>.from(rawView)
+          : <String, dynamic>{};
       if (hiddenKeys.isNotEmpty) {
         view['hiddenSections'] = hiddenKeys;
       } else {
@@ -223,7 +269,8 @@ abstract final class BodyContentCodec {
       throw const FormatException('不支持的模板区域');
     }
     final meta = region['meta'] as Map;
-    if (meta['dailySlot'] == 'daily-cover' || meta['dailySlot'] == 'daily-body') {
+    if (meta['dailySlot'] == 'daily-cover' ||
+        meta['dailySlot'] == 'daily-body') {
       return 'record';
     }
     final key = meta['dailySection'];
@@ -239,7 +286,9 @@ abstract final class BodyContentCodec {
       }
       return 'custom:${field['key']}';
     }
-    if ((region['children'] as List).every((child) => (child as Map)['flavour'] == 'date-card')) {
+    if ((region['children'] as List).every(
+      (child) => (child as Map)['flavour'] == 'date-card',
+    )) {
       return null;
     }
     throw const FormatException('未知模板区域');
@@ -247,7 +296,8 @@ abstract final class BodyContentCodec {
 
   /// 检查借用的 [block] 是否为不可编辑的模板节点。
   static bool _locked(Map block) =>
-      (block['meta'] as Map)['lock'] is String && ((block['meta'] as Map)['lock'] as String).isNotEmpty;
+      (block['meta'] as Map)['lock'] is String &&
+      ((block['meta'] as Map)['lock'] as String).isNotEmpty;
 
   /// 从独立 [block] 移出前缀业务标签，保持核心 Codec 的已注册协议不变。
   /// 标签只允许 help/pilot 且位于正文起始；其他位置或值整次拒绝。
@@ -322,7 +372,10 @@ abstract final class BodyContentCodec {
   /// 递归排序借用 JSON [value] 的键，不修改值和数组顺序。
   static Object? _sorted(Object? value) {
     if (value is Map) {
-      return {for (final key in value.keys.map((key) => '$key').toList()..sort()) key: _sorted(value[key])};
+      return {
+        for (final key in value.keys.map((key) => '$key').toList()..sort())
+          key: _sorted(value[key]),
+      };
     }
     if (value is List) return value.map(_sorted).toList();
     return value;
@@ -330,10 +383,13 @@ abstract final class BodyContentCodec {
 
   /// 更新独立 [block] 中标记的日期卡片为 [date]，保留原时分秒和样式。
   static void _updateDates(Map block, String date) {
-    if (block['flavour'] == 'date-card' && (block['meta'] as Map)['dailyDate'] == true) {
+    if (block['flavour'] == 'date-card' &&
+        (block['meta'] as Map)['dailyDate'] == true) {
       final props = block['props'] as Map;
       final old = props['date'];
-      props['date'] = old is String && old.length >= 10 ? '$date${old.substring(10)}' : '${date}T12:00:00';
+      props['date'] = old is String && old.length >= 10
+          ? '$date${old.substring(10)}'
+          : '${date}T12:00:00';
     }
     if (block['nodeType'] != 'editable') {
       for (final child in block['children'] as List) {

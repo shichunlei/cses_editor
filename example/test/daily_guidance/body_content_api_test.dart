@@ -191,16 +191,13 @@ void main() {
         ], kind: 'pilot');
         journal.setDate('2026-10-30');
         expect(await journal.flush(), isTrue);
-        expect(api.submitted!.keys.toSet(), {
-          ...original.keys,
-          'dailyOrientContent',
-          'dailyResultContent',
-        });
+        expect(api.submitted!.keys.toSet(), original.keys.toSet());
         final saved = await api.fetch(original['id'] as String);
         for (final entry in original.entries.where(
           (entry) => !const {
             'bodyContent',
-            'dailyResultContent',
+            'dailyOrient',
+            'dailyResult',
             'thinking',
             'selfCheck',
             'helpItems',
@@ -227,7 +224,11 @@ void main() {
           {
             'content': '@新成员 ',
             'mentions': [
-              {'mentionId': 'new-user', 'mentionName': '新成员'},
+              {
+                'mentionId': 'new-user',
+                'mentionName': '新成员',
+                'mentionType': 'user',
+              },
             ],
             'sortNo': 1,
           },
@@ -338,19 +339,13 @@ void main() {
         );
         api.failSave = false;
         await _tap(tester, 'journal-retry-save');
-        expect(api.submitted!.keys.toSet(), {
-          ...record.keys,
-          'dailyOrientContent',
-          'dailyResultContent',
-        });
-        final target = orient == 'ORIENT'
-            ? 'dailyOrientContent'
-            : 'dailyResultContent';
+        expect(api.submitted!.keys.toSet(), record.keys.toSet());
+        final target = orient == 'ORIENT' ? 'dailyOrient' : 'dailyResult';
         expect(api.submitted![target]['content'], startsWith('实时正文'));
         expect(
           api.submitted,
           containsPair(
-            orient == 'ORIENT' ? 'dailyResultContent' : 'dailyOrientContent',
+            orient == 'ORIENT' ? 'dailyResult' : 'dailyOrient',
             null,
           ),
         );
@@ -455,6 +450,141 @@ void main() {
       await expectLater(store.read(), throwsFormatException);
     },
   );
+
+  testWidgets('supported and legacy mention types load, edit and save', (
+    tester,
+  ) async {
+    final record = _record();
+    final region = (record['bodyContent']['children'] as List)
+        .cast<Map>()
+        .firstWhere((node) => node['meta']['dailySlot'] == 'daily-cover');
+    final paragraph = (region['children'] as List).cast<Map>().firstWhere(
+      (node) => node['nodeType'] == 'editable' && node['meta']['lock'] == null,
+    );
+    paragraph['children'] = [
+      for (final type in ['user', 'task', 'meeting', 'doc'])
+        {
+          'insert': {'mention': type},
+          'attributes': {'mentionId': 'shared-id', 'mentionType': type},
+        },
+      {
+        'insert': {'mention': '旧用户'},
+        'attributes': {'mentionId': 'legacy-id'},
+      },
+    ];
+    final api = _Api(record);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: LocalJournalPage(
+          store: ApiJournalStore(api: api, recordId: record['id'] as String),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(AppFlowyEditor), findsOneWidget);
+    await _insert(_state(tester), '支持的引用');
+    await _tap(tester, 'journal-save');
+    expect(api.writes, 1);
+    expect(
+      api.submitted!['dailyResult']['mentions'],
+      containsAllInOrder([
+        for (final type in ['user', 'task', 'meeting', 'doc'])
+          {'mentionId': 'shared-id', 'mentionName': type, 'mentionType': type},
+        {'mentionId': 'legacy-id', 'mentionName': '旧用户', 'mentionType': 'user'},
+      ]),
+    );
+    await tester.pumpWidget(const SizedBox());
+    await tester.pumpAndSettle();
+  });
+
+  for (final scenario in [
+    (type: 'department', namespaced: false, hidden: false),
+    (type: 'unknown', namespaced: false, hidden: false),
+    (type: 'department', namespaced: true, hidden: false),
+    (type: 'department', namespaced: false, hidden: true),
+  ]) {
+    testWidgets(
+      'unsupported ${scenario.type} reference is rejected before editing '
+      '(namespaced=${scenario.namespaced}, hidden=${scenario.hidden}) and retry saves',
+      (tester) async {
+        final record = _record();
+        final body = record['bodyContent'] as Map<String, dynamic>;
+        final region = (body['children'] as List).cast<Map>().firstWhere(
+          (node) => scenario.hidden
+              ? node['meta']['dailySection'] == 'self-check'
+              : node['meta']['dailySlot'] == 'daily-cover',
+        );
+        final paragraph = (region['children'] as List).cast<Map>().firstWhere(
+          (node) =>
+              node['nodeType'] == 'editable' && node['meta']['lock'] == null,
+        );
+        paragraph['children'] = [
+          {
+            'insert': {'mention': '不支持的引用'},
+            'attributes': {
+              scenario.namespaced ? 'd:mentionId' : 'mentionId':
+                  'unsupported-id',
+              scenario.namespaced ? 'd:mentionType' : 'mentionType':
+                  scenario.type,
+            },
+          },
+        ];
+        if (scenario.hidden) {
+          body['meta']['mobileGuidanceView'] = {
+            'hiddenSections': ['self-check'],
+          };
+        }
+        final before = jsonEncode(record);
+        final api = _Api(record);
+        final store = ApiJournalStore(
+          api: api,
+          recordId: record['id'] as String,
+        );
+        await tester.pumpWidget(
+          MaterialApp(home: LocalJournalPage(store: store)),
+        );
+        await tester.pumpAndSettle();
+        expect(find.byType(AppFlowyEditor), findsNothing);
+        expect(
+          find.textContaining('不支持的引用类型：${scenario.type}'),
+          findsOneWidget,
+        );
+        expect(find.text('重试读取'), findsOneWidget);
+        expect(find.byKey(const ValueKey('journal-save')), findsNothing);
+        expect(api.writes, 0);
+        expect(await api.fetch(record['id'] as String), record);
+        expect(jsonEncode(record), before);
+        final corrected = _record();
+        await expectLater(
+          store.write(
+            BodyContentCodec.decode(
+              corrected['bodyContent'] as Map<String, dynamic>,
+            ),
+          ),
+          throwsStateError,
+        );
+        expect(api.writes, 0);
+        api.pendingRead = Completer<Map<String, dynamic>>()
+          ..complete(corrected);
+        await tester.tap(find.text('重试读取'));
+        await tester.pumpAndSettle();
+        expect(find.byType(AppFlowyEditor), findsOneWidget);
+        expect(find.textContaining('不支持的引用类型：'), findsNothing);
+        await _insert(_state(tester), '校验通过后编辑');
+        await _tap(tester, 'journal-save');
+        expect(api.writes, 1);
+        expect(api.submitted!['dailyResult']['content'], startsWith('校验通过后编辑'));
+        expect(api.submitted!['dailyOrient'], isNull);
+        expect(
+          api.submitted!['bodyContent'].toString(),
+          isNot(contains('unsupported-id')),
+        );
+        await tester.pumpWidget(const SizedBox());
+        await tester.pumpAndSettle();
+        expect(api.writes, 1);
+      },
+    );
+  }
 
   testWidgets(
     'fetch failure retries without replacing data with a blank journal',

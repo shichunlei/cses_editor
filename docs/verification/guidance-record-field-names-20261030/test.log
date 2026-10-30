@@ -1,0 +1,28 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: sample retains tagged content in sections and aggregates it
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: routes tagged paragraphs, preserves whitespace and scopes mentions
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: ORIENT saves matching record field and explicitly clears opposite type
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: RESULT saves matching record field and explicitly clears opposite type
+00:00 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: tagged self-check and custom content stays in its original field
+00:00 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: all fields retain four mention types and deduplicate by type and ID
+00:00 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: missing mentionType defaults to user and namespaced attributes are read
+00:00 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: saving legacy body without types submits explicit user mentions
+00:00 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: unsupported mention type  is rejected
+00:00 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: unsupported mention type department is rejected
+00:00 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: unsupported mention type 42 is rejected
+00:00 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: unknown orientType is rejected without changing body
+00:00 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: full save preserves other fields and clears removed content and mentions
+00:00 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: saved record follows final sample field and mention schema
+00:00 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/guidance_record_fields_test.dart: mock rejects partial and mismatched submissions without replacing record
+00:00 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: bodyContent projects to existing journal sections and round trips exactly
+00:00 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: live edits, menus, date and custom fields save in original body format
+00:00 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: close and reopen retain hidden content and allow restoring the same section
+00:00 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:02 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: RESULT uses existing notebook and submits full record on save
+00:02 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: late fetch never mounts content after identity change
+00:02 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: native Enter and undo retain unique backend identities
+00:02 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: invalid bodies and mismatched record types are rejected without mutation
+00:02 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: fetch failure retries without replacing data with a blank journal
+00:03 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: late save completion cannot acknowledge another host session
+00:03 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:04 +26: All tests passed!

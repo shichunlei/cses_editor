@@ -2,6 +2,12 @@
 
 按功能和日期归档报告、日志、JSON和截图；同轮证据放在同一目录。
 
+- [编辑会话加载前引用类型校验](guidance-load-mention-validation-20261030/report.md)
+
+- [最终提交结构与今日记录字段名校正](guidance-record-field-names-20261030/report.md)
+
+- [派生引用类型与联合去重](guidance-mention-type-20261030/report.md)
+
 - [今日记录另一类型字段显式置空](guidance-opposite-field-null-20261030/report.md)
 
 - [今日导向栏目保留与今日记录字段派生](guidance-field-projection-20261030/report.md)

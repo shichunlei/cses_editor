@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
+import 'package:cses_offline_example/daily_guidance/guidance_record_fields.dart';
 import 'package:cses_offline_example/daily_guidance/journal_share_page.dart';
 import 'package:cses_offline_example/daily_guidance/journal_image_actions.dart';
 import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
@@ -213,6 +214,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   }
 
   /// 异步读取本页store；页面已移除时关闭迟到会话，不向另一个页面回写。
+  /// 不支持的引用类型在编辑会话创建前拒绝，展示专用说明并保留重试入口。
   Future<void> _load() async {
     if (_loading || !_checkSession()) return;
     setState(() {
@@ -233,6 +235,10 @@ class _LocalJournalPageState extends State<LocalJournalPage>
       _sectionActionsSignature = _sectionSignature(journal);
       journal.addListener(_refreshSectionActions);
       setState(() => _journal = journal);
+    } on UnsupportedGuidanceMentionType catch (error) {
+      if (mounted && _checkSession()) {
+        setState(() => _loadError = error.message);
+      }
     } catch (_) {
       if (mounted) setState(() => _loadError = '日记读取失败，请重试。原记录不会被覆盖。');
     } finally {

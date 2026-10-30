@@ -66,15 +66,16 @@ final class MockGuidanceApi implements GuidanceApi {
         data['bizType'] is! String ||
         !const ['ORIENT', 'RESULT'].contains(data['orientType']) ||
         data['bodyContent'] is! Map<String, dynamic> ||
-        data[data['orientType'] == 'ORIENT'
-                ? 'dailyOrientContent'
-                : 'dailyResultContent']
+        data[data['orientType'] == 'ORIENT' ? 'dailyOrient' : 'dailyResult']
             is! Map ||
+        !data.containsKey(
+          data['orientType'] == 'ORIENT' ? 'dailyResult' : 'dailyOrient',
+        ) ||
+        data[data['orientType'] == 'ORIENT' ? 'dailyResult' : 'dailyOrient'] !=
+            null ||
         !const [
           'todoContent',
-          'dailyOrient',
           'expectedEffectContent',
-          'dailyResult',
           'thinking',
           'selfCheck',
           'customData',

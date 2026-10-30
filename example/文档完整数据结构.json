@@ -27,11 +27,13 @@
     "mentions": [
       {
         "mentionId": "6ae2bd06bc2701ed9ddf443c",
-        "mentionName": "CDCKD;OSDCKP[CK"
+        "mentionName": "CDCKD;OSDCKP[CK",
+        "mentionType": "task"
       },
       {
         "mentionId": "5ffd465e263864787b87aa01",
-        "mentionName": "威震天"
+        "mentionName": "威震天",
+        "mentionType": "user"
       }
     ]
   },
@@ -41,7 +43,8 @@
       "mentions": [
         {
           "mentionId": "5ffd465e263864787b87aa01",
-          "mentionName": "威震天"
+          "mentionName": "威震天",
+          "mentionType": "user"
         }
       ],
       "sortNo": 1
@@ -51,7 +54,8 @@
       "mentions": [
         {
           "mentionId": "678",
-          "mentionName": "擎天柱"
+          "mentionName": "擎天柱",
+          "mentionType": "user"
         }
       ],
       "sortNo": 2
