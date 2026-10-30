@@ -29,11 +29,11 @@ JSON转换不建立协同连接，也不据业务对象创建任务、会议或�
 
 原区域、块身份、props/meta 和未编辑节点保留；help/pilot 的 dailyTag 前缀转换为原有业务行，保存时还原；人员与任务等引用不混淆。未知块/标签或无法安全编辑的锁定正文拒绝加载，不以空白或丢字段代替。
 
-点击保存捕获实时正文，经 `BodyContentCodec.encode` 还原原始嵌套根快照，由 `GuidanceRecordFields.extract` 从同一份正文派生字段，然后覆盖读取到的完整记录中的 `bodyContent`、`thinking`、`selfCheck`、`helpItems`、`navigatorItems`、`customData`，一次提交完整记录（与 `example/文档完整数据结构.json` 同结构）。`id`、`bizType`、`orientType`、`todoContent`、`dailyOrient`、`expectedEffectContent`、`dailyResult` 及未知扩展字段保留读取值。不套 JournalDraft，也不向接口泄露本地来源属性。读取成功前拒绝保存。
+点击保存捕获实时正文，经 `BodyContentCodec.encode` 还原原始嵌套根快照，由 `GuidanceRecordFields.extract(body, orientType: record['orientType'])` 从同一份正文派生字段，然后覆盖读取到的完整记录中的 `bodyContent`、`dailyOrientContent`、`dailyResultContent`、`thinking`、`selfCheck`、`helpItems`、`navigatorItems`、`customData`，一次提交完整记录（保留 `example/文档完整数据结构.json` 的全部原字段，并增加两个今日记录字段，非当前类型显式为 null）。`id`、`bizType`、`orientType`、`todoContent`、`dailyOrient`、`expectedEffectContent`、`dailyResult` 及未知扩展字段保留读取值。不套 JournalDraft，也不向接口泄露本地来源属性。读取成功前拒绝保存。
 
-派生规则：`dailySection=reflection/self-check` 对应感悟/自检；`dailySection=custom` 以 `dailyCustomField.key` 作为 `customData` 的稳定键。每个字段为 `{content, mentions}`，包括 number 类型的自定义字段也保持字符串内容。help/pilot 前缀段落不进入所属栏目的摘要，按全篇出现顺序分别进入 `helpItems` / `navigatorItems`，每条附加从 1 开始的 `sortNo`；空标签段落不生成条目。锁定模板节点和非文本对象不进入摘要。
+派生规则：`dailySlot=daily-cover/daily-body` 的可编辑正文合并为今日记录（同样支持 `dailySection=record`），`orientType=ORIENT` 派生 `dailyOrientContent`，`orientType=RESULT` 派生 `dailyResultContent`；另一类型字段显式设为 `null`，覆盖来源记录中的旧值；非法类型拒绝提取。锁定模板标题不计入今日记录。`dailySection=reflection/self-check` 对应感悟/自检；`dailySection=custom` 以 `dailyCustomField.key` 作为 `customData` 的稳定键。每个字段为 `{content, mentions}`，包括 number 类型的自定义字段也保持字符串内容。help/pilot 前缀段落仍完整进入所属栏目的摘要（含今日记录、感悟、自检和自定义栏目），同时按全篇出现顺序分别聚合到 `helpItems` / `navigatorItems`，每条附加从 1 开始的 `sortNo`；空标签段落不生成条目。锁定模板节点和非文本对象不进入摘要。
 
-段内按序连接文本，段间以 `\n` 分隔，保留段内空格和中间空行，仅删除末尾空白段落。结构化 mention 输出 `@名称`，从 attributes 的 `mentionId`（兼容 `d:mentionId`）生成 `{mentionId, mentionName}`，人员、任务等引用均保留；每个字段/条目内按 ID 去重，保持首次出现顺序，普通手输 `@名字` 不推测身份。五类字段每次全量重算，清空内容或移除字段时提交空串、空数组或删除后的 customData，避免残留旧摘要及引用。API 模式不在输入、切后台或资源销毁时自动提交。退出有修改时提供继续编辑、保存后离开和放弃修改。
+段内按序连接文本，段间以 `\n` 分隔，保留段内空格和中间空行，仅删除末尾空白段落。结构化 mention 输出 `@名称`，从 attributes 的 `mentionId`（兼容 `d:mentionId`）生成 `{mentionId, mentionName}`，人员、任务等引用均保留；每个字段/条目内按 ID 去重，保持首次出现顺序，普通手输 `@名字` 不推测身份。当前类型的今日记录及其余派生字段每次全量重算，清空内容或移除字段时提交空串、空数组或删除后的 customData，避免残留旧摘要及引用。API 模式不在输入、切后台或资源销毁时自动提交。退出有修改时提供继续编辑、保存后离开和放弃修改。
 
 栏目关闭继续保留正文，使用可选 `bodyContent.meta.mobileGuidanceView.hiddenSections` 数组记录隐藏的 reflection/self-check，重开可恢复；重新添加后清除视图扩展。自定义栏目本轮只支持已有字段编辑，未增加菜单入口或移除其内容。
 

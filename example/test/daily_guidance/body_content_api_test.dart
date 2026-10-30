@@ -191,11 +191,16 @@ void main() {
         ], kind: 'pilot');
         journal.setDate('2026-10-30');
         expect(await journal.flush(), isTrue);
-        expect(api.submitted!.keys.toSet(), original.keys.toSet());
+        expect(api.submitted!.keys.toSet(), {
+          ...original.keys,
+          'dailyOrientContent',
+          'dailyResultContent',
+        });
         final saved = await api.fetch(original['id'] as String);
         for (final entry in original.entries.where(
           (entry) => !const {
             'bodyContent',
+            'dailyResultContent',
             'thinking',
             'selfCheck',
             'helpItems',
@@ -214,7 +219,7 @@ void main() {
         expect(jsonEncode(body), contains('211111'));
         expect(
           saved['customData']['local_KYlqAwkdYUsE_BTzfk']['content'],
-          '211111',
+          '211111\n@新成员 ',
         );
         expect(saved['helpItems'], original['helpItems']);
         expect(saved['selfCheck'], original['selfCheck']);
@@ -333,7 +338,22 @@ void main() {
         );
         api.failSave = false;
         await _tap(tester, 'journal-retry-save');
-        expect(api.submitted!.keys.toSet(), record.keys.toSet());
+        expect(api.submitted!.keys.toSet(), {
+          ...record.keys,
+          'dailyOrientContent',
+          'dailyResultContent',
+        });
+        final target = orient == 'ORIENT'
+            ? 'dailyOrientContent'
+            : 'dailyResultContent';
+        expect(api.submitted![target]['content'], startsWith('实时正文'));
+        expect(
+          api.submitted,
+          containsPair(
+            orient == 'ORIENT' ? 'dailyResultContent' : 'dailyOrientContent',
+            null,
+          ),
+        );
         expect(jsonEncode(api.submitted), contains('实时正文'));
         await _insert(_state(tester), '未提交');
         await tester.pumpWidget(const SizedBox());

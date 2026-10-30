@@ -66,6 +66,10 @@ final class MockGuidanceApi implements GuidanceApi {
         data['bizType'] is! String ||
         !const ['ORIENT', 'RESULT'].contains(data['orientType']) ||
         data['bodyContent'] is! Map<String, dynamic> ||
+        data[data['orientType'] == 'ORIENT'
+                ? 'dailyOrientContent'
+                : 'dailyResultContent']
+            is! Map ||
         !const [
           'todoContent',
           'dailyOrient',
@@ -85,7 +89,7 @@ final class MockGuidanceApi implements GuidanceApi {
   }
 }
 
-/// 固定记录身份的服务适配器，页面借用；保留完整记录并从最新正文派生五类业务字段。
+/// 固定记录身份的服务适配器，页面借用；保留完整记录并从最新正文派生栏目与聚合业务字段。
 ///
 /// ```dart
 /// final store = ApiJournalStore(api: api, recordId: 'record-1');
@@ -136,7 +140,13 @@ final class ApiJournalStore implements JournalStore {
     if (original == null) throw StateError('请先读取完整记录');
     final body = BodyContentCodec.encode(draft);
     final record = jsonDecode(original) as Map<String, dynamic>;
-    record.addAll({'bodyContent': body, ...GuidanceRecordFields.extract(body)});
+    record.addAll({
+      'bodyContent': body,
+      ...GuidanceRecordFields.extract(
+        body,
+        orientType: record['orientType'] as String,
+      ),
+    });
     await api.save(recordId, record);
   }
 }

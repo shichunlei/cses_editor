@@ -1,13 +1,22 @@
 /// 从服务正文派生业务字段，不修改正文，也不持有编辑器或网络资源。
 ///
 /// ```dart
-/// final fields = GuidanceRecordFields.extract(bodyContent);
+/// final fields = GuidanceRecordFields.extract(bodyContent, orientType: 'ORIENT');
 /// final request = {...record, 'bodyContent': bodyContent, ...fields};
 /// ```
 abstract final class GuidanceRecordFields {
-  /// 同步读取已由正文 Codec 校验的 [body]，返回独立的五类字段。
-  /// 栏目内的 help/pilot 段落独立分流；人员和任务等结构化引用均保留。
-  static Map<String, dynamic> extract(Map<String, dynamic> body) {
+  /// 同步读取已由正文 Codec 校验的 [body]，返回独立的业务字段，不修改来源。
+  /// [orientType] 必须为 ORIENT 或 RESULT，分别派生 dailyOrientContent 或
+  /// dailyResultContent，另一类型字段显式为 null；其他类型抛出 FormatException。
+  /// help/pilot 保留在所属栏目，同时按文档顺序聚合；引用和空字段规则保持一致。
+  static Map<String, dynamic> extract(
+    Map<String, dynamic> body, {
+    required String orientType,
+  }) {
+    if (!const ['ORIENT', 'RESULT'].contains(orientType)) {
+      throw const FormatException('今日导向类型无效');
+    }
+    final record = _Content();
     final thinking = _Content();
     final selfCheck = _Content();
     final custom = <String, _Content>{};
@@ -20,7 +29,12 @@ abstract final class GuidanceRecordFields {
       if (meta['lock'] is String && (meta['lock'] as String).isNotEmpty) {
         return;
       }
+      if (const ['daily-cover', 'daily-body'].contains(meta['dailySlot'])) {
+        destination = record;
+      }
       switch (meta['dailySection']) {
+        case 'record':
+          destination = record;
         case 'reflection':
           destination = thinking;
         case 'self-check':
@@ -43,9 +57,8 @@ abstract final class GuidanceRecordFields {
             final items = tag == 'help' ? help : navigator;
             items.add({...item, 'sortNo': items.length + 1});
           }
-        } else {
-          destination?.add(runs);
         }
+        destination?.add(runs);
         return;
       }
       for (final child in node['children'] as List) {
@@ -55,6 +68,8 @@ abstract final class GuidanceRecordFields {
 
     visit(body, null);
     return {
+      'dailyOrientContent': orientType == 'ORIENT' ? record.toJson() : null,
+      'dailyResultContent': orientType == 'RESULT' ? record.toJson() : null,
       'thinking': thinking.toJson(),
       'selfCheck': selfCheck.toJson(),
       'helpItems': help,
