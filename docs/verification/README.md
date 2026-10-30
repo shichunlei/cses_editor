@@ -2,6 +2,8 @@
 
 按功能和日期归档报告、日志、JSON和截图；同轮证据放在同一目录。
 
+- [完整记录提交与业务字段提取](full-record-save-20261030/report.md)
+
 - [Android AGP、Gradle 与参考宿主对齐](android-gradle-alignment-20261029/report.md)
 
 - [独立编辑器与今日导向拆出 / Android真机](offline-extraction-20261028/report.md)

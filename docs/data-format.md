@@ -23,17 +23,21 @@ JSON转换不建立协同连接，也不据业务对象创建任务、会议或�
 
 ## 服务正文接入
 
-宿主通过 `GuidanceApi.fetch(recordId)` 获取数据，只使用 `id` 做身份核验、`orientType` 选择头部标题、`bodyContent` 作为编辑内容；不处理其他业务字段。ORIENT 显示“今日导向”，RESULT 显示“今日成果”，未知类型拒绝加载。
+宿主通过 `GuidanceApi.fetch(recordId)` 获取数据，以 `id` 做身份核验、`orientType` 选择头部标题、`bodyContent` 作为编辑内容，同时保留完整记录快照供保存使用。ORIENT 显示“今日导向”，RESULT 显示“今日成果”，未知类型拒绝加载。
 
 `BodyContentCodec` 将日成果模板的 daily-cover/daily-body 可编辑节点投影到原“今日记录”栏目，reflection/self-check 投影到“感悟/自检”，custom 以稳定 key 呈现原名称。锁定模板标题及日期容器保留在来源模板中，页面继续使用原封面、日期、横格和键盘菜单，不进入普通桌面文档渲染模式。日记配置仅扩展已有自定义栏目及原生实体引用的业务校验。
 
 原区域、块身份、props/meta 和未编辑节点保留；help/pilot 的 dailyTag 前缀转换为原有业务行，保存时还原；人员与任务等引用不混淆。未知块/标签或无法安全编辑的锁定正文拒绝加载，不以空白或丢字段代替。
 
-点击保存捕获实时正文，经 `BodyContentCodec.encode` 还原原始嵌套根快照，提交 `{"bodyContent": ...}`。不套 JournalDraft，不生成 dailyResult/thinking/helpItems 等摘要，也不向接口泄露本地来源属性。API 模式不在输入、切后台或资源销毁时自动提交。退出有修改时提供继续编辑、保存后离开和放弃修改。
+点击保存捕获实时正文，经 `BodyContentCodec.encode` 还原原始嵌套根快照，由 `GuidanceRecordFields.extract` 从同一份正文派生字段，然后覆盖读取到的完整记录中的 `bodyContent`、`thinking`、`selfCheck`、`helpItems`、`navigatorItems`、`customData`，一次提交完整记录（与 `example/文档完整数据结构.json` 同结构）。`id`、`bizType`、`orientType`、`todoContent`、`dailyOrient`、`expectedEffectContent`、`dailyResult` 及未知扩展字段保留读取值。不套 JournalDraft，也不向接口泄露本地来源属性。读取成功前拒绝保存。
+
+派生规则：`dailySection=reflection/self-check` 对应感悟/自检；`dailySection=custom` 以 `dailyCustomField.key` 作为 `customData` 的稳定键。每个字段为 `{content, mentions}`，包括 number 类型的自定义字段也保持字符串内容。help/pilot 前缀段落不进入所属栏目的摘要，按全篇出现顺序分别进入 `helpItems` / `navigatorItems`，每条附加从 1 开始的 `sortNo`；空标签段落不生成条目。锁定模板节点和非文本对象不进入摘要。
+
+段内按序连接文本，段间以 `\n` 分隔，保留段内空格和中间空行，仅删除末尾空白段落。结构化 mention 输出 `@名称`，从 attributes 的 `mentionId`（兼容 `d:mentionId`）生成 `{mentionId, mentionName}`，人员、任务等引用均保留；每个字段/条目内按 ID 去重，保持首次出现顺序，普通手输 `@名字` 不推测身份。五类字段每次全量重算，清空内容或移除字段时提交空串、空数组或删除后的 customData，避免残留旧摘要及引用。API 模式不在输入、切后台或资源销毁时自动提交。退出有修改时提供继续编辑、保存后离开和放弃修改。
 
 栏目关闭继续保留正文，使用可选 `bodyContent.meta.mobileGuidanceView.hiddenSections` 数组记录隐藏的 reflection/self-check，重开可恢复；重新添加后清除视图扩展。自定义栏目本轮只支持已有字段编辑，未增加菜单入口或移除其内容。
 
-mock 实现是当前宿主拥有的内存接口替身，不是真实 HTTP 服务器。重开页面读取已保存正文，应用重启重置为原 文档完整数据结构.json；真实接口地址、请求方法及鉴权由宿主的 GuidanceApi 实现决定。
+mock 实现是当前宿主拥有的内存接口替身，不是真实 HTTP 服务器。重开页面读取已保存完整记录，应用重启重置为原 文档完整数据结构.json；真实接口地址、请求方法及鉴权由宿主的 GuidanceApi 实现决定。
 
 
 ## 固定编辑与预览模式

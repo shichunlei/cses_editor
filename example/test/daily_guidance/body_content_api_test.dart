@@ -47,7 +47,7 @@ class _Api implements GuidanceApi {
   /// 保存调用次数。
   int writes = 0;
 
-  /// 最近捕获的请求补丁。
+  /// 最近捕获的完整请求。
   Map<String, dynamic>? submitted;
 
   /// 获取 [recordId] 的独立记录或等待测试响应。
@@ -57,14 +57,14 @@ class _Api implements GuidanceApi {
     return pendingRead?.future ?? backend.fetch(recordId);
   }
 
-  /// 捕获 [recordId] 的 [patch]；失败不覆盖后台旧值。
+  /// 捕获 [recordId] 的完整 [record]；失败不覆盖后台旧值。
   @override
-  Future<void> save(String recordId, Map<String, dynamic> patch) async {
+  Future<void> save(String recordId, Map<String, dynamic> record) async {
     writes++;
-    submitted = jsonDecode(jsonEncode(patch)) as Map<String, dynamic>;
+    submitted = jsonDecode(jsonEncode(record)) as Map<String, dynamic>;
     await pendingSave?.future;
     if (failSave) throw StateError('save failed');
-    await backend.save(recordId, patch);
+    await backend.save(recordId, record);
   }
 }
 
@@ -191,10 +191,17 @@ void main() {
         ], kind: 'pilot');
         journal.setDate('2026-10-30');
         expect(await journal.flush(), isTrue);
-        expect(api.submitted!.keys, ['bodyContent']);
+        expect(api.submitted!.keys.toSet(), original.keys.toSet());
         final saved = await api.fetch(original['id'] as String);
         for (final entry in original.entries.where(
-          (entry) => entry.key != 'bodyContent',
+          (entry) => !const {
+            'bodyContent',
+            'thinking',
+            'selfCheck',
+            'helpItems',
+            'navigatorItems',
+            'customData',
+          }.contains(entry.key),
         )) {
           expect(saved[entry.key], entry.value);
         }
@@ -205,6 +212,21 @@ void main() {
         expect(jsonEncode(body), contains('"dailyTag":"pilot"'));
         expect(jsonEncode(body), contains('"mentionType":"task"'));
         expect(jsonEncode(body), contains('211111'));
+        expect(
+          saved['customData']['local_KYlqAwkdYUsE_BTzfk']['content'],
+          '211111',
+        );
+        expect(saved['helpItems'], original['helpItems']);
+        expect(saved['selfCheck'], original['selfCheck']);
+        expect(saved['navigatorItems'], [
+          {
+            'content': '@新成员 ',
+            'mentions': [
+              {'mentionId': 'new-user', 'mentionName': '新成员'},
+            ],
+            'sortNo': 1,
+          },
+        ]);
         expect((body['meta'] as Map)['dailyDate'], '2026-10-30');
         expect(jsonEncode(body), contains('2026-10-30T12:00:00'));
         expect(body['props'], (original['bodyContent'] as Map)['props']);
@@ -258,7 +280,7 @@ void main() {
 
   for (final orient in ['ORIENT', 'RESULT']) {
     testWidgets(
-      '$orient uses existing notebook and submits only bodyContent on save',
+      '$orient uses existing notebook and submits full record on save',
       (tester) async {
         await tester.binding.setSurfaceSize(const Size(390, 2400));
         addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -311,7 +333,7 @@ void main() {
         );
         api.failSave = false;
         await _tap(tester, 'journal-retry-save');
-        expect(api.submitted!.keys, ['bodyContent']);
+        expect(api.submitted!.keys.toSet(), record.keys.toSet());
         expect(jsonEncode(api.submitted), contains('实时正文'));
         await _insert(_state(tester), '未提交');
         await tester.pumpWidget(const SizedBox());

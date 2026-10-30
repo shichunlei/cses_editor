@@ -2,9 +2,10 @@ import 'dart:convert';
 
 import 'package:cses_offline_example/daily_guidance/body_content_codec.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
+import 'package:cses_offline_example/daily_guidance/guidance_record_fields.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 
-/// 宿主注入的单记录服务：读取接口记录，仅提交 bodyContent 补丁，不生成其他业务字段。
+/// 宿主注入的单记录服务：读取和提交完整记录，正文与派生业务字段在同次请求中保存。
 /// 宿主负责认证与客户端释放，页面不拥有网络资源。
 ///
 /// ```dart
@@ -14,11 +15,11 @@ import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 /// await store.write(draft);
 /// ```
 abstract interface class GuidanceApi {
-  /// 异步获取固定 [recordId] 的记录，包含 id、orientType 和 bodyContent；失败抛错。
+  /// 异步获取固定 [recordId] 的完整记录，包含所有业务字段和 bodyContent；失败抛错。
   Future<Map<String, dynamic>> fetch(String recordId);
 
-  /// 异步提交 [recordId] 的 JSON [patch]，只允许 bodyContent；完成表示后台确认。
-  Future<void> save(String recordId, Map<String, dynamic> patch);
+  /// 异步提交 [recordId] 的完整 JSON [record]；实现方不得修改借用的请求，完成表示后台确认。
+  Future<void> save(String recordId, Map<String, dynamic> record);
 }
 
 /// 无网络 mock 服务，宿主持有实例；JSON 深拷贝隔离请求响应，重开保留，重启重置。
@@ -51,24 +52,40 @@ final class MockGuidanceApi implements GuidanceApi {
     return data;
   }
 
-  /// 捕获并校验 [recordId] 的独立 [patch]，只替换 bodyContent，其他字段保持。
+  /// 深拷贝并校验 [recordId] 的完整 [record]；异步成功后整体替换后台记录。
+  /// 调用者仍拥有请求；身份错误、缺字段或正文无效时不修改后台。
   @override
-  Future<void> save(String recordId, Map<String, dynamic> patch) async {
-    if (patch.length != 1 || patch['bodyContent'] is! Map<String, dynamic>) {
-      throw const FormatException('只能提交正文');
+  Future<void> save(String recordId, Map<String, dynamic> record) async {
+    final snapshot = jsonEncode(record);
+    final data = jsonDecode(snapshot) as Map<String, dynamic>;
+    final previous = jsonDecode(_recordJson) as Map<String, dynamic>;
+    if (previous['id'] != recordId || data['id'] != recordId) {
+      throw StateError('记录不存在');
     }
-    final body =
-        jsonDecode(jsonEncode(patch['bodyContent'])) as Map<String, dynamic>;
-    BodyContentCodec.decode(body);
+    if (!previous.keys.every(data.containsKey) ||
+        data['bizType'] is! String ||
+        !const ['ORIENT', 'RESULT'].contains(data['orientType']) ||
+        data['bodyContent'] is! Map<String, dynamic> ||
+        !const [
+          'todoContent',
+          'dailyOrient',
+          'expectedEffectContent',
+          'dailyResult',
+          'thinking',
+          'selfCheck',
+          'customData',
+        ].every((key) => data[key] is Map) ||
+        data['helpItems'] is! List ||
+        data['navigatorItems'] is! List) {
+      throw const FormatException('必须提交完整记录');
+    }
+    BodyContentCodec.decode(data['bodyContent'] as Map<String, dynamic>);
     if (latency != Duration.zero) await Future<void>.delayed(latency);
-    final data = jsonDecode(_recordJson) as Map<String, dynamic>;
-    if (data['id'] != recordId) throw StateError('记录不存在');
-    data['bodyContent'] = body;
-    _recordJson = jsonEncode(data);
+    _recordJson = snapshot;
   }
 }
 
-/// 固定记录身份的服务适配器，页面借用；只解析 orientType 和 bodyContent。
+/// 固定记录身份的服务适配器，页面借用；保留完整记录并从最新正文派生五类业务字段。
 ///
 /// ```dart
 /// final store = ApiJournalStore(api: api, recordId: 'record-1');
@@ -91,6 +108,9 @@ final class ApiJournalStore implements JournalStore {
   /// 读取成功后固定的标题，不接受外部直接修改。
   String _title = '今日导向';
 
+  /// 最近成功读取的完整记录快照；独占 JSON 值，隔离服务返回值的后续修改。
+  String? _recordJson;
+
   /// 获取并校验当前记录，接口失败或正文无效时抛错，不替换为空白草稿。
   @override
   Future<JournalDraft> read() async {
@@ -103,12 +123,20 @@ final class ApiJournalStore implements JournalStore {
     final draft = BodyContentCodec.decode(
       data['bodyContent'] as Map<String, dynamic>,
     );
+    _recordJson = jsonEncode(data);
     _title = data['orientType'] == 'RESULT' ? '今日成果' : '今日导向';
     return draft;
   }
 
-  /// 将实时 [draft] 转回原始正文协议，仅提交 bodyContent JSON。
+  /// 从实时 [draft] 同步捕获正文及派生字段，与成功读取的完整记录一起异步提交。
+  /// 保留其他字段和扩展值；读取前拒绝保存，失败可使用相同来源重试。
   @override
-  Future<void> write(JournalDraft draft) =>
-      api.save(recordId, {'bodyContent': BodyContentCodec.encode(draft)});
+  Future<void> write(JournalDraft draft) async {
+    final original = _recordJson;
+    if (original == null) throw StateError('请先读取完整记录');
+    final body = BodyContentCodec.encode(draft);
+    final record = jsonDecode(original) as Map<String, dynamic>;
+    record.addAll({'bodyContent': body, ...GuidanceRecordFields.extract(body)});
+    await api.save(recordId, record);
+  }
 }

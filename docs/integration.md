@@ -185,7 +185,7 @@ final viewConfiguration = EditorViewConfiguration(
 
 普通编辑接入到这里即可完成。若App还要今日导向栏目、日期、封面、领航员/都来帮及日记工作流，它们属于宿主业务：迁入 `example/lib/daily_guidance/`、对应业务测试及封面资源，调整包名和宿主直接依赖。迁入后是宿主源码，不把 `cses_offline_example`当成运行时依赖，也不将该业务回填核心包。
 
-今日导向专用入口 `LocalJournalPage`的 `store`、`storageScope`、`sessionIdentity`、`mentionDirectory`、`hostServices`由宿主稳定注入；单草稿只打开一个活动页面，身份变化后旧页永久冻结，改分区必须重建路由。示例通过 `ApiJournalStore(api: api, recordId: id)` 使用固定记录身份的 `GuidanceApi`，页面自动选择显式服务保存模式。真实接入实现 `fetch` 和 `save`，客户端认证与释放由宿主负责。`fetch` 返回包含 id、orientType、bodyContent 的记录；`save` 接收仅含 bodyContent 的补丁，不由编辑器拼装其他业务字段。存储实例须在路由 builder 外创建并保持稳定。该业务页的存储与转换契约见[数据格式](data-format.md)。
+今日导向专用入口 `LocalJournalPage`的 `store`、`storageScope`、`sessionIdentity`、`mentionDirectory`、`hostServices`由宿主稳定注入；单草稿只打开一个活动页面，身份变化后旧页永久冻结，改分区必须重建路由。示例通过 `ApiJournalStore(api: api, recordId: id)` 使用固定记录身份的 `GuidanceApi`，页面自动选择显式服务保存模式。真实接入实现 `fetch` 和 `save`，客户端认证与释放由宿主负责。`fetch` 返回与 `example/文档完整数据结构.json` 同结构的完整记录；`save(recordId, record)` 接收完整记录。适配器从最新 bodyContent 重算 thinking、selfCheck、helpItems、navigatorItems、customData（含人员及任务 mentions），其余业务字段与扩展字段保留读取值，并在同一请求内提交。宿主实现若此前仅发送 bodyContent 补丁，需改为发送完整 record。存储实例须在路由 builder 外创建并保持稳定。该业务页的存储与转换契约见[数据格式](data-format.md)。
 
 文件目录、WebView、视频、URL打开等仍会使用普通Flutter平台插件，“不带协同原生库”不等于没有任何平台插件。宿主启用网络/媒体能力时按Android/iOS目标配置正常的平台权限和能力；正文离线编辑与本文私有文件保存不需要外部存储权限或协同服务。
 
