@@ -2,6 +2,8 @@
 
 按功能和日期归档报告、日志、JSON和截图；同轮证据放在同一目录。
 
+- [SaaS 今日导向完整逐文件迁移方案校验](saas-migration-plan-20261030/report.md)
+
 - [编辑会话加载前引用类型校验](guidance-load-mention-validation-20261030/report.md)
 
 - [最终提交结构与今日记录字段名校正](guidance-record-field-names-20261030/report.md)

@@ -1,0 +1,23 @@
+{
+  "baseline": "fa5ba74",
+  "local_links_checked": 5,
+  "json_blocks_checked": 1,
+  "sample_fields": [
+    "id",
+    "bizType",
+    "orientType",
+    "todoContent",
+    "dailyOrient",
+    "expectedEffectContent",
+    "dailyResult",
+    "thinking",
+    "selfCheck",
+    "helpItems",
+    "navigatorItems",
+    "customData",
+    "bodyContent"
+  ],
+  "lines": 317,
+  "result": "PASS",
+  "scope": "Markdown only; no SaaS implementation validation"
+}
