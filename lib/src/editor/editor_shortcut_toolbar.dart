@@ -356,20 +356,33 @@ class _EditorShortcutToolbarState extends State<EditorShortcutToolbar> {
       );
 
   /// 构建原生待办直达入口，复用T菜单的类型转换，不打开面板或重新建立输入连接。
-  MobileToolbarItem _todoKeyboardItem() => MobileToolbarItem.action(
-    itemIconBuilder: (_, _, _) => const Tooltip(
-      message: '待办列表',
-      child: KeyedSubtree(
-        key: ValueKey('editor-keyboard-todoList'),
-        child: Icon(LucideIcons.squareCheck),
-      ),
-    ),
-    actionHandler: (_, state) => unawaited(
-      _runKeyboardAction('待办列表', () async {
-        await applyEditorBlockStyle(state, TodoListBlockKeys.type);
-      }),
-    ),
-  );
+  MobileToolbarItem _todoKeyboardItem(EditorState editorState) =>
+      MobileToolbarItem.action(
+        itemIconBuilder: (context, _, state) {
+          final selection = editorState.selection;
+          final node = selection == null
+              ? null
+              : editorState.getNodeAtPath(selection.start.path);
+          final selected = node?.type == TodoListBlockKeys.type;
+          return Tooltip(
+            message: '待办列表',
+            child: KeyedSubtree(
+              key: const ValueKey('editor-keyboard-todoList'),
+              child: Icon(
+                selected ? LucideIcons.squareCheckBig : LucideIcons.squareCheck,
+                color: selected
+                    ? MobileToolbarTheme.of(context).primaryColor
+                    : null,
+              ),
+            ),
+          );
+        },
+        actionHandler: (_, state) => unawaited(
+          _runKeyboardAction('待办列表', () async {
+            await applyEditorBlockStyle(state, TodoListBlockKeys.type);
+          }),
+        ),
+      );
 
   /// 在借用[context]中按实例入口集合显示工具栏；内建入口与能力取交集，宿主动作随后排列。
   @override
@@ -390,7 +403,7 @@ class _EditorShortcutToolbarState extends State<EditorShortcutToolbar> {
       for (final item in config.keyboardToolbarItems)
         if (_keyboardItemAllowed(config, item))
           item == EditorKeyboardToolbarItem.todoList
-              ? _todoKeyboardItem()
+              ? _todoKeyboardItem(state)
               : _buildKeyboardItem(item, _inlineStyleController),
     ];
     final items = [

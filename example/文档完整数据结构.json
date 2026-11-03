@@ -1,7 +1,7 @@
 {
   "id": "6ae2bd12ae4da0b3be935160",
-  "bizType": "DAILY_RESULT",
-  "orientType": "RESULT",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "ORIENT",
   "todoContent": {
     "content": "",
     "mentions": []
