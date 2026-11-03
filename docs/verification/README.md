@@ -1,5 +1,11 @@
 # 验证索引
 
+- [Android自定义栏目保存复验](android-custom-field-recheck-20261103/report.md)
+
+- [Android真机自定义字段保存与恢复](android-custom-field-save-20261102/report.md)
+
+- [自定义栏目关闭入口](custom-section-close-20261102/report.md)
+
 按功能和日期归档报告、日志、JSON和截图；同轮证据放在同一目录。
 
 - [SaaS 今日导向完整逐文件迁移方案校验](saas-migration-plan-20261030/report.md)

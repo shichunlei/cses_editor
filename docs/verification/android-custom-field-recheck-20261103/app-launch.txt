@@ -1,0 +1,96 @@
+Launching lib/main.dart on MTN AN00 in debug mode...
+Running Gradle task 'assembleDebug'...                             21.0s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...           4.7s
+W/FlutterAnimationAdvance(10439): FlutterAnimationAdvance getInstance()
+I/FlutterActivityAndFragmentDelegate(10439): If you are attempting to set --enable-dart-profiling via Intent extras to launch a Flutter component outside of using the Flutter CLI, note that support for setting engine flags on Android via Intent will soon be dropped; see https://github.com/flutter/flutter/issues/180686 for more information on this breaking change. To migrate, set --enable-dart-profiling or any other flags specified via Intent extras on the command line instead or see https://github.com/flutter/flutter/blob/main/docs/engine/Flutter-Android-Engine-Flags.md for alternative methods.
+D/FlutterJNI(10439): Beginning load of flutter...
+D/FlutterJNI(10439): flutter (null) was loaded normally!
+I/flutter (10439): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+D/FlutterRenderer(10439): Width is zero. 0,0
+I/HnPgAppThreadImpl(10439): late FAS register
+I/Choreographer(10439): Skipped 143 frames!  The application may be doing too much work on its main thread.
+I/AnimationPromotionUtils(10439): com.cses.offline.cses_offline_example ensureViewAnimationPromotionEnabled: 0
+D/PhoneWindow(10439): onViewRootImplSet activityToken android.os.BinderProxy@3dd7755,activityClientRecord ActivityRecord{1452a5b token=android.os.BinderProxy@3dd7755 {com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity}},isHnNavigationHide false isHidePrivateFlag = false
+D/HwPhoneWindow(10439): onViewRootImplSet activityToken android.os.BinderProxy@3dd7755,activityClientRecord ActivityRecord{1452a5b token=android.os.BinderProxy@3dd7755 {com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity}},isHwNavigationHide false
+D/HiTouch_PressGestureDetector(10439): onAttached:1
+I/WindowExtensionsImpl(10439): isActivityEmbeddingEnabled
+I/WindowExtensionsImpl(10439): Initializing Window Extensions, vendor API level=9, activity embedding enabled=true
+I/SurfaceView(10439): 202355596 attach
+I/VRI[MainActivity](10439): addSurfaceChangedCallback: callback = io.flutter.embedding.android.FlutterSurfaceView{c0fb38c V.E...... ......I. 0,0-0,0}
+I/SurfaceView(10439): 202355596 win vis 0
+D/FullScreenUtils(10439): isNeedToHideStatusBar: splitscreenstate=0
+D/FlutterRenderer(10439): Width is zero. 0,0
+W/libc    (10439): Access denied finding property "ro.debuggable"
+D/VRI[MainActivity](10439): relayoutWindow: mRelayoutRequested = true
+W/offline_example(10439): type=1400 audit(0.0:633597): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c46,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+W/libc    (10439): Access denied finding property "ro.debuggable"
+W/libc    (10439): Access denied finding property "sys.use_pre_composite.switch"
+I/BufferQueueConsumer(10439): [](id:28c700000000,api:0,p:-1,c:10439) connect: controlledByApp=false
+W/offline_example(10439): type=1400 audit(0.0:633599): avc:  denied  { read } for  name="u:object_r:agp_support_pre_composite_prop:s0" dev="tmpfs" ino=214 scontext=u:r:untrusted_app:s0:c46,c257,c512,c768 tcontext=u:object_r:agp_support_pre_composite_prop:s0 tclass=file permissive=0
+I/BufferQueueCore(10439): BLASTBufferQueue : comm:offline_example isTargetApp:0
+W/libc    (10439): Access denied finding property "ro.debuggable"
+W/offline_example(10439): type=1400 audit(0.0:633600): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c46,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+I/VariableRefreshRateUtils(10439): isEnabled featureEnabled: 0 logMode: 1
+D/FullScreenUtils(10439): isNeedToHideStatusBar: splitscreenstate=0
+V/VRI[MainActivity](10439): Visible with new config: {1.0 460mcc7mnc [zh_CN_#Hans] ldltr sw369dp w369dp h812dp 520dpi nrml long hdr widecg port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1200, 2640) mAppBounds=Rect(0, 0 - 1200, 2640) mMaxBounds=Rect(0, 0 - 1200, 2640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0 mPopOverMode=undefined} suim:1 fontWeightScale:100 changeUserFlag:0 changeUiModeFlag:0 fullScreenVideoFlag:0 splitScreenState:0 landScapeFreeformFlag:1 hoverMode:0 changeIconStyleFlag:0 changeThemeStyleFlag:0 transparentMode:2097152 s.2 fontWeightAdjustment=0}
+V/VRI[MainActivity](10439): Applying new config to window com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity, globalConfig: {1.0 460mcc7mnc [zh_CN_#Hans] ldltr sw369dp w369dp h812dp 520dpi nrml long hdr widecg port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1200, 2640) mAppBounds=Rect(0, 0 - 1200, 2640) mMaxBounds=Rect(0, 0 - 1200, 2640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mPopOverMode=undefined} suim:1 fontWeightScale:100 changeUserFlag:0 changeUiModeFlag:0 fullScreenVideoFlag:0 splitScreenState:0 landScapeFreeformFlag:1 hoverMode:0 changeIconStyleFlag:0 changeThemeStyleFlag:0 transparentMode:2097152 s.6225 fontWeightAdjustment=0}, overrideConfig: {1.0 460mcc7mnc [zh_CN_#Hans] ldltr sw369dp w369dp h812dp 520dpi nrml long hdr widecg port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1200, 2640) mAppBounds=Rect(0, 0 - 1200, 2640) mMaxBounds=Rect(0, 0 - 1200, 2640) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0 mPopOverMode=undefined} suim:1 fontWeightScale:100 changeUserFlag:0 changeUiModeFlag:0 fullScreenVideoFlag:0 splitScreenState:0 landScapeFreeformFlag:1 hoverMode:0 changeIconStyleFlag:0 changeThemeStyleFlag:0 transparentMode:2097152 s.2 fontWeightAdjustment=0}
+D/libEGL  (10439): [eglCreateWindowSurface] start window is 0xb40000774af0e810
+I/BufferQueueProducer(10439): [VRI[MainActivity]#0(BLAST Consumer)0](id:28c700000000,api:0,p:-1,c:10439) connect: api=1 producerControlledByApp=true
+D/FlutterJNI(10439): Sending viewport metrics to the engine.
+I/SurfaceView(10439): 202355596 setWindowStopped false
+W/ViewTreeObserver(10439): onPreDraw return false io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2@aca7c78
+W/offline_example(10439): type=1400 audit(0.0:633601): avc:  denied  { read } for  name="u:object_r:userdebug_or_eng_prop:s0" dev="tmpfs" ino=657 scontext=u:r:untrusted_app:s0:c46,c257,c512,c768 tcontext=u:object_r:userdebug_or_eng_prop:s0 tclass=file permissive=0
+W/libc    (10439): Access denied finding property "ro.debuggable"
+I/BufferQueueConsumer(10439): [](id:28c700000001,api:0,p:-1,c:10439) connect: controlledByApp=false
+I/SurfaceView(10439): 202355596 create Surface(name=c0fb38c SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity])/@0x6f3bf51 Surface(name=Background for c0fb38c SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity])/@0x3b953b6 Surface(name=c0fb38c SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity](BLAST))/@0x22e48b7 android.graphics.BLASTBufferQueue@c66e824
+I/BufferQueueProducer(10439): [c0fb38c SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity]#1(BLAST Consumer)1](id:28c700000001,api:0,p:-1,c:10439) connect: api=1 producerControlledByApp=true
+W/qdgralloc(10439): GetSize: Pixel format: 0x3b is not supported by gralloc
+W/qdgralloc(10439): gralloc failed to allocate buffer for size 0 format 59 AWxAH 1x1 usage 2816
+E/Gralloc4(10439): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator(10439): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 2
+D/GraphicBufferAllocator(10439): Allocated buffers:
+D/GraphicBufferAllocator(10439): Total allocated (estimate): 0.00 KB
+I/offline_example(10439): Compiler allocated 8003KB to compile void android.view.ViewRootImpl.performTraversals()
+E/AHardwareBuffer(10439): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+W/qdgralloc(10439): GetSize: Pixel format: 0x3b is not supported by gralloc
+W/qdgralloc(10439): gralloc failed to allocate buffer for size 0 format 59 AWxAH 1x1 usage 2816
+E/Gralloc4(10439): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator(10439): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 2
+D/GraphicBufferAllocator(10439): Allocated buffers:
+D/GraphicBufferAllocator(10439): Total allocated (estimate): 0.00 KB
+E/AHardwareBuffer(10439): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+W/qdgralloc(10439): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(10439): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(10439): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(10439): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc(10439): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+I/SurfaceView(10439): updateSurface: handleSyncNoBuffer
+I/SurfaceCallbackHelper(10439): Run surfaceRedrawNeededAsync of app because callback is Callback2
+E/RtgSchedIpcFile(10439): RtgSchedIpcFile xxx failed to open /proc/10439/rtg
+E/RtgSchedIpcFile(10439): RtgSchedIpcFile xxx success to open /proc/rtg_gki/ioctl.
+I/RmeSchedManager(10439): init Rme, version is: v1.0
+I/RmeSchedManager(10439): init Rme, version is: v1.0
+I/RtgSchedEvent(10439): current pid:10439 AppType:-1
+I/HnContentRecognizerManager(10439): CacheHandlerThread onLooperPrepared, mHandler created
+W/libc    (10439): Access denied finding property "ro.debuggable"
+D/HWUI    (10439): disableOutlineDraw is true
+I/DE_TS HnDisplayEngineManager(10439): init eye protection mode:com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity
+Syncing files to device MTN AN00...
+I/SurfaceControl(10439): nativeRelease 0xb4000075eae99570 count: 5 name: com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity#37341
+D/VRI[MainActivity](10439): relayoutWindow: mRelayoutRequested = true
+D/FullScreenUtils(10439): isNeedToHideStatusBar: splitscreenstate=0
+W/ViewTreeObserver(10439): onPreDraw return false io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2@aca7c78
+D/RtgSchedIpcFile(10439): setCommandByIoctl failed ret:-1, cmdid:22, errno:103
+I/SurfaceControl(10439): nativeRelease 0xb4000075eaea0dd0 count: 1 name: Surface(name=f9c7047 StatusBar)/@0x394236a - animation-leash of insets_animation#37342
+I/SurfaceControl(10439): nativeRelease 0xb4000075eae9c810 count: 1 name: Surface(name=81afc96 NavigationBar0)/@0x1490c36 - animation-leash of insets_animation#37343
+D/RtgSchedIpcFile(10439): setCommandByIoctl failed ret:-1, cmdid:23, errno:103
+D/WindowLayoutComponentImpl(10439): Register WindowLayoutInfoListener on Context=com.cses.offline.cses_offline_example.MainActivity@154e9db, of which baseContext=android.app.ContextImpl@60b238e
+W/ViewTreeObserver(10439): onPreDraw return false io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2@aca7c78
+D/FlutterJNI(10439): Sending viewport metrics to the engine.
+W/ViewTreeObserver(10439): onPreDraw return false io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2@aca7c78
+I/HwForceDarkManager(10439): setAllowedHwForceDark:false package:com.cses.offline.cses_offline_example mCurrProcessState:0 mIsPackageNameChange:false hwForceDarkState:0 isViewAllowedForceDark:true isLastHonorForceDark:false
+W/libc    (10439): Access denied finding property "ro.debuggable"
+E/HWUI    (10439): ShaderCache::load value buffer allocate failed after tried 3 times
+I/HwViewRootImpl(10439): removeInvalidNode jank list is null
+Syncing files to device MTN AN00...                                142ms

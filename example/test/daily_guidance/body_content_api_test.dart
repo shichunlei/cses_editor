@@ -167,6 +167,26 @@ void main() {
     },
   );
 
+  test('hidden custom field remains valid and round trips', () {
+    final original = _record()['bodyContent'] as Map<String, dynamic>;
+    final sourceRegions = (original['children'] as List).cast<Map>();
+    final custom = sourceRegions.firstWhere(
+      (region) => region['meta']['dailySection'] == 'custom',
+    );
+    final key = (custom['meta']['dailyCustomField'] as Map)['key'] as String;
+    final hidden = <String, dynamic>{
+      ...original,
+      'meta': {
+        ...(original['meta'] as Map),
+        'mobileGuidanceView': {
+          'hiddenSections': ['custom:$key'],
+        },
+      },
+    };
+    final draft = BodyContentCodec.decode(hidden);
+    expect(BodyContentCodec.encode(draft), hidden);
+  });
+
   test(
     'live edits, menus, date and custom fields save in original body format',
     () async {

@@ -297,11 +297,7 @@ class _JournalSection extends BlockComponentStatelessWidget {
                     ),
                   ),
                 ),
-                if (node.attributes['section'] != 'record' &&
-                    !(node.attributes['section'] as String).startsWith(
-                      'custom:',
-                    ) &&
-                    onClose != null)
+                if (node.attributes['section'] != 'record' && onClose != null)
                   InkWell(
                     key: ValueKey(
                       'journal-close-${node.attributes['section']}',

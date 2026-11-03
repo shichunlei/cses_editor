@@ -493,6 +493,75 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
   }
 
+  /// 弹出自定义栏目名称输入框；确认后追加自定义栏目并聚焦其首段。
+  Future<void> _addCustomSection() async {
+    final controller = TextEditingController();
+    final name = await showJournalSheet<String>(
+      context: context,
+      builder: (context) => Material(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        clipBehavior: Clip.antiAlias,
+        child: SafeArea(
+          top: false,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 24,
+              right: 24,
+              top: 24,
+              bottom: MediaQuery.viewInsetsOf(context).bottom + 20,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text('添加自定义栏目', style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(height: 20),
+                TextField(
+                  key: const ValueKey('journal-custom-section-name'),
+                  controller: controller,
+                  autofocus: true,
+                  maxLength: 40,
+                  decoration: const InputDecoration(labelText: '字段名称'),
+                  onSubmitted: (value) => Navigator.pop(context, value.trim()),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('取消'),
+                    ),
+                    const SizedBox(width: 8),
+                    FilledButton(
+                      onPressed: () =>
+                          Navigator.pop(context, controller.text.trim()),
+                      child: const Text('确认'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    controller.dispose();
+    if (name == null || name.trim().isEmpty || !mounted) return;
+    final journal = _journal;
+    if (journal == null || _readOnly || _leaving || !_sameAccount) return;
+    try {
+      await journal.addCustomSection(name.trim());
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('添加栏目失败')));
+      }
+    }
+  }
+
   /// 使用借用的[context]为原生提及单选用户；[keyword]为初始搜索词。
   /// [canEdit]由编辑器持有，本页额外复核账号、正文、预览和退场状态。
   /// 等待选择界面完全退出后返回；取消或页面会话失效返回null，不写正文。
@@ -681,6 +750,13 @@ class _LocalJournalPageState extends State<LocalJournalPage>
           enabled: enabled,
           onPressed: () => _section('self-check'),
         ),
+      EditorKeyboardAction(
+        id: 'guidance-add-custom-section',
+        label: '自定义',
+        icon: LucideIcons.squarePlus,
+        enabled: enabled,
+        onPressed: _addCustomSection,
+      ),
     ];
   }
 

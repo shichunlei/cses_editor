@@ -75,6 +75,55 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('journal-cover')), findsOneWidget);
     final state = _state(tester);
+    // 替换原样例的“金额”自定义栏目，验证旧字段隐藏后新字段可独立保存。
+    final amount = state.document.root.children.firstWhere(
+      (node) => node.attributes['guidance_section_label'] == '金额',
+    );
+    final amountClose = find.byKey(
+      ValueKey('journal-close-${amount.attributes['section']}'),
+    );
+    final pageScroller = find.byType(Scrollable).first;
+    for (var i = 0; i < 5 && find.text('金额').evaluate().isEmpty; i++) {
+      await tester.drag(pageScroller, const Offset(0, -700));
+      await tester.pumpAndSettle();
+    }
+    await tester.ensureVisible(find.text('金额'));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(amountClose);
+    await tester.pumpAndSettle();
+    await tester.tap(amountClose);
+    await tester.pumpAndSettle();
+    expect(
+      state.document.root.children.any(
+        (node) => node.attributes['guidance_section_label'] == '金额',
+      ),
+      isFalse,
+    );
+    for (final entry in [
+      ('自定义字段甲', '自定义字段数据甲'),
+      ('自定义字段乙', '自定义字段数据乙'),
+      ('自定义字段丙', '自定义字段数据丙'),
+    ]) {
+      await _focus(tester, state, state.getNodeAtPath([0, 0])!);
+      await _toolbar(
+        tester,
+        'editor-keyboard-host-guidance-add-custom-section',
+      );
+      await tester.enterText(
+        find.byKey(const ValueKey('journal-custom-section-name')),
+        entry.$1,
+      );
+      await tester.tap(find.text('确认'));
+      await tester.pumpAndSettle();
+      final custom = state.document.root.children.last;
+      await state.apply(
+        state.transaction..insertText(custom.children.first, 0, entry.$2),
+        skipHistoryDebounce: true,
+      );
+      await tester.pumpAndSettle();
+      expect(_text(state), contains(entry.$2));
+    }
+
     final marker = '真机离线验证-${DateTime.now().millisecondsSinceEpoch}';
     final node = state.getNodeAtPath([0, 0])!;
     await state.apply(
@@ -90,16 +139,82 @@ void main() {
     await tester.pumpAndSettle();
     expect(_text(state), contains(marker));
 
+    // 在同一会话继续添加另一组字段，验证多个新增字段一起保存/重开恢复。
+    for (final entry in [
+      ('真机自定义字段甲', '真机自定义数据甲'),
+      ('真机自定义字段乙', '真机自定义数据乙'),
+      ('真机自定义字段丙', '真机自定义数据丙'),
+    ]) {
+      await _focus(tester, state, state.getNodeAtPath([0, 0])!);
+      await _toolbar(
+        tester,
+        'editor-keyboard-host-guidance-add-custom-section',
+      );
+      await tester.enterText(
+        find.byKey(const ValueKey('journal-custom-section-name')),
+        entry.$1,
+      );
+      await tester.tap(find.text('确认'));
+      await tester.pumpAndSettle();
+      expect(find.text(entry.$1), findsOneWidget);
+      final custom = state.document.root.children.last;
+      await state.apply(
+        state.transaction..insertText(custom.children.first, 0, entry.$2),
+        skipHistoryDebounce: true,
+      );
+      await tester.pumpAndSettle();
+      expect(_text(state), contains(entry.$2));
+    }
+
     await tester.tap(find.byKey(const ValueKey('journal-save')));
     await tester.pumpAndSettle();
+    expect(find.text('保存失败，内容仍保留在此页，请重试'), findsNothing);
     await tester.tap(find.byKey(const ValueKey('journal-back')));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('preview-daily-guidance')));
     await tester.pumpAndSettle();
     expect(_state(tester).editable, isFalse);
+    expect(
+      _state(tester).document.root.children.any(
+        (node) => node.attributes['guidance_section_label'] == '金额',
+      ),
+      isFalse,
+    );
     expect(find.byKey(const ValueKey('journal-save')), findsNothing);
     expect(find.byKey(const ValueKey('journal-preview')), findsNothing);
     expect(_text(_state(tester)), contains(marker));
+    for (final entry in [
+      ('自定义字段甲', '自定义字段数据甲'),
+      ('自定义字段乙', '自定义字段数据乙'),
+      ('自定义字段丙', '自定义字段数据丙'),
+    ]) {
+      expect(_text(_state(tester)), contains(entry.$2));
+      expect(
+        _state(tester).document.root.children.any(
+          (node) => node.attributes['guidance_section_label'] == entry.$1,
+        ),
+        isTrue,
+      );
+    }
+    for (final entry in [
+      ('真机自定义字段甲', '真机自定义数据甲'),
+      ('真机自定义字段乙', '真机自定义数据乙'),
+      ('真机自定义字段丙', '真机自定义数据丙'),
+    ]) {
+      expect(_text(_state(tester)), contains(entry.$2));
+      expect(
+        _state(tester).document.root.children.any(
+          (node) => node.attributes['guidance_section_label'] == entry.$1,
+        ),
+        isTrue,
+      );
+    }
+    expect(
+      _state(
+        tester,
+      ).document.root.children.last.attributes['guidance_section_label'],
+      '真机自定义字段丙',
+    );
     await binding.convertFlutterSurfaceToImage();
     await tester.pumpAndSettle();
     await binding.takeScreenshot('device-preview');

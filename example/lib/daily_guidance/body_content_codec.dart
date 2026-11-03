@@ -99,10 +99,16 @@ abstract final class BodyContentCodec {
     final view = (source['meta'] as Map)['mobileGuidanceView'];
     if (view != null && view is! Map) throw const FormatException('栏目视图状态无效');
     final hiddenKeys = view is Map ? view['hiddenSections'] : null;
+    final hideableSections = <String>{
+      'reflection',
+      'self-check',
+      for (final region in source['children'] as List)
+        if (_sectionKey(region as Map) case final String key) key,
+    };
     if (hiddenKeys != null &&
         (hiddenKeys is! List ||
             hiddenKeys.any(
-              (key) => !const ['reflection', 'self-check'].contains(key),
+              (key) => key is! String || !hideableSections.contains(key),
             ))) {
       throw const FormatException('隐藏栏目状态无效');
     }
@@ -184,15 +190,22 @@ abstract final class BodyContentCodec {
             .toList();
         if (choices.isEmpty) {
           final regionId = 'region-${section.id}';
+          final customKey = key.startsWith('custom:')
+              ? key.substring('custom:'.length)
+              : null;
           final region = <String, dynamic>{
             'id': regionId,
             'flavour': 'render-unit',
             'nodeType': 'block',
             'props': <String, dynamic>{},
             'meta': {
-              'dailySection': key,
+              'dailySection': customKey == null ? key : 'custom',
+              if (customKey != null) 'dailyCustomField': {'key': customKey},
               'tplRegion': true,
-              'tplFieldName': key == 'reflection' ? '感悟' : '自检',
+              'tplFieldName': customKey == null
+                  ? (key == 'reflection' ? '感悟' : '自检')
+                  : section.attributes['guidance_section_label'] as String? ??
+                        '自定义',
             },
             'children': <Object>[],
           };

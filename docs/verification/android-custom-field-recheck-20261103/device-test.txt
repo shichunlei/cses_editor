@@ -1,0 +1,9 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/integration_test/daily_guidance_device_test.dart
+Running Gradle task 'assembleDebug'...
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Running Gradle task 'assembleDebug'...                             50.1s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...           5.1s
+00:00 +0: daily guidance saves bodyContent through the host API
+00:38 +1: (tearDownAll)
+00:39 +1: All tests passed!
