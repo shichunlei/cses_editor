@@ -1,5 +1,7 @@
 # 验证索引
 
+- [键盘与菜单上方的焦点行避让](keyboard-caret-visibility-20261103/report.md)
+
 - [今日导向 UI 与编辑交互提交检查](journal-ui-commit-20261103/report.md)
 
 - [关闭栏目不弹键盘改动审查](review-section-close-focus-20261103/report.md)

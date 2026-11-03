@@ -1,4 +1,5 @@
 import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:cses_editor/src/editor/editor_caret_visibility.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -174,7 +175,12 @@ class _StableMobileToolbarState extends State<StableMobileToolbar>
 
         return Column(
           children: [
-            Expanded(child: widget.child),
+            Expanded(
+              child: EditorCaretVisibility(
+                editorState: widget.editorState,
+                child: widget.child,
+              ),
+            ),
             if (showToolbar)
               MobileToolbarTheme(
                 toolbarHeight: widget.toolbarHeight,

@@ -1,0 +1,32 @@
+Waiting for another flutter command to release the startup lock...
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/editor_shortcut_toolbar_test.dart
+00:00 +0: (setUpAll)
+00:00 +0: empty paragraph converts to a heading and preserves block id
+00:00 +1: non-empty paragraph inserts a new list block after it
+00:00 +2: empty paragraph converts to an unchecked todo block
+00:00 +3: URL-backed blocks leave an editable paragraph caret after insertion
+00:00 +4: URL-backed insertion rejects unsafe or incomplete URLs
+00:00 +5: more directly creates a 2x2 table without a dialog and undo removes it
+00:02 +6: plus toolbar exposes H1 through H6 and applies H6
+00:02 +7: plus sheet inserts a link URL and restores the trailing caret
+00:03 +8: plus selection focuses an inserted block after existing text
+00:04 +9: plus sheet inserts code from empty text and restores its caret
+00:04 +10: plus sheet inserts code from non-empty text and restores its caret
+00:04 +11: plus code entry follows its source after a remote insertion
+00:05 +12: plus code entry rejects permission revoked while the sheet is open
+00:05 +13: H menu converts the selected block to todo
+00:05 +14: menus stay above and close together with the keyboard
+00:06 +15: typing and newline keep the editor toolbar active
+00:06 +16: tapping a middle empty paragraph requests the Android keyboard
+00:06 +17: Aa owns color and H owns all block-list actions
+00:07 +18: primary T progressively reveals H4 through H6 and resets
+00:07 +19: T reveals a deep current heading and its next level
+00:08 +20: Aa applies and displays an inline background color
+00:08 +21: Aa menu applies mutually exclusive superscript and subscript
+00:08 +22: inline style persists until manual toggle or paragraph switch
+00:08 +23: entering a paragraph initializes Aa from caret formatting
+00:09 +24: quote colors change independently and can be cleared and undone
+00:09 +25: block layout supports justify and distributed with undo
+00:09 +26: block layout menu aligns and indents list blocks
+00:09 +27: (tearDownAll)
+00:09 +27: All tests passed!
