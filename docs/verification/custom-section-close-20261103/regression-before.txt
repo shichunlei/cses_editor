@@ -1,0 +1,12 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart
+00:00 +0: closing both optional sections and amount preserves history and saved content
+00:00 +0 -1: closing both optional sections and amount preserves history and saved content [E]
+  Bad state: 操作超过日记容量或栏目边界
+  package:cses_offline_example/daily_guidance/local_journal_controller.dart 906:7   LocalJournalController._applyCommand
+  package:cses_offline_example/daily_guidance/local_journal_controller.dart 752:11  LocalJournalController.closeSection
+  test/daily_guidance/body_content_api_test.dart 296:21                             main.<fn>
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: closing both optional sections and amount preserves history and saved content

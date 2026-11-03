@@ -93,7 +93,13 @@ void main() {
           state.transaction..insertText(state.getNodeAtPath([0, 0])!, 0, text),
         );
         await tester.pumpAndSettle();
-        expect(find.text('今日记录'), findsOneWidget);
+        expect(
+          find.descendant(
+            of: find.byKey(const ValueKey('journal-section-record')),
+            matching: find.text('今日导向'),
+          ),
+          findsOneWidget,
+        );
         expect(
           state.document.root.children.map((n) => n.attributes['section']),
           ['record', 'reflection', 'self-check'],
@@ -136,7 +142,7 @@ void main() {
         await tester.pumpAndSettle();
         expect(
           tester.getTopLeft(find.byKey(const ValueKey('journal-cover'))).dy,
-          lessThan(before),
+          before,
         );
         await tester.pumpWidget(const SizedBox.shrink());
         await tester.pumpAndSettle();

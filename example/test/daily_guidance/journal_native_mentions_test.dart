@@ -5,6 +5,7 @@ import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_people.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
+import 'package:cses_offline_example/daily_guidance/journal_ruled_content.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/journal_surface.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_controller.dart';
@@ -150,6 +151,160 @@ void main() {
             expect(name.textScaler.scale(16), 16);
             expect(name.getTransformTo(body).getMaxScaleOnAxis(), scale);
           }
+          expect(tester.takeException(), isNull);
+        } finally {
+          await _unmount(tester, journal);
+        }
+      });
+    }
+  }
+  for (final kind in ['pilot', 'help']) {
+    for (final sample in [(1, 1.0), (1, 2.0), (2, 1.0), (2, 2.0)]) {
+      final offset = sample.$1;
+      final scale = sample.$2;
+      testWidgets(
+        'mention-only $kind keeps paper row metrics after IME Enter at $sample',
+        (tester) async {
+          await tester.binding.setSurfaceSize(const Size(320, 1000));
+          addTearDown(() => tester.binding.setSurfaceSize(null));
+          final journal = await _open(_Store());
+          final state = journal.editor.editorState;
+          state.selection = Selection.collapsed(Position(path: [0, 0]));
+          await journal.insertUserEntry(
+            journal.captureInsertionTarget()!,
+            const CollabMentionUser(id: 'row-user', name: '示例小陈'),
+            kind: kind,
+          );
+          final entry = state.getNodeAtPath([0, 1])!;
+          await _mount(tester, journal, scale: scale);
+          try {
+            await tester.pumpAndSettle();
+            final lines = find.byKey(ValueKey('journal-lines-${entry.id}'));
+            final before = tester.getRect(lines);
+            final rules = tester.renderObject<RenderJournalRules>(lines);
+            expect(before.height, closeTo(32 * scale, .1));
+            expect(rules.debugLineOffsets.single, closeTo(32 * scale, .1));
+            state.selection = Selection.collapsed(
+              Position(path: entry.path, offset: offset),
+            );
+            await tester.pump();
+            await _keyboard(tester).textInputService.apply([
+              TextEditingDeltaInsertion(
+                oldText: ' \uFFFC ',
+                textInserted: '\n',
+                insertionOffset: offset + 1,
+                selection: TextSelection.collapsed(offset: offset + 2),
+                composing: TextRange.empty,
+              ),
+            ]);
+            await tester.pumpAndSettle();
+            expect(tester.getRect(lines), before);
+            expect(rules.debugLineOffsets.single, closeTo(32 * scale, .1));
+            expect(
+              tester.getRect(find.text('示例小陈')).center.dy,
+              closeTo(before.center.dy, .1),
+            );
+            final next = state.getNodeAtPath([0, 2])!;
+            final nextLines = find.byKey(ValueKey('journal-lines-${next.id}'));
+            expect(tester.getRect(nextLines).left, before.left);
+            expect(tester.getRect(nextLines).width, before.width);
+            expect(tester.getRect(nextLines).top, closeTo(before.bottom, .1));
+            expect(tester.getRect(nextLines).height, closeTo(32 * scale, .1));
+            expect(next.attributes[guidanceEntryAttribute], isNull);
+            expect(
+              entry.delta!.toPlainText(),
+              offset == 1 ? '\uFFFC' : '\uFFFC ',
+            );
+            state.undoManager.undo();
+            await tester.pumpAndSettle();
+            expect(state.getNodeAtPath([0, 2]), isNull);
+            expect(entry.delta!.toPlainText(), '\uFFFC ');
+            state.undoManager.redo();
+            await tester.pumpAndSettle();
+            expect(tester.getRect(lines), before);
+            await _mount(tester, journal, scale: scale, preview: true);
+            await tester.pumpAndSettle();
+            expect(tester.getRect(lines), before);
+            expect(
+              tester
+                  .renderObject<RenderJournalRules>(lines)
+                  .debugLineOffsets
+                  .single,
+              closeTo(32 * scale, .1),
+            );
+            expect(tester.takeException(), isNull);
+          } finally {
+            await _unmount(tester, journal);
+          }
+        },
+      );
+    }
+  }
+  for (final kind in ['pilot', 'help']) {
+    for (final scale in [1.0, 2.0]) {
+      testWidgets('deleting $kind person keeps empty paper row at $scale', (
+        tester,
+      ) async {
+        await tester.binding.setSurfaceSize(const Size(320, 1000));
+        addTearDown(() => tester.binding.setSurfaceSize(null));
+        final journal = await _open(_Store());
+        final state = journal.editor.editorState;
+        state.selection = Selection.collapsed(Position(path: [0, 0]));
+        await journal.insertUserEntry(
+          journal.captureInsertionTarget()!,
+          const CollabMentionUser(id: 'delete-user', name: '待删除用户'),
+          kind: kind,
+        );
+        final entry = state.getNodeAtPath([0, 1])!;
+        await _mount(tester, journal, scale: scale);
+        try {
+          await tester.pumpAndSettle();
+          final lines = find.byKey(ValueKey('journal-lines-${entry.id}'));
+          final before = tester.getRect(lines);
+          for (final end in [1, 2]) {
+            state.selection = Selection(
+              start: Position(path: entry.path),
+              end: Position(path: entry.path, offset: end),
+            );
+            await tester.pump();
+            await _keyboard(tester).textInputService.apply([
+              TextEditingDeltaDeletion(
+                oldText: ' \uFFFC ',
+                deletedRange: TextRange(start: 1, end: end + 1),
+                selection: const TextSelection.collapsed(offset: 1),
+                composing: TextRange.empty,
+              ),
+            ]);
+            await tester.pumpAndSettle();
+            expect(entry.delta!.toPlainText(), end == 1 ? ' ' : '');
+            expect(entry.attributes[guidanceEntryAttribute], kind);
+            expect(tester.getRect(lines), before);
+            expect(
+              tester
+                  .renderObject<RenderJournalRules>(lines)
+                  .debugLineOffsets
+                  .single,
+              closeTo(32 * scale, .1),
+            );
+            state.undoManager.undo();
+            await tester.pumpAndSettle();
+            expect(entry.delta!.toPlainText(), '\uFFFC ');
+            expect(tester.getRect(lines), before);
+          }
+          state.undoManager.redo();
+          await tester.pumpAndSettle();
+          expect(entry.delta!.isEmpty, isTrue);
+          expect(tester.getRect(lines), before);
+          await _mount(tester, journal, preview: true, scale: scale);
+          await tester.pumpAndSettle();
+          expect(tester.getRect(lines), before);
+          expect(
+            tester
+                .renderObject<RenderJournalRules>(lines)
+                .debugLineOffsets
+                .single,
+            closeTo(32 * scale, .1),
+          );
           expect(tester.takeException(), isNull);
         } finally {
           await _unmount(tester, journal);

@@ -1,0 +1,8 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_section_close_focus_test.dart
+00:00 +0: close reflection dismisses focus with keyboard initially false
+00:01 +1: close reflection dismisses focus with keyboard initially true
+00:01 +2: close self-check dismisses focus with keyboard initially false
+00:01 +3: close self-check dismisses focus with keyboard initially true
+00:01 +4: close custom:focus dismisses focus with keyboard initially false
+00:01 +5: close custom:focus dismisses focus with keyboard initially true
+00:02 +6: All tests passed!

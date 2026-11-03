@@ -1,5 +1,31 @@
 # 验证索引
 
+- [今日导向 UI 与编辑交互提交检查](journal-ui-commit-20261103/report.md)
+
+- [关闭栏目不弹键盘改动审查](review-section-close-focus-20261103/report.md)
+
+- [关闭栏目不自动聚焦正文](section-close-without-focus-20261103/report.md)
+
+- [修复单栏目点击定位与无封面正文顶部遮挡](fix-single-section-caret-plain-inset-20261103/report.md)
+
+- [今日导向布局修改审查](review-journal-layout-20261103/report.md)
+
+- [领航员和都来帮点击菜单即创建业务行](create-entry-before-picker-20261103/report.md)
+
+- [删除人员后的业务空行横格修复](empty-person-entry-lines-20261103/report.md)
+
+- [纯人员业务行回车布局修复](mention-only-enter-layout-20261103/report.md)
+
+- [今日导向固定封面与初始横格](sticky-cover-initial-rules-20261103/report.md)
+
+- [连续关闭栏目失败修复与 Android 真机验证](custom-section-close-20261103/report.md)
+
+- [编辑保存后直接预览](save-to-preview-20261103/report.md)
+
+- [编辑页顶部沉浸式与真机更新](edit-immersive-20261103/report.md)
+
+- [首栏目标题按 orientType 展示](orient-section-title-20261103/report.md)
+
 - [剩余修改提交检查](remaining-changes-20261103/report.md)
 
 - [Android自定义栏目保存复验](android-custom-field-recheck-20261103/report.md)

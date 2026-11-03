@@ -30,7 +30,7 @@ final class LocalJournalController extends ChangeNotifier {
   /// 接管由[draft]恢复的文档与监听；[store]仍由宿主持有，[saveDelay]为去抖间隔。
   /// [services]借用此页面的业务端口，不获取目录、认证或头像资源所有权。
   /// [autoSave] 控制自动提交；手动模式仅等待已发出的请求。
-  /// [readOnly] 固定只读权限，拒绝正文、日期及持久化操作。
+  /// [readOnly] 为初始只读权限；保存后可单向转为预览，拒绝正文、日期及持久化操作。
   LocalJournalController._(
     JournalStore store,
     JournalDraft draft,
@@ -104,8 +104,31 @@ final class LocalJournalController extends ChangeNotifier {
   /// 是否安排去抖和关闭保存；服务端显式保存模式为 false。
   final bool autoSave;
 
-  /// 初始只读权限，创建后不可变；即使视图错误解锁也不能写入或提交。
+  /// 初始只读权限；创建后不可变，保存后的权限应读取 isReadOnly。
   final bool readOnly;
+
+  /// 当前只读权限；初始预览或保存后预览均拒绝写入与持久化，即使视图错误解锁。
+  bool get isReadOnly => readOnly || _savedPreview;
+
+  /// 保存成功后永久冻结当前会话，不重新创建正文或改变资源所有权。
+  bool _savedPreview = false;
+
+  /// 将已保存且无在途请求的会话永久转为预览；保留正文与资源所有权，不重新读取存储。
+  /// 未保存、保存中或已关闭时抛出 StateError；调用者须先等待 flush 成功。
+  ///
+  /// ```dart
+  /// if (await journal.flush()) journal.enterPreview();
+  /// ```
+  void enterPreview() {
+    if (closed || dirty || saving) {
+      throw StateError('须完成保存后才能进入预览');
+    }
+    _timer?.cancel();
+    _timer = null;
+    _savedPreview = true;
+    editor.editorState.editable = false;
+    notifyListeners();
+  }
 
   final JournalStore _store;
   JournalDraft _draft;
@@ -169,7 +192,7 @@ final class LocalJournalController extends ChangeNotifier {
   /// 修改记录日期[value]并安排保存，格式必须为真实YYYY-MM-DD，否则抛ArgumentError。
   void setDate(String value) {
     if (!isJournalDate(value)) throw ArgumentError.value(value, 'value');
-    if (readOnly || closed || date == value) return;
+    if (isReadOnly || closed || date == value) return;
     _draft = JournalDraft(
       id: _draft.id,
       date: value,
@@ -327,7 +350,7 @@ final class LocalJournalController extends ChangeNotifier {
 
   /// 正文或日期变化后更新修订号，自动模式安排去抖；旧任务成功不能标记新修订已保存。
   void _changed() {
-    if (closed || readOnly) return;
+    if (closed || isReadOnly) return;
     _revision++;
     _timer?.cancel();
     if (autoSave) _timer = Timer(_saveDelay, () => unawaited(flush()));
@@ -337,7 +360,7 @@ final class LocalJournalController extends ChangeNotifier {
   /// 取消去抖并串行保存直至覆盖当前修订，失败返回false并保留dirty与错误，不抛存储异常。
   /// 多个调用者共享在途任务；退出应等待true后再销毁路由。
   Future<bool> flush() {
-    if (readOnly) return Future.value(true);
+    if (isReadOnly) return Future.value(true);
     _timer?.cancel();
     _timer = null;
     if (_disposed) return Future.value(!dirty);
@@ -374,7 +397,7 @@ final class LocalJournalController extends ChangeNotifier {
   /// 在事务提交前校验[transaction]的栏目边界、受控对象和总容量。
   /// 普通结构编辑只能在一个栏目内；栏目增删须携带根版本及关闭草稿更新，撤销同样校验。
   bool _allows(Transaction transaction) {
-    if (closed || readOnly) return false;
+    if (closed || isReadOnly) return false;
     if (editor
             .editorState
             .document
@@ -711,7 +734,8 @@ final class LocalJournalController extends ChangeNotifier {
     await _applyCommand(transaction);
   }
 
-  /// 关闭[kind]可选栏目并把完整内容放入根草稿区；不清空、不占可见空间，可恢复/撤销。
+  /// 异步关闭 [kind] 可选栏目并保留完整关闭草稿，可恢复/撤销；资源仍归当前会话。
+  /// 关闭后清除正文选区，不把光标移至其他栏目，避免重新激活输入。
   Future<void> closeSection(String kind) async {
     if (closed || !editor.editorState.editable || kind == 'record') return;
     final state = editor.editorState;
@@ -725,7 +749,7 @@ final class LocalJournalController extends ChangeNotifier {
     ];
     final transaction = _sectionTransaction(hidden);
     transaction.add(DeleteOperation(section.path, [section]), transform: false);
-    transaction.afterSelection = Selection.collapsed(Position(path: [0, 0]));
+    transaction.afterSelection = null;
     await _applyCommand(transaction);
   }
 
@@ -794,6 +818,57 @@ final class LocalJournalController extends ChangeNotifier {
       return;
     }
     await _insertMentions(target, guidanceMentionDelta(people), kind: kind);
+  }
+
+  /// 在仍有效的 [target] 后立即创建 [kind] 空业务行，异步返回该行的填人目标。
+  /// [kind] 仅接受 help/pilot；取消选人不删除此行，创建为一次独立撤销。
+  /// 返回目标借用当前会话，后续修订、关闭或权限变化后失效，不持有资源。
+  ///
+  /// ```dart
+  /// final target = await journal.createEmptyUserEntry(
+  ///   journal.captureInsertionTarget()!, kind: 'pilot');
+  /// // 取消选人无需回滚；成功时再调用 journal.fillUserEntry(target, user)。
+  /// ```
+  Future<GuidanceInsertionTarget> createEmptyUserEntry(
+    GuidanceInsertionTarget target, {
+    required String kind,
+  }) async {
+    if (kind != 'help' && kind != 'pilot') {
+      throw ArgumentError.value(kind, 'kind', '仅支持都来帮或领航员');
+    }
+    await _insertMentions(target, Delta(), kind: kind);
+    final state = editor.editorState;
+    if (closed || state.isDisposed) throw StateError('日记会话已关闭');
+    final entry = state.getNodeAtPath(target.selection.start.path.next);
+    if (entry?.attributes[guidanceEntryAttribute] != kind) {
+      throw StateError('业务行已变化');
+    }
+    return GuidanceInsertionTarget._(
+      selection: Selection.collapsed(Position(path: entry!.path)),
+      nodeId: entry.id,
+      revision: _revision,
+      owner: _targetOwner,
+    );
+  }
+
+  /// 将 [user] 异步填入 [target] 对应的既有空业务行，不创建第二行。
+  /// 目标须来自当前会话且修订未变；不再为空、身份或权限失效时拒绝写入。
+  /// 人员填入独立可撤销，撤销后保留先前创建的空行；不持有人员或页面资源。
+  Future<void> fillUserEntry(
+    GuidanceInsertionTarget target,
+    CollabMentionUser user,
+  ) async {
+    if (closed) throw StateError('日记会话已关闭');
+    final entry = editor.editorState.getNodeAtPath(target.selection.start.path);
+    if (entry?.id != target.nodeId ||
+        !const {
+          'help',
+          'pilot',
+        }.contains(entry?.attributes[guidanceEntryAttribute]) ||
+        entry?.delta?.isEmpty != true) {
+      throw StateError('业务行已变化');
+    }
+    await _insertMentions(target, EditorUserMention.createDelta(user));
   }
 
   /// 在仍有效的[target]后创建[kind]业务行，内容为[user]的原生人员提及和空格。

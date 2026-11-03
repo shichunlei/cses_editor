@@ -1,0 +1,31 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart
+00:00 +0: review: single section must remain visible to selection service
+single-section visible range: (0, -1)
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: not null
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart:34:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart line 34
+The test description was:
+  review: single section must remain visible to selection service
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: review: single section must remain visible to selection service [E]
+  Test failed. See exception logs above.
+  The test description was: review: single section must remain visible to selection service
+
+00:01 +0 -1: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart: review: single section must remain visible to selection service

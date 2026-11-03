@@ -1,6 +1,7 @@
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 import 'guidance_entries.dart';
@@ -25,11 +26,13 @@ class JournalSurface extends StatelessWidget {
   /// [onCloseSection]接收可选栏目种类，由宿主持有且可空。
   /// [captureKey]非空时启用完整纸张截图布局；[footer]覆盖默认文档尾部留白，用于分享品牌页脚。
   /// [keyboardActions]为宿主自定义快捷项，默认空；工具栏等待每个动作完成，模态输入恢复由宿主负责。
+  /// [recordTitle]为首栏目展示标题，由宿主按 orientType 传入，不写正文。
   const JournalSurface({
     super.key,
     required this.editorState,
     required this.preview,
     required this.header,
+    this.recordTitle = '今日记录',
     this.onCloseSection,
     this.keyboardActions = const [],
     this.captureKey,
@@ -57,6 +60,9 @@ class JournalSurface extends StatelessWidget {
   /// 随纸张滚动的日期头部，不进入正文历史。
   final Widget header;
 
+  /// 宿主提供的首栏目标题，编辑、预览与分享图共用。
+  final String recordTitle;
+
   /// 在[context]注入纸张样式、栏目结构及业务动作；输入、菜单、选区和剪贴板均由共用视图维护。
   /// 编辑/预览使用同一排版配置，正文与滚动资源由共享组件按公开契约管理。
   @override
@@ -77,8 +83,10 @@ class JournalSurface extends StatelessWidget {
         preview: preview,
         header: header,
         editorKey: const ValueKey('journal-editor'),
-        // padding 会作用于每个根栏目；编辑和预览只在整篇文档末尾留白一次。
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        // 纸张由栏目提供水平留白，让单栏目头部与横格能共同填满视口。
+        padding: plain
+            ? const EdgeInsets.symmetric(horizontal: 20)
+            : EdgeInsets.zero,
         footer:
             footer ??
             SizedBox(
@@ -112,7 +120,9 @@ class JournalSurface extends StatelessWidget {
             if (plain) {
               return blockCraftSnapshotBuilders({
                 ...builders,
-                journalSectionType: _JournalSectionBuilder(),
+                journalSectionType: _JournalSectionBuilder(
+                  recordTitle: recordTitle,
+                ),
                 if (captureKey != null)
                   PageBlockKeys.type: _JournalCapturePageBuilder(
                     captureKey: captureKey!,
@@ -129,13 +139,14 @@ class JournalSurface extends StatelessWidget {
             );
             final paperBuilders = <String, BlockComponentBuilder>{
               PageBlockKeys.type: captureKey == null
-                  ? PageBlockComponentBuilder(minimumBodyHeight: 0)
+                  ? _JournalPageBuilder()
                   : _JournalCapturePageBuilder(
                       captureKey: captureKey!,
                       header: header,
                       footer: footer,
                     ),
               journalSectionType: _JournalSectionBuilder(
+                recordTitle: recordTitle,
                 preview: preview,
                 compactLastSection: captureKey != null,
                 onClose: preview ? null : onCloseSection,
@@ -192,7 +203,9 @@ class JournalSurface extends StatelessWidget {
 class _JournalSectionBuilder extends BlockComponentBuilder {
   /// [preview] 折叠只读栏目末尾空段落；[compactLastSection] 让分享图末栏目紧接品牌页脚。
   /// [onClose] 由页面处理栏目关闭，null 不展示按钮；不拥有外部资源。
+  /// [recordTitle]为宿主提供的首栏目标题，不修改正文。
   _JournalSectionBuilder({
+    required this.recordTitle,
     this.preview = false,
     this.compactLastSection = false,
     this.onClose,
@@ -207,12 +220,16 @@ class _JournalSectionBuilder extends BlockComponentBuilder {
   /// 借用的业务关闭动作。
   final ValueChanged<String>? onClose;
 
+  /// 首栏目展示标题，由宿主按文档类型确定。
+  final String recordTitle;
+
   /// 使用[context]中的借用栏目构建结构组件。
   @override
   BlockComponentWidget build(BlockComponentContext context) => _JournalSection(
     key: context.node.key,
     node: context.node,
     configuration: configuration,
+    recordTitle: recordTitle,
     preview: preview,
     compactLastSection: compactLastSection,
     onClose: onClose,
@@ -224,10 +241,12 @@ class _JournalSection extends BlockComponentStatelessWidget {
   /// [key]保持栏目身份，[node]为受保护的栏目，[configuration]为渲染配置。
   /// [preview] 仅改变只读留白，不修改节点；[compactLastSection] 收紧分享图末栏目。
   /// [onClose] 可空，由宿主负责保存关闭草稿及撤销；组件不释放借用资源。
+  /// [recordTitle]为首栏目展示标题，其余栏目沿用各自标题。
   const _JournalSection({
     super.key,
     required super.node,
     required super.configuration,
+    required this.recordTitle,
     this.preview = false,
     this.compactLastSection = false,
     this.onClose,
@@ -242,7 +261,10 @@ class _JournalSection extends BlockComponentStatelessWidget {
   /// 可选业务关闭回调，不释放。
   final ValueChanged<String>? onClose;
 
-  /// 在 [context] 构建栏目和横格；两种模式使用相同间距，不补足空白书写区。
+  /// 首栏目标题仅影响展示，不进入正文或历史。
+  final String recordTitle;
+
+  /// 在 [context] 构建栏目和横格；两种模式使用相同间距，单栏目时接受根视口的书写区最小高度。
   @override
   Widget build(BuildContext context) {
     final editor = context.read<EditorState>();
@@ -256,11 +278,12 @@ class _JournalSection extends BlockComponentStatelessWidget {
       );
     }
     final titleDelta = node.attributes['guidance_heading_delta'];
-    final title = titleDelta is List
+    final title = node.attributes['section'] == 'record'
+        ? recordTitle
+        : titleDelta is List
         ? Delta.fromJson(titleDelta).toPlainText()
         : node.attributes['guidance_section_label'] as String? ??
               switch (node.attributes['section']) {
-                'record' => '今日记录',
                 'reflection' => '感悟',
                 _ => '自检',
               };
@@ -272,17 +295,23 @@ class _JournalSection extends BlockComponentStatelessWidget {
         children.removeLast();
       }
     }
+    final fillPage =
+        !compactLastSection &&
+        node.attributes['section'] == 'record' &&
+        node.parent?.children.length == 1;
     return Padding(
       key: ValueKey('journal-section-${node.attributes['section']}'),
       padding: EdgeInsets.only(
+        left: 20,
+        right: 20,
         bottom:
-            compactLastSection &&
-                identical(node, node.parent?.children.lastOrNull)
+            fillPage ||
+                (compactLastSection &&
+                    identical(node, node.parent?.children.lastOrNull))
             ? 0
             : lineHeight,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: _JournalMinimumColumn(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 12, bottom: 8),
@@ -445,4 +474,121 @@ class _JournalCapturePage extends BlockComponentStatelessWidget {
       ),
     );
   }
+}
+
+/// 保留共用根滚动与选区能力，仅在只有首栏目时把横格补满视口。
+class _JournalPageBuilder extends BlockComponentBuilder {
+  /// 无自有资源；头尾和节点均借用编辑器上下文。
+  _JournalPageBuilder();
+
+  /// 在 [context] 的根节点只有记录栏目时，将头部和正文作为同一滚动项排版。
+  @override
+  BlockComponentWidget build(BlockComponentContext context) => _JournalPage(
+    key: context.node.key,
+    node: context.node,
+    header: context.header,
+    footer: context.footer,
+    wrapper: context.wrapper,
+  );
+}
+
+/// 按当前栏目数量选择视口填充；不改变正文节点、历史或滚动控制器所有权。
+class _JournalPage extends PageBlockComponent {
+  /// [key]/[node] 保留根身份；[header]/[footer]/[wrapper] 借用共享编辑器配置。
+  const _JournalPage({
+    super.key,
+    required super.node,
+    super.header,
+    super.footer,
+    super.wrapper,
+  });
+
+  /// 在 [context] 的有限视口内给单栏目提供最小高度，多栏目沿用原排版。
+  @override
+  Widget build(BuildContext context) {
+    if (node.children.length != 1 ||
+        node.children.single.attributes['section'] != 'record') {
+      return super.build(context);
+    }
+    return LayoutBuilder(
+      builder: (context, constraints) => PageBlockComponent(
+        node: node,
+        // 保留编辑器声明的头部索引槽；可见头部在首栏目内参与视口补高。
+        header: header == null ? null : const SizedBox.shrink(),
+        footer: footer,
+        wrapper: (context, {required node, required child}) => ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: constraints.hasBoundedHeight ? constraints.maxHeight : 0,
+          ),
+          child: _JournalMinimumColumn(
+            children: [
+              header ?? const SizedBox.shrink(),
+              wrapper == null
+                  ? child
+                  : wrapper!(context, node: node, child: child),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// 两个纵向子项按自然高度排版，剩余最小高度只交给第二项；不做固有高度测量。
+class _JournalMinimumColumn extends MultiChildRenderObjectWidget {
+  /// [children] 为借用的头部与正文，固定两项，不持有编辑器资源。
+  const _JournalMinimumColumn({required super.children});
+
+  /// 为 [context] 创建同步布局对象。
+  @override
+  RenderObject createRenderObject(BuildContext context) =>
+      _RenderJournalMinimumColumn();
+}
+
+/// 两项纵向排版的偏移与兄弟链，不持有资源。
+class _JournalColumnParentData extends ContainerBoxParentData<RenderBox> {}
+
+/// 先测量头部，再把剩余视口高度传给正文，支持日期、大字和键盘尺寸变化。
+class _RenderJournalMinimumColumn extends RenderBox
+    with
+        ContainerRenderObjectMixin<RenderBox, _JournalColumnParentData>,
+        RenderBoxContainerDefaultsMixin<RenderBox, _JournalColumnParentData> {
+  /// 为借用的 [child] 安装纵向布局偏移数据。
+  @override
+  void setupParentData(RenderBox child) {
+    if (child.parentData is! _JournalColumnParentData) {
+      child.parentData = _JournalColumnParentData();
+    }
+  }
+
+  /// 头部使用自然高度，正文至少覆盖约束剩余高度；长内容自然增长。
+  @override
+  void performLayout() {
+    final head = firstChild!;
+    final body = childAfter(head)!;
+    final loose = BoxConstraints.tightFor(width: constraints.maxWidth);
+    head.layout(loose, parentUsesSize: true);
+    final remaining = (constraints.minHeight - head.size.height).clamp(
+      0.0,
+      double.infinity,
+    );
+    body.layout(loose.copyWith(minHeight: remaining), parentUsesSize: true);
+    (body.parentData! as _JournalColumnParentData).offset = Offset(
+      0,
+      head.size.height,
+    );
+    size = constraints.constrain(
+      Size(constraints.maxWidth, head.size.height + body.size.height),
+    );
+  }
+
+  /// 在 [context] 的 [offset] 绘制借用子项，不增加遮挡层。
+  @override
+  void paint(PaintingContext context, Offset offset) =>
+      defaultPaint(context, offset);
+
+  /// 将 [position] 的输入事件交给实际命中的 [result] 子项。
+  @override
+  bool hitTestChildren(BoxHitTestResult result, {required Offset position}) =>
+      defaultHitTestChildren(result, position: position);
 }

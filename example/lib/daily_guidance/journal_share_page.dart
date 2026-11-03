@@ -23,6 +23,7 @@ class JournalSharePage extends StatefulWidget {
   /// [document]是当前正文的独立 JSON 快照；[header]为同版封面、用户及日期。
   /// [commandContext]借用宿主展示端口；[isCurrent]每次异步和操作前校验原会话。
   /// [actions]借用系统分享端口；[width]保持原纸张宽度；[key]标识此分享路由。
+  /// [recordTitle]为首栏目标题，与原页面封面一致，不写入文档快照。
   const JournalSharePage({
     super.key,
     required this.document,
@@ -30,6 +31,7 @@ class JournalSharePage extends StatefulWidget {
     required this.commandContext,
     required this.isCurrent,
     required this.width,
+    this.recordTitle = '今日记录',
     this.actions = const JournalImageActions(),
   });
 
@@ -38,6 +40,9 @@ class JournalSharePage extends StatefulWidget {
 
   /// 原页面同版的只读头部，不含返回、分享或点赞。
   final Widget header;
+
+  /// 原页面按 orientType 确定的首栏目展示标题。
+  final String recordTitle;
 
   /// 仅借用其中的实例服务，资源仍归宿主。
   final EditorCommandContext commandContext;
@@ -230,6 +235,7 @@ class _JournalSharePageState extends State<JournalSharePage> {
                         child: SizedBox(
                           width: widget.width,
                           child: JournalSurface(
+                            recordTitle: widget.recordTitle,
                             editorState: _editor.editorState,
                             preview: true,
                             header: widget.header,

@@ -509,6 +509,55 @@ void main() {
     },
   );
 
+  for (final kind in ['pilot', 'help']) {
+    test(
+      '$kind empty row persists before picking and fills in place with separate undo',
+      () async {
+        final store = _MemoryJournalStore();
+        var journal = await _open(store: store);
+        try {
+          var state = journal.editor.editorState;
+          final source = _section(journal, 'record').children.single;
+          final created = await journal.createEmptyUserEntry(
+            _endTarget(journal, source),
+            kind: kind,
+          );
+          final entry = _section(journal, 'record').children.last;
+          expect(entry.delta!.isEmpty, isTrue);
+          expect(entry.attributes[guidanceEntryAttribute], kind);
+          expect(await journal.flush(), isTrue);
+          await journal.close();
+          journal = await _open(store: store);
+          state = journal.editor.editorState;
+          final restored = _section(journal, 'record').children.last;
+          expect(restored.delta!.isEmpty, isTrue);
+          expect(restored.attributes[guidanceEntryAttribute], kind);
+          const user = CollabMentionUser(id: 'u1', name: '张三');
+          // 旧页面目标不能填入已重开的文档，即使节点路径仍相同。
+          await expectLater(
+            journal.fillUserEntry(created, user),
+            throwsStateError,
+          );
+          final target = _endTarget(journal, restored);
+          await journal.fillUserEntry(target, user);
+          expect(_section(journal, 'record').children, hasLength(2));
+          expect(restored.delta!.toPlainText(), '\uFFFC ');
+          state.undoManager.undo();
+          expect(restored.delta!.isEmpty, isTrue);
+          state.undoManager.redo();
+          expect(restored.delta!.toPlainText(), '\uFFFC ');
+          await expectLater(
+            journal.fillUserEntry(target, user),
+            throwsStateError,
+          );
+          expect(_section(journal, 'record').children, hasLength(2));
+        } finally {
+          await journal.close();
+        }
+      },
+    );
+  }
+
   for (final kind in ['task', 'help', 'pilot']) {
     test(
       'Enter ends a $kind entry without inheriting business attributes and is undoable',

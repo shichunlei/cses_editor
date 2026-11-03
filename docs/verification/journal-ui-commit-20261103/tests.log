@@ -1,0 +1,132 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: bodyContent projects to existing journal sections and round trips exactly
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: hidden custom field remains valid and round trips
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: live edits, menus, date and custom fields save in original body format
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: closing both optional sections and amount preserves history and saved content
+00:00 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/dynamic_journal_test.dart: legacy help organization references remain readable without migration
+00:00 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:00 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:01 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:01 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:01 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:01 +26: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:03 +27: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:03 +28: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_host_boundary_test.dart: save failure stays editable and retry enters the same preview
+00:03 +29: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:03 +30: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:03 +31: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:03 +32: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:03 +33: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:03 +34: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:03 +35: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+00:03 +36: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +37: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:04 +38: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +39: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +40: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +41: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +42: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +43: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +44: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +45: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +46: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +47: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:04 +47: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 390.0/2.0
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+00:05 +48: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +49: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +50: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +51: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +52: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +53: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +53: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+00:05 +54: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +55: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +55: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+00:05 +56: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +56: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+00:05 +57: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +58: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:05 +58: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+This widget has been unmounted, so the State no longer has a context (and should be considered defunct).
+Consider canceling any active work during "dispose" or using the "mounted" getter to determine if the State is still active.
+00:06 +59: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:06 +60: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:06 +61: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:06 +62: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:06 +63: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:06 +64: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:06 +65: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:06 +66: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:06 +67: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:06 +68: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:07 +69: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:07 +70: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:07 +71: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:07 +72: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:07 +73: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:07 +74: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:07 +75: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:07 +76: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:07 +77: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:07 +78: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:07 +79: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:07 +80: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:07 +81: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: date changes persist and back waits for save before restoring the same sections
+00:07 +82: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/local_journal_page_test.dart: date changes persist and back waits for save before restoring the same sections
+00:07 +83: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker rejects account round trips
+00:07 +84: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker rejects account round trips
+00:07 +85: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +86: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +87: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +88: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +89: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +90: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +91: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +92: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +93: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +94: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +95: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +96: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:08 +97: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:09 +98: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:09 +99: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:09 +100: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:10 +101: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:10 +102: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:11 +103: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:11 +104: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:11 +105: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:11 +106: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:12 +107: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:12 +108: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: (tearDownAll)
+00:12 +108: All tests passed!

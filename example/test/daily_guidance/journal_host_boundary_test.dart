@@ -26,6 +26,9 @@ class _Store implements JournalStore {
   /// 已发起读取次数，用于确认新存储未被旧页面使用。
   int reads = 0;
 
+  /// 已发起保存次数，验证预览不再自动或重复提交。
+  int writes = 0;
+
   /// 返回草稿或等待测试提供读取结果，不访问磁盘。
   @override
   Future<JournalDraft?> read() async {
@@ -36,6 +39,7 @@ class _Store implements JournalStore {
   /// 等待可选写入门闩后保存[draft]；失败时不覆盖当前快照。
   @override
   Future<void> write(JournalDraft draft) async {
+    writes++;
     await pendingWrite?.future;
     this.draft = JournalDraft.fromJson(draft.toJson());
   }
@@ -65,6 +69,79 @@ Future<EditorState> _open(
 
 /// 验证服务可注入且加载、预览与保存失败不会恢复已撤销的会话。
 void main() {
+  testWidgets('save failure stays editable and retry enters the same preview', (
+    tester,
+  ) async {
+    final store = _Store();
+    final state = await _open(tester, store, () => 'same');
+    await state.apply(
+      state.transaction..insertText(state.getNodeAtPath([0, 0])!, 0, '保存后预览'),
+    );
+    store.pendingWrite = Completer<void>();
+    await tester.tap(find.byKey(const ValueKey('journal-save')));
+    await tester.pump();
+    await tester.pump();
+    expect(find.text('保存中…'), findsOneWidget);
+    store.pendingWrite!.completeError(StateError('保存失败'));
+    await tester.pumpAndSettle();
+    expect(state.editable, isTrue);
+    expect(find.byKey(const ValueKey('journal-save')), findsOneWidget);
+    expect(find.byKey(const ValueKey('journal-preview-actions')), findsNothing);
+
+    store.pendingWrite = null;
+    await tester.tap(find.byKey(const ValueKey('journal-save')));
+    await tester.pumpAndSettle();
+    expect(store.reads, 1);
+    expect(store.writes, 2);
+    expect(
+      tester.widget<AppFlowyEditor>(find.byType(AppFlowyEditor)).editorState,
+      same(state),
+    );
+    expect(state.editable, isFalse);
+    expect(find.byKey(const ValueKey('journal-save')), findsNothing);
+    expect(find.byTooltip('撤销'), findsNothing);
+    expect(find.byTooltip('重做'), findsNothing);
+    expect(
+      find.byKey(const ValueKey('journal-preview-actions')),
+      findsOneWidget,
+    );
+    expect(find.byKey(const ValueKey('editor-mobile-toolbar')), findsNothing);
+    final before = jsonEncode(state.document.toJson());
+    state.editable = true;
+    await state.apply(
+      state.transaction..insertText(state.getNodeAtPath([0, 0])!, 0, '禁止写入'),
+    );
+    expect(jsonEncode(state.document.toJson()), before);
+    state.editable = false;
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pumpAndSettle();
+    expect(store.writes, 2);
+  });
+
+  testWidgets('save completion cannot preview an obsolete session', (
+    tester,
+  ) async {
+    final store = _Store();
+    var identity = 'first';
+    final state = await _open(tester, store, () => identity);
+    await state.apply(
+      state.transaction..insertText(state.getNodeAtPath([0, 0])!, 0, '原会话'),
+    );
+    store.pendingWrite = Completer<void>();
+    await tester.tap(find.byKey(const ValueKey('journal-save')));
+    await tester.pump();
+    await tester.pump();
+    identity = 'second';
+    store.pendingWrite!.complete();
+    await tester.pumpAndSettle();
+    expect(find.text('宿主会话已变化，请关闭后重新打开'), findsOneWidget);
+    expect(find.byKey(const ValueKey('journal-preview-actions')), findsNothing);
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pumpAndSettle();
+  });
+
   testWidgets('late draft load is rejected after host identity changes', (
     tester,
   ) async {

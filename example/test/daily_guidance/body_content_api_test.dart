@@ -273,7 +273,7 @@ void main() {
   );
 
   test(
-    'close and reopen retain hidden content and allow restoring the same section',
+    'closing both optional sections and amount preserves history and saved content',
     () async {
       final original = _record();
       final api = _Api(original);
@@ -285,7 +285,22 @@ void main() {
         store: store,
         autoSave: false,
       );
+      final state = journal.editor.editorState;
+      final amount = state.document.root.children.firstWhere(
+        (node) => node.attributes['guidance_section_label'] == '金额',
+      );
+      final amountKind = amount.attributes['section'] as String;
+      final amountSnapshot = amount.toJson();
       await journal.closeSection('reflection');
+      await journal.closeSection('self-check');
+      await journal.closeSection(amountKind);
+      expect(state.document.root.children, hasLength(1));
+      expect(closedJournalSections(state.document), hasLength(3));
+      state.undoManager.undo();
+      expect(journal.hasSection(amountKind), isTrue);
+      expect(state.document.root.children.last.toJson(), amountSnapshot);
+      state.undoManager.redo();
+      expect(journal.hasSection(amountKind), isFalse);
       expect(journal.hasSection('reflection'), isFalse);
       expect(await journal.flush(), isTrue);
       await journal.close();
@@ -294,6 +309,13 @@ void main() {
         autoSave: false,
       );
       expect(reopened.hasSection('reflection'), isFalse);
+      expect(reopened.hasSection(amountKind), isFalse);
+      expect(
+        closedJournalSections(reopened.editor.editorState.document)
+            .singleWhere((node) => node.attributes['section'] == amountKind)
+            .toJson(),
+        amountSnapshot,
+      );
       await reopened.addSection('reflection');
       expect(reopened.hasSection('reflection'), isTrue);
       expect(
@@ -370,6 +392,12 @@ void main() {
           ),
         );
         expect(jsonEncode(api.submitted), contains('实时正文'));
+        expect(_state(tester).editable, isFalse);
+        expect(find.byKey(const ValueKey('journal-save')), findsNothing);
+        expect(
+          find.byKey(const ValueKey('journal-preview-actions')),
+          findsOneWidget,
+        );
         await _insert(_state(tester), '未提交');
         await tester.pumpWidget(const SizedBox());
         await tester.pumpAndSettle();
@@ -474,7 +502,7 @@ void main() {
   testWidgets('supported and legacy mention types load, edit and save', (
     tester,
   ) async {
-    final record = _record();
+    final record = _record()..['orientType'] = 'RESULT';
     final region = (record['bodyContent']['children'] as List)
         .cast<Map>()
         .firstWhere((node) => node['meta']['dailySlot'] == 'daily-cover');
@@ -527,7 +555,7 @@ void main() {
       'unsupported ${scenario.type} reference is rejected before editing '
       '(namespaced=${scenario.namespaced}, hidden=${scenario.hidden}) and retry saves',
       (tester) async {
-        final record = _record();
+        final record = _record()..['orientType'] = 'RESULT';
         final body = record['bodyContent'] as Map<String, dynamic>;
         final region = (body['children'] as List).cast<Map>().firstWhere(
           (node) => scenario.hidden
@@ -574,7 +602,7 @@ void main() {
         expect(api.writes, 0);
         expect(await api.fetch(record['id'] as String), record);
         expect(jsonEncode(record), before);
-        final corrected = _record();
+        final corrected = _record()..['orientType'] = 'RESULT';
         await expectLater(
           store.write(
             BodyContentCodec.decode(

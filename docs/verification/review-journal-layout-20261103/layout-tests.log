@@ -1,0 +1,85 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart
+00:00 +0: review: single section must remain visible to selection service
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: a value greater than or equal to <0>
+  Actual: <-1>
+   Which: is not a value greater than or equal to <0>
+visible root section must not be filtered out as header
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart:30:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart line 30
+The test description was:
+  review: single section must remain visible to selection service
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: review: single section must remain visible to selection service [E]
+  Test failed. See exception logs above.
+  The test description was: review: single section must remain visible to selection service
+
+00:01 +0 -1: review: plain document first line must not overlap app bar
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: a value greater than or equal to <52.0>
+  Actual: <0.0>
+   Which: is not a value greater than or equal to <52.0>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart:45:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart line 45
+The test description was:
+  review: plain document first line must not overlap app bar
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -2: review: plain document first line must not overlap app bar [E]
+  Test failed. See exception logs above.
+  The test description was: review: plain document first line must not overlap app bar
+
+00:01 +0 -2: review: landscape keyboard leaves enough room for fixed cover
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<A RenderFlex overflowed by 90 pixels on the bottom.>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart:58:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart line 58
+The test description was:
+  review: landscape keyboard leaves enough room for fixed cover
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -3: review: landscape keyboard leaves enough room for fixed cover [E]
+  Test failed. See exception logs above.
+  The test description was: review: landscape keyboard leaves enough room for fixed cover
+
+00:01 +0 -3: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart: review: landscape keyboard leaves enough room for fixed cover
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart: review: plain document first line must not overlap app bar
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/review_layout_probe_test.dart: review: single section must remain visible to selection service

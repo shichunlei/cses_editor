@@ -4,8 +4,8 @@ import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_record_fields.dart';
-import 'package:cses_offline_example/daily_guidance/journal_share_page.dart';
 import 'package:cses_offline_example/daily_guidance/journal_image_actions.dart';
+import 'package:cses_offline_example/daily_guidance/journal_share_page.dart';
 import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ enum JournalPageMode {
 class LocalJournalPage extends StatefulWidget {
   /// [key]控制页面身份；[store]是当前账号和文档独占的存储端口，由宿主持有。
   /// 同一store只能打开一个日记页面，读取失败不会新建覆盖原记录。
-  /// [mode] 固定初始编辑/预览模式，默认编辑；改变模式须重新打开路由。
+  /// [mode] 固定初始编辑/预览模式，默认编辑；显式保存成功后当前页单向进入预览。
   /// [mentionDirectory]由宿主提供人员查询，null使用空目录；仅查询人员，不包含部门引用。
   /// [hostServices]默认空端口；其选人回调在本页权限保护下执行，null使用内置面板。
   /// [sessionIdentity]用于身份失效检查，null为固定本地身份；变化后须重新打开页面。
@@ -88,7 +88,7 @@ class LocalJournalPage extends StatefulWidget {
   /// 页面借用的单写入者存储，路由关闭时不释放宿主资源。
   final JournalStore store;
 
-  /// 宿主在路由创建时选择的固定模式；当前页面不能切换。
+  /// 宿主在路由创建时选择的初始模式；编辑保存成功后进入预览。
   final JournalPageMode mode;
 
   /// 创建管理异步加载、固定模式和退场资源的状态。
@@ -96,7 +96,7 @@ class LocalJournalPage extends StatefulWidget {
   createState() => _LocalJournalPageState();
 }
 
-/// 拥有固定模式的日记控制器；预览不分配第二份可变会话，也不提交数据。
+/// 拥有日记控制器；保存后单向进入预览，不分配第二份可变会话或重新加载数据。
 class _LocalJournalPageState extends State<LocalJournalPage>
     with WidgetsBindingObserver {
   LocalJournalController? _journal;
@@ -118,8 +118,9 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   /// 在初始化时捕获的模式，不跟随后续组件参数改变。
   late final JournalPageMode _mode;
 
-  /// 当前会话的永久只读权限。
-  bool get _readOnly => _mode == JournalPageMode.preview;
+  /// 当前会话权限；未加载时使用初始模式，保存成功后沿用控制器的永久只读状态。
+  bool get _readOnly =>
+      _journal?.isReadOnly ?? _mode == JournalPageMode.preview;
 
   /// 当前页面是否通过固定身份的服务适配器加载和保存。
   bool get _remote => widget.store is ApiJournalStore;
@@ -365,7 +366,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   }
 
   /// 结束输入后提交当前正文，异步返回仅更新原页面、文档和宿主会话。
-  /// 请求失败由控制器保留正文及重试状态；不创建文件或替代路由。
+  /// 成功后原会话永久进入只读预览；失败保留正文与编辑重试状态，不替换路由或重读存储。
   Future<void> _saveContent() async {
     final journal = _journal;
     if (journal == null ||
@@ -395,6 +396,8 @@ class _LocalJournalPageState extends State<LocalJournalPage>
       state.localTransactionsPaused = true;
       final saved = await journal.flush();
       if (mounted && current() && saved) {
+        journal.enterPreview();
+        _chooseDate = false;
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(_remote ? '已保存到后台' : '已保存到本机')));
@@ -434,6 +437,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     final snapshot = journal.editor.editorState.document.toJson();
     final route = MaterialPageRoute<void>(
       builder: (_) => JournalSharePage(
+        recordTitle: _title,
         document: snapshot,
         commandContext: journal.editor.commandContext,
         isCurrent: current,
@@ -467,7 +471,8 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
   }
 
-  /// 添加或关闭[kind]栏目；[close]默认false，失败显示提示且保留正文。
+  /// 异步添加或关闭 [kind] 栏目；[close] 默认 false，失败显示提示且保留正文。
+  /// 关闭时释放正文输入焦点并收起键盘，添加时沿用新栏目的输入定位；不取得会话资源所有权。
   Future<void> _section(String kind, {bool close = false}) async {
     final journal = _journal;
     if (journal == null ||
@@ -480,11 +485,21 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
     try {
       if (close) {
+        journal.editor.editorState.service.keyboardService?.closeKeyboard();
+        FocusManager.instance.primaryFocus?.unfocus();
         await journal.closeSection(kind);
       } else {
         await journal.addSection(kind);
       }
-    } catch (_) {
+    } catch (error, stackTrace) {
+      FlutterError.reportError(
+        FlutterErrorDetails(
+          exception: error,
+          stack: stackTrace,
+          library: 'daily_guidance',
+          context: ErrorDescription('更新今日导向栏目'),
+        ),
+      );
       if (mounted) {
         ScaffoldMessenger.of(
           context,
@@ -652,7 +667,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
   }
 
-  /// 复用原生@人员选择，为[kind]创建领航员或都来帮行，保留来源正文。
+  /// 点击时立即为 [kind] 创建空业务行，再复用原生@选人填入；取消保留空行和来源正文。
   /// 临时暂停本地事务而不撤销编辑权限；完整退场后复核会话、目标修订并恢复输入。
   Future<void> _pickPeople({required String kind}) async {
     final journal = _journal;
@@ -683,16 +698,23 @@ class _LocalJournalPageState extends State<LocalJournalPage>
 
     state.service.keyboardService?.closeKeyboard();
     FocusManager.instance.primaryFocus?.unfocus();
-    state.localTransactionsPaused = true;
+    setState(() => _picking = true);
     try {
+      final entryTarget = await journal.createEmptyUserEntry(
+        target,
+        kind: kind,
+      );
+      if (!mounted || !current()) return;
+      setState(() => _picking = false);
+      state.localTransactionsPaused = true;
       final user = await pickEditorMentionUser(context, state);
       if (!current()) return;
       state.localTransactionsPaused = wasPaused;
       if (user != null) {
-        await journal.insertUserEntry(target, user, kind: kind);
-      } else if (state.getNodeAtPath(target.selection.start.path)?.id ==
-          target.nodeId) {
-        state.selection = target.selection;
+        await journal.fillUserEntry(entryTarget, user);
+      } else if (state.getNodeAtPath(entryTarget.selection.start.path)?.id ==
+          entryTarget.nodeId) {
+        state.selection = entryTarget.selection;
       }
     } catch (_) {
       if (mounted && current()) {
@@ -701,6 +723,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         ).showSnackBar(const SnackBar(content: Text('人员插入失败，原文已保留，请重试')));
       }
     } finally {
+      if (mounted) setState(() => _picking = false);
       if (!state.isDisposed) state.localTransactionsPaused = wasPaused;
       await WidgetsBinding.instance.endOfFrame;
       if (current()) {
@@ -760,10 +783,18 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     ];
   }
 
-  /// 在[context]构建独立路由，保存状态与页面纸张分离，预览让纸张延伸到系统状态栏下，返回入口悬浮在封面上。
+  /// 在[context]构建独立路由；有封面时延伸到状态栏下，无封面时正文避让顶部操作栏。
   @override
   Widget build(BuildContext context) {
     final journal = _journal;
+    final showCover =
+        journal
+            ?.editor
+            .editorState
+            .document
+            .root
+            .attributes[journalPlainDesktopAttribute] !=
+        true;
     return Localizations.override(
       context: context,
       delegates: const [AppFlowyEditorLocalizations.delegate],
@@ -774,7 +805,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         },
         child: Scaffold(
           backgroundColor: const Color(0xfffaf8f0),
-          extendBodyBehindAppBar: _readOnly,
+          extendBodyBehindAppBar: showCover,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: _readOnly && journal != null && !_sessionRevoked
@@ -793,42 +824,39 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                 )
               : null,
           appBar: AppBar(
-            titleSpacing: 0,
-            leadingWidth: _readOnly ? 56 : 48,
-            titleTextStyle: Theme.of(context).textTheme.titleMedium,
-            backgroundColor: _readOnly
-                ? Colors.transparent
-                : const Color(0xfffaf8f0),
-            elevation: _readOnly ? 0 : null,
-            scrolledUnderElevation: _readOnly ? 0 : null,
-            forceMaterialTransparency: _readOnly,
-            systemOverlayStyle: _readOnly
-                ? SystemUiOverlayStyle.dark.copyWith(
-                    statusBarColor: Colors.transparent,
-                    systemStatusBarContrastEnforced: false,
-                  )
-                : null,
+            leadingWidth: 56,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            forceMaterialTransparency: true,
+            actionsIconTheme: const IconThemeData(color: Colors.white),
+            systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+              statusBarColor: Colors.transparent,
+              systemStatusBarContrastEnforced: false,
+            ),
             leading: Padding(
-              padding: _readOnly ? const EdgeInsets.all(4) : EdgeInsets.zero,
+              padding: const EdgeInsets.all(4),
               child: IconButton(
                 key: const ValueKey('journal-back'),
                 tooltip: _remote || _readOnly ? '返回' : '返回并保存',
-                style: _readOnly
-                    ? IconButton.styleFrom(
-                        backgroundColor: const Color(0x66000000),
-                        foregroundColor: Colors.white,
-                        shape: const CircleBorder(),
-                      )
-                    : null,
+                style: IconButton.styleFrom(
+                  backgroundColor: const Color(0x66000000),
+                  foregroundColor: Colors.white,
+                  shape: const CircleBorder(),
+                ),
                 onPressed: _leaving ? null : () => unawaited(_leave()),
                 icon: const Icon(LucideIcons.chevronLeft),
               ),
             ),
-            title: _readOnly ? null : Text(_title),
             actions: [
               if (journal != null && !_readOnly) ...[
                 TextButton(
                   key: const ValueKey('journal-save'),
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color(0x66000000),
+                    foregroundColor: Colors.white,
+                    disabledForegroundColor: Colors.white54,
+                  ),
                   onPressed:
                       _submitting || _leaving || _picking || !_sameAccount
                       ? null
@@ -837,6 +865,12 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                 ),
                 IconButton(
                   tooltip: '撤销',
+                  style: IconButton.styleFrom(
+                    backgroundColor: const Color(0x66000000),
+                    foregroundColor: Colors.white,
+                    disabledForegroundColor: Colors.white54,
+                    padding: EdgeInsets.all(5),
+                  ),
                   onPressed: _readOnly || _leaving || _submitting
                       ? null
                       : journal.editor.editorState.undoManager.undo,
@@ -844,6 +878,11 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                 ),
                 IconButton(
                   tooltip: '重做',
+                  style: IconButton.styleFrom(
+                    backgroundColor: const Color(0x66000000),
+                    foregroundColor: Colors.white,
+                    disabledForegroundColor: Colors.white54,
+                  ),
                   onPressed: _readOnly || _leaving || _submitting
                       ? null
                       : journal.editor.editorState.undoManager.redo,
@@ -875,38 +914,54 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                         ),
                 )
               : SafeArea(
-                  top: !_readOnly,
+                  top: false,
                   child: Column(
                     children: [
+                      if (showCover)
+                        Center(
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 680),
+                            child: _JournalCover(title: _title),
+                          ),
+                        ),
                       ListenableBuilder(
                         listenable: journal,
                         builder: (context, _) => journal.error == null
                             ? const SizedBox.shrink()
-                            : Semantics(
-                                liveRegion: true,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Flexible(
-                                      child: Text(
-                                        journal.error!,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.red.shade700,
+                            : Padding(
+                                padding: EdgeInsets.only(
+                                  top:
+                                      MediaQuery.paddingOf(context).top +
+                                      kToolbarHeight,
+                                ),
+                                child: Semantics(
+                                  liveRegion: true,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Flexible(
+                                        child: Text(
+                                          journal.error!,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.red.shade700,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    TextButton(
-                                      key: const ValueKey('journal-retry-save'),
-                                      onPressed:
-                                          journal.saving ||
-                                              _submitting ||
-                                              !_sameAccount
-                                          ? null
-                                          : () => unawaited(_saveContent()),
-                                      child: const Text('重试保存'),
-                                    ),
-                                  ],
+                                      TextButton(
+                                        key: const ValueKey(
+                                          'journal-retry-save',
+                                        ),
+                                        onPressed:
+                                            journal.saving ||
+                                                _submitting ||
+                                                !_sameAccount
+                                            ? null
+                                            : () => unawaited(_saveContent()),
+                                        child: const Text('重试保存'),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                       ),
@@ -916,6 +971,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                           child: ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 680),
                             child: JournalSurface(
+                              recordTitle: _title,
                               key: ObjectKey(journal.editor),
                               editorState: journal.editor.editorState,
                               preview: _readOnly || _leaving,
@@ -948,6 +1004,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                                       listenable: journal,
                                       builder: (context, _) => _JournalHeader(
                                         title: _title,
+                                        showCover: false,
                                         currentUser: _readOnly
                                             ? widget.currentUser
                                             : null,
@@ -1225,17 +1282,21 @@ class _JournalPreviewUserInfo extends StatelessWidget {
 class _JournalHeader extends StatelessWidget {
   /// [date]为YYYY-MM-DD，[title]与 orientType 对应；[chooseDate]控制日历，
   /// [onChoose]为空时只读，[onDate]提交所选日期。
-  /// [currentUser] 是预览专属的可选用户资料，默认隐藏。
+  /// [showCover] 默认包含封面，页面固定封面后关闭；[currentUser] 是预览专属资料，默认隐藏。
   /// [services] 借用宿主头像端口，默认空服务，不创建账号或客户端。
   const _JournalHeader({
     required this.date,
     this.title = '今日导向',
+    this.showCover = true,
     this.currentUser,
     this.services = const CollabHostServices(),
     required this.chooseDate,
     required this.onChoose,
     required this.onDate,
   });
+
+  /// true 时包含分享图封面；页面已固定封面时传 false。
+  final bool showCover;
 
   /// 已保存的记录日期。
   final String date;
@@ -1280,7 +1341,7 @@ class _JournalHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _JournalCover(title: title),
+        if (showCover) _JournalCover(title: title),
         if (currentUser case final user?)
           _JournalPreviewUserInfo(user: user, services: services),
         const SizedBox(height: 24),

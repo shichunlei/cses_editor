@@ -1,0 +1,43 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: plain mention scales once at 1.0
+00:00 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_rules_test.dart: lines follow real wrapped text and scale with its layout
+00:00 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_rules_test.dart: lines follow real wrapped text and scale with its layout
+00:00 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_rules_test.dart: lines follow real wrapped text and scale with its layout
+00:00 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_rules_test.dart: lines follow real wrapped text and scale with its layout
+00:01 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: legacy mention scales once at 2.0
+00:01 +26: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_rules_test.dart: only a tap in extra blank space focuses; text taps and drags do not
+00:01 +27: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: review regression: native mention scales once at 2.0
+00:01 +28: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only pilot keeps paper row metrics after IME Enter at (1, 1.0)
+00:01 +29: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only pilot keeps paper row metrics after IME Enter at (1, 2.0)
+00:01 +30: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only pilot keeps paper row metrics after IME Enter at (2, 1.0)
+00:01 +31: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only pilot keeps paper row metrics after IME Enter at (2, 2.0)
+00:01 +32: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only help keeps paper row metrics after IME Enter at (1, 1.0)
+00:01 +33: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only help keeps paper row metrics after IME Enter at (1, 2.0)
+00:01 +34: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only help keeps paper row metrics after IME Enter at (2, 1.0)
+00:01 +35: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: mention-only help keeps paper row metrics after IME Enter at (2, 2.0)
+00:01 +36: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: native and legacy references share clipboard, history and reopen
+00:01 +37: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: native malformed, mixed, oversized and non-user objects reject atomically
+00:01 +38: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: native IME insertion, composition and replacement preserve identity bold=false
+00:02 +39: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: native IME insertion, composition and replacement preserve identity bold=true
+00:02 +40: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: typing @ uses native services and preview preserves the same user
+00:02 +41: All tests passed!

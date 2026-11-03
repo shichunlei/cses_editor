@@ -4,6 +4,8 @@ import 'dart:ui' show BoxHeightStyle;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'package:cses_offline_example/daily_guidance/journal_ruled_text_scope.dart';
+
 /// 在实际文字布局下绘制横格的装饰，不参与输入、选区、复制或文档数据。
 ///
 /// ```dart
@@ -177,8 +179,22 @@ class RenderJournalRules extends RenderProxyBox {
         object.visitChildren(visit);
       }
 
-      child?.visitChildren(visit);
-      if (child case final RenderParagraph paragraph) visit(paragraph);
+      RenderObject? textScope;
+
+      /// 查找 [object] 内显式标记的正文区域，业务标签不参与文字行框计算。
+      void findTextScope(RenderObject object) {
+        if (textScope != null) return;
+        if (object is RenderJournalRuledTextScope) {
+          textScope = object;
+          return;
+        }
+        object.visitChildren(findTextScope);
+      }
+
+      if (child case final root?) {
+        findTextScope(root);
+        visit(textScope ?? root);
+      }
       if (text case final paragraph?) {
         final top = paragraph.localToGlobal(Offset.zero, ancestor: this).dy;
         final boxes = paragraph.getBoxesForSelection(

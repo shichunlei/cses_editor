@@ -1,0 +1,112 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart
+00:00 +0: deleting pilot person keeps empty paper row at 1.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: a numeric value within <0.1> of <32.0>
+  Actual: <24.0>
+   Which:  differs by <8.0>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart:282:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart line 282
+The test description was:
+  deleting pilot person keeps empty paper row at 1.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: deleting pilot person keeps empty paper row at 1.0 [E]
+  Test failed. See exception logs above.
+  The test description was: deleting pilot person keeps empty paper row at 1.0
+
+00:01 +0 -1: deleting pilot person keeps empty paper row at 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: a numeric value within <0.1> of <64.0>
+  Actual: <47.5>
+   Which:  differs by <16.5>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart:282:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart line 282
+The test description was:
+  deleting pilot person keeps empty paper row at 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -2: deleting pilot person keeps empty paper row at 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: deleting pilot person keeps empty paper row at 2.0
+
+00:01 +0 -2: deleting help person keeps empty paper row at 1.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: a numeric value within <0.1> of <32.0>
+  Actual: <24.0>
+   Which:  differs by <8.0>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart:282:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart line 282
+The test description was:
+  deleting help person keeps empty paper row at 1.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -3: deleting help person keeps empty paper row at 1.0 [E]
+  Test failed. See exception logs above.
+  The test description was: deleting help person keeps empty paper row at 1.0
+
+00:01 +0 -3: deleting help person keeps empty paper row at 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: a numeric value within <0.1> of <64.0>
+  Actual: <47.5>
+   Which:  differs by <16.5>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart:282:13)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart line 282
+The test description was:
+  deleting help person keeps empty paper row at 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -4: deleting help person keeps empty paper row at 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: deleting help person keeps empty paper row at 2.0
+
+00:01 +0 -4: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: deleting help person keeps empty paper row at 1.0
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: deleting help person keeps empty paper row at 2.0
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: deleting pilot person keeps empty paper row at 1.0
+  /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_native_mentions_test.dart: deleting pilot person keeps empty paper row at 2.0

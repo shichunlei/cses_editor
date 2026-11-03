@@ -414,11 +414,30 @@ void main() {
             expect(rect.bottom, lessThanOrEqualTo(640 - 24));
           }
         } else {
-          expect(tester.widget<AppBar>(find.byType(AppBar)).title, isA<Text>());
+          expect(tester.widget<AppBar>(find.byType(AppBar)).title, isNull);
           expect(
             tester.getTopLeft(find.byKey(const ValueKey('journal-cover'))).dy,
-            greaterThanOrEqualTo(32 + kToolbarHeight),
+            0,
           );
+          for (final control in [
+            find.byKey(const ValueKey('journal-back')),
+            find.byKey(const ValueKey('journal-save')),
+            find.byTooltip('撤销'),
+            find.byTooltip('重做'),
+          ]) {
+            final rect = tester.getRect(control);
+            expect(rect.top, greaterThanOrEqualTo(32));
+            expect(rect.left, greaterThanOrEqualTo(0));
+            expect(rect.right, lessThanOrEqualTo(320));
+            expect(
+              rect.bottom,
+              lessThan(
+                tester
+                    .getBottomLeft(find.byKey(const ValueKey('journal-cover')))
+                    .dy,
+              ),
+            );
+          }
           expect(
             find.byKey(const ValueKey('journal-preview-actions')),
             findsNothing,

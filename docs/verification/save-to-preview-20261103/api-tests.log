@@ -1,0 +1,19 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart
+00:00 +0: bodyContent projects to existing journal sections and round trips exactly
+00:00 +1: hidden custom field remains valid and round trips
+00:00 +2: live edits, menus, date and custom fields save in original body format
+00:00 +3: close and reopen retain hidden content and allow restoring the same section
+00:00 +4: ORIENT uses existing notebook and submits full record on save
+00:01 +5: RESULT uses existing notebook and submits full record on save
+00:02 +6: late fetch never mounts content after identity change
+00:02 +7: native Enter and undo retain unique backend identities
+00:02 +8: invalid bodies and mismatched record types are rejected without mutation
+00:02 +9: supported and legacy mention types load, edit and save
+00:02 +10: unsupported department reference is rejected before editing (namespaced=false, hidden=false) and retry saves
+00:02 +11: unsupported unknown reference is rejected before editing (namespaced=false, hidden=false) and retry saves
+00:02 +12: unsupported department reference is rejected before editing (namespaced=true, hidden=false) and retry saves
+00:03 +13: unsupported department reference is rejected before editing (namespaced=false, hidden=true) and retry saves
+00:03 +14: fetch failure retries without replacing data with a blank journal
+00:03 +15: late save completion cannot acknowledge another host session
+00:03 +16: API document retains native keyboard menus and custom people actions
+00:04 +17: All tests passed!

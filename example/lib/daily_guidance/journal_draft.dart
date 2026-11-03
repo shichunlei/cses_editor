@@ -106,7 +106,11 @@ final class JournalDraft {
         type: 'page',
         children: [
           for (final section in journalSections.take(1))
-            Node(type: journalSectionType, attributes: {'section': section}, children: [paragraphNode()]),
+            Node(
+              type: journalSectionType,
+              attributes: {'section': section},
+              children: [paragraphNode()],
+            ),
         ],
       ),
     );
@@ -160,7 +164,9 @@ final class JournalDraft {
         timezoneOffsetMinutes: offset,
         documentJson: jsonEncode(document.toJson()),
         needsMigration: legacy,
-        blockCraftIdsJson: jsonEncode(journalBlockIdentities(json['blockCraftIds'] ?? <String, String>{})),
+        blockCraftIdsJson: jsonEncode(
+          journalBlockIdentities(json['blockCraftIds'] ?? <String, String>{}),
+        ),
       );
     } catch (_) {
       throw const FormatException('日记正文损坏或包含不支持的内容');
@@ -204,7 +210,8 @@ final class JournalDraft {
     'updatedAt': updatedAt.toIso8601String(),
     'timezoneOffsetMinutes': timezoneOffsetMinutes,
     'document': jsonDecode(documentJson),
-    if (blockCraftIdsJson != '{}') 'blockCraftIds': jsonDecode(blockCraftIdsJson),
+    if (blockCraftIdsJson != '{}')
+      'blockCraftIds': jsonDecode(blockCraftIdsJson),
   };
 }
 
@@ -216,26 +223,38 @@ String journalDate(DateTime date) =>
 bool isJournalDate(String value) {
   if (!RegExp(r'^\d{4}-\d{2}-\d{2}$').hasMatch(value)) return false;
   final date = DateTime.tryParse(value);
-  return date != null && date.year >= 1900 && date.year <= 2100 && journalDate(date) == value;
+  return date != null &&
+      date.year >= 1900 &&
+      date.year <= 2100 &&
+      journalDate(date) == value;
 }
 
 /// 已关闭栏目的完整节点快照保存在根属性中，不参与可见正文选区或预览。
 const journalClosedSectionsAttribute = 'guidance_closed_sections';
 
 /// 获取借用的[document]中已关闭栏目；返回新节点，不与可编辑树共享可变对象。
+/// 栏目数按正文块总容量限幅，支持固定栏目与自定义栏目同时关闭。
 List<Node> closedJournalSections(Document document) {
-  final value = document.root.attributes[journalClosedSectionsAttribute] ?? const [];
-  if (value is! List || value.length > 2) throw const FormatException('关闭栏目无效');
-  return value.map((item) => Node.fromJson(Map<String, Object>.from(item as Map))).toList();
+  final value =
+      document.root.attributes[journalClosedSectionsAttribute] ?? const [];
+  if (value is! List || value.length > journalConfiguration.maxBlocks) {
+    throw const FormatException('关闭栏目无效');
+  }
+  return value
+      .map((item) => Node.fromJson(Map<String, Object>.from(item as Map)))
+      .toList();
 }
 
 /// 校验借用的[document]的动态栏目、受控引用与总容量；非法时抛FormatException。
 /// 完整 bodyContent 投影允许稳定 key 的自定义栏目；普通本地草稿仍限定原三类栏目。
 /// 可见和关闭栏目共享稳定语义身份，今日记录必须位于可见内容首位且不可关闭。
 void validateJournalDocument(Document document) {
-  final imported = document.root.attributes[journalDesktopImportAttribute] == true;
+  final imported =
+      document.root.attributes[journalDesktopImportAttribute] == true;
   final sections = document.root.children.toList();
-  if (document.root.type != 'page' || sections.isEmpty || sections.first.attributes['section'] != 'record') {
+  if (document.root.type != 'page' ||
+      sections.isEmpty ||
+      sections.first.attributes['section'] != 'record') {
     throw const FormatException('今日记录缺失');
   }
   final all = [...sections, ...closedJournalSections(document)];
@@ -258,7 +277,10 @@ void validateJournalDocument(Document document) {
     }
     if (imported) {
       for (final child in section.children) {
-        BlockCraftJsonCodec.validate(BlockCraftJsonCodec.encodeBlock(child), root: false);
+        BlockCraftJsonCodec.validate(
+          BlockCraftJsonCodec.encodeBlock(child),
+          root: false,
+        );
       }
     }
     for (final node in journalContentNodes(section.children)) {
@@ -279,7 +301,9 @@ void validateJournalDocument(Document document) {
       }
     }
   }
-  if (references > 500 || count > journalConfiguration.maxBlocks || length > journalConfiguration.maxCharacters) {
+  if (references > 500 ||
+      count > journalConfiguration.maxBlocks ||
+      length > journalConfiguration.maxCharacters) {
     throw const FormatException('日记正文超过容量');
   }
 }
@@ -294,10 +318,13 @@ Iterable<Node> journalContentNodes(Iterable<Node> nodes) sync* {
 
 /// 检查借用的[node]为受支持的文字叶子，已知提及占一个模型位置。
 bool isJournalTextNode(Node node) =>
-    (node.type != HeadingBlockKeys.type || node.attributes[HeadingBlockKeys.level] is int) &&
+    (node.type != HeadingBlockKeys.type ||
+        node.attributes[HeadingBlockKeys.level] is int) &&
     journalConfiguration.allowsBlock(
       node.type,
-      level: node.attributes[HeadingBlockKeys.level] is int ? node.attributes[HeadingBlockKeys.level] as int : null,
+      level: node.attributes[HeadingBlockKeys.level] is int
+          ? node.attributes[HeadingBlockKeys.level] as int
+          : null,
     ) &&
     node.children.isEmpty &&
     node.delta != null &&
@@ -321,7 +348,9 @@ bool validJournalDelta(Delta delta, {bool complete = false}) {
       if (native) {
         if (mention != null) return false;
         final user = readJournalNativeMention(nativeAttributes);
-        if (user.id.length > 256 || user.name.length > 200 || utf8.encode(jsonEncode(nativeAttributes)).length > 1024) {
+        if (user.id.length > 256 ||
+            user.name.length > 200 ||
+            utf8.encode(jsonEncode(nativeAttributes)).length > 1024) {
           return false;
         }
         if (op is TextInsert && op.text.runes.any((rune) => rune != 0xfffc)) {
@@ -334,7 +363,10 @@ bool validJournalDelta(Delta delta, {bool complete = false}) {
           return false;
         }
       }
-      if (op is TextInsert && op.text.contains('\uFFFC') && mention == null && !native) {
+      if (op is TextInsert &&
+          op.text.contains('\uFFFC') &&
+          mention == null &&
+          !native) {
         return false;
       }
       if (complete && op is! TextInsert) return false;
@@ -386,7 +418,9 @@ void _upgradeLegacyJournal(Document document) {
 }
 
 /// 统计已校验[delta]中的原子引用；最多500个引用与每引用1024字节预算共同保护本地文件容量。
-int journalDeltaMentionCount(Delta delta) => delta.whereType<TextInsert>().fold<int>(
-  0,
-  (sum, op) => sum + op.text.codeUnits.where((unit) => unit == 0xfffc).length,
-);
+int journalDeltaMentionCount(Delta delta) =>
+    delta.whereType<TextInsert>().fold<int>(
+      0,
+      (sum, op) =>
+          sum + op.text.codeUnits.where((unit) => unit == 0xfffc).length,
+    );

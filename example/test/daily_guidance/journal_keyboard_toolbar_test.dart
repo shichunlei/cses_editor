@@ -206,11 +206,10 @@ void main() {
   }
 
   for (final kind in ['pilot', 'help']) {
-    testWidgets('$kind native picker cancel resumes input without writing', (
+    testWidgets('$kind click creates empty row and cancel keeps it', (
       tester,
     ) async {
       final state = await _open(tester, _Store());
-      final before = state.document.toJson();
       final action = find.byKey(
         ValueKey('editor-keyboard-host-guidance-action-$kind'),
       );
@@ -218,6 +217,10 @@ void main() {
       await tester.tap(action);
       await tester.pumpAndSettle();
       expect(state.localTransactionsPaused, isTrue);
+      final entry = state.getNodeAtPath([0, 1])!;
+      expect(entry.attributes['guidance_entry'], kind);
+      expect(entry.delta!.isEmpty, isTrue);
+      final before = state.document.toJson();
       await state.apply(
         state.transaction..insertText(state.getNodeAtPath([0, 0])!, 0, '迟到输入'),
       );
@@ -227,6 +230,13 @@ void main() {
       expect(state.document.toJson(), before);
       expect(state.localTransactionsPaused, isFalse);
       expect(tester.testTextInput.isVisible, isTrue);
+      expect(state.selection?.start.path, entry.path);
+      state.undoManager.undo();
+      await tester.pumpAndSettle();
+      expect(state.getNodeAtPath([0, 1]), isNull);
+      state.undoManager.redo();
+      await tester.pumpAndSettle();
+      expect(state.getNodeAtPath([0, 1])!.delta!.isEmpty, isTrue);
       await tester.tap(find.byKey(const ValueKey('journal-back')));
       await tester.pumpAndSettle();
       await tester.pumpWidget(const SizedBox.shrink());
@@ -240,13 +250,16 @@ void main() {
       final cookie = _session;
       addTearDown(() => _session = cookie);
       final state = await _open(tester, _Store());
-      final before = state.document.toJson();
       final action = find.byKey(
         ValueKey('editor-keyboard-host-guidance-action-$kind'),
       );
       await _reveal(tester, action);
       await tester.tap(action);
       await tester.pumpAndSettle();
+      final entry = state.getNodeAtPath([0, 1])!;
+      expect(entry.attributes['guidance_entry'], kind);
+      expect(entry.delta!.isEmpty, isTrue);
+      final before = state.document.toJson();
       _session = 'business-other-session';
       await tester.pump(const Duration(milliseconds: 450));
       _session = cookie;
@@ -285,12 +298,16 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('选择用户和部门'), findsNothing);
       expect(state.localTransactionsPaused, isTrue);
+      final createdId = state.getNodeAtPath([0, 1])!.id;
+      expect(state.getNodeAtPath([0, 1])!.delta!.isEmpty, isTrue);
       await tester.tap(find.byKey(const ValueKey('mention-user-toolbar-user')));
       await tester.pumpAndSettle();
       await tester.pump(const Duration(milliseconds: 500));
       await tester.pumpAndSettle();
       expect(state.getNodeAtPath([0, 0])!.delta!.toPlainText(), '记录');
       final business = state.getNodeAtPath([0, 1])!;
+      expect(business.id, createdId);
+      expect(state.document.root.children.single.children, hasLength(2));
       expect(business.attributes['guidance_entry'], kind);
       expect(business.delta!.toPlainText(), '\uFFFC ');
       final mention = business.delta!.whereType<TextInsert>().first;

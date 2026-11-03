@@ -1,0 +1,19 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_host_boundary_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_host_boundary_test.dart: save failure stays editable and retry enters the same preview
+00:01 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_host_boundary_test.dart: save failure stays editable and retry enters the same preview
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:01 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:01 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:02 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:02 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:03 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:03 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:03 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: actions fit small preview with enlarged text and stay absent in editing
+00:04 +17: All tests passed!
