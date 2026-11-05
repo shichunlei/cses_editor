@@ -424,7 +424,7 @@ class _JournalCapturePageBuilder extends BlockComponentBuilder {
       );
 }
 
-/// 在有限视口内一次排版完整内容，截图边界位于滚动视口内部。
+/// 一次排版完整内容，头部、正文和页脚合计至少一屏高；截图边界位于滚动视口内部。
 class _JournalCapturePage extends BlockComponentStatelessWidget {
   /// [key]/[node]保留根身份；[configuration]控制组件样式；[captureKey]定位全文，[header]/[footer]借用宿主展示。
   const _JournalCapturePage({
@@ -449,26 +449,43 @@ class _JournalCapturePage extends BlockComponentStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final editor = context.read<EditorState>();
+    final sections = [
+      for (final child in node.children)
+        Padding(
+          padding: editor.editorStyle.padding,
+          child: IgnorePointer(
+            child: ExcludeFocus(child: editor.renderer.build(context, child)),
+          ),
+        ),
+    ];
     return SingleChildScrollView(
       child: RepaintBoundary(
         key: captureKey,
         child: ColoredBox(
           color: const Color(0xfffaf8f0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              header,
-              for (final child in node.children)
-                Padding(
-                  padding: editor.editorStyle.padding,
-                  child: IgnorePointer(
-                    child: ExcludeFocus(
-                      child: editor.renderer.build(context, child),
-                    ),
-                  ),
-                ),
-              ?footer,
-            ],
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.sizeOf(context).height,
+            ),
+            child: _JournalMinimumColumn(
+              children: [
+                header,
+                sections.isEmpty
+                    ? const SizedBox.shrink()
+                    : _JournalMinimumColumn(
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: sections
+                                .take(sections.length - 1)
+                                .toList(),
+                          ),
+                          sections.last,
+                        ],
+                      ),
+                footer ?? const SizedBox.shrink(),
+              ],
+            ),
           ),
         ),
       ),
@@ -534,9 +551,9 @@ class _JournalPage extends PageBlockComponent {
   }
 }
 
-/// 两个纵向子项按自然高度排版，剩余最小高度只交给第二项；不做固有高度测量。
+/// 头部与可选页脚按自然高度排版，剩余最小高度交给第二项正文；不做固有高度测量。
 class _JournalMinimumColumn extends MultiChildRenderObjectWidget {
-  /// [children] 为借用的头部与正文，固定两项，不持有编辑器资源。
+  /// [children] 为借用的头部、正文及可选第三项页脚，不持有编辑器资源。
   const _JournalMinimumColumn({required super.children});
 
   /// 为 [context] 创建同步布局对象。
@@ -545,10 +562,10 @@ class _JournalMinimumColumn extends MultiChildRenderObjectWidget {
       _RenderJournalMinimumColumn();
 }
 
-/// 两项纵向排版的偏移与兄弟链，不持有资源。
+/// 纵向排版的偏移与兄弟链，不持有资源。
 class _JournalColumnParentData extends ContainerBoxParentData<RenderBox> {}
 
-/// 先测量头部，再把剩余视口高度传给正文，支持日期、大字和键盘尺寸变化。
+/// 先测量头尾，再把剩余最小高度传给正文，支持日期、大字和键盘尺寸变化。
 class _RenderJournalMinimumColumn extends RenderBox
     with
         ContainerRenderObjectMixin<RenderBox, _JournalColumnParentData>,
@@ -561,24 +578,34 @@ class _RenderJournalMinimumColumn extends RenderBox
     }
   }
 
-  /// 头部使用自然高度，正文至少覆盖约束剩余高度；长内容自然增长。
+  /// 头尾使用自然高度，正文至少覆盖约束剩余高度；长内容自然增长。
   @override
   void performLayout() {
     final head = firstChild!;
     final body = childAfter(head)!;
+    final footer = childAfter(body);
     final loose = BoxConstraints.tightFor(width: constraints.maxWidth);
     head.layout(loose, parentUsesSize: true);
-    final remaining = (constraints.minHeight - head.size.height).clamp(
-      0.0,
-      double.infinity,
-    );
+    footer?.layout(loose, parentUsesSize: true);
+    final footerHeight = footer?.size.height ?? 0;
+    final remaining = (constraints.minHeight - head.size.height - footerHeight)
+        .clamp(0.0, double.infinity);
     body.layout(loose.copyWith(minHeight: remaining), parentUsesSize: true);
     (body.parentData! as _JournalColumnParentData).offset = Offset(
       0,
       head.size.height,
     );
+    if (footer != null) {
+      (footer.parentData! as _JournalColumnParentData).offset = Offset(
+        0,
+        head.size.height + body.size.height,
+      );
+    }
     size = constraints.constrain(
-      Size(constraints.maxWidth, head.size.height + body.size.height),
+      Size(
+        constraints.maxWidth,
+        head.size.height + body.size.height + footerHeight,
+      ),
     );
   }
 

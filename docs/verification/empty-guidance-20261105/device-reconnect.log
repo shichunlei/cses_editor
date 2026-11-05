@@ -1,0 +1,17 @@
+00:00 +0: loading /Users/shichunlei/workspace/cses_editor/example/integration_test/daily_guidance_device_test.dart
+Running Gradle task 'assembleDebug'...                             73.6s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+error: closed
+Installing build/app/outputs/flutter-apk/app-debug.apk...           68ms
+Error: ADB exited with exit code 1
+adb: device 'fa7eba24' not found
+00:00 +0 -1: loading /Users/shichunlei/workspace/cses_editor/example/integration_test/daily_guidance_device_test.dart [E]
+  Failed to load "/Users/shichunlei/workspace/cses_editor/example/integration_test/daily_guidance_device_test.dart": Unable to start the app on the device.
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  /Users/shichunlei/workspace/cses_editor/example/integration_test/daily_guidance_device_test.dart: loading /Users/shichunlei/workspace/cses_editor/example/integration_test/daily_guidance_device_test.dart
+adb: device 'fa7eba24' not found
+adb uninstall failed: ProcessException: Process exited abnormally with exit code 1:
+adb: device 'fa7eba24' not found
+  Command: /Users/shichunlei/Library/Android/sdk/platform-tools/adb -s fa7eba24 uninstall com.cses.offline.cses_offline_example

@@ -1,5 +1,15 @@
 # 验证索引
 
+- [分享图至少一屏高](share-minimum-screen-20261105/report.md)
+
+- [当前用户资料调整](current-user-profile-20261105/report.md)
+
+- [保存提交参数控制台输出](save-request-console-20261105/report.md)
+
+- [空文档类型参数与首页选择](guidance-type-entry-20261105/report.md)
+
+- [当天空白今日导向入口与保存分享流程](empty-guidance-20261105/report.md)
+
 - [键盘与菜单上方的焦点行避让](keyboard-caret-visibility-20261103/report.md)
 
 - [今日导向 UI 与编辑交互提交检查](journal-ui-commit-20261103/report.md)

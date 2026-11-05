@@ -21,6 +21,12 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
+      final resultType = find.byKey(const ValueKey('guidance-type-result'));
+      await tester.ensureVisible(resultType);
+      await tester.pumpAndSettle();
+      await tester.tap(resultType);
+      await tester.pumpAndSettle();
+      expect(tester.widget<ChoiceChip>(resultType).selected, isTrue);
       final preview = find.byKey(const ValueKey('preview-daily-guidance'));
       await tester.ensureVisible(preview);
       await tester.pumpAndSettle();

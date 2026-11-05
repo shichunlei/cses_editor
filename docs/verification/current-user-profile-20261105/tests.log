@@ -1,0 +1,9 @@
+00:00 +0: loading /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart
+00:00 +0: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: read-only controller refuses transactions, dates and all save paths
+00:00 +1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:03 +2: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:04 +3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: preview has no editing controls and never saves on exit or background
+00:04 +4: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_user_test.dart: changing current user identity freezes the old document and hides profile
+00:04 +5: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: changing a mounted preview mode cannot unlock the existing page
+00:04 +6: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_page_mode_test.dart: home exposes separate preview and edit routes for the same API record
+00:05 +7: All tests passed!

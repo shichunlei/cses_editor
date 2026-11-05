@@ -1,0 +1,19 @@
+{
+  "device": "fa7eba24",
+  "normal_app_install": "Success",
+  "normal_app_activity": "com.cses.offline.cses_offline_example/.MainActivity",
+  "system_image_save": {
+    "result": "图片已保存",
+    "file": "/sdcard/Download/今日导向_1793837978049.png",
+    "bytes": 609494,
+    "width": 824,
+    "height": 1185,
+    "sha256": "ae3aec6aa6012f451b9c640206d09a39da186217026485a355c4c892470b5c3c"
+  },
+  "wechat_handoff": {
+    "observed_activity": "com.tencent.mm/.plugin.sns.ui.SnsUploadUI",
+    "image_visible": true,
+    "sent_or_published": false
+  },
+  "remaining_branch_coverage": "Chat recipient selection and standalone timeline button were not independently completed before USB became unresponsive again."
+}

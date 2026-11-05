@@ -4,6 +4,7 @@ import 'package:cses_offline_example/daily_guidance/body_content_codec.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_record_fields.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
+import 'package:flutter/foundation.dart';
 
 /// 宿主注入的单记录服务：读取和提交完整记录，正文与派生业务字段在同次请求中保存。
 /// 宿主负责认证与客户端释放，页面不拥有网络资源。
@@ -134,7 +135,8 @@ final class ApiJournalStore implements JournalStore {
   }
 
   /// 从实时 [draft] 同步捕获正文及派生字段，与成功读取的完整记录一起异步提交。
-  /// 保留其他字段和扩展值；读取前拒绝保存，失败可使用相同来源重试。
+  /// 提交前在控制台打印记录身份及完整 JSON 参数；保留其他字段和扩展值。
+  /// 读取前拒绝保存，失败可使用相同来源重试。
   @override
   Future<void> write(JournalDraft draft) async {
     final original = _recordJson;
@@ -148,6 +150,11 @@ final class ApiJournalStore implements JournalStore {
         orientType: record['orientType'] as String,
       ),
     });
+    debugPrint(
+      '[ApiJournalStore.write] recordId=$recordId\n'
+      '${const JsonEncoder.withIndent('  ').convert(record)}',
+      wrapWidth: 1000,
+    );
     await api.save(recordId, record);
   }
 }

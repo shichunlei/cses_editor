@@ -1,0 +1,623 @@
+Running Gradle task 'assembleDebug'...                             79.8s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...           5.6s
+D/ProfileInstaller( 7330): Installing profile for com.cses.offline.cses_offline_example
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:59192/gE-Aq8ZK8ic=/
+VMServiceFlutterDriver: Isolate found with number: 8494337791003779
+VMServiceFlutterDriver: Isolate 8494337791003779 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter ( 7330): 00:00 +0: empty guidance edits, saves, generates share image and reopens
+VMServiceFlutterDriver: Connected to Flutter application.
+D/VRI[MainActivity]( 7330): vri.Setup new sync=wmsSync-VRI[MainActivity]#1
+D/VRI[MainActivity]( 7330): vri.reportDrawFinished 0 0 Rect(0, 0 - 1236, 2750)
+I/NativeTurboSchedManager( 7330): Load libmiui_runtime
+I/HandWritingStubImpl( 7330): refreshLastKeyboardType: 1
+I/HandWritingStubImpl( 7330): getCurrentKeyboardType: 1
+D/VRI[MainActivity]( 7330): getMiuiFreeformStackInfo mTmpFrames.miuiFreeFormStackInfo: null
+D/InsetsController( 7330): hide(ime(), fromIme=false)
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:4c3aed7f: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/HandWritingStubImpl( 7330): getCurrentKeyboardType: 1
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+I/offline_example( 7330): ProcessProfilingInfo new_methods=0 is saved saved_to_disk=1
+D/BufferQueueProducer( 7330): [f218977 SurfaceView[com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity]#1(BLAST Consumer)1](id:1ca200000001,api:1,p:7330,c:7330) disconnect: api 1 (caller=7330)
+E/qdgralloc( 7330): GetGpuPixelFormat: No map for format: 0x3b
+E/AdrenoUtils( 7330): <validate_memory_layout_input_params:1805>: Unknown Format 0
+E/AdrenoUtils( 7330): <adreno_init_memory_layout:4055>: Memory Layout input parameter validation failed!
+W/qdgralloc( 7330): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 7330): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator( 7330): Failed to allocate (4 x 4) layerCount 1 format 59 usage 300: 2
+E/AHardwareBuffer( 7330): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+E/qdgralloc( 7330): GetGpuPixelFormat: No map for format: 0x3b
+E/AdrenoUtils( 7330): <validate_memory_layout_input_params:1805>: Unknown Format 0
+E/AdrenoUtils( 7330): <adreno_init_memory_layout:4055>: Memory Layout input parameter validation failed!
+W/qdgralloc( 7330): GetGpuResourceSizeAndDimensions Graphics metadata init failed
+E/Gralloc4( 7330): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator( 7330): Failed to allocate (4 x 4) layerCount 1 format 59 usage 300: 2
+E/AHardwareBuffer( 7330): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+I/flutter ( 7330): EMPTY_FLOW: initial empty ORIENT and local date verified
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:6cbeac36: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+I/HandWritingStubImpl( 7330): refreshLastKeyboardType: 1
+I/HandWritingStubImpl( 7330): getCurrentKeyboardType: 1
+D/InsetsController( 7330): show(ime(), fromIme=false)
+D/InsetsController( 7330): com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity  show: ime android.view.InsetsController@306144b android.view.InsetsController.applyAnimation:2241 android.view.InsetsController.applyAnimation:2212 android.view.InsetsController.show:1321 android.view.inputmethod.InputMethodManager.showSoftInput:2587 android.view.inputmethod.InputMethodManager.showSoftInput:2471 android.view.inputmethod.InputMethodManager.showSoftInput:2463
+D/InsetsController( 7330): Setting requestedVisibleTypes to -1 (was -9)
+I/offline_example( 7330): DynamicFPS DF top: com.cses.offline.cses_offline_example : 0.000000
+I/offline_example( 7330): DF com.cses.offline.cses_offline_example Support DynamicFPS.
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/InsetsController( 7330): com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity  show: ime android.view.InsetsController@306144b android.view.InsetsController.applyAnimation:2241 android.view.InsetsController.applyAnimation:2212 android.view.InsetsController.onControlsChanged:1147 android.view.ViewRootImpl.onActiveControlsChanged:3360 android.view.ViewRootImpl.handleInsetsControlChanged:3314 android.view.ViewRootImpl$W.insetsControlChanged:13894
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/InsetsController( 7330): default animation onReady types: 8 controller=android.view.InsetsAnimationControlImpl@7fd84d4
+D/ViewRootImplStubImpl( 7330): requestedTypes: 8
+D/ViewRootImplStubImpl( 7330): supportImeDynamicVIP: false
+D/ViewRootImplStubImpl( 7330): onAnimationStart
+D/ViewRootImplStubImpl( 7330): notifyImeAnimEvent: isForShow = true, isAnimStart = true, has context = true, has AutofillManager = true, isMiuiAnim = true
+W/InteractionJankMonitor( 7330): Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.cses.offline.cses_offline_example
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.0
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.04736941
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.15953103
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.2910362
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.41902894
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.5332721
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.63033235
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.7102494
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.7746656
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.82580906
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.8659677
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.89723855
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.921438
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9400738
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.95437074
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.96530634
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9736512
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9800071
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.984841
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.98851293
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99129957
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99341273
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9950142
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99622726
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9971458
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.997841
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99836713
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9987652
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 1.0
+D/ViewRootImplStubImpl( 7330): onAnimationEnd,canceled: false
+D/ViewRootImplStubImpl( 7330): supportImeDynamicVIP: false
+D/InsetsController( 7330): onAnimationFinish showOnFinish: true
+D/ViewRootImplStubImpl( 7330): notifyImeAnimEvent: isForShow = true, isAnimStart = false, has context = true, has AutofillManager = true, isMiuiAnim = true
+D/InsetsAnimationCtrlImpl( 7330): notifyFinished shown: true, currentAlpha: 1.000000, currentInsets: Insets{left=0, top=0, right=0, bottom=1132}
+D/InsetsController( 7330): cancelAnimation of types:8 animType:0 host:com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity invokeCallback=false
+D/InsetsController( 7330): notifyFinished. shown: true runner=android.view.InsetsAnimationControlImpl@7fd84d4
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:6cbeac36: onShown
+D/InsetsAnimationCtrlImpl( 7330): Animation finished abruptly.
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:9b511be5: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 7330): show(ime(), fromIme=false)
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:9b511be5: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:d700cb7f: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 7330): show(ime(), fromIme=false)
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:d700cb7f: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:58b66587: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController( 7330): show(ime(), fromIme=false)
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:58b66587: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+I/flutter ( 7330): EMPTY_FLOW: keyboard, text, undo and redo verified
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:215d2ab3: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 7330): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher( 7330): sendCancelIfRunning: isInProgress=false callback=ImeCallback=ImeOnBackInvokedCallback@100851720 Callback=android.window.IOnBackInvokedCallback$Stub$Proxy@eed4807
+D/InsetsController( 7330): com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity hide: ime android.view.InsetsController@306144b android.view.InsetsController.applyAnimation:2241 android.view.InsetsController.applyAnimation:2212 android.view.InsetsController.hide:1439 android.view.inputmethod.InputMethodManager.hideSoftInputFromWindow:2810 android.view.inputmethod.InputMethodManager.hideSoftInputFromWindow:2740 android.view.inputmethod.InputMethodManager.hideSoftInputFromWindow:2701
+D/InsetsController( 7330): Setting requestedVisibleTypes to -9 (was -1)
+D/CompatChangeReporter( 7330): Compat change id reported: 395521150; UID 10522; state: ENABLED
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:23429472: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 7330): hide(ime(), fromIme=false)
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:23429472: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/InsetsController( 7330): default animation onReady types: 8 controller=android.view.InsetsAnimationControlImpl@11838d2
+D/ViewRootImplStubImpl( 7330): requestedTypes: 8
+D/ViewRootImplStubImpl( 7330): supportImeDynamicVIP: false
+D/ViewRootImplStubImpl( 7330): onAnimationStart
+D/ViewRootImplStubImpl( 7330): notifyImeAnimEvent: isForShow = false, isAnimStart = true, has context = true, has AutofillManager = true, isMiuiAnim = true
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.0
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+I/ImeTracker( 7330): system_server:68310bec: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.05344995
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.17738841
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.31808403
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.45087284
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.56610084
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.661536
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.7383436
+W/1.raster( 7330): type=1400 audit(0.0:312669): avc:  denied  { getattr } for  path="/sys/module/metis/parameters/minor_window_app" dev="sysfs" ino=67519 scontext=u:r:untrusted_app:s0:c10,c258,c512,c768 tcontext=u:object_r:sysfs_migt:s0 tclass=file permissive=0 app=com.cses.offline.cses_offline_example
+D/LB      ( 7330): CustomizeAffinityThread startThread
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.79901093
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.84632224
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.8828904
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.91097605
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9324483
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9488099
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.961247
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.97068405
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9778352
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9832491
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.98734444
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99044067
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99278057
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9945484
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9958837
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99689215
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99765366
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.99822867
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 0.9986628
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/ViewRootImplStubImpl( 7330): onAnimationUpdate, value: 1.0
+D/ViewRootImplStubImpl( 7330): onAnimationEnd,canceled: false
+D/ViewRootImplStubImpl( 7330): supportImeDynamicVIP: false
+D/InsetsController( 7330): onAnimationFinish showOnFinish: false
+D/ViewRootImplStubImpl( 7330): notifyImeAnimEvent: isForShow = false, isAnimStart = false, has context = true, has AutofillManager = true, isMiuiAnim = true
+D/InsetsAnimationCtrlImpl( 7330): notifyFinished shown: false, currentAlpha: 1.000000, currentInsets: Insets{left=0, top=0, right=0, bottom=0}
+D/InsetsController( 7330): cancelAnimation of types:8 animType:1 host:com.cses.offline.cses_offline_example/com.cses.offline.cses_offline_example.MainActivity invokeCallback=false
+D/InsetsController( 7330): notifyFinished. shown: false runner=android.view.InsetsAnimationControlImpl@11838d2
+D/InsetsAnimationCtrlImpl( 7330): Animation finished abruptly.
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+D/FlutterJNI( 7330): Sending viewport metrics to the engine.
+I/HandWritingStubImpl( 7330): getCurrentKeyboardType: 1
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+W/InsetsSource( 7330): Has no intersection or mTmpFrame.height(), return Insets.NONE mTmpFrame.height() =0 hasIntersection =false
+I/offline_example( 7330): This is non sticky GC, maxfree is 33554432 minfree is 8388608
+W/FinalizerDaemon( 7330): type=1400 audit(0.0:312674): avc:  denied  { getopt } for  path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c10,c258,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.cses.offline.cses_offline_example
+I/flutter ( 7330): EMPTY_FLOW: full record saved and read-only preview verified
+I/flutter ( 7330): EMPTY_FLOW: real PNG and all three share actions verified
+W/WindowOnBackDispatcher( 7330): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@f46046b
+I/flutter ( 7330): EMPTY_FLOW: saved document reopened without loss
+W/WindowOnBackDispatcher( 7330): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@f46046b
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:8b8afb5d: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController( 7330): hide(ime(), fromIme=false)
+I/ImeTracker( 7330): com.cses.offline.cses_offline_example:8b8afb5d: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+D/BufferQueueProducer( 7330): [ImageReader-1236x2750f1m3-7330-0](id:1ca200000002,api:1,p:7330,c:7330) disconnect: api 1 (caller=7330)
+W/offline_example( 7330): Binder 0xb400007a59ffaa80 destroyed after setInheritRt before being parceled.
+W/qdgralloc( 7330): GetSize: Pixel format: 0x3b is not supported by gralloc
+W/qdgralloc( 7330): gralloc failed to allocate buffer for size 0 format 59 AWxAH 1x1 usage 2816
+E/Gralloc4( 7330): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator( 7330): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 2
+E/AHardwareBuffer( 7330): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+W/qdgralloc( 7330): GetSize: Pixel format: 0x3b is not supported by gralloc
+W/qdgralloc( 7330): gralloc failed to allocate buffer for size 0 format 59 AWxAH 1x1 usage 2816
+E/Gralloc4( 7330): isSupported(1, 1, 59, 1, ...) failed with 7
+E/GraphicBufferAllocator( 7330): Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 2
+E/AHardwareBuffer( 7330): GraphicBuffer(w=4, h=4, lc=1) failed (Unknown error -2), handle=0x0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/qdgralloc( 7330): getInterlacedFlag: getMetaData returned 3, defaulting to interlaced_flag = 0
+W/offline_example( 7330): Binder 0xb400007a59ffaea0 destroyed after setInheritRt before being parceled.
+D/BufferQueueConsumer( 7330): [ImageReader-1236x2750f1m3-7330-0](id:1ca200000002,api:0,p:-1,c:7330) disconnect: caller 7330
+I/flutter ( 7330): 00:18 +1: (tearDownAll)
+I/Choreographer( 7330): Skipped 39 frames!  The application may be doing too much work on its main thread.
+I/flutter ( 7330): 00:19 +2: All tests passed!
+All tests passed.

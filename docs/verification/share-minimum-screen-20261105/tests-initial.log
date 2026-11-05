@@ -1,0 +1,100 @@
+00:00 +0: loading /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart
+00:00 +0: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: blank share PNG includes header/footer and at least one full screen
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: TestFailure:<Expected: a value greater than or equal to <1688>
+            Actual: <1200>
+             Which: is not a value greater than or equal to <1688>
+          >
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart:192:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart line 192
+The test description was:
+  blank share PNG includes header/footer and at least one full screen
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:07 +0 -1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:07 +0 -1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: blank share PNG includes header/footer and at least one full screen [E]
+  Test failed. See exception logs above.
+  The test description was: blank share PNG includes header/footer and at least one full screen
+
+00:08 +1 -1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +2 -1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +2 -1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: short share PNG includes header/footer and at least one full screen
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: TestFailure:<Expected: a value greater than or equal to <1688>
+            Actual: <1200>
+             Which: is not a value greater than or equal to <1688>
+          >
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart:192:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart line 192
+The test description was:
+  short share PNG includes header/footer and at least one full screen
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:10 +2 -2: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:10 +2 -2: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: short share PNG includes header/footer and at least one full screen [E]
+  Test failed. See exception logs above.
+  The test description was: short share PNG includes header/footer and at least one full screen
+
+00:10 +3 -2: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:11 +4 -2: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: sections share PNG includes header/footer and at least one full screen
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: TestFailure:<Expected: a value greater than or equal to <1688>
+            Actual: <1594>
+             Which: is not a value greater than or equal to <1688>
+          >
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart:192:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart line 192
+The test description was:
+  sections share PNG includes header/footer and at least one full screen
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:11 +4 -3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:11 +4 -3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: sections share PNG includes header/footer and at least one full screen [E]
+  Test failed. See exception logs above.
+  The test description was: sections share PNG includes header/footer and at least one full screen
+
+00:13 +5 -3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:14 +6 -3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:15 +7 -3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:28 +8 -3: Some tests failed.
+
+Failing tests:
+  /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: blank share PNG includes header/footer and at least one full screen
+  /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: sections share PNG includes header/footer and at least one full screen
+  /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: short share PNG includes header/footer and at least one full screen

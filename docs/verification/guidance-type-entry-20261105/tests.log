@@ -1,0 +1,35 @@
+
+┌─────────────────────────────────────────────────────────┐
+│ A new version of Flutter is available!                  │
+│                                                         │
+│ To update to the latest version, run "flutter upgrade". │
+└─────────────────────────────────────────────────────────┘
+00:00 +0: loading /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart
+00:00 +0: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: empty record uses supplied calendar day and saves without editing
+00:00 +1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: unsupported record type is rejected
+00:00 +2: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:00 +3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:03 +4: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:03 +5: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:04 +6: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:04 +7: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:04 +8: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:05 +9: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:05 +10: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:06 +11: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: switching type keeps the two saved records independent
+00:07 +12: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: ORIENT uses existing notebook and submits full record on save
+00:08 +13: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: ORIENT starts empty, saves to preview, shares and reopens saved text
+00:09 +14: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: RESULT uses existing notebook and submits full record on save
+00:10 +15: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: RESULT starts empty, saves to preview, shares and reopens saved text
+00:10 +16: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: RESULT starts empty, saves to preview, shares and reopens saved text
+00:10 +17: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: RESULT starts empty, saves to preview, shares and reopens saved text
+00:10 +18: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: RESULT starts empty, saves to preview, shares and reopens saved text
+00:10 +19: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: RESULT starts empty, saves to preview, shares and reopens saved text
+00:11 +20: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported department reference is rejected before editing (namespaced=false, hidden=false) and retry saves
+00:11 +21: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported unknown reference is rejected before editing (namespaced=false, hidden=false) and retry saves
+00:11 +22: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported department reference is rejected before editing (namespaced=true, hidden=false) and retry saves
+00:12 +23: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported department reference is rejected before editing (namespaced=false, hidden=true) and retry saves
+00:12 +24: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: fetch failure retries without replacing data with a blank journal
+00:13 +25: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: late save completion cannot acknowledge another host session
+00:13 +26: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:15 +27: All tests passed!

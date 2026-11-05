@@ -1,0 +1,507 @@
+00:00 +0: loading /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart
+00:00 +0: empty record uses supplied calendar day and saves without editing
+[ApiJournalStore.write] recordId=guidance-orient-1798732740000000
+{
+  "id": "guidance-orient-1798732740000000",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "ORIENT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-orient-1798732740000000-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2026-12-31",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "orient"
+    },
+    "children": [
+      {
+        "id": "guidance-orient-1798732740000000-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日导向",
+          "tplRegion": true
+        },
+        "children": []
+      }
+    ]
+  },
+  "dailyOrient": {
+    "content": "",
+    "mentions": []
+  },
+  "dailyResult": null,
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+[ApiJournalStore.write] recordId=guidance-result-1798732740000000
+{
+  "id": "guidance-result-1798732740000000",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "RESULT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-result-1798732740000000-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2026-12-31",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "result"
+    },
+    "children": [
+      {
+        "id": "guidance-result-1798732740000000-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日成果",
+          "tplRegion": true
+        },
+        "children": []
+      }
+    ]
+  },
+  "dailyOrient": null,
+  "dailyResult": {
+    "content": "",
+    "mentions": []
+  },
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+[ApiJournalStore.write] recordId=guidance-orient-1798732800000000
+{
+  "id": "guidance-orient-1798732800000000",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "ORIENT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-orient-1798732800000000-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2027-01-01",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "orient"
+    },
+    "children": [
+      {
+        "id": "guidance-orient-1798732800000000-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日导向",
+          "tplRegion": true
+        },
+        "children": []
+      }
+    ]
+  },
+  "dailyOrient": {
+    "content": "",
+    "mentions": []
+  },
+  "dailyResult": null,
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+[ApiJournalStore.write] recordId=guidance-result-1798732800000000
+{
+  "id": "guidance-result-1798732800000000",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "RESULT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-result-1798732800000000-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2027-01-01",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "result"
+    },
+    "children": [
+      {
+        "id": "guidance-result-1798732800000000-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日成果",
+          "tplRegion": true
+        },
+        "children": []
+      }
+    ]
+  },
+  "dailyOrient": null,
+  "dailyResult": {
+    "content": "",
+    "mentions": []
+  },
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+00:00 +1: unsupported record type is rejected
+00:00 +2: switching type keeps the two saved records independent
+[ApiJournalStore.write] recordId=guidance-orient-1793838681502074
+{
+  "id": "guidance-orient-1793838681502074",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "ORIENT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-orient-1793838681502074-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2026-11-05",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "orient"
+    },
+    "children": [
+      {
+        "id": "guidance-orient-1793838681502074-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日导向",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "0d4RYi",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {},
+            "meta": {},
+            "children": [
+              {
+                "insert": "ORIENT 的内容"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dailyOrient": {
+    "content": "ORIENT 的内容",
+    "mentions": []
+  },
+  "dailyResult": null,
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+[ApiJournalStore.write] recordId=guidance-result-1793838683891758
+{
+  "id": "guidance-result-1793838683891758",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "RESULT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-result-1793838683891758-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2026-11-05",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "result"
+    },
+    "children": [
+      {
+        "id": "guidance-result-1793838683891758-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日成果",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "qxzEaa",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {},
+            "meta": {},
+            "children": [
+              {
+                "insert": "RESULT 的内容"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dailyOrient": null,
+  "dailyResult": {
+    "content": "RESULT 的内容",
+    "mentions": []
+  },
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+00:07 +3: ORIENT starts empty, saves to preview, shares and reopens saved text
+[ApiJournalStore.write] recordId=guidance-orient-1793838685789316
+{
+  "id": "guidance-orient-1793838685789316",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "ORIENT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-orient-1793838685789316-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2026-11-05",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "orient"
+    },
+    "children": [
+      {
+        "id": "guidance-orient-1793838685789316-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日导向",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "1XlXdD",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {},
+            "meta": {},
+            "children": [
+              {
+                "insert": "从空白开始记录今天"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dailyOrient": {
+    "content": "从空白开始记录今天",
+    "mentions": []
+  },
+  "dailyResult": null,
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+00:10 +4: RESULT starts empty, saves to preview, shares and reopens saved text
+[ApiJournalStore.write] recordId=guidance-result-1793838689433460
+{
+  "id": "guidance-result-1793838689433460",
+  "bizType": "DAILY_ORIENT",
+  "orientType": "RESULT",
+  "todoContent": {
+    "content": "",
+    "mentions": []
+  },
+  "expectedEffectContent": {
+    "content": "",
+    "mentions": []
+  },
+  "bodyContent": {
+    "id": "guidance-result-1793838689433460-body",
+    "flavour": "root",
+    "nodeType": "root",
+    "props": {},
+    "meta": {
+      "dailyDate": "2026-11-05",
+      "dailyTemplate": "daily-writing",
+      "dailyTemplateVersion": 5,
+      "dailyType": "result"
+    },
+    "children": [
+      {
+        "id": "guidance-result-1793838689433460-record",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {},
+        "meta": {
+          "dailySlot": "daily-body",
+          "tplFieldName": "今日成果",
+          "tplRegion": true
+        },
+        "children": [
+          {
+            "id": "2O5usB",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {},
+            "meta": {},
+            "children": [
+              {
+                "insert": "从空白开始记录今天"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dailyOrient": null,
+  "dailyResult": {
+    "content": "从空白开始记录今天",
+    "mentions": []
+  },
+  "thinking": {
+    "content": "",
+    "mentions": []
+  },
+  "selfCheck": {
+    "content": "",
+    "mentions": []
+  },
+  "helpItems": [],
+  "navigatorItems": [],
+  "customData": {}
+}
+00:13 +5: All tests passed!

@@ -1,0 +1,28 @@
+00:00 +0: loading /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart
+00:00 +0: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: empty record uses supplied calendar day and saves without editing
+00:00 +1: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:01 +2: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:03 +3: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:03 +4: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:04 +5: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:04 +6: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:06 +7: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:06 +8: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:08 +9: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/empty_guidance_flow_test.dart: home starts empty, saves to preview, shares and reopens saved text
+00:08 +10: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +11: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: preview shares the full branded PNG to each target without saving the document
+00:09 +12: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: RESULT uses existing notebook and submits full record on save
+00:10 +13: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:10 +14: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:10 +15: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:10 +16: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: share rejects reentry and ignores completion after host session changes
+00:11 +17: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: supported and legacy mention types load, edit and save
+00:11 +18: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/journal_preview_actions_test.dart: actions fit small preview with enlarged text and stay absent in editing
+00:12 +19: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported department reference is rejected before editing (namespaced=false, hidden=false) and retry saves
+00:12 +20: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported unknown reference is rejected before editing (namespaced=false, hidden=false) and retry saves
+00:12 +21: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported department reference is rejected before editing (namespaced=true, hidden=false) and retry saves
+00:13 +22: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: unsupported department reference is rejected before editing (namespaced=false, hidden=true) and retry saves
+00:13 +23: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: fetch failure retries without replacing data with a blank journal
+00:13 +24: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: late save completion cannot acknowledge another host session
+00:13 +25: /Users/shichunlei/workspace/cses_editor/example/test/daily_guidance/body_content_api_test.dart: API document retains native keyboard menus and custom people actions
+00:16 +26: All tests passed!

@@ -1,0 +1,8 @@
+{
+  "source": "normal debug APK built from lib/main.dart",
+  "sample_json_bundled": false,
+  "image_assets": [
+    "assets/flutter_assets/assets/images/daily_guidance_mountain.png",
+    "assets/flutter_assets/assets/images/%E4%B8%AD%E4%BC%81%E4%BA%91%E9%93%BE_logo.png"
+  ]
+}

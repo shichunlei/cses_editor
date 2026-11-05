@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
@@ -9,7 +8,6 @@ import 'package:cses_offline_example/daily_guidance/local_journal_controller.dar
 import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
 import 'package:cses_offline_example/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// 测试独占的本地存储，记录预览是否意外保存。
@@ -154,7 +152,6 @@ void main() {
       );
       await tester.runAsync(() async {
         await tester.tap(find.byKey(const ValueKey('preview-daily-guidance')));
-        await rootBundle.loadString('文档完整数据结构.json');
         await Future<void>.delayed(const Duration(milliseconds: 20));
       });
       await tester.pumpAndSettle();
@@ -175,7 +172,8 @@ void main() {
         find.byKey(const ValueKey('journal-preview-user')),
         findsOneWidget,
       );
-      expect(find.text('示例团队 · 前端开发'), findsOneWidget);
+      expect(find.text('师春雷'), findsOneWidget);
+      expect(find.text('技术部 · 移动端开发'), findsOneWidget);
       final before = jsonEncode(_state(tester).document.toJson());
       await tester.tap(find.byKey(const ValueKey('journal-back')));
       await tester.pumpAndSettle();
@@ -199,12 +197,9 @@ void main() {
       expect(find.byKey(const ValueKey('journal-save')), findsOneWidget);
       expect(find.byKey(const ValueKey('journal-preview-user')), findsNothing);
       expect(find.byKey(const ValueKey('journal-preview')), findsNothing);
-      final record =
-          jsonDecode(File('文档完整数据结构.json').readAsStringSync()) as Map;
-      expect(
-        find.text(record['orientType'] == 'RESULT' ? '今日成果' : '今日导向'),
-        findsNWidgets(2),
-      );
+      expect(find.text('今日导向'), findsNWidgets(2));
+      expect(_state(tester).document.root.children, hasLength(1));
+      expect(_state(tester).getNodeAtPath([0, 0])!.delta!.isEmpty, isTrue);
       await tester.pumpWidget(const SizedBox());
       await tester.pumpAndSettle();
     },

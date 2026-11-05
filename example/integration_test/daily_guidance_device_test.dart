@@ -75,30 +75,8 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('journal-cover')), findsOneWidget);
     final state = _state(tester);
-    // 替换原样例的“金额”自定义栏目，验证旧字段隐藏后新字段可独立保存。
-    final amount = state.document.root.children.firstWhere(
-      (node) => node.attributes['guidance_section_label'] == '金额',
-    );
-    final amountClose = find.byKey(
-      ValueKey('journal-close-${amount.attributes['section']}'),
-    );
-    final pageScroller = find.byType(Scrollable).first;
-    for (var i = 0; i < 5 && find.text('金额').evaluate().isEmpty; i++) {
-      await tester.drag(pageScroller, const Offset(0, -700));
-      await tester.pumpAndSettle();
-    }
-    await tester.ensureVisible(find.text('金额'));
-    await tester.pumpAndSettle();
-    await tester.ensureVisible(amountClose);
-    await tester.pumpAndSettle();
-    await tester.tap(amountClose);
-    await tester.pumpAndSettle();
-    expect(
-      state.document.root.children.any(
-        (node) => node.attributes['guidance_section_label'] == '金额',
-      ),
-      isFalse,
-    );
+    expect(state.document.root.children, hasLength(1));
+    expect(state.getNodeAtPath([0, 0])!.delta!.isEmpty, isTrue);
     for (final entry in [
       ('自定义字段甲', '自定义字段数据甲'),
       ('自定义字段乙', '自定义字段数据乙'),
@@ -306,7 +284,7 @@ void main() {
           skipHistoryDebounce: true,
         );
       }
-      expect(state.document.root.children.length, 4);
+      expect(state.document.root.children.length, 3);
       await _hideKeyboard(tester, state);
       final close = find.byKey(const ValueKey('journal-close-reflection'));
       await tester.ensureVisible(close);
@@ -353,7 +331,7 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('open-daily-guidance')));
       await tester.pumpAndSettle();
       final restored = _state(tester);
-      expect(restored.document.root.children.length, 4);
+      expect(restored.document.root.children.length, 3);
       expect(_text(restored), contains('self-check栏目正文'));
       final content = jsonEncode(restored.document.toJson());
       for (final value in ['sample-lin', 'sample-chen', 'pilot', 'help']) {
