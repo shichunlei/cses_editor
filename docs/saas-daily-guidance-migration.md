@@ -1,55 +1,38 @@
-# 今日导向迁入 SaaS：逐文件实施方案
+# 日导向迁入 SaaS 的全链路与公司模板方案
 
-- 修订日期：2026-11-05。
-- 状态：方案，尚未实施 SaaS 迁移。
-- 已提交实现基线为 `e9856a0`，涵盖当天空文档、两类入口、保存后预览、自定义栏目与保存前关闭空栏目。
-- SaaS 核对基线为 `1067d9b94`，今日导向仍走现有互生入口和 `/dailyOrient/save`。
-- 工作区候选为末栏剩余视口补线，涉及 `journal_surface.dart`、布局测试及 UI 约定。以完成单独评审后的提交作为该项迁移基线。
-- 最终提交字段结构：[文档完整数据结构.json](../example/文档完整数据结构.json)。
-- 派生实现：[guidance_record_fields.dart](../example/lib/daily_guidance/guidance_record_fields.dart)。
-- 提交实现：[guidance_api.dart](../example/lib/daily_guidance/guidance_api.dart)。
-- 加载实现：[body_content_codec.dart](../example/lib/daily_guidance/body_content_codec.dart)。
-- 当前有效协议：[data-format.md](data-format.md)。历史讨论或验证记录与本文冲突时，以用户最终要求、样例字段结构和基线实现为准。
-
-本文用于安排后续迁移。当前交付为方案与文档校验记录。
+- 修订日期 2026-11-05。本文是实施方案，SaaS 代码与接口尚未迁移。
+- SaaS 核对提交为 `1067d9b94`，编辑器已提交基线为 `a1a63ae`。example 中三套公司模板的试点包含工作区改动，仅作为验证编辑器嵌入的参考。
+- 请求结构以[完整数据样例](../example/文档完整数据结构.json)及本文第 2 节为准。正文协议见[数据格式](data-format.md)。
 
 ## 1. 范围与固定决策
 
-1. 今日导向/成果业务迁入 SaaS 现有互生子域，通用编辑能力依赖 `cses_editor` 根包。不得依赖 example 包，不将业务移入编辑器根包，不新拆业务包。
-2. SaaS 通过相对路径 `../../cses_editor` 接入根包。AppFlowy 依赖先完成第 4 节的来源核对，再用于 SaaS 构建与验收。
-3. 列表返回完整数据。打开已有记录时传入独立记录快照，不新增详情接口；同一列表外壳中的 orient/result 分别取对应业务记录。
-4. 创建、修改共用现有 `/dailyOrient/save`。创建不带 `id`，修改带后台正式 `id`，本地草稿 ID 不得作为后台 ID。
-5. 环境配置增加版本开关：PRE 未显式配置时默认新版，其他环境默认旧版；显式选择优先。
-6. 旧版继续用原字段和原页面。新版只用 `bodyContent` 恢复和展示正文，保存时同时更新兼容字段；新版不读取旧摘要来补正文。
-7. 新版迁入完整记录派生、引用前置校验和显式保存。顶栏保存成功在同一会话进入只读预览，确认保存后离开则提交成功并返回。
-8. 新建由 SaaS 宿主确定类型、日期和业务身份，复用空文档构造。已有记录从列表快照打开，新建与修改共享编码和保存适配。
-9. 不恢复原协同包、Common SDK 对编辑器根包的反向依赖、Rust/FRB/Yrs 或协同数据库。SaaS 既有服务只在宿主适配层使用，并显式注入。
+迁移覆盖今日导向和今日成果在 SaaS 的完整链路，包括入口、列表、详情预览、创建、修改、保存、重开、复制、互动和分享。**模板以 SaaS 现有注册表和页面为唯一视觉基准。每条日导向在 SaaS 选中的原版模板上编辑，替换的是模板正文区域。** 模板周围的构图、图片、品牌装饰、取景、缩放和长图布局继续由原模板负责。
 
-### 本轮业务差异与迁移安排
-
-| 变化 | 迁移安排 |
+| 边界 | 迁移决策 |
 |---|---|
-| 当天空白文档、导向与成果入口 | 复用空记录构造，接入 SaaS 现有创建入口。示例首页的内存 Mock 与演示开关留作测试参考 |
-| 保存成功进入预览 | 合并到编辑保存主流程。保存后由同一个控制器冻结，列表刷新依赖业务成功事件 |
-| 自定义栏目与空栏目处理 | 将新增、手动关闭、恢复、批量保存清理与正文 Codec 一起迁入，避免页面能编辑但无法提交或重开 |
-| 领航员与都来帮 | 迁入先创建业务行、再选人、取消保留的事务顺序 |
-| 固定封面、横格及分享 | 已提交的布局、焦点避让和最小一屏 PNG 进入首版验收。末栏补线工作区版本单独验收 |
-| AppFlowy 依赖来源 | 已提交基线使用本机路径，当前工作区已恢复固定 Git 来源。以该来源完成 SaaS 干净环境验收 |
+| `cses.saas/lib/modules/mutualism` | 持有版本、记录、权限、编辑会话、业务提交、列表刷新和互动。覆盖 ORIENT 与 RESULT |
+| `cses.saas/lib/modules/templates` | 保留原有公司模板注册与分发，提供供日导向宿主注入正文的最小公开接口。各模板保留各自的视觉组件、图库、截图与分享外壳 |
+| `cses_editor` 根包 | 提供通用正文视图、命令和键盘等能力。SaaS 通过公开入口接入 |
+| `cses_editor/example` | 用于提取和验证日导向正文协议、事务及交互。三套试点的图片、品牌组件和整页布局留在示例，生产视觉直接复用 SaaS 原版 |
 
-空白入口与类型规则见[双类型入口验证](verification/guidance-type-entry-20261105/report.md)。保存状态转换、清理与分享分别见[保存后预览](verification/save-to-preview-20261103/report.md)、[空栏目关闭](verification/save-close-empty-sections-20261105/report.md)和[分享一屏](verification/share-minimum-screen-20261105/report.md)。
+- 旧版保留现有入口、字段和行为。新版以 `bodyContent` 恢复正文，并在保存时生成兼容字段。PRE 无显式配置时默认新版，其余环境默认旧版。PRE 开启前须通过协议和模板覆盖验收。
+- 已有记录从列表传入完整独立快照。创建与修改沿用 `/dailyOrient/save`，创建省略 ID，修改使用后台正式 ID。顶栏保存成功后当前会话转为只读预览。
+- 编辑态保留顶部悬浮返回、保存、撤销、重做及整页滚动。栏目通过键盘菜单按需添加。编辑态隐藏公司 Logo，保存后的预览和分享图显示原版 Logo，满模板画布宽度并保留素材比例。
+- 完成范围以生产注册表可达模板为准，覆盖公司、部门、内容变体和兜底分支，包含三套已试点模板及其他所有可达模板。与日导向共用模板的其他调用方沿用原契约。
 
 ### 工作区定位
 
-| 标识 | 绝对目录 |
+| 标识 | 目录 |
 |---|---|
-| 编辑器仓库 E | `/System/Volumes/Data/workspace/cses_editor` |
-| 示例来源 S | `/System/Volumes/Data/workspace/cses_editor/example/lib/daily_guidance` |
-| SaaS 仓库 A | `/System/Volumes/Data/workspace/cses/cses.saas` |
-| 互生模块 M | `/System/Volumes/Data/workspace/cses/cses.saas/lib/modules/mutualism` |
-| 新页面目录 J | `/System/Volumes/Data/workspace/cses/cses.saas/lib/modules/mutualism/presentation/orient_result/journal` |
-| 应用宿主 H | `/System/Volumes/Data/workspace/cses/cses.jqdl` |
+| E | `/System/Volumes/Data/workspace/cses_editor` |
+| S | `E/example/lib/daily_guidance` |
+| A | `/System/Volumes/Data/workspace/cses/cses.saas` |
+| M | `A/lib/modules/mutualism` |
+| T | `A/lib/modules/templates` |
+| J | `M/presentation/orient_result/journal`，拟新增日导向会话与宿主适配目录 |
+| H | `/System/Volumes/Data/workspace/cses/cses.jqdl`，实际应用宿主 |
 
-后文使用这些标识表示文件路径；标注“新增”的文件尚不存在。实际实施前复查目标分支和未提交改动，保留无关修改。
+实际实施前复查目标分支及未提交改动。下面标注新增的文件名是拟定落点，现有入口优先复用。
 
 ## 2. 最终请求结构与映射
 
@@ -128,10 +111,10 @@
 1. 从列表适配层取出当前 orient/result 的完整业务记录，深拷贝为页面快照；正式 ID 与聚合行 ID 分开。
 2. 固定版本和初始入口模式，记录账号、企业、文档及路由实例身份。编辑入口允许在成功保存后单向进入预览。
 3. 校验 ID、orientType、bodyContent 结构，再执行 `validateMentionTypes`。失败展示具体类型及支持范围，不创建编辑器、不缓存可写来源、不发请求覆盖记录。
-4. `BodyContentCodec.decode` 创建日记草稿，页面创建唯一正文会话。
+4. `BodyContentCodec.decode` 创建日记草稿，宿主创建唯一正文会话，通过现有公司模板注册表确定外壳。模板正文插槽挂载该会话的编辑视图。
 5. 结束输入合成，执行一次可撤销的空可选栏目关闭事务，再捕获独立快照。调用 Codec 生成 bodyContent，从同一正文派生字段。
 6. 合并到完整来源记录，覆盖所有派生字段及显式 null；调用现有保存用例。
-7. 业务成功后确认保存修订和正式记录，顶栏保存使原页面和控制器进入只读预览，关闭键盘与编辑动作。确认保存后离开直接返回结果。失败保留编辑、撤销和重试能力。
+7. 业务成功后确认保存修订和正式记录，顶栏保存使原会话进入对应公司模板的只读预览。按最终可见内容应用原有模板变体规则，关闭键盘与编辑动作并显示品牌页脚。确认保存后离开直接返回结果。失败保留编辑、撤销和重试能力。
 8. 响应完整则更新当前记录；响应不完整则刷新原列表，不补造详情接口。
 
 ### 新建记录
@@ -142,16 +125,17 @@
 4. 首次成功接收并固化正式 ID，再冻结为预览或返回。随后从 SaaS 编辑入口重开才按修改提交，携带已保存的正式 ID。创建在途复用同一请求，失败保留待创建态与内容。
 5. 对响应丢失或业务成功但 ID 缺失的情形，按已有幂等或列表对账能力恢复身份后再允许下一次写入。PRE 联调确认新建两类的 `bizType`、响应 ID 与必需基础字段。
 
-### 编辑事务与布局
+### 编辑事务与模板模式
 
 | 场景 | 业务规则 |
 |---|---|
 | 新增与关闭栏目 | 自定义名称先 trim，长度 1–40，独立稳定 key。关闭可选栏目保留草稿，隐藏区与可见正文共同校验容量及身份。恢复时使用原 key 和内容，手动关闭不把焦点跳到其他栏目 |
 | 显式保存清理 | 仅顶栏保存或确认保存后离开时执行。首栏、非空正文、待办、提及、人员业务行和非文字块保留。多个空感悟、自检和自定义栏目合为一次可撤销事务。失败仍可编辑、撤销或重试 |
 | 都来帮和领航员 | 点击先创建独立业务行，再选人。取消保留空业务行，选中回填原行。创建和回填分别可撤销。空业务行留在正文，空值不产生聚合条目 |
-| 沉浸式编辑与预览 | 复用固定封面与共享正文滚动。键盘及菜单变化后校正被遮挡的焦点行，编辑与预览使用一致的栏目间距 |
-| 分享 | 从只读会话捕获全文独立快照，纸张最小高度为当前逻辑屏幕高度，短文补足横格，长文自然增长，保留品牌页脚与现有图片操作端口 |
-| 末栏补线候选 | 末个可见栏目承接剩余正文视口，前置栏目按自然高度排版，保留根滚动索引。帧后测量按文档根和栏目身份隔离。该项在工作区版本通过单独验收后并入 |
+| 沉浸式编辑 | 真实 SaaS 模板容纳一个正文会话，画布整体滚动至透明状态栏。悬浮按钮留在安全区。键盘及菜单变化后以实际正文视口校正焦点行 |
+| 保存后预览 | 从已保存的同一修订生成只读正文。继续使用所选 SaaS 模板的原版构图、素材、取景和品牌页脚 |
+| 分享 | 通过 SaaS 模板外壳使用独立保存快照、同源的只读正文与测量。沿用图库、图片首帧、截图、像素限制、取消与分享回写流程 |
+| 横格与补线 | 编辑区可复用现有能力，以目标模板内容槽和键盘视口验收。纸张高度、留白和页脚位置由各模板原版布局决定 |
 
 ### 旧版与版本切换
 
@@ -163,7 +147,7 @@
 
 | 文件 | 动作与改动点 |
 |---|---|
-| A/pubspec.yaml | 增加 `cses_editor: path: ../../cses_editor`；显式声明宿主直接使用的 AppFlowy、Provider、Lucide 等依赖；复用已存在的文件选择、分享等依赖，按直接 import 补齐而非整体复制 example |
+| A/pubspec.yaml | 以可复现的固定来源接入 `cses_editor` 根包。联调可在同一工作区使用相对路径，正式验收以可从干净环境解析的固定版本为准。按直接 import 核对宿主依赖 |
 | A/pubspec.lock | 由依赖工具生成更新，不手改 |
 | A/lib/global/keys.dart | 增加新版今日导向设置 key，不复用其他灰度开关 |
 | A/lib/modules/dashboard/presentation/env/environment_toggle.dart | 增加版本开关声明，说明同时影响导向和成果；在现有声明式机制中补齐该开关的环境默认与存储范围能力，不改变其他配置语义 |
@@ -171,13 +155,13 @@
 | A/lib/modules/dashboard/presentation/env/page.dart | 复用现有开关行，只有开关本体触发；保存成功后发布必要的设置变更通知 |
 | A/lib/shared/presentation/settings/daily_guidance_editor_settings.dart（新增） | 单一版本解析策略及 key/default 规则，参数化接收环境和设置值，供环境页、互生导航和展示消费；避免互生反向导入 Dashboard 私有 Logic |
 | H/lib/modules/app/view.dart | 在既有 GetMaterialApp 合并 AppFlowy 本地化 delegate，不新增 MaterialApp 或协同初始化 |
-| A/assets/daily_guidance/（新增素材目录） | 迁入封面与品牌图片，并同步页面、预加载及分享页路径；保留米色纸张与品牌底色处理 |
+| T 与 H 的素材声明 | 复用 SaaS 模板现有图片、图库、品牌图、字体和宿主资产装配。按实际构建核对缺失项及来源 |
 
 ### 依赖前置核对
 
-- 已提交基线 `e9856a0` 的 E/pubspec.yaml 使用 `../appflowy-editor`。本次核对结束时，工作区声明已改回 E/AGENTS.md 要求的 Git 来源 `https://github.com/shichunlei/appflowy-editor.git`，固定提交 `9e7593134457eac9193a61ee4023a75de55fcc68`。根包与 example 的锁定文件及当前解析均指向该 Git 提交。
-- example 当前通过根包解析 AppFlowy。邻接 AppFlowy checkout 同为 `9e759313`，其未提交的 file_picker 和 flutter_svg 约束调整不属于 Git 基线。实施时采用固定 Git 版本验证消费者，必要依赖差异先固化到可获取的固定版本。
-- 第一次 SaaS 接入验收同时核对声明、锁定和实际解析路径，并用干净构建环境验证依赖、键盘与截图。当前本地 AppFlowy 和 SaaS 的未提交改动独立保留。
+- 当前 E 的 `pubspec.yaml`、根包锁定及 example 锁定仍声明 AppFlowy 邻接路径。此前文档中的固定 Git 状态不能作为当前验收证据。
+- 依照 E 仓库约定，实施前将 AppFlowy 来源收敛到 `https://github.com/shichunlei/appflowy-editor.git` 的固定可获取提交，核对兼容补丁、声明、锁定及实际解析。历史参考提交为 `9e7593134457eac9193a61ee4023a75de55fcc68`，采用前需确认覆盖所需行为。
+- 用 SaaS 和实际应用宿主的干净环境验证依赖、素材、本地化、编辑与截图。编辑器根包保持离线边界，宿主的现有服务通过端口注入。
 
 ## 5. 逐文件：SaaS 数据与业务边界
 
@@ -197,58 +181,47 @@
 
 新增 snapshot 的目的为防止目前旧实体简略序列化丢数据，不是再维护第二份可变正文。正文仍仅由日记控制器持有。
 
-## 6. 逐文件：从 example 迁入业务源码
+## 6. 原版模板复用与正文接入
 
-以下来源为 S，目标为 J。保留 example 的独立可运行示例，不删除来源。公共能力仍只从 `package:cses_editor/cses_editor.dart` 等真实公开入口导入。
+### 6.1 模板选择与覆盖清单
 
-| 来源 | 目标 | 迁移处理 |
-|---|---|---|
-| local_journal_page.dart | page.dart | LocalJournalPage 改为 DailyGuidancePage。接入完整快照与配置，迁入保存前清理、同页只读预览、确认保存离开、错误重试与固定封面。版本及保存策略由配置提供 |
-| local_journal_controller.dart | editor/journal_controller.dart | LocalJournalController 改为 JournalController。迁入自定义栏目、关闭与恢复、空栏目批处理、业务行先建后填、只读转换和修订保护。控制器继续独占正文 |
-| journal_draft.dart | editor/journal_draft.dart | 迁入可见和隐藏栏目身份、重复键、共用容量校验及编辑配置。依赖 AppFlowy，留在展示层 |
-| journal_store.dart | editor/journal_store.dart | 保留 read/write 会话端口，读取失败不创建替代记录；异步写成功才确认保存 |
-| guidance_api.dart | editor/api_journal_store.dart | 从列表快照恢复，保存调用注入的统一用例，维护待创建态和正式 ID。生产日志记录请求结果与必要追踪标识，示例完整 JSON 输出用作本机联调参照 |
-| empty_guidance_record.dart | editor/empty_guidance_record.dart | 复用已实现的双类型空模板构造。以宿主日期、业务类型和本地块 ID 初始化，顶层正式 ID 由 Store 管理 |
-| guidance_record_fields.dart | editor/guidance_record_fields.dart | 按基线迁入字段派生、联合去重、默认类型、专用异常和加载校验；无需另建“旧字段分流器”或第二套投影算法 |
-| body_content_codec.dart | editor/body_content_codec.dart | 保留加载校验、块身份、扩展及未编辑节点。编码新增自定义区域及稳定键，按 `mobileGuidanceView.hiddenSections` 往返隐藏内容和恢复状态 |
-| journal_blockcraft_codec.dart | editor/journal_blockcraft_codec.dart | 保留块身份恢复、转换、复制相关依赖，首期不扩展协议 |
-| journal_exchange_keys.dart | editor/journal_exchange_keys.dart | 持久化字符串不随 Dart 类名变化；不能清理 bc./guidance_ 等来源恢复信息后再保存 |
-| journal_input.dart | editor/journal_input.dart | 保留原子提及、输入事务处理及容量保护 |
-| journal_editing.dart | editor/journal_editing.dart | 保留格式工具栏和栏目专用编辑规则 |
-| guidance_entries.dart | widgets/guidance_entries.dart | 保留业务标记和提及渲染；纯模型/解析按实际依赖拆入 editor/，不复制业务数据 |
-| journal_list_markers.dart | widgets/journal_list_markers.dart | 保留编号、列表标记及布局 |
-| journal_surface.dart | widgets/journal_surface.dart | 迁入固定封面、初始横格及编辑/预览/截图共享正文。保留唯一页尾。末栏剩余视口补线以候选提交和回归结果决定纳入时点 |
-| journal_ruled_content.dart | widgets/journal_ruled_content.dart | 保留横格、真实文本高度及业务标签排除规则 |
-| journal_ruled_text_scope.dart | widgets/journal_ruled_text_scope.dart | 与横格绘制一起迁入，标记实际正文扫描区域，保持提及、标签和输入命中语义 |
-| guidance_people.dart | editor/guidance_people.dart + widgets/journal_people_picker.dart | 拆分引用模型/端口与 Widget；支持类型以提交契约为准，不允许选入随后不能保存的 department；其他业务使用的组织树不因迁移被改写 |
-| mention_picker.dart | widgets/journal_mention_picker.dart（按需） | 优先复用宿主公开选人能力；保留取消、退场完成、会话失效与选区核验 |
-| guidance_host.dart | adapters/journal_host_services.dart | 替换演示目录和头像；由 Binding 注入服务，不能自行查全局账号兜底 |
-| journal_image_actions.dart | adapters/journal_image_actions.dart | 保留操作端口，替换 example 专用 MethodChannel，复用 SaaS 微信/朋友圈/保存能力 |
-| journal_share_page.dart | share/journal_share_page.dart | 保留正文快照、图片加载等待与品牌页脚。成图最少一屏，长文自然增长，保留原像素及长图保护 |
-| ui/journal_modal.dart | widgets/modal/journal_modal.dart | 保留 route.completed 后返回、局部主题与焦点约定，不私自导入根包 src/ |
-| ui/journal_bottom_sheet.dart | widgets/modal/journal_bottom_sheet.dart | 保留有限高度、安全区与固定头尾 |
-| ui/journal_modal_header.dart | widgets/modal/journal_modal_header.dart | 保留标题/说明/关闭行为 |
+以 `T/company/registry/company_template_registry.dart` 的实际选择结果为准。当前核对到 **41 个公司映射、公司映射下的 44 个不同页面类、7 个兜底注册项**。公司映射数与模板数分开统计，品牌别名共享组件仍需验证实际 Logo。实施时从目标分支生成覆盖清单，清单随注册表变化更新。
 
-首期不迁入 `file_journal_store.dart`、`journal_json_files.dart`、示例 main、演示人员或原始记录作为线上业务数据。本地恢复和 JSON 导入导出另行评估，不混入在线保存。
-
-### 根包联动
-
-SaaS 通过根包版本获得以下能力，迁移清单中的业务文件仍位于互生宿主。实施时以依赖解析结果及目标测试确认能力生效。
-
-| 根包文件 | 验收重点 |
+| 分支 | 必验内容 |
 |---|---|
-| E/lib/src/editor/editor_caret_visibility.dart | 键盘或菜单遮挡折叠光标行后，在排版完成时滚动校正。换会话或路由失效时取消待处理回调 |
-| E/lib/src/editor/stable_mobile_toolbar.dart | 使用实际正文视口和工具栏边界，避免重复扣减键盘高度 |
-| E/lib/src/editor/editor_shortcut_toolbar.dart | 待办块光标对应一级工具栏选中态 |
+| 公司及品牌 | 覆盖注册表中的每项公司映射，包含中企云链及多个公司共享同一模板页面的分支 |
+| 部门 | 覆盖恒源亿科的亿科医疗与默认分支，以及国医康的鼎顺利、优米口腔、北区口腔与默认分支，记录实际注册 ID 和页面类 |
+| 内容变体 | 汇丰永盛、成塔服饰和爱能智亚分别覆盖原一屏版和动态 V2。以 `CompanyTemplateVariantPolicy` 对最终可见内容的判断为准 |
+| 兜底 | 七项都能被测试确定性选中。对同一会话固定选中结果，保存、预览、换图和截图过程中不重新随机 |
+| Debug | 指定账号模板切换可用于测试。生产覆盖以 Release/Profile 正式分发为准 |
 
-### 新增宿主文件
+选择继续消费当前 SaaS 导航使用的公司、记录部门和内容条件。保存修订变化若触发官方一屏/V2 切换，在安全的编辑提交边界重新解析变体，保留文档控制器、图片来源和取景状态。输入合成期间避免销毁重挂。主正文很长、自定义栏目或非文本块可能超出现有变体策略能识别的范围。先实测既有变体能否完整容纳，再决定是否扩充选择能力。固定模板若无法在只扩展内容区的前提下承载全文，该分支保持未完成，待确认布局规则后再放量。
 
-| J 下新增文件 | 职责 |
+### 6.2 视觉和编辑的分界
+
+| 区域 | 实施要求 |
 |---|---|
-| binding.dart | Repository/UseCase/服务端口/版本配置装配；按页面实例隔离，避免固定 GetX tag 覆盖 |
-| logic.dart | 加载结果、权限、保存反馈、正式 ID、互动状态和业务事件；不直接 HTTP/SDK，不重复持有正文 |
-| journal_page_configuration.dart | 固定入口模式、标题、版本和保存策略。运行时只读状态由控制器在保存成功后推进 |
-| adapters/journal_mention_directory.dart | 将已有公开组织查询映射为真实人员目录；不伪造身份，不按姓名推测用户 |
+| 正文槽以外 | 原模板页面负责品牌色、字体、主图、相框、取景、裁剪、几何比例、头像、问候、日期、装饰和层叠位置。保留原模板参数和素材引用，禁止用 example 版式替换 |
+| 编辑正文槽 | 挂载一个 `cses_editor` 会话。允许按编辑需要显示横格、选区、输入提示和栏目动作。正文以真实宽度自然增长，模板装饰按原布局约束随正文边界定位 |
+| 预览及分享正文槽 | 使用保存修订的同源只读块展示，保留富文本、图片、引用、待办、人员业务行及自定义栏目。预览和截图使用相同宽度、字体和组件配置。原模板的标题、颜色和间距作为正文样式输入。人员行按文档位置渲染一次，兼容摘要和聚合数组用于业务消费 |
+| 应用操作层 | 返回、保存、撤销、重做固定悬浮，整页可滚到透明状态栏下。保存后沿用只读预览和现有互动。操作层不进入截图 |
+| 品牌页脚 | 编辑时保留模板收边并隐藏 Logo。预览和分享使用 SaaS 品牌图，按用户确认的规则保留满画布宽度和素材比例 |
+
+复用原版模板是还原手段。正文槽与编辑操作层按新流程实现。Logo 显示时机和满宽规则按已确认的要求验收。对比基线使用同模板分支、同实际宽度、同图库图片、同取景、同时间与作者，以及等高正文。模板装饰位置变化若由正文自然增高触发，应与原版使用等高内容时的布局一致。避免把固定封面、末栏补线、示例分享图最少一屏等示例实现当作所有 SaaS 模板的强制约束。
+
+### 6.3 实施接点
+
+| 文件或范围 | 动作 |
+|---|---|
+| `T/company/registry/company_template_registry.dart`、`company_template_selection.dart`、`company_template_variant_policy.dart` | 在现有分发上承接宿主正文能力，记录稳定的模板与变体身份，保留公司、部门、随机兜底和 Debug 规则 |
+| `T/company/widgets/company_template_shell.dart` | 允许注入编辑、预览和捕获用的正文槽，旧调用保持默认。宿主管理文档和保存，模板管理画布、图片取景与分享外壳 |
+| `T/company/*_template_page.dart` | 逐个接入真实正文容器，核对每页内边距、定位基准、图片区域和品牌页脚。已有 `OrientResultSectionsView` 或旧单区块渲染仍供旧路径使用 |
+| `T/widgets/measured_template_poster_view.dart`、`T/layout/measured_poster_layout.dart` | 注入同版式只读正文测量和内容修订标识，保留原主图下限、布局收敛及图像门禁。测量树使用无输入、无焦点的渲染，避免重复挂载活动编辑器 |
+| `T/routes/navigator.dart`、`T/index.dart`、分享完成回调 | 暴露宿主所需的最小公开契约，原模板选择和分享回写入口兼容旧消费者。模板不反向持有业务 UseCase |
+| `J/binding.dart`、`J/logic.dart`、`J/page.dart`（拟新增） | 装配真实服务、创建唯一会话、组织编辑与预览、处理保存及页面生命周期。页面承载 SaaS 模板选择结果和应用操作层 |
+| `J/editor/` 与 `J/adapters/`（拟新增） | 从 S 提取正文 Codec、派生器、空模板、栏目事务和输入命令。由宿主提供快照、显式保存、真实头像目录及平台能力 |
+
+`LocalJournalPage`、`JournalSurface` 与示例分享页用于参考状态转换、焦点、键盘及快照生命周期。只提取可验证的正文能力和必要交互。示例公司模板 Widget、全屏纸张根布局、文件草稿、Mock 服务和 MethodChannel 留在 example。SaaS 继续通过根包获得光标避让与工具栏能力。
 
 ## 7. 逐文件：路由、展示与行为
 
@@ -256,18 +229,19 @@ SaaS 通过根包版本获得以下能力，迁移清单中的业务文件仍位
 |---|---|
 | M/routes/route_path.dart | 增加新版编辑/预览路由；保留旧路由供开关关闭时使用 |
 | M/routes/mutualism_route_arguments.dart | 不可变参数：完整记录快照或新建类型/日期、固定模式/版本、路由实例身份。校验正式 ID 与快照一致，不携带服务客户端或认证凭据 |
-| M/routes/pages.dart | 统一解析参数、注册新 Page 与 Binding |
+| M/routes/pages.dart | 统一解析参数、注册日导向宿主 Page 与 Binding，模板由 Templates 注册表选择 |
 | M/routes/navigator.dart | 单一版本分流入口，不在各业务 Widget 散落环境判断；结果表达已保存、正式记录身份及创建/修改 |
 | M/presentation/widgets/item_result_orient_view.dart | 两类入口按已有记录与空白新建分流，沿统一导航传类型及完整快照。保存转预览后仍即时按正式记录刷新列表 |
 | M/presentation/widgets/item_todo_oriented.dart | 保存成功返回后才发送带 todoId 的定向完成事件，取消/失败不移除待办 |
 | M/presentation/orient_result/widgets/item_orient_result.dart | 新版用 bodyContent 做正文展示/预览入口；列表用轻量只读投影，不为每条记录创建可编辑控制器 |
 | M/presentation/orient_result/widgets/item_oriented_date.dart | 核对记录传递和版本展示，确保日期分组不把完整快照裁成摘要 |
-| M/presentation/orient_result/widgets/work_orient_dialog.dart | 保持旧版展示；新版跳日记预览，不用旧字段拼新版正文 |
+| M/presentation/orient_result/widgets/work_orient_dialog.dart | 保持旧版展示；新版打开对应 SaaS 公司模板的只读预览，从正文快照渲染 |
 | M/presentation/orient_result/widgets/mentions_highlight_text.dart | 旧版读取新版派生摘要时保留类型，不能把所有引用跳转成人员；按所支持的类型能力显示/禁用，不能按同名任意选实体 |
 | M/presentation/orient_result/create/{binding,logic,page}.dart | 保持旧版交互、字段及容量规则；若共享解析工具需回归验证，不把旧请求构造复制进新版 |
 | M/presentation/orient_result/list/{logic,page}.dart | 接收版本设置变化及保存刷新，完整记录传递；不修改原筛选、统计行为 |
 | M/presentation/orient_result/month_list/{logic,page}.dart | 同步个人月记录展示和完整传数；保持既有实例 tag |
 | M/presentation/orient_result/day_statistics/{logic,page}.dart | 核对统计明细打开路径，沿统一导航传完整记录；统计计算本身不因编辑器迁移重写 |
+| M/presentation/orient_result/star/ 及跨模块入口 | 核对引导星、首页、待办或外部入口是否打开同一记录。进入日导向详情或编辑时统一路由；引导星专用分享模板继续按原业务契约分发 |
 | M/presentation/orient_result/services/work_orient_clipboard_codec.dart | 保留旧复制协议；新版从 bodyContent/同源投影生成复制值，不读取可能过期的旧摘要 |
 | M/presentation/orient_result/services/work_orient_share_handler.dart | 复用分享行为回写规则；新版通过注入 UseCase 装配，不复制静态创建 Repository 的做法 |
 | M/domain/event/events.dart | 复用首页刷新、互动更新和待办事件；新增与修改区分，避免每次保存都重复发布新增完成 |
@@ -288,7 +262,7 @@ SaaS 通过根包版本获得以下能力，迁移清单中的业务文件仍位
 - 远端保持显式保存。顶栏成功保存后原会话仅供预览，确认保存离开后返回。输入、切后台、销毁和预览零写入。
 - 网络/解析失败和不支持类型不新建空白替代，不覆写原记录；保留具体提示及安全重试。
 
-## 9. 测试逐文件迁移与新增验收
+## 9. 全链路验证与逐模板验收
 
 目标测试根目录：`A/test/modules/mutualism/presentation/orient_result/journal/`。
 
@@ -307,15 +281,23 @@ SaaS 通过根包版本获得以下能力，迁移清单中的业务文件仍位
 | example/test/daily_guidance/journal_save_empty_sections_test.dart | 保存前空栏目清理、保留待办/提及/业务行、一次撤销、失败重试、确认保存离开、重开恢复 |
 | example/test/daily_guidance/dynamic_journal_test.dart 与 journal_section_close_focus_test.dart | 新增自定义栏、连续关闭、恢复原键和内容、关闭不唤起键盘 |
 | example/test/daily_guidance/journal_keyboard_toolbar_test.dart 与 journal_native_mentions_test.dart | 点击即建空行、取消、原行回填、分步撤销、失效结果、人员显示 |
-| example/test/daily_guidance/journal_sticky_cover_test.dart 与 journal_page_layout_regression_test.dart | 沉浸式封面、横格首帧及各栏目自然高度 |
+| example/test/daily_guidance/journal_sticky_cover_test.dart 与 journal_page_layout_regression_test.dart | 参考现有布局回归，SaaS 按实际模板检查整页滚动、安全区、正文槽和自然增长 |
 | example/test/daily_guidance/journal_keyboard_caret_visibility_test.dart 与根包 test/editor_shortcut_toolbar_test.dart | 键盘分帧及菜单切换时焦点行可见，待办按钮回显 |
-| example/test/daily_guidance/journal_share_minimum_height_test.dart 与 example/integration_test/empty_guidance_flow_device_test.dart | 短图一屏、长图全文、页脚位置、真实输入与平台保存/分享 |
-| example/test/daily_guidance/journal_last_section_fill_test.dart（工作区候选） | 末栏补线、上方内容占满时的自然高度、键盘和缩放后测量，以及跨会话回调隔离 |
+| example/test/daily_guidance/journal_share_minimum_height_test.dart 与 example/integration_test/empty_guidance_flow_device_test.dart | 参照现有截图与设备用例，SaaS 验证原版短图构图、长图全文、页脚及真实平台保存/分享 |
+| example/test/daily_guidance/journal_last_section_fill_test.dart | 若目标编辑槽采用补线，验证自然高度、键盘和缩放后测量、跨会话回调隔离 |
 | daily_guidance_record_snapshot_test.dart（新增） | 扁平/嵌套响应、wrapper 同名字段、独立深拷贝、完整扩展、正式 ID、只有 bodyContent 的记录保留 |
 | daily_guidance_save_request_test.dart（新增） | 无 ID 创建/有 ID 更新、显式 null 真正进入 JSON、最终字段集合、没有新增错误字段、保存与派生同修订 |
 | daily_guidance_version_settings_test.dart（新增） | PRE 默认、显式覆盖、环境隔离、设置写入失败、切环境不串值、已打开页版本固定 |
 | daily_guidance_route_flow_test.dart（新增） | 列表完整传数、详情请求数为零、创建返回 ID 后进入预览、重新进入编辑时使用修改路径、多实例与单写入者 |
 | daily_guidance_business_events_test.dart（新增） | 创建/修改刷新、todoId 精确完成、不重复回写、分享取消/失败不记成功 |
+
+模板覆盖测试放在 `A/test/modules/templates/`，与宿主业务回归分别记录。
+
+1. **分发矩阵**。逐公司及部门生成预期页面与品牌，覆盖一屏/V2、共享页面、全部兜底。检查注册表与矩阵差集为空。
+2. **原版视觉对照**。逐模板留存原版和新版截图。固定图片、取景、时间、作者、字体缩放、设备宽度及等高正文夹具，对正文及操作层做独立标注，比较其余画面和几何边界。验收记录列出构图、颜色、遮罩、图层、日期头像、Logo 和截图范围。差异须逐项修正或明确获得验收。
+3. **内容与布局**。每个可达模板检查短文和超屏长文，记录正文完整、主图下限、页脚、溢出与截图像素限制。按版式族追加窄屏、大字、折叠屏、长作者名、图库替换、拖动取景、图片失败和截图中换图等覆盖。
+4. **真实设备链路**。先用汇丰永盛、成塔服饰和中企云链在 SaaS 宿主验证，覆盖中文输入合成、焦点、保存正式 ID、重开、预览和长图。后续分批实测各版式族，报告逐模板对照与真实账号/平台能力的验证范围。
+5. **新旧共存**。旧版及其他共用模板的分享入口保持原行为。检查版本切换、旧版修改后正文同步或失效、新版摘要供旧版读取、事件和平台取消回调。
 
 旧版还要回归原创建页、列表、复制、分享和引用跳转，确保新 parser/开关没有改变旧请求。新版保存后旧版读取需验证新引用字段格式可消费；旧版修改后新版读取必须联调 bodyContent 一致性。
 
@@ -328,6 +310,7 @@ SaaS 通过根包版本获得以下能力，迁移清单中的业务文件仍位
 | 文件 | 实施时更新内容 |
 |---|---|
 | M/CLAUDE.md | 新目录、数据源、正文与旧字段边界、生命周期、事件及验证建议 |
+| T/CLAUDE.md | 正文插槽、测量契约、模板分发和逐模板视觉覆盖矩阵 |
 | A/lib/modules/dashboard/CLAUDE.md | 新开关、PRE 默认、环境范围与生效时机 |
 | A/lib/shared/CLAUDE.md | 若新增共享配置策略，记录职责和消费者 |
 | H 对应现有 CLAUDE.md | 本地化及应用宿主装配；若没有对应文档，按宿主约定另行确认创建 |
@@ -336,17 +319,19 @@ SaaS 通过根包版本获得以下能力，迁移清单中的业务文件仍位
 
 ### 分批顺序
 
-1. **依赖与协议**。验证可复现 AppFlowy 来源，完成列表快照、最终请求、PRE 创建两类的业务族及 ID 联调。
-2. **数据与编辑闭环**。迁入 Codec、派生器、双类型空模板、事务和加载校验。验收新建、已有修改、自定义及隐藏栏目的保存和恢复。
-3. **页面与宿主**。迁入保存后同页预览、焦点避让、固定封面、选人、点赞、分享一屏和资源装配。验收后再纳入末栏候选。
-4. **版本与灰度**。统一首页、待办、列表和月记录入口，确认旧版回归与跨版本数据一致性后开启 PRE 新版默认。归档实际构建、测试与设备结果。
+1. **依赖、协议与视觉基线**。冻结 SaaS 注册表清单和原版截图，验证固定依赖来源、列表快照及 PRE 两类创建与更新契约。
+2. **宿主与首批模板**。接入 Codec、真实服务、唯一编辑会话、正文插槽及模板测量。用汇丰永盛一屏/V2、成塔服饰一屏/V2、中企云链跑通创建、修改、预览和分享。以 SaaS 原版截图完成首批验收。
+3. **全部模板和业务入口**。按一屏、动态海报、部门/品牌分支与兜底分批迁移真实正文槽，并补齐首页、待办、列表、月记录、详情、复制和互动。登记每个分支的代码、测试和视觉结果。
+4. **灰度与完成验收**。覆盖矩阵无遗漏，真实宿主、数据兼容、旧版回归及平台分享通过后再启用 PRE 默认。上线按已验证的范围推进，未通过的模板不得被当作完成或无提示切换到其他版式。
 
 每批仅格式化手写改动文件，在所属包分析并运行目标测试；公开 API/依赖改动验证 example、SaaS 和实际应用宿主。不得手改生成文件，不能批量格式化无关源码。
 
 ## 11. 完成条件与待联调事项
 
-完成条件：
+完成条件
 
+- SaaS 可达公司、部门、内容变体和兜底分支均接入原模板。编辑、保存后预览和分享全链路使用对应模板。逐模板视觉证据覆盖正文槽之外的原版构图和素材。
+- 已有记录、新建、列表、待办、复制、互动和分享按统一业务入口闭环，首批三家公司验收完成后继续覆盖剩余模板。
 - 新版完整请求字段与样例一致；dailyOrient/dailyResult 按类型取值及 null，mentions 三字段、默认类型及联合去重全部正确。
 - 完整列表记录可直接编辑和预览，详情请求数为零。空白新建显式保存时实际发送无 ID 请求，成功接收正式 ID，进入同会话预览，重新编辑按修改提交。
 - unsupported 类型加载前明确拒绝，原记录不变；合法及旧引用可加载、编辑、保存。
@@ -362,6 +347,8 @@ SaaS 通过根包版本获得以下能力，迁移清单中的业务文件仍位
 4. 旧版修改后 bodyContent 的同步或失效策略。
 5. 空模板 v5 在 PRE 的接收、两类新建的 `DAILY_ORIENT` 业务路由、必要基础字段及业务日规则。
 6. 四种 mentionType 在真实接口及旧版展示和跳转中的支持。
-7. 干净环境的 AppFlowy 解析与构建，以及末栏补线候选版本的纳入结果。
+7. 干净环境的 AppFlowy 解析与构建，以及现有键盘和滚动能力在实际模板中的结果。
+8. 历史缺失正文的数据覆盖率及后台补齐范围。缺失记录在放量前需有可验证的兼容路径。
+9. 一屏模板对长正文、仅自定义栏目或仅非文本块的容纳结果，以及原版构图与完整长图发生冲突时的分支策略。
 
-现有 example 回归和设备记录为迁移参照。SaaS 编译、测试、依赖解析及真机验证安排在实施批次。
+现有 example 回归和设备记录是编辑能力参照。生产模板一比一的完成依据是 SaaS 原版与目标宿主的逐模板对照，以及真实接口、构建和真机验收。

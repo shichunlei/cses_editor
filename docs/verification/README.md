@@ -1,5 +1,7 @@
 # 验证索引
 
+- [SaaS 日导向全链路与公司模板迁移方案复核](saas-company-template-migration-20261105/report.md)
+
 - [末栏补线与日期跳转 Android 真机验收](journal-viewport-android-20261105/report.md)
 
 - [带页脚列表跳回首项异常](indexed-footer-jump-20261105/report.md)
