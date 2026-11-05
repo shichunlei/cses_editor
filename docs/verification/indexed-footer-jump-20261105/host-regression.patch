@@ -1,0 +1,28 @@
+--- a/example/test/daily_guidance/journal_last_section_fill_test.dart
++++ b/example/test/daily_guidance/journal_last_section_fill_test.dart
+@@ -134,16 +134,22 @@
+           ..insertText(paragraph, 0, List.filled(45, '长内容\n').join()),
+       );
+       await tester.pumpAndSettle();
+-      await tester.drag(find.byType(AppFlowyEditor), const Offset(0, -10000));
++      final scroll = tester
++          .widget<AppFlowyEditor>(find.byType(AppFlowyEditor))
++          .editorScrollController!
++          .itemScrollController;
++      // 编辑器的日期头部占索引 0，末栏目索引等于栏目数。
++      scroll.jumpTo(index: state.document.root.children.length);
+       await tester.pumpAndSettle();
+       expect(
+         tester.getSize(_rules('custom:last')).height,
+         closeTo(lineHeight, 1),
+       );
++      scroll.jumpTo(index: 0);
++      await tester.pumpAndSettle();
++      expect(tester.takeException(), isNull);
+       state.undoManager.undo();
+       await tester.pumpAndSettle();
+-      await tester.drag(find.byType(AppFlowyEditor), const Offset(0, 10000));
+-      await tester.pumpAndSettle();
+       expect(
+         tester.getRect(_rules('custom:last')).bottom,
+         closeTo(tester.getRect(find.byType(AppFlowyEditor)).bottom, 1),

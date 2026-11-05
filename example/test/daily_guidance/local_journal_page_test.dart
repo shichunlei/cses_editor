@@ -159,7 +159,19 @@ void main() {
       await tester.pumpWidget(_app(store));
       await tester.tap(find.text('打开日记'));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const ValueKey('journal-date')));
+      final editor = _state(tester);
+      editor.selection = Selection(
+        start: Position(path: [0, 0]),
+        end: Position(path: [0, 0], offset: 1),
+      );
+      await tester.pump();
+      expect(editor.selection?.isCollapsed, isFalse);
+      final datePress = await tester.startGesture(
+        tester.getCenter(find.byKey(const ValueKey('journal-date'))),
+      );
+      await tester.pump();
+      expect(editor.selection, isNull);
+      await datePress.up();
       await tester.pumpAndSettle();
       tester
           .widget<CalendarDatePicker>(

@@ -264,7 +264,7 @@ class _JournalSection extends BlockComponentStatelessWidget {
   /// 首栏目标题仅影响展示，不进入正文或历史。
   final String recordTitle;
 
-  /// 在 [context] 构建栏目和横格；两种模式使用相同间距，单栏目时接受根视口的书写区最小高度。
+  /// 在 [context] 构建栏目和横格；两种模式使用相同间距，末栏目接受根视口剩余书写区的最小高度。
   @override
   Widget build(BuildContext context) {
     final editor = context.read<EditorState>();
@@ -297,8 +297,7 @@ class _JournalSection extends BlockComponentStatelessWidget {
     }
     final fillPage =
         !compactLastSection &&
-        node.attributes['section'] == 'record' &&
-        node.parent?.children.length == 1;
+        identical(node, node.parent?.children.lastOrNull);
     return Padding(
       key: ValueKey('journal-section-${node.attributes['section']}'),
       padding: EdgeInsets.only(
@@ -493,12 +492,12 @@ class _JournalCapturePage extends BlockComponentStatelessWidget {
   }
 }
 
-/// 保留共用根滚动与选区能力，仅在只有首栏目时把横格补满视口。
+/// 保留共用根滚动与选区能力，将最后一个栏目的横格补满剩余视口。
 class _JournalPageBuilder extends BlockComponentBuilder {
   /// 无自有资源；头尾和节点均借用编辑器上下文。
   _JournalPageBuilder();
 
-  /// 在 [context] 的根节点只有记录栏目时，将头部和正文作为同一滚动项排版。
+  /// 在 [context] 的根节点中保留栏目和头部滚动索引。
   @override
   BlockComponentWidget build(BlockComponentContext context) => _JournalPage(
     key: context.node.key,
@@ -509,7 +508,7 @@ class _JournalPageBuilder extends BlockComponentBuilder {
   );
 }
 
-/// 按当前栏目数量选择视口填充；不改变正文节点、历史或滚动控制器所有权。
+/// 按当前栏目自然高度填充末栏目；不改变正文节点、历史或滚动控制器所有权。
 class _JournalPage extends PageBlockComponent {
   /// [key]/[node] 保留根身份；[header]/[footer]/[wrapper] 借用共享编辑器配置。
   const _JournalPage({
@@ -520,34 +519,171 @@ class _JournalPage extends PageBlockComponent {
     super.wrapper,
   });
 
-  /// 在 [context] 的有限视口内给单栏目提供最小高度，多栏目沿用原排版。
+  /// 在 [context] 的有限视口内测量前置栏目，剩余高度仅交给末栏目。
+  @override
+  Widget build(BuildContext context) => _JournalViewportPage(
+    node: node,
+    header: header,
+    footer: footer,
+    wrapper: wrapper,
+  );
+}
+
+/// 保留根滚动列表的每个栏目索引；测量只影响展示，不写入正文或选区。
+class _JournalViewportPage extends StatefulWidget {
+  /// [node] 借用当前根节点，[header]/[footer]/[wrapper] 借用编辑器配置，无自有外部资源。
+  const _JournalViewportPage({
+    required this.node,
+    required this.header,
+    required this.footer,
+    required this.wrapper,
+  });
+
+  /// 当前文档根身份，用于丢弃旧布局回调。
+  final Node node;
+
+  /// 首栏目之前的日期头部。
+  final Widget? header;
+
+  /// 唯一的文档底部留白。
+  final Widget? footer;
+
+  /// 借用的块装饰，不改变所有权。
+  final BlockComponentWrapper? wrapper;
+
+  /// 创建仅持有布局测量值的状态。
+  @override
+  State<_JournalViewportPage> createState() => _JournalViewportPageState();
+}
+
+/// 缓存当前文档头部及前置栏目的自然高度；不创建控制器、订阅或文档资源。
+class _JournalViewportPageState extends State<_JournalViewportPage> {
+  /// 以节点对象隔离删除、重插和文档切换后的测量。
+  final Map<Node, double> _heights = {};
+
+  /// 切换 [oldWidget] 的文档根时清除旧测量，不接管借用文档生命周期。
+  @override
+  void didUpdateWidget(_JournalViewportPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!identical(oldWidget.node, widget.node)) _heights.clear();
+  }
+
+  /// 帧后接收 [root] 中 [node] 的自然 [height]，根节点作为日期头部的测量键。
+  /// 仅更新仍挂载的当前文档布局。
+  void _recordHeight(Node root, Node node, double height) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted ||
+          !identical(widget.node, root) ||
+          (!identical(node, root) && !root.children.contains(node)) ||
+          _heights[node] == height) {
+        return;
+      }
+      setState(() {
+        _heights.removeWhere(
+          (key, _) => !identical(key, root) && !root.children.contains(key),
+        );
+        _heights[node] = height;
+      });
+    });
+  }
+
+  /// 在 [context] 根据视口和前置栏目自然高度构建末栏最小高度；键盘缩放后自动重算。
   @override
   Widget build(BuildContext context) {
-    if (node.children.length != 1 ||
-        node.children.single.attributes['section'] != 'record') {
-      return super.build(context);
+    final root = widget.node;
+    if (root.children.isEmpty) {
+      return PageBlockComponent(
+        node: root,
+        header: widget.header,
+        footer: widget.footer,
+      );
     }
     return LayoutBuilder(
-      builder: (context, constraints) => PageBlockComponent(
-        node: node,
-        // 保留编辑器声明的头部索引槽；可见头部在首栏目内参与视口补高。
-        header: header == null ? null : const SizedBox.shrink(),
-        footer: footer,
-        wrapper: (context, {required node, required child}) => ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: constraints.hasBoundedHeight ? constraints.maxHeight : 0,
-          ),
-          child: _JournalMinimumColumn(
-            children: [
-              header ?? const SizedBox.shrink(),
-              wrapper == null
-                  ? child
-                  : wrapper!(context, node: node, child: child),
-            ],
-          ),
-        ),
-      ),
+      builder: (context, constraints) {
+        final preceding = root.children.take(root.children.length - 1);
+        final header = widget.header;
+        final headerHeight = header == null ? 0.0 : _heights[root];
+        final remaining =
+            headerHeight != null &&
+                preceding.every(_heights.containsKey) &&
+                constraints.hasBoundedHeight
+            ? (constraints.maxHeight -
+                      headerHeight -
+                      preceding.fold<double>(
+                        0,
+                        (sum, node) => sum + _heights[node]!,
+                      ))
+                  .clamp(0.0, double.infinity)
+            : 0.0;
+        return PageBlockComponent(
+          node: root,
+          // 真实头部保留在编辑器头部槽内，由编辑器隔离正文选区手势。
+          header: header == null
+              ? null
+              : _JournalMeasureHeight(
+                  onHeight: (height) => _recordHeight(root, root, height),
+                  child: header,
+                ),
+          footer: widget.footer,
+          wrapper: (context, {required node, required child}) {
+            final last = identical(node, root.children.last);
+            final content = widget.wrapper == null
+                ? child
+                : widget.wrapper!(context, node: node, child: child);
+            if (last) {
+              return ConstrainedBox(
+                constraints: BoxConstraints(minHeight: remaining),
+                child: content,
+              );
+            }
+            return _JournalMeasureHeight(
+              onHeight: (height) => _recordHeight(root, node, height),
+              child: content,
+            );
+          },
+        );
+      },
     );
+  }
+}
+
+/// 报告前置栏目的自然布局高度，不增加输入或绘制层。
+class _JournalMeasureHeight extends SingleChildRenderObjectWidget {
+  /// [child] 为借用栏目，[onHeight] 将布局高度交给拥有者进行帧后更新。
+  const _JournalMeasureHeight({required super.child, required this.onHeight});
+
+  /// 不持有外部资源的布局回调。
+  final ValueChanged<double> onHeight;
+
+  /// 在 [context] 创建同步测量对象。
+  @override
+  RenderObject createRenderObject(BuildContext context) =>
+      _RenderJournalMeasureHeight(onHeight);
+
+  /// 在 [context] 更新 [renderObject] 的借用回调。
+  @override
+  void updateRenderObject(
+    BuildContext context,
+    _RenderJournalMeasureHeight renderObject,
+  ) {
+    renderObject.onHeight = onHeight;
+    renderObject.markNeedsLayout();
+  }
+}
+
+/// 沿用正文布局，仅发布测量结果；所有异步校验由状态拥有者负责。
+class _RenderJournalMeasureHeight extends RenderProxyBox {
+  /// [onHeight] 接收当前自然高度，不转移资源所有权。
+  _RenderJournalMeasureHeight(this.onHeight);
+
+  /// 由当前组件更新的测量回调。
+  ValueChanged<double> onHeight;
+
+  /// 自然排版后报告高度；不修改文档或请求焦点。
+  @override
+  void performLayout() {
+    super.performLayout();
+    onHeight(size.height);
   }
 }
 

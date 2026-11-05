@@ -1,6 +1,10 @@
 # 验证索引
 
+- [带页脚列表跳回首项异常](indexed-footer-jump-20261105/report.md)
+
 - [SaaS 今日导向迁移方案重新规划](saas-migration-replan-20261105/report.md)
+
+- [最后一个栏目横格补满剩余视口及日期选区回归](last-section-rules-20261105/report.md)
 
 - [保存前关闭未填写的可选栏目](save-close-empty-sections-20261105/report.md)
 

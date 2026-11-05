@@ -81,6 +81,26 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(tester.getRect(rulesFinder).height, lessThan(100 * sample.$2));
+        final lastRulesFinder = find
+            .descendant(
+              of: find.byKey(ValueKey('journal-section-$kind')),
+              matching: find.byType(JournalRuledContent),
+            )
+            .first;
+        final insertedJson = jsonEncode(state.document.toJson());
+        final lastRules = tester.renderObject<RenderJournalRules>(
+          lastRulesFinder,
+        );
+        expect(
+          tester.getRect(lastRulesFinder).bottom,
+          closeTo(surface.bottom, 1),
+        );
+        expect(lastRules.debugLineOffsets, isNotEmpty);
+        expect(
+          lastRules.size.height - lastRules.debugLineOffsets.last,
+          lessThan(32 * sample.$2),
+        );
+        expect(jsonEncode(state.document.toJson()), insertedJson);
         state.undoManager.undo();
         await tester.pumpAndSettle();
         expect(tester.getRect(rulesFinder).bottom, closeTo(surface.bottom, 1));
@@ -106,7 +126,12 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(tester.getRect(cover), coverRect);
-      expect(tester.getTopLeft(date).dy, lessThan(dateTop));
+      // 日期滚出视口后，编辑器可以回收独立的头部滚动项。
+      if (date.evaluate().isNotEmpty) {
+        expect(tester.getTopLeft(date).dy, lessThan(dateTop));
+      } else {
+        expect(date, findsNothing);
+      }
       expect(tester.takeException(), isNull);
       await tester.pumpWidget(const SizedBox());
       await tester.pumpAndSettle();

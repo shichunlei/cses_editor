@@ -1,0 +1,37 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_last_section_fill_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_last_section_fill_test.dart: last section fills viewport: editing scale=1.0
+00:01 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_last_section_fill_test.dart: last section fills viewport: editing scale=1.0
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_last_section_fill_test.dart: last section fills viewport: editing scale=1.0
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (390.0, 1.0)
+00:02 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+00:02 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: blank share PNG includes header/footer and at least one full screen
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: blank share PNG includes header/footer and at least one full screen
+00:02 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: blank share PNG includes header/footer and at least one full screen
+00:03 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: blank share PNG includes header/footer and at least one full screen
+00:03 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_caret_visibility_test.dart: caret clears keyboard and menu at (390.0, 1.0) single=false
+00:04 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_caret_visibility_test.dart: caret clears keyboard and menu at (390.0, 1.0) single=false
+00:04 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_caret_visibility_test.dart: caret clears keyboard and menu at (390.0, 1.0) single=false
+00:04 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:04 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:04 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:05 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:05 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:05 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:05 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:05 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:06 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:06 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_sticky_cover_test.dart: rules fill viewport and cover stays fixed at (320.0, 2.0)
+00:06 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help click creates empty row and cancel keeps it
+00:06 +26: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker rejects account round trips
+00:07 +27: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom help action preserves source and resumes input
+00:07 +28: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker cannot restore input after account changes
+00:07 +29: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed cookie permanently
+00:08 +30: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:08 +31: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed company permanently
+00:08 +32: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker releases its permission watch on cancel and page removal
+00:08 +33: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:09 +34: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: (tearDownAll)
+00:09 +34: All tests passed!
