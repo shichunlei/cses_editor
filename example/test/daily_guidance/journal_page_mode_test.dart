@@ -6,6 +6,7 @@ import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/journal_surface.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_controller.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
+import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:cses_offline_example/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -36,6 +37,37 @@ EditorState _state(WidgetTester tester) =>
 
 /// 验证初始模式永久固定，首页分别进入编辑/只读页，预览不提交数据。
 void main() {
+  for (final poster in CompanyJournalPoster.values) {
+    testWidgets('${poster.id} logo appears only after saving', (tester) async {
+      final store = _Store();
+      await tester.pumpWidget(
+        MaterialApp(
+          home: LocalJournalPage(store: store, poster: poster),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final logo = find.byKey(const ValueKey('journal-company-logo'));
+      final editPosition = _state(tester).scrollableState!.position;
+      editPosition.jumpTo(editPosition.maxScrollExtent);
+      await tester.pumpAndSettle();
+      expect(logo, findsNothing);
+
+      final state = _state(tester);
+      await state.apply(
+        state.transaction..insertText(state.getNodeAtPath([0, 0])!, 0, '保存正文'),
+      );
+      await tester.tap(find.byKey(const ValueKey('journal-save')));
+      await tester.pumpAndSettle();
+      expect(_state(tester).editable, isFalse);
+      expect(store.writes, 1);
+      final previewPosition = _state(tester).scrollableState!.position;
+      previewPosition.jumpTo(previewPosition.maxScrollExtent);
+      await tester.pumpAndSettle();
+      expect(logo, findsOneWidget);
+    });
+  }
+
   test(
     'read-only controller refuses transactions, dates and all save paths',
     () async {

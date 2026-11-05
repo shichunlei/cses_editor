@@ -35,3 +35,12 @@ flutter:
   assets:
     - assets/images/daily_guidance_mountain.png
     - assets/images/中企云链_logo.png
+    - assets/images/hfyongsheng_logo.webp
+    - assets/images/chengtafushi_logo.webp
+    - assets/images/zhongqiyunlian_logo.webp
+    - assets/images/zqyl_default_photo.png
+    - assets/images/zqyl_weishiting.webp
+  fonts:
+    - family: ZqylGreetings
+      fonts:
+        - asset: assets/fonts/zqyl_greetings.ttf

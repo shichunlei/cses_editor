@@ -2,6 +2,22 @@
 
 - [SaaS 日导向全链路与公司模板迁移方案复核](saas-company-template-migration-20261105/report.md)
 
+- [公司海报 Logo 仅在预览与分享显示](company-logo-preview-only-20261105/report.md)
+
+- [汇丰永盛 V2 与成塔服饰 V2 原版构图](company-v2-saas-layout-20261105/report.md)
+
+- [中企云链公司海报试点](zqyl-pilot-20261105/report.md)
+
+- [公司海报品牌图满宽](company-logo-full-width-20261105/report.md)
+
+- [成塔服饰 V2 模板内编辑试点](ctfs-v2-pilot-20261105/report.md)
+
+- [汇丰永盛 V2 封面悬浮操作](hfys-floating-actions-20261105/report.md)
+
+- [汇丰永盛 V2 沉浸式编辑](hfys-immersive-20261105/report.md)
+
+- [汇丰永盛 V2 模板内编辑试点](hfys-v2-pilot-20261105/report.md)
+
 - [末栏补线与日期跳转 Android 真机验收](journal-viewport-android-20261105/report.md)
 
 - [带页脚列表跳回首项异常](indexed-footer-jump-20261105/report.md)

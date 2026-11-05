@@ -6,6 +6,7 @@ import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/journal_image_actions.dart';
 import 'package:cses_offline_example/daily_guidance/journal_surface.dart';
+import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -24,6 +25,7 @@ class JournalSharePage extends StatefulWidget {
   /// [commandContext]借用宿主展示端口；[isCurrent]每次异步和操作前校验原会话。
   /// [actions]借用系统分享端口；[width]保持原纸张宽度；[key]标识此分享路由。
   /// [recordTitle]为首栏目标题，与原页面封面一致，不写入文档快照。
+  /// [poster] 指定截图采用的公司画布和页脚，省略时沿用日记纸。
   const JournalSharePage({
     super.key,
     required this.document,
@@ -33,7 +35,11 @@ class JournalSharePage extends StatefulWidget {
     required this.width,
     this.recordTitle = '今日记录',
     this.actions = const JournalImageActions(),
+    this.poster,
   });
+
+  /// 截图使用的公司海报。
+  final CompanyJournalPoster? poster;
 
   /// 独立的文档数据，路由不会写回或保存。
   final Map<String, dynamic> document;
@@ -104,10 +110,12 @@ class _JournalSharePageState extends State<JournalSharePage> {
   /// 截取完整纸张；异步后核对页面及原会话，图片资源无论成功失败均释放。
   Future<void> _capture() async {
     try {
-      await precacheImage(
-        const AssetImage('assets/images/中企云链_logo.png'),
-        context,
-      );
+      if (widget.poster == null) {
+        await precacheImage(
+          const AssetImage('assets/images/中企云链_logo.png'),
+          context,
+        );
+      }
       if (!mounted || !_current()) return;
       await precacheImage(
         const AssetImage('assets/images/daily_guidance_mountain.png'),
@@ -213,154 +221,170 @@ class _JournalSharePageState extends State<JournalSharePage> {
 
   /// 在 [context] 中展示可滚动长图与固定操作栏；加载阶段不影响原页面。
   @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: const Color(0xff17191c),
-    body: SafeArea(
-      bottom: false,
-      child: Column(
-        children: [
-          Expanded(
-            child: _png != null
-                ? SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
-                    child: Image.memory(
-                      _png!,
-                      key: const ValueKey('journal-share-image'),
-                      fit: BoxFit.fitWidth,
-                    ),
-                  )
-                : Stack(
-                    children: [
-                      Center(
-                        child: SizedBox(
-                          width: widget.width,
-                          child: JournalSurface(
-                            recordTitle: widget.recordTitle,
-                            editorState: _editor.editorState,
-                            preview: true,
-                            header: widget.header,
-                            captureKey: _captureKey,
-                            footer: const ColoredBox(
-                              color: Color(0xfffaf8f0),
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
-                                child: Image(
-                                  image: AssetImage(
-                                    'assets/images/中企云链_logo.png',
-                                  ),
-                                  key: ValueKey('journal-share-brand'),
-                                  // 将图片白底融合为纸张米色，原素材不变。
-                                  color: Color(0xfffaf8f0),
-                                  colorBlendMode: BlendMode.multiply,
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
+  Widget build(BuildContext context) {
+    final page = Scaffold(
+      backgroundColor: const Color(0xff17191c),
+      body: SafeArea(
+        bottom: false,
+        child: Column(
+          children: [
+            Expanded(
+              child: _png != null
+                  ? SingleChildScrollView(
+                      padding: const EdgeInsets.all(16),
+                      child: Image.memory(
+                        _png!,
+                        key: const ValueKey('journal-share-image'),
+                        fit: BoxFit.fitWidth,
+                      ),
+                    )
+                  : Stack(
+                      children: [
+                        Center(
+                          child: SizedBox(
+                            width: widget.width,
+                            child: JournalSurface(
+                              recordTitle: widget.recordTitle,
+                              editorState: _editor.editorState,
+                              preview: true,
+                              header: widget.header,
+                              captureKey: _captureKey,
+                              poster: widget.poster,
+                              footer: widget.poster != null
+                                  ? widget.poster!.footer(showLogo: true)
+                                  : const ColoredBox(
+                                      color: Color(0xfffaf8f0),
+                                      child: Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                          16,
+                                          8,
+                                          16,
+                                          16,
+                                        ),
+                                        child: Image(
+                                          image: AssetImage(
+                                            'assets/images/中企云链_logo.png',
+                                          ),
+                                          key: ValueKey('journal-share-brand'),
+                                          // 将图片白底融合为纸张米色，原素材不变。
+                                          color: Color(0xfffaf8f0),
+                                          colorBlendMode: BlendMode.multiply,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                    ),
                             ),
                           ),
                         ),
-                      ),
-                      Positioned.fill(
-                        child: ColoredBox(
-                          color: const Color(0xff17191c),
-                          child: Center(
-                            child: _error == null
-                                ? const CircularProgressIndicator()
-                                : Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        _error!,
-                                        style: const TextStyle(
-                                          color: Colors.white,
+                        Positioned.fill(
+                          child: ColoredBox(
+                            color: const Color(0xff17191c),
+                            child: Center(
+                              child: _error == null
+                                  ? const CircularProgressIndicator()
+                                  : Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          _error!,
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() => _error = null);
-                                          unawaited(_capture());
-                                        },
-                                        child: const Text('重试'),
-                                      ),
-                                    ],
-                                  ),
+                                        TextButton(
+                                          onPressed: () {
+                                            setState(() => _error = null);
+                                            unawaited(_capture());
+                                          },
+                                          child: const Text('重试'),
+                                        ),
+                                      ],
+                                    ),
+                            ),
                           ),
+                        ),
+                      ],
+                    ),
+            ),
+            journalModalTheme(
+              context,
+              Material(
+                color: Theme.of(context).colorScheme.surface,
+                child: SafeArea(
+                  top: false,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 8,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _action(
+                              JournalImageTarget.wechat,
+                              '微信',
+                              LucideIcons.messageCircle,
+                              const Color(0xff22ad38),
+                            ),
+                            _action(
+                              JournalImageTarget.timeline,
+                              '朋友圈',
+                              LucideIcons.aperture,
+                              const Color(0xffdc9945),
+                            ),
+                            _action(
+                              JournalImageTarget.save,
+                              '保存图片',
+                              LucideIcons.download,
+                              const Color(0xff494b50),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (_message != null)
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+                          child: Semantics(
+                            liveRegion: true,
+                            child: Text(_message!, textAlign: TextAlign.center),
+                          ),
+                        ),
+                      if (Theme.of(context).platform == TargetPlatform.iOS)
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            '请在系统分享面板中选择微信或朋友圈',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ),
+                      const Divider(height: 1),
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextButton(
+                          key: const ValueKey('journal-share-cancel'),
+                          onPressed: _busy
+                              ? null
+                              : () => Navigator.pop(context),
+                          child: const Text('取消'),
                         ),
                       ),
                     ],
                   ),
-          ),
-          journalModalTheme(
-            context,
-            Material(
-              color: Theme.of(context).colorScheme.surface,
-              child: SafeArea(
-                top: false,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 14,
-                        horizontal: 8,
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _action(
-                            JournalImageTarget.wechat,
-                            '微信',
-                            LucideIcons.messageCircle,
-                            const Color(0xff22ad38),
-                          ),
-                          _action(
-                            JournalImageTarget.timeline,
-                            '朋友圈',
-                            LucideIcons.aperture,
-                            const Color(0xffdc9945),
-                          ),
-                          _action(
-                            JournalImageTarget.save,
-                            '保存图片',
-                            LucideIcons.download,
-                            const Color(0xff494b50),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (_message != null)
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
-                        child: Semantics(
-                          liveRegion: true,
-                          child: Text(_message!, textAlign: TextAlign.center),
-                        ),
-                      ),
-                    if (Theme.of(context).platform == TargetPlatform.iOS)
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          '请在系统分享面板中选择微信或朋友圈',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                    const Divider(height: 1),
-                    SizedBox(
-                      width: double.infinity,
-                      child: TextButton(
-                        key: const ValueKey('journal-share-cancel'),
-                        onPressed: _busy ? null : () => Navigator.pop(context),
-                        child: const Text('取消'),
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
+    );
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: page,
+    );
+  }
 
   /// 为 [target] 构建等宽操作，[label]/[icon]/[color]提供可读名称和视觉标识。
   Widget _action(

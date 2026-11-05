@@ -1,11 +1,15 @@
+import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/empty_guidance_record.dart';
+import 'package:cses_offline_example/daily_guidance/file_journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_host.dart';
+import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:path_provider/path_provider.dart';
 
 /// 启动不需要账号或协同服务的独立今日导向示例。
 void main() => runApp(const OfflineExampleApp());
@@ -71,35 +75,51 @@ class _OfflineHomeState extends State<_OfflineHome> {
 
   /// 按入口类型创建当天空白文档，同类型重开沿用本次启动中已保存正文。
   /// [mode] 为此次路由固定的编辑/预览模式；异步返回后仅更新仍存活的首页。
-  Future<void> _open(JournalPageMode mode) async {
+  /// [poster] 打开独立文件分区的今日导向海报试点；目录查询完成后校验首页存活。
+  Future<void> _open(
+    JournalPageMode mode, {
+    CompanyJournalPoster? poster,
+  }) async {
     if (_opening) return;
     setState(() {
       _opening = true;
       _error = null;
     });
     try {
-      final store = _stores.putIfAbsent(_orientType, () {
-        final data = createEmptyGuidanceRecord(
-          DateTime.now(),
-          orientType: _orientType,
-        );
-        return ApiJournalStore(
-          api: MockGuidanceApi(record: data),
-          recordId: data['id'] as String,
-        );
-      });
-      await Navigator.of(context).push<void>(
-        MaterialPageRoute(
-          builder: (_) => LocalJournalPage(
-            store: store,
-            mode: mode,
-            storageScope: store.recordId,
-            mentionDirectory: const _ExampleDirectory(),
-            hostServices: _hostServices,
-            currentUser: _currentUser,
-          ),
+      final JournalStore store;
+      final String scope;
+      if (poster != null) {
+        final directory = await getApplicationSupportDirectory();
+        if (!mounted) return;
+        scope = '${poster.id}-daily-guidance';
+        store = FileJournalStore(directory: directory, scope: scope);
+      } else {
+        final apiStore = _stores.putIfAbsent(_orientType, () {
+          final data = createEmptyGuidanceRecord(
+            DateTime.now(),
+            orientType: _orientType,
+          );
+          return ApiJournalStore(
+            api: MockGuidanceApi(record: data),
+            recordId: data['id'] as String,
+          );
+        });
+        store = apiStore;
+        scope = apiStore.recordId;
+      }
+      final route = MaterialPageRoute<void>(
+        builder: (_) => LocalJournalPage(
+          store: store,
+          mode: mode,
+          storageScope: scope,
+          poster: poster,
+          mentionDirectory: const _ExampleDirectory(),
+          hostServices: _hostServices,
+          currentUser: _currentUser,
         ),
       );
+      await Navigator.of(context).push(route);
+      await route.completed;
     } catch (error, stack) {
       debugPrint('打开草稿失败: $error\n$stack');
       if (mounted) setState(() => _error = '打开失败，请重试。');
@@ -164,6 +184,37 @@ class _OfflineHomeState extends State<_OfflineHome> {
                     ? null
                     : () => _open(JournalPageMode.preview),
                 child: const Text('预览'),
+              ),
+              const SizedBox(height: 20),
+              OutlinedButton(
+                key: const ValueKey('open-hfys-v2-pilot'),
+                onPressed: _opening
+                    ? null
+                    : () => _open(
+                        JournalPageMode.edit,
+                        poster: CompanyJournalPoster.hfysV2,
+                      ),
+                child: const Text('汇丰永盛 V2 · 模板编辑'),
+              ),
+              OutlinedButton(
+                key: const ValueKey('open-ctfs-v2-pilot'),
+                onPressed: _opening
+                    ? null
+                    : () => _open(
+                        JournalPageMode.edit,
+                        poster: CompanyJournalPoster.ctfsV2,
+                      ),
+                child: const Text('成塔服饰 V2 · 模板编辑'),
+              ),
+              OutlinedButton(
+                key: const ValueKey('open-zqyl-pilot'),
+                onPressed: _opening
+                    ? null
+                    : () => _open(
+                        JournalPageMode.edit,
+                        poster: CompanyJournalPoster.zqyl,
+                      ),
+                child: const Text('中企云链 · 模板编辑'),
               ),
               if (_error != null) Text(_error!),
             ],

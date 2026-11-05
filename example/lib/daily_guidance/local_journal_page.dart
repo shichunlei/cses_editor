@@ -6,6 +6,7 @@ import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_record_fields.dart';
 import 'package:cses_offline_example/daily_guidance/journal_image_actions.dart';
 import 'package:cses_offline_example/daily_guidance/journal_share_page.dart';
+import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:cses_offline_example/daily_guidance/ui/journal_modal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,7 @@ class LocalJournalPage extends StatefulWidget {
   /// [storageScope] 为宿主账号及文档分区，默认 local；借用端口替换会冻结旧会话。
   /// [currentUser] 是宿主提供的当前用户资料，仅预览封面下展示；null 不显示用户栏。
   /// [imageActions]借用宿主图片分享端口，默认使用当前平台实现，不持有账号。
+  /// [poster] 选择公司海报，省略时使用日记纸。
   /// 服务存储 ApiJournalStore 使用显式保存，其他本地存储保留原自动保存行为。
   const LocalJournalPage({
     super.key,
@@ -65,7 +67,11 @@ class LocalJournalPage extends StatefulWidget {
     this.storageScope = 'local',
     this.currentUser,
     this.imageActions = const JournalImageActions(),
+    this.poster,
   });
+
+  /// 编辑、预览和分享共用的公司海报。
+  final CompanyJournalPoster? poster;
 
   /// 图片分享/保存端口，由宿主创建并持有。
   final JournalImageActions imageActions;
@@ -117,6 +123,9 @@ class _LocalJournalPageState extends State<LocalJournalPage>
 
   /// 在初始化时捕获的模式，不跟随后续组件参数改变。
   late final JournalPageMode _mode;
+
+  /// 当前海报会话的本地时间，编辑、预览和分享使用同一问候时段。
+  late final DateTime _posterOpenedAt = DateTime.now();
 
   /// 当前会话权限；未加载时使用初始模式，保存成功后沿用控制器的永久只读状态。
   bool get _readOnly =>
@@ -441,6 +450,37 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
   }
 
+  /// 用 [journal] 的日期与宿主资料渲染当前公司模板，不取得头像资源所有权。
+  Widget _companyHeader(LocalJournalController journal) {
+    final poster = widget.poster!;
+    final user = widget.currentUser;
+    final avatarSize = switch (poster) {
+      CompanyJournalPoster.hfysV2 => 44.0,
+      CompanyJournalPoster.ctfsV2 => 54.0,
+      CompanyJournalPoster.zqyl => 52.0,
+    };
+    return poster.header(
+      date: journal.date,
+      author: user?.name,
+      now: _posterOpenedAt,
+      avatar: user != null
+          ? _services.mentionAvatarBuilder?.call(
+                  context,
+                  userId: user.id,
+                  name: user.name,
+                  size: avatarSize,
+                  avatarUrl: user.avatarUrl,
+                ) ??
+                DemoMentionAvatar(
+                  userId: user.id,
+                  name: user.name,
+                  size: avatarSize,
+                  avatarUrl: user.avatarUrl,
+                )
+          : null,
+    );
+  }
+
   /// 为当前只读文档打开完整截图和品牌分享页；路由独占快照，不保存或滚动原文档。
   /// 异步完成及平台操作前校验原页面、账号及文档；关闭后恢复分享入口。
   Future<void> _sharePreview() async {
@@ -470,14 +510,16 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         isCurrent: current,
         width: MediaQuery.sizeOf(context).width.clamp(0, 680).toDouble(),
         actions: widget.imageActions,
-        header:
-            journal
-                    .editor
-                    .editorState
-                    .document
-                    .root
-                    .attributes[journalPlainDesktopAttribute] ==
-                true
+        poster: widget.poster,
+        header: widget.poster != null
+            ? _companyHeader(journal)
+            : journal
+                      .editor
+                      .editorState
+                      .document
+                      .root
+                      .attributes[journalPlainDesktopAttribute] ==
+                  true
             ? const SizedBox.shrink()
             : _JournalHeader(
                 title: _title,
@@ -810,19 +852,76 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     ];
   }
 
-  /// 在[context]构建独立路由；有封面时延伸到状态栏下，无封面时正文避让顶部操作栏。
+  /// 在 [context] 构建独立路由。试点让封面与正文滚入状态栏下，悬浮操作留在系统安全区。
+  /// 常规日记保留顶部操作栏，封面继续延伸到状态栏下。
   @override
   Widget build(BuildContext context) {
     final journal = _journal;
     final showCover =
+        widget.poster == null &&
         journal
-            ?.editor
-            .editorState
-            .document
-            .root
-            .attributes[journalPlainDesktopAttribute] !=
-        true;
-    return Localizations.override(
+                ?.editor
+                .editorState
+                .document
+                .root
+                .attributes[journalPlainDesktopAttribute] !=
+            true;
+    final backButton = Padding(
+      padding: const EdgeInsets.all(4),
+      child: IconButton(
+        key: const ValueKey('journal-back'),
+        tooltip: _remote || _readOnly ? '返回' : '返回并保存',
+        style: IconButton.styleFrom(
+          backgroundColor: const Color(0x66000000),
+          foregroundColor: Colors.white,
+          shape: const CircleBorder(),
+        ),
+        onPressed: _leaving ? null : () => unawaited(_leave()),
+        icon: const Icon(LucideIcons.chevronLeft),
+      ),
+    );
+    final editActions = <Widget>[
+      if (journal != null && !_readOnly) ...[
+        TextButton(
+          key: const ValueKey('journal-save'),
+          style: TextButton.styleFrom(
+            backgroundColor: const Color(0x66000000),
+            foregroundColor: Colors.white,
+            disabledForegroundColor: Colors.white54,
+          ),
+          onPressed: _submitting || _leaving || _picking || !_sameAccount
+              ? null
+              : () => unawaited(_saveContent()),
+          child: Text(_submitting ? '保存中…' : '保存'),
+        ),
+        IconButton(
+          tooltip: '撤销',
+          style: IconButton.styleFrom(
+            backgroundColor: const Color(0x66000000),
+            foregroundColor: Colors.white,
+            disabledForegroundColor: Colors.white54,
+            padding: EdgeInsets.all(5),
+          ),
+          onPressed: _readOnly || _leaving || _submitting
+              ? null
+              : journal.editor.editorState.undoManager.undo,
+          icon: const Icon(LucideIcons.undo2),
+        ),
+        IconButton(
+          tooltip: '重做',
+          style: IconButton.styleFrom(
+            backgroundColor: const Color(0x66000000),
+            foregroundColor: Colors.white,
+            disabledForegroundColor: Colors.white54,
+          ),
+          onPressed: _readOnly || _leaving || _submitting
+              ? null
+              : journal.editor.editorState.undoManager.redo,
+          icon: const Icon(LucideIcons.redo2),
+        ),
+      ],
+    ];
+    final page = Localizations.override(
       context: context,
       delegates: const [AppFlowyEditorLocalizations.delegate],
       child: PopScope(
@@ -831,7 +930,9 @@ class _LocalJournalPageState extends State<LocalJournalPage>
           if (!didPop) unawaited(_leave());
         },
         child: Scaffold(
-          backgroundColor: const Color(0xfffaf8f0),
+          backgroundColor: widget.poster != null
+              ? widget.poster!.canvas
+              : const Color(0xfffaf8f0),
           extendBodyBehindAppBar: showCover,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
@@ -850,74 +951,22 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                         },
                 )
               : null,
-          appBar: AppBar(
-            leadingWidth: 56,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            scrolledUnderElevation: 0,
-            forceMaterialTransparency: true,
-            actionsIconTheme: const IconThemeData(color: Colors.white),
-            systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-              statusBarColor: Colors.transparent,
-              systemStatusBarContrastEnforced: false,
-            ),
-            leading: Padding(
-              padding: const EdgeInsets.all(4),
-              child: IconButton(
-                key: const ValueKey('journal-back'),
-                tooltip: _remote || _readOnly ? '返回' : '返回并保存',
-                style: IconButton.styleFrom(
-                  backgroundColor: const Color(0x66000000),
-                  foregroundColor: Colors.white,
-                  shape: const CircleBorder(),
-                ),
-                onPressed: _leaving ? null : () => unawaited(_leave()),
-                icon: const Icon(LucideIcons.chevronLeft),
-              ),
-            ),
-            actions: [
-              if (journal != null && !_readOnly) ...[
-                TextButton(
-                  key: const ValueKey('journal-save'),
-                  style: TextButton.styleFrom(
-                    backgroundColor: const Color(0x66000000),
-                    foregroundColor: Colors.white,
-                    disabledForegroundColor: Colors.white54,
+          appBar: widget.poster != null
+              ? null
+              : AppBar(
+                  leadingWidth: 56,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  scrolledUnderElevation: 0,
+                  forceMaterialTransparency: true,
+                  actionsIconTheme: const IconThemeData(color: Colors.white),
+                  systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+                    statusBarColor: Colors.transparent,
+                    systemStatusBarContrastEnforced: false,
                   ),
-                  onPressed:
-                      _submitting || _leaving || _picking || !_sameAccount
-                      ? null
-                      : () => unawaited(_saveContent()),
-                  child: Text(_submitting ? '保存中…' : '保存'),
+                  leading: backButton,
+                  actions: editActions,
                 ),
-                IconButton(
-                  tooltip: '撤销',
-                  style: IconButton.styleFrom(
-                    backgroundColor: const Color(0x66000000),
-                    foregroundColor: Colors.white,
-                    disabledForegroundColor: Colors.white54,
-                    padding: EdgeInsets.all(5),
-                  ),
-                  onPressed: _readOnly || _leaving || _submitting
-                      ? null
-                      : journal.editor.editorState.undoManager.undo,
-                  icon: const Icon(LucideIcons.undo2),
-                ),
-                IconButton(
-                  tooltip: '重做',
-                  style: IconButton.styleFrom(
-                    backgroundColor: const Color(0x66000000),
-                    foregroundColor: Colors.white,
-                    disabledForegroundColor: Colors.white54,
-                  ),
-                  onPressed: _readOnly || _leaving || _submitting
-                      ? null
-                      : journal.editor.editorState.undoManager.redo,
-                  icon: const Icon(LucideIcons.redo2),
-                ),
-              ],
-            ],
-          ),
           body: _sessionRevoked
               ? const Center(child: Text('宿主会话已变化，请关闭后重新打开'))
               : journal == null
@@ -999,6 +1048,20 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                             constraints: const BoxConstraints(maxWidth: 680),
                             child: JournalSurface(
                               recordTitle: _title,
+                              poster: widget.poster,
+                              footer: widget.poster != null
+                                  ? Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        widget.poster!.footer(
+                                          showLogo: _readOnly,
+                                        ),
+                                        if (_readOnly)
+                                          const SizedBox(height: 72),
+                                      ],
+                                    )
+                                  : null,
                               key: ObjectKey(journal.editor),
                               editorState: journal.editor.editorState,
                               preview: _readOnly || _leaving,
@@ -1018,14 +1081,25 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                                           true
                                   ? const []
                                   : _keyboardActions(journal),
-                              header:
-                                  journal
-                                          .editor
-                                          .editorState
-                                          .document
-                                          .root
-                                          .attributes[journalPlainDesktopAttribute] ==
-                                      true
+                              header: widget.poster != null
+                                  ? Padding(
+                                      // 顶部安全间距随封面一起滚动，视口可延伸至状态栏下。
+                                      padding: EdgeInsets.only(
+                                        top:
+                                            MediaQuery.viewPaddingOf(
+                                              context,
+                                            ).top +
+                                            54,
+                                      ),
+                                      child: _companyHeader(journal),
+                                    )
+                                  : journal
+                                            .editor
+                                            .editorState
+                                            .document
+                                            .root
+                                            .attributes[journalPlainDesktopAttribute] ==
+                                        true
                                   ? const SizedBox.shrink()
                                   : ListenableBuilder(
                                       listenable: journal,
@@ -1061,6 +1135,35 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         ),
       ),
     );
+    return widget.poster != null
+        ? AnnotatedRegion<SystemUiOverlayStyle>(
+            value:
+                (widget.poster == CompanyJournalPoster.hfysV2
+                        ? SystemUiOverlayStyle.light
+                        : SystemUiOverlayStyle.dark)
+                    .copyWith(
+                      statusBarColor: Colors.transparent,
+                      systemStatusBarContrastEnforced: false,
+                    ),
+            child: Stack(
+              children: [
+                page,
+                Positioned(
+                  top: MediaQuery.paddingOf(context).top + 14,
+                  left: 12,
+                  right: 12,
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: Row(
+                      key: const ValueKey('journal-poster-floating-actions'),
+                      children: [backButton, const Spacer(), ...editActions],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        : page;
   }
 }
 

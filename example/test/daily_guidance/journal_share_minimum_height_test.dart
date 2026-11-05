@@ -7,6 +7,7 @@ import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
+import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -61,6 +62,7 @@ void main() {
       size: const Size(390, 844),
       scale: 1.0,
       text: '',
+      poster: null as CompanyJournalPoster?,
       sections: 1,
     ),
     (
@@ -68,6 +70,7 @@ void main() {
       size: const Size(390, 844),
       scale: 1.0,
       text: '记录今天的收获',
+      poster: null as CompanyJournalPoster?,
       sections: 1,
     ),
     (
@@ -75,6 +78,7 @@ void main() {
       size: const Size(390, 844),
       scale: 1.0,
       text: '今天',
+      poster: null as CompanyJournalPoster?,
       sections: 3,
     ),
     (
@@ -82,7 +86,24 @@ void main() {
       size: const Size(320, 713.5),
       scale: 2.0,
       text: '今天',
+      poster: null as CompanyJournalPoster?,
       sections: 1,
+    ),
+    (
+      name: 'ctfs-v2-long',
+      size: const Size(390, 844),
+      scale: 1.0,
+      text: List.filled(20, '今日导向的重点与行动。').join(),
+      sections: 3,
+      poster: CompanyJournalPoster.ctfsV2,
+    ),
+    (
+      name: 'zqyl-long',
+      size: const Size(390, 844),
+      scale: 1.0,
+      text: List.filled(20, '今日导向的重点与行动。').join(),
+      sections: 3,
+      poster: CompanyJournalPoster.zqyl,
     ),
   ]) {
     testWidgets(
@@ -116,6 +137,7 @@ void main() {
             ),
             home: LocalJournalPage(
               store: store,
+              poster: scenario.poster,
               mode: JournalPageMode.preview,
               currentUser: const CollabMentionUser(
                 id: 'test-user',
@@ -127,6 +149,12 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
+        if (scenario.poster == CompanyJournalPoster.ctfsV2) {
+          expect(find.byKey(const ValueKey('ctfs-v2-header')), findsOneWidget);
+        }
+        if (scenario.poster == CompanyJournalPoster.zqyl) {
+          expect(find.byKey(const ValueKey('zqyl-header')), findsOneWidget);
+        }
         final state = tester
             .widget<AppFlowyEditor>(find.byType(AppFlowyEditor))
             .editorState;
@@ -156,6 +184,12 @@ void main() {
             if (scenario.name == 'blank' || scenario.name == 'short') {
               expect(frame.image.height, (scenario.size.height * 2).ceil());
             }
+            if (scenario.poster != null) {
+              expect(
+                frame.image.height,
+                greaterThan((scenario.size.height * 2).ceil()),
+              );
+            }
             final pixels = (await frame.image.toByteData(
               format: ui.ImageByteFormat.rawRgba,
             ))!;
@@ -167,9 +201,13 @@ void main() {
             ) {
               for (var x = 40; x < frame.image.width - 40; x += 4) {
                 final i = (y * frame.image.width + x) * 4;
-                if (pixels.getUint8(i) < 80 &&
-                    pixels.getUint8(i + 1) < 80 &&
-                    pixels.getUint8(i + 2) < 80) {
+                final red = pixels.getUint8(i);
+                final green = pixels.getUint8(i + 1);
+                final blue = pixels.getUint8(i + 2);
+                final matchesLogo = scenario.poster == CompanyJournalPoster.zqyl
+                    ? red > 235 && green > 235 && blue > 235
+                    : red < 80 && green < 80 && blue < 80;
+                if (matchesLogo) {
                   footerInk = true;
                   break;
                 }
