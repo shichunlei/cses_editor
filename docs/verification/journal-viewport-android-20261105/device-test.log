@@ -1,0 +1,14 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/integration_test/journal_viewport_device_test.dart
+Running Gradle task 'assembleDebug'...
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Running Gradle task 'assembleDebug'...                             48.3s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...           4.7s
+00:00 +0: Android short content fills the editor viewport
+Device short rules: 646.3076923076923; viewport bottom: 812.3076923076923; rules bottom: 812.3076923076923
+00:01 +1: Android date selection and index jump with a full page
+Device full page: viewport bottom 812.3076923076923; rules bottom 812.3076923076923
+Device long rules: 32.0
+Device return to date: 208.0
+00:09 +2: (tearDownAll)
+00:10 +2: All tests passed!

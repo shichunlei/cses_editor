@@ -1,5 +1,7 @@
 # 验证索引
 
+- [末栏补线与日期跳转 Android 真机验收](journal-viewport-android-20261105/report.md)
+
 - [带页脚列表跳回首项异常](indexed-footer-jump-20261105/report.md)
 
 - [SaaS 今日导向迁移方案重新规划](saas-migration-replan-20261105/report.md)
