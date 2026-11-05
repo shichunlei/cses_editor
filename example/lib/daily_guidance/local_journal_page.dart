@@ -303,6 +303,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     if (_leaving || _picking || _submitting) return;
     setState(() => _leaving = true);
     final journal = _journal;
+    var closeEmptySections = false;
     if (!_readOnly &&
         _remote &&
         journal != null &&
@@ -348,9 +349,33 @@ class _LocalJournalPageState extends State<LocalJournalPage>
         if (mounted) Navigator.of(context).pop();
         return;
       }
+      closeEmptySections = true;
     }
     journal?.editor.editorState.service.keyboardService?.closeKeyboard();
     FocusManager.instance.primaryFocus?.unfocus();
+    if (closeEmptySections && journal != null && _sameAccount) {
+      final state = journal.editor.editorState;
+      try {
+        // 离开期间视图已切为预览；仅为已确认的内部栏目事务暂时开放写入。
+        state.editable = true;
+        await journal.closeEmptySections();
+      } catch (_) {
+        if (mounted) {
+          setState(() => _leaving = false);
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('栏目操作失败，内容已保留，请重试')));
+        }
+        return;
+      } finally {
+        if (!state.isDisposed) state.editable = false;
+      }
+      if (!mounted) return;
+      if (!_checkSession()) {
+        setState(() => _leaving = false);
+        return;
+      }
+    }
     if (journal != null) journal.editor.editorState.editable = false;
     final saved =
         _readOnly || journal == null || !_sameAccount || await journal.flush();
@@ -392,6 +417,8 @@ class _LocalJournalPageState extends State<LocalJournalPage>
       FocusManager.instance.primaryFocus?.unfocus();
       await SystemChannels.textInput.invokeMethod<void>('TextInput.hide');
       await WidgetsBinding.instance.endOfFrame;
+      if (!current()) return;
+      await journal.closeEmptySections();
       if (!current()) return;
       state.localTransactionsPaused = true;
       final saved = await journal.flush();

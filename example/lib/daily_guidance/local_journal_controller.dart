@@ -753,6 +753,41 @@ final class LocalJournalController extends ChangeNotifier {
     await _applyCommand(transaction);
   }
 
+  /// 保存前异步关闭仅含空白文字的可选栏目；首栏、待办、引用及业务行始终保留。
+  /// 一次事务保留关闭草稿并支持撤销，不接管存储资源；只读或已关闭时不修改。
+  ///
+  /// ```dart
+  /// await journal.closeEmptySections();
+  /// final saved = await journal.flush();
+  /// ```
+  Future<void> closeEmptySections() async {
+    if (closed || isReadOnly || !editor.editorState.editable) return;
+    final state = editor.editorState;
+    final empty = state.document.root.children.where((section) {
+      if (section.attributes['section'] == 'record') return false;
+      return journalContentNodes(section.children).every(
+        (node) =>
+            isJournalTextNode(node) &&
+            node.type != TodoListBlockKeys.type &&
+            node.attributes[guidanceEntryAttribute] == null &&
+            node.delta!.toPlainText().trim().isEmpty,
+      );
+    }).toList();
+    if (empty.isEmpty) return;
+    final transaction = _sectionTransaction([
+      ...closedJournalSections(state.document),
+      for (final section in empty) section.copyWith(),
+    ]);
+    for (final section in empty.reversed) {
+      transaction.add(
+        DeleteOperation(section.path, [section]),
+        transform: false,
+      );
+    }
+    transaction.afterSelection = null;
+    await _applyCommand(transaction);
+  }
+
   /// 将关闭区[hidden]和栏目版本写在同一事务内，供增删及撤销识别。
   Transaction _sectionTransaction(List<Node> hidden) {
     final root = editor.editorState.document.root;

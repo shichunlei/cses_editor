@@ -39,7 +39,9 @@ JSON转换不建立协同连接，也不据业务对象创建任务、会议或�
 
 段内按序连接文本，段间以 `\n` 分隔，保留段内空格和中间空行，仅删除末尾空白段落。结构化 mention 输出 `@名称`，从 attributes 的 `mentionId`（兼容 `d:mentionId`）生成 `{mentionId, mentionName, mentionType}`，引用类型读取 `mentionType`（兼容 `d:mentionType`），缺失时默认为 `user`，仅接受 `user/task/meeting/doc`，非法类型拒绝派生；每个字段/条目内按 `mentionType + mentionId` 联合去重，保持首次出现顺序，普通手输 `@名字` 不推测身份。当前类型的今日记录及其余派生字段每次全量重算，清空内容或移除字段时提交空串、空数组或删除后的 customData，避免残留旧摘要及引用。API 模式不在输入、切后台或资源销毁时自动提交。退出有修改时提供继续编辑、保存后离开和放弃修改。
 
-栏目关闭继续保留正文，使用可选 `bodyContent.meta.mobileGuidanceView.hiddenSections` 数组记录隐藏的 reflection/self-check，重开可恢复；重新添加后清除视图扩展。自定义栏目本轮只支持已有字段编辑，未增加菜单入口或移除其内容。
+栏目关闭继续保留正文，使用可选 `bodyContent.meta.mobileGuidanceView.hiddenSections` 数组记录隐藏的 reflection/self-check 及自定义栏目稳定键，重开保持隐藏，重新添加后恢复内容并移除对应隐藏标记。
+
+显式点击保存或确认“保存后离开”前，自动关闭仅含空白文字的感悟、自检和自定义栏目；首栏始终保留。自动关闭复用现有关闭草稿及 `hiddenSections`，预览、分享和重开均不显示这些空栏目；重新添加仍可恢复。文字格式本身不算填写值，待办、提及、人员业务行和非文字块不按空值清理。清理为一次可撤销事务，保存失败时仍可编辑、撤销或重试。接口完整记录的空摘要仍按既有结构提交，以清除后台旧值，不删除必需的顶层参数；输入过程及自动保存不会主动关闭栏目。
 
 mock 实现是当前宿主拥有的内存接口替身，不是真实 HTTP 服务器。重开页面读取已保存完整记录，应用重启重置为原 文档完整数据结构.json；真实接口地址、请求方法及鉴权由宿主的 GuidanceApi 实现决定。
 
