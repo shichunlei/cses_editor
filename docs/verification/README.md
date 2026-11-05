@@ -1,5 +1,7 @@
 # 验证索引
 
+- [SaaS 今日导向迁移方案重新规划](saas-migration-replan-20261105/report.md)
+
 - [保存前关闭未填写的可选栏目](save-close-empty-sections-20261105/report.md)
 
 - [分享图至少一屏高](share-minimum-screen-20261105/report.md)
