@@ -68,7 +68,7 @@ abstract final class GuidanceRecordFields {
     required String orientType,
   }) {
     if (!const ['ORIENT', 'RESULT'].contains(orientType)) {
-      throw const FormatException('今日导向类型无效');
+      throw const FormatException('成果导向类型无效');
     }
     final record = _Content();
     final thinking = _Content();

@@ -34,7 +34,7 @@ enum JournalPageMode {
   preview,
 }
 
-/// 今日导向/成果记事本页面，拥有加载、正文、显式/自动保存及预览的生命周期。
+/// 成果导向/导向成果记事本页面，拥有加载、正文、显式/自动保存及预览的生命周期。
 ///
 /// ```dart
 /// import 'package:flutter/material.dart';
@@ -134,9 +134,9 @@ class _LocalJournalPageState extends State<LocalJournalPage>
   /// 当前页面是否通过固定身份的服务适配器加载和保存。
   bool get _remote => widget.store is ApiJournalStore;
 
-  /// 头部标题只取 orientType 映射；本地存储延续今日导向标题。
+  /// 头部标题只取 orientType 映射；本地存储延续成果导向标题。
   String get _title =>
-      _remote ? (widget.store as ApiJournalStore).title : '今日导向';
+      _remote ? (widget.store as ApiJournalStore).title : '成果导向';
 
   /// 本页原生提及专用目录；不与其他文档或账号共享缓存，不拥有HTTP连接。
   late final CollabMentionDirectory _mentionDirectory;
@@ -283,7 +283,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
             exception: error,
             stack: stack,
             library: 'daily guidance',
-            context: ErrorDescription('关闭今日导向页面资源'),
+            context: ErrorDescription('关闭成果导向页面资源'),
           ),
         );
       }),
@@ -566,7 +566,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
           exception: error,
           stack: stackTrace,
           library: 'daily_guidance',
-          context: ErrorDescription('更新今日导向栏目'),
+          context: ErrorDescription('更新成果导向栏目'),
         ),
       );
       if (mounted) {
@@ -577,8 +577,10 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     }
   }
 
-  /// 弹出自定义栏目名称输入框；确认后追加自定义栏目并聚焦其首段。
+  /// 等待名称面板退场后向原会话追加栏目并聚焦首段，取消时不写入。
   Future<void> _addCustomSection() async {
+    final journal = _journal;
+    if (journal == null || _readOnly || _leaving || !_checkSession()) return;
     final controller = TextEditingController();
     final name = await showJournalSheet<String>(
       context: context,
@@ -633,8 +635,14 @@ class _LocalJournalPageState extends State<LocalJournalPage>
     );
     controller.dispose();
     if (name == null || name.trim().isEmpty || !mounted) return;
-    final journal = _journal;
-    if (journal == null || _readOnly || _leaving || !_sameAccount) return;
+    if (!identical(_journal, journal) ||
+        journal.closed ||
+        _readOnly ||
+        _leaving ||
+        _submitting ||
+        !_checkSession()) {
+      return;
+    }
     try {
       await journal.addCustomSection(name.trim());
     } catch (_) {
@@ -1082,17 +1090,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                                   ? const []
                                   : _keyboardActions(journal),
                               header: widget.poster != null
-                                  ? Padding(
-                                      // 顶部安全间距随封面一起滚动，视口可延伸至状态栏下。
-                                      padding: EdgeInsets.only(
-                                        top:
-                                            MediaQuery.viewPaddingOf(
-                                              context,
-                                            ).top +
-                                            54,
-                                      ),
-                                      child: _companyHeader(journal),
-                                    )
+                                  ? _companyHeader(journal)
                                   : journal
                                             .editor
                                             .editorState
@@ -1239,7 +1237,7 @@ class _JournalPreviewActions extends StatelessWidget {
 /// 编辑和预览共用的雪山封面，素材随宿主打包，不进入草稿或发起网络请求。
 class _JournalCover extends StatelessWidget {
   /// 构建固定封面，不持有编辑会话或外部图片资源。
-  const _JournalCover({this.title = '今日导向'});
+  const _JournalCover({this.title = '成果导向'});
 
   /// 与接口 orientType 一致的封面文字，不改变模板正文。
   final String title;
@@ -1416,7 +1414,7 @@ class _JournalHeader extends StatelessWidget {
   /// [services] 借用宿主头像端口，默认空服务，不创建账号或客户端。
   const _JournalHeader({
     required this.date,
-    this.title = '今日导向',
+    this.title = '成果导向',
     this.showCover = true,
     this.currentUser,
     this.services = const CollabHostServices(),

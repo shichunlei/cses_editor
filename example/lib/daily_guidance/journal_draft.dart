@@ -246,7 +246,7 @@ List<Node> closedJournalSections(Document document) {
 }
 
 /// 校验借用的[document]的动态栏目、受控引用与总容量；非法时抛FormatException。
-/// 完整 bodyContent 投影允许稳定 key 的自定义栏目；普通本地草稿仍限定原三类栏目。
+/// 服务正文投影与本地草稿均允许稳定 key 的自定义栏目。
 /// 可见和关闭栏目共享稳定语义身份，今日记录必须位于可见内容首位且不可关闭。
 void validateJournalDocument(Document document) {
   final imported =
@@ -265,12 +265,10 @@ void validateJournalDocument(Document document) {
   for (final section in all) {
     final kind = section.attributes['section'];
     if (section.type != journalSectionType ||
+        kind is! String ||
         (!journalSections.contains(kind) &&
-            !(document.root.attributes['guidance_body_template'] is String &&
-                kind is String &&
-                kind.startsWith('custom:') &&
-                kind.length <= 207)) ||
-        !kinds.add(kind as String) ||
+            !(kind.startsWith('custom:') && kind.length <= 207)) ||
+        !kinds.add(kind) ||
         section.delta != null ||
         section.children.isEmpty) {
       throw const FormatException('日记栏目结构无效');

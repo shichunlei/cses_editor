@@ -4,6 +4,7 @@ import 'package:appflowy_editor/appflowy_editor.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
+import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -51,6 +52,29 @@ class _Store implements JournalStore {
 
 /// 验证关闭栏目不激活正文输入，用户再次点击正文仍可继续编辑。
 void main() {
+  testWidgets('poster close button aligns with the right edge of its text', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(320, 1200));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(
+      MaterialApp(
+        home: LocalJournalPage(
+          store: _Store(),
+          poster: CompanyJournalPoster.hfysV2,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final editor = tester.widget<AppFlowyEditor>(find.byType(AppFlowyEditor));
+    final section = editor.editorState.document.root.children[1];
+    final close = find.byKey(const ValueKey('journal-close-reflection'));
+    final lines = find.byKey(
+      ValueKey('journal-lines-${section.children.first.id}'),
+    );
+    expect(tester.getRect(close).right, tester.getRect(lines).right);
+  });
+
   for (final kind in ['reflection', 'self-check', 'custom:focus']) {
     for (final keyboardWasOpen in [false, true]) {
       testWidgets(

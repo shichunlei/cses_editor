@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="离线今日导向"
+        android:label="离线成果导向"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

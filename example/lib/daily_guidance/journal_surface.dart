@@ -319,7 +319,7 @@ class _JournalSection extends BlockComponentStatelessWidget {
         : poster?.ink;
     final titleDelta = node.attributes['guidance_heading_delta'];
     final title = primary
-        ? (preview && originalCompanyStyle ? '成果导向' : recordTitle)
+        ? recordTitle
         : titleDelta is List
         ? Delta.fromJson(titleDelta).toPlainText()
         : node.attributes['guidance_section_label'] as String? ??
@@ -356,6 +356,16 @@ class _JournalSection extends BlockComponentStatelessWidget {
             ),
       ],
     );
+    final titleText = Text(
+      title,
+      style: TextStyle(
+        fontSize: originalCompanyStyle
+            ? (primary ? 20 : 15)
+            : (poster != null ? 17 : 13),
+        fontWeight: poster != null ? FontWeight.w700 : null,
+        color: poster != null ? accent : const Color(0xff9a9387),
+      ),
+    );
     final content = Padding(
       key: ValueKey('journal-section-${node.attributes['section']}'),
       padding: EdgeInsets.only(
@@ -389,35 +399,42 @@ class _JournalSection extends BlockComponentStatelessWidget {
                   ),
                   const SizedBox(width: 8),
                 ],
-                Flexible(
-                  fit: originalCompanyStyle ? FlexFit.loose : FlexFit.tight,
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: originalCompanyStyle
-                          ? (primary ? 20 : 15)
-                          : (poster != null ? 17 : 13),
-                      fontWeight: poster != null ? FontWeight.w700 : null,
-                      color: poster != null ? accent : const Color(0xff9a9387),
-                    ),
-                  ),
-                ),
-                if (originalCompanyStyle) ...[
-                  const SizedBox(width: 8),
-                  if (primary)
-                    SizedBox(
-                      width: 4,
-                      height: 20,
-                      child: ColoredBox(color: accent!),
-                    )
-                  else
-                    Expanded(
-                      child: Divider(
-                        height: 1,
-                        thickness: .5,
-                        color: accent!.withValues(alpha: .35),
+                if (originalCompanyStyle && !primary)
+                  Expanded(
+                    child: LayoutBuilder(
+                      builder: (context, constraints) => Row(
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: constraints.maxWidth * .7,
+                            ),
+                            child: titleText,
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Divider(
+                              height: 1,
+                              thickness: .5,
+                              color: accent!.withValues(alpha: .35),
+                            ),
+                          ),
+                          if (onClose != null) const SizedBox(width: 8),
+                        ],
                       ),
                     ),
+                  )
+                else
+                  Flexible(
+                    fit: originalCompanyStyle ? FlexFit.loose : FlexFit.tight,
+                    child: titleText,
+                  ),
+                if (originalCompanyStyle && primary) ...[
+                  const SizedBox(width: 8),
+                  SizedBox(
+                    width: 4,
+                    height: 20,
+                    child: ColoredBox(color: accent!),
+                  ),
                 ],
                 if (node.attributes['section'] != 'record' && onClose != null)
                   InkWell(

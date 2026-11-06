@@ -96,7 +96,7 @@ void main() {
         expect(
           find.descendant(
             of: find.byKey(const ValueKey('journal-section-record')),
-            matching: find.text('今日导向'),
+            matching: find.text('成果导向'),
           ),
           findsOneWidget,
         );

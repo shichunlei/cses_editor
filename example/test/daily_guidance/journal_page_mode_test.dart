@@ -229,7 +229,7 @@ void main() {
       expect(find.byKey(const ValueKey('journal-save')), findsOneWidget);
       expect(find.byKey(const ValueKey('journal-preview-user')), findsNothing);
       expect(find.byKey(const ValueKey('journal-preview')), findsNothing);
-      expect(find.text('今日导向'), findsNWidgets(2));
+      expect(find.text('成果导向'), findsNWidgets(2));
       expect(_state(tester).document.root.children, hasLength(1));
       expect(_state(tester).getNodeAtPath([0, 0])!.delta!.isEmpty, isTrue);
       await tester.pumpWidget(const SizedBox());

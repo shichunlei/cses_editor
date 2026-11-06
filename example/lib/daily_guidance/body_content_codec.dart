@@ -30,7 +30,7 @@ abstract final class BodyContentCodec {
     BlockCraftJsonCodec.validate(normalized);
     GuidanceRecordFields.validateMentionTypes(source);
     if ((source['meta'] as Map)['dailyTemplate'] != 'daily-writing') {
-      throw const FormatException('不支持的今日导向模板');
+      throw const FormatException('不支持的成果导向模板');
     }
     final date = (source['meta'] as Map)['dailyDate'];
     if (date is! String || !isJournalDate(date)) {

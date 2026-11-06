@@ -1,6 +1,6 @@
 # 其他 App 接入 cses_editor
 
-接入 App 只引用仓库根包 `cses_editor`，无需依赖或运行 `example/`。今日导向是宿主业务源码，不是核心包 API。包不初始化协同引擎、Common 账号 SDK、Rust/FRB/Yrs 或协同数据库。
+接入 App 只引用仓库根包 `cses_editor`，无需依赖或运行 `example/`。成果导向是宿主业务源码，不是核心包 API。包不初始化协同引擎、Common 账号 SDK、Rust/FRB/Yrs 或协同数据库。
 
 本文配套一份可复制的[独立宿主模板](integration_app/README.md)，代码只从 `package:cses_editor/cses_editor.dart` 和其他依赖的公开入口导入。包含完整应用初始化、正文恢复、自动保存、保存失败重试、退出释放、人员选择、头像和详情注入。模板自身不是业务依赖，应将所需源码放到接入 App 的业务目录。
 
@@ -123,7 +123,7 @@ await session.close();
 }
 ```
 
-上面仅展示层级；可读文档须有至少一个正文节点。该格式是本模板自定义的 v1 文件格式，与今日导向 `JournalDraft` 的 v2、桌面JSON均不同。不要混用版本字段或直接删除 `cses_`/`bc.`等已有数据属性。
+上面仅展示层级；可读文档须有至少一个正文节点。该格式是本模板自定义的 v1 文件格式，与成果导向 `JournalDraft` 的 v2、桌面JSON均不同。不要混用版本字段或直接删除 `cses_`/`bc.`等已有数据属性。
 
 模板的保存契约：
 
@@ -181,22 +181,22 @@ final viewConfiguration = EditorViewConfiguration(
 
 模板的构建与测试命令见[模板说明](integration_app/README.md)。本轮还将根包运行文件与模板单独复制到临时目录，完全移除 `example`、原工程及其原生构建文件后解析依赖、运行检查并构建Android；证据见[接入验证记录](verification/integration-guide-20261029/report.md)。
 
-## 6. 今日导向与其他平台能力
+## 6. 成果导向与其他平台能力
 
-普通编辑接入到这里即可完成。若App还要今日导向栏目、日期、封面、领航员/都来帮及日记工作流，它们属于宿主业务：迁入 `example/lib/daily_guidance/`、对应业务测试及封面资源，调整包名和宿主直接依赖。迁入后是宿主源码，不把 `cses_offline_example`当成运行时依赖，也不将该业务回填核心包。
+普通编辑接入到这里即可完成。若App还要成果导向栏目、日期、封面、领航员/都来帮及日记工作流，它们属于宿主业务：迁入 `example/lib/daily_guidance/`、对应业务测试及封面资源，调整包名和宿主直接依赖。迁入后是宿主源码，不把 `cses_offline_example`当成运行时依赖，也不将该业务回填核心包。
 
-今日导向专用入口 `LocalJournalPage`的 `store`、`storageScope`、`sessionIdentity`、`mentionDirectory`、`hostServices`由宿主稳定注入；单草稿只打开一个活动页面，身份变化后旧页永久冻结，改分区必须重建路由。示例通过 `ApiJournalStore(api: api, recordId: id)` 使用固定记录身份的 `GuidanceApi`，页面自动选择显式服务保存模式。真实接入实现 `fetch` 和 `save`，客户端认证与释放由宿主负责。`fetch` 返回与 `example/文档完整数据结构.json` 同结构的完整记录；`save(recordId, record)` 接收完整记录。适配器从最新 bodyContent 重算 thinking、selfCheck、helpItems、navigatorItems、customData（含人员及任务 mentions），其余业务字段与扩展字段保留读取值，并在同一请求内提交。宿主实现若此前仅发送 bodyContent 补丁，需改为发送完整 record。存储实例须在路由 builder 外创建并保持稳定。该业务页的存储与转换契约见[数据格式](data-format.md)。
+成果导向专用入口 `LocalJournalPage`的 `store`、`storageScope`、`sessionIdentity`、`mentionDirectory`、`hostServices`由宿主稳定注入；单草稿只打开一个活动页面，身份变化后旧页永久冻结，改分区必须重建路由。示例通过 `ApiJournalStore(api: api, recordId: id)` 使用固定记录身份的 `GuidanceApi`，页面自动选择显式服务保存模式。真实接入实现 `fetch` 和 `save`，客户端认证与释放由宿主负责。`fetch` 返回与 `example/文档完整数据结构.json` 同结构的完整记录；`save(recordId, record)` 接收完整记录。适配器从最新 bodyContent 重算 thinking、selfCheck、helpItems、navigatorItems、customData（含人员及任务 mentions），其余业务字段与扩展字段保留读取值，并在同一请求内提交。宿主实现若此前仅发送 bodyContent 补丁，需改为发送完整 record。存储实例须在路由 builder 外创建并保持稳定。该业务页的存储与转换契约见[数据格式](data-format.md)。
 
 文件目录、WebView、视频、URL打开等仍会使用普通Flutter平台插件，“不带协同原生库”不等于没有任何平台插件。宿主启用网络/媒体能力时按Android/iOS目标配置正常的平台权限和能力；正文离线编辑与本文私有文件保存不需要外部存储权限或协同服务。
 
 网络图片/SVG使用App私有文件缓存，无SQLite；默认最多200张/128MiB，30天尝试刷新，断网可回退旧缓存。未加载或已被系统清理的远程资源仍需网络，不保证所有外链媒体离线可用。通用资源和生成数据已随包提供，普通构建不要求桌面工程、Node或重新生成目录。
 
 
-今日导向路由使用 `LocalJournalPage(store: store, mode: JournalPageMode.edit)` 或 `mode: JournalPageMode.preview`。模式默认 edit 兼容既有调用；首页显式传入模式。当前路由不接受编辑/预览切换，改变 mode 必须创建新路由，否则旧会话冻结。预览会话在控制器层固定 readOnly，隐藏保存、撤销/重做、栏目关闭、日期修改及键盘编辑操作，加载、切后台、返回和销毁均不提交数据。两个入口可读取同一服务记录，存储实例仍由宿主持有。
+成果导向路由使用 `LocalJournalPage(store: store, mode: JournalPageMode.edit)` 或 `mode: JournalPageMode.preview`。模式默认 edit 兼容既有调用；首页显式传入模式。当前路由不接受编辑/预览切换，改变 mode 必须创建新路由，否则旧会话冻结。预览会话在控制器层固定 readOnly，隐藏保存、撤销/重做、栏目关闭、日期修改及键盘编辑操作，加载、切后台、返回和销毁均不提交数据。两个入口可读取同一服务记录，存储实例仍由宿主持有。
 
 头像继续使用公开 `CollabHostServices.mentionAvatarBuilder` 注入。example 提供 `createDemoGuidanceHostServices(avatarUrls: {...})` 演示按用户 ID 注入图片地址，映射创建时复制，无地址/加载失败使用姓名首字。服务实例由首页持有，进入编辑和预览时稳定传入；核心编辑器不拼接用户图片地址、不查询全局账号。真实宿主可替换为自己的头像 Widget、缓存和鉴权实现。
 
-今日导向预览页底部提供固定悬浮分享与点赞按钮。分享从独立只读快照生成完整 PNG，包含封面、用户信息、正文和米色品牌页脚；可查看长图并选择微信、朋友圈或系统文件保存。`LocalJournalPage.imageActions` 支持宿主注入；默认 Android 通过临时文件授权交给微信，iOS 打开系统图片分享面板，返回仅表示交接结果，不代表用户已发送。点赞为本次预览内的 0/1 演示状态，不调用后端互动服务、不写入正文 JSON；重新打开页面重置点赞。正文为悬浮按钮保留可滚动底部空间，编辑页不显示该按钮组。
+成果导向预览页底部提供固定悬浮分享与点赞按钮。分享从独立只读快照生成完整 PNG，包含封面、用户信息、正文和米色品牌页脚；可查看长图并选择微信、朋友圈或系统文件保存。`LocalJournalPage.imageActions` 支持宿主注入；默认 Android 通过临时文件授权交给微信，iOS 打开系统图片分享面板，返回仅表示交接结果，不代表用户已发送。点赞为本次预览内的 0/1 演示状态，不调用后端互动服务、不写入正文 JSON；重新打开页面重置点赞。正文为悬浮按钮保留可滚动底部空间，编辑页不显示该按钮组。
 
 预览封面下方的当前用户栏由宿主显式传入 `LocalJournalPage.currentUser`（`CollabMentionUser`，包含 id、name、avatarUrl、department、position）。未传 currentUser 时隐藏整行；用户栏不显示右侧时间。头像优先使用注入的头像构建器，无头像构建器时使用 example 的姓名首字/显式图片地址展示。资料不解析 moke 顶层字段，也不写入 bodyContent。切换当前用户 ID 会冻结旧页面，须重新打开路由。
 

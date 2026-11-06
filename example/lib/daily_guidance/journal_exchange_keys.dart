@@ -1,10 +1,10 @@
-/// 桌面meta中的版本化今日导向业务信息。
+/// 桌面meta中的版本化成果导向业务信息。
 const journalBlockCraftNamespace = 'mobileGuidance';
 
 /// 已转换完整桌面内容的本地草稿标记，用于选择完整块渲染与校验。
 const journalDesktopImportAttribute = 'guidance_desktop_import';
 
-/// 普通桌面文档的展示模式，不额外输出今日导向栏目标题或纸张装饰。
+/// 普通桌面文档的展示模式，不额外输出成果导向栏目标题或纸张装饰。
 const journalPlainDesktopAttribute = 'guidance_plain_desktop';
 
 /// 校验借用的[value]为路径到稳定ID的有界表并返回独立副本；非法路径、身份或重复ID抛FormatException。

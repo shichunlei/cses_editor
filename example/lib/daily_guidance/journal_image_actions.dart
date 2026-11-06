@@ -29,7 +29,7 @@ class JournalImageActions {
     if (target == JournalImageTarget.save) {
       final path = await FilePicker.saveFile(
         dialogTitle: '保存分享图片',
-        fileName: '今日导向_${DateTime.now().millisecondsSinceEpoch}.png',
+        fileName: '成果导向_${DateTime.now().millisecondsSinceEpoch}.png',
         bytes: png,
         mimeType: 'image/png',
       );

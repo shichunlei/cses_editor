@@ -1,5 +1,13 @@
 # 验证索引
 
+- [公司模板延伸至页面顶部](company-top-edge-20261106/report.md)
+
+- [成果导向与导向成果名称调整](guidance-labels-20261106/report.md)
+
+- [公司模板自定义栏目](company-custom-section-20261106/report.md)
+
+- [公司模板栏目关闭按钮右对齐](journal-close-alignment-20261106/report.md)
+
 - [SaaS 日导向全链路与公司模板迁移方案复核](saas-company-template-migration-20261105/report.md)
 
 - [公司海报 Logo 仅在预览与分享显示](company-logo-preview-only-20261105/report.md)

@@ -1,6 +1,6 @@
-# 今日导向示例
+# 成果导向示例
 
-这是根包 `cses_editor` 下的示例App。今日导向业务在 `lib/daily_guidance/`，不独立成包。
+这是根包 `cses_editor` 下的示例App。成果导向业务在 `lib/daily_guidance/`，不独立成包。
 示例依赖根包：
 
 ```yaml

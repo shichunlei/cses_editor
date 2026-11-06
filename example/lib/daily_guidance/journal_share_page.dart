@@ -17,7 +17,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 ///
 /// ```dart
 /// // Navigator.push(context, MaterialPageRoute(builder: (_) => JournalSharePage(
-/// //   document: document.toJson(), header: Text('今日导向'),
+/// //   document: document.toJson(), header: Text('成果导向'),
 /// //   commandContext: commandContext, isCurrent: () => mounted)));
 /// ```
 class JournalSharePage extends StatefulWidget {

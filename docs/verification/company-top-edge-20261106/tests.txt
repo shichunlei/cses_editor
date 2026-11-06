@@ -1,0 +1,37 @@
+Waiting for another flutter command to release the startup lock...
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_page_layout_regression_test.dart: single section keeps visible indices and supports tap and IME input
+00:01 +1: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:02 +4: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:02 +5: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:02 +10: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:03 +11: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:03 +12: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:03 +13: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: hfys-v2 adds all optional content from the keyboard
+00:03 +14: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: large-text share PNG includes header/footer and at least one full screen
+00:03 +15: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: ctfs-v2 adds all optional content from the keyboard
+00:04 +16: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: ctfs-v2 adds all optional content from the keyboard
+00:04 +17: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_share_minimum_height_test.dart: zqyl-long share PNG includes header/footer and at least one full screen
+00:04 +18: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: zqyl adds all optional content from the keyboard
+00:05 +19: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 320.0/1.0
+00:05 +20: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: toolbar is reachable at 390.0/2.0
+00:06 +21: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot click creates empty row and cancel keeps it
+00:06 +22: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: pilot native picker rejects account round trips
+00:06 +23: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom pilot action preserves source and resumes input
+00:06 +24: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help click creates empty row and cancel keeps it
+00:07 +25: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: help native picker rejects account round trips
+00:07 +26: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: custom help action preserves source and resumes input
+00:07 +27: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker cannot restore input after account changes
+00:08 +28: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed cookie permanently
+00:08 +29: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed user permanently
+00:08 +30: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: review regression: native picker revokes a changed company permanently
+00:08 +31: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native picker releases its permission watch on cancel and page removal
+00:08 +32: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: native mention and Todo survive preview and saving
+00:09 +33: /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_toolbar_test.dart: (tearDownAll)
+00:09 +33: All tests passed!

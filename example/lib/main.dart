@@ -11,7 +11,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:path_provider/path_provider.dart';
 
-/// 启动不需要账号或协同服务的独立今日导向示例。
+/// 启动不需要账号或协同服务的独立成果导向示例。
 void main() => runApp(const OfflineExampleApp());
 
 /// 独立宿主示例，业务页面由App拥有。
@@ -26,7 +26,7 @@ class OfflineExampleApp extends StatelessWidget {
   /// 在[context]配置中文和应用主题，不初始化协同或账号资源。
   @override
   Widget build(BuildContext context) => MaterialApp(
-    title: '离线今日导向',
+    title: '离线成果导向',
     debugShowCheckedModeBanner: false,
     locale: const Locale('zh', 'CN'),
     supportedLocales: const [Locale('zh', 'CN'), Locale('en')],
@@ -75,7 +75,7 @@ class _OfflineHomeState extends State<_OfflineHome> {
 
   /// 按入口类型创建当天空白文档，同类型重开沿用本次启动中已保存正文。
   /// [mode] 为此次路由固定的编辑/预览模式；异步返回后仅更新仍存活的首页。
-  /// [poster] 打开独立文件分区的今日导向海报试点；目录查询完成后校验首页存活。
+  /// [poster] 打开独立文件分区的成果导向海报试点；目录查询完成后校验首页存活。
   Future<void> _open(
     JournalPageMode mode, {
     CompanyJournalPoster? poster,
@@ -131,7 +131,7 @@ class _OfflineHomeState extends State<_OfflineHome> {
   /// 在[context]提供离线入口和示例人员说明；大字/键盘压缩视口时滚动，不改变导航或资源所有权。
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('离线今日导向')),
+    appBar: AppBar(title: const Text('离线成果导向')),
     body: Center(
       child: SingleChildScrollView(
         child: Padding(
@@ -144,7 +144,7 @@ class _OfflineHomeState extends State<_OfflineHome> {
               const Text('记录今天，随时继续', style: TextStyle(fontSize: 24)),
               const SizedBox(height: 12),
               const Text(
-                '选择今日导向或今日成果，从当天空白文档开始编辑。\n保存后可预览分享，应用重启新建空白文档。',
+                '选择成果导向或导向成果，从当天空白文档开始编辑。\n保存后可预览分享，应用重启新建空白文档。',
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -154,8 +154,8 @@ class _OfflineHomeState extends State<_OfflineHome> {
                 alignment: WrapAlignment.center,
                 children: [
                   for (final entry in const {
-                    'ORIENT': '今日导向',
-                    'RESULT': '今日成果',
+                    'ORIENT': '成果导向',
+                    'RESULT': '导向成果',
                   }.entries)
                     ChoiceChip(
                       key: ValueKey('guidance-type-${entry.key.toLowerCase()}'),

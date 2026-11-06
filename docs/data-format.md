@@ -1,6 +1,6 @@
 # 数据格式与存储
 
-通用编辑器使用 AppFlowy 文档 JSON；今日导向业务草稿由 `JournalDraft` 封装。
+通用编辑器使用 AppFlowy 文档 JSON；成果导向业务草稿由 `JournalDraft` 封装。
 当前沿用既有 v2 草稿和旧三栏迁移逻辑，不因项目改名重命名持久化节点/属性键。
 
 业务草稿包含文档身份、日期、创建/更新时间、时区偏移、正文JSON和桌面块身份映射。
@@ -19,11 +19,11 @@ JSON转换不建立协同连接，也不据业务对象创建任务、会议或�
 
 ## 普通宿主文件模板
 
-普通编辑接入见[完整接入说明](integration.md)与[独立文件实现](integration_app/lib/offline_document.dart)。该模板用自身schemaVersion=1封装完整AppFlowy文档JSON，不依赖JournalDraft；它与今日导向v2、桌面JSON是不同格式，不能按版本号互相推断。宿主负责自己的版本迁移、分区、容量与恢复策略。
+普通编辑接入见[完整接入说明](integration.md)与[独立文件实现](integration_app/lib/offline_document.dart)。该模板用自身schemaVersion=1封装完整AppFlowy文档JSON，不依赖JournalDraft；它与成果导向v2、桌面JSON是不同格式，不能按版本号互相推断。宿主负责自己的版本迁移、分区、容量与恢复策略。
 
 ## 服务正文接入
 
-宿主通过 `GuidanceApi.fetch(recordId)` 获取数据，以 `id` 做身份核验、`orientType` 选择头部标题、`bodyContent` 作为编辑内容，同时保留完整记录快照供保存使用。ORIENT 显示“今日导向”，RESULT 显示“今日成果”，未知类型拒绝加载。
+宿主通过 `GuidanceApi.fetch(recordId)` 获取数据，以 `id` 做身份核验、`orientType` 选择头部标题、`bodyContent` 作为编辑内容，同时保留完整记录快照供保存使用。ORIENT 显示“成果导向”，RESULT 显示“导向成果”，未知类型拒绝加载。
 
 `BodyContentCodec` 将日成果模板的 daily-cover/daily-body 可编辑节点投影到原“今日记录”栏目，reflection/self-check 投影到“感悟/自检”，custom 以稳定 key 呈现原名称。锁定模板标题及日期容器保留在来源模板中，页面继续使用原封面、日期、横格和键盘菜单，不进入普通桌面文档渲染模式。日记配置仅扩展已有自定义栏目及原生实体引用的业务校验。
 

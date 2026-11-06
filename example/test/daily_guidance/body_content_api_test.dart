@@ -346,7 +346,7 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(
-          find.text(orient == 'RESULT' ? '今日成果' : '今日导向'),
+          find.text(orient == 'RESULT' ? '导向成果' : '成果导向'),
           findsNWidgets(2),
         );
         expect(find.byKey(const ValueKey('journal-json-menu')), findsNothing);

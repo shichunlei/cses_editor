@@ -1,6 +1,6 @@
 # CSES 离线编辑器
 
-独立 Flutter 编辑器包 `cses_editor`，包根目录下带 `example/`。今日导向位于示例 App 的业务层，只将通用编辑能力封装成包。
+独立 Flutter 编辑器包 `cses_editor`，包根目录下带 `example/`。成果导向位于示例 App 的业务层，只将通用编辑能力封装成包。
 本项目不依赖原协同工程、Common 账号 SDK、Rust、FRB、Yrs 或 SQLite 插件。
 
 ```text
@@ -8,7 +8,7 @@ lib/                       通用编辑会话、视图、工具栏、渲染与�
 assets/                    编辑器资源
 test/                      通用编辑器回归
 pubspec.yaml               根包 cses_editor 的依赖声明
-example/lib/daily_guidance/ 今日导向页面、栏目、草稿和业务转换
+example/lib/daily_guidance/ 成果导向页面、栏目、草稿和业务转换
 example/                   可独立安装的 Android/iOS 示例宿主
 ```
 
@@ -27,7 +27,7 @@ flutter run
 
 示例在 `example/pubspec.yaml` 中通过 `cses_editor: {path: ..}` 引用根包。
 
-首页先选择“今日导向”或“今日成果”，再进入“编辑”或“预览”。首次打开对应类型时，宿主调用 `createEmptyGuidanceRecord(DateTime.now(), orientType: 'ORIENT')`（成果传 `RESULT`），按设备本地当天创建空白 JSON，仅含一个空白正文栏目，不读取或打包样例 JSON。两类记录在本次启动中分别保留，切换不会覆盖已保存正文。`orientType` 的 ORIENT/RESULT 分别显示“今日导向”/“今日成果”，只将 `bodyContent` 适配进当前横格记事本，保留现有键盘和自定义菜单。
+首页先选择“成果导向”或“导向成果”，再进入“编辑”或“预览”。首次打开对应类型时，宿主调用 `createEmptyGuidanceRecord(DateTime.now(), orientType: 'ORIENT')`（成果传 `RESULT`），按设备本地当天创建空白 JSON，仅含一个空白正文栏目，不读取或打包样例 JSON。两类记录在本次启动中分别保留，切换不会覆盖已保存正文。`orientType` 的 ORIENT/RESULT 分别显示“成果导向”/“导向成果”，只将 `bodyContent` 适配进当前横格记事本，保留现有键盘和自定义菜单。
 头部提供显式“保存”，提交完整记录及正文派生业务字段，成功后当前页进入只读预览，可继续分享。mock 数据在当前首页实例中保留，重开恢复已保存内容，重启应用重新创建当天空文档；选人使用虚构人员。真实接入由宿主实现服务端口并注入客户端。
 预览采用沉浸式封面，可生成包含米色品牌页脚的完整分享图片，并通过宿主图片端口交给微信、朋友圈或系统文件保存。分享图片包含头尾后至少为设备一屏高度，短正文在末栏目补齐横格并将品牌页脚放在底部，长正文完整导出。编辑与预览共用紧凑栏目间距，保留编辑输入和原键盘菜单。
 实际业务账号、人员、任务/会议/KR详情、天气与媒体上传由接入方注入，示例不伪造在线服务成功。

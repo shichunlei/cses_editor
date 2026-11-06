@@ -9,10 +9,10 @@ import 'package:provider/provider.dart';
 import 'guidance_people.dart';
 import 'package:cses_offline_example/daily_guidance/journal_ruled_text_scope.dart';
 
-/// 今日导向行内引用的本地属性；只随业务草稿保存，不属于桌面协议。
+/// 成果导向行内引用的本地属性；只随业务草稿保存，不属于桌面协议。
 const guidanceMentionAttribute = 'guidance_mention';
 
-/// 今日导向业务行的类别属性，允许task、help、pilot。
+/// 成果导向业务行的类别属性，允许task、help、pilot。
 const guidanceEntryAttribute = 'guidance_entry';
 
 /// 将[person]转为不携带组织子树的行内引用属性；稳定身份和名称快照一起保存。

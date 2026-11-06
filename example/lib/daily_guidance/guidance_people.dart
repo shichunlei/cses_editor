@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-/// 今日导向引用的真实人员或部门快照；部门引用不会自动展开为所有成员。
+/// 成果导向引用的真实人员或部门快照；部门引用不会自动展开为所有成员。
 ///
 /// ```dart
 /// import 'package:cses_offline_example/daily_guidance/guidance_people.dart';
@@ -102,7 +102,7 @@ abstract interface class GuidanceDirectory {
   Future<List<GuidancePerson>> load();
 }
 
-/// 在借用 [context] 中打开今日导向选人，支持搜索、组织钻取和人员/部门多选。
+/// 在借用 [context] 中打开成果导向选人，支持搜索、组织钻取和人员/部门多选。
 /// [directory] 由宿主拥有，不被释放；[canEdit] 在打开、确认和退场完成时校验，
 /// 面板存活期间也检查权限撤销。取消、会话切换或权限失效返回 null。
 /// 等待弹窗退场完成后返回去重的引用快照，不写编辑器，不展开部门成员。

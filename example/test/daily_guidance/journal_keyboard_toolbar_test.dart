@@ -7,6 +7,7 @@ import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
 import 'package:cses_offline_example/daily_guidance/journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/local_journal_page.dart';
+import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -49,39 +50,44 @@ class _MentionDirectory implements CollabMentionDirectory {
   Future<CollabMentionUser?> load(String userId) async => null;
 }
 
-/// 用[store]构建可正常返回保存的路由，[scale]控制系统字号。
-Widget _app(_Store store, double scale) => MaterialApp(
-  theme: ThemeData(fontFamily: 'ToolbarPreview'),
-  builder: (context, child) => MediaQuery(
-    data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(scale)),
-    child: child!,
-  ),
-  home: Builder(
-    builder: (context) => Scaffold(
-      body: TextButton(
-        onPressed: () async {
-          await Navigator.of(context).push<void>(
-            MaterialPageRoute(
-              builder: (_) => LocalJournalPage(
-                store: store,
-                sessionIdentity: () => (_session, _user, _company),
-                mentionDirectory: _MentionDirectory(),
-              ),
-            ),
-          );
-        },
-        child: const Text('打开'),
+/// 用 [store] 构建可保存的路由，[scale] 控制字号，[poster] 选择公司版式。
+Widget _app(_Store store, double scale, CompanyJournalPoster? poster) =>
+    MaterialApp(
+      theme: ThemeData(fontFamily: 'ToolbarPreview'),
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(
+          context,
+        ).copyWith(textScaler: TextScaler.linear(scale)),
+        child: child!,
       ),
-    ),
-  ),
-);
+      home: Builder(
+        builder: (context) => Scaffold(
+          body: TextButton(
+            onPressed: () async {
+              await Navigator.of(context).push<void>(
+                MaterialPageRoute(
+                  builder: (_) => LocalJournalPage(
+                    store: store,
+                    poster: poster,
+                    sessionIdentity: () => (_session, _user, _company),
+                    mentionDirectory: _MentionDirectory(),
+                  ),
+                ),
+              );
+            },
+            child: const Text('打开'),
+          ),
+        ),
+      ),
+    );
 
-/// 在[tester]中打开[store]对应页面；[width]为逻辑宽度，[scale]为字号倍率。
+/// 在 [tester] 中打开 [store] 对应页面；[width] 为逻辑宽度，[scale] 为字号倍率，[poster] 为版式。
 Future<EditorState> _open(
   WidgetTester tester,
   _Store store, {
   double width = 390,
   double scale = 1,
+  CompanyJournalPoster? poster,
 }) async {
   await tester.binding.setSurfaceSize(Size(width, 1000));
   addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -89,7 +95,7 @@ Future<EditorState> _open(
   tester.view.viewInsets = const FakeViewPadding(bottom: 260);
   addTearDown(tester.view.resetDevicePixelRatio);
   addTearDown(tester.view.resetViewInsets);
-  await tester.pumpWidget(_app(store, scale));
+  await tester.pumpWidget(_app(store, scale, poster));
   await tester.tap(find.text('打开'));
   await tester.pumpAndSettle();
   final state = tester
@@ -159,6 +165,67 @@ void main() {
       )..addFont(Future.value(ByteData.sublistView(bytes)))).load();
     }
   });
+
+  for (final poster in CompanyJournalPoster.values) {
+    testWidgets('${poster.id} adds all optional content from the keyboard', (
+      tester,
+    ) async {
+      final store = _Store();
+      final state = await _open(tester, store, poster: poster);
+
+      for (final action in [
+        'add-reflection',
+        'add-self-check',
+        'action-help',
+        'action-pilot',
+        'add-custom-section',
+      ]) {
+        state.selection = Selection.collapsed(Position(path: [0, 0]));
+        await tester.pumpAndSettle();
+        final button = find.byKey(
+          ValueKey('editor-keyboard-host-guidance-$action'),
+        );
+        await _reveal(tester, button);
+        await tester.tap(button);
+        await tester.pumpAndSettle();
+        if (action.startsWith('action-')) {
+          await tester.tap(find.byKey(const ValueKey('mention-close')));
+          await tester.pumpAndSettle();
+        }
+        if (action == 'add-custom-section') {
+          await tester.enterText(
+            find.byKey(const ValueKey('journal-custom-section-name')),
+            '跟进事项',
+          );
+          await tester.tap(find.text('确认'));
+          await tester.pumpAndSettle();
+        }
+      }
+
+      final sections = state.document.root.children;
+      expect(
+        sections.map((node) => node.attributes['section']),
+        containsAll(['reflection', 'self-check']),
+      );
+      final custom = sections.singleWhere(
+        (node) => node.attributes['guidance_section_label'] == '跟进事项',
+      );
+      expect(state.selection?.start.path, custom.children.first.path);
+      expect(
+        sections.first.children.map(
+          (node) => node.attributes['guidance_entry'],
+        ),
+        containsAll(['help', 'pilot']),
+      );
+      await state.apply(
+        state.transaction..insertText(custom.children.first, 0, '自定义内容'),
+      );
+      await tester.tap(find.byKey(const ValueKey('journal-save')));
+      await tester.pumpAndSettle();
+      expect(state.editable, isFalse);
+      expect(store.value.documentJson, contains('自定义内容'));
+    });
+  }
 
   for (final sample in [(320.0, 1.0), (390.0, 2.0)]) {
     testWidgets('toolbar is reachable at ${sample.$1}/${sample.$2}', (

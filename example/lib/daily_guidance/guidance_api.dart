@@ -112,7 +112,7 @@ final class ApiJournalStore implements JournalStore {
   String get title => _title;
 
   /// 读取成功后固定的标题，不接受外部直接修改。
-  String _title = '今日导向';
+  String _title = '成果导向';
 
   /// 最近成功读取的完整记录快照；独占 JSON 值，隔离服务返回值的后续修改。
   String? _recordJson;
@@ -124,13 +124,13 @@ final class ApiJournalStore implements JournalStore {
     if (data['id'] != recordId ||
         !const ['ORIENT', 'RESULT'].contains(data['orientType']) ||
         data['bodyContent'] is! Map<String, dynamic>) {
-      throw const FormatException('今日导向响应无效');
+      throw const FormatException('成果导向响应无效');
     }
     final draft = BodyContentCodec.decode(
       data['bodyContent'] as Map<String, dynamic>,
     );
     _recordJson = jsonEncode(data);
-    _title = data['orientType'] == 'RESULT' ? '今日成果' : '今日导向';
+    _title = data['orientType'] == 'RESULT' ? '导向成果' : '成果导向';
     return draft;
   }
 
