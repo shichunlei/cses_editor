@@ -1,0 +1,39 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart
+00:00 +0: 保存业务失败后正文可继续编辑，重试提交最新正文
+00:01 +1: 保存异常后正文可继续编辑，重试提交最新正文
+00:01 +2: 保存后离开失败时留在原正文，继续修改后再离开只提交最新内容
+00:02 +3: 快速重复保存与回执等待期间再次点击只发一次保存请求
+00:02 +4: 保存后重复点击读取重试只发一次新详情请求且不重复保存
+00:02 +5: 保存后预览使用详情读回正文，不继续展示提交快照
+00:02 +6: 保存成功但详情失败时只重试读取，取消仍返回已保存
+00:02 +7: 保存后读取未结束也可退出，迟到详情不重建页面或重复提交
+00:03 +8: 已有正文未修改时直接读回预览，不额外写保存接口
+00:03 +9: 保存后离开的详情读取失败仍返回成功，不重复提交
+00:03 +10: 保存后详情 wrong-record 不开放旧快照分享或重复保存
+00:03 +11: 保存后详情 empty-body 不开放旧快照分享或重复保存
+00:03 +12: zqyl orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:06 +13: zqyl result 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:07 +14: hfys-v2 orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:09 +15: hfys-v2 result 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:10 +16: ctfs-v2 orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:12 +17: ctfs-v2 result 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:14 +18: SaaS 多选一次填入同一业务行，按真实 ID 去重且取消保留空行
+00:14 +19: 人员选择期间账号变化后丢弃迟到的多选结果并保留空业务行
+00:14 +20: 公共栏目表单取消不改正文，确认名称后支持撤销和重做
+00:14 +21: 公共栏目表单打开期间身份失效，确认后的迟到名称不写回
+00:14 +22: 公共退出菜单继续编辑和取消均保留修改，保存后离开只提交一次
+00:15 +23: 选人取消后划词浮层仍在时返回并继续编辑不触发构建期间权限通知
+00:15 +24: 正文格式不支持时展示具体原因，重试不创建编辑器或覆盖记录
+00:15 +25: 预览固定四项底栏且无顶部返回，模板在安全区下独立滚动
+00:15 +26: 短文仅增高主图补足整屏，正文自然且预览尾距不进入分享长图
+00:15 +27: 预览换图只更新封面，取消保留当前图，点击分享才生成截图
+00:16 +28: 预览取消正常返回且丢弃未结束的选图，始终不保存正文
+00:16 +29: 已有工作成果只读预览在键盘与退场场景均零写入
+00:16 +30: All tests passed!

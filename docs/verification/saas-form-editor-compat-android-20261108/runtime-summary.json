@@ -1,0 +1,23 @@
+{
+  "initial": {
+    "framework_exception": 1,
+    "overflow": 0,
+    "set_state_after_dispose": 0,
+    "unhandled_exception": 0,
+    "native_fatal": 0
+  },
+  "intermediate": {
+    "framework_exception": 0,
+    "overflow": 0,
+    "set_state_after_dispose": 0,
+    "unhandled_exception": 0,
+    "native_fatal": 0
+  },
+  "final": {
+    "framework_exception": 0,
+    "overflow": 0,
+    "set_state_after_dispose": 0,
+    "unhandled_exception": 0,
+    "native_fatal": 0
+  }
+}

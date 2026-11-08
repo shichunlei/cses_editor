@@ -1,0 +1,1083 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/application/get_orient_result_detail_use_case_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/application/get_orient_result_detail_use_case_test.dart: trims the clicked record ID and returns the exact detail snapshot
+00:00 +1: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/application/get_orient_result_detail_use_case_test.dart: rejects empty IDs without calling the repository
+00:00 +2: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/application/get_orient_result_detail_use_case_test.dart: propagates the original repository failure without retrying or creating an empty record
+00:00 +3: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/application/get_orient_result_detail_use_case_test.dart: keeps separate record reads independent even when results arrive out of order
+00:00 +4: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: requests the trimmed record ID with existing session headers and preserves the complete body
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.256] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57640/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  http://127.0.0.1:57640/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 11:45:43.243249
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: daily-orient-001
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: daily-orient-001}
+
+╔╣ Response ║ POST ║ Status: 200 OK  ║ Time: 76 ms
+║  http://127.0.0.1:57640/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Body
+║
+║    {
+║         "isSuccess": true,
+║         "serverName": "test-server",
+║         "id": "daily-orient-001",
+║         "company_id": "company-001",
+║         "orient_type": "Orient",
+║         "form_date": 1792684800000,
+║         "template_id": "template-001",
+║         "template_version": 3,
+║         "user_id": "user-001",
+║         "user_name": "张三",
+║         "org_id": "org-001",
+║         "org_name": "研发组",
+║         "department_id": "dept-001",
+║         "department_name": "研发部",
+║         "todo_content": {
+║             "content": "",
+║             "mentions": []
+║             "extension": null
+║        }
+║         "daily_orient_content": {
+║             "content": "成果导向",
+║             "mentions": []
+║        }
+║         "daily_result_content": {
+║             "content": "保留成果列",
+║             "extra": {}
+║        }
+║         "expected_effect_content": {},
+║         "thinking": {content: 感悟, extension: null},
+║         "self_check": {
+║             "content": "参照接口说明",
+║             "mentions": [{mentionId: doc-001, mentionName: 接口说明, mentionType: doc, extension: null}]
+║        }
+║         "help_items": [{content: 第一个, mentions: []}, {content: 第二个, unknown: [null, {}, []]}]
+║         "navigator_items": [{content: 领航员, mentions: [], extra: true}]
+║         "custom_data": {
+║             "number": 1.5,
+║             "flag": false,
+║             "text": "自定义",
+║             "nullValue": null,
+║             "nested": {
+║                 "emptyMap": {},
+║                 "emptyList": []
+║            }
+║        }
+║         "body_content": {
+║             "id": "document-id-not-record-id",
+║             "flavour": "root",
+║             "nodeType": "root",
+║             "props": {extension: null, server_only: true},
+║             "meta": {dailyTemplateVersion: 99},
+║             "children": [{id: unknown-node, flavour: future-node, customProp: [null, 1, 二]}, {id: empty-node, children: [], meta: {}}]
+║        }
+║         "submit_state": "submitted",
+║         "submit_at": 1792717200000,
+║         "create_at": 1792717100000,
+║         "update_at": 1792717300000
+║    }
+║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+00:00 +5: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: reads each clicked slot ID and re-reads current data instead of caching a previous body
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.377] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57644/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  http://127.0.0.1:57644/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 11:45:43.377011
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: daily-orient-001
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: daily-orient-001}
+
+╔╣ Response ║ POST ║ Status: 200 OK  ║ Time: 10 ms
+║  http://127.0.0.1:57644/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Body
+║
+║    {
+║         "isSuccess": true,
+║         "serverName": "test-server",
+║         "id": "daily-orient-001",
+║         "company_id": "company-001",
+║         "orient_type": "Orient",
+║         "form_date": 1792684800000,
+║         "template_id": "template-001",
+║         "template_version": 3,
+║         "user_id": "user-001",
+║         "user_name": "张三",
+║         "org_id": "org-001",
+║         "org_name": "研发组",
+║         "department_id": "dept-001",
+║         "department_name": "研发部",
+║         "todo_content": {
+║             "content": "",
+║             "mentions": []
+║             "extension": null
+║        }
+║         "daily_orient_content": {
+║             "content": "成果导向",
+║             "mentions": []
+║        }
+║         "daily_result_content": {
+║             "content": "保留成果列",
+║             "extra": {}
+║        }
+║         "expected_effect_content": {},
+║         "thinking": {content: 感悟, extension: null},
+║         "self_check": {
+║             "content": "参照接口说明",
+║             "mentions": [{mentionId: doc-001, mentionName: 接口说明, mentionType: doc, extension: null}]
+║        }
+║         "help_items": [{content: 第一个, mentions: []}, {content: 第二个, unknown: [null, {}, []]}]
+║         "navigator_items": [{content: 领航员, mentions: [], extra: true}]
+║         "custom_data": {
+║             "number": 1.5,
+║             "flag": false,
+║             "text": "自定义",
+║             "nullValue": null,
+║             "nested": {
+║                 "emptyMap": {},
+║                 "emptyList": []
+║            }
+║        }
+║         "body_content": {
+║             "id": "document-id-not-record-id",
+║             "flavour": "root",
+║             "nodeType": "root",
+║             "props": {extension: null, server_only: true},
+║             "meta": {dailyTemplateVersion: 99},
+║             "children": [{id: unknown-node, flavour: future-node, customProp: [null, 1, 二]}, {id: empty-node, children: [], meta: {}}]
+║        }
+║         "submit_state": "submitted",
+║         "submit_at": 1792717200000,
+║         "create_at": 1792717100000,
+║         "update_at": 1792717300000
+║    }
+║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.400] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57644/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  http://127.0.0.1:57644/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 11:45:43.400560
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: daily-orient-001
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: daily-orient-001}
+
+╔╣ Response ║ POST ║ Status: 200 OK  ║ Time: 9 ms
+║  http://127.0.0.1:57644/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Body
+║
+║    {
+║         "isSuccess": true,
+║         "serverName": "test-server",
+║         "id": "daily-orient-001",
+║         "company_id": "company-001",
+║         "orient_type": "Orient",
+║         "form_date": 1792684800000,
+║         "template_id": "template-001",
+║         "template_version": 3,
+║         "user_id": "user-001",
+║         "user_name": "张三",
+║         "org_id": "org-001",
+║         "org_name": "研发组",
+║         "department_id": "dept-001",
+║         "department_name": "研发部",
+║         "todo_content": {
+║             "content": "",
+║             "mentions": []
+║             "extension": null
+║        }
+║         "daily_orient_content": {
+║             "content": "成果导向",
+║             "mentions": []
+║        }
+║         "daily_result_content": {
+║             "content": "保留成果列",
+║             "extra": {}
+║        }
+║         "expected_effect_content": {},
+║         "thinking": {content: 感悟, extension: null},
+║         "self_check": {
+║             "content": "参照接口说明",
+║             "mentions": [{mentionId: doc-001, mentionName: 接口说明, mentionType: doc, extension: null}]
+║        }
+║         "help_items": [{content: 第一个, mentions: []}, {content: 第二个, unknown: [null, {}, []]}]
+║         "navigator_items": [{content: 领航员, mentions: [], extra: true}]
+║         "custom_data": {
+║             "number": 1.5,
+║             "flag": false,
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.419] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57644/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-result-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +6: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects empty IDs before sending any request
+00:00 +7: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: does not treat HTTP 200 and business code 200 as a successful detail
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.444] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57651/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"missing"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +8: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: preserves failure category invalidRequest without retry or alternate API
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.455] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57655/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +9: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: preserves failure category sessionExpired without retry or alternate API
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.473] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57657/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +10: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: preserves failure category serverError without retry or alternate API
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.484] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57659/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +11: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: preserves failure category serverError without retry or alternate API
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.496] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57661/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +12: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: preserves failure category requestRejected without retry or alternate API
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.505] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57663/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +13: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: preserves failure category requestRejected without retry or alternate API
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.515] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57665/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +14: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_dto_test.dart: 完整根响应映射全部 26 列且不串用正文中的身份和模板版本
+00:00 +14: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: requires HTTP 200 even when a different 2xx response claims success
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.527] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57667/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +15: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_dto_test.dart: 完整根响应映射全部 26 列且不串用正文中的身份和模板版本
+00:00 +15: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: maps a malformed JSON success response to invalidResponse
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.536] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57669/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +16: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: maps a malformed JSON success response to invalidResponse
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.542] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: Unexpected end of input (at offset 33)[0m
+[38;5;1m│ #0      DioMixin.fetch (package:dio/src/dio_mixin.dart:598:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #1      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:52:24)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #2      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:170:5)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +17: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: maps a malformed JSON success response to invalidResponse
+00:00 +18: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_dto_test.dart: 不以导向成果类型裁剪另一栏内容，保留存储的大小写
+00:00 +18: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: missing_success
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.547] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57671/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +19: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: missing_success
+00:00 +20: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: missing_success
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.555] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: 日导向详情缺少有效的根对象或成功标识[0m
+[38;5;1m│ #0      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:62:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #1      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #2      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:198:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +21: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: missing_success
+00:00 +22: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_dto_test.dart: 所有 JSON 列脱离输入别名并递归只读，保留原树值
+00:00 +22: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: non_boolean_success
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.561] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57673/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +23: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: non_boolean_success
+00:00 +24: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: non_boolean_success
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.569] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: 日导向详情缺少有效的根对象或成功标识[0m
+[38;5;1m│ #0      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:62:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #1      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #2      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:198:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +25: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: nested_data
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.574] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57675/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.581] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: 详情缺少字段 id[0m
+[38;5;1m│ #0      OrientResultDetailDto._field (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:57:33)[0m
+[38;5;1m│ #1      OrientResultDetailDto.fromJson (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:25:9)[0m
+[38;5;1m│ #2      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:67:44)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:198:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +26: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: wrong_record_id
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.592] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57677/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.600] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: 日导向详情记录身份与请求不一致[0m
+[38;5;1m│ #0      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:69:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #1      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #2      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:198:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +27: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: missing_body_field
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.605] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57679/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.613] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: 详情缺少字段 body_content[0m
+[38;5;1m│ #0      OrientResultDetailDto._field (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:57:33)[0m
+[38;5;1m│ #1      OrientResultDetailDto._nullableObject (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:80:19)[0m
+[38;5;1m│ #2      OrientResultDetailDto.fromJson (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:46:18)[0m
+[38;5;1m│ #3      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:67:44)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:198:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #9      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #10     Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #11     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +28: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: string_body
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.617] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57681/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.624] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: 详情字段类型错误: body_content[0m
+[38;5;1m│ #0      OrientResultDetailDto._field (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:59:22)[0m
+[38;5;1m│ #1      OrientResultDetailDto._nullableObject (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:80:19)[0m
+[38;5;1m│ #2      OrientResultDetailDto.fromJson (package:cses_saas/modules/mutualism/infrastructure/dto/orient_result_detail_dto.dart:46:18)[0m
+[38;5;1m│ #3      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:67:44)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:198:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #9      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #10     Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #11     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +29: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: rejects invalid success payload: non_object_response
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.628] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57683/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"daily-orient-001"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [OrientResultDetail] [ERROR] [2026-11-08 11:45:43.638] package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:123[0m
+[38;5;1m│ 🚀 日导向详情响应不符合协议[0m
+[38;5;1m│ FormatException: 日导向详情缺少有效的根对象或成功标识[0m
+[38;5;1m│ #0      OrientResultRepositoryImpl.fetchOrientResultDetail (package:cses_saas/modules/mutualism/infrastructure/orient_result_repository_impl.dart:62:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #1      Throws._matchFuture (package:matcher/src/expect/throws_matcher.dart:103:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #2      _expect.<anonymous closure> (package:matcher/src/expect/expect.dart:153:17)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      expectLater.<anonymous closure> (package:flutter_test/src/widget_tester.dart:508:19)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart:198:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +30: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: maps connectionTimeout without retrying or making a fallback request
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.643] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57685/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +31: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: maps receiveTimeout without retrying or making a fallback request
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.648] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57690/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +32: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: maps connectionError without retrying or making a fallback request
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.652] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57691/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:00 +33: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/infrastructure/orient_result_detail_repository_test.dart: maps cancel without retrying or making a fallback request
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:45:43.657] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'http://127.0.0.1:57692/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'cookieId: detail-test-session' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'deviceId: detail-test-device' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: company-001' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:01 +34: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: backend nested regions and template titles round trip without changes
+00:01 +35: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing nested business text preserves containers, stable IDs and locked titles
+00:01 +36: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: user locked content remains rejected without treating it as a template title
+00:01 +37: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: unchanged interleaved parent text and nested regions retain exact order
+00:01 +38: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata null survives an unchanged document round trip
+00:01 +39: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {} survives an unchanged document round trip
+00:01 +40: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {hiddenSections: []} survives an unchanged document round trip
+00:01 +41: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {hiddenSections: null} survives an unchanged document round trip
+00:01 +42: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing text preserves unknown nullable block fields
+00:01 +43: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: nested other-type legacy content stays in its own visible section
+00:01 +44: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: moving an existing parent paragraph after its nested help keeps live order on reopen
+00:01 +45: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasGuidanceFields 仅追加正文，原键、类型与空字段策略保持精确一致
+00:01 +46: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasGuidanceFields 原栏目保留内容，全文业务行按顺序聚合且不合并不同同文条目
+00:01 +47: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasGuidanceFields 超过所有旧上限不截断，两字中文通过，非用户引用不冒充人员
+00:01 +48: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: 扁平与嵌套响应分别恢复独立正文，只有正文的嵌套记录也保留
+00:01 +49: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 company 被拒绝后保留原快照且不执行写入
+00:01 +50: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 user 被拒绝后保留原快照且不执行写入
+00:01 +51: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 null 被拒绝后保留原快照且不执行写入
+00:01 +52: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 empty 被拒绝后保留原快照且不执行写入
+00:01 +53: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 unsupported 被拒绝后保留原快照且不执行写入
+00:01 +54: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情读取串行化，身份失效后的迟到结果不覆盖原记录
+00:01 +55: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 保存和读回只使用业务记录ID，不使用列表父ID
+00:01 +56: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 新建不提交临时ID，成功后用正式ID重开并更新，读取零写入
+00:01 +57: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 服务失败保留记录，迟到成功不回写旧会话，执行中拒绝重复提交
+00:01 +58: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 已有记录正文缺失或保存回执身份错误时拒绝覆盖
+00:01 +59: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart: uses detail identity and metadata while retaining the source behavior
+00:01 +60: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart: keeps null and empty bodies distinct without using a source body fallback
+00:01 +61: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart: copies the complete body deeply and keeps unknown JSON and field values untouched
+00:01 +62: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart: maps all documented orient/result spellings without defaulting an unknown type
+00:01 +63: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart: rejects a mismatched clicked record or slot type instead of mixing behavior
+00:01 +64: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart: projects only user mentions and does not impersonate document references
+00:16 +65: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/zqyl_editor_poster_test.dart: 原74/300/121构图不增加状态栏占位，日期与问候保持位置
+00:17 +66: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/zqyl_editor_poster_test.dart: 长正文不挤压封面，预览品牌图占满画布宽度
+00:17 +67: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +68: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +69: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +70: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +71: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +72: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +73: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +74: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/company_v2_editor_poster_test.dart: hfys-v2短文只扩展主图，所有栏目共用一张纸且正文JSON不变
+00:18 +75: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后预览使用详情读回正文，不继续展示提交快照
+00:18 +76: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后预览使用详情读回正文，不继续展示提交快照
+00:19 +77: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后预览使用详情读回正文，不继续展示提交快照
+00:19 +78: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后预览使用详情读回正文，不继续展示提交快照
+00:19 +79: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后预览使用详情读回正文，不继续展示提交快照
+00:19 +80: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后预览使用详情读回正文，不继续展示提交快照
+00:20 +81: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_people_picker_test.dart: SaaS 人员页复用 单选，无人数上限且等待退场
+00:20 +82: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_platform_share_view_test.dart: 长图使用原版满宽直角底栏和透明渠道按钮
+00:20 +83: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_platform_share_view_test.dart: 长图使用原版满宽直角底栏和透明渠道按钮
+00:21 +84: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_platform_share_view_test.dart: 长图使用原版满宽直角底栏和透明渠道按钮
+00:21 +85: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_platform_share_view_test.dart: 长图使用原版满宽直角底栏和透明渠道按钮
+00:21 +86: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_platform_share_view_test.dart: 长图使用原版满宽直角底栏和透明渠道按钮
+00:21 +87: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 已有正文未修改时直接读回预览，不额外写保存接口
+00:21 +88: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_gate_test.dart: 列表没有正文时只请求槽位 id，成功前不创建编辑器
+00:21 +89: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_gate_test.dart: 列表没有正文时只请求槽位 id，成功前不创建编辑器
+00:21 +90: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_gate_test.dart: 列表没有正文时只请求槽位 id，成功前不创建编辑器
+00:21 +91: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_gate_test.dart: 列表没有正文时只请求槽位 id，成功前不创建编辑器
+00:21 +92: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_gate_test.dart: 列表没有正文时只请求槽位 id，成功前不创建编辑器
+00:21 +93: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_gate_test.dart: 列表没有正文时只请求槽位 id，成功前不创建编辑器
+00:22 +94: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_gate_test.dart: 列表没有正文时只请求槽位 id，成功前不创建编辑器
+00:22 +95: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +96: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +97: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +98: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +99: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +100: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +101: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +102: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +103: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +104: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +105: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +106: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:22 +107: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +108: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +109: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +110: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +111: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +112: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +113: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +114: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:23 +115: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:24 +116: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:24 +117: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/journal_share_position_test.dart: 冷加载头像等淡入与占位淡出完成后截图，不把透明头像写入长图
+00:24 +118: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +119: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +120: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +120: /System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/share_actions_panel_test.dart: 原链接分享仍使用统一展示壳并以 false 取消
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:46:07.305] package:cses_saas/widgets/dialog/bottom_share_dialog.dart:94[0m
+[38;5;46m│ 🚀 分享链接地址：https://example.com/content[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:24 +120: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 已有记录先读详情，正文缺失或 ID 无效时不回退表单：existing-record
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:46:07.375] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: entry-company' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"existing-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 11:46:07.362703
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: existing-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: existing-record}
+00:24 +121: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +122: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +123: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +123: /System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/share_actions_panel_test.dart: 原文本分享仍使用统一展示壳并以 false 取消
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:46:07.592] package:cses_saas/widgets/dialog/bottom_share_dialog.dart:92[0m
+[38;5;46m│ 🚀 打开微信文本分享面板[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:24 +124: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +125: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:24 +126: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +127: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +127: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 有效详情交给真实编辑页 Store，作者身份正文取详情且保留来源行为
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:46:07.834] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: entry-company' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"valid-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 11:46:07.834263
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: valid-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: valid-record}
+00:25 +128: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +129: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +130: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +131: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +132: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 模板预览依据业务 ID 而非列表正文显示：
+00:25 +133: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +134: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +134: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 列表没有正文时模板预览仍通过详情接口加载
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 11:46:08.121] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: entry-company' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"preview-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 11:46:08.121029
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: preview-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: preview-record}
+00:25 +135: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:25 +136: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 创建长文和动态栏目，原接口保存后重开编辑并生成完整预览图
+00:27 +137: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: SaaS 多选一次填入同一业务行，按真实 ID 去重且取消保留空行
+00:27 +138: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 人员选择期间账号变化后丢弃迟到的多选结果并保留空业务行
+00:27 +139: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 公共栏目表单取消不改正文，确认名称后支持撤销和重做
+00:27 +140: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 公共栏目表单打开期间身份失效，确认后的迟到名称不写回
+00:28 +141: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 公共退出菜单继续编辑和取消均保留修改，保存后离开只提交一次
+00:28 +142: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 正文格式不支持时展示具体原因，重试不创建编辑器或覆盖记录
+00:28 +143: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 预览固定四项底栏且无顶部返回，模板在安全区下独立滚动
+00:28 +144: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 短文仅增高主图补足整屏，正文自然且预览尾距不进入分享长图
+00:28 +145: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 预览换图只更新封面，取消保留当前图，点击分享才生成截图
+00:29 +146: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 预览取消正常返回且丢弃未结束的选图，始终不保存正文
+00:29 +147: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 已有工作成果只读预览在键盘与退场场景均零写入
+00:29 +148: All tests passed!

@@ -1,0 +1,28 @@
+{
+  "scope": "legacy todo/expected-effect editor projection only",
+  "before_fix": {
+    "suite": "body_content_backend_test.dart",
+    "passed": 13,
+    "failed": 6,
+    "failure_reproduced": true
+  },
+  "after_fix": {
+    "suites": [
+      "body_content_backend_test.dart",
+      "saas_guidance_fields_backend_test.dart",
+      "saas_guidance_bridge_test.dart",
+      "editor_entry_choice_test.dart"
+    ],
+    "passed": 72,
+    "failed": 0,
+    "new_tests": 10
+  },
+  "analysis": "No issues found (11.5s)",
+  "format": "passed",
+  "git_diff_check": "passed",
+  "source_files_changed": [
+    "lib/modules/mutualism/presentation/orient_result/editor/body_content_codec.dart",
+    "test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart"
+  ],
+  "contract": "Empty plain legacy placeholders remain in source but are not projected. Nonempty legacy content uses named independent sections. Mention, checkbox, unsupported/locked content is not silently hidden. Explicit hidden-section metadata round-trips without changes. Current main-body new paragraphs never inherit skipped legacy regions."
+}

@@ -1,0 +1,235 @@
+{
+  "stages": {
+    "baseline": {
+      "status": "observed",
+      "cumulative_counts": {
+        "events": 1,
+        "save_attempts": 0,
+        "save_successes": 0,
+        "save_failures": 0,
+        "save_transport_failures": 0,
+        "detail_attempts": 1,
+        "detail_successes": 1,
+        "detail_failures": 0
+      },
+      "new_counts": {
+        "events": 1,
+        "save_attempts": 0,
+        "save_successes": 0,
+        "save_failures": 0,
+        "save_transport_failures": 0,
+        "detail_attempts": 1,
+        "detail_successes": 1,
+        "detail_failures": 0
+      },
+      "checks": {
+        "cumulative_prefix_unchanged": true,
+        "baseline_detail_available": true,
+        "baseline_body_available": true,
+        "baseline_has_no_failure_test_markers": true
+      }
+    },
+    "offline-failed": {
+      "status": "observed",
+      "cumulative_counts": {
+        "events": 2,
+        "save_attempts": 1,
+        "save_successes": 0,
+        "save_failures": 1,
+        "save_transport_failures": 1,
+        "detail_attempts": 1,
+        "detail_successes": 1,
+        "detail_failures": 0
+      },
+      "new_counts": {
+        "events": 1,
+        "save_attempts": 1,
+        "save_successes": 0,
+        "save_failures": 1,
+        "save_transport_failures": 1,
+        "detail_attempts": 0,
+        "detail_successes": 0,
+        "detail_failures": 0
+      },
+      "checks": {
+        "cumulative_prefix_unchanged": true,
+        "new_save_attempt_observed": true,
+        "new_saves_all_failed": true,
+        "no_successful_save_since_baseline": true,
+        "no_new_detail_readback": true,
+        "last_server_body_equals_baseline": true
+      }
+    },
+    "leave-failed": {
+      "status": "observed",
+      "cumulative_counts": {
+        "events": 3,
+        "save_attempts": 2,
+        "save_successes": 0,
+        "save_failures": 2,
+        "save_transport_failures": 2,
+        "detail_attempts": 1,
+        "detail_successes": 1,
+        "detail_failures": 0
+      },
+      "new_counts": {
+        "events": 1,
+        "save_attempts": 1,
+        "save_successes": 0,
+        "save_failures": 1,
+        "save_transport_failures": 1,
+        "detail_attempts": 0,
+        "detail_successes": 0,
+        "detail_failures": 0
+      },
+      "checks": {
+        "cumulative_prefix_unchanged": true,
+        "new_save_attempt_observed": true,
+        "new_saves_all_failed": true,
+        "no_successful_save_since_baseline": true,
+        "no_new_detail_readback": true,
+        "last_server_body_equals_baseline": true
+      }
+    },
+    "readback-failed": {
+      "status": "observed",
+      "cumulative_counts": {
+        "events": 8,
+        "save_attempts": 5,
+        "save_successes": 1,
+        "save_failures": 4,
+        "save_transport_failures": 4,
+        "detail_attempts": 2,
+        "detail_successes": 1,
+        "detail_failures": 1
+      },
+      "new_counts": {
+        "events": 5,
+        "save_attempts": 3,
+        "save_successes": 1,
+        "save_failures": 2,
+        "save_transport_failures": 2,
+        "detail_attempts": 1,
+        "detail_successes": 0,
+        "detail_failures": 1
+      },
+      "checks": {
+        "cumulative_prefix_unchanged": true,
+        "exactly_one_successful_save": true,
+        "successful_save_request_body_available": true,
+        "successful_request_contains_FAIL-SAVE-A1": true,
+        "successful_request_contains_RETRY-B1": true,
+        "successful_response_body_equals_request": true,
+        "post_save_detail_attempt_observed": true,
+        "post_save_detail_readback_failed": true,
+        "no_post_save_successful_detail": true
+      },
+      "failed_save_attempts_before_success_count": 4
+    },
+    "readback-recovered": {
+      "status": "observed",
+      "cumulative_counts": {
+        "events": 9,
+        "save_attempts": 5,
+        "save_successes": 1,
+        "save_failures": 4,
+        "save_transport_failures": 4,
+        "detail_attempts": 3,
+        "detail_successes": 2,
+        "detail_failures": 1
+      },
+      "new_counts": {
+        "events": 1,
+        "save_attempts": 0,
+        "save_successes": 0,
+        "save_failures": 0,
+        "save_transport_failures": 0,
+        "detail_attempts": 1,
+        "detail_successes": 1,
+        "detail_failures": 0
+      },
+      "checks": {
+        "cumulative_prefix_unchanged": true,
+        "exactly_one_new_detail_attempt": true,
+        "exactly_one_new_detail_success": true,
+        "no_new_save_attempt": true,
+        "still_exactly_one_successful_save": true,
+        "detail_same_record": true,
+        "recovered_detail_body_equals_successful_request": true,
+        "recovered_detail_contains_FAIL-SAVE-A1": true,
+        "recovered_detail_contains_RETRY-B1": true
+      }
+    },
+    "discard-reopened": {
+      "status": "observed",
+      "cumulative_counts": {
+        "events": 11,
+        "save_attempts": 5,
+        "save_successes": 1,
+        "save_failures": 4,
+        "save_transport_failures": 4,
+        "detail_attempts": 5,
+        "detail_successes": 4,
+        "detail_failures": 1
+      },
+      "new_counts": {
+        "events": 2,
+        "save_attempts": 0,
+        "save_successes": 0,
+        "save_failures": 0,
+        "save_transport_failures": 0,
+        "detail_attempts": 2,
+        "detail_successes": 2,
+        "detail_failures": 0
+      },
+      "checks": {
+        "cumulative_prefix_unchanged": true,
+        "new_detail_success_observed": true,
+        "no_new_save_attempt": true,
+        "still_exactly_one_successful_save": true,
+        "detail_same_record": true,
+        "discard_reopen_body_equals_recovered": true,
+        "discard_marker_absent": true,
+        "discard_reopened_detail_contains_FAIL-SAVE-A1": true,
+        "discard_reopened_detail_contains_RETRY-B1": true
+      }
+    },
+    "cleanup-final": {
+      "status": "observed",
+      "cumulative_counts": {
+        "events": 21,
+        "save_attempts": 6,
+        "save_successes": 2,
+        "save_failures": 4,
+        "save_transport_failures": 4,
+        "detail_attempts": 10,
+        "detail_successes": 9,
+        "detail_failures": 1
+      },
+      "new_counts": {
+        "events": 10,
+        "save_attempts": 1,
+        "save_successes": 1,
+        "save_failures": 0,
+        "save_transport_failures": 0,
+        "detail_attempts": 5,
+        "detail_successes": 5,
+        "detail_failures": 0
+      },
+      "checks": {
+        "cumulative_prefix_unchanged": true,
+        "cleanup_successful_save_observed": true,
+        "cleanup_post_save_detail_success_observed": true,
+        "detail_same_record": true,
+        "cleanup_request_body_equals_baseline": true,
+        "cleanup_detail_body_equals_baseline": true,
+        "cleanup_detail_equals_request": true,
+        "all_failure_test_markers_removed": true
+      }
+    }
+  },
+  "save_failure_count_interpretation": "记录每次快速失败的保存尝试；仅凭累计HTTP事件数量不判定为在途重复提交",
+  "failed_checks": [],
+  "failed_check_count": 0,
+  "pending_stage_count": 0
+}

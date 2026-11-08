@@ -1,0 +1,133 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/mentions/at_text_semantics_test.dart
+00:00 +0: mention input survives repeated platform semantics queries
+══╡ EXCEPTION CAUGHT BY SCHEDULER LIBRARY ╞═════════════════════════════════════════════════════════
+The following assertion was thrown during a scheduler callback:
+'package:flutter/src/semantics/semantics.dart': Failed assertion: line 3270 pos 12:
+'owner!._nodes.containsKey(id)': is not true.
+
+Either the assertion indicates an error in the framework itself, or we should provide substantially
+more information in this error message to help you determine and fix the underlying cause.
+In either case, please report this assertion by filing a bug on GitHub:
+  https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+
+When the exception was thrown, this was the stack:
+#2      SemanticsNode.detach (package:flutter/src/semantics/semantics.dart:3270:12)
+#3      SemanticsNode._dropChild (package:flutter/src/semantics/semantics.dart:3239:13)
+#4      SemanticsNode._replaceChildren (package:flutter/src/semantics/semantics.dart:3006:25)
+#5      SemanticsNode.updateWith (package:flutter/src/semantics/semantics.dart:3750:5)
+#6      _RenderEditable.assembleSemanticsNode (package:extended_text_field/src/official/rendering/editable.dart:1459:10)
+#7      _RenderObjectSemantics._buildSemanticsSubtree (package:flutter/src/rendering/object.dart:6256:20)
+#8      _RenderObjectSemantics._produceSemanticsNode (package:flutter/src/rendering/object.dart:6272:5)
+#9      _RenderObjectSemantics._buildSemantics (package:flutter/src/rendering/object.dart:6205:7)
+#10     _RenderObjectSemantics._buildSemanticsSubtree (package:flutter/src/rendering/object.dart:6241:13)
+#11     _RenderObjectSemantics._produceSemanticsNode (package:flutter/src/rendering/object.dart:6272:5)
+#12     _RenderObjectSemantics._buildSemantics (package:flutter/src/rendering/object.dart:6205:7)
+#13     _RenderObjectSemantics._buildSemanticsSubtree (package:flutter/src/rendering/object.dart:6241:13)
+#14     _RenderObjectSemantics._produceSemanticsNode (package:flutter/src/rendering/object.dart:6272:5)
+#15     _RenderObjectSemantics._buildSemantics (package:flutter/src/rendering/object.dart:6205:7)
+#16     _RenderObjectSemantics._buildSemanticsSubtree (package:flutter/src/rendering/object.dart:6241:13)
+#17     _RenderObjectSemantics._produceSemanticsNode (package:flutter/src/rendering/object.dart:6272:5)
+#18     _RenderObjectSemantics._buildSemantics (package:flutter/src/rendering/object.dart:6205:7)
+#19     _RenderObjectSemantics._buildSemanticsSubtree (package:flutter/src/rendering/object.dart:6241:13)
+#20     _RenderObjectSemantics._produceSemanticsNode (package:flutter/src/rendering/object.dart:6272:5)
+#21     _RenderObjectSemantics._buildSemantics (package:flutter/src/rendering/object.dart:6205:7)
+#22     _RenderObjectSemantics._buildSemanticsSubtree (package:flutter/src/rendering/object.dart:6241:13)
+#23     _RenderObjectSemantics._produceSemanticsNode (package:flutter/src/rendering/object.dart:6272:5)
+#24     _RenderObjectSemantics._buildSemantics (package:flutter/src/rendering/object.dart:6205:7)
+#25     _RenderObjectSemantics.ensureSemanticsNode (package:flutter/src/rendering/object.dart:6170:7)
+#26     PipelineOwner.flushSemantics (package:flutter/src/rendering/object.dart:1636:18)
+#27     PipelineOwner.flushSemantics (package:flutter/src/rendering/object.dart:1653:15)
+#28     AutomatedTestWidgetsFlutterBinding.drawFrame (package:flutter_test/src/binding.dart:2444:35)
+#29     RendererBinding._handlePersistentFrameCallback (package:flutter/src/rendering/binding.dart:509:5)
+#30     SchedulerBinding._invokeFrameCallback (package:flutter/src/scheduler/binding.dart:1430:15)
+#31     SchedulerBinding.handleDrawFrame (package:flutter/src/scheduler/binding.dart:1345:9)
+#32     AutomatedTestWidgetsFlutterBinding.pump.<anonymous closure> (package:flutter_test/src/binding.dart:2260:9)
+#35     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#36     AutomatedTestWidgetsFlutterBinding.pump (package:flutter_test/src/binding.dart:2249:27)
+#37     WidgetTester.pump.<anonymous closure> (package:flutter_test/src/widget_tester.dart:652:53)
+#40     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#41     WidgetTester.pump (package:flutter_test/src/widget_tester.dart:652:27)
+#42     main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/mentions/at_text_semantics_test.dart:46:18)
+<asynchronous suspension>
+#43     testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#44     TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 7 frames from class _AssertionError, dart:async, and package:stack_trace)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY SCHEDULER LIBRARY ╞═════════════════════════════════════════════════════════
+The following assertion was thrown during a scheduler callback:
+'package:flutter/src/semantics/semantics.dart': Failed assertion: line 3008 pos 16:
+'!child.attached': is not true.
+
+Either the assertion indicates an error in the framework itself, or we should provide substantially
+more information in this error message to help you determine and fix the underlying cause.
+In either case, please report this assertion by filing a bug on GitHub:
+  https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+
+When the exception was thrown, this was the stack:
+#2      SemanticsNode._replaceChildren (package:flutter/src/semantics/semantics.dart:3008:16)
+#3      SemanticsNode.updateWith (package:flutter/src/semantics/semantics.dart:3750:5)
+#4      _RenderEditable.assembleSemanticsNode (package:extended_text_field/src/official/rendering/editable.dart:1459:10)
+#5      _RenderObjectSemantics._buildSemanticsSubtree (package:flutter/src/rendering/object.dart:6256:20)
+#6      _RenderObjectSemantics._produceSemanticsNode (package:flutter/src/rendering/object.dart:6272:5)
+#7      _RenderObjectSemantics._buildSemantics (package:flutter/src/rendering/object.dart:6205:7)
+#8      _RenderObjectSemantics.ensureSemanticsNode (package:flutter/src/rendering/object.dart:6170:7)
+#9      PipelineOwner.flushSemantics (package:flutter/src/rendering/object.dart:1636:18)
+#10     PipelineOwner.flushSemantics (package:flutter/src/rendering/object.dart:1653:15)
+#11     AutomatedTestWidgetsFlutterBinding.drawFrame (package:flutter_test/src/binding.dart:2444:35)
+#12     RendererBinding._handlePersistentFrameCallback (package:flutter/src/rendering/binding.dart:509:5)
+#13     SchedulerBinding._invokeFrameCallback (package:flutter/src/scheduler/binding.dart:1430:15)
+#14     SchedulerBinding.handleDrawFrame (package:flutter/src/scheduler/binding.dart:1345:9)
+#15     AutomatedTestWidgetsFlutterBinding.pump.<anonymous closure> (package:flutter_test/src/binding.dart:2260:9)
+#18     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#19     AutomatedTestWidgetsFlutterBinding.pump (package:flutter_test/src/binding.dart:2249:27)
+#20     WidgetTester.pump.<anonymous closure> (package:flutter_test/src/widget_tester.dart:652:53)
+#23     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#24     WidgetTester.pump (package:flutter_test/src/widget_tester.dart:652:27)
+#25     main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/mentions/at_text_semantics_test.dart:48:18)
+<asynchronous suspension>
+#26     testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#27     TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 7 frames from class _AssertionError, dart:async, and package:stack_trace)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: 'Multiple exceptions (2) were detected during the running of the current test, and at
+least one was unexpected.'
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/mentions/at_text_semantics_test.dart:50:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/mentions/at_text_semantics_test.dart line 50
+The test description was:
+  mention input survives repeated platform semantics queries
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: mention input survives repeated platform semantics queries [E]
+  Test failed. See exception logs above.
+  The test description was: mention input survives repeated platform semantics queries
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/mentions/at_text_semantics_test.dart: mention input survives repeated platform semantics queries

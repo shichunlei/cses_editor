@@ -34,7 +34,7 @@ void main() {
           expect(body['meta']['dailyType'], type.toLowerCase());
           expect(
             body['children'][0]['meta']['tplFieldName'],
-            type == 'ORIENT' ? '成果导向' : '导向成果',
+            type == 'ORIENT' ? '成果导向' : '工作成果',
           );
           expect(record['helpItems'], isEmpty);
           expect(record['navigatorItems'], isEmpty);
@@ -102,7 +102,7 @@ void main() {
       _state(tester).getNodeAtPath([0, 0])!.delta!.toPlainText(),
       'RESULT 的内容',
     );
-    expect(find.text('导向成果'), findsNWidgets(2));
+    expect(find.text('工作成果'), findsNWidgets(2));
     await tester.pumpWidget(const SizedBox());
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
@@ -137,7 +137,7 @@ void main() {
         await tester.pumpAndSettle();
         await tester.tap(find.byKey(const ValueKey('open-daily-guidance')));
         await tester.pumpAndSettle();
-        final title = type == 'ORIENT' ? '成果导向' : '导向成果';
+        final title = type == 'ORIENT' ? '成果导向' : '工作成果';
         expect(find.text(title), findsNWidgets(2));
         final state = _state(tester);
         expect(state.editable, isTrue);

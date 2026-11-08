@@ -1,0 +1,20 @@
+{
+  "method": "真实接口或原选择器结果，调试模式在原守卫前延迟25秒；源码随后恢复",
+  "phases": [
+    "entry_wait",
+    "entry_release mounted=false",
+    "entry_wait",
+    "entry_release mounted=true",
+    "people_wait",
+    "people_release mounted=false",
+    "readback_wait",
+    "readback_release mounted=false",
+    "image_wait",
+    "image_release mounted=false"
+  ],
+  "entry_old_page_ignored": true,
+  "entry_new_page_accepted": true,
+  "people_old_page_ignored": true,
+  "readback_old_page_ignored": true,
+  "image_old_page_ignored": true
+}

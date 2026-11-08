@@ -1,0 +1,14 @@
+{
+  "observed_at_device_time": "2026-11-08 15:14 CST",
+  "device": "Honor MTN_AN00",
+  "orient_existing_test_marker_visible": true,
+  "result_existing_test_marker_visible": true,
+  "orient_window": "08:00–12:00",
+  "result_window": "12:01–19:00",
+  "orient_window_closed_at_observation": true,
+  "real_form_creation_performed": false,
+  "real_editor_update_performed": false,
+  "test_data_modified": false,
+  "test_conditions_request": "等待用户在测试后台重置今日两条测试记录并开放时段，或在手机切换满足条件的测试账号",
+  "scope": "界面只读检查与现有测试；没有将 Widget 结果视为真实后端创建闭环"
+}

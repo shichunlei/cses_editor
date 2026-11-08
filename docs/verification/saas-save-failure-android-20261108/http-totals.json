@@ -1,0 +1,12 @@
+{
+  "main_acceptance_events": 25,
+  "endpoint_counts": {
+    "/dailyOrient/detail": 14,
+    "/dailyOrient/save": 6,
+    "/dailyOrient/readDailyOrient": 4,
+    "/dailyOrient/readOrgWorkOrient": 1
+  },
+  "success_count": 19,
+  "transport_failure_count": 6,
+  "save_success_count": 2
+}

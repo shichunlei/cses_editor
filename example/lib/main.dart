@@ -144,7 +144,7 @@ class _OfflineHomeState extends State<_OfflineHome> {
               const Text('记录今天，随时继续', style: TextStyle(fontSize: 24)),
               const SizedBox(height: 12),
               const Text(
-                '选择成果导向或导向成果，从当天空白文档开始编辑。\n保存后可预览分享，应用重启新建空白文档。',
+                '选择成果导向或工作成果，从当天空白文档开始编辑。\n保存后可预览分享，应用重启新建空白文档。',
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -155,7 +155,7 @@ class _OfflineHomeState extends State<_OfflineHome> {
                 children: [
                   for (final entry in const {
                     'ORIENT': '成果导向',
-                    'RESULT': '导向成果',
+                    'RESULT': '工作成果',
                   }.entries)
                     ChoiceChip(
                       key: ValueKey('guidance-type-${entry.key.toLowerCase()}'),

@@ -1,0 +1,15 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart
+00:00 +0: uses detail identity and metadata while retaining the source behavior
+00:00 +1: keeps null and empty bodies distinct without using a source body fallback
+00:00 +2: copies the complete body deeply and keeps unknown JSON and field values untouched
+00:00 +3: maps all documented orient/result spellings without defaulting an unknown type
+00:00 +4: rejects a mismatched clicked record or slot type instead of mixing behavior
+00:00 +5: projects only user mentions and does not impersonate document references
+00:00 +6: All tests passed!

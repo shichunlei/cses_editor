@@ -1,0 +1,27 @@
+Pre-fix Flutter test tool output excerpt (not a full redirected log)
+Date: 2026-11-08
+Command: flutter test --no-pub test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart --plain-name '选人取消后划词浮层仍在时返回并继续编辑不触发构建期间权限通知'
+Tool session: 90437
+Exit code: 1
+
+00:00 +0: 选人取消后划词浮层仍在时返回并继续编辑不触发构建期间权限通知
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: FlutterError:<setState() or markNeedsBuild() called during build.
+          This ListenableBuilder widget cannot be marked as needing to build because the framework
+is already in the process of building widgets.
+          The widget on which setState() or markNeedsBuild() was called was:
+            StatefulElement#15220(DEFUNCT)
+          The widget which was currently being built when the offending call was made was:
+            EditorInteractionShell-[EditorState#2bed6]>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart:1079:5)
+
+This was caught by the test expectation on the following line:
+  saas_guidance_editor_flow_test.dart line 1079
+00:02 +0 -1: 选人取消后划词浮层仍在时返回并继续编辑不触发构建期间权限通知 [E]
+00:02 +0 -1: Some tests failed.
+
+The test asserted the real editor-selection-menu was present before tapping journal-back.
+No hot reload or network failure injection was used in this test.

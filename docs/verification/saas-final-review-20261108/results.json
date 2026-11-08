@@ -1,0 +1,15 @@
+{
+  "fixed_findings": 1,
+  "priority": "P2",
+  "new_regressions": 4,
+  "before_fix_failed": 4,
+  "after_fix_passed": 206,
+  "static_analysis": "No issues found",
+  "dart_format": "passed",
+  "diff_check_both_workspaces": "passed",
+  "android_reinstalled_this_review": true,
+  "committed": true,
+  "android_smoke_checks_passed": 22,
+  "example_consumer_tests_passed": 22,
+  "commit_scope": "SaaS migration implementation/tests/docs and editor dependency/labels/migration verification; unrelated entity draft excluded"
+}

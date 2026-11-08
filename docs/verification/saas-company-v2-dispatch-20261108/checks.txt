@@ -1,0 +1,11 @@
+SaaS final analysis: 6 targets, No issues found.
+SaaS full regression: 178 passed, 0 failed.
+Targets: mutualism/application, mutualism/infrastructure, mutualism/editor, mutualism/routes, shared/share_actions_panel.
+Preview actions: 7 passed, includes landscape and large-font cases.
+Route entry: 30 passed, includes fixed identity and company resolver.
+Production resolver restored byte-for-byte after Android presentation fixture.
+SaaS and editor git diff --check: passed.
+No staged changes; no commit.
+Final APK build: succeeded (97.0s).
+APK SHA-256: 5cd8d5ea12e3f8b7e35087041b880fddbcf14a39865fe1b1be718c2cc540453a
+Final APK install: Success. Cold start and original entry opened current-company zqyl fallback correctly.

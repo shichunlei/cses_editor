@@ -18,7 +18,7 @@ Map<String, dynamic> createEmptyGuidanceRecord(
     throw ArgumentError.value(orientType, 'orientType', '仅支持 ORIENT 或 RESULT');
   }
   final dailyType = orientType.toLowerCase();
-  final title = orientType == 'RESULT' ? '导向成果' : '成果导向';
+  final title = orientType == 'RESULT' ? '工作成果' : '成果导向';
   final id = 'guidance-$dailyType-${now.microsecondsSinceEpoch}';
   final body = <String, dynamic>{
     'id': '$id-body',

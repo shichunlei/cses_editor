@@ -1,0 +1,163 @@
+{
+  "scope": "只读核对两个真实HTTP会话的业务快照；不替代完整Dart Codec与界面验收；未修改旧审计报告",
+  "checks": {
+    "form_created_prefix_preserved_in_opened": true,
+    "opened_prefix_preserved_in_first_session": true,
+    "form_create_has_no_record_id": true,
+    "form_create_has_no_bodyContent": true,
+    "form_created_successfully": true,
+    "form_request_orient_type_correct": true,
+    "opening_editor_added_one_detail_without_save": true,
+    "opened_body_equals_form_generated_response": true,
+    "first_session_main_unchanged": true,
+    "first_session_reflection_original_text_preserved": true,
+    "first_session_reflection_marker_once": true,
+    "second_session_initial_body_equals_first_final": true,
+    "second_session_main_marker_once": true,
+    "second_session_main_original_text_preserved": true,
+    "second_session_main_mentions_unchanged": true,
+    "second_session_thinking_including_prior_edit_preserved": true,
+    "initial_detail_dailyOrientContent_equals_form": true,
+    "initial_detail_thinking_equals_form": true,
+    "initial_detail_selfCheck_equals_form": true,
+    "initial_detail_helpItems_equals_form": true,
+    "initial_detail_navigatorItems_equals_form": true,
+    "initial_detail_customData_equals_form": true,
+    "initial_detail_todoContent_semantically_empty": true,
+    "initial_detail_expectedEffectContent_semantically_empty": true,
+    "first_session_save_succeeded": true,
+    "first_session_update_and_response_same_business_id": true,
+    "first_session_current_type_main_only": true,
+    "first_session_request_body_equals_save_response": true,
+    "first_session_every_postsave_detail_body_equals_request": true,
+    "first_session_readback_then_reopen_same_body": true,
+    "first_session_reopen_is_exactly_one_detail_no_extra_save": true,
+    "first_session_selfCheck_unchanged": true,
+    "first_session_helpItems_unchanged": true,
+    "first_session_navigatorItems_unchanged": true,
+    "first_session_customData_unchanged": true,
+    "first_session_dailyOrientContent_mentions_preserved": true,
+    "first_session_thinking_mentions_preserved": true,
+    "first_session_selfCheck_mentions_preserved": true,
+    "first_session_todoContent_semantically_empty": true,
+    "first_session_expectedEffectContent_semantically_empty": true,
+    "first_session_details_dailyOrientContent_equal_request": true,
+    "first_session_details_thinking_equal_request": true,
+    "first_session_details_selfCheck_equal_request": true,
+    "first_session_details_helpItems_equal_request": true,
+    "first_session_details_navigatorItems_equal_request": true,
+    "first_session_details_customData_equal_request": true,
+    "first_session_all_old_node_ids_retained": true,
+    "first_session_node_ids_unique": true,
+    "first_session_locked_template_nodes_equal": true,
+    "first_session_mention_inlines_identical": true,
+    "second_session_save_succeeded": true,
+    "second_session_update_and_response_same_business_id": true,
+    "second_session_current_type_main_only": true,
+    "second_session_request_body_equals_save_response": true,
+    "second_session_every_postsave_detail_body_equals_request": true,
+    "second_session_readback_then_reopen_same_body": true,
+    "second_session_reopen_is_exactly_one_detail_no_extra_save": true,
+    "second_session_selfCheck_unchanged": true,
+    "second_session_helpItems_unchanged": true,
+    "second_session_navigatorItems_unchanged": true,
+    "second_session_customData_unchanged": true,
+    "second_session_dailyOrientContent_mentions_preserved": true,
+    "second_session_thinking_mentions_preserved": true,
+    "second_session_selfCheck_mentions_preserved": true,
+    "second_session_todoContent_semantically_empty": true,
+    "second_session_expectedEffectContent_semantically_empty": true,
+    "second_session_details_dailyOrientContent_equal_request": true,
+    "second_session_details_thinking_equal_request": true,
+    "second_session_details_selfCheck_equal_request": true,
+    "second_session_details_helpItems_equal_request": true,
+    "second_session_details_navigatorItems_equal_request": true,
+    "second_session_details_customData_equal_request": true,
+    "second_session_all_old_node_ids_retained": true,
+    "second_session_node_ids_unique": true,
+    "second_session_locked_template_nodes_equal": true,
+    "second_session_mention_inlines_identical": true,
+    "all_details_same_business_id_and_request_id": true,
+    "all_details_same_company_user_type": true,
+    "all_detail_requests_successful": true,
+    "final_arrays_identical_to_original_form": true,
+    "final_body_all_original_mentions_preserved": true,
+    "final_MAIN_C1_in_main_body_once": true,
+    "historical_editor_todo_body_retained": true
+  },
+  "failed_checks": [],
+  "session_counts": {
+    "first_form_create_then_editor_update": {
+      "events": 7,
+      "save_attempts": 2,
+      "successful_saves": 2,
+      "detail_attempts": 3,
+      "successful_details": 3,
+      "other_read_attempts": 2,
+      "all_events_successful": true
+    },
+    "second_actual_main_update": {
+      "events": 5,
+      "save_attempts": 1,
+      "successful_saves": 1,
+      "detail_attempts": 3,
+      "successful_details": 3,
+      "other_read_attempts": 1,
+      "all_events_successful": true
+    },
+    "combined_distinct_sessions": {
+      "events": 12,
+      "save_attempts": 3,
+      "successful_saves": 3,
+      "detail_attempts": 6,
+      "successful_details": 6,
+      "other_read_attempts": 3,
+      "all_events_successful": true
+    }
+  },
+  "content_counts": {
+    "original_help_items": 1,
+    "final_help_items": 1,
+    "original_navigator_items": 1,
+    "final_navigator_items": 1,
+    "original_body_user_mentions": 3,
+    "final_body_user_mentions": 3
+  },
+  "observed_final_marker_locations": {
+    ".EDITOR-B1": [
+      {
+        "dailySlot": "daily-body",
+        "dailySection": "todo",
+        "count": 1
+      }
+    ],
+    ".THINK-B1": [
+      {
+        "dailySlot": null,
+        "dailySection": "reflection",
+        "count": 1
+      }
+    ],
+    ".MAIN-C1": [
+      {
+        "dailySlot": "daily-cover",
+        "dailySection": null,
+        "count": 1
+      }
+    ]
+  },
+  "known_historical_issue": {
+    "status": "首次EDITOR-B1落到后端todo正文区；显示归属问题由另一代理修复，本报告未确认该修复已通过真机",
+    "first_EDITOR_B1_count_in_main_field": 0,
+    "first_EDITOR_B1_count_in_todo_body": 1,
+    "first_EDITOR_B1_not_projected_to_todoContent": true,
+    "second_MAIN_C1_count_in_main_field": 1,
+    "interpretation": "原主文字和旧字段未丢失；首次修改正文树保存无损，但不能把首次EDITOR-B1当成主字段修改成功。第二会话MAIN-C1已实际写入主字段，去掉该标记后与原表单主文字完全相同。todo/expected按当前规则不投影原字段，历史EDITOR-B1仅保留于正文树。"
+  },
+  "normalization_notes": {
+    "empty_todo_expected_fields": "表单和编辑请求空对象、详情空content+mentions可不同，按语义空检查",
+    "save_response_single_content_fields": "保存响应可能省略mentions；完整mentions保持以请求和详情逐字段比较为准"
+  },
+  "historical_report_unchanged": "/tmp/cses-compat-orient-independent.json",
+  "failed_check_count": 0
+}

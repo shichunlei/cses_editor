@@ -1,0 +1,7 @@
+All real-device evidence assertions passed.
+2 saves: 1 create without id, 1 update with id.
+5 RESULT detail reads: same record, id-only request, canonical body equals submitted/reopened snapshot.
+RESULT / DAILY_RESULT / result and legacy result-only main field confirmed.
+Separate ORIENT record retained; no repeated saves on reopen/preview.
+Actual album image: 739x2569, 682647 bytes.
+No production source changes or new tests in this verification turn.

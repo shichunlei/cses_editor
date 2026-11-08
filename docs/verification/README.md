@@ -1,5 +1,29 @@
 # 验证索引
 
+- [SaaS 日导向迁移最终代码审查与历史栏目标识避让](saas-final-review-20261108/report.md)
+
+- [原表单创建 → 编辑器修改 Android 兼容验收（成果导向、工作成果及原表单 @ 复测通过）](saas-form-editor-compat-android-20261108/report.md)
+
+- [SaaS 保存异常、未保存退出与异步返回 Android 验收](saas-save-failure-android-20261108/report.md)
+
+- [SaaS 跨栏目人员抽离与清空 Android 验收](saas-fields-android-20261108/report.md)
+
+- [工作成果 Android 创建、更新、重开与预览分享闭环](saas-result-android-20261108/report.md)
+
+- [SaaS 汇丰永盛 V2 / 成塔服饰 V2 公司分发与 Android 验证](saas-company-v2-dispatch-20261108/report.md)
+
+- [SaaS 保存详情读回、正文无损及工作成果名称](saas-save-readback-20261108/report.md)
+
+- [SaaS 新详情接口 Android 创建、重开和分享验证](saas-detail-android-20261108/report.md)
+
+- [SaaS 编辑与模板预览接入新详情接口](saas-detail-entry-20261108/report.md)
+
+- [SaaS 中企云链预览自然正文与画布高度](saas-zqyl-preview-height-20261106/report.md)
+
+- [中企云链 SaaS 接入与宿主复用](saas-zqyl-integration-20261106/report.md)
+
+- [SaaS 创建、编辑与预览升级方案及规则复核](saas-migration-review-20261106/report.md)
+
 - [公司模板延伸至页面顶部](company-top-edge-20261106/report.md)
 
 - [成果导向与导向成果名称调整](guidance-labels-20261106/report.md)

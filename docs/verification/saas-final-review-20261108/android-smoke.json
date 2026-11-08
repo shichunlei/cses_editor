@@ -1,0 +1,41 @@
+{
+  "apk_sha256": "9f38629e8b26dcf777736b0a80d09bd73684094f066e119e433b4c6d1e31e96e",
+  "device_observed_at": "2026-11-08 17:23–17:25 CST",
+  "checks": {
+    "no_saves": true,
+    "both_types_read": true,
+    "all_requests_success": true,
+    "ORIENT_id_matches_saved": true,
+    "ORIENT_body_content_matches_saved": true,
+    "ORIENT_daily_orient_content_matches_saved": true,
+    "ORIENT_daily_result_content_matches_saved": true,
+    "ORIENT_thinking_matches_saved": true,
+    "ORIENT_self_check_matches_saved": true,
+    "ORIENT_help_items_matches_saved": true,
+    "ORIENT_navigator_items_matches_saved": true,
+    "ORIENT_custom_data_matches_saved": true,
+    "RESULT_id_matches_saved": true,
+    "RESULT_body_content_matches_saved": true,
+    "RESULT_daily_orient_content_matches_saved": true,
+    "RESULT_daily_result_content_matches_saved": true,
+    "RESULT_thinking_matches_saved": true,
+    "RESULT_self_check_matches_saved": true,
+    "RESULT_help_items_matches_saved": true,
+    "RESULT_navigator_items_matches_saved": true,
+    "RESULT_custom_data_matches_saved": true,
+    "no_observed_runtime_failures": true
+  },
+  "failed_checks": [],
+  "request_counts": {
+    "/dailyOrient/detail": 3,
+    "/dailyOrient/readOrgWorkOrient": 1
+  },
+  "runtime_counts": {
+    "framework_exception": 0,
+    "overflow": 0,
+    "set_state_after_dispose": 0,
+    "unhandled_exception": 0,
+    "native_fatal": 0
+  },
+  "scope": "RESULT editor reopen and unchanged preview; ORIENT readonly template preview from original list because editing window closed. Collision fixtures remain automated coverage."
+}

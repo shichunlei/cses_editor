@@ -1,0 +1,12 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/shared/presentation/mentions/at_text_semantics_test.dart
+00:00 +0: mention input survives repeated platform semantics queries (background=false)
+00:00 +1: mention input survives repeated platform semantics queries (background=true)
+00:00 +2: explicit mention action preserves its callback and highlighted text
+00:00 +3: All tests passed!

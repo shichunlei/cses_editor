@@ -130,7 +130,7 @@ final class ApiJournalStore implements JournalStore {
       data['bodyContent'] as Map<String, dynamic>,
     );
     _recordJson = jsonEncode(data);
-    _title = data['orientType'] == 'RESULT' ? '导向成果' : '成果导向';
+    _title = data['orientType'] == 'RESULT' ? '工作成果' : '成果导向';
     return draft;
   }
 

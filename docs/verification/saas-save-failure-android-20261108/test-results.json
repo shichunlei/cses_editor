@@ -1,0 +1,14 @@
+{
+  "editor_flow": {
+    "passed": 30,
+    "new_cases": 6
+  },
+  "detail_gate_people_preview_images": {
+    "passed": 25
+  },
+  "total_distinct_tests_passed": 55,
+  "regression_before_fix": "failed: setState() or markNeedsBuild() called during build",
+  "regression_after_fix": "passed",
+  "analysis": "No issues found",
+  "production_fix": "Freeze editable and keyboard before rebuilding the exit confirmation layout."
+}

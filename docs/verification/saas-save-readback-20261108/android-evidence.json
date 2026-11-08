@@ -1,0 +1,18 @@
+{
+  "apkSha256": "666c6cb0a1832e8f8dd85b0c4633d1efc86cb55a04e26078f84485509ff4351e",
+  "apkBytes": 313379722,
+  "album": {
+    "width": 739,
+    "height": 2505,
+    "bytes": 583879,
+    "fileName": "1794109920854.jpg"
+  },
+  "runtimeErrorCounts": {
+    "flutterException": 0,
+    "layoutOverflow": 0,
+    "unhandled": 0,
+    "fatal": 0,
+    "oom": 0,
+    "saveOrShareFailure": 0
+  }
+}

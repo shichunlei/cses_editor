@@ -1,0 +1,18 @@
+{
+  "observed_at_device_time": "2026-11-08 16:04 CST",
+  "account": "user-authorized replacement test account (credentials omitted)",
+  "login_method": "password",
+  "company": "北京一起嗨网络科技有限公司",
+  "ORIENT": {
+    "window": "10:00–17:01",
+    "original_form_created": true,
+    "editor_updated_and_reopened": true
+  },
+  "RESULT": {
+    "window": "16:00–21:01",
+    "original_form_created": true,
+    "editor_updated_and_reopened": true,
+    "unchanged_preview_no_write": true
+  },
+  "latest_observation": "2026-11-08 16:31 CST"
+}

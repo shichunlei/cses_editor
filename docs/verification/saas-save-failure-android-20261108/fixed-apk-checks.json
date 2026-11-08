@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-08",
+  "artifact": "cses.jqdl debug APK without temporary delays",
+  "apk_sha256": "dd9a2a44a022a1e8bdb0a8fe7e5535359e0443b65ee6e1126628391766d0251d",
+  "build": "passed",
+  "flutter_analyze": "No issues found",
+  "device": "Honor MTN_AN00",
+  "app_returned_to_mutualism_home": true,
+  "wifi_restored": true,
+  "mobile_data_restored": true,
+  "diagnostic_tracking_disabled": true,
+  "hot_reload_used": false,
+  "temporary_fault_injection_used": false,
+  "runtime_error_counts": {
+    "framework_exceptions": 0,
+    "build_phase_notifications": 0,
+    "after_dispose": 0,
+    "overflow": 0,
+    "unhandled": 0,
+    "native_crash": 0
+  },
+  "checks": {
+    "same_record": true,
+    "body_equals_baseline": true,
+    "legacy_fields_unchanged": true,
+    "reopen_preview_only_two_details": true,
+    "all_runtime_error_counters_zero": true
+  },
+  "scenarios": [
+    "原选人取消，实际划词菜单已挂载，打开退出确认并继续编辑",
+    "继续编辑后输入 .FIX-EXIT-E1，界面可见",
+    "断网保存后离开，真实失败留页，原草稿可见",
+    "保存失败后继续输入 .AFTER-FAIL，界面可见",
+    "恢复网络并放弃草稿，重开详情完全等于 baseline",
+    "无修改进入预览只增加详情读取，取消返回互生首页"
+  ],
+  "capture_scope": "HTTP capture enabled after offline save failure; covers final reopen and unmodified preview only. Earlier real offline failure verified by UI. No claim that no save was attempted during the whole fixed run."
+}

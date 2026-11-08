@@ -1,0 +1,70 @@
+{
+  "initial_suites": {
+    "passed": 76,
+    "files": [
+      "test/modules/mutualism/routes/editor_entry_choice_test.dart",
+      "test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart",
+      "test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart",
+      "test/modules/mutualism/presentation/orient_result/create/create_orient_result_structured_paste_test.dart",
+      "test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart",
+      "test/modules/mutualism/presentation/orient_result/editor/guidance_detail_record_test.dart"
+    ]
+  },
+  "postfix_regressions": [
+    {
+      "files": [
+        "body_content_backend_test.dart",
+        "saas_guidance_fields_backend_test.dart",
+        "saas_guidance_bridge_test.dart",
+        "editor_entry_choice_test.dart"
+      ],
+      "passed": 72,
+      "new_tests": 10
+    },
+    {
+      "files": [
+        "at_text_semantics_test.dart",
+        "create_orient_result_structured_paste_test.dart"
+      ],
+      "passed": 11,
+      "new_tests": 3
+    },
+    {
+      "files": [
+        "saas_guidance_editor_flow_test.dart"
+      ],
+      "passed": 30,
+      "distinct_from_initial": 30
+    },
+    {
+      "files": [
+        "test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart",
+        "test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart",
+        "test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart",
+        "test/modules/mutualism/routes/editor_entry_choice_test.dart"
+      ],
+      "passed_distinct": 77,
+      "new_tests_relative_to_prior_72": 5,
+      "batches": "75 suite cases + 2 additional stability cases"
+    }
+  ],
+  "total_distinct_tests_passed": 124,
+  "counting_note": "76 initial distinct cases + 15 codec additions + 3 semantics additions + 30 separate editor-flow cases; repeated runs are not counted twice.",
+  "target_analysis": "No issues found for both changed production files and associated regression consumers.",
+  "real_android_creation_acceptance": {
+    "ORIENT": "Original form creation completed in the pre-fix Android session. Final APK verified editing that same record, saving, detail readback and reopening. Exact original-form multi-mention semantics retest on Android remains pending RESULT creation.",
+    "RESULT": "passed on final APK: original form create, editor main/help edit, save, reopen and unchanged preview"
+  },
+  "original_form_semantics_postfix": {
+    "real_widget_regression": "passed",
+    "exact_android_form_repetition": "passed in RESULT original form: 2 help mentions + 1 navigator, repeated semantic queries and continued typing"
+  },
+  "production_changes_this_acceptance": [
+    "lib/shared/presentation/mentions/at_text.dart",
+    "lib/modules/mutualism/presentation/orient_result/editor/body_content_codec.dart"
+  ],
+  "save_loop_apk_sha256": "2272cefdd68e828c667af75942e5beeec6c47c4e7d296955d19c04f46159a8c1",
+  "latest_apk_sha256": "04c6211a46626e2e4298b309507f2ede10d1a1251608f819f34a4731595ae7c2",
+  "latest_apk_readonly_retest": "passed: same saved record, two detail reads, zero saves, same body and original fields, zero observed runtime exceptions",
+  "result_android_data_checks_passed": 43
+}

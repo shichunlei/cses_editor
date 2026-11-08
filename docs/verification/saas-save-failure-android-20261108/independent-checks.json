@@ -1,0 +1,120 @@
+{
+  "async-entry": {
+    "status": "observed",
+    "checks": {
+      "cumulative_prefix_preserved": true,
+      "latest_detail_same_record": true,
+      "latest_detail_equals_expected_saved_body": true,
+      "latest_detail_equals_latest_save_request": true,
+      "no_new_save_attempt": true
+    },
+    "new_counts": {
+      "events": 5,
+      "save_attempts": 0,
+      "save_successes": 0,
+      "save_failures": 0,
+      "save_transport_failures": 0,
+      "detail_attempts": 2,
+      "detail_successes": 2,
+      "detail_failures": 0
+    }
+  },
+  "async-people": {
+    "status": "observed",
+    "checks": {
+      "cumulative_prefix_preserved": true,
+      "latest_detail_same_record": true,
+      "latest_detail_equals_expected_saved_body": true,
+      "latest_detail_equals_latest_save_request": true,
+      "no_new_save_attempt": true
+    },
+    "new_counts": {
+      "events": 1,
+      "save_attempts": 0,
+      "save_successes": 0,
+      "save_failures": 0,
+      "save_transport_failures": 0,
+      "detail_attempts": 1,
+      "detail_successes": 1,
+      "detail_failures": 0
+    }
+  },
+  "cleanup-final": {
+    "status": "observed",
+    "checks": {
+      "cumulative_prefix_preserved": true,
+      "latest_detail_same_record": true,
+      "latest_detail_equals_expected_saved_body": true,
+      "latest_detail_equals_latest_save_request": true,
+      "failure_test_markers_absent": true
+    },
+    "new_counts": {
+      "events": 4,
+      "save_attempts": 1,
+      "save_successes": 1,
+      "save_failures": 0,
+      "save_transport_failures": 0,
+      "detail_attempts": 2,
+      "detail_successes": 2,
+      "detail_failures": 0
+    }
+  },
+  "delayed_guard_logs": {
+    "entry": {
+      "wait_count": 2,
+      "release_original_page_unmounted_count": 1,
+      "release_mounted_count": 1
+    },
+    "people": {
+      "wait_count": 1,
+      "release_original_page_unmounted_count": 1,
+      "release_mounted_count": 0
+    },
+    "readback": {
+      "wait_count": 1,
+      "release_original_page_unmounted_count": 1,
+      "release_mounted_count": 0
+    },
+    "image": {
+      "wait_count": 1,
+      "release_original_page_unmounted_count": 1,
+      "release_mounted_count": 0
+    }
+  },
+  "async-image": {
+    "status": "observed",
+    "checks": {
+      "cumulative_prefix_preserved": true,
+      "no_new_save_attempt": true,
+      "new_detail_success_observed": true,
+      "new_events_only_detail": true,
+      "latest_detail_same_record": true,
+      "latest_detail_body_equals_baseline": true,
+      "failure_test_markers_absent": true
+    },
+    "new_counts": {
+      "events": 3,
+      "save_attempts": 0,
+      "save_successes": 0,
+      "save_failures": 0,
+      "save_transport_failures": 0,
+      "detail_attempts": 3,
+      "detail_successes": 3,
+      "detail_failures": 0
+    },
+    "visual_evidence_status": "父代理已核对新预览在延迟结果释放前后图片相同；不与另一路由初始随机图比较"
+  },
+  "final_request_counts": {
+    "events": 24,
+    "save_attempts": 6,
+    "save_successes": 2,
+    "save_failures": 4,
+    "save_transport_failures": 4,
+    "detail_attempts": 13,
+    "detail_successes": 12,
+    "detail_failures": 1,
+    "other_read_attempts": 5,
+    "other_read_http_successes": 4,
+    "other_read_transport_failures": 1
+  }
+}

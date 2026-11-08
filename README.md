@@ -27,7 +27,7 @@ flutter run
 
 示例在 `example/pubspec.yaml` 中通过 `cses_editor: {path: ..}` 引用根包。
 
-首页先选择“成果导向”或“导向成果”，再进入“编辑”或“预览”。首次打开对应类型时，宿主调用 `createEmptyGuidanceRecord(DateTime.now(), orientType: 'ORIENT')`（成果传 `RESULT`），按设备本地当天创建空白 JSON，仅含一个空白正文栏目，不读取或打包样例 JSON。两类记录在本次启动中分别保留，切换不会覆盖已保存正文。`orientType` 的 ORIENT/RESULT 分别显示“成果导向”/“导向成果”，只将 `bodyContent` 适配进当前横格记事本，保留现有键盘和自定义菜单。
+首页先选择“成果导向”或“工作成果”，再进入“编辑”或“预览”。首次打开对应类型时，宿主调用 `createEmptyGuidanceRecord(DateTime.now(), orientType: 'ORIENT')`（成果传 `RESULT`），按设备本地当天创建空白 JSON，仅含一个空白正文栏目，不读取或打包样例 JSON。两类记录在本次启动中分别保留，切换不会覆盖已保存正文。`orientType` 的 ORIENT/RESULT 分别显示“成果导向”/“工作成果”，只将 `bodyContent` 适配进当前横格记事本，保留现有键盘和自定义菜单。
 头部提供显式“保存”，提交完整记录及正文派生业务字段，成功后当前页进入只读预览，可继续分享。mock 数据在当前首页实例中保留，重开恢复已保存内容，重启应用重新创建当天空文档；选人使用虚构人员。真实接入由宿主实现服务端口并注入客户端。
 预览采用沉浸式封面，可生成包含米色品牌页脚的完整分享图片，并通过宿主图片端口交给微信、朋友圈或系统文件保存。分享图片包含头尾后至少为设备一屏高度，短正文在末栏目补齐横格并将品牌页脚放在底部，长正文完整导出。编辑与预览共用紧凑栏目间距，保留编辑输入和原键盘菜单。
 实际业务账号、人员、任务/会议/KR详情、天气与媒体上传由接入方注入，示例不伪造在线服务成功。
@@ -51,6 +51,6 @@ python3 tool/verify_independence.py example/build/app/outputs/flutter-apk/app-de
 
 保留部分 `Collab*` Dart 类型名以减少迁移造成的数据与调用差异；这些名称不代表本包包含协同引擎。
 文件选择、视频、WebView等能力仍使用普通 Flutter 平台插件。
-`appflowy_editor` 从 [独立 Git 仓库](https://github.com/shichunlei/appflowy-editor.git) 引入，固定提交 `9e7593134457eac9193a61ee4023a75de55fcc68`，本仓库不再保存其源码副本。
+`appflowy_editor` 从 [独立 Git 仓库](https://github.com/shichunlei/appflowy-editor.git) 引入，固定提交 `de71028ab4146d76e5059e59273d10bf17df5dd6`，本仓库不再保存其源码副本。
 
 示例在宿主层通过 `createDemoGuidanceHostServices` 注入用户头像，普通 @、都来帮、领航员及旧用户引用共用头像槽。可传入用户 ID 到头像 URL 的映射；未提供图片时显示离线姓名首字头像，不向正文 JSON 写入头像展示数据。任务引用图标与样式保持原样。

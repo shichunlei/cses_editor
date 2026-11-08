@@ -1,0 +1,27 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: backend nested regions and template titles round trip without changes
+00:00 +1: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing nested business text preserves containers, stable IDs and locked titles
+00:00 +2: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: user locked content remains rejected without treating it as a template title
+00:00 +3: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: unchanged interleaved parent text and nested regions retain exact order
+00:00 +4: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata null survives an unchanged document round trip
+00:00 +5: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {} survives an unchanged document round trip
+00:00 +6: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {hiddenSections: []} survives an unchanged document round trip
+00:00 +7: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {hiddenSections: null} survives an unchanged document round trip
+00:00 +8: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing text preserves unknown nullable block fields
+00:00 +9: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: nested other-type legacy content stays in its own visible section
+00:00 +10: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: moving an existing parent paragraph after its nested help keeps live order on reopen
+00:00 +11: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端 orient 嵌套正文：主字段不混入独立区域，原请求逐键一致
+00:00 +12: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端 result 嵌套正文：主字段不混入独立区域，原请求逐键一致
+00:00 +13: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 祖先和自身业务标记按行聚合，感悟自检保留全文，显式标签覆盖祖先
+00:00 +14: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: daily-body 直接新增正文兼容扁平编辑，另一类型区域始终隔离当前字段
+00:00 +15: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 无标签旧 help 每个非空编辑行一项，不按提及人数拆行、不投影 legacyField 快照
+00:00 +16: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端正文与纯提及补充段属于同一旧事项，原树分段和字段边界不变
+00:00 +17: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 补充段不能跨普通新行、显式标签、旧条目边界或区域，也不能从旧快照回填
+00:00 +18: All tests passed!

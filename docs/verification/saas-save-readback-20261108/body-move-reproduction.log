@@ -1,0 +1,22 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /tmp/body_roundtrip_review_test.dart
+00:00 +0: reorder existing parent paragraph across nested region preserves live order
+00:00 +0 -1: reorder existing parent paragraph across nested region preserves live order [E]
+  Expected: ['协助核对', '注重协作']
+    Actual: ['注重协作', '协助核对']
+     Which: at location [0] is '注重协作' instead of '协助核对'
+
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  /tmp/body_roundtrip_review_test.dart 30:3           main.<fn>
+
+00:00 +0 -1: Some tests failed.
+
+Failing tests:
+  /tmp/body_roundtrip_review_test.dart: reorder existing parent paragraph across nested region preserves live order

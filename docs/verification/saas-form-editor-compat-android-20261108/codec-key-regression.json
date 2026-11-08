@@ -1,0 +1,37 @@
+{
+  "scope": "新增历史todo/expected-effect与真实自定义key的碰撞避让，仅Codec及回归测试",
+  "before_fix": {
+    "selected_tests": 2,
+    "passed": 0,
+    "failed": 2,
+    "log": "codec-key-before.log"
+  },
+  "after_fix": {
+    "four_suite_batch": {
+      "passed": 75,
+      "failed": 0,
+      "files": [
+        "test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart",
+        "test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart",
+        "test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart",
+        "test/modules/mutualism/routes/editor_entry_choice_test.dart"
+      ],
+      "log": "codec-key-after.log"
+    },
+    "additional_stability_batch": {
+      "passed": 2,
+      "failed": 0,
+      "file": "test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart",
+      "log": "codec-key-stability.log"
+    },
+    "distinct_tests_passed_in_these_batches": 77,
+    "new_tests_in_collision_followup": 5,
+    "new_tests_in_original_legacy_projection_fix": 10,
+    "new_tests_across_both_fixes": 15
+  },
+  "stability": "encode保留源树真实自定义区域及key；关闭或清空不会释放占用键，因此历史后缀和hiddenSections保持稳定，不需新增协议或视图映射。",
+  "backward_compatibility": "无碰撞时继续使用原custom:legacy-todo/custom:legacy-expected-effect，已保存隐藏键正常恢复；真实自定义key和标题不改变。",
+  "format": "passed",
+  "git_diff_check": "passed",
+  "analysis": "No issues found"
+}

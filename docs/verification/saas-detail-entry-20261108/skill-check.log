@@ -1,0 +1,2 @@
+Skill frontmatter and detail routing checks passed (Ruby YAML.safe_load).
+Official quick_validate.py unavailable: PyYAML not installed.

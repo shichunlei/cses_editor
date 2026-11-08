@@ -1,0 +1,24 @@
+--- before/saas_guidance_editor_page.dart
++++ after/saas_guidance_editor_page.dart
+@@ -404,12 +404,20 @@
+
+   /// 通过 SaaS 公共操作面板确认退出，只在“保存后离开”时提交修改。
+   /// 取消或继续编辑不写入；放弃修改直接退场；失败保留正文。
++  /// 在事件边界先关闭输入权限和键盘，再重建临时只读正文；避免正文重挂时
++  /// 才通知仍挂载的划词浮层修改权限。取消确认时先恢复权限，再恢复编辑布局。
+   /// 弹层返回后再次核对页面、文档和会话，防止迟到选择提交另一份记录。
+   Future<void> _leave() async {
+     if (_leaving || _picking || _submitting) return;
++    final journal = _journal;
++    final state = journal?.editor.editorState;
++    if (state != null && !state.isDisposed) {
++      state.editable = false;
++      state.service.keyboardService?.closeKeyboard();
++    }
++    FocusManager.instance.primaryFocus?.unfocus();
+     setState(() => _leaving = true);
+     _syncImagePositioning();
+-    final journal = _journal;
+     var closeEmptySections = false;
+     if (!_readOnly && journal != null && journal.dirty && _sameAccount) {
+       final choice = await showModalBottomSheet<int>(

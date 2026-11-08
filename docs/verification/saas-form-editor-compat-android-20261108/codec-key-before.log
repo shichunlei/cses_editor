@@ -1,0 +1,25 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart
+00:00 +0: real custom keys cannot collide with legacy sections for orient
+00:00 +0 -1: real custom keys cannot collide with legacy sections for orient [E]
+  Bad state: No element
+  dart:collection                                                                                 ListBase.singleWhere
+  test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart 104:48  main.<fn>
+
+00:00 +0 -1: real custom keys cannot collide with legacy sections for result
+00:00 +0 -2: real custom keys cannot collide with legacy sections for result [E]
+  Bad state: No element
+  dart:collection                                                                                 ListBase.singleWhere
+  test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart 104:48  main.<fn>
+
+00:00 +0 -2: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: real custom keys cannot collide with legacy sections for orient
+  /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: real custom keys cannot collide with legacy sections for result

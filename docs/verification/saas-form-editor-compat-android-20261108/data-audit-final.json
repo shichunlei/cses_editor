@@ -1,0 +1,114 @@
+{
+  "scope": "最终两项修复后的真实第四次写入及重开独立数据审核；只核对业务快照，不替代完整Dart实现或视觉验收",
+  "checks": {
+    "final_session_exactly_one_successful_save": true,
+    "four_successful_writes_total": true,
+    "all_four_save_responses_same_business_id": true,
+    "all_editor_update_requests_same_business_id": true,
+    "final_initial_detail_equals_previous_session_body": true,
+    "final_request_is_current_orient_type_only": true,
+    "MAIN_C1_preserved_once_in_main_field": true,
+    "POST_FIX_D1_once_in_main_field": true,
+    "main_previous_content_preserved_with_new_paragraph": true,
+    "main_original_form_text_preserved_after_markers_removed": true,
+    "POST_FIX_D1_body_row_projects_to_main": true,
+    "MAIN_C1_body_row_still_projects_to_main": true,
+    "POST_FIX_D1_is_separate_new_paragraph": true,
+    "EDITOR_B1_retained_once_in_todo_body": true,
+    "EDITOR_B1_absent_from_main_field": true,
+    "THINK_B1_retained_once_in_reflection": true,
+    "thinking_including_prior_edit_unchanged": true,
+    "thinking_form_original_preserved": true,
+    "self_check_unchanged_from_form": true,
+    "help_array_unchanged_from_form": true,
+    "navigator_array_unchanged_from_form": true,
+    "custom_data_unchanged_from_form": true,
+    "help_one_item_two_distinct_people": true,
+    "navigator_one_item_one_person": true,
+    "body_has_three_user_mentions_and_three_distinct_users": true,
+    "body_mention_identities_names_types_and_order_unchanged": true,
+    "body_original_generated_mentions_unchanged": true,
+    "request_body_equals_save_response": true,
+    "request_body_equals_saved_detail": true,
+    "request_body_equals_reopened_detail": true,
+    "saved_and_reopened_detail_body_equal": true,
+    "all_final_details_same_business_id": true,
+    "all_final_details_successful": true,
+    "reopen_adds_one_detail_and_no_save": true,
+    "body_prior_node_ids_preserved": true,
+    "body_node_ids_unique": true,
+    "saved_and_reopened_dailyOrientContent_equal_request": true,
+    "saved_and_reopened_thinking_equal_request": true,
+    "saved_and_reopened_selfCheck_equal_request": true,
+    "saved_and_reopened_helpItems_equal_request": true,
+    "saved_and_reopened_navigatorItems_equal_request": true,
+    "saved_and_reopened_customData_equal_request": true,
+    "dailyOrientContent_mentions_unchanged_from_form": true,
+    "thinking_mentions_unchanged_from_form": true,
+    "selfCheck_mentions_unchanged_from_form": true,
+    "todoContent_projection_remains_semantically_empty": true,
+    "expectedEffectContent_projection_remains_semantically_empty": true,
+    "other_type_daily_result_content_unchanged": true
+  },
+  "failed_checks": [],
+  "final_session_counts": {
+    "events": 5,
+    "save_attempts": 1,
+    "successful_saves": 1,
+    "detail_attempts": 3,
+    "successful_details": 3,
+    "other_read_attempts": 1
+  },
+  "all_three_sessions_counts": {
+    "events": 17,
+    "save_attempts": 4,
+    "successful_saves": 4,
+    "detail_attempts": 9,
+    "successful_details": 9,
+    "other_read_attempts": 4
+  },
+  "final_content_counts": {
+    "help_items": 1,
+    "help_people": 2,
+    "navigator_items": 1,
+    "navigator_people": 1,
+    "body_user_mentions": 3,
+    "body_unique_users": 3,
+    "body_nodes_before": 25,
+    "body_nodes_after": 26
+  },
+  "marker_locations": {
+    ".MAIN-C1": [
+      {
+        "slot": "daily-cover",
+        "section": null,
+        "count": 1
+      }
+    ],
+    ".POST-FIX-D1": [
+      {
+        "slot": "daily-cover",
+        "section": null,
+        "count": 1
+      }
+    ],
+    ".EDITOR-B1": [
+      {
+        "slot": "daily-body",
+        "section": "todo",
+        "count": 1
+      }
+    ],
+    ".THINK-B1": [
+      {
+        "slot": null,
+        "section": "reflection",
+        "count": 1
+      }
+    ]
+  },
+  "known_historical_issue_resolution_scope": "首次EDITOR-B1仍保留在todo正文而未混入主字段；本次验证Enter新增POST-FIX-D1正确继承主字段归属。历史错误编辑事实未改写。",
+  "visual_evidence_status": "父代理已核对最终截图：要做的事独立标题、空预期效果隐藏；本报告独立验证数据位置与不丢失，不把截图当作接口证据。",
+  "passed_check_count": 48,
+  "failed_check_count": 0
+}

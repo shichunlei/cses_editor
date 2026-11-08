@@ -1,0 +1,30 @@
+{
+  "scope": "Latest key-collision fix APK: reopen saved record, enter preview without edits. No new record creation or save in this session.",
+  "checks": {
+    "two_detail_reads": true,
+    "no_save_request": true,
+    "only_detail_reads": true,
+    "both_reads_successful": true,
+    "same_business_id": true,
+    "body_equals_saved_snapshot": true,
+    "daily_orient_content_unchanged": true,
+    "thinking_unchanged": true,
+    "self_check_unchanged": true,
+    "help_items_unchanged": true,
+    "navigator_items_unchanged": true,
+    "custom_data_unchanged": true
+  },
+  "failed_checks": [],
+  "request_counts": {
+    "detail": 2,
+    "save": 0
+  },
+  "runtime_counts": {
+    "framework_exception": 0,
+    "overflow": 0,
+    "set_state_after_dispose": 0,
+    "unhandled_exception": 0,
+    "native_fatal": 0
+  },
+  "apk_sha256": "04c6211a46626e2e4298b309507f2ede10d1a1251608f819f34a4731595ae7c2"
+}

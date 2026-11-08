@@ -1,0 +1,617 @@
+{
+  "privacy": "仅固定测试标记、人员别名、数量和相等判断；不输出真实ID、姓名、正文",
+  "stages": {
+    "baseline": {
+      "checks": {
+        "detail_success": true,
+        "same_business_record": true
+      },
+      "array_counts": {
+        "help": 0,
+        "pilot": 0
+      }
+    },
+    "populated": {
+      "checks": {
+        "detail_success": true,
+        "same_business_record": true,
+        "save_http_success": true,
+        "save_business_success": true,
+        "request_body_equals_detail": true,
+        "request_same_business_record": true,
+        "request_detail_help_equal": true,
+        "request_detail_pilot_equal": true,
+        "request_detail_main_equal": true,
+        "request_detail_reflection_equal": true,
+        "request_detail_self-check_equal": true
+      },
+      "baseline_preservation": {
+        "checks": {
+          "main_baseline_plain_body_text_preserved": true,
+          "main_baseline_plain_body_people_preserved": true,
+          "main_baseline_original_field_text_preserved": true,
+          "reflection_baseline_plain_body_text_preserved": true,
+          "reflection_baseline_plain_body_people_preserved": true,
+          "reflection_baseline_original_field_text_preserved": true
+        }
+      },
+      "detail": {
+        "checks": {
+          "help_four_items": true,
+          "help_marker_order": true,
+          "help_document_order": true,
+          "help_two_unique_people_each": true,
+          "help_text_and_people_match_source": true,
+          "pilot_four_items": true,
+          "pilot_marker_order": true,
+          "pilot_document_order": true,
+          "pilot_two_unique_people_each": true,
+          "pilot_text_and_people_match_source": true,
+          "main_markers_once_in_body": true,
+          "main_full_original_text_preserved": true,
+          "main_original_people_match_body": true,
+          "main_markers_once_in_original_field": true,
+          "reflection_markers_once_in_body": true,
+          "reflection_full_original_text_preserved": true,
+          "reflection_original_people_match_body": true,
+          "reflection_markers_once_in_original_field": true,
+          "self-check_markers_once_in_body": true,
+          "self-check_full_original_text_preserved": true,
+          "self-check_original_people_match_body": true,
+          "self-check_markers_once_in_original_field": true,
+          "custom_markers_once_in_body": true,
+          "all_eight_body_markers_once": true
+        },
+        "arrays": {
+          "help": [
+            {
+              "markers": [
+                "FM-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ],
+          "pilot": [
+            {
+              "markers": [
+                "FM-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ]
+        }
+      },
+      "request_baseline_preservation": {
+        "checks": {
+          "main_baseline_plain_body_text_preserved": true,
+          "main_baseline_plain_body_people_preserved": true,
+          "main_baseline_original_field_text_preserved": true,
+          "reflection_baseline_plain_body_text_preserved": true,
+          "reflection_baseline_plain_body_people_preserved": true,
+          "reflection_baseline_original_field_text_preserved": true
+        }
+      },
+      "request": {
+        "checks": {
+          "help_four_items": true,
+          "help_marker_order": true,
+          "help_document_order": true,
+          "help_two_unique_people_each": true,
+          "help_text_and_people_match_source": true,
+          "pilot_four_items": true,
+          "pilot_marker_order": true,
+          "pilot_document_order": true,
+          "pilot_two_unique_people_each": true,
+          "pilot_text_and_people_match_source": true,
+          "main_markers_once_in_body": true,
+          "main_full_original_text_preserved": true,
+          "main_original_people_match_body": true,
+          "main_markers_once_in_original_field": true,
+          "reflection_markers_once_in_body": true,
+          "reflection_full_original_text_preserved": true,
+          "reflection_original_people_match_body": true,
+          "reflection_markers_once_in_original_field": true,
+          "self-check_markers_once_in_body": true,
+          "self-check_full_original_text_preserved": true,
+          "self-check_original_people_match_body": true,
+          "self-check_markers_once_in_original_field": true,
+          "custom_markers_once_in_body": true,
+          "all_eight_body_markers_once": true
+        },
+        "arrays": {
+          "help": [
+            {
+              "markers": [
+                "FM-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ],
+          "pilot": [
+            {
+              "markers": [
+                "FM-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "reopened": {
+      "checks": {
+        "detail_success": true,
+        "same_business_record": true,
+        "reopened_body_equals_populated_detail": true,
+        "save_http_success": true,
+        "save_business_success": true,
+        "request_body_equals_detail": true,
+        "request_same_business_record": true,
+        "request_detail_help_equal": true,
+        "request_detail_pilot_equal": true,
+        "request_detail_main_equal": true,
+        "request_detail_reflection_equal": true,
+        "request_detail_self-check_equal": true
+      },
+      "baseline_preservation": {
+        "checks": {
+          "main_baseline_plain_body_text_preserved": true,
+          "main_baseline_plain_body_people_preserved": true,
+          "main_baseline_original_field_text_preserved": true,
+          "reflection_baseline_plain_body_text_preserved": true,
+          "reflection_baseline_plain_body_people_preserved": true,
+          "reflection_baseline_original_field_text_preserved": true
+        }
+      },
+      "detail": {
+        "checks": {
+          "help_four_items": true,
+          "help_marker_order": true,
+          "help_document_order": true,
+          "help_two_unique_people_each": true,
+          "help_text_and_people_match_source": true,
+          "pilot_four_items": true,
+          "pilot_marker_order": true,
+          "pilot_document_order": true,
+          "pilot_two_unique_people_each": true,
+          "pilot_text_and_people_match_source": true,
+          "main_markers_once_in_body": true,
+          "main_full_original_text_preserved": true,
+          "main_original_people_match_body": true,
+          "main_markers_once_in_original_field": true,
+          "reflection_markers_once_in_body": true,
+          "reflection_full_original_text_preserved": true,
+          "reflection_original_people_match_body": true,
+          "reflection_markers_once_in_original_field": true,
+          "self-check_markers_once_in_body": true,
+          "self-check_full_original_text_preserved": true,
+          "self-check_original_people_match_body": true,
+          "self-check_markers_once_in_original_field": true,
+          "custom_markers_once_in_body": true,
+          "all_eight_body_markers_once": true
+        },
+        "arrays": {
+          "help": [
+            {
+              "markers": [
+                "FM-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ],
+          "pilot": [
+            {
+              "markers": [
+                "FM-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ]
+        }
+      },
+      "request_baseline_preservation": {
+        "checks": {
+          "main_baseline_plain_body_text_preserved": true,
+          "main_baseline_plain_body_people_preserved": true,
+          "main_baseline_original_field_text_preserved": true,
+          "reflection_baseline_plain_body_text_preserved": true,
+          "reflection_baseline_plain_body_people_preserved": true,
+          "reflection_baseline_original_field_text_preserved": true
+        }
+      },
+      "request": {
+        "checks": {
+          "help_four_items": true,
+          "help_marker_order": true,
+          "help_document_order": true,
+          "help_two_unique_people_each": true,
+          "help_text_and_people_match_source": true,
+          "pilot_four_items": true,
+          "pilot_marker_order": true,
+          "pilot_document_order": true,
+          "pilot_two_unique_people_each": true,
+          "pilot_text_and_people_match_source": true,
+          "main_markers_once_in_body": true,
+          "main_full_original_text_preserved": true,
+          "main_original_people_match_body": true,
+          "main_markers_once_in_original_field": true,
+          "reflection_markers_once_in_body": true,
+          "reflection_full_original_text_preserved": true,
+          "reflection_original_people_match_body": true,
+          "reflection_markers_once_in_original_field": true,
+          "self-check_markers_once_in_body": true,
+          "self-check_full_original_text_preserved": true,
+          "self-check_original_people_match_body": true,
+          "self-check_markers_once_in_original_field": true,
+          "custom_markers_once_in_body": true,
+          "all_eight_body_markers_once": true
+        },
+        "arrays": {
+          "help": [
+            {
+              "markers": [
+                "FM-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-H1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ],
+          "pilot": [
+            {
+              "markers": [
+                "FM-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FT-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FS-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            },
+            {
+              "markers": [
+                "FC-P1"
+              ],
+              "people_count": 2,
+              "people_aliases": [
+                "U01",
+                "U02"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "cleared": {
+      "checks": {
+        "detail_success": true,
+        "same_business_record": true,
+        "save_http_success": true,
+        "save_business_success": true,
+        "request_body_equals_detail": true,
+        "request_same_business_record": true,
+        "cleared_request_selfCheck_omitted": true,
+        "cleared_request_arrays_explicit_empty": true,
+        "no_test_markers_anywhere_in_body": true,
+        "self_check_body_empty": true
+      },
+      "baseline_preservation": {
+        "checks": {
+          "main_baseline_plain_body_text_preserved": true,
+          "main_baseline_plain_body_people_preserved": true,
+          "main_baseline_original_field_text_preserved": true,
+          "reflection_baseline_plain_body_text_preserved": true,
+          "reflection_baseline_plain_body_people_preserved": true,
+          "reflection_baseline_original_field_text_preserved": true
+        }
+      },
+      "request_baseline_preservation": {
+        "checks": {
+          "main_baseline_plain_body_text_preserved": true,
+          "main_baseline_plain_body_people_preserved": true,
+          "main_baseline_original_field_text_preserved": true,
+          "reflection_baseline_plain_body_text_preserved": true,
+          "reflection_baseline_plain_body_people_preserved": true,
+          "reflection_baseline_original_field_text_preserved": true
+        }
+      },
+      "request": {
+        "checks": {
+          "self_check_semantically_empty": true,
+          "help_items_empty": true,
+          "navigator_items_empty": true,
+          "no_test_markers_in_original_fields": true
+        },
+        "self_check_shape": "empty_object"
+      },
+      "detail": {
+        "checks": {
+          "self_check_semantically_empty": true,
+          "help_items_empty": true,
+          "navigator_items_empty": true,
+          "no_test_markers_in_original_fields": true
+        },
+        "self_check_shape": "object_with_empty_content_and_mentions"
+      },
+      "old_list_records_checked": 2,
+      "old_list": [
+        {
+          "checks": {
+            "self_check_semantically_empty": true,
+            "help_items_empty": true,
+            "navigator_items_empty": true,
+            "no_test_markers_in_original_fields": true
+          },
+          "self_check_shape": "object_with_empty_content_and_mentions"
+        },
+        {
+          "checks": {
+            "self_check_semantically_empty": true,
+            "help_items_empty": true,
+            "navigator_items_empty": true,
+            "no_test_markers_in_original_fields": true
+          },
+          "self_check_shape": "empty_object"
+        }
+      ]
+    }
+  },
+  "failed_checks": [],
+  "failed_check_count": 0
+}

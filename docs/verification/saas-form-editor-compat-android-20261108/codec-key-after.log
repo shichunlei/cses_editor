@@ -1,0 +1,435 @@
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: real custom keys cannot collide with legacy sections for orient
+00:00 +1: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: real custom keys cannot collide with legacy sections for result
+00:00 +2: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: colliding custom and allocated legacy visibility restore independently without rewriting source
+00:00 +3: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: empty legacy fields do not create editable main blanks for orient
+00:00 +4: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: empty legacy fields do not create editable main blanks for result
+00:00 +5: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: nonempty legacy fields have named independent sections and preserve their original tree
+00:00 +6: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: empty legacy field visibility null survives an unchanged round trip
+00:00 +7: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: empty legacy field visibility [] survives an unchanged round trip
+00:00 +8: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: empty legacy field visibility [custom:legacy-todo] survives an unchanged round trip
+00:00 +9: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端 orient 嵌套正文：主字段不混入独立区域，原请求逐键一致
+00:00 +10: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端 orient 嵌套正文：主字段不混入独立区域，原请求逐键一致
+00:00 +11: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端 orient 嵌套正文：主字段不混入独立区域，原请求逐键一致
+00:00 +12: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端 orient 嵌套正文：主字段不混入独立区域，原请求逐键一致
+00:00 +13: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端 orient 嵌套正文：主字段不混入独立区域，原请求逐键一致
+00:00 +14: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: backend nested regions and template titles round trip without changes
+00:00 +15: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: backend nested regions and template titles round trip without changes
+00:00 +16: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 祖先和自身业务标记按行聚合，感悟自检保留全文，显式标签覆盖祖先
+00:00 +17: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing nested business text preserves containers, stable IDs and locked titles
+00:00 +18: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing nested business text preserves containers, stable IDs and locked titles
+00:00 +19: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing nested business text preserves containers, stable IDs and locked titles
+00:00 +20: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端正文与纯提及补充段属于同一旧事项，原树分段和字段边界不变
+00:00 +21: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_fields_backend_test.dart: 后端正文与纯提及补充段属于同一旧事项，原树分段和字段边界不变
+00:00 +22: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: unchanged interleaved parent text and nested regions retain exact order
+00:00 +23: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: unchanged interleaved parent text and nested regions retain exact order
+00:00 +24: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata null survives an unchanged document round trip
+00:00 +25: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {} survives an unchanged document round trip
+00:00 +26: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {hiddenSections: []} survives an unchanged document round trip
+00:00 +27: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: explicit empty view metadata {hiddenSections: null} survives an unchanged document round trip
+00:00 +28: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: editing text preserves unknown nullable block fields
+00:00 +29: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: nested other-type legacy content stays in its own visible section
+00:00 +30: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/body_content_backend_test.dart: moving an existing parent paragraph after its nested help keeps live order on reopen
+00:00 +31: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasGuidanceFields 仅追加正文，原键、类型与空字段策略保持精确一致
+00:00 +32: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasGuidanceFields 原栏目保留内容，全文业务行按顺序聚合且不合并不同同文条目
+00:00 +33: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasGuidanceFields 超过所有旧上限不截断，两字中文通过，非用户引用不冒充人员
+00:00 +34: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: 扁平与嵌套响应分别恢复独立正文，只有正文的嵌套记录也保留
+00:00 +35: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 company 被拒绝后保留原快照且不执行写入
+00:00 +36: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 user 被拒绝后保留原快照且不执行写入
+00:00 +37: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 null 被拒绝后保留原快照且不执行写入
+00:00 +38: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 empty 被拒绝后保留原快照且不执行写入
+00:00 +39: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情 unsupported 被拒绝后保留原快照且不执行写入
+00:00 +40: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 详情读取串行化，身份失效后的迟到结果不覆盖原记录
+00:00 +41: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 保存和读回只使用业务记录ID，不使用列表父ID
+00:00 +42: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 新建不提交临时ID，成功后用正式ID重开并更新，读取零写入
+00:00 +43: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 服务失败保留记录，迟到成功不回写旧会话，执行中拒绝重复提交
+00:00 +44: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_bridge_test.dart: SaasJournalStore 已有记录正文缺失或保存回执身份错误时拒绝覆盖
+00:13 +45: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: both creation methods remain selectable and cancellation does not choose one
+00:14 +46: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: template choice returns its independent selection
+00:14 +47: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: legacy choice preserves the original route, record and saved return value
+00:14 +48: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 创建菜单复用选择器并显示公司模板：公司模板编辑（汇丰永盛 V2）
+00:14 +49: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 新建 DataType.orient 固定当前公司 V2，无栏目也不降级：CompanyJournalPoster.hfysV2
+00:14 +50: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.orient 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.hfysV2 / false
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.359] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67ce85fce785da08206f529f' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.348795
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:14 +51: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.orient 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.hfysV2 / true
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.463] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67ce85fce785da08206f529f' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.463321
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:14 +52: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 新建 DataType.result 固定当前公司 V2，无栏目也不降级：CompanyJournalPoster.hfysV2
+00:15 +53: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.result 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.hfysV2 / false
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.570] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67ce85fce785da08206f529f' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.570322
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:15 +54: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.result 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.hfysV2 / true
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.620] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67ce85fce785da08206f529f' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.620607
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:15 +55: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 创建菜单复用选择器并显示公司模板：公司模板编辑（成塔服饰 V2）
+00:15 +56: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 新建 DataType.orient 固定当前公司 V2，无栏目也不降级：CompanyJournalPoster.ctfsV2
+00:15 +57: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.orient 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.ctfsV2 / false
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.759] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67502693fde01b1974b25a8a' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.758905
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:15 +58: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.orient 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.ctfsV2 / true
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.803] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67502693fde01b1974b25a8a' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.802956
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:15 +59: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 新建 DataType.result 固定当前公司 V2，无栏目也不降级：CompanyJournalPoster.ctfsV2
+00:15 +60: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.result 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.ctfsV2 / false
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.876] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67502693fde01b1974b25a8a' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.875917
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:15 +61: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情 DataType.result 进入编辑或预览使用同一公司 V2：CompanyJournalPoster.ctfsV2 / true
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.917] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67502693fde01b1974b25a8a' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.917510
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: company-record}
+00:15 +62: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 读取中切换公司，旧公司的 V2 详情不能装配到新公司会话
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:18.973] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67502693fde01b1974b25a8a' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"late-company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:18.973520
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: late-company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: late-company-record}
+00:15 +63: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 详情归属与固定公司不同，不按响应公司切换海报或创建会话
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:19.044] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: 67ce85fce785da08206f529f' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"wrong-company-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:19.044052
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: wrong-company-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: wrong-company-record}
+00:15 +64: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 已有记录先读详情，正文缺失或 ID 无效时不回退表单：existing-record
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:19.093] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: entry-company' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"existing-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:19.093561
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: existing-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: existing-record}
+00:15 +65: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 已有记录先读详情，正文缺失或 ID 无效时不回退表单：
+00:15 +66: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 新建公司模板仍使用内存草稿，不发详情读取
+00:15 +67: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 有效详情交给真实编辑页 Store，作者身份正文取详情且保留来源行为
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:19.294] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: entry-company' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"valid-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:19.294369
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: valid-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: valid-record}
+00:15 +68: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 预览没有记录 ID 时禁止把来源当作新建草稿
+00:15 +69: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 模板预览依据业务 ID 而非列表正文显示：preview-record
+00:15 +70: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 模板预览依据业务 ID 而非列表正文显示：null
+00:15 +71: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 模板预览依据业务 ID 而非列表正文显示：
+00:15 +72: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 模板预览依据业务 ID 而非列表正文显示：
+00:15 +73: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: 列表没有正文时模板预览仍通过详情接口加载
+[38;5;46m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;46m│ [CSES-LOG] [DEBUG] [2026-11-08 16:09:19.510] package:cses_common/network/http/interceptors/http_interceptor.dart:757[0m
+[38;5;46m│ 🚀 curl 'https://guidance-test.invalid/dailyOrient/detail' \[0m
+[38;5;46m│   -X 'POST' \[0m
+[38;5;46m│   -H 'content-type: application/json; charset=utf-8' \[0m
+[38;5;46m│   -H 'device: Android' \[0m
+[38;5;46m│   -H 'appType: test' \[0m
+[38;5;46m│   -H 'appVersion: 2.3.6' \[0m
+[38;5;46m│   -H 'versionCode: 23006' \[0m
+[38;5;46m│   -H 'language: zh' \[0m
+[38;5;46m│   -H 'companyId: entry-company' \[0m
+[38;5;46m│   -H 'timeZone: Asia/Shanghai' \[0m
+[38;5;46m│   -H 'envType: dev' \[0m
+[38;5;46m│   --data-raw '{"id":"preview-record"}'[0m
+[38;5;46m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+╔╣ Request ║ POST
+║  https://guidance-test.invalid/dailyOrient/detail
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+[HTTP test headers omitted]
+╔ Extras
+╟ client_probe.http_metric_started_at: 2026-11-08 16:09:19.509828
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔ Body
+╟ id: preview-record
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+║ {id: preview-record}
+00:16 +74: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/routes/editor_entry_choice_test.dart: changing company while choosing does not navigate into either editor
+00:16 +75: All tests passed!

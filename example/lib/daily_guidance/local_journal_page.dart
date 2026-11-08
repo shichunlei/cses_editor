@@ -34,7 +34,7 @@ enum JournalPageMode {
   preview,
 }
 
-/// 成果导向/导向成果记事本页面，拥有加载、正文、显式/自动保存及预览的生命周期。
+/// 成果导向/工作成果记事本页面，拥有加载、正文、显式/自动保存及预览的生命周期。
 ///
 /// ```dart
 /// import 'package:flutter/material.dart';

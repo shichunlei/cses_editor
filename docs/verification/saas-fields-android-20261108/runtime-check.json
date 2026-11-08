@@ -1,0 +1,18 @@
+{
+  "endpoint_counts": {
+    "/dailyOrient/detail": 5,
+    "/dailyOrient/save": 2,
+    "/dailyOrient/readDailyOrient": 2,
+    "/dailyOrient/readOrgWorkOrient": 2
+  },
+  "all_http_200": true,
+  "after_clear_detail_reads": 2,
+  "all_after_clear_details_equal_save": true,
+  "runtime_error_counts": {
+    "flutter_exception": 0,
+    "render_overflow": 0,
+    "disposed_state": 0,
+    "unhandled_exception": 0,
+    "native_crash": 0
+  }
+}
