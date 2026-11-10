@@ -1,5 +1,6 @@
 # 验证索引
 
+- [SaaS 导向预览和分享状态栏与顶边验收](saas-journal-status-bar-20261110/report.md)
 - [SaaS 中企云链统一正文白卡与 Android 验收](saas-zqyl-unified-card-20261110/report.md)
 - [SaaS 长图保存相册轻提示真机验收](saas-share-album-toast-20261110/report.md)
 - [SaaS 公司模板作者头像边框](saas-author-avatar-border-20261110/report.md)
