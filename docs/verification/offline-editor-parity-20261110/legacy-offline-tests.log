@@ -1,0 +1,20 @@
+00:00 +0: loading <临时对照测试>
+00:00 +0: default offline code inserts and has independent undo/redo
+00:00 +1: default offline callout inserts and has independent undo/redo
+00:00 +2: default offline table inserts and has independent undo/redo
+00:00 +3: default offline formula inserts and has independent undo/redo
+00:00 +4: default offline mermaid inserts and has independent undo/redo
+00:00 +5: default offline divider inserts and has independent undo/redo
+00:00 +6: default offline page-divider inserts and has independent undo/redo
+00:00 +7: default offline image inserts and has independent undo/redo
+00:00 +8: default offline link inserts and has independent undo/redo
+00:00 +9: default offline video inserts and has independent undo/redo
+00:00 +10: default offline audio inserts and has independent undo/redo
+00:00 +11: default offline attachment inserts and has independent undo/redo
+00:00 +12: default offline bookmark inserts and has independent undo/redo
+00:00 +13: default offline embed inserts and has independent undo/redo
+00:00 +14: default offline figma-embed inserts and has independent undo/redo
+00:00 +15: default offline juejin-embed inserts and has independent undo/redo
+00:00 +16: default offline table cell paste stays inside its cell and rejects locks
+00:00 +17: default offline adds a table through the shared view and previews it
+00:01 +18: All tests passed!
