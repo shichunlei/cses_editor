@@ -1,5 +1,6 @@
 # 验证索引
 
+- [SaaS 长图保存相册轻提示真机验收](saas-share-album-toast-20261110/report.md)
 - [SaaS 公司模板作者头像边框](saas-author-avatar-border-20261110/report.md)
 - [SaaS 中企云链专属模板及公共随机池验证](saas-zqyl-exclusive-template-20261110/report.md)
 - [SaaS 公司模板使用 Google Fonts 与首次分享回归](saas-google-fonts-20261110/report.md)
