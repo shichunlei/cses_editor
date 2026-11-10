@@ -1,6 +1,7 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
+import 'package:cses_editor/src/editor/collab_block_actions.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/model/collab_image.dart';
 import 'package:cses_editor/src/ui/modal/collab_cached_image.dart';
@@ -15,18 +16,10 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 /// 按稳定 [blockId] 查找 [editorState] 中当前图片，避免弹窗期间远端移动后使用旧 path。
 /// 返回借用节点；已删除或类型变化时返回 null，不修改编辑器。
-Node? _findImage(EditorState editorState, String blockId) => editorState
-    .document
-    .root
-    .children
-    .where(
-      (n) =>
-          n.type == ImageBlockKeys.type &&
-          (n.attributes[AppFlowyBlockEditorAdapter.collabBlockIdAttribute] ??
-                  n.id) ==
-              blockId,
-    )
-    .firstOrNull;
+Node? _findImage(EditorState editorState, String blockId) {
+  final node = findCollabActionNode(editorState, blockId);
+  return node?.type == ImageBlockKeys.type ? node : null;
+}
 
 /// 从借用图片 [node] 读取正式投影；缺失或错误属性抛出 TypeError，调用方必须是正式图片。
 CollabEditorBlock _snapshot(Node node) => CollabEditorBlock(
@@ -37,9 +30,21 @@ CollabEditorBlock _snapshot(Node node) => CollabEditorBlock(
   blockType: ImageBlockKeys.type,
   text: node.attributes[ImageBlockKeys.url] as String? ?? '',
   alignment: node.attributes[blockComponentAlign] as String? ?? 'left',
-  image: CollabImage.fromJson(
-    Map<String, dynamic>.from(node.attributes[collabImageAttribute] as Map),
-  ),
+  image: CollabImage.fromJson({
+    ...Map<String, dynamic>.from(node.attributes[collabImageAttribute] as Map),
+    if ((node.attributes[collabImageAttribute] as Map)['captions'] is! List ||
+        ((node.attributes[collabImageAttribute] as Map)['captions'] as List)
+            .isEmpty)
+      'captions': [
+        for (final child in node.children)
+          if (child.attributes['bc.flavour'] == 'caption' &&
+              child.delta != null)
+            {
+              'id': child.attributes['bc.id'] ?? child.id,
+              'text': child.delta!.toPlainText(),
+            },
+      ],
+  }),
 );
 
 /// 提交 [original] 到 [desired] 的图片编辑，只修改用户实际改变的字段。
@@ -107,14 +112,17 @@ Future<bool> applyCollabImageEdit(
     attributes[blockComponentAlign] = desired.alignment;
     attributes[ImageBlockKeys.align] = desired.alignment;
   }
-  await editorState.apply(
-    editorState.transaction..updateNode(node, attributes),
-  );
+  final transaction = editorState.transaction..updateNode(node, attributes);
+  if (!editorState.canApplyTransaction(transaction)) return false;
+  if (editorState.undoManager.undoStack.isNonEmpty) {
+    editorState.undoManager.undoStack.last.seal();
+  }
+  await editorState.apply(transaction, skipHistoryDebounce: true);
   return true;
 }
 
 /// 删除借用 [editorState] 中 [blockId] 的图片，保留/创建后续正文供光标落点。
-/// 只读或图片已删时返回 false；Future 在单次事务完成后结束，Rust 同步移除图片及其题注。
+/// 只读、图片已删或事务被拒时返回 false；删除与同父光标落点为一个撤销步骤。
 Future<bool> deleteCollabImage(EditorState editorState, String blockId) async {
   if (!editorState.editable) return false;
   final node = _findImage(editorState, blockId);
@@ -122,14 +130,18 @@ Future<bool> deleteCollabImage(EditorState editorState, String blockId) async {
   final transaction = editorState.transaction;
   final landingPath = node.path;
   if (node.next?.delta == null) {
-    transaction.insertNode([node.path.first + 1], paragraphNode());
+    transaction.insertNode(node.path.next, paragraphNode());
   }
   transaction.deleteNode(node);
   transaction.afterSelection = Selection.single(
     path: landingPath,
     startOffset: 0,
   );
-  await editorState.apply(transaction);
+  if (!editorState.canApplyTransaction(transaction)) return false;
+  if (editorState.undoManager.undoStack.isNonEmpty) {
+    editorState.undoManager.undoStack.last.seal();
+  }
+  await editorState.apply(transaction, skipHistoryDebounce: true);
   return true;
 }
 
@@ -178,9 +190,7 @@ Future<void> showCollabImageEditor(
     if (result == null || !context.mounted) return;
     final applied = await applyCollabImageEdit(editorState, original, result);
     if (!applied && context.mounted) {
-      ScaffoldMessenger.maybeOf(
-        context,
-      )?.showSnackBar(const SnackBar(content: Text('图片已删除或文档已进入只读，请重新查看')));
+      showEditorBlockFeedback(context, editorState, '图片已删除或文档已进入只读，请重新查看');
     }
   } catch (error, stackTrace) {
     final conflict =
@@ -195,8 +205,10 @@ Future<void> showCollabImageEditor(
       );
     }
     if (context.mounted) {
-      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-        SnackBar(content: Text(conflict ? '图片已被其他端修改，请重新打开编辑' : '图片编辑失败，请重试')),
+      showEditorBlockFeedback(
+        context,
+        editorState,
+        conflict ? '图片已被其他端修改，请重新打开编辑' : '图片编辑失败，请重试',
       );
     }
   }

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/collab_paragraph_links.dart';
+import 'package:cses_editor/src/editor/editor_media_actions.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 import 'package:cses_editor/src/ui/modal/collab_bottom_sheet.dart';
@@ -44,9 +45,27 @@ BuildContext collabBlockActionContext(BuildContext context) {
   return host;
 }
 
+/// Shows [message] for the borrowed [editor] using the host feedback, or the
+/// current [context]'s messenger for standalone editors.
+void showEditorBlockFeedback(
+  BuildContext context,
+  EditorState editor,
+  String message,
+) {
+  if (!context.mounted || editor.isDisposed) return;
+  final showFeedback = EditorCommandContext.of(editor).services.showFeedback;
+  if (showFeedback != null) {
+    showFeedback(message);
+  } else {
+    ScaffoldMessenger.maybeOf(context)
+      ?..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
+  }
+}
+
 /// Inserts an empty sibling after borrowed [source] in [editor], as one undo step.
 /// Returns the inserted node or null for readonly, disposed, detached or unsupported
-/// parents. Root/callout/column children are supported, including whole containers.
+/// parents. Also supports media in host-authorized containers.
 /// Selection stays suspended; the caller restores input after its menu dismisses.
 /// Errors propagate through the apply future; neither borrowed argument is owned.
 Future<Node?> insertCollabParagraphBelow(
@@ -55,7 +74,8 @@ Future<Node?> insertCollabParagraphBelow(
 ) async {
   if (editor.isDisposed ||
       !editor.editable ||
-      !const {'page', 'callout', 'column'}.contains(source.parent?.type)) {
+      !(const {'page', 'callout', 'column'}.contains(source.parent?.type) ||
+          isHostedEditorMedia(editor, source))) {
     return null;
   }
   final id = source.attributes['cses_collab_block_id'] as String? ?? source.id;
@@ -67,6 +87,7 @@ Future<Node?> insertCollabParagraphBelow(
   final transaction = editor.transaction
     ..insertNode(source.path.next, paragraph, deepCopy: false)
     ..afterSelection = null;
+  if (!editor.canApplyTransaction(transaction)) return null;
   await editor.apply(transaction, skipHistoryDebounce: true);
   return paragraph;
 }
@@ -111,9 +132,7 @@ Future<void> copyCollabMediaLink(
       identical(EditorCommandContext.of(editor).services, services) &&
       identical(findCollabActionNode(editor, id), current) &&
       current.attributes['url'] == url) {
-    ScaffoldMessenger.maybeOf(context)
-      ?..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(content: Text('$kind链接已复制')));
+    showEditorBlockFeedback(context, editor, '$kind链接已复制');
   }
 }
 
@@ -214,12 +233,13 @@ class CollabBlockMoreButton extends StatelessWidget {
                 !editor.isDisposed &&
                 (CollabBlockLocks.of(editor)?.userId.isNotEmpty == true ||
                     (editor.editable
-                        ? const {
-                            'page',
-                            'callout',
-                            'column',
-                            'columns',
-                          }.contains(node.parent?.type)
+                        ? isHostedEditorMedia(editor, node) ||
+                              const {
+                                'page',
+                                'callout',
+                                'column',
+                                'columns',
+                              }.contains(node.parent?.type)
                         : readOnlyActions.isNotEmpty));
             final VoidCallback? onPressed = available && enabled
                 ? () => _show(context)
@@ -363,11 +383,12 @@ class CollabBlockMoreButton extends StatelessWidget {
                       ),
                     if (wasEditable &&
                         !protected &&
-                        const {
-                          'page',
-                          'callout',
-                          'column',
-                        }.contains(node.parent?.type))
+                        (isHostedEditorMedia(editor, node) ||
+                            const {
+                              'page',
+                              'callout',
+                              'column',
+                            }.contains(node.parent?.type)))
                       CollabMenuRow(
                         key: ValueKey('block-insert-below-$id'),
                         leading: const Icon(LucideIcons.listEnd),
@@ -414,9 +435,7 @@ class CollabBlockMoreButton extends StatelessWidget {
                     protectSubtree ? source.toJson() : source.attributes,
                   ) !=
                   snapshot) {
-            ScaffoldMessenger.maybeOf(
-              host,
-            )?.showSnackBar(const SnackBar(content: Text('内容已更新，请重新选择')));
+            showEditorBlockFeedback(host, editor, '内容已更新，请重新选择');
             return;
           }
           if (choice == -5) {
@@ -485,9 +504,7 @@ class CollabBlockMoreButton extends StatelessWidget {
       if (host.mounted &&
           !editor.isDisposed &&
           identical(EditorCommandContext.of(editor).services, services)) {
-        ScaffoldMessenger.maybeOf(
-          host,
-        )?.showSnackBar(const SnackBar(content: Text('操作失败，请重试')));
+        showEditorBlockFeedback(host, editor, '操作失败，请重试');
       }
     } finally {
       editor.editableNotifier.removeListener(trackPermission);

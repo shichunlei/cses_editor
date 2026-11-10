@@ -300,6 +300,7 @@ enum EditorKeyboardToolbarItem {
 ///   inlineFormats: {EditorInlineFormat.bold},
 ///   keyboardToolbarItems: [EditorKeyboardToolbarItem.blockType],
 ///   listConversionContainerTypes: {'custom-section'},
+///   mediaContainerTypes: {'custom-section'},
 /// );
 /// final editor = LocalEditorController(configuration: config);
 /// await editor.close();
@@ -343,6 +344,7 @@ final class EditorConfiguration {
   /// [listConversionContainerTypes]显式允许无Delta结构容器中的同父扁平列表互换类型，默认空。
   /// 类型须为非空字符串；不注册块、不扩展Enter/Backspace或缩进范围，也不允许跨父容器转换。
   /// [listIndentContainerTypes]独立授权无Delta父容器内同父扁平列表缩进、Enter及行首Backspace，默认空。
+  /// [mediaContainerTypes] 允许四类媒体在指定宿主容器内显示块菜单和执行同父操作，默认空。
   /// [maxCharacters] 为不含段落分隔换行的正整数UTF-16正文上限，[maxBlocks] 为正整数正文节点上限（含结构子块）。
   /// 所有集合构造时复制；非法配置抛出ArgumentError，不创建编辑资源。
   factory EditorConfiguration({
@@ -367,6 +369,7 @@ final class EditorConfiguration {
         EditorKeyboardToolbarItem.defaults,
     Iterable<String> listConversionContainerTypes = const {},
     Iterable<String> listIndentContainerTypes = const {},
+    Iterable<String> mediaContainerTypes = const {},
     int maxCharacters = 100000,
     int maxBlocks = 500,
   }) {
@@ -382,6 +385,7 @@ final class EditorConfiguration {
       listConversionContainerTypes,
     );
     final indentContainers = Set<String>.unmodifiable(listIndentContainerTypes);
+    final mediaContainers = Set<String>.unmodifiable(mediaContainerTypes);
     final conversionAttributes = Set<String>.unmodifiable(
       blockConversionPreservedAttributes,
     );
@@ -403,6 +407,7 @@ final class EditorConfiguration {
         sizes.any((size) => size < 1 || size > 4096) ||
         (formats.contains(EditorInlineFormat.fontSize) && sizes.isEmpty) ||
         listContainers.any((type) => type.trim().isEmpty) ||
+        mediaContainers.any((type) => type.trim().isEmpty) ||
         indentContainers.any((type) => type.trim().isEmpty) ||
         conversionAttributes.any((key) => key.trim().isEmpty) ||
         maxCharacters < 1 ||
@@ -423,6 +428,7 @@ final class EditorConfiguration {
       keyboardToolbarItems: toolbarItems,
       listConversionContainerTypes: listContainers,
       listIndentContainerTypes: indentContainers,
+      mediaContainerTypes: mediaContainers,
       paragraphLayout: paragraphLayout,
       structuralIndentation: structuralIndentation,
       progressiveHeadingMenu: progressiveHeadingMenu,
@@ -437,6 +443,7 @@ final class EditorConfiguration {
   /// [keyboardToolbarItems]为冻结的工具栏入口及顺序，默认原六项。
   /// [listConversionContainerTypes]为冻结的列表类型转换父容器集合，默认空，不转移任何编辑资源。
   /// [listIndentContainerTypes]为冻结的平面列表编辑父容器集合，默认空。
+  /// [mediaContainerTypes]为冻结的媒体操作父容器集合，默认空。
   /// [structuralIndentation]控制真实嵌套缩进，默认true。
   /// [paragraphLayout]控制纯文字排版入口，[blockConversionPreservedAttributes]为冻结的宿主保留属性键。
   const EditorConfiguration._(
@@ -453,6 +460,7 @@ final class EditorConfiguration {
     this.keyboardToolbarItems = EditorKeyboardToolbarItem.defaults,
     this.listConversionContainerTypes = const {},
     this.listIndentContainerTypes = const {},
+    this.mediaContainerTypes = const {},
     this.paragraphLayout = false,
     this.structuralIndentation = true,
     this.progressiveHeadingMenu = true,
@@ -498,11 +506,13 @@ final class EditorConfiguration {
   /// [preservedAttributes]合并类型转换须保留的业务字段；[listContainers]合并获准同父列表转换的结构容器。
   /// [listIndentContainers]合并获准平面列表缩进、Enter及Backspace的结构容器。
   /// [structuralIndentation]为null时沿用当前值；false可为仅接受文字叶块的宿主关闭真实嵌套快捷键。
-  /// 三个集合均复制并冻结；空白键抛ArgumentError，其余格式、容量与协同兼容开关保持。
+  /// [mediaContainers]合并允许四类媒体执行同父操作的结构容器。
+  /// 集合均复制并冻结；空白键抛ArgumentError，其余格式、容量与协同兼容开关保持。
   EditorConfiguration withHost({
     Iterable<String> preservedAttributes = const {},
     Iterable<String> listContainers = const {},
     Iterable<String> listIndentContainers = const {},
+    Iterable<String> mediaContainers = const {},
     bool? structuralIndentation,
   }) {
     final attributes = Set<String>.unmodifiable({
@@ -517,7 +527,12 @@ final class EditorConfiguration {
       ...listIndentContainerTypes,
       ...listIndentContainers,
     });
+    final media = Set<String>.unmodifiable({
+      ...mediaContainerTypes,
+      ...mediaContainers,
+    });
     if ([
+      ...media,
       ...attributes,
       ...containers,
       ...indentContainers,
@@ -538,6 +553,7 @@ final class EditorConfiguration {
       keyboardToolbarItems: keyboardToolbarItems,
       listConversionContainerTypes: containers,
       listIndentContainerTypes: indentContainers,
+      mediaContainerTypes: media,
       paragraphLayout: paragraphLayout,
       structuralIndentation:
           structuralIndentation ?? this.structuralIndentation,
@@ -599,6 +615,9 @@ final class EditorConfiguration {
 
   /// 显式授权缩进、Enter和行首Backspace的无Delta父容器；仅同父扁平列表，默认空，不产生真实嵌套。
   final Set<String> listIndentContainerTypes;
+
+  /// 宿主授权执行媒体同父操作的容器类型，默认空，配置持有不可变副本。
+  final Set<String> mediaContainerTypes;
 
   /// 是否允许原生真实嵌套缩进，默认true；false仍可使用获准的平面缩进。
   final bool structuralIndentation;

@@ -6,6 +6,7 @@ import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart'
     show AppFlowyBlockEditorAdapter, csesEmbedUrlAttribute, csesVideoBlockType;
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
+import 'package:cses_editor/src/editor/editor_media_actions.dart';
 import 'package:cses_editor/src/editor/collab_media_block_base.dart';
 import 'package:cses_editor/src/editor/collab_unsupported_block.dart';
 import 'package:cses_editor/src/ui/modal/collab_card_lock_overlay.dart';
@@ -355,16 +356,20 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
         node.attributes[AppFlowyBlockEditorAdapter.collabBlockIdAttribute]
             as String? ??
         node.id;
+    final open = EditorCommandContext.of(editor).services.openMedia;
     return buildMediaMore(
       context,
       readOnlyActions: [
         (
-          label: '在外部应用打开',
+          label: open == null ? '在外部应用打开' : '打开视频',
           key: const ValueKey('collab-video-open'),
-          run: () => openExternally(collabBlockActionContext(context)),
+          run: () => open == null
+              ? openExternally(host)
+              : open(host, node.type, url, null),
         ),
       ],
       actions: [
+        ...editorMediaReplacementActions(host, editor, node, label: '修改视频'),
         if (url.trim().isNotEmpty)
           (
             label: '复制链接',
@@ -382,7 +387,7 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
 }
 
 /// 删除借用[editor]中稳定[blockId]对应的视频引用，不删除上传文件或业务资源。
-/// 仅处理根/高亮容器中的当前视频；关闭、只读、已删或类型变化时不执行。
+/// 仅处理根/高亮或宿主已授权的容器中的当前视频；关闭、只读、已删或类型变化时不执行。
 /// 末个子块补稳定身份空段落，与删除组成独立撤销事务；不主动恢复正文输入。
 /// Future在事务完成后结束，异常交由更多菜单报告，播放器仍由视频组件销毁时释放。
 Future<void> _deleteVideoBlock(EditorState editor, String blockId) async {
@@ -390,7 +395,8 @@ Future<void> _deleteVideoBlock(EditorState editor, String blockId) async {
   final source = findCollabActionNode(editor, blockId);
   if (source == null ||
       source.type != csesVideoBlockType ||
-      !const {'page', 'callout'}.contains(source.parent?.type)) {
+      !(const {'page', 'callout'}.contains(source.parent?.type) ||
+          isHostedEditorMedia(editor, source))) {
     return;
   }
   if (editor.undoManager.undoStack.isNonEmpty) {

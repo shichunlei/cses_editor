@@ -1,6 +1,8 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
+import 'package:cses_editor/src/editor/core/editor_command_context.dart';
+import 'package:cses_editor/src/editor/editor_media_actions.dart';
 import 'package:cses_editor/src/editor/collab_resource_settings.dart';
 import 'package:cses_editor/src/model/collab_resource.dart';
 import 'package:flutter/material.dart';
@@ -79,10 +81,16 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
     ),
   );
 
-  /// 通过借用[context]打开当前地址；导航失败显示提示，不抛出未处理的点击异常。
+  /// 通过借用[context]打开当前地址；音频和附件优先交给宿主，失败由菜单统一处理。
   /// 异步打开完成后只在该上下文仍有效时提示，不修改文档或恢复正文输入。
   Future<void> openResource(BuildContext context) async {
     final target = url;
+    final open = EditorCommandContext.of(editor).services.openMedia;
+    if (open != null &&
+        const {'audio', 'attachment'}.contains(widget.node.type)) {
+      await open(context, widget.node.type, target, resource.string('name'));
+      return;
+    }
     try {
       final uri = Uri.tryParse(target);
       if (uri != null &&
@@ -94,9 +102,7 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
       // 打开失败统一通过下方提示展示。
     }
     if (context.mounted) {
-      ScaffoldMessenger.maybeOf(
-        context,
-      )?.showSnackBar(const SnackBar(content: Text('无法打开此资源，请检查链接')));
+      showEditorBlockFeedback(context, editor, '无法打开此资源，请检查链接');
     }
   }
 
@@ -112,7 +118,7 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
   }
 
   /// 删除借用的[source]，省略时使用当前节点；关闭、只读、已删除或身份过期时忽略。
-  /// 末个根/高亮子块补稳定身份空段落，删除和补段落保持同一独立撤销事务。
+  /// 末个根/高亮或宿主授权容器的子块补稳定身份空段落，删除和补段落保持同一独立撤销事务。
   Future<void> deleteResource([Node? source]) async {
     if (!editor.editable ||
         editor.isDisposed ||
@@ -136,7 +142,8 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
     final parent = node.parent!;
     final transaction = editor.transaction..deleteNode(node);
     if (parent.children.length == 1 &&
-        const {'page', 'callout'}.contains(parent.type)) {
+        (const {'page', 'callout'}.contains(parent.type) ||
+            isHostedEditorMedia(editor, node))) {
       final paragraph = paragraphNode();
       paragraph.updateAttributes({
         AppFlowyBlockEditorAdapter.collabBlockIdAttribute: paragraph.id,
@@ -161,12 +168,22 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
       node: widget.node,
       readOnlyActions: [
         (
-          label: openLabel,
+          label:
+              widget.node.type == 'audio' &&
+                  EditorCommandContext.of(editor).services.openMedia != null
+              ? '打开音频'
+              : openLabel,
           key: ValueKey('resource-open-$id'),
           run: () => openResource(host),
         ),
       ],
       actions: [
+        ...editorMediaReplacementActions(
+          host,
+          editor,
+          widget.node,
+          label: '替换$resourceLabel',
+        ),
         if (widget.node.type == 'audio' && url.trim().isNotEmpty)
           (
             label: '复制链接',

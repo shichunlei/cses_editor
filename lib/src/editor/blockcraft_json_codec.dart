@@ -528,7 +528,14 @@ abstract final class BlockCraftJsonCodec {
         );
     }
     if ({'video', ...collabResourceTypes}.contains(kind)) {
-      props.addAll(CollabResource.fromAttributes(node.attributes).values);
+      final resource = CollabResource.fromAttributes(node.attributes).values;
+      for (final key in collabResourceKeys) {
+        if (node.attributes[resourcePropertyAttribute(key)] is String &&
+            !resource.containsKey(key)) {
+          props.remove(key);
+        }
+      }
+      props.addAll(resource);
       props['url'] = node.attributes['url'] ?? props['url'];
     }
     if (kind == 'formula') {
@@ -594,8 +601,57 @@ abstract final class BlockCraftJsonCodec {
       'meta': properties(node, metadata: true),
       'children': node.delta != null
           ? encodeInline(node.delta!)
+          : kind == 'image'
+          ? _encodeImageChildren(node)
           : node.children.map(encodeBlock).toList(),
     };
+  }
+
+  /// Encodes [image]'s existing caption children with any edits from the native
+  /// image dialog. Keeps unchanged rich captions and child IDs, and writes new
+  /// captions using the existing BlockCraft caption schema.
+  static List<Map<String, dynamic>> _encodeImageChildren(Node image) {
+    final projection = image.attributes[collabImageAttribute];
+    final captions = projection is Map ? projection['captions'] as List? : null;
+    if (captions == null || captions.isEmpty) {
+      return image.children.map(encodeBlock).toList();
+    }
+    final originals = <Object, Node>{
+      for (final child in image.children)
+        if (flavour(child) == 'caption')
+          (child.attributes['bc.id'] ?? child.id): child,
+    };
+    return [
+      for (final raw in captions)
+        _encodeImageCaption(
+          CollabImageCaption.fromJson(Map<String, dynamic>.from(raw as Map)),
+          originals,
+        ),
+      for (final child in image.children)
+        if (flavour(child) != 'caption') encodeBlock(child),
+    ];
+  }
+
+  /// Uses the matching child from [originals] to retain metadata and untouched
+  /// rich text. [caption] carries the final stable ID and plain text.
+  static Map<String, dynamic> _encodeImageCaption(
+    CollabImageCaption caption,
+    Map<Object, Node> originals,
+  ) {
+    final child = originals[caption.id];
+    final result = child == null
+        ? <String, dynamic>{
+            'id': caption.id,
+            'flavour': 'caption',
+            'nodeType': 'editable',
+            'props': <String, dynamic>{},
+            'meta': <String, dynamic>{},
+          }
+        : encodeBlock(child);
+    if (child == null || child.delta?.toPlainText() != caption.text) {
+      result['children'] = encodeInline(Delta()..insert(caption.text));
+    }
+    return result;
   }
 
   /// 将桌面插入项[runs]转为原生Delta；每个行内对象占一个U+FFFC，未知对象也转换为独立属性。

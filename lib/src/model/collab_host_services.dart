@@ -26,6 +26,18 @@ typedef CollabErrorReporter =
       String? tag,
     );
 
+/// Opens an existing media reference through the current document host.
+/// [context] is borrowed for the navigation, [kind] is the editor block type,
+/// [url] is the full resource address, and [name] is the optional display name.
+/// Complete when the host route returns. Failures are reported by the caller.
+typedef EditorMediaOpener =
+    Future<void> Function(
+      BuildContext context,
+      String kind,
+      String url,
+      String? name,
+    );
+
 /// Host integrations used by the single active document, without session globals.
 ///
 /// ```dart
@@ -33,6 +45,7 @@ typedef CollabErrorReporter =
 /// final services = CollabHostServices(
 ///   buildParagraphLink: (documentId, blockId) => Uri.https(
 ///     'example.com', '/doc/$documentId', {'blockId': blockId}).toString(),
+///   showFeedback: (message) => debugPrint(message),
 ///   onImageTap: (url) async {
 ///     // 用url打开宿主图片预览，等待预览关闭后返回；包不拥有预览资源。
 ///   },
@@ -44,6 +57,8 @@ class CollabHostServices {
   /// [createId] generates unique block/session IDs; null uses secure 24-digit
   /// hexadecimal IDs. [onError] reports failures; null prints error and stack.
   /// [mediaUpload] is borrowed and must use the host's current authentication.
+  /// [openMedia] handles the audio/video/attachment menu's open action; null keeps the platform URL action.
+  /// [showFeedback] shows transient messages using the host UI; null uses the editor's local feedback.
   /// [mentionAvatarBuilder] 由宿主构建头像；null仅显示姓名，无默认头像或图片请求。
   /// [pickMentionUser] 由宿主打开单选人员界面；null禁用选人，已有提及不受影响。
   /// [onMentionTap] 接收用户直接点击、其他提及面板的打开详情及任务卡片详情；切换卡片不调用。
@@ -77,6 +92,8 @@ class CollabHostServices {
     this.createId,
     this.onError,
     this.mediaUpload,
+    this.openMedia,
+    this.showFeedback,
     this.documentMetadata,
     this.mentionAvatarBuilder,
     this.pickMentionUser,
@@ -104,6 +121,8 @@ class CollabHostServices {
         createId: createId,
         onError: onError,
         mediaUpload: mediaUpload,
+        openMedia: openMedia,
+        showFeedback: showFeedback,
         documentMetadata: documentMetadata,
         mentionAvatarBuilder: mentionAvatarBuilder,
         pickMentionUser: picker,
@@ -220,6 +239,12 @@ class CollabHostServices {
 
   /// Authenticated picker/upload integration; null disables local upload.
   final EditorMediaUploadService? mediaUpload;
+
+  /// Optional borrowed resource navigation callback.
+  final EditorMediaOpener? openMedia;
+
+  /// Optional borrowed callback for transient messages in the current host.
+  final void Function(String message)? showFeedback;
 
   /// Generate a unique ID; the host is responsible for custom factory uniqueness.
   String newId() =>

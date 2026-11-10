@@ -25,7 +25,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 /// ```
 class EditorMediaSourcePanel extends StatefulWidget {
   /// [key] 标识状态，[kind] 指定资源类型，[initialValue] 为初始URL，可为空。
-  /// [allowRemove] 默认false；[service] 借自宿主，null时禁用上传。
+  /// [allowRemove] 默认false；[replacing] 默认false，true时使用替换操作文案；[service] 借自宿主，null时禁用上传。
   /// [firstTab] 与 [firstTabLabel] 必须同时提供或同时为null，否则触发断言；封面默认使用图库。
   /// [firstTabOwnsScroll] 默认false；true要求[firstTab]非空，首Tab自行滚动，不影响链接/上传Tab。
   /// [leadingAction] 为可选底部左侧操作，选择/上传期间屏蔽点击；[onSelected] 为媒体确认回调，null由Navigator返回资源。
@@ -35,6 +35,7 @@ class EditorMediaSourcePanel extends StatefulWidget {
     required this.kind,
     required this.initialValue,
     this.allowRemove = false,
+    this.replacing = false,
     this.service,
     this.firstTab,
     this.firstTabLabel,
@@ -53,6 +54,9 @@ class EditorMediaSourcePanel extends StatefulWidget {
 
   /// 是否提供移除操作，默认false；空URL结果表示调用方应移除当前封面。
   final bool allowRemove;
+
+  /// 是否显示替换文案；默认 false，不改变所返回资源或其所有权。
+  final bool replacing;
 
   /// 借用的确认时权限回调；null表示不增加门禁，false阻止提交。
   final bool Function()? canEdit;
@@ -177,9 +181,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       });
     } catch (e) {
       if (mounted) {
-        setState(
-          () => _error = e is FormatException ? e.message : '无法选择文件，请重试',
-        );
+        setState(() => _error = e is FormatException ? e.message : '无法选择文件，请重试');
       }
     } finally {
       if (mounted) setState(() => _picking = false);
@@ -197,8 +199,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       if (uri == null ||
           !{'http', 'https'}.contains(uri.scheme) ||
           uri.host.isEmpty ||
-          (isCollabResourceType(widget.kind) &&
-              !isCollabResourceUrl(widget.kind, url))) {
+          (isCollabResourceType(widget.kind) && !isCollabResourceUrl(widget.kind, url))) {
         setState(() => _error = '请输入完整的 http:// 或 https:// 链接');
         return;
       }
@@ -230,9 +231,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       }
     } catch (e) {
       if (mounted && !cancel.isCancelled) {
-        setState(
-          () => _error = e is FormatException ? e.message : '上传失败，请检查网络后重试',
-        );
+        setState(() => _error = e is FormatException ? e.message : '上传失败，请检查网络后重试');
       }
     } finally {
       if (mounted) setState(() => _uploading = false);
@@ -259,6 +258,8 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
         ? '修改图标'
         : _banner
         ? '修改封面'
+        : widget.replacing
+        ? '替换$_label'
         : '添加$_label';
     return CollabBottomSheet(
       title: Text(title),
@@ -274,7 +275,8 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
           : switch (widget.kind) {
               'image' => LucideIcons.image,
               'video' => LucideIcons.video,
-              'audio' => LucideIcons.audioLines,
+              'audio' => LucideIcons.music2,
+              'link' => LucideIcons.link,
               _ => LucideIcons.paperclip,
             },
       closeKey: const ValueKey('editor-media-source-close'),
@@ -292,19 +294,14 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
             if (upload || _hasFirstTab)
               CollabModalSegments<String>(
                 values: {
-                  if (_hasFirstTab)
-                    'first': _banner ? '公共图库' : widget.firstTabLabel!,
+                  if (_hasFirstTab) 'first': _banner ? '公共图库' : widget.firstTabLabel!,
                   if (_hasFirstTab) 'upload': '上传图片',
                   'link': _hasFirstTab ? '图片链接' : '$_label链接',
                   if (!_hasFirstTab) 'upload': '本地上传',
                 },
                 selected: _source,
                 itemKeys: {
-                  'first': ValueKey(
-                    _banner
-                        ? 'document-cover-library-tab'
-                        : 'document-icon-emoji-tab',
-                  ),
+                  'first': ValueKey(_banner ? 'document-cover-library-tab' : 'document-icon-emoji-tab'),
                   'upload': const ValueKey('editor-media-upload-tab'),
                   'link': const ValueKey('editor-media-link-tab'),
                 },
@@ -327,10 +324,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       leadingAction: widget.leadingAction != null
           ? IgnorePointer(
               ignoring: _busy,
-              child: Opacity(
-                opacity: _busy ? .4 : 1,
-                child: widget.leadingAction!,
-              ),
+              child: Opacity(opacity: _busy ? .4 : 1, child: widget.leadingAction!),
             )
           : widget.allowRemove
           ? TextButton(
@@ -347,31 +341,25 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
             )
           : null,
       actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('取消'),
-        ),
-        if (_source == 'first')
-          FilledButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('完成'),
-          ),
+        TextButton(onPressed: () => Navigator.pop(context), child: const Text('取消')),
+        if (_source == 'first') FilledButton(onPressed: () => Navigator.pop(context), child: const Text('完成')),
         if (_source != 'first')
           FilledButton(
             key: const ValueKey('editor-url-block-submit'),
-            onPressed:
-                _busy || (_local ? _file == null : _url.text.trim().isEmpty)
-                ? null
-                : _submit,
+            onPressed: _busy || (_local ? _file == null : _url.text.trim().isEmpty) ? null : _submit,
             child: Text(
               _uploading
                   ? '上传中…'
                   : _local
                   ? (widget.kind == 'document_icon' || _banner
                         ? '上传并保存'
+                        : widget.replacing
+                        ? '上传并替换'
                         : '上传并插入')
                   : (widget.kind == 'document_icon' || _banner
                         ? '保存'
+                        : widget.replacing
+                        ? '替换$_label'
                         : '插入$_label'),
             ),
           ),
@@ -395,7 +383,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
                   )
           else if (!_local) ...[
             CollabModalField(
-              label: '$_label链接',
+              label: widget.kind == 'link' ? '链接地址' : '$_label链接',
               child: TextField(
                 key: const ValueKey('editor-url-block-input'),
                 controller: _url,
@@ -412,26 +400,22 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
             Text(
               widget.kind == 'image'
                   ? '支持 JPG、PNG、GIF、WebP 等常见图片格式'
+                  : widget.kind == 'link'
+                  ? '支持可直接访问的网页链接'
                   : '支持可直接访问的$_label链接',
               style: TextStyle(fontSize: 11, color: c.muted),
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 14),
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: c.soft,
-                borderRadius: BorderRadius.circular(10),
-              ),
+              decoration: BoxDecoration(color: c.soft, borderRadius: BorderRadius.circular(10)),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(LucideIcons.info, size: 16, color: c.accent),
                   const SizedBox(width: 9),
                   Expanded(
-                    child: Text(
-                      '使用网络$_label时，请确保链接可被文档成员访问。',
-                      style: TextStyle(fontSize: 12, color: c.accent),
-                    ),
+                    child: Text('使用网络$_label时，请确保链接可被文档成员访问。', style: TextStyle(fontSize: 12, color: c.accent)),
                   ),
                 ],
               ),
@@ -446,23 +430,14 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
                 borderRadius: BorderRadius.circular(12),
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 24,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                   decoration: BoxDecoration(
                     border: Border.all(color: c.line),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Column(
                     children: [
-                      Icon(
-                        _file == null
-                            ? LucideIcons.cloudUpload
-                            : LucideIcons.fileImage,
-                        size: 28,
-                        color: c.accent,
-                      ),
+                      Icon(_file == null ? LucideIcons.cloudUpload : LucideIcons.fileImage, size: 28, color: c.accent),
                       const SizedBox(height: 8),
                       Text(
                         _picking ? '正在选择文件…' : (_file?.name ?? '点击选择$_label文件'),
@@ -473,11 +448,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
                       const SizedBox(height: 8),
                       Text(
                         _file == null
-                            ? (upload
-                                  ? _fileHint
-                                  : (_banner
-                                        ? '当前环境暂不支持图片上传，请使用图库或链接'
-                                        : '当前环境暂不支持图片上传，请使用表情或链接'))
+                            ? (upload ? _fileHint : (_banner ? '当前环境暂不支持图片上传，请使用图库或链接' : '当前环境暂不支持图片上传，请使用表情或链接'))
                             : '${(_file!.size / 1024 / 1024).toStringAsFixed(2)} MB · 点击重新选择',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 11, color: c.muted),
@@ -489,16 +460,10 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
             ),
             if (_uploading) ...[
               const SizedBox(height: 16),
-              LinearProgressIndicator(
-                value: _progress,
-                color: c.accent,
-                borderRadius: BorderRadius.circular(3),
-              ),
+              LinearProgressIndicator(value: _progress, color: c.accent, borderRadius: BorderRadius.circular(3)),
               const SizedBox(height: 8),
               Text(
-                _progress >= 1
-                    ? '正在保存文件…'
-                    : '正在上传 ${(_progress * 100).round()}%',
+                _progress >= 1 ? '正在保存文件…' : '正在上传 ${(_progress * 100).round()}%',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 11, color: c.muted),
               ),

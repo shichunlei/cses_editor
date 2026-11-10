@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:applowy_editor_fork/applowy_editor_fork.dart' hide Path;
 import 'package:cses_editor/src/editor/blockcraft_json_codec.dart';
+import 'package:cses_editor/src/model/collab_image.dart';
 import 'package:cses_editor/src/editor/blockcraft_snapshot_presets.g.dart';
 import 'package:cses_editor/src/model/collab_block_colors.dart';
 import 'package:cses_editor/src/model/collab_person_card.dart';
@@ -249,11 +250,17 @@ class _SnapshotChildren extends BlockComponentStatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.read<EditorState>();
+    final image = node.attributes[collabImageAttribute];
+    final rendersEditedCaptions =
+        image is Map && (image['captions'] as List?)?.isNotEmpty == true;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         body,
-        for (final child in node.children) state.renderer.build(context, child),
+        for (final child in node.children)
+          if (!rendersEditedCaptions ||
+              BlockCraftJsonCodec.flavour(child) != 'caption')
+            state.renderer.build(context, child),
       ],
     );
   }

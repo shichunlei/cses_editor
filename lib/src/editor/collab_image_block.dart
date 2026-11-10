@@ -5,6 +5,7 @@ import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart'
     show csesEmbedUrlAttribute;
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
+import 'package:cses_editor/src/editor/editor_media_actions.dart';
 import 'package:cses_editor/src/editor/collab_image_editor.dart';
 import 'package:cses_editor/src/editor/collab_media_block_base.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
@@ -179,9 +180,7 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     } catch (error, stack) {
       if (mounted && isCurrent()) {
         services.report('打开图片失败', error, stack, 'DocCollab');
-        ScaffoldMessenger.maybeOf(
-          context,
-        )?.showSnackBar(const SnackBar(content: Text('打开图片失败，请重试')));
+        showEditorBlockFeedback(context, editor, '打开图片失败，请重试');
       }
     } finally {
       _opening = false;
@@ -283,6 +282,12 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
                   editor: editor,
                   node: widget.node,
                   actions: [
+                    ...editorMediaReplacementActions(
+                      host,
+                      editor,
+                      widget.node,
+                      label: '替换图片',
+                    ),
                     if (_url.trim().isNotEmpty)
                       (
                         label: '复制链接',
@@ -301,7 +306,11 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
                       },
                     ),
                     (
-                      label: image.captions.isEmpty ? '添加题注' : '编辑题注',
+                      label:
+                          (image.captions.isEmpty &&
+                              widget.node.children.isEmpty)
+                          ? '添加题注'
+                          : '编辑题注',
                       key: const ValueKey('collab-image-caption'),
                       run: () async {
                         final source = findCollabActionNode(editor, id);

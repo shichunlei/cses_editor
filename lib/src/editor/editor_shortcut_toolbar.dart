@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_block_delete.dart';
+import 'package:cses_editor/src/editor/collab_block_actions.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/collab_callout_block.dart';
 import 'package:cses_editor/src/editor/collab_divider_settings.dart';
@@ -21,6 +22,7 @@ import 'package:cses_editor/src/editor/editor_media_source_sheet.dart';
 import 'package:cses_editor/src/editor/stable_mobile_toolbar.dart';
 import 'package:cses_editor/src/model/collab_block_colors.dart';
 import 'package:cses_editor/src/model/collab_color_palette.dart';
+import 'package:cses_editor/src/model/collab_image.dart';
 import 'package:cses_editor/src/model/collab_person_card.dart';
 import 'package:cses_editor/src/model/collab_date_card.dart';
 import 'package:cses_editor/src/model/collab_weather.dart';
@@ -823,7 +825,7 @@ Future<void> _showKeyboardCommonInsertion(
     } else {
       debugPrint('插入${action.label}失败：$error\n$stack');
     }
-    if (context.mounted && current()) _showToolbarMessage(context, '插入失败，请重试');
+    if (context.mounted && current()) showEditorBlockFeedback(context, state, '插入失败，请重试');
   } finally {
     state.editableNotifier.removeListener(changed);
     try {
@@ -1069,7 +1071,7 @@ Future<Selection?> _performCommonInsertion(
       debugPrint('插入${action.label}失败：$error\n$stack');
     }
     if (context.mounted && !state.isDisposed && canUseHost()) {
-      _showToolbarMessage(context, '插入失败，请重试');
+      showEditorBlockFeedback(context, state, '插入失败，请重试');
     }
     return null;
   }
@@ -1195,7 +1197,7 @@ Future<void> showEditorUserMentionSheet(
     services.report('插入用户提及失败', error, stack, 'DocCollab');
     if (context.mounted &&
         identical(EditorCommandContext.of(editorState).services, services)) {
-      _showToolbarMessage(context, '插入失败，请重试');
+      showEditorBlockFeedback(context, state, '插入失败，请重试');
     }
   } finally {
     await session.finish(
@@ -4099,7 +4101,11 @@ Future<Selection?> applyUrlBlockShortcut(
   // while a URL dialog and, in the “更多” flow, a bottom sheet still own focus.
   // Leaving it null closes the old editor input connection; the outer route
   // restores [nextSelection] only after every modal has been dismissed.
-  await editorState.apply(transaction);
+  if (!editorState.canApplyTransaction(transaction)) return null;
+  if (editorState.undoManager.undoStack.isNonEmpty) {
+    editorState.undoManager.undoStack.last.seal();
+  }
+  await editorState.apply(transaction, skipHistoryDebounce: true);
   return nextSelection;
 }
 
@@ -4118,6 +4124,7 @@ Node _urlBackedNode(
       type: ImageBlockKeys.type,
       attributes: {
         ImageBlockKeys.url: url,
+        collabImageAttribute: const CollabImage().toJson(),
         ImageBlockKeys.align: 'center',
         csesBlockIndentAttribute: 0,
       },

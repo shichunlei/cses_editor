@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 /// 在借用的 [context] 中展示媒体来源面板；[blockType] 为正文资源或document_banner/document_icon。
 /// [initialValue] 默认空，预填链接；[allowRemove] 默认false，true允许返回空URL移除。
+/// [replacing] 将标题和确认按钮显示为替换操作，默认显示插入。
 /// [canEdit] 是可选的提交时门禁，null不增加限制；[service] 借自宿主，null优先使用正文实例端口，历史独立调用才使用运行时端口。
 /// [editorState]可显式指定正文实例，嵌套弹窗中也不回退到活动协同文档端口。
 /// Future等待面板完整退场后返回选中资源，取消为null；上传/校验失败留在面板中重试。
@@ -18,6 +19,7 @@ Future<EditorMediaSource?> showEditorMediaSourceSheet(
   required String blockType,
   String initialValue = '',
   bool allowRemove = false,
+  bool replacing = false,
   bool Function()? canEdit,
   EditorMediaUploadService? service,
   EditorState? editorState,
@@ -37,6 +39,7 @@ Future<EditorMediaSource?> showEditorMediaSourceSheet(
         kind: blockType,
         initialValue: initialValue,
         allowRemove: allowRemove,
+        replacing: replacing,
         canEdit: canEdit,
         service: mediaService,
       );
