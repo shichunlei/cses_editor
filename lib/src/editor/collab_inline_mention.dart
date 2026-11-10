@@ -19,7 +19,8 @@ import 'collab_mention_tap_handler.dart';
 /// ```
 class CollabInlineMention extends StatelessWidget {
   /// [key] 控制身份与状态复用，[node] 是借用节点，[offset] 为UTF-16对象位置，
-  /// [name] 是原始显示名，[userId] 是头像/点击事件的稳定身份，[style] 借用段落字号与格式。
+  /// [name] 是原始显示名，[userId] 是头像/点击事件的稳定身份，[style] 借用段落字号与格式；
+  /// 浅色前景使用深色标签衬底，保留实际文字颜色，不修改正文格式。
   const CollabInlineMention({
     super.key,
     required this.node,
@@ -47,6 +48,11 @@ class CollabInlineMention extends StatelessWidget {
   /// 在借用 [context] 中以一个WidgetSpan展示头像与姓名，并限制窄屏最长宽度。
   @override
   Widget build(BuildContext context) {
+    final foreground = style.color ?? const Color(0xFF2563EB);
+    // 公司深色正文仍借用同一人员标签；按实际前景选择衬底，避免浅色姓名落在浅色标签上。
+    final background = foreground.computeLuminance() > .5
+        ? const Color(0xFF1E3A5F)
+        : const Color(0xFFEFF6FF);
     final state = context.read<EditorState>();
     final canTap = EditorCommandContext.of(state).services.onMentionTap != null;
     final avatar = buildHostMentionAvatarSlot(
@@ -77,7 +83,7 @@ class CollabInlineMention extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
               decoration: BoxDecoration(
-                color: const Color(0xFFEFF6FF),
+                color: background,
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Row(
@@ -89,10 +95,7 @@ class CollabInlineMention extends StatelessWidget {
                       name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: style.copyWith(
-                        color: style.color ?? const Color(0xFF2563EB),
-                        height: 1.2,
-                      ),
+                      style: style.copyWith(color: foreground, height: 1.2),
                     ),
                   ),
                 ],
