@@ -1,5 +1,6 @@
 # 验证索引
 
+- [Android 集成测试依赖解析与 Debug 构建](android-test-dependency-resolution-20261110/report.md)
 - [AppFlowy 编辑器 fork 发布包迁移](appflowy-fork-20261110/report.md)
 - [SaaS 导向预览和分享状态栏与顶边验收](saas-journal-status-bar-20261110/report.md)
 - [SaaS 中企云链统一正文白卡与 Android 验收](saas-zqyl-unified-card-20261110/report.md)
