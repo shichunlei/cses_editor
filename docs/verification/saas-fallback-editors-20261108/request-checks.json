@@ -1,0 +1,591 @@
+{
+  "profiles": {
+    "brand-saved": [
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "3b3a9826cea849407407c9720d4bbe70c06bd3c0ba93ab2f3faa2eca33e83d6b",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": false,
+          "ARC-MAIN-C1": false,
+          "DEFAULT-MAIN-D1": false,
+          "BRAND-REOPEN-E1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "3e8cc4fae99978da493a15787e4a49385706e623eb39be2958f27b90b102f93a",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": false,
+          "DEFAULT-MAIN-D1": false,
+          "BRAND-REOPEN-E1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "3e8cc4fae99978da493a15787e4a49385706e623eb39be2958f27b90b102f93a",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": false,
+          "DEFAULT-MAIN-D1": false,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      }
+    ],
+    "arc-saved": [
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "12111f6991e06cc2c043558ddc9504786d1fb9bcf4053185ecd450ed362b7921",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": false,
+          "BRAND-REOPEN-E1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "12111f6991e06cc2c043558ddc9504786d1fb9bcf4053185ecd450ed362b7921",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": false,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      }
+    ],
+    "default-saved": [
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "12111f6991e06cc2c043558ddc9504786d1fb9bcf4053185ecd450ed362b7921",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": false,
+          "BRAND-REOPEN-E1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      }
+    ],
+    "final-home": [
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "12111f6991e06cc2c043558ddc9504786d1fb9bcf4053185ecd450ed362b7921",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": false,
+          "BRAND-REOPEN-E1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "a8dea6447b46c120e6c3c9ea75385c220b5ad6f81a7eef9c68f220948806baa1",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": false
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "8d5e4f10554f245bb5af2b9fb395b8e21419346c4179d839b38d2886814c9efd",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": true
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "8d5e4f10554f245bb5af2b9fb395b8e21419346c4179d839b38d2886814c9efd",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": true
+        },
+        "matchesLatestSubmittedBody": true
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "8d5e4f10554f245bb5af2b9fb395b8e21419346c4179d839b38d2886814c9efd",
+        "bodyPresent": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeople": 2,
+        "navigatorPeople": 1,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "markers": {
+          "BRAND-MAIN-B1": true,
+          "ARC-MAIN-C1": true,
+          "DEFAULT-MAIN-D1": true,
+          "BRAND-REOPEN-E1": true
+        },
+        "matchesLatestSubmittedBody": true
+      }
+    ]
+  },
+  "finalReopenMatchesLastSave": true,
+  "readOnlyImageOperationsMadeNoAdditionalSave": true
+}

@@ -1,0 +1,102 @@
+{
+  "originalPixelComparisons": [
+    {
+      "template": "tech-cut-corner",
+      "bodyLines": 0,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "tech-cut-corner",
+      "bodyLines": 3,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "tech-cut-corner",
+      "bodyLines": 30,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "editorial-timeline",
+      "bodyLines": 0,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "editorial-timeline",
+      "bodyLines": 3,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "editorial-timeline",
+      "bodyLines": 30,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "warm-wave",
+      "bodyLines": 0,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "warm-wave",
+      "bodyLines": 3,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "warm-wave",
+      "bodyLines": 30,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "gallery-frame",
+      "bodyLines": 0,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "gallery-frame",
+      "bodyLines": 3,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "template": "gallery-frame",
+      "bodyLines": 30,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    }
+  ],
+  "allSevenPoolComparisonCasesPassed": 21,
+  "saasTargetTests": 232,
+  "editorRootTests": 12,
+  "androidBusinessType": "RESULT",
+  "actualSaveCount": 4,
+  "allPersonArraysPreserved": true,
+  "finalApkSha256": "97a83d11bf096a556cb4fe1042c685173f360aa5197c688813892164e7e659d2",
+  "savedAlbumImages": {
+    "editorial-album.jpg": [
+      739,
+      2388
+    ],
+    "tech-album.jpg": [
+      739,
+      2317
+    ],
+    "warm-album.jpg": [
+      739,
+      2238
+    ],
+    "gallery-album.jpg": [
+      739,
+      2599
+    ]
+  },
+  "rawIdsAndHeadersArchived": false
+}

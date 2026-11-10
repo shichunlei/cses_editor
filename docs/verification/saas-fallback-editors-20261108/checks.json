@@ -1,0 +1,83 @@
+{
+  "templates": [
+    "default",
+    "arc-business-card",
+    "brand-dual-zone"
+  ],
+  "originalPixelComparisons": [
+    {
+      "template": "default",
+      "bodyLines": 0,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "default",
+      "bodyLines": 3,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "default",
+      "bodyLines": 30,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "arc-business-card",
+      "bodyLines": 0,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "arc-business-card",
+      "bodyLines": 3,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "arc-business-card",
+      "bodyLines": 30,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "brand-dual-zone",
+      "bodyLines": 0,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "brand-dual-zone",
+      "bodyLines": 3,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    },
+    {
+      "template": "brand-dual-zone",
+      "bodyLines": 30,
+      "identicalEncodedPng": true,
+      "differentPixels": 0
+    }
+  ],
+  "targetRegressionTests": 196,
+  "analysis": "No issues found",
+  "apkSha256": "b553efd68e0cbf0345accaef2890d36057f07a1cf9f5f55d5ac9bafc6116cdb9",
+  "device": "HONOR MTN-AN00 Android",
+  "androidBusinessType": "RESULT",
+  "savedImages": {
+    "arc-album.jpg": [
+      739,
+      2033
+    ],
+    "default-album.jpg": [
+      739,
+      2469
+    ],
+    "brand-album.jpg": [
+      739,
+      2257
+    ]
+  },
+  "rawIdsAndHeadersArchived": false
+}

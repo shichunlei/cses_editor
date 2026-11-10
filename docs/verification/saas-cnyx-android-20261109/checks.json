@@ -1,0 +1,26 @@
+{
+  "originalPixelComparisons": [
+    {
+      "bodyLines": 0,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "bodyLines": 3,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    },
+    {
+      "bodyLines": 30,
+      "differentPixels": 0,
+      "identicalEncodedPng": true
+    }
+  ],
+  "saasTargetTests": 242,
+  "androidBusinessType": "ORIENT",
+  "savedAlbumImage": {
+    "width": 739,
+    "height": 1625
+  },
+  "formalApkSha256": "b97f31b96a2f9e3c5f50c267bb15ec6f3fb3a68acf6fc662da9a9e27ba7a39e4"
+}

@@ -1,0 +1,564 @@
+{
+  "profiles": {
+    "before-final": [
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "8d5e4f10554f245bb5af2b9fb395b8e21419346c4179d839b38d2886814c9efd",
+        "matchesLatestSubmission": null,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": false,
+          "TECH-G1": false,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "8d5e4f10554f245bb5af2b9fb395b8e21419346c4179d839b38d2886814c9efd",
+        "matchesLatestSubmission": null,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": false,
+          "TECH-G1": false,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "b2c1292c669b670f3a429a8a861e695849c8392a931f7ef662cd862ec435c684",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": false,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b2c1292c669b670f3a429a8a861e695849c8392a931f7ef662cd862ec435c684",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": false,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b2c1292c669b670f3a429a8a861e695849c8392a931f7ef662cd862ec435c684",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": false,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "f17db692ad9c85f6c7b7ff83cab1516277c87007afe2db9367878c362d34647d",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "f17db692ad9c85f6c7b7ff83cab1516277c87007afe2db9367878c362d34647d",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "f17db692ad9c85f6c7b7ff83cab1516277c87007afe2db9367878c362d34647d",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "f17db692ad9c85f6c7b7ff83cab1516277c87007afe2db9367878c362d34647d",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      }
+    ],
+    "final-preview": [
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "f17db692ad9c85f6c7b7ff83cab1516277c87007afe2db9367878c362d34647d",
+        "matchesLatestSubmission": null,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "f17db692ad9c85f6c7b7ff83cab1516277c87007afe2db9367878c362d34647d",
+        "matchesLatestSubmission": null,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "f17db692ad9c85f6c7b7ff83cab1516277c87007afe2db9367878c362d34647d",
+        "matchesLatestSubmission": null,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": false,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "b15d6dd3b3a6f7757c3aaf298585fcacd58dcfee5c1af488a4314f26ba7c3ccd",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b15d6dd3b3a6f7757c3aaf298585fcacd58dcfee5c1af488a4314f26ba7c3ccd",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b15d6dd3b3a6f7757c3aaf298585fcacd58dcfee5c1af488a4314f26ba7c3ccd",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b15d6dd3b3a6f7757c3aaf298585fcacd58dcfee5c1af488a4314f26ba7c3ccd",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b15d6dd3b3a6f7757c3aaf298585fcacd58dcfee5c1af488a4314f26ba7c3ccd",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": false
+        }
+      },
+      {
+        "path": "/dailyOrient/save",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "bizType",
+          "bodyContent",
+          "contentSnapshot",
+          "customData",
+          "dailyResultContent",
+          "expectedEffectContent",
+          "helpItems",
+          "id",
+          "navigatorItems",
+          "orientType",
+          "selfCheck",
+          "thinking",
+          "todoContent"
+        ],
+        "bodySha256": "b778813c35d2b402da3100956c7682197b1095684ffb2cf931b753ae771b3cb8",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": true
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b778813c35d2b402da3100956c7682197b1095684ffb2cf931b753ae771b3cb8",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": true
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b778813c35d2b402da3100956c7682197b1095684ffb2cf931b753ae771b3cb8",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": true
+        }
+      },
+      {
+        "path": "/dailyOrient/detail",
+        "httpStatus": 200,
+        "isSuccess": true,
+        "recordAlias": "result-record-1",
+        "requestKeys": [
+          "id"
+        ],
+        "bodySha256": "b778813c35d2b402da3100956c7682197b1095684ffb2cf931b753ae771b3cb8",
+        "matchesLatestSubmission": true,
+        "thinkingUnchanged": true,
+        "selfCheckUnchanged": true,
+        "bodyMetaUnchanged": true,
+        "helpCount": 1,
+        "navigatorCount": 1,
+        "helpPeopleCount": 2,
+        "navigatorPeopleCount": 1,
+        "markers": {
+          "EDITORIAL-F1": true,
+          "TECH-G1": true,
+          "WARM-H1": true,
+          "GALLERY-I1": true
+        }
+      }
+    ]
+  },
+  "actualSaveCount": 4,
+  "finalReopenMatchesLastSubmission": true,
+  "unchangedSaveAndFramingDidNotSubmitAgain": true,
+  "finalApkFirstDetailMatchesPreviousApkLastDetail": true
+}

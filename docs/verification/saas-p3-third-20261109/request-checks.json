@@ -1,0 +1,187 @@
+{
+  "actualSaveCount": 3,
+  "detailReads": 7,
+  "allReadbacksMatchLatestSubmission": true,
+  "trace": [
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "40f3e13e34d3f6a9de8053b837d5c7bd41372547fdfc94c679ed6077298f0292",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "BJX-A3": false,
+        "HELLO-B3": false,
+        "MACAN-C3": false
+      }
+    },
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "a94d0ddc146a117a2f9b71ddacde75327714f0ff5ed8cef00ce7f7f4f8cb3228",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "id",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": false,
+        "MACAN-C3": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "a94d0ddc146a117a2f9b71ddacde75327714f0ff5ed8cef00ce7f7f4f8cb3228",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": false,
+        "MACAN-C3": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "a94d0ddc146a117a2f9b71ddacde75327714f0ff5ed8cef00ce7f7f4f8cb3228",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": false,
+        "MACAN-C3": false
+      }
+    },
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "65736cde31820eec5084a1a1996dfc2648ccaec48f67f80716a709a8338b895b",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "id",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": true,
+        "MACAN-C3": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "65736cde31820eec5084a1a1996dfc2648ccaec48f67f80716a709a8338b895b",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": true,
+        "MACAN-C3": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "65736cde31820eec5084a1a1996dfc2648ccaec48f67f80716a709a8338b895b",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": true,
+        "MACAN-C3": false
+      }
+    },
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "93b6838dacc5637e88d1f5a405046af53c7664189df5cb9e8cee7932a2f7f8d0",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "id",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": true,
+        "MACAN-C3": true
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "93b6838dacc5637e88d1f5a405046af53c7664189df5cb9e8cee7932a2f7f8d0",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": true,
+        "MACAN-C3": true
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "93b6838dacc5637e88d1f5a405046af53c7664189df5cb9e8cee7932a2f7f8d0",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "BJX-A3": true,
+        "HELLO-B3": true,
+        "MACAN-C3": true
+      }
+    }
+  ]
+}

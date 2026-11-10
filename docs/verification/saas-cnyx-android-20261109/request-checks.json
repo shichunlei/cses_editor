@@ -1,0 +1,100 @@
+{
+  "actualSaveCount": 2,
+  "detailReadCount": 4,
+  "allDetailBodiesEqualLastSubmission": true,
+  "allDetailLegacyMainFieldsEqualLastSubmission": true,
+  "shareDidNotSubmitAgain": true,
+  "trace": [
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "bodySha256": "00d9837959e2647d5f67a4f2dbbdef055d94a66228f5a48fca22e7221fe4709c",
+      "containsCreateMarker": true,
+      "containsUpdateMarker": false
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "requestKeys": [
+        "id"
+      ],
+      "bodySha256": "00d9837959e2647d5f67a4f2dbbdef055d94a66228f5a48fca22e7221fe4709c",
+      "containsCreateMarker": true,
+      "containsUpdateMarker": false
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "requestKeys": [
+        "id"
+      ],
+      "bodySha256": "00d9837959e2647d5f67a4f2dbbdef055d94a66228f5a48fca22e7221fe4709c",
+      "containsCreateMarker": true,
+      "containsUpdateMarker": false
+    },
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "id",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "bodySha256": "53b576efaffe4fc9da6ccde31fbb436286ac38ad2e22e441605b167bac124892",
+      "containsCreateMarker": true,
+      "containsUpdateMarker": true
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "requestKeys": [
+        "id"
+      ],
+      "bodySha256": "53b576efaffe4fc9da6ccde31fbb436286ac38ad2e22e441605b167bac124892",
+      "containsCreateMarker": true,
+      "containsUpdateMarker": true
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "requestKeys": [
+        "id"
+      ],
+      "bodySha256": "53b576efaffe4fc9da6ccde31fbb436286ac38ad2e22e441605b167bac124892",
+      "containsCreateMarker": true,
+      "containsUpdateMarker": true
+    }
+  ]
+}

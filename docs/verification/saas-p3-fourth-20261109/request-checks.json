@@ -1,0 +1,198 @@
+{
+  "actualSaveCount": 3,
+  "detailReads": 7,
+  "allReadbacksMatchLatestSubmission": true,
+  "brandHttpStatuses": {
+    "zhaoquanjidian_logo.webp": [
+      404
+    ],
+    "lifengzhuzao_logo.webp": [
+      200
+    ],
+    "juyischool_logo_02.webp": [
+      200
+    ]
+  },
+  "trace": [
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "93b6838dacc5637e88d1f5a405046af53c7664189df5cb9e8cee7932a2f7f8d0",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "ZQJD-A4": false,
+        "LFZZ-B4": false,
+        "JYT-C4": false
+      }
+    },
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "4d2140fcd238022ddc35352e7393d5149012999f9823b0075199a767bb94da20",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "id",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": false,
+        "JYT-C4": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "4d2140fcd238022ddc35352e7393d5149012999f9823b0075199a767bb94da20",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": false,
+        "JYT-C4": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "4d2140fcd238022ddc35352e7393d5149012999f9823b0075199a767bb94da20",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": false,
+        "JYT-C4": false
+      }
+    },
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "124643c5253e86d9bb93a9aeeca8de7b4fa6531871a0ff708b84de610b9b1171",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "id",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": true,
+        "JYT-C4": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "124643c5253e86d9bb93a9aeeca8de7b4fa6531871a0ff708b84de610b9b1171",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": true,
+        "JYT-C4": false
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "124643c5253e86d9bb93a9aeeca8de7b4fa6531871a0ff708b84de610b9b1171",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": true,
+        "JYT-C4": false
+      }
+    },
+    {
+      "path": "/dailyOrient/save",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "b3adc9d6260f82ffe830489b3b87193fb6586a34265826ea7f6ffc189b479be6",
+      "requestKeys": [
+        "bizType",
+        "bodyContent",
+        "contentSnapshot",
+        "customData",
+        "dailyOrientContent",
+        "expectedEffectContent",
+        "helpItems",
+        "id",
+        "navigatorItems",
+        "orientType",
+        "todoContent"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": true,
+        "JYT-C4": true
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "b3adc9d6260f82ffe830489b3b87193fb6586a34265826ea7f6ffc189b479be6",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": true,
+        "JYT-C4": true
+      }
+    },
+    {
+      "path": "/dailyOrient/detail",
+      "httpStatus": 200,
+      "isSuccess": true,
+      "recordAlias": "orient-record-1",
+      "bodySha256": "b3adc9d6260f82ffe830489b3b87193fb6586a34265826ea7f6ffc189b479be6",
+      "requestKeys": [
+        "id"
+      ],
+      "markers": {
+        "ZQJD-A4": true,
+        "LFZZ-B4": true,
+        "JYT-C4": true
+      }
+    }
+  ]
+}

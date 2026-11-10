@@ -1,0 +1,1009 @@
+{
+  "source_commit": "7e5efa1a7",
+  "counts": {
+    "registered_company_ids": 41,
+    "visual_pages": 51,
+    "fixed_viewport": 3,
+    "measured_poster": 48,
+    "fallback_builders": 7,
+    "independent_editor_visuals": 3,
+    "not_independently_adapted_visuals": 48
+  },
+  "stages": {
+    "P3": 16,
+    "P6": 6,
+    "P2": 7,
+    "P1": 1,
+    "已接入": 3,
+    "P4": 12,
+    "P5": 6
+  },
+  "companies": [
+    {
+      "company": "润通求本",
+      "company_key": "rtqbCompanyId",
+      "pages": [
+        "RtqbTemplatePage"
+      ]
+    },
+    {
+      "company": "爱能智亚",
+      "company_key": "anzyCompanyId",
+      "pages": [
+        "AnzyTemplatePage",
+        "AnzyV2TemplatePage"
+      ]
+    },
+    {
+      "company": "呈诺医学",
+      "company_key": "cnyxCompanyId",
+      "pages": [
+        "CnyxTemplatePage"
+      ]
+    },
+    {
+      "company": "恒记饭店",
+      "company_key": "hjfdCompanyId",
+      "pages": [
+        "HjfdTemplatePage"
+      ]
+    },
+    {
+      "company": "瑞丰中轴",
+      "company_key": "rfzzCompanyId",
+      "pages": [
+        "RfzzTemplatePage"
+      ]
+    },
+    {
+      "company": "鸿尊餐饮",
+      "company_key": "hzcyCompanyId",
+      "pages": [
+        "HzcyTemplatePage"
+      ]
+    },
+    {
+      "company": "艾林物业",
+      "company_key": "alwyCompanyId",
+      "pages": [
+        "AlwyTemplatePage"
+      ]
+    },
+    {
+      "company": "恒源亿科",
+      "company_key": "hyykCompanyId",
+      "pages": [
+        "YkylTemplatePage",
+        "HyshTemplatePage"
+      ]
+    },
+    {
+      "company": "锦味康",
+      "company_key": "jwkCompanyId",
+      "pages": [
+        "JwkTemplatePage"
+      ]
+    },
+    {
+      "company": "全天候",
+      "company_key": "qthCompanyId",
+      "pages": [
+        "QthTemplatePage"
+      ]
+    },
+    {
+      "company": "国医康",
+      "company_key": "gykCompanyId",
+      "pages": [
+        "DslTemplatePage",
+        "YmkqTemplatePage",
+        "GykTemplatePage"
+      ]
+    },
+    {
+      "company": "宏图物业",
+      "company_key": "htwyCompanyId",
+      "pages": [
+        "HtwyTemplatePage"
+      ]
+    },
+    {
+      "company": "中企云链",
+      "company_key": "zqylCompanyId",
+      "pages": [
+        "ZqylTemplatePage"
+      ]
+    },
+    {
+      "company": "望岳控股",
+      "company_key": "wykgCompanyId",
+      "pages": [
+        "WykgTemplatePage"
+      ]
+    },
+    {
+      "company": "河北恩广科技",
+      "company_key": "egkjCompanyId",
+      "pages": [
+        "WykgTemplatePage"
+      ]
+    },
+    {
+      "company": "无锡望岳",
+      "company_key": "wxwyCompanyId",
+      "pages": [
+        "WykgTemplatePage"
+      ]
+    },
+    {
+      "company": "久宴",
+      "company_key": "jyCompanyId",
+      "pages": [
+        "JyTemplatePage"
+      ]
+    },
+    {
+      "company": "锦盛佳业",
+      "company_key": "jsjyCompanyId",
+      "pages": [
+        "JsjyTemplatePage"
+      ]
+    },
+    {
+      "company": "老淮安",
+      "company_key": "lhaCompanyId",
+      "pages": [
+        "LhaTemplatePage"
+      ]
+    },
+    {
+      "company": "大都会",
+      "company_key": "ddhCompanyId",
+      "pages": [
+        "DdhTemplatePage"
+      ]
+    },
+    {
+      "company": "隆阳电器",
+      "company_key": "lydqCompanyId",
+      "pages": [
+        "LydqTemplatePage"
+      ]
+    },
+    {
+      "company": "永盛天合",
+      "company_key": "ysthCompanyId",
+      "pages": [
+        "YsthTemplatePage"
+      ]
+    },
+    {
+      "company": "笔记侠",
+      "company_key": "bjxCompanyId",
+      "pages": [
+        "BjxTemplatePage"
+      ]
+    },
+    {
+      "company": "成塔服饰",
+      "company_key": "ctfsCompanyId",
+      "pages": [
+        "CtfsTemplatePage",
+        "CtfsV2TemplatePage"
+      ]
+    },
+    {
+      "company": "HelloTalk (深圳超弦宇宙科技有限公司)",
+      "company_key": "cxyzCompanyId",
+      "pages": [
+        "CxyzTemplatePage"
+      ]
+    },
+    {
+      "company": "麦恳汽车",
+      "company_key": "mkqcCompanyId",
+      "pages": [
+        "MacanTemplatePage"
+      ]
+    },
+    {
+      "company": "卡思琦教育",
+      "company_key": "ksqCompanyId",
+      "pages": [
+        "KasqTemplatePage"
+      ]
+    },
+    {
+      "company": "江阴顺航化工",
+      "company_key": "jyshCompanyId",
+      "pages": [
+        "JyshTemplatePage"
+      ]
+    },
+    {
+      "company": "江阴顺航汽车拆解",
+      "company_key": "qccjCompanyId",
+      "pages": [
+        "JyshTemplatePage"
+      ]
+    },
+    {
+      "company": "树人教育",
+      "company_key": "srjyCompanyId",
+      "pages": [
+        "SrjyTemplatePage"
+      ]
+    },
+    {
+      "company": "诚兴伟业",
+      "company_key": "cxwyCompanyId",
+      "pages": [
+        "CxwyTemplatePage"
+      ]
+    },
+    {
+      "company": "兆泉机电",
+      "company_key": "zqjdCompanyId",
+      "pages": [
+        "ZqjdTemplatePage"
+      ]
+    },
+    {
+      "company": "奇幻娱乐",
+      "company_key": "qhylCompanyId",
+      "pages": [
+        "QhylTemplatePage"
+      ]
+    },
+    {
+      "company": "锋创科技",
+      "company_key": "fckjCompanyId",
+      "pages": [
+        "FckjTemplatePage"
+      ]
+    },
+    {
+      "company": "利丰铸造",
+      "company_key": "lfzzCompanyId",
+      "pages": [
+        "LfzzTemplatePage"
+      ]
+    },
+    {
+      "company": "丰和食品",
+      "company_key": "fhspCompanyId",
+      "pages": [
+        "FhspTemplatePage"
+      ]
+    },
+    {
+      "company": "聚艺堂",
+      "company_key": "jytCompanyId",
+      "pages": [
+        "JytTemplatePage"
+      ]
+    },
+    {
+      "company": "中建壹品",
+      "company_key": "zjypCompanyId",
+      "pages": [
+        "ZjypTemplatePage"
+      ]
+    },
+    {
+      "company": "大国食安",
+      "company_key": "dgsaCompanyId",
+      "pages": [
+        "DgsaTemplatePage"
+      ]
+    },
+    {
+      "company": "灵兰中医",
+      "company_key": "llzyCompanyId",
+      "pages": [
+        "LlzyTemplatePage"
+      ]
+    },
+    {
+      "company": "汇丰永盛",
+      "company_key": "hfysCompanyId",
+      "pages": [
+        "HfysTemplatePage",
+        "HfysV2TemplatePage"
+      ]
+    }
+  ],
+  "fallback_builders": [
+    "DefaultTemplatePage",
+    "BrandDualZoneTemplatePage",
+    "ArcBusinessCardTemplatePage",
+    "TechCutCornerTemplatePage",
+    "EditorialTimelineTemplatePage",
+    "GalleryFrameTemplatePage",
+    "WarmWaveTemplatePage"
+  ],
+  "constants_without_explicit_company_builder": [
+    {
+      "company": "行迈物流",
+      "company_key": "xmwlCompanyId"
+    },
+    {
+      "company": "上海语创云教育科技有限公司",
+      "company_key": "ycyCompanyId"
+    },
+    {
+      "company": "军哥整装",
+      "company_key": "jgzzCompanyId"
+    },
+    {
+      "company": "德嘉口腔",
+      "company_key": "djkqCompanyId"
+    },
+    {
+      "company": "上海茁毅",
+      "company_key": "shzyCompanyId"
+    },
+    {
+      "company": "禄翊通",
+      "company_key": "lytCompanyId"
+    },
+    {
+      "company": "他二哥炒鸡",
+      "company_key": "tegCompanyId"
+    }
+  ],
+  "templates": [
+    {
+      "key": "alwy",
+      "class": "AlwyTemplatePage",
+      "file": "lib/modules/templates/company/alwy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "艾林物业"
+      ],
+      "note": "独立主图与圆角正文卡，保持 52.w 单侧总留白。",
+      "source_line": 25
+    },
+    {
+      "key": "anzy",
+      "class": "AnzyTemplatePage",
+      "file": "lib/modules/templates/company/anzy_template_page.dart",
+      "canvas_mode": "fixedViewport",
+      "risk": "约束冲突/既有例外",
+      "stage": "P6",
+      "companies": [
+        "爱能智亚"
+      ],
+      "note": "固定一屏旧版，只显示单主内容；不限长/动态栏目与固定构图冲突，不能擅自以V2替换称一比一。",
+      "source_line": 26
+    },
+    {
+      "key": "anzy_v2",
+      "class": "AnzyV2TemplatePage",
+      "file": "lib/modules/templates/company/anzy_v2_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "爱能智亚"
+      ],
+      "note": "圆顶主图与正文卡已有自然长图结构；与现有成塔 V2 结构相近，但品牌、日期、边框需分别还原。",
+      "source_line": 36
+    },
+    {
+      "key": "arc_business_card",
+      "class": "ArcBusinessCardTemplatePage",
+      "file": "lib/modules/templates/company/arc_business_card_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P2",
+      "companies": [],
+      "note": "弧顶裁剪、作者卡叠压；弧深与重叠固定。",
+      "source_line": 41
+    },
+    {
+      "key": "bjx",
+      "class": "BjxTemplatePage",
+      "file": "lib/modules/templates/company/bjx_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "笔记侠"
+      ],
+      "note": "正文卡上方订线固定在卡顶部，不随长文拉伸。",
+      "source_line": 30
+    },
+    {
+      "key": "brand_dual_zone",
+      "class": "BrandDualZoneTemplatePage",
+      "file": "lib/modules/templates/company/brand_dual_zone_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P2",
+      "companies": [],
+      "note": "右侧品牌色贯穿整页，顶部斜切长度固定，需整画布背景。",
+      "source_line": 41
+    },
+    {
+      "key": "cnyx",
+      "class": "CnyxTemplatePage",
+      "file": "lib/modules/templates/company/cnyx_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P1",
+      "companies": [
+        "呈诺医学"
+      ],
+      "note": "主图/作者/日期与独立正文卡，保持卡片叠压。",
+      "source_line": 25
+    },
+    {
+      "key": "ctfs",
+      "class": "CtfsTemplatePage",
+      "file": "lib/modules/templates/company/ctfs_template_page.dart",
+      "canvas_mode": "fixedViewport",
+      "risk": "约束冲突/既有例外",
+      "stage": "P6",
+      "companies": [
+        "成塔服饰"
+      ],
+      "note": "固定一屏旧版保留原流程；已确认新编辑器固定V2，不另迁旧版。",
+      "source_line": 26
+    },
+    {
+      "key": "ctfs_v2",
+      "class": "CtfsV2TemplatePage",
+      "file": "lib/modules/templates/company/ctfs_v2_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "已接入待逐项验收",
+      "stage": "已接入",
+      "companies": [
+        "成塔服饰"
+      ],
+      "note": "已独立接入，真机界面/长图已验；实际公司账号接口闭环待补。",
+      "source_line": 38
+    },
+    {
+      "key": "cxwy",
+      "class": "CxwyTemplatePage",
+      "file": "lib/modules/templates/company/cxwy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "诚兴伟业"
+      ],
+      "note": "锯齿正文边缘和旋转装饰，整卡只能裁剪一次。",
+      "source_line": 29
+    },
+    {
+      "key": "cxyz",
+      "class": "CxyzTemplatePage",
+      "file": "lib/modules/templates/company/cxyz_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "HelloTalk (深圳超弦宇宙科技有限公司)"
+      ],
+      "note": "独立正文卡、异形主图；保持 46.w 留白与品牌来源。",
+      "source_line": 29
+    },
+    {
+      "key": "ddh",
+      "class": "DdhTemplatePage",
+      "file": "lib/modules/templates/company/ddh_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "大都会"
+      ],
+      "note": "深底白字正文，不能套默认白纸黑字。",
+      "source_line": 23
+    },
+    {
+      "key": "default",
+      "class": "DefaultTemplatePage",
+      "file": "lib/modules/templates/company/default_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P2",
+      "companies": [],
+      "note": "黑白边框、内容卡嵌套，默认品牌注入；不是 ZQYL 替代。",
+      "source_line": 25
+    },
+    {
+      "key": "dgsa",
+      "class": "DgsaTemplatePage",
+      "file": "lib/modules/templates/company/dgsa_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "大国食安"
+      ],
+      "note": "与默认版结构相近，仍须保留独立品牌和 55.w 留白。",
+      "source_line": 30
+    },
+    {
+      "key": "dsl",
+      "class": "DslTemplatePage",
+      "file": "lib/modules/templates/company/dsl_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "高",
+      "stage": "P5",
+      "companies": [
+        "国医康"
+      ],
+      "note": "最终画布背景 7:3，内容卡至少362.h且顶留180.h；图片层与正文叠压。",
+      "source_line": 26
+    },
+    {
+      "key": "editorial_timeline",
+      "class": "EditorialTimelineTemplatePage",
+      "file": "lib/modules/templates/company/editorial_timeline_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P2",
+      "companies": [],
+      "note": "左侧日期轴/卡片叠压，保留固定轴线和净空。",
+      "source_line": 41
+    },
+    {
+      "key": "fckj",
+      "class": "FckjTemplatePage",
+      "file": "lib/modules/templates/company/fckj_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "锋创科技"
+      ],
+      "note": "旋转素材/多层卡片，保留原叠压与 46.w 正文宽度。",
+      "source_line": 27
+    },
+    {
+      "key": "fhsp",
+      "class": "FhspTemplatePage",
+      "file": "lib/modules/templates/company/fhsp_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "高",
+      "stage": "P5",
+      "companies": [
+        "丰和食品"
+      ],
+      "note": "整页背景与白卡/头像/日期牌叠压，内容卡至少362.h、顶留150.h。",
+      "source_line": 26
+    },
+    {
+      "key": "gallery_frame",
+      "class": "GalleryFrameTemplatePage",
+      "file": "lib/modules/templates/company/gallery_frame_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P2",
+      "companies": [],
+      "note": "相纸边框、旋转装饰、68.h 日期说明，不属于主图可补高部分。",
+      "source_line": 41
+    },
+    {
+      "key": "gyk",
+      "class": "GykTemplatePage",
+      "file": "lib/modules/templates/company/gyk_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "约束冲突/既有例外",
+      "stage": "P6",
+      "companies": [
+        "国医康"
+      ],
+      "note": "宽度决定固定1:1圆图；原 Spacer 吸收短文缺口。强制图片纵向补高会破坏圆形。",
+      "source_line": 24
+    },
+    {
+      "key": "hfys",
+      "class": "HfysTemplatePage",
+      "file": "lib/modules/templates/company/hfys_template_page.dart",
+      "canvas_mode": "fixedViewport",
+      "risk": "约束冲突/既有例外",
+      "stage": "P6",
+      "companies": [
+        "汇丰永盛"
+      ],
+      "note": "固定一屏旧版保留原流程；已确认新编辑器固定V2，不另迁旧版。",
+      "source_line": 29
+    },
+    {
+      "key": "hfys_v2",
+      "class": "HfysV2TemplatePage",
+      "file": "lib/modules/templates/company/hfys_v2_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "已接入待逐项验收",
+      "stage": "已接入",
+      "companies": [
+        "汇丰永盛"
+      ],
+      "note": "已独立接入，真机界面/长图已验；实际公司账号接口闭环待补。",
+      "source_line": 33
+    },
+    {
+      "key": "hjfd",
+      "class": "HjfdTemplatePage",
+      "file": "lib/modules/templates/company/hjfd_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "恒记饭店"
+      ],
+      "note": "图片及作者装饰与正文白卡分区，保留边框和头像。",
+      "source_line": 26
+    },
+    {
+      "key": "htwy",
+      "class": "HtwyTemplatePage",
+      "file": "lib/modules/templates/company/htwy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "宏图物业"
+      ],
+      "note": "旋转及裁剪装饰、头像/白卡叠压，正文上方 76.h 净空。",
+      "source_line": 26
+    },
+    {
+      "key": "hysh",
+      "class": "HyshTemplatePage",
+      "file": "lib/modules/templates/company/hysh_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "恒源亿科"
+      ],
+      "note": "原公司默认分支；保留 55.w 正文留白、弧形及作者装饰。",
+      "source_line": 27
+    },
+    {
+      "key": "hzcy",
+      "class": "HzcyTemplatePage",
+      "file": "lib/modules/templates/company/hzcy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "高",
+      "stage": "P5",
+      "companies": [
+        "鸿尊餐饮"
+      ],
+      "note": "虚化背景与前景主图双层，同源图片但取景独立，须等两层正确首帧。",
+      "source_line": 28
+    },
+    {
+      "key": "jsjy",
+      "class": "JsjyTemplatePage",
+      "file": "lib/modules/templates/company/jsjy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "锦盛佳业"
+      ],
+      "note": "正文独立，保留图片/头像叠压及 56.r 顶部净空。",
+      "source_line": 27
+    },
+    {
+      "key": "jwk",
+      "class": "JwkTemplatePage",
+      "file": "lib/modules/templates/company/jwk_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "锦味康"
+      ],
+      "note": "卡口与正文测量联动，底部 100.h 原品牌净空不能误算为填屏正文。",
+      "source_line": 30
+    },
+    {
+      "key": "jy",
+      "class": "JyTemplatePage",
+      "file": "lib/modules/templates/company/jy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "久宴"
+      ],
+      "note": "正文独立，保留主图、日期牌与内外留白。",
+      "source_line": 28
+    },
+    {
+      "key": "jysh",
+      "class": "JyshTemplatePage",
+      "file": "lib/modules/templates/company/jysh_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "江阴顺航化工",
+        "江阴顺航汽车拆解"
+      ],
+      "note": "两个公司复用同页，页面/品牌共享须与原版一致。",
+      "source_line": 31
+    },
+    {
+      "key": "jyt",
+      "class": "JytTemplatePage",
+      "file": "lib/modules/templates/company/jyt_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "聚艺堂"
+      ],
+      "note": "独立正文区，保持 25.w 留白。",
+      "source_line": 30
+    },
+    {
+      "key": "kasq",
+      "class": "KasqTemplatePage",
+      "file": "lib/modules/templates/company/kasq_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "卡思琦教育"
+      ],
+      "note": "多层正文边框，保持 55.w 留白及头部装饰。",
+      "source_line": 30
+    },
+    {
+      "key": "lfzz",
+      "class": "LfzzTemplatePage",
+      "file": "lib/modules/templates/company/lfzz_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "利丰铸造"
+      ],
+      "note": "主图与正文自然分区，保持左右 40.w。",
+      "source_line": 26
+    },
+    {
+      "key": "lha",
+      "class": "LhaTemplatePage",
+      "file": "lib/modules/templates/company/lha_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "高",
+      "stage": "P5",
+      "companies": [
+        "老淮安"
+      ],
+      "note": "高主视觉 480.h、旋转日期牌与叠压，不能统一改为 300.h。",
+      "source_line": 28
+    },
+    {
+      "key": "llzy",
+      "class": "LlzyTemplatePage",
+      "file": "lib/modules/templates/company/llzy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "灵兰中医"
+      ],
+      "note": "斜切内容壳及底部框线，斜切深度固定，不按最终长图等比放大。",
+      "source_line": 30
+    },
+    {
+      "key": "lydq",
+      "class": "LydqTemplatePage",
+      "file": "lib/modules/templates/company/lydq_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "高",
+      "stage": "P5",
+      "companies": [
+        "隆阳电器"
+      ],
+      "note": "旋转后卡与前卡同步增长，后卡只保尺寸不显示重复正文；编辑只能一棵活动树。",
+      "source_line": 25
+    },
+    {
+      "key": "macan",
+      "class": "MacanTemplatePage",
+      "file": "lib/modules/templates/company/macan_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "麦恳汽车"
+      ],
+      "note": "独立正文区，保留汽车模板装饰与作者区。",
+      "source_line": 32
+    },
+    {
+      "key": "qhyl",
+      "class": "QhylTemplatePage",
+      "file": "lib/modules/templates/company/qhyl_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "约束冲突/既有例外",
+      "stage": "P6",
+      "companies": [
+        "奇幻娱乐"
+      ],
+      "note": "六边形尺寸由宽度决定，位置/外框错位固定；放大主图会改变宽度或裁切。",
+      "source_line": 28
+    },
+    {
+      "key": "qth",
+      "class": "QthTemplatePage",
+      "file": "lib/modules/templates/company/qth_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "全天候"
+      ],
+      "note": "主图与正文顺序分区；保持 36.w 留白。",
+      "source_line": 27
+    },
+    {
+      "key": "rfzz",
+      "class": "RfzzTemplatePage",
+      "file": "lib/modules/templates/company/rfzz_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "瑞丰中轴"
+      ],
+      "note": "头像相对白卡 top:-40.w，正文前 30.h 净空；不能按页底定位。",
+      "source_line": 25
+    },
+    {
+      "key": "rtqb",
+      "class": "RtqbTemplatePage",
+      "file": "lib/modules/templates/company/rtqb_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "润通求本"
+      ],
+      "note": "弧形分界与正文下方 205.h 装饰留白，先分清设计净空与补屏空白。",
+      "source_line": 29
+    },
+    {
+      "key": "srjy",
+      "class": "SrjyTemplatePage",
+      "file": "lib/modules/templates/company/srjy_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "树人教育"
+      ],
+      "note": "Arc 图片、浅绿内容区边界需连续，正文增长不能露白。",
+      "source_line": 28
+    },
+    {
+      "key": "tech_cut_corner",
+      "class": "TechCutCornerTemplatePage",
+      "file": "lib/modules/templates/company/tech_cut_corner_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P2",
+      "companies": [],
+      "note": "整页网格、切角及六边形固定尺寸，正文增长不可同比缩放。",
+      "source_line": 42
+    },
+    {
+      "key": "warm_wave",
+      "class": "WarmWaveTemplatePage",
+      "file": "lib/modules/templates/company/warm_wave_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P2",
+      "companies": [],
+      "note": "波浪深度 38.h 固定，长图不能拉伸波形。",
+      "source_line": 41
+    },
+    {
+      "key": "wykg",
+      "class": "WykgTemplatePage",
+      "file": "lib/modules/templates/company/wykg_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "高",
+      "stage": "P5",
+      "companies": [
+        "望岳控股",
+        "河北恩广科技",
+        "无锡望岳"
+      ],
+      "note": "背景图片/棕色按最终画布 1:1；横跨正文的背景不能拆成简单头图。三个公司品牌分别注入。",
+      "source_line": 22
+    },
+    {
+      "key": "ykyl",
+      "class": "YkylTemplatePage",
+      "file": "lib/modules/templates/company/ykyl_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "恒源亿科"
+      ],
+      "note": "恒源亿科指定部门分支，独立品牌与裁剪，不与默认分支混用。",
+      "source_line": 28
+    },
+    {
+      "key": "ymkq",
+      "class": "YmkqTemplatePage",
+      "file": "lib/modules/templates/company/ymkq_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "中",
+      "stage": "P4",
+      "companies": [
+        "国医康"
+      ],
+      "note": "部门复用、分割线、窄正文和品牌歧义，先锁定北区口腔实际 Logo。",
+      "source_line": 27
+    },
+    {
+      "key": "ysth",
+      "class": "YsthTemplatePage",
+      "file": "lib/modules/templates/company/ysth_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "约束冲突/既有例外",
+      "stage": "P6",
+      "companies": [
+        "永盛天合"
+      ],
+      "note": "固定1:1圆图+九宫格+问候越界叠层；纵向增高图片会改形或改构图。",
+      "source_line": 27
+    },
+    {
+      "key": "zjyp",
+      "class": "ZjypTemplatePage",
+      "file": "lib/modules/templates/company/zjyp_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "中建壹品"
+      ],
+      "note": "双层内容卡、徽标/头像，保留边框占宽和装饰尺寸。",
+      "source_line": 31
+    },
+    {
+      "key": "zqjd",
+      "class": "ZqjdTemplatePage",
+      "file": "lib/modules/templates/company/zqjd_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "低",
+      "stage": "P3",
+      "companies": [
+        "兆泉机电"
+      ],
+      "note": "正文白卡独立，保留 32.w 留白与外框。",
+      "source_line": 25
+    },
+    {
+      "key": "zqyl",
+      "class": "ZqylTemplatePage",
+      "file": "lib/modules/templates/company/zqyl_template_page.dart",
+      "canvas_mode": "measuredPoster",
+      "risk": "已接入待逐项验收",
+      "stage": "已接入",
+      "companies": [
+        "中企云链"
+      ],
+      "note": "已独立接入；两类真实创建编辑保存重开预览通过，原版像素基线仍按固定条件验收。",
+      "source_line": 33
+    }
+  ]
+}
