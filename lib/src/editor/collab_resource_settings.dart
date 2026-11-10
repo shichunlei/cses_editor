@@ -1,4 +1,4 @@
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart'
     show csesEmbedUrlAttribute;
 import 'package:cses_editor/src/editor/collab_block_locks.dart';

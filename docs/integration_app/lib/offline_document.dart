@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:crypto/crypto.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/foundation.dart';

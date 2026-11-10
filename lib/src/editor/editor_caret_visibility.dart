@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:flutter/widgets.dart';
 
 /// 在键盘与工具栏改变正文视口后，让当前输入行保持可见，不改变选区或请求输入焦点。

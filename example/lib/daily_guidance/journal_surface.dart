@@ -1,4 +1,4 @@
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.dart';
 import 'package:flutter/material.dart';

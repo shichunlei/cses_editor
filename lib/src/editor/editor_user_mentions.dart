@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_host_mention_ui.dart';
 import 'package:cses_editor/src/editor/collab_inline_mention.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
@@ -142,7 +142,7 @@ Future<CollabMentionUser?> pickEditorMentionUser(
 /// WidgetSpan由正文统一缩放，内部姓名及宿主头像关闭重复的系统字号缩放。
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/cses_editor.dart';
 /// AppFlowyEditor body(DocumentEditorController editor) => AppFlowyEditor(
 ///   editorState: editor.editorState,
@@ -231,7 +231,7 @@ Future<void> showEditorUserMention(
 /// Future等待选择及恢复完成，服务变化后不继续旧请求。
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:flutter/widgets.dart';
 /// import 'package:cses_editor/cses_editor.dart';
 /// CharacterShortcutEvent userAt(BuildContext context) => CharacterShortcutEvent(

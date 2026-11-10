@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/collab_paragraph_links.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
@@ -78,7 +78,7 @@ Future<Node?> insertCollabParagraphBelow(
 /// 不下载资源、修改正文或创建撤销记录；迟到结果仅在当前节点/链接/宿主仍有效时提示。
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/src/editor/collab_block_actions.dart';
 /// import 'package:flutter/widgets.dart';
 /// // 在公共更多菜单的run回调中调用；编辑器、节点和上下文均借自页面。
@@ -126,7 +126,7 @@ Future<void> copyCollabMediaLink(
 /// The heading and decorative icon follow the block type unless callers override them.
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/src/editor/collab_block_actions.dart';
 /// import 'package:lucide_icons_flutter/lucide_icons.dart';
 /// // Borrow the editor and node from the surrounding document component.

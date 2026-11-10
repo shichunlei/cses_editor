@@ -6,7 +6,7 @@ import 'package:cses_offline_example/daily_guidance/journal_draft.dart';
 import 'dart:io';
 import 'dart:ui' as ui;
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_offline_example/daily_guidance/journal_ruled_content.dart';
 import 'package:cses_offline_example/daily_guidance/journal_surface.dart';
 import 'package:flutter/material.dart';

@@ -2,7 +2,6 @@
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 import os
-import subprocess
 import argparse
 import json
 import re
@@ -13,7 +12,8 @@ FORBIDDEN = re.compile(
     r"flutter_rust_bridge|cses_collab_core|sqflite|sqlite3|yrs)(?:_|$)"
 )
 PACKAGES = ('.', 'example')
-APPFLOWY_URL = 'https://github.com/shichunlei/appflowy-editor.git'
+EDITOR_FORK = 'applowy_editor_fork'
+PUB_DEV_URL = 'https://pub.dev'
 IGNORED = {'.git', '.dart_tool', '.gradle', '.symlinks', 'build', 'Pods', 'ephemeral'}
 
 
@@ -35,14 +35,15 @@ def audit_project(root, apk=None):
     source_roots = [(root / 'lib', root, ''), (root / 'test', root, ''),
                     (root / 'example', root, ''), (root / 'pubspec.yaml', root, ''),
                     (root / 'pubspec_overrides.yaml', root, '')]
-    git_dependencies = {}
-    scanned_git_roots = set()
+    editor_fork_locks = {}
+    scanned_fork_roots = set()
+    hosted_cache = Path(os.environ.get('PUB_CACHE', str(Path.home() / '.pub-cache'))) / 'hosted' / 'pub.dev'
     if (root / 'packages').exists():
         issues.append('Legacy packages layout must be removed; cses_editor is the root package')
     for folder in PACKAGES:
         lock = root / folder / 'pubspec.lock'
         local_packages = set()
-        appflowy_git = None
+        fork_release = None
         if not lock.exists():
             issues.append(f'Run flutter pub get in {folder}: missing pubspec.lock')
         else:
@@ -51,18 +52,23 @@ def audit_project(root, apk=None):
             for block in re.finditer(r'^  ([\w]+):\n(.*?)(?=^  [\w]+:|\Z)', lock.read_text(), re.M | re.S):
                 if FORBIDDEN.match(block[1]):
                     issues.append(f'{folder}: forbidden locked dependency {block[1]}')
-                if block[1] == 'appflowy_editor' and re.search(r'^    source: git\s*$', block[2], re.M):
-                    fields = {}
-                    for field in ('url', 'ref', 'resolved-ref', 'path'):
-                        match = re.search(r'^      ' + field + r': (.+)$', block[2], re.M)
-                        if match:
-                            raw = match[1].strip()
-                            fields[field] = json.loads(raw) if raw.startswith('"') else raw.strip("'")
-                    if fields.get('url') != APPFLOWY_URL or not re.fullmatch(r'[0-9a-f]{40}', fields.get('ref', '')) or fields.get('ref') != fields.get('resolved-ref') or fields.get('path', '.') != '.':
-                        issues.append(f'{folder}: appflowy_editor must use the approved URL and one pinned commit')
+                if block[1] == 'appflowy_editor':
+                    issues.append(f'{folder}: use {EDITOR_FORK} in place of appflowy_editor')
+                if block[1] == EDITOR_FORK:
+                    fields = {
+                        key: value.strip().strip('"\'')
+                        for key, value in re.findall(
+                            r'^ {4,6}(name|url|sha256|source|version): (.+)$', block[2], re.M
+                        )
+                    }
+                    if (fields.get('source') != 'hosted' or fields.get('url') != PUB_DEV_URL
+                            or fields.get('name') != EDITOR_FORK
+                            or not re.fullmatch(r'[0-9a-f]{64}', fields.get('sha256', ''))
+                            or not re.fullmatch(r'\d+\.\d+\.\d+(?:[-+][\w.+-]+)?', fields.get('version', ''))):
+                        issues.append(f'{folder}: {EDITOR_FORK} must resolve to a pub.dev release with a checksum')
                     else:
-                        appflowy_git = fields
-                        git_dependencies[folder] = fields
+                        fork_release = fields
+                        editor_fork_locks[folder] = fields
                 if re.search(r'^    source: path\s*$', block[2], re.M):
                     local_packages.add(block[1])
                     value = re.search(r'^      path: (.+)$', block[2], re.M)
@@ -78,7 +84,10 @@ def audit_project(root, apk=None):
         if not path.exists():
             issues.append(f'Run flutter pub get in {folder}')
             continue
-        for package in json.loads(path.read_text())['packages']:
+        packages = json.loads(path.read_text())['packages']
+        if fork_release and all(package['name'] != EDITOR_FORK for package in packages):
+            issues.append(f'{folder}: {EDITOR_FORK} is missing from the resolved package config')
+        for package in packages:
             if FORBIDDEN.match(package['name']):
                 issues.append(f'{folder}: forbidden dependency {package["name"]}')
             if package['name'] in local_packages | {'cses_editor', 'cses_offline_example'}:
@@ -90,25 +99,25 @@ def audit_project(root, apk=None):
                         issues.append(f'{folder}: cses_editor must resolve to the project root')
                 except ValueError as error:
                     issues.append(str(error))
-            if package['name'] == 'appflowy_editor':
+            if package['name'] == EDITOR_FORK:
                 try:
                     source = _uri_path(path.parent, package['rootUri'])
-                    cache = Path(os.environ.get('PUB_CACHE', str(Path.home() / '.pub-cache'))) / 'git'
-                    if appflowy_git is None or not source.is_relative_to(cache.resolve()):
-                        issues.append(f'{folder}: appflowy_editor is not resolved from the approved Git cache')
+                    if fork_release is None:
+                        issues.append(f'{folder}: {EDITOR_FORK} is missing a valid pub.dev lock entry')
                         continue
-                    actual = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True, stderr=subprocess.PIPE).strip()
-                    clean = subprocess.run(['git', '-C', str(source), 'diff', '--no-ext-diff', '--no-textconv', '--quiet', 'HEAD', '--', 'lib', 'assets', 'pubspec.yaml'], capture_output=True).returncode == 0
-                    if actual != appflowy_git['resolved-ref'] or not clean:
-                        issues.append(f'{folder}: appflowy_editor checkout differs from its locked commit')
-                    if source not in scanned_git_roots:
-                        scanned_git_roots.add(source)
-                        source_roots.extend([(source / 'lib', source, 'git:appflowy_editor/'), (source / 'pubspec.yaml', source, 'git:appflowy_editor/')])
-                except (ValueError, OSError, subprocess.CalledProcessError) as error:
-                    issues.append(f'{folder}: cannot verify appflowy_editor Git checkout: {error}')
+                    expected = hosted_cache.resolve() / f"{EDITOR_FORK}-{fork_release['version']}"
+                    if source != expected or not (source / 'pubspec.yaml').is_file():
+                        issues.append(f'{folder}: {EDITOR_FORK} must resolve from the locked pub.dev cache directory')
+                        continue
+                    if source not in scanned_fork_roots:
+                        scanned_fork_roots.add(source)
+                        prefix = f'pub.dev:{EDITOR_FORK}/'
+                        source_roots.extend([(source / 'lib', source, prefix), (source / 'pubspec.yaml', source, prefix)])
+                except ValueError as error:
+                    issues.append(str(error))
 
-    if len({value['resolved-ref'] for value in git_dependencies.values()}) > 1:
-        issues.append('Local consumers disagree on the appflowy_editor Git commit')
+    if len({(release['version'], release['sha256']) for release in editor_fork_locks.values()}) > 1:
+        issues.append(f'Local consumers disagree on the {EDITOR_FORK} release')
     for folder, base, prefix in source_roots:
         for path in (folder.rglob('*') if folder.is_dir() else [folder]):
             if any(part in IGNORED for part in path.relative_to(base).parts):
@@ -153,7 +162,7 @@ def audit_project(root, apk=None):
 
 
     report = {'source_boundary': not issues, 'checked_dart_files': checked_dart,
-              'checked_build_configs': checked_configs, 'git_dependencies': git_dependencies, 'issues': issues}
+              'checked_build_configs': checked_configs, 'editor_fork_locks': editor_fork_locks, 'issues': issues}
     if apk is not None:
         apk = Path(apk)
         with zipfile.ZipFile(apk) as archive:

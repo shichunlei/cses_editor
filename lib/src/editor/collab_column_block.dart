@@ -1,4 +1,4 @@
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/model/collab_columns.dart';

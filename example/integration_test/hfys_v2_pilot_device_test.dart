@@ -2,7 +2,7 @@ import 'package:cses_offline_example/daily_guidance/ui/company_journal_poster.da
 import 'dart:io';
 import 'dart:ui' as ui;
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/file_journal_store.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';

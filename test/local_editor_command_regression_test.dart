@@ -1,4 +1,4 @@
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 import 'package:cses_editor/src/model/collab_table.dart';

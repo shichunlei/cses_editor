@@ -22,7 +22,7 @@ cp cses_editor/docs/integration_app/analysis_options.yaml cses_editor_host_sampl
 cp -R cses_editor/docs/integration_app/test/. cses_editor_host_sample/test/
 ```
 
-将新App的pubspec中 `cses_editor.path`由 `../..`改为 `../cses_editor`；保留 `appflowy_editor`的Git地址与固定提交。删除新建脚手架自带的 `test/widget_test.dart`（如存在），因为它引用计数器应用。保留本模板测试并运行：
+将新App的pubspec中 `cses_editor.path`由 `../..`改为 `../cses_editor`；保留 `applowy_editor_fork: ^6.2.1`。删除新建脚手架自带的 `test/widget_test.dart`（如存在），因为它引用计数器应用。保留本模板测试并运行：
 
 ```sh
 cd cses_editor_host_sample

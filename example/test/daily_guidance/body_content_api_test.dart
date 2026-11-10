@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_offline_example/daily_guidance/body_content_codec.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_api.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';

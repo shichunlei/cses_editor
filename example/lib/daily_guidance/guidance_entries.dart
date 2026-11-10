@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -209,7 +209,7 @@ InlineSpan decorateGuidanceMention(
 /// 为文字块添加业务前缀，借用已配置的原生排版及输入组件。
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';
 /// final builder = GuidanceTextBlockBuilder(ParagraphBlockComponentBuilder());
 /// // 在宿主 AppFlowyEditor 的文字块 builders 中注册。

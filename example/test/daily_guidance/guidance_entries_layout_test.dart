@@ -2,7 +2,7 @@ import 'journal_test_preview.dart';
 import 'dart:convert';
 import 'dart:ui' show BoxHeightStyle;
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_entries.dart';
 import 'package:cses_offline_example/daily_guidance/guidance_people.dart';

@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/model/collab_color_palette.dart';

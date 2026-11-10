@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/collab_paragraph_links.dart';
@@ -90,7 +90,7 @@ Future<void> showCollabDividerSettings(
 /// 调用方负责隔离正文输入及将返回属性一次插入；本函数不写正文、选区或历史。
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/src/editor/collab_divider_settings.dart';
 /// import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 /// import 'package:cses_editor/src/model/collab_divider.dart';

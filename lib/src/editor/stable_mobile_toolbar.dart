@@ -1,4 +1,4 @@
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/editor_caret_visibility.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -10,7 +10,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 /// immediately above the keyboard toolbar without touching the IME.
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/src/editor/stable_mobile_toolbar.dart';
 /// final state = EditorState.blank();
 /// final toolbar = StableMobileToolbar(

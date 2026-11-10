@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_block_delete.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
@@ -94,7 +94,7 @@ class _ToolbarCommandScope extends InheritedWidget {
 /// 移动键盘工具栏，借用正文编辑器并隔离添加面板的输入与选区。
 /// ```dart
 /// import 'package:flutter/material.dart';
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 /// final state = EditorState.blank();
 /// final toolbar = EditorShortcutToolbar(editorState: state, child: AppFlowyEditor(editorState: state));

@@ -1,7 +1,6 @@
 """Regression coverage for dependency paths that the original audit missed."""
 import json
 import os
-import subprocess
 from unittest.mock import patch
 from pathlib import Path
 import tempfile
@@ -57,44 +56,46 @@ class IndependenceAuditTest(unittest.TestCase):
             '      relative: true\n    source: path\n    version: "1.0.0"\n')
         self.assertFalse(audit_project(self.root)['passed'])
 
-    def _git_dependency(self, contents="import 'dart:async';"):
+    def _hosted_editor_fork(self, contents="import 'dart:async';"):
         cache = self.root / 'pub-cache'
-        source = cache / 'git/appflowy-editor-test'
+        source = cache / 'hosted/pub.dev/applowy_editor_fork-6.2.1'
         (source / 'lib').mkdir(parents=True)
         (source / 'lib/editor.dart').write_text(contents)
-        (source / 'pubspec.yaml').write_text('name: appflowy_editor\n')
-        for command in [['init', '-q'], ['add', '.'], ['-c', 'user.name=Audit', '-c', 'user.email=audit@example.invalid', 'commit', '-qm', '测试夹具']]:
-            subprocess.run(['git', '-C', str(source), *command], check=True)
-        revision = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
-        lock = ('packages:\n  appflowy_editor:\n    description:\n      path: "."\n'
-                f'      ref: {revision}\n      resolved-ref: {revision}\n'
-                '      url: "https://github.com/shichunlei/appflowy-editor.git"\n'
-                '    source: git\n    version: "6.2.0"\n')
+        (source / 'pubspec.yaml').write_text('name: applowy_editor_fork\n')
+        checksum = 'a' * 64
+        lock = (
+            'packages:\n  applowy_editor_fork:\n    description:\n'
+            '      name: applowy_editor_fork\n      url: "https://pub.dev"\n'
+            f'      sha256: "{checksum}"\n'
+            '    source: hosted\n    version: "6.2.1"\n'
+        )
         for folder in ('.', 'example'):
             (self.root / folder / 'pubspec.lock').write_text(lock)
-            (self.root / folder / '.dart_tool/package_config.json').write_text(json.dumps({'packages': [{'name': 'appflowy_editor', 'rootUri': source.as_uri()}]}))
+            (self.root / folder / '.dart_tool/package_config.json').write_text(json.dumps({
+                'packages': [{'name': 'applowy_editor_fork', 'rootUri': source.as_uri()}]
+            }))
         context = patch.dict(os.environ, {'PUB_CACHE': str(cache)})
         context.start()
         self.addCleanup(context.stop)
-        return source
 
-    def test_pinned_clean_git_dependency_is_accepted(self):
-        self._git_dependency()
+    def test_hosted_editor_fork_is_accepted(self):
+        self._hosted_editor_fork()
         self.assertTrue(audit_project(self.root)['passed'])
 
-    def test_git_dependency_runtime_sources_are_checked(self):
-        self._git_dependency("import 'package:cses_common/runtime.dart';")
+    def test_hosted_editor_fork_runtime_sources_are_checked(self):
+        self._hosted_editor_fork("import 'package:cses_common/runtime.dart';")
         self.assertFalse(audit_project(self.root)['passed'])
 
-    def test_git_dependency_url_must_match(self):
-        self._git_dependency()
+    def test_editor_fork_host_must_match(self):
+        self._hosted_editor_fork()
         lock = self.root / 'example/pubspec.lock'
-        lock.write_text(lock.read_text().replace('shichunlei/appflowy-editor', 'other/repository'))
+        lock.write_text(lock.read_text().replace('https://pub.dev', 'https://other.example'))
         self.assertFalse(audit_project(self.root)['passed'])
 
-    def test_git_cache_runtime_changes_are_rejected(self):
-        source = self._git_dependency()
-        (source / 'lib/editor.dart').write_text('void changed() {}')
+    def test_editor_fork_cache_directory_must_match_locked_version(self):
+        self._hosted_editor_fork()
+        lock = self.root / 'example/pubspec.lock'
+        lock.write_text(lock.read_text().replace('6.2.1', '6.2.2'))
         self.assertFalse(audit_project(self.root)['passed'])
 
     def test_vendored_directory_is_rejected(self):

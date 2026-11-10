@@ -24,16 +24,13 @@ dependencies:
     sdk: flutter
   cses_editor:
     path: ../cses_editor
-  appflowy_editor:
-    git:
-      url: https://github.com/shichunlei/appflowy-editor.git
-      ref: 9e7593134457eac9193a61ee4023a75de55fcc68
+  applowy_editor_fork: ^6.2.1
   path_provider: ^2.1.6
   crypto: ^3.0.7
   dio: ^5.11.1
 ```
 
-`cses_editor` 的 path 指向根包，不指向 `example` 或旧的 `packages` 目录。宿主直接使用 `Document`、`EditorState` 或本地化 delegate，所以也声明 `appflowy_editor`，与根包固定同一 Git 提交。`path_provider`/`crypto`用于本文宿主文件保存模板，`dio`用于上传适配器的取消信号；只接入内存编辑且未导入这些 API 时不必逐项添加。
+`cses_editor` 的 path 指向根包，不指向 `example` 或旧的 `packages` 目录。宿主直接使用 `Document`、`EditorState` 或本地化 delegate，所以也声明 `applowy_editor_fork: ^6.2.1`，并从 `package:applowy_editor_fork/applowy_editor_fork.dart` 导入。`path_provider`/`crypto`用于本文宿主文件保存模板，`dio`用于上传适配器的取消信号；只接入内存编辑且未导入这些 API 时不必逐项添加。
 
 目前根包 `publish_to: none`，本文不假定已有 pub.dev 版本或可用的 cses_editor 远程仓库地址。若团队将根包放进内部 Git 仓库，宿主可改为该仓库的 Git URL和固定提交，仓库包路径必须仍指向根 pubspec。不要用依赖覆盖把编辑器指回原协同工程。
 

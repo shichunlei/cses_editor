@@ -1,4 +1,4 @@
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_paragraph_presentation.dart';
 import 'package:cses_editor/src/editor/collab_text_alignment.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
@@ -11,7 +11,7 @@ import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 /// 配合 `decorateEditorTextSpan` 显示行内样式；业务前缀应包装返回的 builder。
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/cses_editor.dart';
 /// final builders = {
 ///   ParagraphBlockKeys.type: configureEditorTextBlock(

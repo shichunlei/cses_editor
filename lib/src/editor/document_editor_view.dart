@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:appflowy_editor/appflowy_editor.dart';
+import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/blockcraft_snapshot_view.dart';
 import 'package:cses_editor/src/editor/collab_attachment_block.dart';
@@ -609,7 +609,7 @@ EdgeInsets _listBlockPadding(Node node) {
 /// 整段链接点击提供打开和三视图切换，混排正文维持原链接行为。
 ///
 /// ```dart
-/// import 'package:appflowy_editor/appflowy_editor.dart';
+/// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 /// import 'package:cses_editor/cses_editor.dart';
 /// final style = EditorStyle.mobile(textSpanDecorator: decorateEditorTextSpan);
 /// // 交给借用现有 EditorState 的 AppFlowyEditor，不创建额外资源。

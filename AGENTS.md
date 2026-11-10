@@ -1,7 +1,7 @@
 # 范围与边界
 
 本仓库是独立离线编辑器。通用能力在根包lib/，example/位于包根目录下并通过path: ..引用根包；今日导向属于 example/lib/daily_guidance 的宿主业务，不独立成包。
-禁止引入原协同包、Common SDK、Rust/FRB/Yrs、协同数据库或外部工作区路径依赖。appflowy_editor仅从https://github.com/shichunlei/appflowy-editor.git按固定提交引入，来源、许可证和兼容补丁在该仓库维护；不得恢复packages布局或本地AppFlowy源码副本。
+禁止引入原协同包、Common SDK、Rust/FRB/Yrs、协同数据库或外部工作区路径依赖。applowy_editor_fork 仅从 pub.dev 引入，源码仓库为 https://github.com/shichunlei/appflowy-editor，来源、许可证和兼容补丁在该仓库维护；不得恢复packages布局或本地AppFlowy源码副本。
 
 新增/修改Dart声明使用///说明职责、每个参数、异步与资源所有权；公开复用类型提供最小用例。跨目录使用当前包package精确import，跨包仅通过公开入口。
 不手改生成文件；不使用ListTile系列，使用Row及既有公共菜单/开关行；仅开关本体触发切换。核心展示图标使用lucide_icons_flutter。
