@@ -4,8 +4,10 @@ import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/model/collab_block_colors.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_ordered_marker.dart';
+import 'package:cses_editor/src/editor/collab_inline_entity_mention.dart';
+import 'package:cses_editor/src/editor/collab_task_text_flow.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 /// 两端对齐由 Flutter 原生排版；分散对齐使用相同文本和 UTF-16 偏移展开字距。
 TextAlign collabTextAlign(Node node) =>
@@ -16,7 +18,7 @@ TextAlign collabTextAlign(Node node) =>
       _ => TextAlign.left,
     };
 
-/// 复用标准块的样式与操作，只有分散排版使用自定义文字外壳。
+/// 复用标准块的样式与操作，分散对齐和换行任务引用使用共用文字外壳。
 /// 宿主通过公开排版入口取得包装器，不接管正文资源。
 ///
 /// ```dart
@@ -36,17 +38,18 @@ class CollabTextAlignmentBuilder extends BlockComponentBuilder {
     validate = standard.validate;
   }
 
-  /// 借用的原生构建器，分散对齐仍保留其自定义列表标记。
+  /// 借用的原生构建器，复用其自定义列表标记。
   final BlockComponentBuilder standard;
 
-  /// 在借用的[context]中构建原生或分散文字，保留原构建器的列表图标和输入配置。
+  /// 在借用的[context]中构建原生或有展示映射的文字，保留宿主列表标记。
   @override
   BlockComponentWidget build(BlockComponentContext context) {
-    if (context.node.attributes[blockComponentAlign] != 'distributed') {
+    if (context.node.attributes[blockComponentAlign] != 'distributed' &&
+        !hasFlowingTaskMention(context.node)) {
       return standard.build(context);
     }
     final original = standard.build(context);
-    return _DistributedTextBlock(
+    return _CollabTextBlock(
       key: context.node.key,
       standard: standard,
       node: context.node,
@@ -58,10 +61,10 @@ class CollabTextAlignmentBuilder extends BlockComponentBuilder {
   }
 }
 
-class _DistributedTextBlock extends BlockComponentStatefulWidget {
+class _CollabTextBlock extends BlockComponentStatefulWidget {
   /// [key]维持组件身份，[node]和[configuration]为借用的正文及排版配置。
   /// [standard]提供自定义标记，[showActions]/[actionBuilder]/[actionTrailingBuilder]沿用原生块动作。
-  const _DistributedTextBlock({
+  const _CollabTextBlock({
     super.key,
     required super.node,
     required super.configuration,
@@ -76,28 +79,170 @@ class _DistributedTextBlock extends BlockComponentStatefulWidget {
 
   /// 创建本块的原生选区与输入委托。
   @override
-  createState() => _DistributedTextBlockState();
+  createState() => _CollabTextBlockState();
 }
 
-class _DistributedTextBlockState extends State<_DistributedTextBlock>
+class _CollabTextBlockState extends State<_CollabTextBlock>
     with
         SelectableMixin,
         DefaultSelectableMixin,
         BlockComponentConfigurable,
         BlockComponentBackgroundColorMixin,
+        NestedBlockComponentStatefulWidgetMixin,
         BlockComponentTextDirectionMixin {
   @override
-  final forwardKey = GlobalKey(debugLabel: 'distributed-rich-text');
+  final forwardKey = GlobalKey(debugLabel: 'collab-rich-text');
   @override
   GlobalKey get containerKey => node.key;
   @override
-  final blockComponentKey = GlobalKey(debugLabel: 'distributed-block');
+  final blockComponentKey = GlobalKey(debugLabel: 'collab-text-block');
   @override
   Node get node => widget.node;
   @override
   BlockComponentConfiguration get configuration => widget.configuration;
+  late final _flow = CollabTaskTextFlow(
+    onTap: (offset) =>
+        showCollabEntityMentionActions(context, editorState, node, offset),
+  );
+
+  /// Disposes the title gesture recognizers owned by this block.
   @override
-  late final editorState = context.read<EditorState>();
+  void dispose() {
+    _flow.dispose();
+    super.dispose();
+  }
+
+  /// Maps a display [position] from this block to its document boundary.
+  Position _documentPosition(Position position, {bool? trailing}) => position
+      .copyWith(offset: _flow.toDocument(position.offset, trailing: trailing));
+
+  /// Maps both display endpoints in [selection] back to document coordinates.
+  /// A nonempty drag snaps an interior endpoint outwards to include the atom.
+  Selection _documentSelection(Selection selection) {
+    if (selection.isCollapsed) {
+      return Selection.collapsed(_documentPosition(selection.start));
+    }
+    final range = selection.normalized;
+    final mapped = Selection(
+      start: _documentPosition(range.start, trailing: false),
+      end: _documentPosition(range.end, trailing: true),
+    );
+    return selection.start == range.start ? mapped : mapped.reversed;
+  }
+
+  /// Hit-tests [start] in global coordinates and returns a model offset.
+  @override
+  Position getPositionInOffset(Offset start) =>
+      _documentPosition(forward.getPositionInOffset(start));
+
+  /// Hit-tests the global [start] and [end] of a drag as an atomic selection.
+  @override
+  Selection getSelectionInRange(Offset start, Offset end) =>
+      _documentSelection(forward.getSelectionInRange(start, end));
+
+  /// Finds the caret near global [offset] using the same word rules as the editor.
+  @override
+  Selection? getWordEdgeInOffset(Offset offset) {
+    final hit = forward.getPositionInOffset(offset);
+    if (_flow.taskAt(hit.offset) != null) {
+      return Selection.collapsed(_documentPosition(hit));
+    }
+    final wordEdge = forward.getWordEdgeInOffset(offset);
+    return wordEdge == null ? null : _documentSelection(wordEdge);
+  }
+
+  /// Returns the entire atom for a global [offset] within its rendered title.
+  @override
+  Selection? getWordBoundaryInOffset(Offset offset) {
+    final atom = _flow.taskAt(forward.getPositionInOffset(offset).offset);
+    if (atom != null) return _atomSelection(atom);
+    final word = forward.getWordBoundaryInOffset(offset);
+    return word == null ? null : _documentSelection(word);
+  }
+
+  /// Resolves the word containing document [position], selecting task atoms whole.
+  @override
+  Selection? getWordBoundaryInPosition(Position position) {
+    final displayOffset = _flow.toDisplay(position.offset);
+    final atom = _flow.taskAt(displayOffset);
+    if (atom != null) return _atomSelection(atom);
+    final word = forward.getWordBoundaryInPosition(
+      position.copyWith(offset: displayOffset),
+    );
+    return word == null ? null : _documentSelection(word);
+  }
+
+  /// Returns the single document character at task [offset].
+  Selection _atomSelection(int offset) => Selection.single(
+    path: node.path,
+    startOffset: offset,
+    endOffset: offset + 1,
+  );
+
+  /// Maps model [selection] to display rectangles, including every line of a
+  /// selected task. [shiftWithBaseOffset] selects block-local coordinates.
+  @override
+  List<Rect> getRectsInSelection(
+    Selection selection, {
+    bool shiftWithBaseOffset = false,
+  }) {
+    if (!_flow.isExpanded) {
+      return super.getRectsInSelection(
+        selection,
+        shiftWithBaseOffset: shiftWithBaseOffset,
+      );
+    }
+    final range = selection.normalized;
+    final path = node.path;
+    if (path < range.start.path || path > range.end.path) return [];
+    final start = path.equals(range.start.path) ? range.start.offset : 0;
+    final end = path.equals(range.end.path)
+        ? range.end.offset
+        : node.delta!.length;
+    return super.getRectsInSelection(
+      Selection.single(
+        path: path,
+        startOffset: _flow.toDisplay(start),
+        endOffset: _flow.toDisplay(end),
+      ),
+      shiftWithBaseOffset: shiftWithBaseOffset,
+    );
+  }
+
+  /// Locates the caret for document [position] in the expanded paragraph.
+  /// [shiftWithBaseOffset] adds the rich-text origin within the block.
+  @override
+  Rect? getCursorRectInPosition(
+    Position position, {
+    bool shiftWithBaseOffset = false,
+  }) {
+    if (!_flow.isExpanded) {
+      return super.getCursorRectInPosition(
+        position,
+        shiftWithBaseOffset: shiftWithBaseOffset,
+      );
+    }
+    if (position.offset < 0 || position.offset > node.delta!.length) {
+      return null;
+    }
+    final paragraph = _flow.paragraphIn(
+      forwardKey.currentContext?.findRenderObject(),
+    );
+    if (paragraph == null ||
+        !paragraph.hasSize ||
+        (kDebugMode && paragraph.debugNeedsLayout)) {
+      return null;
+    }
+    final caret = TextPosition(offset: _flow.toDisplay(position.offset));
+    final origin = paragraph.getOffsetForCaret(caret, Rect.zero);
+    final width = editorState.editorStyle.cursorWidth;
+    return Rect.fromLTWH(
+      math.max(0, origin.dx - width / 2),
+      origin.dy,
+      width,
+      paragraph.getFullHeightForCaret(caret),
+    ).shift(baseOffset(shiftWithBaseOffset: shiftWithBaseOffset));
+  }
 
   /// 按[direction]复用宿主的列表标记；未自定义时保留原有默认标记。
   Widget? _marker(TextDirection direction) {
@@ -153,14 +298,18 @@ class _DistributedTextBlockState extends State<_DistributedTextBlock>
     }
   }
 
-  /// 在借用 [context] 中复用块配置和段落字号，只通过额外字距展开自然行。
-  /// 行内固定字号、倍率及链接样式由编辑器文字装饰处理，不在完整树上覆盖。
+  /// 在借用 [context] 中复用块样式，并将任务标题交给正文排版。
+  /// [withBackgroundColor] 由嵌套布局决定是否由本块绘制背景。
   @override
-  Widget build(BuildContext context) {
+  Widget buildComponent(
+    BuildContext context, {
+    bool withBackgroundColor = true,
+  }) {
     final direction = calculateTextDirection(
       layoutDirection: Directionality.maybeOf(context),
     );
     final marker = _marker(direction);
+    final distributed = node.attributes[blockComponentAlign] == 'distributed';
     Widget text = LayoutBuilder(
       builder: (context, constraints) {
         return AppFlowyRichText(
@@ -168,7 +317,7 @@ class _DistributedTextBlockState extends State<_DistributedTextBlock>
           delegate: this,
           node: node,
           editorState: editorState,
-          textAlign: TextAlign.justify,
+          textAlign: textAlign,
           textDirection: direction,
           placeholderText: placeholderText,
           placeholderTextSpanDecorator: (span) => span.updateTextStyle(
@@ -189,6 +338,8 @@ class _DistributedTextBlockState extends State<_DistributedTextBlock>
             }
             // AppFlowy 同时用此回调修饰单个格式分段；只有完整树参与行布局。
             if (span.children == null) return styled;
+            styled = _flow.project(styled);
+            if (!distributed) return styled;
             return distributeTextSpan(
               styled,
               width: constraints.maxWidth,
@@ -234,7 +385,7 @@ class _DistributedTextBlockState extends State<_DistributedTextBlock>
     }
     Widget child = Container(
       key: blockComponentKey,
-      decoration: decoration,
+      decoration: withBackgroundColor ? decoration : null,
       padding: padding,
       width: double.infinity,
       child: text,
