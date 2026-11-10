@@ -1,5 +1,7 @@
 # 验证索引
 
+- [SaaS 公司模板作者头像边框](saas-author-avatar-border-20261110/report.md)
+- [SaaS 中企云链专属模板及公共随机池验证](saas-zqyl-exclusive-template-20261110/report.md)
 - [SaaS 公司模板使用 Google Fonts 与首次分享回归](saas-google-fonts-20261110/report.md)
 - [SaaS 中企云链、汇丰永盛 V2、成塔服饰 V2 像素与 Android 验收](saas-three-template-pixel-audit-20261110/report.md)
 - [SaaS 奇幻娱乐固定六边形模板及 Android 验收](saas-qhyl-company-poster-20261110/report.md)

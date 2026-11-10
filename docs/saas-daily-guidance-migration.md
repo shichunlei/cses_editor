@@ -25,13 +25,14 @@
 
 `ORIENT` 展示“成果导向”，`RESULT` 展示“工作成果”，协议类型和原字段名不更改。本次覆盖两类记录的创建、编辑和预览；example 的公司试点入口未绑定首页类型选择，不能作为两类生产记录均已通过的证据。
 
-新模板代码统一放在 Mutualism 的 `presentation/orient_result/editor/` 下，当前已接入中企云链、汇丰永盛 V2、成塔服饰 V2、爱能智亚 V2、呈诺医学、艾林物业、恒记饭店、全天候、久宴、锦盛佳业、大都会、笔记侠、HelloTalk、麦恳汽车、兆泉机电、利丰铸造、聚艺堂、中建壹品、恒源生化、亿科医疗部门版、瑞丰中轴、宏图物业、诚兴伟业、大国食安、江阴顺航两家公司、卡思琦教育、润通求本、锦味康、树人教育、灵兰中医、锋创科技、鸿尊餐饮、老淮安、隆阳电器、望岳系、丰和食品、国医康默认版、鼎顺利、优米/北区口腔、永盛天合和奇幻娱乐，以及七套原随机视觉；原 `lib/modules/templates/` 的流程和注册表独立保留。复用原素材和公共组件，可按需要补充公开能力；已确认的爱能智亚 V2 深色 Logo 同步用于原白底页脚。新建时保留原表单与模板两种方式；已有记录修改统一进入编辑器。后端旧表单保存会按旧字段重建正文，不能用于继续编辑已经包含完整排版和自定义栏目的记录。迁移目标覆盖 SaaS 原有的动态公司模板、部门和内容变体，以及七套兜底模板。三套固定一屏旧版保留原流程。正文外以 SaaS 原版为视觉基准，已确认的主图补高、顶部和 Logo 模式差异按以下规则实施，其余素材、裁剪、日期、装饰和层叠一比一还原：
+新模板代码统一放在 Mutualism 的 `presentation/orient_result/editor/` 下，当前已接入中企云链、汇丰永盛 V2、成塔服饰 V2、爱能智亚 V2、呈诺医学、艾林物业、恒记饭店、全天候、久宴、锦盛佳业、大都会、笔记侠、HelloTalk、麦恳汽车、兆泉机电、利丰铸造、聚艺堂、中建壹品、恒源生化、亿科医疗部门版、瑞丰中轴、宏图物业、诚兴伟业、大国食安、江阴顺航两家公司、卡思琦教育、润通求本、锦味康、树人教育、灵兰中医、锋创科技、鸿尊餐饮、老淮安、隆阳电器、望岳系、丰和食品、国医康默认版、鼎顺利、优米/北区口腔、永盛天合和奇幻娱乐，以及七套原随机视觉；原 `lib/modules/templates/` 的流程和注册表独立保留。复用原素材和公共组件，可按需要补充公开能力；已确认的爱能智亚 V2 深色 Logo 同步用于原白底页脚。新建时保留原表单与模板两种方式；已有记录修改统一进入编辑器。后端旧表单保存会按旧字段重建正文，不能用于继续编辑已经包含完整排版和自定义栏目的记录。迁移目标覆盖 SaaS 原有的动态公司模板、部门和内容变体，以及七套兜底模板。三套固定一屏旧版保留原流程。正文外以 SaaS 原版为视觉基准，已确认的主图补高、顶部、Logo 和作者头像边框差异按以下规则实施，其余素材、裁剪、日期、装饰和层叠一比一还原：
 
 - 编辑画布直接延伸到页面顶部，整体滚动至透明状态栏下，不新增顶部占位；只读预览保留原模板自身的顶部安全区，背景仍铺到顶部。
 - 保持原模板内部问候、日期等元素的位置；用户已明确选择该位置，不为悬浮按钮重新排版。
 - 顶部保留悬浮返回、保存、撤销、重做；不增加顶部加号，栏目从键盘菜单添加。
 - 感悟、自检、都来帮、领航员、自定义栏目按需添加，保留已验证的关闭、恢复和撤销交互。
 - 编辑时隐藏底部公司 Logo；保存后的预览和分享图显示原素材，按比例铺满模板画布宽度。
+- 编辑、预览及长图的作者头像边框统一为 3 个逻辑像素。保留模板原头像形状、尺寸和边框颜色，包括聚艺堂的圆角方形头像。
 - 编辑态主图固定原模板最小高度；预览与长图正文按自然高度，完整画布最低为手机屏高。短文不足一屏的差额只增加主图高度，长文保持最小主图并自然延伸，不用正文空行、横线或固定空白填屏。该规则适用于后续全部公司模板，细节见第 4.3 节。
 
 ## 2. 数据流与原字段契约
@@ -134,7 +135,7 @@
 ### 创建
 
 1. 沿用原创建入口的类型、账号、企业、业务日和权限上下文，生成对应类型的空编辑文档。
-2. 选择公司模板编辑时，根据公司 ID 和作者部门匹配[覆盖清单](../../cses/cses.saas/saas-company-template-coverage.md)中的独立视觉。未登记公司从原七套兜底模板中随机选择。选择原表单时继续走原路由。公司身份在入口捕获并固定，创建、详情编辑、预览和保存重开使用同一解析规则。
+2. 选择公司模板编辑时，根据公司 ID 和作者部门匹配[覆盖清单](../../cses/cses.saas/saas-company-template-coverage.md)中的独立视觉。未匹配到专属编辑器模板的公司从原七套公共模板中随机选择。选择原表单时继续走原路由。公司身份在入口捕获并固定，创建、详情编辑、预览和保存重开使用同一解析规则。
 3. 保存前结束输入合成，捕获正文快照，按第 2 节保留来源栏目并聚合业务条目，执行解除字数和条数限制后的业务校验。
 4. 调用原保存用例，原请求追加 `bodyContent`。保留原成功/失败判定、刷新事件、返回结果和预览导航。
 5. 保存成功后冻结当前编辑会话，按返回的正式记录 ID 读取新详情，预览使用通过校验的读回正文。保存失败保留草稿；保存成功但读取失败明确提示已保存，仅重试读取，不能重复提交，退出仍返回保存成功。不得把 example 本地保存成功视为 SaaS 保存成功。
@@ -158,7 +159,7 @@
 
 生产视觉以 `cses.saas/lib/modules/templates/` 为基准，原模板页面保持独立。新模板在 `mutualism/presentation/orient_result/editor/ui/` 独立实现，复用原有素材和公开展示组件，还原相框、头像、问候、日期、取景、装饰及层叠关系；预览主图补高遵循第 4.3 节。example 的汇丰永盛 V2、成塔服饰 V2、中企云链仅用于交互参考，不将其整页复制为生产模板。本文高度规则只约束迁入 SaaS 的新模板；旧离线 example 可保持其画布规则，SaaS 按本节定义的编辑和只读规则独立布局。
 
-原 `CompanyTemplateModel`、注册表和导航保持不动；新入口通过 `guidance_company_template.dart` 在独立代码中分发：`Constants.hfysCompanyId` → HFYS V2，`Constants.ctfsCompanyId` → CTFS V2，`Constants.anzyCompanyId` → 爱能智亚 V2（深色 Logo），`Constants.cnyxCompanyId` → 呈诺医学，`Constants.alwyCompanyId` → 艾林物业，`Constants.hjfdCompanyId` → 恒记饭店，`Constants.qthCompanyId` → 全天候，`Constants.jyCompanyId` → 久宴，`Constants.jsjyCompanyId` → 锦盛佳业，`Constants.ddhCompanyId` → 大都会，`Constants.bjxCompanyId` → 笔记侠，`Constants.cxyzCompanyId` → HelloTalk，`Constants.mkqcCompanyId` → 麦恳汽车，`Constants.zqjdCompanyId` → 兆泉机电，`Constants.lfzzCompanyId` → 利丰铸造，`Constants.jytCompanyId` → 聚艺堂，`Constants.zjypCompanyId` → 中建壹品，`Constants.hyykCompanyId` → 恒源生化（`Constants.ykylDepartmentId` → 亿科医疗），`Constants.rfzzCompanyId` → 瑞丰中轴，`Constants.htwyCompanyId` → 宏图物业，`Constants.cxwyCompanyId` → 诚兴伟业，`Constants.dgsaCompanyId` → 大国食安，`Constants.jyshCompanyId` 与 `Constants.qccjCompanyId` → 江阴顺航（沿用同一彩色品牌文件），`Constants.ksqCompanyId` → 卡思琦教育，`Constants.rtqbCompanyId` → 润通求本，`Constants.jwkCompanyId` → 锦味康，`Constants.srjyCompanyId` → 树人教育，`Constants.llzyCompanyId` → 灵兰中医，`Constants.fckjCompanyId` → 锋创科技，`Constants.hzcyCompanyId` → 鸿尊餐饮，`Constants.lhaCompanyId` → 老淮安，`Constants.lydqCompanyId` → 隆阳电器，`Constants.wykgCompanyId`、`Constants.egkjCompanyId`、`Constants.wxwyCompanyId` → 共用望岳原版式并各自读取原品牌目录，`Constants.fhspCompanyId` → 丰和食品，`Constants.gykCompanyId` → 国医康默认版，`Constants.gykCompanyId` + `Constants.dslDepartmentId` → 鼎顺利，`Constants.gykCompanyId` + 优米/北区口腔部门 ID → 共用原优米版式并按各自品牌目录取 Logo，`Constants.ysthCompanyId` → 永盛天合，`Constants.qhylCompanyId` → 奇幻娱乐，中企云链使用自身模板；未登记公司从已迁移的七套原随机视觉中随机选择，原模板七套随机池保持不变。汇丰永盛、成塔服饰和爱能智亚没有部门分支，固定使用 V2，不因可选栏目为空退回旧固定版。恒源亿科和国医康新建用占位记录或当前公司会话中的作者部门，已有记录用身份校验通过的详情部门。入口文案使用同一解析规则，页面内固定模板和公司身份；未登记公司新路由重开可重新随机，不向正文增加模板字段。复用 templates 公开能力判断专属公司映射，避免复制公司 ID。整画布背景在 JournalSurface 内独立借用，不参与正文高度。望岳系保持图片与棕色各占总高一半，丰和图片铺满总高。可见主视觉区保留 300.h 最小高度并吸收短文补高。鼎顺利保持主图和原品牌红分占最终画布 70% 与 30%，使用原白色品牌文件 `dingshunli_logo.webp`。短文补高作用于白卡上方的可见主视觉，原 7:3 比例始终以最终画布为基准。优米与北区口腔的原主图在正文之后，短文只读补高作用于下方主图，保留书签裁剪、正文上方分割线和署名位置。正文下沿去掉分隔线。优米保留金色，北区按本部门 Logo 使用深紫底和青色问候、日期牌。国医康默认版和永盛天合的圆图始终为 1:1，短文预览按原版由主视觉留白补高。永盛天合的主视觉下限同时容纳圆图和右下问候，长文保持原网格叠层位置。奇幻娱乐保留固定六边形与错位外框，短文由原主视觉留白补高。兼容模板展示独立统计。原基线有 41 个公司映射、44 个不同公司页面类和 7 个兜底页面，共 51 个页面类；其中 48 个动态画布、3 个旧固定画布。实施时按目标分支的实际 builder 更新覆盖矩阵。
+原 `CompanyTemplateModel`、注册表和导航保持不动；新入口通过 `guidance_company_template.dart` 在独立代码中分发：`Constants.hfysCompanyId` → HFYS V2，`Constants.ctfsCompanyId` → CTFS V2，`Constants.anzyCompanyId` → 爱能智亚 V2（深色 Logo），`Constants.cnyxCompanyId` → 呈诺医学，`Constants.alwyCompanyId` → 艾林物业，`Constants.hjfdCompanyId` → 恒记饭店，`Constants.qthCompanyId` → 全天候，`Constants.jyCompanyId` → 久宴，`Constants.jsjyCompanyId` → 锦盛佳业，`Constants.ddhCompanyId` → 大都会，`Constants.bjxCompanyId` → 笔记侠，`Constants.cxyzCompanyId` → HelloTalk，`Constants.mkqcCompanyId` → 麦恳汽车，`Constants.zqjdCompanyId` → 兆泉机电，`Constants.lfzzCompanyId` → 利丰铸造，`Constants.jytCompanyId` → 聚艺堂，`Constants.zjypCompanyId` → 中建壹品，`Constants.hyykCompanyId` → 恒源生化（`Constants.ykylDepartmentId` → 亿科医疗），`Constants.rfzzCompanyId` → 瑞丰中轴，`Constants.htwyCompanyId` → 宏图物业，`Constants.cxwyCompanyId` → 诚兴伟业，`Constants.dgsaCompanyId` → 大国食安，`Constants.jyshCompanyId` 与 `Constants.qccjCompanyId` → 江阴顺航（沿用同一彩色品牌文件），`Constants.ksqCompanyId` → 卡思琦教育，`Constants.rtqbCompanyId` → 润通求本，`Constants.jwkCompanyId` → 锦味康，`Constants.srjyCompanyId` → 树人教育，`Constants.llzyCompanyId` → 灵兰中医，`Constants.fckjCompanyId` → 锋创科技，`Constants.hzcyCompanyId` → 鸿尊餐饮，`Constants.lhaCompanyId` → 老淮安，`Constants.lydqCompanyId` → 隆阳电器，`Constants.wykgCompanyId`、`Constants.egkjCompanyId`、`Constants.wxwyCompanyId` → 共用望岳原版式并各自读取原品牌目录，`Constants.fhspCompanyId` → 丰和食品，`Constants.gykCompanyId` → 国医康默认版，`Constants.gykCompanyId` + `Constants.dslDepartmentId` → 鼎顺利，`Constants.gykCompanyId` + 优米/北区口腔部门 ID → 共用原优米版式并按各自品牌目录取 Logo，`Constants.ysthCompanyId` → 永盛天合，`Constants.qhylCompanyId` → 奇幻娱乐，中企云链仅匹配自身公司 ID。未匹配到专属编辑器模板的公司从已迁移的七套原随机视觉中随机选择，原模板七套随机池保持不变。汇丰永盛、成塔服饰和爱能智亚没有部门分支，固定使用 V2，不因可选栏目为空退回旧固定版。恒源亿科和国医康新建用占位记录或当前公司会话中的作者部门，已有记录用身份校验通过的详情部门。入口文案使用同一解析规则，页面内固定模板和公司身份；使用公共模板的公司新路由重开可重新随机，不向正文增加模板字段。编辑页、正文画布和分享均沿用本次会话选定的模板。原模板注册情况不参与编辑器兜底选择。整画布背景在 JournalSurface 内独立借用，不参与正文高度。望岳系保持图片与棕色各占总高一半，丰和图片铺满总高。可见主视觉区保留 300.h 最小高度并吸收短文补高。鼎顺利保持主图和原品牌红分占最终画布 70% 与 30%，使用原白色品牌文件 `dingshunli_logo.webp`。短文补高作用于白卡上方的可见主视觉，原 7:3 比例始终以最终画布为基准。优米与北区口腔的原主图在正文之后，短文只读补高作用于下方主图，保留书签裁剪、正文上方分割线和署名位置。正文下沿去掉分隔线。优米保留金色，北区按本部门 Logo 使用深紫底和青色问候、日期牌。国医康默认版和永盛天合的圆图始终为 1:1，短文预览按原版由主视觉留白补高。永盛天合的主视觉下限同时容纳圆图和右下问候，长文保持原网格叠层位置。奇幻娱乐保留固定六边形与错位外框，短文由原主视觉留白补高。兼容模板展示独立统计。原基线有 41 个公司映射、44 个不同公司页面类和 7 个兜底页面，共 51 个页面类；其中 48 个动态画布、3 个旧固定画布。实施时按目标分支的实际 builder 更新覆盖矩阵。
 
 汇丰永盛旧版、成塔服饰旧版和爱能智亚旧版均为固定一屏，继续走原模板流程，排除在编辑器迁移范围外。其 V2 各按独立动态长图模板适配和验收。爱能智亚 V2 已按公司 ID 接入，沿用原白底可读的深色 Logo。
 
@@ -258,7 +259,7 @@ example 仅提供正文适配、栏目和编辑交互参考，不整目录迁移
 - **同源保存**：中文合成结束后保存，正文与旧字段来自同一快照。保存失败不丢草稿、不提前执行原成功行为。
 - **动态栏目**：感悟、自检、都来帮、领航员及自定义栏目添加、填写、关闭、恢复、撤销和重开可用；清空选填内容后检查原消费端是否保留了旧值。
 - **原业务保持**：原表单与旧模板流程继续可用；新编辑器原权限、非空/中文校验、刷新和返回流程继续生效，字数/条数限制按已确认规则解除；列表与统计仍消费原字段，包括跨栏目聚合后的数组。原模块复制、互动等不因新字段解析而改变。
-- **模板与长图**：每个可达模板以相同图片来源、取景、宽度、作者、时间和正文快照对照原版。正文自然高度及已确认的主图补高、顶部/Logo 差异单独标注，其余区域核对素材、几何和图层。分别覆盖短文、临界一屏和长文：编辑主图保持最小高度，短文末栏用横格铺满可用书写视口；预览与 PNG 完整画布至少一屏，短文只由主图补高，只读正文自然排版，JSON 前后不变；操作栏与防遮挡尾距不入画布。键盘开合不能增高编辑主图，短文与长文预览、截图的高度和取景一致。
+- **模板与长图**：每个可达模板以相同图片来源、取景、宽度、作者、时间和正文快照对照原版。正文自然高度及已确认的主图补高、顶部、Logo 和头像边框差异单独标注，其余区域核对素材、几何和图层。分别覆盖短文、临界一屏和长文：编辑主图保持最小高度，短文末栏用横格铺满可用书写视口；预览与 PNG 完整画布至少一屏，短文只由主图补高，只读正文自然排版，JSON 前后不变；操作栏与防遮挡尾距不入画布。键盘开合不能增高编辑主图，短文与长文预览、截图的高度和取景一致。
 - **真机**：Android 首批跑中企云链及两类记录，后续再覆盖其他模板，检查长文、中文键盘、菜单切换、整体滚动、顶部悬浮按钮、保存、重开和长图完整性。其他平台与模板按实际范围记录，不以 example 截图代替 SaaS 验收。
 - **宿主复用**：`@`、都来帮和领航员均打开 SaaS 原人员选择器；覆盖单选、多选、搜索、取消、身份失效及选人期间原目标变化。确认/输入弹窗不再包含 example 的重复外壳。
 - **代码质量**：格式化手写文件，在所属包分析并运行目标测试；公开 API 或依赖变化验证消费者；执行 `git diff --check`，验证证据归档并更新索引。
