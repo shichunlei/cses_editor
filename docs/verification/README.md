@@ -1,5 +1,6 @@
 # 验证索引
 
+- [视频播放按钮对比度](video-play-contrast-20261110/report.md)
 - [SaaS 导向添加链接](saas-guidance-common-link-20261110/report.md)
 - [SaaS 导向添加面板](saas-guidance-add-block-menu-20261110/report.md)
 - [SaaS 导向媒体块编辑](saas-guidance-media-editing-20261110/report.md)

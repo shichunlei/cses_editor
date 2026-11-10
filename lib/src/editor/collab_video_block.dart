@@ -190,12 +190,14 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
   /// 高频播放位置仅更新进度区域；视频控制器仍由此State创建与释放。
   /// 外框与加载/失败占位统一固定16:9；画面按原始比例居中完整显示，空余区域留黑，不拉伸或裁切。
   /// 播放按钮相对整个16:9外框水平、垂直居中；进度条固定底部，时间标签位于轨道上方。
+  /// 播放与暂停图标使用主题主色对应的前景色，避免继承正文图标颜色。
   Widget _buildVideoCard(BuildContext context) {
     final controller = _videoController;
     if (controller?.value.isInitialized != true) {
       return _VideoPlaceholder(url: url, hasError: _videoError != null);
     }
 
+    final colors = Theme.of(context).colorScheme;
     final sourceAspectRatio = controller!.value.aspectRatio > 0
         ? controller.value.aspectRatio
         : 16 / 9;
@@ -242,6 +244,10 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
                     valueListenable: controller,
                     builder: (context, value, _) => IconButton.filled(
                       key: const ValueKey('collab-video-block-play'),
+                      style: IconButton.styleFrom(
+                        backgroundColor: colors.primary,
+                        foregroundColor: colors.onPrimary,
+                      ),
                       tooltip: value.isPlaying ? '暂停' : '播放',
                       onPressed: _toggleVideo,
                       icon: Icon(
