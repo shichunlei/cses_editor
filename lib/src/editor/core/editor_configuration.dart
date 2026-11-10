@@ -297,8 +297,10 @@ enum EditorKeyboardToolbarItem {
 /// final config = EditorConfiguration(
 ///   blocks: [EditorBlock.paragraph, EditorBlock.heading],
 ///   headingLevels: {1, 3},
-///   inlineFormats: {EditorInlineFormat.bold},
+///   inlineFormats: {EditorInlineFormat.bold, EditorInlineFormat.link},
 ///   keyboardToolbarItems: [EditorKeyboardToolbarItem.blockType],
+///   insertLinksAsText: true,
+///   hiddenCommonInsertions: {EditorKeyboardToolbarItem.bookmark},
 ///   listConversionContainerTypes: {'custom-section'},
 ///   mediaContainerTypes: {'custom-section'},
 /// );
@@ -341,6 +343,8 @@ final class EditorConfiguration {
   /// [keyboardToolbarItems] 选择键盘顶部入口及顺序，默认原六项；不能重复，空列表隐藏整条工具栏。
   /// 有实际可显示的菜单时自动在最右侧附加收起键盘，不由列表配置。
   /// 菜单展示不改变块/格式能力、快捷输入或其他插入入口。
+  /// [hiddenCommonInsertions] 隐藏添加面板「常用」中的指定入口，默认空；不改变已存块的支持范围。
+  /// [insertLinksAsText] 让「链接」使用行内格式，默认 false 沿用独立链接块。
   /// [listConversionContainerTypes]显式允许无Delta结构容器中的同父扁平列表互换类型，默认空。
   /// 类型须为非空字符串；不注册块、不扩展Enter/Backspace或缩进范围，也不允许跨父容器转换。
   /// [listIndentContainerTypes]独立授权无Delta父容器内同父扁平列表缩进、Enter及行首Backspace，默认空。
@@ -367,6 +371,8 @@ final class EditorConfiguration {
     bool lineHeight = true,
     Iterable<EditorKeyboardToolbarItem> keyboardToolbarItems =
         EditorKeyboardToolbarItem.defaults,
+    Iterable<EditorKeyboardToolbarItem> hiddenCommonInsertions = const {},
+    bool insertLinksAsText = false,
     Iterable<String> listConversionContainerTypes = const {},
     Iterable<String> listIndentContainerTypes = const {},
     Iterable<String> mediaContainerTypes = const {},
@@ -426,6 +432,8 @@ final class EditorConfiguration {
       maxBlocks,
       false,
       keyboardToolbarItems: toolbarItems,
+      hiddenCommonInsertions: Set.unmodifiable(hiddenCommonInsertions),
+      insertLinksAsText: insertLinksAsText,
       listConversionContainerTypes: listContainers,
       listIndentContainerTypes: indentContainers,
       mediaContainerTypes: mediaContainers,
@@ -441,6 +449,8 @@ final class EditorConfiguration {
   /// [nextParagraphStyle]/[lineHeight]控制段落命令，[maxCharacters]/[maxBlocks]限制容量。
   /// [documentFeatures]仅用于保留原协同装配，不能由本地入口开启。
   /// [keyboardToolbarItems]为冻结的工具栏入口及顺序，默认原六项。
+  /// [hiddenCommonInsertions]为冻结的「常用」入口隐藏集合，默认空。
+  /// [insertLinksAsText] 选择链接入口使用行内格式，默认 false。
   /// [listConversionContainerTypes]为冻结的列表类型转换父容器集合，默认空，不转移任何编辑资源。
   /// [listIndentContainerTypes]为冻结的平面列表编辑父容器集合，默认空。
   /// [mediaContainerTypes]为冻结的媒体操作父容器集合，默认空。
@@ -458,6 +468,8 @@ final class EditorConfiguration {
     this.maxBlocks,
     this.documentFeatures, {
     this.keyboardToolbarItems = EditorKeyboardToolbarItem.defaults,
+    this.hiddenCommonInsertions = const {},
+    this.insertLinksAsText = false,
     this.listConversionContainerTypes = const {},
     this.listIndentContainerTypes = const {},
     this.mediaContainerTypes = const {},
@@ -507,12 +519,16 @@ final class EditorConfiguration {
   /// [listIndentContainers]合并获准平面列表缩进、Enter及Backspace的结构容器。
   /// [structuralIndentation]为null时沿用当前值；false可为仅接受文字叶块的宿主关闭真实嵌套快捷键。
   /// [mediaContainers]合并允许四类媒体执行同父操作的结构容器。
+  /// [hiddenCommonInsertions]叠加添加面板「常用」的隐藏入口；默认空，保留原配置。
+  /// [insertLinksAsText] 覆盖链接入口的插入形式，null 保留当前设置。
   /// 集合均复制并冻结；空白键抛ArgumentError，其余格式、容量与协同兼容开关保持。
   EditorConfiguration withHost({
     Iterable<String> preservedAttributes = const {},
     Iterable<String> listContainers = const {},
     Iterable<String> listIndentContainers = const {},
     Iterable<String> mediaContainers = const {},
+    Iterable<EditorKeyboardToolbarItem> hiddenCommonInsertions = const {},
+    bool? insertLinksAsText,
     bool? structuralIndentation,
   }) {
     final attributes = Set<String>.unmodifiable({
@@ -551,6 +567,11 @@ final class EditorConfiguration {
       maxBlocks,
       documentFeatures,
       keyboardToolbarItems: keyboardToolbarItems,
+      hiddenCommonInsertions: Set.unmodifiable({
+        ...this.hiddenCommonInsertions,
+        ...hiddenCommonInsertions,
+      }),
+      insertLinksAsText: insertLinksAsText ?? this.insertLinksAsText,
       listConversionContainerTypes: containers,
       listIndentContainerTypes: indentContainers,
       mediaContainerTypes: media,
@@ -607,6 +628,12 @@ final class EditorConfiguration {
   /// 键盘顶部可显示的入口及顺序，默认原六项；本实例拥有不可变副本，空列表隐藏整条工具栏。
   /// 实际展示须满足块/格式能力；非空时自动在最右侧附加收起键盘，全部被过滤时隐藏整条。
   final List<EditorKeyboardToolbarItem> keyboardToolbarItems;
+
+  /// 添加面板「常用」中要隐藏的入口，默认空，配置持有不可变副本。
+  final Set<EditorKeyboardToolbarItem> hiddenCommonInsertions;
+
+  /// 链接入口改用行内格式；默认 false 时沿用独立链接块。
+  final bool insertLinksAsText;
 
   /// 显式获准参与列表类型转换的无Delta父容器类型，默认空且由本实例持有不可变副本。
   /// 仅扩展同父扁平列表间的类型互换；根级和高亮容器沿用默认能力。

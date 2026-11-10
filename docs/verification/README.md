@@ -1,5 +1,7 @@
 # 验证索引
 
+- [SaaS 导向添加链接](saas-guidance-common-link-20261110/report.md)
+- [SaaS 导向添加面板](saas-guidance-add-block-menu-20261110/report.md)
 - [SaaS 导向媒体块编辑](saas-guidance-media-editing-20261110/report.md)
 - [Android 集成测试依赖解析与 Debug 构建](android-test-dependency-resolution-20261110/report.md)
 - [AppFlowy 编辑器 fork 发布包迁移](appflowy-fork-20261110/report.md)

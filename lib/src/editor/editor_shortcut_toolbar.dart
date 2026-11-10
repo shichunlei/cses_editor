@@ -720,11 +720,16 @@ _CommonInsertionAction? _commonInsertion(EditorKeyboardToolbarItem item) =>
 bool _commonInsertionAllowed(
   EditorConfiguration config,
   _CommonInsertionAction action,
-) =>
-    !action.implemented ||
-    (action.blockType != null
-        ? config.allowsBlock(action.blockType!)
-        : config.allowsFormat(action.formatKey!));
+) {
+  if (!action.implemented) return true;
+  if (action.item == EditorKeyboardToolbarItem.link &&
+      config.insertLinksAsText) {
+    return config.allowsFormat(AppFlowyRichTextKeys.href);
+  }
+  return action.blockType != null
+      ? config.allowsBlock(action.blockType!)
+      : config.allowsFormat(action.formatKey!);
+}
 
 /// 对[item]应用[config]的实际能力约束；工具菜单不由直达动作目录处理。
 bool _keyboardItemAllowed(
@@ -825,7 +830,7 @@ Future<void> _showKeyboardCommonInsertion(
     } else {
       debugPrint('插入${action.label}失败：$error\n$stack');
     }
-    if (context.mounted && current()) showEditorBlockFeedback(context, state, '插入失败，请重试');
+    if (context.mounted && current()) _showToolbarMessage(context, '插入失败，请重试');
   } finally {
     state.editableNotifier.removeListener(changed);
     try {
@@ -895,14 +900,43 @@ Future<Selection?> _performCommonInsertion(
           'figma-embed',
           'juejin-embed',
         }.contains(type)) {
+      final textLink =
+          type == csesLinkBlockType &&
+          EditorCommandContext.of(state).configuration.insertLinksAsText;
+      final target = state.getNodeAtPath(initial.start.path);
+      final original = textLink ? target?.delta : null;
+      if (textLink &&
+          (!initial.isSingle || original == null || target?.type == 'code')) {
+        showEditorBlockFeedback(context, state, '请在同一段正文中插入链接');
+        return null;
+      }
       final source = await showEditorMediaSourceSheet(
         context,
         blockType: type,
         editorState: state,
         canEdit: () => current() != null,
       );
+      if (source == null || !context.mounted) return null;
       final selection = current();
-      if (source == null || selection == null) return null;
+      if (selection == null) return null;
+      if (textLink) {
+        final currentNode = state.getNodeAtPath(selection.start.path);
+        if (currentNode?.delta != original ||
+            currentNode?.type != target?.type) {
+          showEditorBlockFeedback(context, state, '插入位置已变化，请重新选择正文位置');
+          return null;
+        }
+        final landing = await _insertCommonTextLink(
+          state,
+          currentNode!,
+          selection,
+          source.url,
+        );
+        if (landing == null && context.mounted) {
+          showEditorBlockFeedback(context, state, '此处无法插入链接');
+        }
+        return landing;
+      }
       return await applyUrlBlockShortcut(
         state,
         selection,
@@ -1077,6 +1111,48 @@ Future<Selection?> _performCommonInsertion(
   }
 }
 
+/// 在借用的 [state] 中将 [url] 写入 [node] 的 [selection]。
+/// 光标位置插入 URL 文字，段内选区保留文字和其他格式。事务可撤销，
+/// 校验拒绝时返回 null；成功时返回链接之后的光标，面板负责恢复输入。
+Future<Selection?> _insertCommonTextLink(
+  EditorState state,
+  Node node,
+  Selection selection,
+  String url,
+) async {
+  final range = selection.normalized;
+  final attributes = {AppFlowyRichTextKeys.href: url};
+  final transaction = state.transaction;
+  final int endOffset;
+  if (range.isCollapsed) {
+    transaction.insertText(
+      node,
+      range.start.offset,
+      url,
+      attributes: attributes,
+    );
+    endOffset = range.start.offset + url.length;
+  } else {
+    transaction.formatText(
+      node,
+      range.start.offset,
+      range.end.offset - range.start.offset,
+      attributes,
+    );
+    endOffset = range.end.offset;
+  }
+  if (!state.canApplyTransaction(transaction)) return null;
+  if (state.undoManager.undoStack.isNonEmpty) {
+    state.undoManager.undoStack.last.seal();
+  }
+  await state.apply(
+    transaction,
+    withUpdateSelection: false,
+    skipHistoryDebounce: true,
+  );
+  return Selection.single(path: node.path, startOffset: endOffset);
+}
+
 /// 添加块入口，使用Lucide加号图标；业务面板负责异步错误与正文选区恢复。
 final _addBlockToolbarItem = MobileToolbarItem.action(
   itemIconBuilder: (_, _, _) => const Tooltip(
@@ -1197,7 +1273,7 @@ Future<void> showEditorUserMentionSheet(
     services.report('插入用户提及失败', error, stack, 'DocCollab');
     if (context.mounted &&
         identical(EditorCommandContext.of(editorState).services, services)) {
-      showEditorBlockFeedback(context, state, '插入失败，请重试');
+      _showToolbarMessage(context, '插入失败，请重试');
     }
   } finally {
     await session.finish(
@@ -3775,6 +3851,7 @@ class _AddBlockSheet extends StatelessWidget {
   /// 行内公式入口使用Ω图标，与独立公式块的Σ图标区分。
   /// 表格直接创建2×2网格；绘图先收集源码草稿再创建容器和子块；分页符仅插入根级光标位置。
   /// 标题入口按实例启用集合与H1～H6取交集；文本框按捕获位置隐藏不合法子块，插入前重新核对书签及父级。
+  /// 「常用」入口同时遵循宿主显示配置，历史内容的渲染不依赖此菜单。
   @override
   Widget build(BuildContext context) {
     final config = EditorCommandContext.of(editorState).configuration;
@@ -3789,6 +3866,16 @@ class _AddBlockSheet extends StatelessWidget {
         )
         ? _menuHeadingLevels(config)
         : const <int>[];
+    final commonInsertions = config.hasComplexBlocks
+        ? _commonInsertions
+              .where(
+                (action) =>
+                    !config.hiddenCommonInsertions.contains(action.item) &&
+                    _commonInsertionAllowed(config, action) &&
+                    _allowsTextBoxBlock(source, action.blockType),
+              )
+              .toList()
+        : const <_CommonInsertionAction>[];
     return CollabBottomSheet(
       key: const ValueKey('editor-add-block-sheet'),
       title: const Text('添加'),
@@ -3934,9 +4021,7 @@ class _AddBlockSheet extends StatelessWidget {
               );
             },
           ),
-          if (EditorCommandContext.of(
-            editorState,
-          ).configuration.hasComplexBlocks) ...[
+          if (commonInsertions.isNotEmpty) ...[
             const SizedBox(height: 24),
             const _SectionTitle('常用'),
             const SizedBox(height: 14),
@@ -3952,15 +4037,13 @@ class _AddBlockSheet extends StatelessWidget {
                   crossAxisSpacing: 10,
                   childAspectRatio: 1.18,
                   children: [
-                    for (final action in _commonInsertions)
-                      if (_commonInsertionAllowed(config, action) &&
-                          _allowsTextBoxBlock(source, action.blockType))
-                        _ActionShortcutTile(
-                          key: ValueKey(action.key),
-                          icon: action.icon,
-                          label: action.label,
-                          onTap: () => _performCommonAndClose(context, action),
-                        ),
+                    for (final action in commonInsertions)
+                      _ActionShortcutTile(
+                        key: ValueKey(action.key),
+                        icon: action.icon,
+                        label: action.label,
+                        onTap: () => _performCommonAndClose(context, action),
+                      ),
                   ],
                 );
               },
