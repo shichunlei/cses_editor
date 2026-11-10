@@ -1,0 +1,38 @@
+{
+  "normal": {
+    "coldFontCache": true,
+    "injectedDelaySeconds": 0,
+    "fontHttp200BeforeCapture": {
+      "Exo-SemiBold": true,
+      "Righteous-Regular": true
+    },
+    "fontHttp200SecondsAfterRequest": {
+      "Exo-SemiBold": 0.299,
+      "Righteous-Regular": 0.282
+    },
+    "captureSeconds": 0.407,
+    "albumJpeg": {
+      "width": 739,
+      "height": 1625,
+      "bytes": 357194
+    }
+  },
+  "slow": {
+    "coldFontCache": true,
+    "injectedDelaySeconds": 30,
+    "fontHttp200BeforeCapture": {
+      "Exo-SemiBold": false,
+      "Righteous-Regular": false
+    },
+    "fontHttp200SecondsAfterRequest": {
+      "Exo-SemiBold": null,
+      "Righteous-Regular": 30.295
+    },
+    "captureSeconds": 2.407,
+    "albumJpeg": {
+      "width": 739,
+      "height": 1625,
+      "bytes": 368494
+    }
+  }
+}
