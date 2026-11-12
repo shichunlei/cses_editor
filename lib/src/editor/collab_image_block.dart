@@ -187,7 +187,8 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     }
   }
 
-  /// 使用 [context] 的正文宽度解析尺寸，更多菜单集中编辑、删除和下方插入。
+  /// 使用 [context] 的正文宽度铺满图片，按原图比例自适应，高度最多等于正文宽度。
+  /// 竖图在正方形内居中裁切，更多菜单集中编辑、删除和下方插入。
   /// 图片本体点击仅回调原始链接并屏蔽正文焦点，题注与更多菜单独立命中。
   /// 布局计算不写入 wr/ar 或题注；编辑及复制链接前等待菜单退场并验证当前身份及权限。
   /// 锁标跟随解析尺寸和对齐后的图片本体右上角，不以题注或整行空白为定位边界。
@@ -211,7 +212,7 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
         : Alignment.centerLeft;
     return LayoutBuilder(
       builder: (context, constraints) {
-        final (width, height) = image.resolveSize(constraints.maxWidth);
+        final width = constraints.maxWidth;
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -221,10 +222,13 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
                 Align(
                   alignment: alignment,
                   child: CollabCardLockOverlay(
-                    child: SizedBox(
+                    child: ConstrainedBox(
                       key: const ValueKey('collab-image-box'),
-                      width: width,
-                      height: height,
+                      constraints: BoxConstraints(
+                        minWidth: width,
+                        maxWidth: width,
+                        maxHeight: width,
+                      ),
                       child: ExcludeFocus(
                         child: Semantics(
                           label: '图片',
@@ -244,9 +248,11 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
                                     null ||
                                 _url.trim().isEmpty,
                             onTap: () => unawaited(_openImage()),
-                            child: Transform.rotate(
-                              angle: (image.rotation ?? 0) * math.pi / 180,
-                              child: _buildImage(),
+                            child: ClipRect(
+                              child: Transform.rotate(
+                                angle: (image.rotation ?? 0) * math.pi / 180,
+                                child: _buildImage(width),
+                              ),
                             ),
                           ),
                         ),
@@ -341,11 +347,12 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     );
   }
 
-  /// 构建当前地址的图片加载器；加载失败/空值/其他端 blob 上传均有明确占位。
+  /// 构建当前地址的图片加载器；[width] 为正文逻辑像素宽，原图决定自然高度。
+  /// 父级限制最高为正方形，cover 让超高图片居中裁切；加载失败等状态有明确占位。
   /// 位图和SVG共用App私有文件缓存，不使用数据库，重启后可离线读取已缓存图片。
   /// 无扩展名SVG在位图解码失败后仅检查已缓存文件，不额外重试网络。
   /// data URI在后台解码后按MIME区分SVG和位图；换源不沿用旧图。
-  Widget _buildImage() {
+  Widget _buildImage(double width) {
     final uri = Uri.tryParse(_url);
     if (_url.isEmpty) return _placeholder('未设置图片');
     if (uri?.scheme == 'blob') return _placeholder('图片正在其他设备上传');
@@ -355,14 +362,16 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
       if (uri?.data?.mimeType.toLowerCase() == 'image/svg+xml') {
         return SvgPicture.memory(
           _data!,
-          fit: BoxFit.contain,
+          width: width,
+          fit: BoxFit.cover,
           placeholderBuilder: (_) => _placeholder('图片加载中'),
           errorBuilder: (_, _, _) => _placeholder('图片加载失败'),
         );
       }
       return Image.memory(
         _data!,
-        fit: BoxFit.contain,
+        width: width,
+        fit: BoxFit.cover,
         errorBuilder: (_, _, _) => _placeholder('图片加载失败'),
       );
     }
@@ -374,6 +383,8 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     return CollabCachedImage(
       key: ValueKey('collab-image-network:$_url'),
       url: _url,
+      width: width,
+      fit: BoxFit.cover,
       loading: _placeholder('图片加载中'),
       failure: _placeholder('图片加载失败'),
     );
