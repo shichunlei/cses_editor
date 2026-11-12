@@ -439,6 +439,7 @@ class _VideoPlaceholder extends StatelessWidget {
   final bool hasError;
 
   /// 使用借用的[context]构建固定16:9状态外框，加载或失败均保持后续正文位置。
+  /// 加载文字提供稳定标识，供宿主在导出静态图片前等待播放器就绪。
   /// 窄屏大字下仅在说明超出可用高度时等比缩小占位内容，避免溢出画面。
   @override
   Widget build(BuildContext context) {
@@ -467,6 +468,9 @@ class _VideoPlaceholder extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text(
                       hasError ? '视频加载失败' : '正在加载视频…',
+                      key: hasError
+                          ? null
+                          : const ValueKey('collab-video-loading'),
                       style: const TextStyle(color: Colors.white),
                     ),
                     if (hasError) ...[
