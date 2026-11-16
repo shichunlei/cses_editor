@@ -16,7 +16,7 @@ dependencies:
   dio: ^5.11.1
   path_provider: ^2.1.6
   http: ^1.6.0
-  flutter_svg: ^2.3.2
+  flutter_svg: ^2.4.0
   flutter_math_fork: ^0.7.4
   webview_flutter: ^4.14.1
   metalink: ^2.1.0
@@ -25,6 +25,7 @@ dependencies:
   video_player: ^2.14.1
   val_highlight: ^0.1.1
   lucide_icons_flutter: ^4.0.3
+  file_picker: ^13.3.3
 
 dev_dependencies:
   path: ^1.9.1

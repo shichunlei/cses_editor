@@ -1,5 +1,4 @@
 {
-  "id": "6ae2bd12ae4da0b3be935160",
   "bizType": "DAILY_ORIENT",
   "orientType": "ORIENT",
   "todoContent": {
@@ -7,263 +6,196 @@
     "mentions": []
   },
   "dailyOrient": {
-    "content": "",
-    "mentions": []
+    "content": "这是导向 @师春雷 \ndbj\njckb\nlkcdlocd \nkdclccl \n@师春雷 这是都来帮\n@师春雷 这是领航员\n无序列表\n1\n大家看到\ndkj\n看到的\n肯定纽扣电池\n链接文字\nfdkv \nkflvfvm\n大家都是\n但是快进到\n看啥差点\n",
+    "mentions": [
+      {
+        "mentionId": "6008f761453b4e60700f01e2",
+        "mentionName": "师春雷",
+        "mentionType": "user"
+      }
+    ]
   },
   "expectedEffectContent": {
     "content": "",
     "mentions": []
   },
   "dailyResult": {
-    "content": "KJDCJODCJDCK \nMDKLD\nKLDJDCF ",
+    "content": "",
     "mentions": []
   },
   "thinking": {
-    "content": "XSNJKJCDSJJCKLJCDSKLDC,MN\nXBSGJHSDCDH \nXOIKCSCDSMK  \nmdskljfo ",
-    "mentions": []
-  },
-  "selfCheck": {
-    "content": "@CDCKD;OSDCKP[CK  @威震天 DMJKLDJODC\n换届大会覅电话费雕刻机费很大错机动车库垃圾袋分岔路口出发点汇顶科技吃饭大V领的开发v出纳",
+    "content": "这是感悟@师春雷 \ndbj\njckb\nlkcdlocd \nkdclccl \n无序列表\n1\n大家看到\ndkj\n看到的\n肯定纽扣电池\n链接文字\nfdkv \nkflvfvm\n大家都是\n但是快进到\n看啥差点",
     "mentions": [
       {
-        "mentionId": "6ae2bd06bc2701ed9ddf443c",
-        "mentionName": "CDCKD;OSDCKP[CK",
-        "mentionType": "task"
-      },
+        "mentionId": "6008f761453b4e60700f01e2",
+        "mentionName": "师春雷",
+        "mentionType": "user"
+      }
+    ]
+  },
+  "selfCheck": {
+    "content": "这是自检 @师春雷 \ndbj\njckb\nlkcdlocd \nkdclccl \n无序列表\n1\n大家看到\ndkj\n看到的\n肯定纽扣电池\n链接文字\nfdkv \nkflvfvm\n大家都是\n但是快进到\n看啥差点",
+    "mentions": [
       {
-        "mentionId": "5ffd465e263864787b87aa01",
-        "mentionName": "威震天",
+        "mentionId": "6008f761453b4e60700f01e2",
+        "mentionName": "师春雷",
         "mentionType": "user"
       }
     ]
   },
   "helpItems": [
     {
-      "content": "@威震天 SJIDLJDCOIDNCS",
+      "content": "@师春雷 这是都来帮",
       "mentions": [
         {
-          "mentionId": "5ffd465e263864787b87aa01",
-          "mentionName": "威震天",
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
           "mentionType": "user"
         }
       ],
       "sortNo": 1
     },
     {
-      "content": "@擎天柱 ewhbjkfdhfiohf bnm",
+      "content": "@师春雷 这是都来帮",
       "mentions": [
         {
-          "mentionId": "678",
-          "mentionName": "擎天柱",
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
           "mentionType": "user"
         }
       ],
       "sortNo": 2
+    },
+    {
+      "content": "@师春雷 这是都来帮",
+      "mentions": [
+        {
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
+          "mentionType": "user"
+        }
+      ],
+      "sortNo": 3
+    },
+    {
+      "content": "@师春雷 这是都来帮",
+      "mentions": [
+        {
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
+          "mentionType": "user"
+        }
+      ],
+      "sortNo": 4
     }
   ],
-  "navigatorItems": [],
+  "navigatorItems": [
+    {
+      "content": "@师春雷 这是领航员",
+      "mentions": [
+        {
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
+          "mentionType": "user"
+        }
+      ],
+      "sortNo": 1
+    },
+    {
+      "content": "@师春雷 这是领航员",
+      "mentions": [
+        {
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
+          "mentionType": "user"
+        }
+      ],
+      "sortNo": 2
+    },
+    {
+      "content": "@师春雷 这是领航员",
+      "mentions": [
+        {
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
+          "mentionType": "user"
+        }
+      ],
+      "sortNo": 3
+    },
+    {
+      "content": "@师春雷 这是领航员",
+      "mentions": [
+        {
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
+          "mentionType": "user"
+        }
+      ],
+      "sortNo": 4
+    }
+  ],
   "customData": {
-    "local_KYlqAwkdYUsE_BTzfk": {
-      "content": "11111",
-      "mentions": []
+    "local_pRZQQ53SyZXluV2cJU": {
+      "content": "吃的是草就会得出上档次说得出口买的出来的\n这是自定义字段 @师春雷 \ndbj\njckb\nlkcdlocd \nkdclccl \n无序列表\n1\n大家看到\ndkj\n看到的\n肯定纽扣电池\n链接文字\nfdkv \nkflvfvm\n大家都是\n但是快进到\n看啥差点",
+      "mentions": [
+        {
+          "mentionId": "6008f761453b4e60700f01e2",
+          "mentionName": "师春雷",
+          "mentionType": "user"
+        }
+      ]
     }
   },
   "bodyContent": {
-    "id": "cses-daily-fill-v7:64118eebd2b665246b7880eb:5ffd465e263864787b87aa01:2026-10-29:result",
+    "id": "cses-daily-fill-v7:6111fb0a202d425d221c53db:67e21ed49055eb740babe620:2026-11-16:orient",
     "flavour": "root",
     "nodeType": "root",
     "props": {
-      "background": "#FAF7EF",
-      "color": "#39414C",
       "fs": 16,
       "lh": 2,
+      "color": "#39414C",
+      "background": "#FAF7EF",
       "showHeader": false
     },
     "meta": {
-      "dailyDate": "2026-11-03",
       "dailyTemplate": "daily-writing",
-      "dailyTemplateVersion": 5,
-      "dailyType": "result"
+      "dailyTemplateVersion": 10,
+      "dailyType": "orient",
+      "dailyDate": "2026-11-16"
     },
     "children": [
       {
-        "id": "qjuGUrpNQQW3iZCblv",
+        "id": "XZytSasKOGoi9NFgSy",
         "flavour": "render-unit",
         "nodeType": "block",
         "props": {
-          "backColor": "#E9D8D3",
-          "bgi": "url(\"/assets/daily-fill/mountain-cover.svg\") center / cover",
           "p": [
-            40,
-            32,
-            40
-          ],
-          "textFill": "#30364A"
-        },
-        "meta": {
-          "dailySlot": "daily-cover",
-          "incl": [
-            "paragraph",
-            "bullet",
-            "ordered",
-            "todo",
-            "attachment",
-            "video",
-            "audio",
-            "task"
-          ],
-          "tplFieldName": "日成果",
-          "tplRegion": true
-        },
-        "children": [
-          {
-            "id": "f2wC0o_sLxB-8UJC8S",
-            "flavour": "paragraph",
-            "nodeType": "editable",
-            "props": {
-              "depth": 0,
-              "lh": 1.5,
-              "pfs": 1.75,
-              "psa": 0,
-              "psb": 0
-            },
-            "meta": {
-              "lock": "daily-template",
-              "lockKind": "template"
-            },
-            "children": [
-              {
-                "insert": "今日成果"
-              }
-            ]
-          },
-          {
-            "id": "6MICo2noF1-dW7vEEc",
-            "flavour": "paragraph",
-            "nodeType": "editable",
-            "props": {
-              "depth": 0,
-              "psa": 0,
-              "psb": 0
-            },
-            "meta": {
-              "plh": "记录今天完成的事，以及带来的成果…",
-              "plhMode": "always"
-            },
-            "children": [
-              {
-                "insert": "KJDCJODCJDCK "
-              }
-            ]
-          },
-          {
-            "id": "RCE-8iUEOINu5MdnIz",
-            "flavour": "paragraph",
-            "nodeType": "editable",
-            "props": {
-              "depth": 0,
-              "psa": 0,
-              "psb": 0
-            },
-            "meta": {},
-            "children": [
-              {
-                "insert": {
-                  "dailyTag": "help"
-                }
-              },
-              {
-                "insert": {
-                  "mention": "威震天"
-                },
-                "attributes": {
-                  "companyId": "64118eebd2b665246b7880eb",
-                  "deptId": "65f2a1bc6339554c37bd0dba",
-                  "deptName": "总经办",
-                  "isUser": true,
-                  "memberType": "HUMAN",
-                  "mentionId": "5ffd465e263864787b87aa01",
-                  "mentionType": "user",
-                  "orgId": "641287f6d2b665246b78e763",
-                  "orgName": "CEO",
-                  "parentId": "65f2a1bc6339554c37bd0dba",
-                  "seq": 55000,
-                  "type": "Boss",
-                  "userId": "5ffd465e263864787b87aa01",
-                  "userName": "威震天"
-                }
-              },
-              {
-                "insert": " SJIDLJDCOIDNCS"
-              }
-            ]
-          },
-          {
-            "id": "6UIuNCQn_PHH2cXegp",
-            "flavour": "ordered",
-            "nodeType": "editable",
-            "props": {
-              "depth": 0,
-              "order": 0,
-              "psa": 0,
-              "psb": 0
-            },
-            "meta": {},
-            "children": [
-              {
-                "insert": "MDKLD"
-              }
-            ]
-          },
-          {
-            "id": "dNS13Xj2AlF7KRhlNf",
-            "flavour": "ordered",
-            "nodeType": "editable",
-            "props": {
-              "depth": 0,
-              "order": 1,
-              "psa": 0,
-              "psb": 0
-            },
-            "meta": {},
-            "children": [
-              {
-                "insert": "KLDJDCF "
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "zTUM0TCoKZda4XA8Mn",
-        "flavour": "render-unit",
-        "nodeType": "block",
-        "props": {
-          "backColor": "#FAF7EF",
-          "p": [
-            56,
+            0,
             32,
             16
-          ]
+          ],
+          "backColor": "#FAF7EF"
         },
         "meta": {
           "lock": "daily-template",
-          "lockKind": "template"
+          "lockKind": "template",
+          "dailyRegion": "daily-date"
         },
         "children": [
           {
-            "id": "_KhFxb9n9vs7O9P0wf",
+            "id": "UZAvMwnsvgYNnDpiY0",
             "flavour": "date-card",
             "nodeType": "void",
             "props": {
-              "bg": "transparent",
-              "bw": "0px solid",
-              "date": "2026-10-29T12:00:00",
-              "fg": "#39414C",
-              "format": "full",
-              "height": 136,
               "style": "masthead",
-              "width": 206
+              "format": "full",
+              "width": 206,
+              "height": 136,
+              "bg": "transparent",
+              "fg": "#39414C",
+              "bw": "0px solid",
+              "date": "2026-11-16T12:00:00"
             },
             "meta": {
               "dailyDate": true
@@ -273,19 +205,25 @@
         ]
       },
       {
-        "id": "0Y9tQBJTjAr-077i9B",
+        "id": "0dG5sCeTZU1Y8eJ4lF",
         "flavour": "render-unit",
         "nodeType": "block",
         "props": {
-          "backColor": "#FAF7EF",
-          "background": "repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, #DFD9CC 31px, #DFD9CC 32px)",
           "p": [
-            0,
             40,
-            40
-          ]
+            40,
+            0
+          ],
+          "backColor": "#FAF7EF",
+          "background": "repeating-linear-gradient(to bottom, transparent 0px, transparent 39px, #E8E0CE 39px, #E8E0CE 40px)",
+          "textFont": "14px 400 normal",
+          "textSpacing": "0em 2.857143",
+          "textFill": "#2B2623"
         },
         "meta": {
+          "dailySection": "primary",
+          "tplRegion": true,
+          "tplFieldName": "导向",
           "dailySlot": "daily-body",
           "incl": [
             "paragraph",
@@ -293,64 +231,15 @@
             "ordered",
             "todo",
             "attachment",
+            "image",
             "video",
             "audio",
             "task"
-          ],
-          "tplFieldName": "日成果",
-          "tplRegion": true
+          ]
         },
         "children": [
           {
-            "id": "wdcK4ATBXpBn7Kdp1k",
-            "flavour": "paragraph",
-            "nodeType": "editable",
-            "props": {
-              "depth": 0,
-              "psa": 0,
-              "psb": 0
-            },
-            "meta": {},
-            "children": [
-              {
-                "insert": "热风南方科技大V佛大V发大V发"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "geqFIl8dveaUQ1_9Zq",
-        "flavour": "render-unit",
-        "nodeType": "block",
-        "props": {
-          "p": [
-            80,
-            40,
-            40
-          ],
-          "textFill": "#2B2623",
-          "textFont": "14px 400 normal",
-          "textSpacing": "0em 2.86"
-        },
-        "meta": {
-          "dailySection": "reflection",
-          "incl": [
-            "paragraph",
-            "bullet",
-            "ordered",
-            "todo",
-            "attachment",
-            "video",
-            "audio",
-            "task"
-          ],
-          "tplFieldName": "感悟",
-          "tplRegion": true
-        },
-        "children": [
-          {
-            "id": "UqVp3OkVO7-l3Kx2vN",
+            "id": "eNcu1D40UCFbNWepV8",
             "flavour": "paragraph",
             "nodeType": "editable",
             "props": {
@@ -359,49 +248,109 @@
               "psb": 0
             },
             "meta": {
-              "plh": "写下感悟…",
+              "plh": "请输入",
               "plhMode": "always"
             },
             "children": [
               {
-                "insert": "XSNJKJCDSJJCKLJCDSKLDC,MN"
+                "insert": "这是导向 "
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " "
               }
             ]
           },
           {
-            "id": "RxRgXzoUn04RqCMoJr",
-            "flavour": "paragraph",
+            "id": "WY6Q80xiO7jzzycs0R",
+            "flavour": "ordered",
             "nodeType": "editable",
             "props": {
+              "order": 0,
               "depth": 0,
-              "psa": 0,
-              "psb": 0
+              "psb": 0,
+              "psa": 0
             },
             "meta": {},
             "children": [
               {
-                "insert": "XBSGJHSDCDH "
+                "insert": "dbj"
               }
             ]
           },
           {
-            "id": "3E6YpBZqhF5sN8HhLh",
-            "flavour": "paragraph",
+            "id": "IFlfyNKTzrcZ8O9Hhc",
+            "flavour": "ordered",
             "nodeType": "editable",
             "props": {
+              "order": 1,
               "depth": 0,
-              "psa": 0,
-              "psb": 0
+              "psb": 0,
+              "psa": 0
             },
             "meta": {},
             "children": [
               {
-                "insert": "XOIKCSCDSMK  "
+                "insert": "jckb"
               }
             ]
           },
           {
-            "id": "s0PZpB90Sx8pK-19R5",
+            "id": "ejfBDFTpyeBULr9kAl",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "lkcdlocd "
+              }
+            ]
+          },
+          {
+            "id": "lPg0OorfbX9_rKoSQX",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kdclccl "
+              }
+            ]
+          },
+          {
+            "id": "ObAb7c6svdfXwT1--Y",
             "flavour": "paragraph",
             "nodeType": "editable",
             "props": {
@@ -418,32 +367,32 @@
               },
               {
                 "insert": {
-                  "mention": "擎天柱"
+                  "mention": "师春雷"
                 },
                 "attributes": {
-                  "mentionId": "678",
-                  "companyId": "64118eebd2b665246b7880eb",
-                  "deptId": "65f2a1bc6339554c37bd0dba",
-                  "deptName": "总经办",
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
                   "isUser": true,
                   "memberType": "HUMAN",
-                  "orgId": "641287f6d2b665246b78e763",
-                  "orgName": "CEO",
-                  "parentId": "65f2a1bc6339554c37bd0dba",
-                  "seq": 55000,
-                  "type": "Boss",
-                  "userId": "678",
-                  "userName": "擎天柱",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
                   "mentionType": "user"
                 }
               },
               {
-                "insert": " ewhbjkfdhfiohf bnm"
+                "insert": " 这是都来帮"
               }
             ]
           },
           {
-            "id": "PLGzQsOpZI5gcgaRtT",
+            "id": "Apq-QYaKmZeagXts4F",
             "flavour": "paragraph",
             "nodeType": "editable",
             "props": {
@@ -454,118 +403,277 @@
             "meta": {},
             "children": [
               {
-                "insert": "mdskljfo "
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "84nj3577M1jT__leda",
-        "flavour": "render-unit",
-        "nodeType": "block",
-        "props": {
-          "p": [
-            80,
-            40,
-            40
-          ],
-          "textFill": "#2B2623",
-          "textFont": "14px 400 normal",
-          "textSpacing": "0em 2.86"
-        },
-        "meta": {
-          "dailySection": "self-check",
-          "incl": [
-            "paragraph",
-            "bullet",
-            "ordered",
-            "todo",
-            "attachment",
-            "video",
-            "audio",
-            "task"
-          ],
-          "tplFieldName": "自检",
-          "tplRegion": true
-        },
-        "children": [
-          {
-            "id": "VMdy7ivYzb73UPsoOT",
-            "flavour": "paragraph",
-            "nodeType": "editable",
-            "props": {
-              "depth": 0,
-              "psa": 0,
-              "psb": 0
-            },
-            "meta": {
-              "plh": "写下自检…",
-              "plhMode": "always"
-            },
-            "children": [
-              {
                 "insert": {
-                  "mention": "CDCKD;OSDCKP[CK"
-                },
-                "attributes": {
-                  "mentionId": "6ae2bd06bc2701ed9ddf443c",
-                  "mentionType": "task"
+                  "dailyTag": "navigator"
                 }
               },
               {
-                "insert": "  "
-              },
-              {
                 "insert": {
-                  "mention": "威震天"
+                  "mention": "师春雷"
                 },
                 "attributes": {
-                  "companyId": "64118eebd2b665246b7880eb",
-                  "deptId": "65f2a1bc6339554c37bd0dba",
-                  "deptName": "总经办",
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
                   "isUser": true,
                   "memberType": "HUMAN",
-                  "mentionId": "5ffd465e263864787b87aa01",
-                  "mentionType": "user",
-                  "orgId": "641287f6d2b665246b78e763",
-                  "orgName": "CEO",
-                  "parentId": "65f2a1bc6339554c37bd0dba",
-                  "seq": 55000,
-                  "type": "Boss",
-                  "userId": "5ffd465e263864787b87aa01",
-                  "userName": "威震天"
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
                 }
               },
               {
-                "insert": " DMJKLDJODC"
+                "insert": " 这是领航员"
               }
             ]
           },
           {
-            "id": "LHLuUdOgHTTzAVv0vM",
-            "flavour": "paragraph",
+            "id": "tkKXkK3vA2H5J5__MN",
+            "flavour": "bullet",
             "nodeType": "editable",
             "props": {
               "depth": 0,
-              "psa": 0,
-              "psb": 0
+              "psb": 0,
+              "psa": 0
             },
             "meta": {},
             "children": [
               {
-                "insert": "换届大会覅电话费雕刻机费很大错机动车库垃圾袋分岔路口出发点汇顶科技吃饭大V领的开发v出纳"
+                "insert": "无序列表"
               }
             ]
           },
           {
-            "id": "QNistKp6jDJprUYQL2",
-            "flavour": "paragraph",
+            "id": "cQgzev5znHQ15nz5cF",
+            "flavour": "bullet",
             "nodeType": "editable",
             "props": {
               "depth": 0,
-              "psa": 0,
-              "psb": 0
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "1"
+              }
+            ]
+          },
+          {
+            "id": "DchsVBhoOqZJcyfxRm",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家看到"
+              }
+            ]
+          },
+          {
+            "id": "jJcBIyn-UW9xI327TW",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "dkj"
+              }
+            ]
+          },
+          {
+            "id": "RCe3F-7osr_vqKBCpn",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看到的"
+              }
+            ]
+          },
+          {
+            "id": "iyFvLSRDHWQtkstnD9",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 3,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "肯定纽扣电池"
+              }
+            ]
+          },
+          {
+            "id": "lN7QcOCHlAkV0BbE1-",
+            "flavour": "attachment",
+            "nodeType": "void",
+            "props": {
+              "name": "前端探针上报接入指南.md",
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa66de20752bbd1836d412.md",
+              "type": "",
+              "size": 14969,
+              "icon": "bc_file-unknown"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "ugsgUyRGRbH3ZUx3QE",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "链接文字",
+                "attributes": {
+                  "a:link": "https://www.baidu.com"
+                }
+              }
+            ]
+          },
+          {
+            "id": "0spcBtaxoPF-HZQfl0",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0,
+              "taskId": "6afa678f20752bbd1836d595",
+              "syncedTitle": "fdkv",
+              "syncedAt": 1794795407533
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "fdkv "
+              }
+            ]
+          },
+          {
+            "id": "6nI0S9o3a16_bLSnN3",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kflvfvm"
+              }
+            ]
+          },
+          {
+            "id": "kdFGweMHgv9EOztjGG",
+            "flavour": "image",
+            "nodeType": "block",
+            "props": {
+              "src": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68099f34edd11ea46da1.png",
+              "wr": 90,
+              "depth": 0,
+              "ar": 1.1447562776957163
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "oyJPAEPa7J-0rlXDe9",
+            "flavour": "video",
+            "nodeType": "void",
+            "props": {
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa68b8e05903777e904113.mov",
+              "sourceType": "local",
+              "type": "video/quicktime",
+              "wr": 100,
+              "depth": 0,
+              "ar": 1.7777777777777777,
+              "name": "录屏2026-11-16 10.21.24.mov",
+              "size": 1464300,
+              "poster": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68b99f34edd11ea46f3d.jpg"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "szsKxib3n80rJSEAmz",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家都是"
+              }
+            ]
+          },
+          {
+            "id": "fQv1YdUzdhngUDAB7u",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "但是快进到"
+              }
+            ]
+          },
+          {
+            "id": "8h05nN40ZYzfDU8HCd",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看啥差点"
+              }
+            ]
+          },
+          {
+            "id": "reXgj52nQMmKqu0dRP",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
             },
             "meta": {},
             "children": []
@@ -573,58 +681,1422 @@
         ]
       },
       {
-        "id": "4jHe2lAHx3RpGDUpuO",
+        "id": "bPCkP_5BILAdYSha8K",
         "flavour": "render-unit",
         "nodeType": "block",
         "props": {
           "p": [
             80,
             40,
-            40
+            0
           ],
-          "textFill": "#2B2623",
           "textFont": "14px 400 normal",
-          "textSpacing": "0em 2.86"
+          "textSpacing": "0em 2.86",
+          "textFill": "#2B2623"
         },
         "meta": {
-          "dailyCustomField": {
-            "key": "local_KYlqAwkdYUsE_BTzfk",
-            "label": "金额",
-            "type": "number"
-          },
-          "dailySection": "custom",
+          "dailySection": "reflection",
+          "tplRegion": true,
+          "tplFieldName": "感悟",
           "incl": [
             "paragraph",
             "bullet",
             "ordered",
             "todo",
             "attachment",
+            "image",
             "video",
             "audio",
             "task"
-          ],
-          "tplFieldName": "金额",
-          "tplRegion": true
+          ]
         },
         "children": [
           {
-            "id": "DKXdfMOabPAUK35vnb",
+            "id": "E4DthkRF_0MQ_twl05",
             "flavour": "paragraph",
             "nodeType": "editable",
             "props": {
               "depth": 0,
-              "psa": 0,
-              "psb": 0
+              "psb": 0,
+              "psa": 0
             },
             "meta": {
-              "plh": "写下金额…",
+              "plh": "写下感悟…",
               "plhMode": "always"
             },
             "children": [
               {
-                "insert": "11111"
+                "insert": "这是感悟"
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " "
               }
             ]
+          },
+          {
+            "id": "BRGqQWjTFIinnTbZSc",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "dbj"
+              }
+            ]
+          },
+          {
+            "id": "1J7zE5CjIg9PvDEeNN",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 1,
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "jckb"
+              }
+            ]
+          },
+          {
+            "id": "lQys_KujTiOLOup5cP",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "lkcdlocd "
+              }
+            ]
+          },
+          {
+            "id": "8Ox6pTgwKCMMBBTy50",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kdclccl "
+              }
+            ]
+          },
+          {
+            "id": "geHOAHBXqgnrf6PEbf",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "help"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " 这是都来帮"
+              }
+            ]
+          },
+          {
+            "id": "toyoBEcp8pesHY1XxZ",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "navigator"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " 这是领航员"
+              }
+            ]
+          },
+          {
+            "id": "5MpweepjS64sOlDXIF",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "无序列表"
+              }
+            ]
+          },
+          {
+            "id": "-KCP4iFcYcxXKSVXHp",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "1"
+              }
+            ]
+          },
+          {
+            "id": "n_yQqukYh-g84Z36q9",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家看到"
+              }
+            ]
+          },
+          {
+            "id": "lIfuLAJA19uB-Xfc8u",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "dkj"
+              }
+            ]
+          },
+          {
+            "id": "YqmxqEr-8162gub52D",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看到的"
+              }
+            ]
+          },
+          {
+            "id": "sjhkpXiXRZYaDeALaw",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 3,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "肯定纽扣电池"
+              }
+            ]
+          },
+          {
+            "id": "RvNpUvT0fgcOS-C8xJ",
+            "flavour": "attachment",
+            "nodeType": "void",
+            "props": {
+              "name": "前端探针上报接入指南.md",
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa66de20752bbd1836d412.md",
+              "type": "",
+              "size": 14969,
+              "icon": "bc_file-unknown"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "r_neTt8D6pEWHEUNbD",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "链接文字",
+                "attributes": {
+                  "a:link": "https://www.baidu.com"
+                }
+              }
+            ]
+          },
+          {
+            "id": "VWaMt4_GiD9gJRl50G",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0,
+              "taskId": "6afa678f20752bbd1836d595",
+              "syncedTitle": "fdkv",
+              "syncedAt": 1794795407533
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "fdkv "
+              }
+            ]
+          },
+          {
+            "id": "0Rj9i-YfPwh28ni_JQ",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kflvfvm"
+              }
+            ]
+          },
+          {
+            "id": "1qhJ_zT-4chZVk1QWh",
+            "flavour": "image",
+            "nodeType": "block",
+            "props": {
+              "src": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68099f34edd11ea46da1.png",
+              "wr": 90,
+              "depth": 0,
+              "ar": 1.1447562776957163
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "FAaBgd4pYbf9AgNOb6",
+            "flavour": "video",
+            "nodeType": "void",
+            "props": {
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa68b8e05903777e904113.mov",
+              "sourceType": "local",
+              "type": "video/quicktime",
+              "wr": 100,
+              "depth": 0,
+              "ar": 1.7777777777777777,
+              "name": "录屏2026-11-16 10.21.24.mov",
+              "size": 1464300,
+              "poster": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68b99f34edd11ea46f3d.jpg"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "v93QW8KYSj8ozxwxxd",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家都是"
+              }
+            ]
+          },
+          {
+            "id": "BelGv61kj1Of13tKKC",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "但是快进到"
+              }
+            ]
+          },
+          {
+            "id": "awMaObVPIRuPrXe7PU",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看啥差点"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pD_IqrJlKySW0_LLqq",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "p": [
+            80,
+            40,
+            0
+          ],
+          "textFont": "14px 400 normal",
+          "textSpacing": "0em 2.86",
+          "textFill": "#2B2623"
+        },
+        "meta": {
+          "dailySection": "self-check",
+          "tplRegion": true,
+          "tplFieldName": "自检",
+          "incl": [
+            "paragraph",
+            "bullet",
+            "ordered",
+            "todo",
+            "attachment",
+            "image",
+            "video",
+            "audio",
+            "task"
+          ]
+        },
+        "children": [
+          {
+            "id": "QQFvR-D2wxpiF1agLU",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {
+              "plh": "写下自检…",
+              "plhMode": "always"
+            },
+            "children": [
+              {
+                "insert": "这是自检 "
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " "
+              }
+            ]
+          },
+          {
+            "id": "LMTxZe16NhfVJKE4La",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "dbj"
+              }
+            ]
+          },
+          {
+            "id": "qmB3LSfQXy_LgewzAf",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 1,
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "jckb"
+              }
+            ]
+          },
+          {
+            "id": "1oe1n8WMA2LqDgCRTq",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "lkcdlocd "
+              }
+            ]
+          },
+          {
+            "id": "FGYfd9Kscdd4ToaMYw",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kdclccl "
+              }
+            ]
+          },
+          {
+            "id": "_mtFB5s8hJ4QOKHhPC",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "help"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " 这是都来帮"
+              }
+            ]
+          },
+          {
+            "id": "QbEsGHNC_6ExOGLEBC",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "navigator"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " 这是领航员"
+              }
+            ]
+          },
+          {
+            "id": "WU0uiCkVmFrWmw2e5A",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "无序列表"
+              }
+            ]
+          },
+          {
+            "id": "3rOxojaybuxsh2xyqa",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "1"
+              }
+            ]
+          },
+          {
+            "id": "e4gZHMVnZ6jHEx4Mid",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家看到"
+              }
+            ]
+          },
+          {
+            "id": "15Emy37EnVqR-Bqpww",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "dkj"
+              }
+            ]
+          },
+          {
+            "id": "dBp56lHC6T1XsDHYgn",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看到的"
+              }
+            ]
+          },
+          {
+            "id": "iOG9ggj3wgBcIm3X8a",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 3,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "肯定纽扣电池"
+              }
+            ]
+          },
+          {
+            "id": "1YnhvEX3ktZFvxXims",
+            "flavour": "attachment",
+            "nodeType": "void",
+            "props": {
+              "name": "前端探针上报接入指南.md",
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa66de20752bbd1836d412.md",
+              "type": "",
+              "size": 14969,
+              "icon": "bc_file-unknown"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "grsx_IKkeVj2Zj4ttj",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "链接文字",
+                "attributes": {
+                  "a:link": "https://www.baidu.com"
+                }
+              }
+            ]
+          },
+          {
+            "id": "fOcwIy_PWde3ARcT2T",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0,
+              "taskId": "6afa678f20752bbd1836d595",
+              "syncedTitle": "fdkv",
+              "syncedAt": 1794795407533
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "fdkv "
+              }
+            ]
+          },
+          {
+            "id": "le71EzCwtjaDWP4NUv",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kflvfvm"
+              }
+            ]
+          },
+          {
+            "id": "R1GMfN68grPgTVTLaC",
+            "flavour": "image",
+            "nodeType": "block",
+            "props": {
+              "src": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68099f34edd11ea46da1.png",
+              "wr": 90,
+              "depth": 0,
+              "ar": 1.1447562776957163
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "N-aBNZDOa0az4-MW52",
+            "flavour": "video",
+            "nodeType": "void",
+            "props": {
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa68b8e05903777e904113.mov",
+              "sourceType": "local",
+              "type": "video/quicktime",
+              "wr": 100,
+              "depth": 0,
+              "ar": 1.7777777777777777,
+              "name": "录屏2026-11-16 10.21.24.mov",
+              "size": 1464300,
+              "poster": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68b99f34edd11ea46f3d.jpg"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "WRe_FVGO1YW2iDZkQK",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家都是"
+              }
+            ]
+          },
+          {
+            "id": "VfERe3UU_ae8S_ah1i",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "但是快进到"
+              }
+            ]
+          },
+          {
+            "id": "DZ7A5paYYYaY3HDD6C",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看啥差点"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "SuKOHsvX1i1RySlEid",
+        "flavour": "render-unit",
+        "nodeType": "block",
+        "props": {
+          "p": [
+            80,
+            40,
+            0
+          ],
+          "textFont": "14px 400 normal",
+          "textSpacing": "0em 2.86",
+          "textFill": "#2B2623"
+        },
+        "meta": {
+          "dailySection": "custom",
+          "tplRegion": true,
+          "tplFieldName": "另外的感悟",
+          "incl": [
+            "paragraph",
+            "bullet",
+            "ordered",
+            "todo",
+            "attachment",
+            "image",
+            "video",
+            "audio",
+            "task"
+          ],
+          "dailyCustomField": {
+            "key": "local_pRZQQ53SyZXluV2cJU",
+            "label": "另外的感悟",
+            "type": "textarea"
+          }
+        },
+        "children": [
+          {
+            "id": "jc5sNzIyNTEelJuzFr",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {
+              "plh": "写下另外的感悟…",
+              "plhMode": "always"
+            },
+            "children": [
+              {
+                "insert": "吃的是草就会得出上档次说得出口买的出来的"
+              }
+            ]
+          },
+          {
+            "id": "_TAD6wjN8IjuFtupu5",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "这是自定义字段 "
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " "
+              }
+            ]
+          },
+          {
+            "id": "DwdMRSxeIFPhV3TwlD",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "dbj"
+              }
+            ]
+          },
+          {
+            "id": "Wzs02un9b1SkGzf_ly",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 1,
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "jckb"
+              }
+            ]
+          },
+          {
+            "id": "YSTcl4YiydNkI9bYOP",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "lkcdlocd "
+              }
+            ]
+          },
+          {
+            "id": "02bDF0vlKr3dnhBWCi",
+            "flavour": "ordered",
+            "nodeType": "editable",
+            "props": {
+              "order": 0,
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kdclccl "
+              }
+            ]
+          },
+          {
+            "id": "19p7zCv-PSrvlJKR8T",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "help"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " 这是都来帮"
+              }
+            ]
+          },
+          {
+            "id": "ETL7Bo_xszSojIfQav",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": {
+                  "dailyTag": "navigator"
+                }
+              },
+              {
+                "insert": {
+                  "mention": "师春雷"
+                },
+                "attributes": {
+                  "mentionId": "6008f761453b4e60700f01e2",
+                  "companyId": "6111fb0a202d425d221c53db",
+                  "deptId": "616cee6ef7a6ae6354cddd9b",
+                  "deptName": "技术部",
+                  "isUser": true,
+                  "memberType": "HUMAN",
+                  "orgId": "62820f3a82bfd9624f0786cf",
+                  "orgName": "移动开发",
+                  "parentId": "6311a12f50c75d009ed3863b",
+                  "seq": 10000,
+                  "type": "Member",
+                  "userId": "6008f761453b4e60700f01e2",
+                  "userName": "师春雷",
+                  "mentionType": "user"
+                }
+              },
+              {
+                "insert": " 这是领航员"
+              }
+            ]
+          },
+          {
+            "id": "KEil7aBXZE8WwfAK00",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "无序列表"
+              }
+            ]
+          },
+          {
+            "id": "m_4J8qAuoB_cS5MwiX",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "1"
+              }
+            ]
+          },
+          {
+            "id": "smzGMfgC74ylzHr3Vu",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家看到"
+              }
+            ]
+          },
+          {
+            "id": "qGNpdSzLNu4GklKLnO",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 1,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "dkj"
+              }
+            ]
+          },
+          {
+            "id": "IrKkW5hP_PpclATGoB",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 2,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看到的"
+              }
+            ]
+          },
+          {
+            "id": "dscSZUkn_0OsqfFpld",
+            "flavour": "bullet",
+            "nodeType": "editable",
+            "props": {
+              "depth": 3,
+              "psb": 0,
+              "psa": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "肯定纽扣电池"
+              }
+            ]
+          },
+          {
+            "id": "n9ja_b4WW7H1xxe_G1",
+            "flavour": "attachment",
+            "nodeType": "void",
+            "props": {
+              "name": "前端探针上报接入指南.md",
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa66de20752bbd1836d412.md",
+              "type": "",
+              "size": 14969,
+              "icon": "bc_file-unknown"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "DXkLbEKuhmnxjRBKdp",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "链接文字",
+                "attributes": {
+                  "a:link": "https://www.baidu.com"
+                }
+              }
+            ]
+          },
+          {
+            "id": "MtWNgTTtGOxiiOHK5V",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0,
+              "taskId": "6afa678f20752bbd1836d595",
+              "syncedTitle": "fdkv",
+              "syncedAt": 1794795407533
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "fdkv "
+              }
+            ]
+          },
+          {
+            "id": "8Y2V3OAXRpe12dC-Cf",
+            "flavour": "todo",
+            "nodeType": "editable",
+            "props": {
+              "created": 1794795024436,
+              "checked": 0,
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "kflvfvm"
+              }
+            ]
+          },
+          {
+            "id": "iJzQkRnFcpcVvYo4EK",
+            "flavour": "image",
+            "nodeType": "block",
+            "props": {
+              "src": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68099f34edd11ea46da1.png",
+              "wr": 90,
+              "depth": 0,
+              "ar": 1.1447562776957163
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "0tzTr7Lk_wt3CE2vYt",
+            "flavour": "video",
+            "nodeType": "void",
+            "props": {
+              "url": "http://attachment.jinqidongli.com/67e21ed49055eb740babe620/6afa68b8e05903777e904113.mov",
+              "sourceType": "local",
+              "type": "video/quicktime",
+              "wr": 100,
+              "depth": 0,
+              "ar": 1.7777777777777777,
+              "name": "录屏2026-11-16 10.21.24.mov",
+              "size": 1464300,
+              "poster": "http://picture.jinqidongli.com/67e21ed49055eb740babe620/6afa68b99f34edd11ea46f3d.jpg"
+            },
+            "meta": {},
+            "children": []
+          },
+          {
+            "id": "lSfO6ykf8-Kvp797ab",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "大家都是"
+              }
+            ]
+          },
+          {
+            "id": "yVVML-ItLJ9zjXMdyI",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "但是快进到"
+              }
+            ]
+          },
+          {
+            "id": "QmgjBAMLsUkeowvovb",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": [
+              {
+                "insert": "看啥差点"
+              }
+            ]
+          },
+          {
+            "id": "VDPVvwbbxk7KaqTc7i",
+            "flavour": "paragraph",
+            "nodeType": "editable",
+            "props": {
+              "depth": 0
+            },
+            "meta": {},
+            "children": []
           }
         ]
       }
