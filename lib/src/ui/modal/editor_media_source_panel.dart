@@ -191,7 +191,9 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       });
     } catch (e) {
       if (mounted) {
-        setState(() => _error = e is FormatException ? e.message : '无法选择文件，请重试');
+        setState(
+          () => _error = e is FormatException ? e.message : '无法选择文件，请重试',
+        );
       }
     } finally {
       if (mounted) setState(() => _picking = false);
@@ -209,7 +211,8 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       if (uri == null ||
           !{'http', 'https'}.contains(uri.scheme) ||
           uri.host.isEmpty ||
-          (isCollabResourceType(widget.kind) && !isCollabResourceUrl(widget.kind, url))) {
+          (isCollabResourceType(widget.kind) &&
+              !isCollabResourceUrl(widget.kind, url))) {
         setState(() => _error = '请输入完整的 http:// 或 https:// 链接');
         return;
       }
@@ -241,7 +244,9 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       }
     } catch (e) {
       if (mounted && !cancel.isCancelled) {
-        setState(() => _error = e is FormatException ? e.message : '上传失败，请检查网络后重试');
+        setState(
+          () => _error = e is FormatException ? e.message : '上传失败，请检查网络后重试',
+        );
       }
     } finally {
       if (mounted) setState(() => _uploading = false);
@@ -271,6 +276,19 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
         : widget.replacing
         ? '替换$_label'
         : '添加$_label';
+    final savesDocumentImage = widget.kind == 'document_icon' || _banner;
+    final submitLabel = _local
+        ? (savesDocumentImage
+              ? '上传并保存'
+              : widget.replacing
+              ? '上传并替换'
+              : '上传并插入')
+        : (savesDocumentImage
+              ? '保存'
+              : widget.replacing
+              ? '替换$_label'
+              : '插入$_label');
+    const uploadCardRadius = BorderRadius.all(Radius.circular(12));
     return CollabBottomSheet(
       title: Text(title),
       subtitle: _banner
@@ -338,7 +356,10 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
       leadingAction: widget.leadingAction != null
           ? IgnorePointer(
               ignoring: _busy,
-              child: Opacity(opacity: _busy ? .4 : 1, child: widget.leadingAction!),
+              child: Opacity(
+                opacity: _busy ? .4 : 1,
+                child: widget.leadingAction!,
+              ),
             )
           : widget.allowRemove
           ? TextButton(
@@ -355,27 +376,35 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
             )
           : null,
       actions: [
-        TextButton(onPressed: () => Navigator.pop(context), child: const Text('取消')),
-        if (_source == 'first') FilledButton(onPressed: () => Navigator.pop(context), child: const Text('完成')),
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('取消'),
+        ),
+        if (_source == 'first')
+          FilledButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('完成'),
+          ),
         if (_source != 'first')
           FilledButton(
             key: const ValueKey('editor-url-block-submit'),
-            onPressed: _busy || (_local ? _file == null : _url.text.trim().isEmpty) ? null : _submit,
-            child: Text(
-              _uploading
-                  ? '上传中…'
-                  : _local
-                  ? (widget.kind == 'document_icon' || _banner
-                        ? '上传并保存'
-                        : widget.replacing
-                        ? '上传并替换'
-                        : '上传并插入')
-                  : (widget.kind == 'document_icon' || _banner
-                        ? '保存'
-                        : widget.replacing
-                        ? '替换$_label'
-                        : '插入$_label'),
-            ),
+            style: _uploading
+                ? FilledButton.styleFrom(
+                    disabledBackgroundColor: c.soft,
+                    disabledForegroundColor: c.muted,
+                  )
+                : null,
+            onPressed:
+                _busy || (_local ? _file == null : _url.text.trim().isEmpty)
+                ? null
+                : _submit,
+            child: _local
+                ? IndexedStack(
+                    index: _uploading ? 1 : 0,
+                    alignment: Alignment.center,
+                    children: [Text(submitLabel), const Text('上传中')],
+                  )
+                : Text(submitLabel),
           ),
       ],
       child: Column(
@@ -422,36 +451,58 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 14),
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: c.soft, borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(
+                color: c.soft,
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(LucideIcons.info, size: 16, color: c.accent),
                   const SizedBox(width: 9),
                   Expanded(
-                    child: Text('使用网络$_label时，请确保链接可被文档成员访问。', style: TextStyle(fontSize: 12, color: c.accent)),
+                    child: Text(
+                      '使用网络$_label时，请确保链接可被文档成员访问。',
+                      style: TextStyle(fontSize: 12, color: c.accent),
+                    ),
                   ),
                 ],
               ),
             ),
-          ] else ...[
+          ] else
             Material(
               color: c.field,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: uploadCardRadius,
               child: InkWell(
                 key: const ValueKey('editor-media-pick-file'),
                 onTap: _busy || !upload ? null : _pick,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: uploadCardRadius,
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 24,
+                  ),
                   decoration: BoxDecoration(
                     border: Border.all(color: c.line),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: uploadCardRadius,
                   ),
+                  foregroundDecoration: _uploading
+                      ? BoxDecoration(
+                          borderRadius: uploadCardRadius,
+                          gradient: LinearGradient(
+                            colors: [
+                              c.accent.withValues(alpha: .16),
+                              Colors.transparent,
+                            ],
+                            // 同位置色标形成与进度对应的清晰边界。
+                            stops: [_progress, _progress],
+                          ),
+                        )
+                      : null,
                   child: Column(
                     children: [
-                      Icon(_file == null ? LucideIcons.cloudUpload : LucideIcons.fileImage, size: 28, color: c.accent),
+                      Icon(LucideIcons.cloudUpload, size: 28, color: c.accent),
                       const SizedBox(height: 8),
                       Text(
                         _picking ? '正在选择文件…' : (_file?.name ?? '点击选择$_label文件'),
@@ -462,7 +513,11 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
                       const SizedBox(height: 8),
                       Text(
                         _file == null
-                            ? (upload ? _fileHint : (_banner ? '当前环境暂不支持图片上传，请使用图库或链接' : '当前环境暂不支持图片上传，请使用表情或链接'))
+                            ? (upload
+                                  ? _fileHint
+                                  : (_banner
+                                        ? '当前环境暂不支持图片上传，请使用图库或链接'
+                                        : '当前环境暂不支持图片上传，请使用表情或链接'))
                             : '${(_file!.size / 1024 / 1024).toStringAsFixed(2)} MB · 点击重新选择',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 11, color: c.muted),
@@ -472,17 +527,6 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
                 ),
               ),
             ),
-            if (_uploading) ...[
-              const SizedBox(height: 16),
-              LinearProgressIndicator(value: _progress, color: c.accent, borderRadius: BorderRadius.circular(3)),
-              const SizedBox(height: 8),
-              Text(
-                _progress >= 1 ? '正在保存文件…' : '正在上传 ${(_progress * 100).round()}%',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 11, color: c.muted),
-              ),
-            ],
-          ],
           if (_error != null)
             Padding(
               padding: const EdgeInsets.only(top: 12),

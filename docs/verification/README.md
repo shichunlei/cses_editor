@@ -1,5 +1,6 @@
 # 验证索引
 
+- [媒体上传卡片进度遮罩](media-upload-overlay-20261116/report.md)
 - [任务引用剪贴板图标与蓝色文字](inline-task-link-style-20261110/report.md)
 - [任务引用自然换行及 Android 验收](inline-task-flow-20261110/report.md)
 - [行内任务引用](inline-task-mention-20261110/report.md)
