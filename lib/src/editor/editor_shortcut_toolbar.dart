@@ -22,7 +22,6 @@ import 'package:cses_editor/src/editor/editor_media_source_sheet.dart';
 import 'package:cses_editor/src/editor/stable_mobile_toolbar.dart';
 import 'package:cses_editor/src/model/collab_block_colors.dart';
 import 'package:cses_editor/src/model/collab_color_palette.dart';
-import 'package:cses_editor/src/model/collab_image.dart';
 import 'package:cses_editor/src/model/collab_person_card.dart';
 import 'package:cses_editor/src/model/collab_date_card.dart';
 import 'package:cses_editor/src/model/collab_weather.dart';
@@ -4202,13 +4201,19 @@ Node _urlBackedNode(
   String url, {
   EditorMediaSource? mediaSource,
 }) {
-  if (blockType == ImageBlockKeys.type) {
+  if (const {'image', 'video', 'audio', 'attachment'}.contains(blockType)) {
+    final image = blockType == ImageBlockKeys.type;
     return Node(
-      type: ImageBlockKeys.type,
+      type: blockType,
       attributes: {
-        ImageBlockKeys.url: url,
-        collabImageAttribute: const CollabImage().toJson(),
-        ImageBlockKeys.align: 'center',
+        ...editorMediaSourceAttributes(
+          blockType,
+          mediaSource ?? EditorMediaSource(url),
+        ),
+        if (image)
+          ImageBlockKeys.align: 'center'
+        else
+          blockComponentAlign: 'left',
         csesBlockIndentAttribute: 0,
       },
     );
@@ -4218,19 +4223,6 @@ Node _urlBackedNode(
     attributes: {
       if (isCollabResourceType(blockType))
         ...CollabResource.fromValues({
-          if (blockType == 'attachment')
-            'name':
-                mediaSource?.file?.name ??
-                Uri.parse(url).pathSegments.lastOrNull ??
-                '附件',
-          if (blockType == 'audio')
-            'sourceType': mediaSource?.file == null ? 'link' : 'local',
-          if (mediaSource?.file != null &&
-              {'audio', 'attachment'}.contains(blockType)) ...{
-            'name': mediaSource!.file!.name,
-            'size': mediaSource.file!.size,
-            if (blockType == 'attachment') 'type': mediaSource.file!.mimeType,
-          },
           if ({'embed', 'figma-embed', 'juejin-embed'}.contains(blockType)) ...{
             'wr': 100,
           },

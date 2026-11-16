@@ -24,3 +24,12 @@
 原模板骨架、块身份和属性保留；新段落继承来源 ID 时按运行时身份区分，避免重复。栏目隐藏状态为 root meta 的可选 mobileGuidanceView 扩展，不改变正文内容。未支持的可编辑块、标签及锁定正文整次拒绝；模板 incl 中列出的媒体类型不代表本轮已开放媒体菜单或完成高级块适配。
 
 证据见 [bodyContent/API 验证](verification/body-content-api-20261029/report.md)。
+
+
+## 2026-11-16 日导向媒体写入
+
+桌面配置仓库的 latest 为 **0.12.12**。桌面声明与 Yarn 锁定为 **0.12.8**，现有 node_modules 为 **0.11.17**，历史 pnpm 锁为 **0.2.78**。核对了安装包的随包技能和迁移说明，以及 0.12.12 发布包的迁移、媒体适配说明、类型和快照生成实现。
+
+图片在 `image/block` 写 `src`、可用的 `ar` 与宽度百分比 `wr`。视频在 `video/void` 写 `url`、`sourceType`、`type`，有文件信息时带 `name`、`size`、`ar`、`poster`。音频沿用 `audio/void` 的 `url`、`sourceType`、`name`、`size`，附件用 `attachment/void` 的 `url`、`type`、`name`、可用的 `size` 与 `icon`。本地上传由宿主提供稳定 URL 和可用信息；链接替换清除失效的上一个文件属性。替换保留图文布局和题注，地址和资源属性共用同一编辑事务及撤销记录。
+
+SaaS 业务验收记录在 SaaS 仓库的 `verification/`。

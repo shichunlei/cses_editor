@@ -6,6 +6,7 @@ import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/editor/editor_media_source_sheet.dart';
 import 'package:cses_editor/src/model/collab_resource.dart';
+import 'package:cses_editor/src/model/editor_media_upload.dart';
 import 'package:flutter/widgets.dart';
 
 /// Whether [node] is one of the four media types inside a container authorized
@@ -84,27 +85,11 @@ Future<void> _replaceMedia(
     if (!isCollabResourceUrl(node.type, source.url)) {
       throw const FormatException('资源链接无效');
     }
-    final file = source.file;
-    final attributes = <String, dynamic>{'url': source.url};
-    if (node.type == 'audio' || node.type == 'attachment') {
-      final fields = <String, Object?>{
-        'name':
-            file?.name ??
-            (node.type == 'attachment'
-                ? Uri.parse(source.url).pathSegments.lastOrNull
-                : null),
-        'size': file?.size,
-        if (node.type == 'attachment') 'type': file?.mimeType,
-        if (node.type == 'audio') 'sourceType': file == null ? 'link' : 'local',
-      };
-      final resource = CollabResource.fromValues({
-        for (final entry in fields.entries)
-          if (entry.value != null) entry.key: entry.value,
-      });
-      for (final key in fields.keys) {
-        attributes[resourcePropertyAttribute(key)] = resource.field(key);
-      }
-    }
+    final attributes = editorMediaSourceAttributes(
+      node.type,
+      source,
+      previous: node.attributes,
+    );
     final transaction = editor.transaction..updateNode(node, attributes);
     if (!editor.canApplyTransaction(transaction)) {
       throw StateError('媒体替换未通过正文校验');

@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
+import 'package:cses_editor/src/model/editor_media_upload.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -26,6 +27,45 @@ Iterable<Map> _blocks(Map snapshot) sync* {
 
 /// 验证真实Schema夹具、原生编辑后的重新导出及实际对象渲染，不依赖原生协同库。
 void main() {
+  test(
+    'replacing uploaded video with a link clears source metadata and keeps layout',
+    () {
+      final node = BlockCraftJsonCodec.decodeBlock({
+        'id': 'media-video',
+        'flavour': 'video',
+        'nodeType': 'void',
+        'props': {
+          'url': 'https://example.com/old.mp4',
+          'sourceType': 'local',
+          'type': 'video/mp4',
+          'name': 'old.mp4',
+          'size': 100,
+          'poster': 'https://example.com/old.png',
+          'ar': 2,
+          'wr': 84,
+          'depth': 2,
+        },
+        'meta': <String, dynamic>{},
+        'children': [],
+      });
+      node.updateAttributes(
+        editorMediaSourceAttributes(
+          'video',
+          const EditorMediaSource('https://example.com/new.mp4'),
+          previous: node.attributes,
+        ),
+      );
+      final props = BlockCraftJsonCodec.encodeBlock(node)['props'] as Map;
+      expect(props, {
+        'url': 'https://example.com/new.mp4',
+        'sourceType': 'link',
+        'type': '',
+        'wr': 84,
+        'depth': 2,
+      });
+    },
+  );
+
   test(
     'desktop block structures and attributes convert into editable nodes and survive local JSON',
     () {

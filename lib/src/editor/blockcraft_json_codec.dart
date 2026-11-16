@@ -369,6 +369,7 @@ abstract final class BlockCraftJsonCodec {
       }
     }
     node.updateAttributes({
+      if (kind == 'video') ...CollabResource.fromValues(props).nodeAttributes,
       'bc.id': id,
       'bc.flavour': kind,
       'bc.nodeType': nodeType,
