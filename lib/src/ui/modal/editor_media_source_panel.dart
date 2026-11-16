@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-/// 共用来源面板：封面默认提供桌面图库，图标由调用方提供emoji页，其他资源提供链接/上传。
+/// 共用来源面板：封面和图标优先使用图库或表情页，支持上传的正文媒体优先使用本地上传。
 /// 本面板拥有输入、焦点、滚动与上传取消状态，借用上传服务；关闭后取消上传并忽略迟到结果。
 /// 封面上方控件固定，下方内容滚动；上传期间禁止切换，提交时再次检查权限。
 ///
@@ -96,7 +96,17 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
 
   /// 是否具有图库或借用的附加首Tab，用于默认来源与标签布局。
   bool get _hasFirstTab => _banner || widget.firstTab != null;
-  late String _source = _hasFirstTab ? 'first' : 'link';
+
+  /// 当前资源可用的默认来源，优先展示图库或表情、本地上传、链接。
+  late String _source = _hasFirstTab
+      ? 'first'
+      : _canUpload
+      ? 'upload'
+      : 'link';
+
+  /// 当前资源能否借用宿主服务上传文件。
+  bool get _canUpload =>
+      _service != null && editorMediaSupportsUpload(widget.kind);
 
   /// 当前来源是否为本地文件；链接与首Tab不触发文件上传。
   bool get _local => _source == 'upload';
@@ -253,7 +263,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
   @override
   Widget build(BuildContext context) {
     final c = CollabModalColors.of(context);
-    final upload = _service != null && editorMediaSupportsUpload(widget.kind);
+    final upload = _canUpload;
     final title = widget.kind == 'document_icon'
         ? '修改图标'
         : _banner
@@ -294,14 +304,18 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
             if (upload || _hasFirstTab)
               CollabModalSegments<String>(
                 values: {
-                  if (_hasFirstTab) 'first': _banner ? '公共图库' : widget.firstTabLabel!,
-                  if (_hasFirstTab) 'upload': '上传图片',
+                  if (_hasFirstTab)
+                    'first': _banner ? '公共图库' : widget.firstTabLabel!,
+                  'upload': _hasFirstTab ? '上传图片' : '本地上传',
                   'link': _hasFirstTab ? '图片链接' : '$_label链接',
-                  if (!_hasFirstTab) 'upload': '本地上传',
                 },
                 selected: _source,
                 itemKeys: {
-                  'first': ValueKey(_banner ? 'document-cover-library-tab' : 'document-icon-emoji-tab'),
+                  'first': ValueKey(
+                    _banner
+                        ? 'document-cover-library-tab'
+                        : 'document-icon-emoji-tab',
+                  ),
                   'upload': const ValueKey('editor-media-upload-tab'),
                   'link': const ValueKey('editor-media-link-tab'),
                 },
