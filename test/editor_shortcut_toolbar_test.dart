@@ -1,6 +1,7 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
+import 'package:cses_editor/src/model/editor_keyboard_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -476,6 +477,72 @@ void main() {
       state.document.first!.attributes[TodoListBlockKeys.checked],
       isFalse,
     );
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('keyboard bar and open menu follow the app brightness', (
+    tester,
+  ) async {
+    final state = _editorState(text: 'Hello');
+    state.selection = Selection.single(path: [0], startOffset: 0, endOffset: 5);
+    addTearDown(() async {
+      await tester.pumpWidget(const SizedBox.shrink());
+      state.dispose();
+    });
+    final hostActions = [
+      EditorKeyboardAction(
+        id: 'disabled',
+        label: '禁用操作',
+        icon: LucideIcons.plus,
+        onPressed: () async => fail('Disabled action must not run'),
+        enabled: false,
+      ),
+    ];
+
+    for (final mode in [ThemeMode.light, ThemeMode.dark]) {
+      await tester.pumpWidget(
+        _toolbarApp(state, themeMode: mode, keyboardActions: hostActions),
+      );
+      await tester.pumpAndSettle();
+      final bar = tester.widget<Container>(
+        find.byKey(const ValueKey('editor-mobile-toolbar')),
+      );
+      final background = (bar.decoration as BoxDecoration).color!;
+      final addIcon = find.byIcon(LucideIcons.circlePlus);
+      final foreground = IconTheme.of(tester.element(addIcon)).color!;
+      expect(
+        background.computeLuminance(),
+        mode == ThemeMode.dark ? lessThan(.15) : greaterThan(.9),
+      );
+      final (
+        light,
+        dark,
+      ) = foreground.computeLuminance() > background.computeLuminance()
+          ? (foreground, background)
+          : (background, foreground);
+      expect(
+        (light.computeLuminance() + .05) / (dark.computeLuminance() + .05),
+        greaterThan(4.5),
+      );
+      final closeIcon = tester.widget<Icon>(
+        find.byIcon(LucideIcons.keyboardOff),
+      );
+      expect(closeIcon.color, foreground);
+      final disabledLabel = tester.widget<Text>(find.text('禁用操作'));
+      expect(disabledLabel.style!.color!.a, lessThan(foreground.a));
+
+      if (mode == ThemeMode.light) {
+        await tester.tap(
+          find.byKey(const ValueKey('editor-shortcut-inline-style')),
+        );
+        await tester.pumpAndSettle();
+      }
+      final submenu = tester.widget<Container>(
+        find.byKey(const ValueKey('editor-toolbar-popup')),
+      );
+      expect((submenu.decoration as BoxDecoration).color, background);
+      expect(state.selection, isNotNull);
+    }
     expect(tester.takeException(), isNull);
   });
 
@@ -1267,8 +1334,17 @@ void main() {
   });
 }
 
-Widget _toolbarApp(EditorState state, {double keyboardInset = 300}) {
+/// 构建测试工具栏；[state] 由测试释放，[keyboardInset] 模拟键盘高度（逻辑像素）。
+/// [themeMode] 决定宿主亮度，[keyboardActions] 提供由测试拥有的宿主命令。
+Widget _toolbarApp(
+  EditorState state, {
+  double keyboardInset = 300,
+  ThemeMode themeMode = ThemeMode.light,
+  List<EditorKeyboardAction> keyboardActions = const [],
+}) {
   return MaterialApp(
+    themeMode: themeMode,
+    darkTheme: ThemeData.dark(),
     localizationsDelegates: const [
       GlobalMaterialLocalizations.delegate,
       GlobalCupertinoLocalizations.delegate,
@@ -1282,6 +1358,7 @@ Widget _toolbarApp(EditorState state, {double keyboardInset = 300}) {
         ),
         child: EditorShortcutToolbar(
           editorState: state,
+          keyboardActions: keyboardActions,
           child: const ColoredBox(color: Colors.white),
         ),
       ),

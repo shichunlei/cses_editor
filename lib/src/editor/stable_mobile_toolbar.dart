@@ -1,5 +1,6 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/editor_caret_visibility.dart';
+import 'package:cses_editor/src/ui/modal/collab_modal_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -24,8 +25,9 @@ class StableMobileToolbar extends StatefulWidget {
   /// [key]控制身份与状态复用，[editorState]为借用的正文状态，[child]为必填正文。
   /// [toolbarItems]是按展示顺序提供的入口，本组件不拥有其业务资源。
   /// [toolbarHeight]为主工具栏逻辑像素高度，默认52；[buttonHeight]为按钮高度，默认42。
-  /// [buttonSpacing]为主题按钮间距，默认6逻辑像素；[itemOutlineColor]为边线颜色。
-  /// [primaryColor]为工具栏主题主色；没有入口时仅展示正文，存在入口时自动附加右侧收起按钮。
+  /// [buttonSpacing]为主题按钮间距，默认6逻辑像素；[itemOutlineColor]为浅色主题边线。
+  /// [primaryColor]为浅色主题主色；暗色主题使用对应的表面、图标和强调色。
+  /// 没有入口时仅展示正文，存在入口时自动附加右侧收起按钮。
   /// [disabledItemIndices]为禁用入口的零基下标，默认空；不禁用固定的收起键盘按钮。
   /// [canExecuteItem]可提供实时执行校验，按零基下标查询；null只检查现有禁用集合和正文权限。
   const StableMobileToolbar({
@@ -60,10 +62,10 @@ class StableMobileToolbar extends StatefulWidget {
   /// 主题按钮间距，单位逻辑像素，默认6。
   final double buttonSpacing;
 
-  /// 工具栏边线的主题颜色。
+  /// 工具栏浅色主题边线。
   final Color itemOutlineColor;
 
-  /// 工具栏的主题主色。
+  /// 工具栏浅色主题主色。
   final Color primaryColor;
 
   /// 禁用点击的入口零基下标，默认空；调用方负责与[toolbarItems]保持一致。
@@ -151,9 +153,10 @@ class _StableMobileToolbarState extends State<StableMobileToolbar>
     });
   }
 
-  /// 使用[context]构建正文；允许编辑、有可用入口且键盘可见时才占用工具栏高度。
+  /// 使用[context]构建正文和对应亮度的工具栏；允许编辑、有可用入口且键盘可见时才占用高度。
   @override
   Widget build(BuildContext context) {
+    final colors = CollabModalColors.of(context);
     return ListenableBuilder(
       listenable: Listenable.merge([
         widget.editorState.selectionNotifier,
@@ -183,11 +186,20 @@ class _StableMobileToolbarState extends State<StableMobileToolbar>
             ),
             if (showToolbar)
               MobileToolbarTheme(
+                backgroundColor: colors.surface,
+                iconColor: colors.text,
                 toolbarHeight: widget.toolbarHeight,
                 buttonHeight: widget.buttonHeight,
                 buttonSpacing: widget.buttonSpacing,
-                itemOutlineColor: widget.itemOutlineColor,
-                primaryColor: widget.primaryColor,
+                itemOutlineColor: colors.dark
+                    ? colors.line
+                    : widget.itemOutlineColor,
+                tabBarSelectedBackgroundColor: colors.dark
+                    ? colors.field
+                    : const Color(0xFFF1F3F5),
+                primaryColor: colors.dark
+                    ? Colors.blue.shade200
+                    : widget.primaryColor,
                 child: Builder(
                   builder: (toolbarContext) =>
                       _buildToolbarAndMenu(toolbarContext),
@@ -213,7 +225,8 @@ class _StableMobileToolbarState extends State<StableMobileToolbar>
     );
   }
 
-  /// 在借用 [context] 中构建非空菜单行及选中背景，收起键盘始终固定在滚动入口右侧。
+  /// 在借用 [context] 中使用工具栏前景、边线和选中背景；禁用态降低前景不透明度。
+  /// 收起键盘始终固定在滚动入口右侧。
   Widget _buildToolbarRow(BuildContext context) {
     final style = MobileToolbarTheme.of(context);
     return Container(
@@ -244,8 +257,12 @@ class _StableMobileToolbarState extends State<StableMobileToolbar>
                 }
                 return IconButton(
                   style: IconButton.styleFrom(
+                    foregroundColor: style.iconColor,
+                    disabledForegroundColor: style.iconColor.withValues(
+                      alpha: .45,
+                    ),
                     backgroundColor: _selectedMenuIndex == index
-                        ? const Color(0xFFF1F3F5)
+                        ? style.tabBarSelectedBackgroundColor
                         : Colors.transparent,
                   ),
                   icon: icon,
@@ -256,9 +273,9 @@ class _StableMobileToolbarState extends State<StableMobileToolbar>
               },
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8),
-            child: VerticalDivider(width: 1),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: VerticalDivider(width: 1, color: style.itemOutlineColor),
           ),
           IconButton(
             key: const ValueKey('editor-toolbar-close-keyboard-or-menu'),
@@ -273,16 +290,18 @@ class _StableMobileToolbarState extends State<StableMobileToolbar>
     );
   }
 
+  /// 在借用 [context] 中展示 [selectedIndex] 对应子菜单，沿用主工具栏的表面和边线。
   Widget _buildSelectedMenu(BuildContext context, int selectedIndex) {
     final menuBuilder = widget.toolbarItems[selectedIndex].itemMenuBuilder;
+    final style = MobileToolbarTheme.of(context);
     return Container(
       key: const ValueKey('editor-toolbar-popup'),
       height: 64,
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 8),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
-        color: MobileToolbarTheme.of(context).backgroundColor,
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        color: style.backgroundColor,
+        border: Border.all(color: style.itemOutlineColor),
         borderRadius: BorderRadius.circular(14),
         boxShadow: const [
           BoxShadow(

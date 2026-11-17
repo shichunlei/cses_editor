@@ -3377,7 +3377,8 @@ class _PopupIconButton extends StatelessWidget {
   /// 是否允许点击，默认true，禁用时保留占位和说明。
   final bool enabled;
 
-  /// 根据借用 [context] 选择外观；执行点击前复核所属工具栏的同步互斥，不修改业务状态。
+  /// 根据借用 [context] 选择面板配色，保证暗色菜单中选中背景与图标配套。
+  /// 执行点击前复核所属工具栏的同步互斥，不修改业务状态。
   @override
   Widget build(BuildContext context) {
     final inModal =
@@ -3388,11 +3389,9 @@ class _PopupIconButton extends StatelessWidget {
       child: Opacity(
         opacity: enabled ? 1 : 0.35,
         child: Material(
-          color: inModal
-              ? (selected ? colors.soft : colors.field)
-              : selected
-              ? const Color(0xFFE6EEFF)
-              : Colors.transparent,
+          color: selected
+              ? (inModal || colors.dark ? colors.soft : const Color(0xFFE6EEFF))
+              : (inModal ? colors.field : Colors.transparent),
           borderRadius: BorderRadius.circular(10),
           child: InkWell(
             borderRadius: BorderRadius.circular(10),
