@@ -1,5 +1,6 @@
 # 验证索引
 
+- [SaaS 日填写图片上传 HTTPS 地址](saas-guidance-upload-https-20261117/report.md)
 - [日填写正文 v9 提交与跨端读回](daily-body-content-v9-20261117/report.md)
 - [会议行内引用与操作弹窗图标](inline-meeting-icon-20261117/report.md)
 - [今日导向划词创建会议](guidance-selection-create-meeting-20261117/report.md)
