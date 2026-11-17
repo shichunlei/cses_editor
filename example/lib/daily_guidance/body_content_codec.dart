@@ -20,6 +20,26 @@ const journalBodyRegionAttribute = 'guidance_body_region';
 /// final restored = BodyContentCodec.encode(draft);
 /// ```
 abstract final class BodyContentCodec {
+  /// 标准填写区的文字字号、40px 行高和颜色。
+  static const writingTextProps = {
+    'textFont': '14px 400 normal',
+    'textSpacing': '0em 2.857143',
+    'textFill': '#2B2623',
+  };
+
+  /// 日导向服务协议允许的填写块类型，供新模板和新增栏目声明。
+  static const writingFlavours = [
+    'paragraph',
+    'bullet',
+    'ordered',
+    'todo',
+    'attachment',
+    'image',
+    'video',
+    'audio',
+    'task',
+  ];
+
   /// 从借用的 [body] 创建独立草稿；[now] 仅用于建档时间，不替代接口记录日期。
   /// 原区域/锁/扩展属性保存在会话中，未支持的可编辑块或非法数据整次拒绝。
   /// 分配编辑树前校验引用类型，不支持时抛出 UnsupportedGuidanceMentionType。
@@ -169,6 +189,7 @@ abstract final class BodyContentCodec {
       final state = jsonDecode(raw) as Map;
       final source = _copy(Map<String, dynamic>.from(state['source'] as Map));
       final baseline = state['baseline'] as Map;
+      final v9 = (source['meta'] as Map)['dailyTemplateVersion'] == 9;
       final regionKeys = Map<String, String>.from(state['regions'] as Map);
       final originals = <String, Map<String, dynamic>>{};
       final grouped = <String, List<Map<String, dynamic>>>{};
@@ -193,19 +214,30 @@ abstract final class BodyContentCodec {
           final customKey = key.startsWith('custom:')
               ? key.substring('custom:'.length)
               : null;
+          final sectionLabel = customKey == null
+              ? (key == 'reflection' ? '感悟' : '自检')
+              : section.attributes['guidance_section_label'] as String? ??
+                    '自定义';
           final region = <String, dynamic>{
             'id': regionId,
             'flavour': 'render-unit',
             'nodeType': 'block',
-            'props': <String, dynamic>{},
+            'props': <String, dynamic>{
+              if (v9) ...{
+                'p': [80, 40, 40],
+                ...writingTextProps,
+              },
+            },
             'meta': {
               'dailySection': customKey == null ? key : 'custom',
-              if (customKey != null) 'dailyCustomField': {'key': customKey},
+              if (customKey != null)
+                'dailyCustomField': {
+                  'key': customKey,
+                  if (v9) ...{'label': sectionLabel, 'type': 'textarea'},
+                },
               'tplRegion': true,
-              'tplFieldName': customKey == null
-                  ? (key == 'reflection' ? '感悟' : '自检')
-                  : section.attributes['guidance_section_label'] as String? ??
-                        '自定义',
+              'tplFieldName': sectionLabel,
+              if (v9) 'incl': writingFlavours,
             },
             'children': <Object>[],
           };
@@ -232,6 +264,14 @@ abstract final class BodyContentCodec {
           if (baseline[identity] == _fingerprint(block) &&
               originals[identity] != null) {
             block = _copy(originals[identity]!);
+          } else if (v9) {
+            final props = block['props'] as Map<String, dynamic>;
+            props.putIfAbsent('depth', () => 0);
+            props.addAll({'psa': 0, 'psb': 0});
+            final runs = block['children'] as List;
+            block['children'] = [
+              for (final run in runs.cast<Map>()) ..._v9Inline(run),
+            ];
           }
           grouped.putIfAbsent(destination, () => []).add(block);
         }
@@ -313,7 +353,7 @@ abstract final class BodyContentCodec {
       ((block['meta'] as Map)['lock'] as String).isNotEmpty;
 
   /// 从独立 [block] 移出前缀业务标签，保持核心 Codec 的已注册协议不变。
-  /// 标签只允许 help/pilot 且位于正文起始；其他位置或值整次拒绝。
+  /// 读取 help/navigator 与旧 pilot 段首标签，标准换行映射为本地 LF。
   static String? _normalizeTags(Map block) {
     String? tag;
     if (block['nodeType'] == 'editable') {
@@ -325,11 +365,21 @@ abstract final class BodyContentCodec {
         if (insert is Map && insert.containsKey('dailyTag')) {
           if (index != 0 ||
               insert.length != 1 ||
-              !const ['help', 'pilot'].contains(insert['dailyTag']) ||
+              !const [
+                'help',
+                'pilot',
+                'navigator',
+              ].contains(insert['dailyTag']) ||
               run.length != 1) {
             throw const FormatException('业务标签无效');
           }
-          tag = insert['dailyTag'] as String;
+          tag = insert['dailyTag'] == 'navigator'
+              ? 'pilot'
+              : insert['dailyTag'] as String;
+        } else if (insert is Map &&
+            insert.length == 1 &&
+            insert['break'] == true) {
+          filtered.add({...run, 'insert': '\n'});
         } else {
           filtered.add(run);
         }
@@ -375,6 +425,30 @@ abstract final class BodyContentCodec {
     return block;
   }
 
+  /// 将借用 [run] 中的新块内换行、业务标签写为 v9 表示，保留文字格式。
+  static Iterable<Map> _v9Inline(Map run) sync* {
+    final insert = run['insert'];
+    if (insert is Map && insert['dailyTag'] == 'pilot') {
+      yield {
+        ...run,
+        'insert': {'dailyTag': 'navigator'},
+      };
+    } else if (insert is String && insert.contains('\n')) {
+      final parts = insert.split('\n');
+      for (var i = 0; i < parts.length; i++) {
+        if (i > 0) {
+          yield {
+            ...run,
+            'insert': {'break': true},
+          };
+        }
+        if (parts[i].isNotEmpty) yield {...run, 'insert': parts[i]};
+      }
+    } else {
+      yield run;
+    }
+  }
+
   /// 深拷贝 JSON [value]，确保来源与编辑模型没有可变共享。
   static Map<String, dynamic> _copy(Map<String, dynamic> value) =>
       jsonDecode(jsonEncode(value)) as Map<String, dynamic>;
@@ -398,7 +472,7 @@ abstract final class BodyContentCodec {
   static void _updateDates(Map block, String date) {
     if (block['flavour'] == 'date-card' &&
         (block['meta'] as Map)['dailyDate'] == true) {
-      final props = block['props'] as Map;
+      final props = block['props'] as Map<String, dynamic>;
       final old = props['date'];
       props['date'] = old is String && old.length >= 10
           ? '$date${old.substring(10)}'

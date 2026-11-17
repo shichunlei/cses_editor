@@ -20,7 +20,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 /// 加载宿主原始接口样例，每次返回独立对象，不修改用户文件。
 Map<String, dynamic> _record() =>
-    jsonDecode(File('文档完整数据结构.json').readAsStringSync())
+    jsonDecode(File('test/fixtures/guidance-api-v5.json').readAsStringSync())
         as Map<String, dynamic>;
 
 /// 测试拥有的可失败及可延迟服务，无网络资源。

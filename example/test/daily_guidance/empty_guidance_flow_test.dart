@@ -17,9 +17,13 @@ EditorState _state(WidgetTester tester) =>
 /// 验证空白初始记录、真实入口编辑提交、分享 PNG 及重开恢复。
 void main() {
   test(
-    'empty record uses supplied calendar day and saves without editing',
+    'empty v9 record uses the Shanghai business day and saves without editing',
     () async {
-      for (final now in [DateTime(2026, 12, 31, 23, 59), DateTime(2027)]) {
+      for (final now in [
+        DateTime.utc(2026, 12, 31, 15, 59),
+        DateTime.utc(2026, 12, 31, 16),
+      ]) {
+        final date = journalDate(now.add(const Duration(hours: 8)));
         final ids = <String>{};
         for (final type in ['ORIENT', 'RESULT']) {
           final record = createEmptyGuidanceRecord(now, orientType: type);
@@ -32,9 +36,14 @@ void main() {
           expect(record[opposite], isNull);
           final body = record['bodyContent'] as Map<String, dynamic>;
           expect(body['meta']['dailyType'], type.toLowerCase());
+          expect(body['meta']['dailyTemplateVersion'], 9);
           expect(
-            body['children'][0]['meta']['tplFieldName'],
-            type == 'ORIENT' ? '成果导向' : '工作成果',
+            body['children'][0]['children'][0]['props']['date'],
+            '${date}T12:00:00',
+          );
+          expect(
+            body['children'][1]['meta']['tplFieldName'],
+            type == 'ORIENT' ? '导向' : '成果',
           );
           expect(record['helpItems'], isEmpty);
           expect(record['navigatorItems'], isEmpty);
@@ -45,10 +54,10 @@ void main() {
             recordId: record['id'] as String,
           );
           final draft = await store.read();
-          expect(draft.date, journalDate(now));
+          expect(draft.date, date);
           expect(BodyContentCodec.encode(draft), body);
           await store.write(draft);
-          expect((await store.read()).date, journalDate(now));
+          expect((await store.read()).date, date);
         }
       }
     },
@@ -129,7 +138,9 @@ void main() {
             null,
           ),
         );
-        final date = journalDate(DateTime.now());
+        final date = journalDate(
+          DateTime.now().toUtc().add(const Duration(hours: 8)),
+        );
         await tester.pumpWidget(const OfflineExampleApp());
         await tester.tap(
           find.byKey(ValueKey('guidance-type-${type.toLowerCase()}')),

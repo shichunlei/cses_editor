@@ -104,7 +104,7 @@ abstract final class GuidanceRecordFields {
         final runs = node['children'] as List;
         final first = runs.isEmpty ? null : (runs.first as Map)['insert'];
         final tag = first is Map ? first['dailyTag'] : null;
-        if (tag == 'help' || tag == 'pilot') {
+        if (tag == 'help' || tag == 'pilot' || tag == 'navigator') {
           final content = _Content()..add(runs);
           final item = content.toJson();
           if ((item['content'] as String).trim().isNotEmpty) {
@@ -166,6 +166,8 @@ final class _Content {
           type,
           id,
         ), () => {'mentionId': id, 'mentionName': name, 'mentionType': type});
+      } else if (insert is Map && insert['break'] == true) {
+        text.write('\n');
       }
     }
     _lines.add(text.toString());

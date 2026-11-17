@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 /// 返回独立样例记录，不修改磁盘文件。
 Map<String, dynamic> _record() =>
-    jsonDecode(File('文档完整数据结构.json').readAsStringSync())
+    jsonDecode(File('test/fixtures/guidance-api-v5.json').readAsStringSync())
         as Map<String, dynamic>;
 
 /// 从借用 [runs] 创建供提取器读取的独立段落。
