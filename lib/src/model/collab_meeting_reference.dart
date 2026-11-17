@@ -41,3 +41,19 @@ typedef CollabMeetingReferencePicker =
       BuildContext context, {
       required ValueListenable<bool> canEdit,
     });
+
+/// 以 [initialTitle] 预填宿主的会议发布页，[context] 用于当前路由。
+/// [canEdit] 是借用的本次编辑权限，宿主提交前须检查，不保留或释放它。
+/// 创建成功后等待页面退场再返回会议回执，取消返回 null，异常可透传；
+/// 表单、业务请求和资源均由宿主持有。
+/// ```dart
+/// import 'package:cses_editor/cses_editor.dart';
+/// final services = CollabHostServices(createMeetingFromText:
+///   (context, {required initialTitle, required canEdit}) async => null);
+/// ```
+typedef CollabMeetingCreator =
+    Future<CollabMeetingReference?> Function(
+      BuildContext context, {
+      required String initialTitle,
+      required ValueListenable<bool> canEdit,
+    });

@@ -6,11 +6,12 @@ import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/editor/editor_selection_actions.dart';
 import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 import 'package:cses_editor/src/model/collab_text_range.dart';
+import 'package:cses_editor/src/model/collab_user_mention.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// 移动正文的划词菜单，复用 AppFlowy 选区定位、拖动结束和滚动后的浮栏生命周期。
-/// 编辑模式提供剪贴板、格式、文字链接和公式转换，只读仅复制与全选；不依赖键盘显示。
+/// 编辑模式提供剪贴板、格式、链接、公式转换及宿主会议创建；只读仅复制与全选。
 /// ```dart
 /// import 'package:flutter/material.dart';
 /// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
@@ -93,6 +94,7 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
         final editable =
             state.editable &&
             (state.selection == null || state.canInputAt(state.selection));
+        final commands = EditorCommandContext.of(state);
         return AdaptiveTextSelectionToolbar.buttonItems(
           key: const ValueKey('editor-selection-menu'),
           anchors: TextSelectionToolbarAnchors(primaryAnchor: anchor),
@@ -102,6 +104,24 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
               _button('剪切', () => _copy(state, range, cut: true), close),
             if (editable) _button('粘贴', () => _paste(state, range), close),
             _button('全选', () => _selectAll(state), close),
+            if (editable &&
+                range.canConvert &&
+                commands.configuration.allowsFormat(
+                  collabInlineMentionAttribute,
+                ) &&
+                commands.services.createMeetingFromText != null &&
+                (commands.services.onMeetingMentionTap != null ||
+                    commands.services.onMentionTap != null))
+              _button(
+                '创建会议',
+                () => showEditorSelectionMeeting(
+                  this.context,
+                  state,
+                  range,
+                  isEditorCurrent: () => identical(widget.editorState, state),
+                ),
+                close,
+              ),
             if (editable &&
                 expanded &&
                 range.hasText &&

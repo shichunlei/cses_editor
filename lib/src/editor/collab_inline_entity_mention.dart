@@ -151,7 +151,7 @@ TextStyle collabTaskMentionTextStyle(TextStyle style) => style.copyWith(
 
 /// 在借用 [context] 中展示 [state] 的 [node] 在 UTF-16 [offset] 处的引用操作。
 /// Future 等待面板及选定操作完成，退场后复核目标与会话，不拥有编辑器或路由。
-/// 只有打开详情调用onMentionTap；会议视图切换和引用删除均在正文内执行。
+/// 打开详情调用所属宿主回调；会议优先用专用端口，视图切换和删除均在正文内执行。
 /// 删除使用与块菜单一致的红色整行操作；预览/只读时保持禁用，不修改实体业务数据。
 Future<void> showCollabEntityMentionActions(
   BuildContext context,
@@ -163,6 +163,9 @@ Future<void> showCollabEntityMentionActions(
   if (target == null) return;
   final canSwitchView = target.entityType == 'meeting';
   await runCollabMentionInteraction(context, state, (services) async {
+    final openDetails = canSwitchView
+        ? services.onMeetingMentionTap ?? services.onMentionTap
+        : services.onMentionTap;
     final kind = switch (target.entityType) {
       'meeting' => '会议',
       'task' => '任务',
@@ -186,7 +189,7 @@ Future<void> showCollabEntityMentionActions(
               key: const ValueKey('entity-mention-open-detail'),
               leading: const Icon(LucideIcons.externalLink),
               title: Text('打开$kind详情'),
-              enabled: services.onMentionTap != null,
+              enabled: openDetails != null,
               onTap: () => Navigator.of(sheetContext).pop(_EntityAction.detail),
             ),
             ListenableBuilder(
@@ -242,7 +245,7 @@ Future<void> showCollabEntityMentionActions(
     switch (action) {
       case _EntityAction.detail:
         final event = collabMentionTapAt(current, target.offset);
-        if (event != null) await services.onMentionTap?.call(event);
+        if (event != null) await openDetails?.call(event);
       case _EntityAction.switchView:
         if (!canSwitchView || !state.editable) return;
         if (!await convertCollabEntityMentionToCard(state, target) &&

@@ -64,6 +64,8 @@ class CollabHostServices {
   /// [onMentionTap] 接收用户直接点击、其他提及面板的打开详情及任务卡片详情；切换卡片不调用。
   /// 等待宿主详情关闭；行内提及恢复原输入，卡片不恢复正文键盘，包不创建用户资料界面。
   /// [pickMeetingReference] 由宿主选择或创建业务会议后返回引用；null时不提供新增入口。
+  /// [createMeetingFromText] 从选中文字预填发布页；null隐藏划词创建会议入口。
+  /// [onMeetingMentionTap] 只打开行内会议详情；未配置时沿用 [onMentionTap]。
   /// [loadMeetingCard] 加载会议本地详情及状态，null展示引用和未知状态，资源由宿主持有。
   /// [kr]借用宿主KR查询端口；null显示未配置提示，不拥有请求资源。
   /// [krRankIcons]可选三个名次Widget；null使用金银铜色加粗数字，宿主持有图标资源。
@@ -105,6 +107,8 @@ class CollabHostServices {
     this.kr,
     this.krRankIcons,
     this.pickMeetingReference,
+    this.createMeetingFromText,
+    this.onMeetingMentionTap,
   });
 
   /// 创建服务视图，仅用[picker]替换人员选择入口；其他资源继续借用，不转移所有权。
@@ -134,6 +138,8 @@ class CollabHostServices {
         kr: kr,
         krRankIcons: krRankIcons,
         pickMeetingReference: pickMeetingReference,
+        createMeetingFromText: createMeetingFromText,
+        onMeetingMentionTap: onMeetingMentionTap,
       );
 
   /// 新建人员卡片的资料读取器；返回null表示资料缺失，异常阻止插入并由工具栏报告。
@@ -178,6 +184,12 @@ class CollabHostServices {
   /// 借用宿主会议引用流程；宿主持有表单、选择/创建会议页面及业务资源。
   /// null不提供新增会议入口；包不构建默认会议表单，不创建业务会议。
   final CollabMeetingReferencePicker? pickMeetingReference;
+
+  /// 借用宿主会议发布流程；成功回执用于替换划词，宿主负责表单及业务资源。
+  final CollabMeetingCreator? createMeetingFromText;
+
+  /// 行内会议的专用详情入口；宿主持有路由，Future 在详情关闭后完成。
+  final CollabMentionTapCallback? onMeetingMentionTap;
 
   /// 可选任务卡片详情，业务标题/标签/人员/时间/统计仅本地展示。
   /// null保留共享标题且隐藏未知数据；明确缺失/失败禁用详情，失败可重试。

@@ -143,7 +143,9 @@ await session.close();
 | 头像 | `mentionAvatarBuilder` | 宿主决定图片/缓存/占位；模板使用姓名首字，不发网络请求 |
 | 人员/任务/会议/文档详情 | `onMentionTap` | 按type/id派发宿主路由，并等待详情完整退场；模板展示明确的宿主详情对话框 |
 | 任务卡片数据 | `loadTaskCard` | 返回与请求ID相符的 `CollabTaskCardData`；不存在返回null，失败抛错；模板只识别本地演示任务 |
-| 会议、KR、天气、人员卡片 | `pickMeetingReference`、`loadMeetingCard`、`onMeetingCardTap`、`kr`、`loadWeather`、`loadPersonCardCreator` | 可选；宿主提供真实业务服务/本地缓存，未配置不会自动查询业务接口 |
+| 会议、KR、天气、人员卡片 | `pickMeetingReference`、`createMeetingFromText`、`onMeetingMentionTap`、`loadMeetingCard`、`onMeetingCardTap`、`kr`、`loadWeather`、`loadPersonCardCreator` | 可选；宿主提供真实业务服务或本地缓存 |
+
+移动正文允许行内引用时，配置 `createMeetingFromText` 及会议详情回调可启用「创建会议」。发布页使用传入标题预填，提交前检查借用的 `canEdit`，完整退场后返回带稳定 ID 和标题的 `CollabMeetingReference`。正文将单段选区替换为已有协议的会议引用，一次撤销恢复原文。会议发布由宿主负责，引用随文档保存，详情优先派发 `onMeetingMentionTap`。
 | 媒体文件 | `mediaUpload` / `EditorMediaUploadService` | 宿主选文件、鉴权上传、取消、进度及失败；默认不提供本地上传，不伪造离线上传成功 |
 | 错误与ID | `onError`、`createId` | 错误日志由宿主接管；ID默认安全随机生成，无需账号SDK |
 | 文档业务元数据与互动 | `documentMetadata`、`showDocumentFeedback`及点赞/评论端口 | 按需显式注入，普通离线正文不需要这些端口 |
