@@ -606,7 +606,7 @@ EdgeInsets _listBlockPadding(Node node) {
 /// 行内公式、用户和三类业务实体提及使用单字符 WidgetSpan，保留文字颜色；
 /// 已校验用户复用公开装饰器并绑定当前实例的展示服务。
 /// 已转换的桌面行内对象使用原生对象视图；字重及艺术字外观先合成，再继续提及/公式渲染。
-/// 整段链接点击提供打开和三视图切换，混排正文维持原链接行为。
+/// 行内链接最终使用适合正文底色的蓝色，整段链接提供视图操作，混排保留原点击行为。
 ///
 /// ```dart
 /// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
@@ -622,17 +622,13 @@ InlineSpan decorateEditorTextSpan(
   TextSpan before,
   TextSpan after,
 ) {
-  var decorated = decorateCollabLinkSpan(
+  var decorated = mobileTextSpanDecoratorForAttribute(
     context,
     node,
-    mobileTextSpanDecoratorForAttribute(
-      context,
-      node,
-      index,
-      text,
-      supportsCollabParagraph(node) ? after : before,
-      after,
-    ),
+    index,
+    text,
+    supportsCollabParagraph(node) ? after : before,
+    after,
   );
   if (supportsCollabParagraph(node)) {
     decorated = decorated.copyWith(
@@ -669,7 +665,12 @@ InlineSpan decorateEditorTextSpan(
     }
   }
   final attributes = text.attributes;
-  decorated = blockCraftSnapshotTextStyle(node, text, decorated);
+  decorated = decorateCollabLinkSpan(
+    context,
+    node,
+    text,
+    blockCraftSnapshotTextStyle(node, text, decorated),
+  );
   final snapshotSpan = decorateBlockCraftSnapshotText(node, text, decorated);
   if (snapshotSpan != null) return snapshotSpan;
   final latex = attributes?[collabInlineLatexAttribute];

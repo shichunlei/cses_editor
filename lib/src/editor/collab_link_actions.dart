@@ -386,15 +386,19 @@ Future<void> showCollabLinkActions(
   }
 }
 
-/// Redirects taps on a whole-link [node] to view actions in borrowed [context].
-/// [span] must be the mobile decorator's span, whose recognizer stays owned by
-/// the rich-text renderer. Mixed paragraphs keep their normal behavior; replacing
-/// both tap handlers avoids scheduling the upstream long-press editing timer.
+/// Applies the link color after paragraph styling to borrowed [text] and [span].
+/// Uses the editor's text color in [context] to choose a blue with suitable
+/// contrast. Whole-link [node] taps open view actions; mixed paragraphs keep
+/// their original behavior. The rich-text renderer still owns the recognizer.
 TextSpan decorateCollabLinkSpan(
   BuildContext context,
   Node node,
+  TextInsert text,
   TextSpan span,
 ) {
+  final url = text.attributes?[AppFlowyRichTextKeys.href];
+  if (url is! String || url.isEmpty) return span;
+
   final recognizer = span.recognizer;
   if (node.type == 'paragraph' &&
       collabLinkUrl(node) != null &&
@@ -403,5 +407,16 @@ TextSpan decorateCollabLinkSpan(
       ..onTapDown = null
       ..onTapUp = (_) => unawaited(showCollabLinkActions(context, node));
   }
-  return span;
+  final ink = context
+      .read<EditorState>()
+      .editorStyle
+      .textStyleConfiguration
+      .text
+      .color;
+  final blue = (ink?.computeLuminance() ?? 0) > .5
+      ? const Color(0xFF93C5FD)
+      : const Color(0xFF1D4ED8);
+  return span.copyWith(
+    style: (span.style ?? const TextStyle()).copyWith(color: blue),
+  );
 }

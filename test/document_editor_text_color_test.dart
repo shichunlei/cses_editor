@@ -1,5 +1,6 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
+import 'package:cses_editor/src/editor/core/editor_view_configuration.dart';
 import 'package:cses_editor/src/editor/document_editor_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -26,10 +27,15 @@ void registerDocumentEditorTextColorTests({
           ),
         );
   });
-  for (final alignment in ['left', 'distributed']) {
+  for (final (alignment, paper, ink, theme) in [
+    ('left', Colors.white, null, 'default'),
+    ('distributed', Colors.white, null, 'default'),
+    ('left', Colors.white, const Color(0xff303234), 'light-paper'),
+    ('left', const Color(0xff10213a), Colors.white, 'dark-paper'),
+  ]) {
     for (final preview in [false, true]) {
       testWidgets(
-        'document colors remain explicit with $alignment alignment, preview=$preview',
+        'document colors with $alignment alignment, $theme, preview=$preview',
         (tester) async {
           if (!useDeviceViewport) {
             await tester.binding.setSurfaceSize(const Size(390, 1200));
@@ -103,7 +109,7 @@ void registerDocumentEditorTextColorTests({
                   AppFlowyEditorLocalizations.delegate,
                 ],
                 home: Scaffold(
-                  backgroundColor: Colors.white,
+                  backgroundColor: paper,
                   appBar: useDeviceViewport
                       ? AppBar(title: Text('文字颜色验收：${preview ? '预览' : '编辑'}'))
                       : null,
@@ -112,25 +118,50 @@ void registerDocumentEditorTextColorTests({
                       editorState: state,
                       preview: preview,
                       editable: !preview,
+                      configuration: ink == null
+                          ? EditorViewConfiguration.standard
+                          : EditorViewConfiguration(
+                              style: (_, style) => style.copyWith(
+                                textStyleConfiguration: TextStyleConfiguration(
+                                  text: TextStyle(color: ink, fontSize: 16),
+                                ),
+                              ),
+                              blockBuilders: (builders) => {
+                                ...builders,
+                                ParagraphBlockKeys
+                                    .type: ParagraphBlockComponentBuilder(
+                                  configuration: BlockComponentConfiguration(
+                                    textStyle: (_, {textSpan}) =>
+                                        textSpan?.children != null
+                                        ? const TextStyle()
+                                        : TextStyle(color: ink),
+                                  ),
+                                ),
+                              },
+                            ),
                     ),
                   ),
                 ),
               ),
             );
             await tester.pumpAndSettle();
-            _expectColors(tester, state.document.nodeAtPath([0])!, const [
-              Colors.black,
-              Colors.black,
-              Color(0xffff0000),
-              Color(0xff0000ff),
+            final textInk = ink ?? Colors.black;
+            final linkBlue = theme == 'dark-paper'
+                ? const Color(0xff93c5fd)
+                : const Color(0xff1d4ed8);
+            _expectColors(tester, state.document.nodeAtPath([0])!, [
+              textInk,
+              textInk,
+              const Color(0xffff0000),
+              const Color(0xff0000ff),
               Colors.white,
-              Colors.lightBlue,
-              Colors.lightBlue,
-            ]);
+              linkBlue,
+              linkBlue,
+            ], linkLength: '链接'.length);
             for (var index = 1; index <= 5; index++) {
-              _expectColors(tester, state.document.nodeAtPath([index])!, const [
-                Colors.black,
-                Colors.black,
+              _expectColors(tester, state.document.nodeAtPath([index])!, [
+                textInk,
+                textInk,
               ]);
             }
             _expectColors(tester, state.document.nodeAtPath([6, 0])!, const [
@@ -145,7 +176,7 @@ void registerDocumentEditorTextColorTests({
             if (onVerified != null) {
               await onVerified(
                 tester,
-                '$alignment-${preview ? 'preview' : 'edit'}',
+                '$alignment-$theme-${preview ? 'preview' : 'edit'}',
               );
             }
           } finally {
@@ -165,8 +196,13 @@ void registerDocumentEditorTextColorTests({
 }
 
 /// 在借用的[tester]中按UTF-16字符核对[node]最终绘制样式与[expected]颜色。
-/// 递归合并父子样式，确保分散对齐和链接装饰后的颜色仍遵循继承规则。
-void _expectColors(WidgetTester tester, Node node, List<Color> expected) {
+/// 递归合并父子样式；[linkLength] 表示末尾需保留下划线和点击识别器的字符数。
+void _expectColors(
+  WidgetTester tester,
+  Node node,
+  List<Color> expected, {
+  int linkLength = 0,
+}) {
   final rich = find.byWidgetPredicate(
     (widget) => widget is AppFlowyRichText && identical(widget.node, node),
   );
@@ -186,7 +222,12 @@ void _expectColors(WidgetTester tester, Node node, List<Color> expected) {
   void collect(InlineSpan span, TextStyle inherited) {
     final current = span as TextSpan;
     final style = inherited.merge(current.style);
-    actual.addAll(List<Color?>.filled(current.text?.length ?? 0, style.color));
+    final length = current.text?.length ?? 0;
+    if (length > 0 && actual.length >= expected.length - linkLength) {
+      expect(style.decoration?.contains(TextDecoration.underline), isTrue);
+      expect(current.recognizer, isNotNull);
+    }
+    actual.addAll(List<Color?>.filled(length, style.color));
     for (final child in current.children ?? const <InlineSpan>[]) {
       collect(child, style);
     }
