@@ -4,8 +4,9 @@ import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-/// 验证真实移动划词菜单、回执写入、撤销与会议详情分发。
+/// 验证真实移动划词菜单、回执写入、撤销、引用图标与会议详情分发。
 void main() {
   for (final outcome in [
     'created',
@@ -91,8 +92,14 @@ void main() {
           },
           {'insert': '明天见'},
         ]);
+        final meetingIcon = find.byIcon(LucideIcons.calendarClock);
+        expect(meetingIcon, findsOneWidget);
         await tester.tap(find.text('最终主题'));
         await tester.pumpAndSettle();
+        expect(
+          find.descendant(of: find.byType(BottomSheet), matching: meetingIcon),
+          findsOneWidget,
+        );
         await tester.tap(find.text('打开会议详情'));
         await tester.pumpAndSettle();
         expect(events.single.id, 'm-42');

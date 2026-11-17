@@ -55,7 +55,7 @@ class CollabInlineEntityMention extends StatefulWidget {
 
 /// 管理提及操作面板；菜单中的卡片转换仅对会议开放。
 class _EntityMentionState extends State<CollabInlineEntityMention> {
-  /// 在借用[context]中显示行内实体名称，点击只打开操作面板。
+  /// 在借用[context]中显示行内实体名称和与操作面板共用的图标。
   /// 单字符视图中的任务引用随文字同行，以无底色的蓝色文字展示。
   @override
   Widget build(BuildContext context) {
@@ -108,11 +108,7 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    switch (entityType) {
-                      'meeting' => LucideIcons.users,
-                      'task' => collabTaskMentionIcon,
-                      _ => LucideIcons.fileText,
-                    },
+                    _entityMentionIcon(entityType),
                     size: fontSize,
                     color: isTask ? titleStyle.color : const Color(0xFF2563EB),
                   ),
@@ -138,6 +134,13 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
 /// 任务引用与操作面板共用的剪贴板图标，与待办复选框区分。
 const collabTaskMentionIcon = LucideIcons.clipboardList;
 
+/// 为 [entityType] 选取行内引用与操作面板标题共用的图标。
+IconData _entityMentionIcon(String entityType) => switch (entityType) {
+  'meeting' => LucideIcons.calendarClock,
+  'task' => collabTaskMentionIcon,
+  _ => LucideIcons.fileText,
+};
+
 /// 根据借用正文 [style] 的亮度选择蓝色，去掉衬底和下划线，保留删除线。
 TextStyle collabTaskMentionTextStyle(TextStyle style) => style.copyWith(
   color: (style.color?.computeLuminance() ?? 0) > .5
@@ -151,7 +154,7 @@ TextStyle collabTaskMentionTextStyle(TextStyle style) => style.copyWith(
 
 /// 在借用 [context] 中展示 [state] 的 [node] 在 UTF-16 [offset] 处的引用操作。
 /// Future 等待面板及选定操作完成，退场后复核目标与会话，不拥有编辑器或路由。
-/// 打开详情调用所属宿主回调；会议优先用专用端口，视图切换和删除均在正文内执行。
+/// 标题沿用行内引用图标。打开详情调用所属宿主回调；会议优先用专用端口，视图切换和删除均在正文内执行。
 /// 删除使用与块菜单一致的红色整行操作；预览/只读时保持禁用，不修改实体业务数据。
 Future<void> showCollabEntityMentionActions(
   BuildContext context,
@@ -175,11 +178,7 @@ Future<void> showCollabEntityMentionActions(
       context: context,
       builder: (sheetContext) => CollabBottomSheet(
         title: Text(target.name.isEmpty ? '未命名$kind' : target.name),
-        icon: switch (target.entityType) {
-          'meeting' => LucideIcons.video,
-          'task' => collabTaskMentionIcon,
-          _ => LucideIcons.fileText,
-        },
+        icon: _entityMentionIcon(target.entityType),
         subtitle: '$kind引用 · 当前为链接视图',
         contentPadding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
         child: Column(
