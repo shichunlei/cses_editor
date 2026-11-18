@@ -1,4 +1,5 @@
 import 'package:cses_editor/src/model/collab_host_services.dart';
+import 'package:flutter/foundation.dart' show setEquals;
 import 'package:flutter/widgets.dart';
 
 /// 向正文展示组件借出实例服务与纯内容预览标记，不管理业务或编辑器资源。
@@ -12,11 +13,15 @@ import 'package:flutter/widgets.dart';
 /// ```
 class CollabEditorDisplayScope extends InheritedWidget {
   /// [key]控制身份，[services]借自当前编辑实例，[preview]为true时隐藏编辑装饰。
+  /// [previewMediaInteractions] 打开预览媒体操作。
+  /// [previewContainerTypes] 借用已冻结的宿主容器类型。
   /// [child]为借用正文子树，不转移任何控制器或回调的所有权。
   const CollabEditorDisplayScope({
     super.key,
     required this.services,
     required this.preview,
+    this.previewMediaInteractions = false,
+    this.previewContainerTypes = const {},
     required super.child,
   });
 
@@ -26,12 +31,21 @@ class CollabEditorDisplayScope extends InheritedWidget {
   /// 是否为无编辑操作的正文预览。
   final bool preview;
 
+  /// 只读预览是否允许操作媒体。
+  final bool previewMediaInteractions;
+
+  /// 由宿主自行约束子块交互的容器类型。
+  final Set<String> previewContainerTypes;
+
   /// 订阅[context]最近的正文展示作用域；历史独立组件未装配时返回null。
   static CollabEditorDisplayScope? maybeOf(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<CollabEditorDisplayScope>();
 
-  /// 在[oldWidget]的实例端口或预览状态改变时通知展示子树。
+  /// 在[oldWidget]的实例端口或预览配置改变时通知展示子树。
   @override
   bool updateShouldNotify(CollabEditorDisplayScope oldWidget) =>
-      !identical(services, oldWidget.services) || preview != oldWidget.preview;
+      !identical(services, oldWidget.services) ||
+      preview != oldWidget.preview ||
+      previewMediaInteractions != oldWidget.previewMediaInteractions ||
+      !setEquals(previewContainerTypes, oldWidget.previewContainerTypes);
 }

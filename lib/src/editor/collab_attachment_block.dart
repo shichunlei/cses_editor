@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
+import 'package:cses_editor/src/editor/collab_block_actions.dart';
+import 'package:cses_editor/src/editor/core/editor_command_context.dart';
+import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart'
     show csesEmbedUrlAttribute;
 import 'package:cses_editor/src/editor/collab_resource_block_base.dart';
@@ -58,14 +63,55 @@ class _AttachmentBlock extends CollabResourceBlock {
 
 /// 附件展示不请求业务数据，操作沿用公共资源事务。
 class _AttachmentBlockState extends CollabResourceBlockState<_AttachmentBlock> {
+  /// 当前打开请求尚未完成时，避免同一附件重复交给宿主或系统。
+  bool _opening = false;
+
   /// 附件菜单与设置的展示名称。
   @override
   String get resourceLabel => '附件';
 
+  /// 通过当前会话直接打开附件，等待宿主路由或系统接收；失败只提示仍有效的来源。
+  Future<void> _openPreviewAttachment() async {
+    if (_opening || !mounted || editor.isDisposed) return;
+    final source = widget.node;
+    final id = blockId;
+    final target = url;
+    final commandContext = EditorCommandContext.of(editor);
+
+    /// 核对当前预览、节点和借用服务，拒绝换源或卸载后的迟到结果。
+    bool isCurrent() =>
+        mounted &&
+        !editor.isDisposed &&
+        context
+                .getInheritedWidgetOfExactType<CollabEditorDisplayScope>()
+                ?.previewMediaInteractions ==
+            true &&
+        identical(commandContext, EditorCommandContext.of(editor)) &&
+        identical(findCollabActionNode(editor, id), source) &&
+        identical(widget.node, source) &&
+        url == target;
+
+    if (!isCurrent()) return;
+    _opening = true;
+    try {
+      await openResource(context, isCurrent: isCurrent);
+    } catch (error, stack) {
+      if (mounted && isCurrent()) {
+        commandContext.services.report('打开附件失败', error, stack, 'DocCollab');
+        showEditorBlockFeedback(context, editor, '打开附件失败，请重试');
+      }
+    } finally {
+      _opening = false;
+    }
+  }
+
   /// 在借用[context]中维持原附件卡片样式，文件名为空时从已校验URL中回退。
-  /// 外边距包住公共锁标覆盖层，内容保留圆角裁切，锁标不占用更多按钮位置。
+  /// 媒体预览整卡直接打开，编辑入口保持在菜单；卡片不接管打开服务或文件资源。
   @override
   Widget buildResourceCard(BuildContext context) {
+    final opensDirectly =
+        CollabEditorDisplayScope.maybeOf(context)?.previewMediaInteractions ==
+        true;
     final props = resource;
     final title = props.string('name').trim();
     final name = title.isNotEmpty
@@ -74,6 +120,17 @@ class _AttachmentBlockState extends CollabResourceBlockState<_AttachmentBlock> {
                   .where((part) => part.trim().isNotEmpty)
                   .lastOrNull ??
               '未命名附件';
+    final content = Padding(
+      padding: const EdgeInsets.fromLTRB(14, 14, 8, 14),
+      child: Row(
+        children: [
+          Expanded(
+            child: _AttachmentInfo(name: name, props: props),
+          ),
+          if (!opensDirectly) buildResourceMore(openLabel: '下载或打开附件'),
+        ],
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: CollabCardLockOverlay(
@@ -85,17 +142,16 @@ class _AttachmentBlockState extends CollabResourceBlockState<_AttachmentBlock> {
             borderRadius: BorderRadius.circular(12),
           ),
           clipBehavior: Clip.antiAlias,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 14, 8, 14),
-            child: Row(
-              children: [
-                Expanded(
-                  child: _AttachmentInfo(name: name, props: props),
-                ),
-                buildResourceMore(openLabel: '下载或打开附件'),
-              ],
-            ),
-          ),
+          child: opensDirectly
+              ? Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    key: ValueKey('attachment-open-$blockId'),
+                    onTap: () => unawaited(_openPreviewAttachment()),
+                    child: content,
+                  ),
+                )
+              : content,
         ),
       ),
     );

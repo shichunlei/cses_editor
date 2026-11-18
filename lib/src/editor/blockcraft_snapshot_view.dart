@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:applowy_editor_fork/applowy_editor_fork.dart' hide Path;
 import 'package:cses_editor/src/editor/blockcraft_json_codec.dart';
+import 'package:cses_editor/src/editor/editor_preview_block.dart';
 import 'package:cses_editor/src/model/collab_image.dart';
 import 'package:cses_editor/src/editor/blockcraft_snapshot_presets.g.dart';
 import 'package:cses_editor/src/model/collab_block_colors.dart';
@@ -260,7 +261,7 @@ class _SnapshotChildren extends BlockComponentStatelessWidget {
         for (final child in node.children)
           if (!rendersEditedCaptions ||
               BlockCraftJsonCodec.flavour(child) != 'caption')
-            state.renderer.build(context, child),
+            buildEditorChildBlock(context, state, child),
       ],
     );
   }
@@ -313,7 +314,8 @@ class _SnapshotObject extends BlockComponentStatelessWidget {
     final editor = context.read<EditorState>();
     final props = BlockCraftJsonCodec.properties(node);
     final children = [
-      for (final child in node.children) editor.renderer.build(context, child),
+      for (final child in node.children)
+        buildEditorChildBlock(context, editor, child),
       ?inlineText,
     ];
     final fill =

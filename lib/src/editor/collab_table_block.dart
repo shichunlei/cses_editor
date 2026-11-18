@@ -1,4 +1,5 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
+import 'package:cses_editor/src/editor/editor_preview_block.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'collab_table_controls.dart';
@@ -43,7 +44,8 @@ class _TableBlock extends BlockComponentStatelessWidget {
     return CollabTableControls(
       editor: editor,
       table: node,
-      cellBuilder: (context, cell) => editor.renderer.build(context, cell),
+      cellBuilder: (context, cell) =>
+          buildEditorChildBlock(context, editor, cell),
     );
   }
 }

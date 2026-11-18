@@ -32,25 +32,31 @@ final class EditorViewConfiguration {
   /// [blockBuilders]可调整视图私有builder或增加宿主结构块，null沿用统一默认值。
   /// [style]只调整展示，null沿用默认排版；[characterShortcuts]为先于通用输入处理的业务扩展。
   /// [keyboardActions]按顺序接在内建菜单后，不替换编辑器命令。
+  /// [previewContainerTypes] 为可透传预览手势的宿主结构块类型；这些块须对各子块使用
+  /// `buildEditorChildBlock`，并按预览权限关闭自己的编辑入口。
   /// 集合在构造时冻结；所有回调及其业务依赖均由调用方持有。
   factory EditorViewConfiguration({
     EditorBlockBuildersConfiguration? blockBuilders,
     EditorStyleConfiguration? style,
     Iterable<CharacterShortcutEvent> characterShortcuts = const [],
     Iterable<EditorKeyboardAction> keyboardActions = const [],
+    Iterable<String> previewContainerTypes = const [],
   }) => EditorViewConfiguration._(
     blockBuilders: blockBuilders,
     style: style,
     characterShortcuts: List.unmodifiable(characterShortcuts),
     keyboardActions: List.unmodifiable(keyboardActions),
+    previewContainerTypes: Set.unmodifiable(previewContainerTypes),
   );
 
-  /// 保存借用的[blockBuilders]/[style]回调和已冻结的[characterShortcuts]/[keyboardActions]。
+  /// 保存借用的[blockBuilders]/[style]回调和已冻结的[characterShortcuts]、
+  /// [keyboardActions]及[previewContainerTypes]，不管理外部资源。
   const EditorViewConfiguration._({
     this.blockBuilders,
     this.style,
     this.characterShortcuts = const [],
     this.keyboardActions = const [],
+    this.previewContainerTypes = const {},
   });
 
   /// 所有编辑模式共用的空扩展配置，不创建正文或网络资源。
@@ -67,4 +73,7 @@ final class EditorViewConfiguration {
 
   /// 宿主菜单动作的不可变副本，生命周期及权限由调用方和通用工具栏共同校验。
   final List<EditorKeyboardAction> keyboardActions;
+
+  /// 预览时负责单独约束各子块交互的宿主容器类型。
+  final Set<String> previewContainerTypes;
 }

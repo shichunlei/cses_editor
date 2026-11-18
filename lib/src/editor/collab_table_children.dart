@@ -1,4 +1,5 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
+import 'package:cses_editor/src/editor/editor_preview_block.dart';
 import 'package:flutter/material.dart';
 
 /// 在 [context] 下使用借用的 [editor] 渲染 [node] 的正文子树。
@@ -19,7 +20,8 @@ Widget buildCollabTableChildren(
     mainAxisSize: MainAxisSize.min,
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
-      for (final child in node.children) editor.renderer.build(context, child),
+      for (final child in node.children)
+        buildEditorChildBlock(context, editor, child),
       if (node.children.isEmpty && editor.editable)
         TextButton(
           onPressed: () async {

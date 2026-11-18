@@ -3,6 +3,7 @@ import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
+import 'package:cses_editor/src/editor/editor_preview_block.dart';
 import 'package:cses_editor/src/model/collab_block_colors.dart';
 import 'package:cses_editor/src/model/collab_color_palette.dart';
 import 'package:cses_editor/src/ui/modal/collab_bottom_sheet.dart';
@@ -125,7 +126,7 @@ class _CalloutBlockState extends State<_CalloutBlock> with SelectableMixin {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     for (final child in node.children)
-                      _editor.renderer.build(context, child),
+                      buildEditorChildBlock(context, _editor, child),
                     if (node.children.isEmpty && _editor.editable)
                       TextButton(
                         key: const ValueKey('collab-callout-add-body'),

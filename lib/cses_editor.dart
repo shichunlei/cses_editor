@@ -11,6 +11,7 @@ export 'src/editor/core/editor_configuration.dart'
         EditorInlineFormat,
         EditorKeyboardToolbarItem;
 export 'src/editor/document_editor_view.dart';
+export 'src/editor/editor_preview_block.dart' show buildEditorChildBlock;
 export 'src/editor/blockcraft_json_codec.dart' show BlockCraftJsonCodec;
 export 'src/editor/blockcraft_snapshot_view.dart'
     show blockCraftSnapshotBuilders, blockCraftSnapshotRootStyle;

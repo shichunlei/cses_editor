@@ -37,6 +37,7 @@ import 'package:cses_editor/src/editor/collab_web_embed_block.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/editor/core/editor_view_configuration.dart';
 import 'package:cses_editor/src/editor/editor_interaction_shell.dart';
+import 'package:cses_editor/src/editor/editor_preview_block.dart';
 import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 import 'package:cses_editor/src/editor/editor_text_presentation.dart';
 import 'package:cses_editor/src/editor/editor_user_mentions.dart';
@@ -77,7 +78,8 @@ class DocumentEditorView extends StatefulWidget {
   /// [enabled] 默认true，false隔离未加载文档；[editable] 默认true，false关闭输入与快捷栏。
   /// [padding] 为正文逻辑像素留白，[header]/[footer] 是文档外的可选滚动内容。
   /// [editorKey] 标识内部正文，[onUserMention] 可接管@，null不调用业务服务。
-  /// [preview]默认false；true关闭选区、输入、浮栏及正文点击操作，仅显示内容。
+  /// [preview]默认false；true关闭选区、输入、浮栏和块菜单。
+  /// [previewMediaInteractions] 默认false；只在启用的预览中允许查看图片、播放和打开附件。
   /// [configuration]默认共用展示配置；宿主可注入结构渲染、样式及业务动作，不替换通用命令链。
   const DocumentEditorView({
     super.key,
@@ -86,6 +88,7 @@ class DocumentEditorView extends StatefulWidget {
     this.enabled = true,
     this.editable = true,
     this.preview = false,
+    this.previewMediaInteractions = false,
     this.padding = const EdgeInsets.symmetric(horizontal: 16),
     this.header,
     this.footer,
@@ -106,8 +109,11 @@ class DocumentEditorView extends StatefulWidget {
   /// 是否允许编辑，默认true；模型权限仍由会话约束。
   final bool editable;
 
-  /// 是否为纯展示预览，默认false；调用方应提供独立正文快照。
+  /// 是否为只读展示，默认false；文档写入权限仍由会话约束。
   final bool preview;
+
+  /// 允许只读预览中的图片、音视频及附件操作。
+  final bool previewMediaInteractions;
 
   /// 正文留白，默认左右16逻辑像素。
   final EdgeInsets padding;
@@ -407,10 +413,7 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
           disableSelectionService: widget.preview,
           showMagnifier: !widget.preview,
           blockComponentBuilders: _builders,
-          blockWrapper: widget.preview
-              ? (context, {required node, required child}) =>
-                    IgnorePointer(child: ExcludeFocus(child: child))
-              : null,
+          blockWrapper: widget.preview ? wrapEditorPreviewBlock : null,
           characterShortcutEvents: [
             ...widget.configuration.characterShortcuts,
             collabParagraphEnter,
@@ -489,6 +492,9 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
     return CollabEditorDisplayScope(
       services: EditorCommandContext.of(state).services,
       preview: widget.preview,
+      previewMediaInteractions:
+          widget.enabled && widget.preview && widget.previewMediaInteractions,
+      previewContainerTypes: widget.configuration.previewContainerTypes,
       child: EditorInteractionShell(
         key: ObjectKey(state),
         editorState: state,

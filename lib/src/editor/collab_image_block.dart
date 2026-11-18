@@ -13,9 +13,12 @@ import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 import 'package:cses_editor/src/model/collab_image.dart';
 import 'package:cses_editor/src/ui/modal/collab_cached_image.dart';
 import 'package:cses_editor/src/ui/modal/collab_card_lock_overlay.dart';
+import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
+import 'package:cses_editor/src/ui/modal/collab_modal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 
 /// 图片块的独立构建器；正式图片的选区和内容由同一块状态管理，无专属投影的离线图片沿用AppFlowy组件。
@@ -39,14 +42,25 @@ class CollabImageBlockComponentBuilder extends BlockComponentBuilder {
           node.delta == null &&
           node.attributes[csesEmbedUrlAttribute] is String;
 
-  /// 用借用[context]创建原图片内容；缺少正式图片投影时保留原AppFlowy回退。
+  /// 用借用[context]创建图片；旧图沿用 AppFlowy 排版，媒体预览为其增加图片点击。
   @override
   BlockComponentWidget build(BlockComponentContext context) {
     final node = context.node;
     if (node.attributes[collabImageAttribute] == null) {
-      return ImageBlockComponentBuilder(
+      final image = ImageBlockComponentBuilder(
         configuration: configuration,
       ).build(context);
+      if (CollabEditorDisplayScope.maybeOf(
+            context.buildContext,
+          )?.previewMediaInteractions ==
+          true) {
+        return CollabImageBlock._legacyPreview(
+          node: node,
+          configuration: configuration,
+          legacyBody: image,
+        );
+      }
+      return image;
     }
     return CollabImageBlock(
       key: node.key,
@@ -82,7 +96,17 @@ class CollabImageBlock extends CollabMediaBlock {
     super.showActions,
     super.actionBuilder,
     super.actionTrailingBuilder,
+  }) : _legacyBody = null;
+
+  /// [node] 与 [configuration] 借自编辑器；[legacyBody] 负责旧图片布局和选区的注册。
+  const CollabImageBlock._legacyPreview({
+    required super.node,
+    required super.configuration,
+    required this._legacyBody,
   });
+
+  /// 旧图片的原有正文组件，仅在媒体预览时提供。
+  final Widget? _legacyBody;
 
   /// 创建同时管理原选区外壳与图片解码/展示的状态，不创建视频播放器。
   @override
@@ -146,8 +170,7 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     }
   }
 
-  /// 点击图片时隔离正文输入并将当前原始链接交给宿主，结束后不恢复焦点。
-  /// 空链接或未注入回调仍收起键盘，但不派发；重复点击在原回调完成前忽略。
+  /// 隔离正文输入并等待宿主或内置大图关闭，期间忽略重复点击。
   /// 换源、删除、卸载或宿主会话变化后拒绝迟到提示，不写入文档或关闭宿主资源。
   Future<void> _openImage() async {
     if (_opening || !mounted) return;
@@ -155,27 +178,65 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     if (editor.isDisposed) return;
     final services = EditorCommandContext.of(editor).services;
     final source = _url;
-    final id =
-        widget.node.attributes['cses_collab_block_id'] as String? ??
-        widget.node.id;
+    final node = widget.node;
+    final id = node.attributes['cses_collab_block_id'] as String? ?? node.id;
+    final fromPreview =
+        context
+            .getInheritedWidgetOfExactType<CollabEditorDisplayScope>()
+            ?.previewMediaInteractions ==
+        true;
 
     /// 检查本次点击是否仍属于同一宿主和稳定图片来源。
     bool isCurrent() {
       if (!mounted ||
           editor.isDisposed ||
+          !identical(widget.node, node) ||
           !identical(services, EditorCommandContext.of(editor).services)) {
         return false;
       }
-      final node = findCollabActionNode(editor, id);
-      return node?.type == ImageBlockKeys.type &&
-          node?.attributes[ImageBlockKeys.url] == source;
+      final inPreview =
+          context
+              .getInheritedWidgetOfExactType<CollabEditorDisplayScope>()
+              ?.previewMediaInteractions ==
+          true;
+      return inPreview == fromPreview &&
+          identical(findCollabActionNode(editor, id), node) &&
+          _url == source;
     }
 
     _opening = true;
     try {
       await runEditorHeaderAction<void>(context, editor, () async {
         if (!isCurrent() || source.trim().isEmpty) return;
-        await services.onImageTap?.call(source);
+        final open = services.onImageTap;
+        if (open != null) {
+          await open(source);
+        } else if (fromPreview) {
+          final picture = _buildPreviewImage();
+          await showCollabDialog<void>(
+            context: context,
+            builder: (dialogContext) => Dialog.fullscreen(
+              backgroundColor: Colors.black,
+              child: SafeArea(
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    InteractiveViewer(maxScale: 5, child: picture),
+                    PositionedDirectional(
+                      top: 8,
+                      end: 8,
+                      child: IconButton.filledTonal(
+                        tooltip: '关闭大图',
+                        icon: const Icon(LucideIcons.x),
+                        onPressed: () => Navigator.of(dialogContext).pop(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
       }, canRestore: () => false);
     } catch (error, stack) {
       if (mounted && isCurrent()) {
@@ -187,15 +248,62 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     }
   }
 
+  /// 在借用[context]为[child]绑定图片点击，保持题注和菜单独立。
+  Widget _buildImageTap(BuildContext context, Widget child) {
+    final services = EditorCommandContext.of(
+      context.read<EditorState>(),
+    ).services;
+    final scope = CollabEditorDisplayScope.maybeOf(context);
+    final uri = Uri.tryParse(_url);
+    final canOpen =
+        _url.trim().isNotEmpty &&
+        (services.onImageTap != null ||
+            (scope?.previewMediaInteractions == true &&
+                (_legacyCanDisplay(uri) ||
+                    _data != null ||
+                    (uri != null && isCollabMediaNetworkUri(uri)))));
+    final node = widget.node;
+    final id = node.attributes['cses_collab_block_id'] ?? node.id;
+    return ExcludeFocus(
+      child: Semantics(
+        label: '图片',
+        button: canOpen,
+        child: GestureDetector(
+          key: ValueKey('collab-image-tap-$id'),
+          behavior: HitTestBehavior.opaque,
+          excludeFromSemantics: !canOpen,
+          onTap: canOpen || scope?.preview != true
+              ? () => unawaited(_openImage())
+              : null,
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  /// 旧 AppFlowy 图片沿用原始本地或 Base64 来源；[uri] 是当前图片地址的解析结果。
+  bool _legacyCanDisplay(Uri? uri) =>
+      widget._legacyBody != null && !{'data', 'blob'}.contains(uri?.scheme);
+
+  /// 旧图保留原组件的尺寸和选区注册，其余图片使用原有媒体外壳。
+  @override
+  Widget build(BuildContext context) {
+    final legacy = widget._legacyBody;
+    return legacy == null
+        ? super.build(context)
+        : _buildImageTap(context, legacy);
+  }
+
   /// 使用 [context] 的正文宽度铺满图片，按原图比例自适应，高度最多等于正文宽度。
   /// 竖图在正方形内居中裁切，更多菜单集中编辑、删除和下方插入。
-  /// 图片本体点击仅回调原始链接并屏蔽正文焦点，题注与更多菜单独立命中。
+  /// 图片本体点击打开大图并屏蔽正文焦点，题注与更多菜单独立命中。
   /// 布局计算不写入 wr/ar 或题注；编辑及复制链接前等待菜单退场并验证当前身份及权限。
   /// 锁标跟随解析尺寸和对齐后的图片本体右上角，不以题注或整行空白为定位边界。
   @override
   Widget buildMedia(BuildContext context) {
     final host = collabBlockActionContext(context);
     final editor = context.read<EditorState>();
+    final preview = CollabEditorDisplayScope.maybeOf(context)?.preview == true;
     final id =
         widget.node.attributes['cses_collab_block_id'] as String? ??
         widget.node.id;
@@ -229,31 +337,12 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
                         maxWidth: width,
                         maxHeight: width,
                       ),
-                      child: ExcludeFocus(
-                        child: Semantics(
-                          label: '图片',
-                          button:
-                              EditorCommandContext.of(
-                                    editor,
-                                  ).services.onImageTap !=
-                                  null &&
-                              _url.trim().isNotEmpty,
-                          child: GestureDetector(
-                            key: ValueKey('collab-image-tap-$id'),
-                            behavior: HitTestBehavior.opaque,
-                            excludeFromSemantics:
-                                EditorCommandContext.of(
-                                      editor,
-                                    ).services.onImageTap ==
-                                    null ||
-                                _url.trim().isEmpty,
-                            onTap: () => unawaited(_openImage()),
-                            child: ClipRect(
-                              child: Transform.rotate(
-                                angle: (image.rotation ?? 0) * math.pi / 180,
-                                child: _buildImage(width),
-                              ),
-                            ),
+                      child: _buildImageTap(
+                        context,
+                        ClipRect(
+                          child: Transform.rotate(
+                            angle: (image.rotation ?? 0) * math.pi / 180,
+                            child: _buildImage(width, fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -275,84 +364,104 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
                   ),
               ],
             ),
-            Positioned(
-              top: 4,
-              right: 4,
-              child: Material(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(6),
-                child: CollabBlockMoreButton(
-                  key: ValueKey(
-                    'block-more-${widget.node.attributes['cses_collab_block_id'] ?? widget.node.id}',
-                  ),
-                  editor: editor,
-                  node: widget.node,
-                  actions: [
-                    ...editorMediaReplacementActions(
-                      host,
-                      editor,
-                      widget.node,
-                      label: '替换图片',
+            if (!preview)
+              Positioned(
+                top: 4,
+                right: 4,
+                child: Material(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(6),
+                  child: CollabBlockMoreButton(
+                    key: ValueKey(
+                      'block-more-${widget.node.attributes['cses_collab_block_id'] ?? widget.node.id}',
                     ),
-                    if (_url.trim().isNotEmpty)
-                      (
-                        label: '复制链接',
-                        key: ValueKey('media-copy-link-$id'),
-                        run: () =>
-                            copyCollabMediaLink(host, editor, widget.node),
+                    editor: editor,
+                    node: widget.node,
+                    actions: [
+                      ...editorMediaReplacementActions(
+                        host,
+                        editor,
+                        widget.node,
+                        label: '替换图片',
                       ),
-                    (
-                      label: '编辑图片',
-                      key: const ValueKey('collab-image-edit'),
-                      run: () async {
-                        final source = findCollabActionNode(editor, id);
-                        if (source != null) {
-                          await showCollabImageEditor(host, editor, source);
-                        }
-                      },
-                    ),
-                    (
-                      label:
-                          (image.captions.isEmpty &&
-                              widget.node.children.isEmpty)
-                          ? '添加题注'
-                          : '编辑题注',
-                      key: const ValueKey('collab-image-caption'),
-                      run: () async {
-                        final source = findCollabActionNode(editor, id);
-                        if (source != null) {
-                          await showCollabImageEditor(
-                            host,
-                            editor,
-                            source,
-                            captionOnly: true,
-                          );
-                        }
-                      },
-                    ),
-                    (
-                      label: '删除图片',
-                      key: const ValueKey('collab-image-menu-delete'),
-                      run: () async {
-                        await deleteCollabImage(editor, id);
-                      },
-                    ),
-                  ],
+                      if (_url.trim().isNotEmpty)
+                        (
+                          label: '复制链接',
+                          key: ValueKey('media-copy-link-$id'),
+                          run: () =>
+                              copyCollabMediaLink(host, editor, widget.node),
+                        ),
+                      (
+                        label: '编辑图片',
+                        key: const ValueKey('collab-image-edit'),
+                        run: () async {
+                          final source = findCollabActionNode(editor, id);
+                          if (source != null) {
+                            await showCollabImageEditor(host, editor, source);
+                          }
+                        },
+                      ),
+                      (
+                        label:
+                            (image.captions.isEmpty &&
+                                widget.node.children.isEmpty)
+                            ? '添加题注'
+                            : '编辑题注',
+                        key: const ValueKey('collab-image-caption'),
+                        run: () async {
+                          final source = findCollabActionNode(editor, id);
+                          if (source != null) {
+                            await showCollabImageEditor(
+                              host,
+                              editor,
+                              source,
+                              captionOnly: true,
+                            );
+                          }
+                        },
+                      ),
+                      (
+                        label: '删除图片',
+                        key: const ValueKey('collab-image-menu-delete'),
+                        run: () async {
+                          await deleteCollabImage(editor, id);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
           ],
         );
       },
     );
   }
 
-  /// 构建当前地址的图片加载器；[width] 为正文逻辑像素宽，原图决定自然高度。
-  /// 父级限制最高为正方形，cover 让超高图片居中裁切；加载失败等状态有明确占位。
+  /// 构建大图内容，沿用正文的图片缓存和 data 数据；旧本地来源交给原 AppFlowy 图片渲染器。
+  Widget _buildPreviewImage() {
+    final source = _url;
+    final uri = Uri.tryParse(source);
+    if (_legacyCanDisplay(uri) &&
+        (uri == null || !isCollabMediaNetworkUri(uri))) {
+      return LayoutBuilder(
+        builder: (context, constraints) => ResizableImage(
+          key: ValueKey(source),
+          src: source,
+          width: constraints.maxWidth,
+          alignment: Alignment.center,
+          editable: false,
+          onResize: (_) {},
+        ),
+      );
+    }
+    return _buildImage(null, fit: BoxFit.contain);
+  }
+
+  /// 构建当前地址的图片加载器；[width] 为可选宽度，[fit] 控制正文裁切或完整大图显示。
   /// 位图和SVG共用App私有文件缓存，不使用数据库，重启后可离线读取已缓存图片。
   /// 无扩展名SVG在位图解码失败后仅检查已缓存文件，不额外重试网络。
   /// data URI在后台解码后按MIME区分SVG和位图；换源不沿用旧图。
-  Widget _buildImage(double width) {
+  Widget _buildImage(double? width, {required BoxFit fit}) {
     final uri = Uri.tryParse(_url);
     if (_url.isEmpty) return _placeholder('未设置图片');
     if (uri?.scheme == 'blob') return _placeholder('图片正在其他设备上传');
@@ -363,7 +472,7 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
         return SvgPicture.memory(
           _data!,
           width: width,
-          fit: BoxFit.cover,
+          fit: fit,
           placeholderBuilder: (_) => _placeholder('图片加载中'),
           errorBuilder: (_, _, _) => _placeholder('图片加载失败'),
         );
@@ -371,7 +480,7 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
       return Image.memory(
         _data!,
         width: width,
-        fit: BoxFit.cover,
+        fit: fit,
         errorBuilder: (_, _, _) => _placeholder('图片加载失败'),
       );
     }
@@ -384,7 +493,7 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
       key: ValueKey('collab-image-network:$_url'),
       url: _url,
       width: width,
-      fit: BoxFit.cover,
+      fit: fit,
       loading: _placeholder('图片加载中'),
       failure: _placeholder('图片加载失败'),
     );

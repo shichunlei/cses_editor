@@ -1,6 +1,7 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
 import 'package:cses_editor/src/editor/collab_block_locks.dart';
+import 'package:cses_editor/src/editor/editor_preview_block.dart';
 import 'package:cses_editor/src/model/collab_columns.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -125,7 +126,7 @@ class _ColumnBlock extends BlockComponentStatelessWidget {
             ),
           ),
         for (final child in node.children)
-          editor.renderer.build(context, child),
+          buildEditorChildBlock(context, editor, child),
         if (node.children.isEmpty && canEditCollabNode(editor, node))
           TextButton(
             key: ValueKey('column-body-$id'),

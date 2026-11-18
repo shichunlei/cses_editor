@@ -1,5 +1,6 @@
 # 验证索引
 
+- [今日导向预览媒体交互](journal-preview-media-20261118/report.md)
 - [SaaS 日填写上传保留 HTTP 和 HTTPS 地址](saas-guidance-upload-http-20261117/report.md)
 - [SaaS 日填写图片上传 HTTPS 地址](saas-guidance-upload-https-20261117/report.md)
 - [日填写正文 v9 提交与跨端读回](daily-body-content-v9-20261117/report.md)

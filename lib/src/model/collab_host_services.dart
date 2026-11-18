@@ -57,7 +57,7 @@ class CollabHostServices {
   /// [createId] generates unique block/session IDs; null uses secure 24-digit
   /// hexadecimal IDs. [onError] reports failures; null prints error and stack.
   /// [mediaUpload] is borrowed and must use the host's current authentication.
-  /// [openMedia] handles the audio/video/attachment menu's open action; null keeps the platform URL action.
+  /// [openMedia] handles menu opens and direct preview attachment opens; null uses the platform URL action.
   /// [showFeedback] shows transient messages using the host UI; null uses the editor's local feedback.
   /// [mentionAvatarBuilder] 由宿主构建头像；null仅显示姓名，无默认头像或图片请求。
   /// [pickMentionUser] 由宿主打开单选人员界面；null禁用选人，已有提及不受影响。
@@ -71,7 +71,7 @@ class CollabHostServices {
   /// [krRankIcons]可选三个名次Widget；null使用金银铜色加粗数字，宿主持有图标资源。
   /// [loadTaskCard] 加载任务本地详情，null仅展示共享标题；不拥有宿主网络资源。
   /// [onMeetingCardTap] 由卡片加入/查看按钮打开会议；null禁用该按钮，仍可删除引用。
-  /// [onImageTap] 接收图片原始链接并等待宿主预览关闭；null不派发点击，仍屏蔽图片点击的正文焦点。
+  /// [onImageTap] 接收图片原始链接并等待宿主预览关闭；null 时媒体预览使用内置大图。
   /// [documentMetadata] 提供正式头部的业务读写；草稿不使用该端口。
   /// [showDocumentFeedback] 默认false；true在正文末尾显示点赞和全文评论入口。
   /// [loadDocumentFeedback]加载当前文档的初始互动快照；null使用未点赞、空成员、0条评论。
@@ -222,7 +222,7 @@ class CollabHostServices {
   onMeetingCardTap;
 
   /// 可选图片点击回调；[url]是当前图片完整原始地址，保留查询签名、片段及data/blob来源。
-  /// 仅图片本体触发，编辑及预览均可用；空链接或null回调不派发，题注与更多菜单不触发。
+  /// 仅图片本体触发，编辑及启用媒体操作的预览可用；空链接不派发。
   /// 点击收起正文键盘且不恢复输入焦点，不写正文或历史；等待返回期间拒绝同一图片重复点击。
   /// 宿主持有预览路由及资源，Future应在预览关闭后完成；当前会话失败由包报告并提示。
   final FutureOr<void> Function(String url)? onImageTap;

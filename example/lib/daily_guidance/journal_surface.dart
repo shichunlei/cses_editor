@@ -23,6 +23,7 @@ import 'journal_ruled_content.dart';
 /// ```
 class JournalSurface extends StatelessWidget {
   /// [key]控制身份，[editorState]由日记会话拥有，[preview]关闭输入、选区和工具栏。
+  /// [previewMediaInteractions] 允许只读页面的媒体操作，默认关闭；截图布局始终静态。
   /// [header]为与正文一起滚动的纸张标题和日期，编辑与预览使用相同布局。
   /// [onCloseSection]接收可选栏目种类，由宿主持有且可空。
   /// [captureKey]非空时启用完整纸张截图布局；[footer]覆盖默认文档尾部留白，用于分享品牌页脚。
@@ -33,6 +34,7 @@ class JournalSurface extends StatelessWidget {
     super.key,
     required this.editorState,
     required this.preview,
+    this.previewMediaInteractions = false,
     required this.header,
     this.recordTitle = '今日记录',
     this.onCloseSection,
@@ -56,6 +58,9 @@ class JournalSurface extends StatelessWidget {
 
   /// true 为只读预览并折叠末尾普通空段落；两种模式共用栏目间距，不修改正文。
   final bool preview;
+
+  /// 当前宿主页面是否允许只读预览中的媒体操作。
+  final bool previewMediaInteractions;
 
   /// 可选栏目关闭回调；null时不显示关闭按钮，回调由业务页面持有。
   final ValueChanged<String>? onCloseSection;
@@ -100,6 +105,8 @@ class JournalSurface extends StatelessWidget {
       child: DocumentEditorView(
         editorState: editorState,
         preview: preview,
+        previewMediaInteractions:
+            previewMediaInteractions && captureKey == null,
         header: header,
         editorKey: const ValueKey('journal-editor'),
         // 纸张由栏目提供水平留白，让单栏目头部与横格能共同填满视口。
@@ -121,6 +128,7 @@ class JournalSurface extends StatelessWidget {
         onUserMention: (state) =>
             handleEditorUserMentionTrigger(context, state),
         configuration: EditorViewConfiguration(
+          previewContainerTypes: const {journalSectionType},
           keyboardActions: keyboardActions,
           characterShortcuts: [journalParagraphEnter],
           style: (context, style) => style.copyWith(
@@ -141,6 +149,7 @@ class JournalSurface extends StatelessWidget {
                 ...builders,
                 journalSectionType: _JournalSectionBuilder(
                   recordTitle: recordTitle,
+                  preview: preview,
                 ),
                 if (captureKey != null)
                   PageBlockKeys.type: _JournalCapturePageBuilder(
@@ -306,7 +315,7 @@ class _JournalSection extends BlockComponentStatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           for (final child in node.children)
-            editor.renderer.build(context, child),
+            buildEditorChildBlock(context, editor, child),
         ],
       );
     }
@@ -344,14 +353,14 @@ class _JournalSection extends BlockComponentStatelessWidget {
       children: [
         for (final child in children)
           if (preview && originalCompanyStyle)
-            IgnorePointer(child: editor.renderer.build(context, child))
+            buildEditorChildBlock(context, editor, child)
           else
             JournalRuledContent(
               key: ValueKey('journal-lines-${child.id}'),
               lineHeight: lineHeight,
               child: IgnorePointer(
-                ignoring: !editor.editable,
-                child: editor.renderer.build(context, child),
+                ignoring: !preview && !editor.editable,
+                child: buildEditorChildBlock(context, editor, child),
               ),
             ),
       ],

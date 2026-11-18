@@ -3,6 +3,7 @@ import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart'
     show csesEmbedUrlAttribute;
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
 import 'package:cses_editor/src/ui/modal/collab_block_lock_scope.dart';
+import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -94,14 +95,15 @@ abstract class CollabMediaBlockState<T extends CollabMediaBlock>
     ),
   );
 
-  /// 使用借用[context]的编辑器渲染原外壳；不增加标题栏、背景或新的业务操作。
+  /// 使用借用[context]的编辑器渲染原外壳，预览仅构建媒体内容。
   /// 叠放层允许媒体自身的右上角锁标越过边缘，保留内容组件内部的圆角裁切。
   /// 带锁的首个根级媒体额外预留6像素顶部空间，避免锁标被编辑器滚动视口裁掉。
   @override
   Widget build(BuildContext context) {
     final editorState = context.read<EditorState>();
     final child = buildMedia(context);
-    final actions = buildMediaActions(context);
+    final preview = CollabEditorDisplayScope.maybeOf(context)?.preview == true;
+    final actions = preview ? null : buildMediaActions(context);
     final firstLockedMedia =
         node.path.length == 1 &&
         node.path.single == 0 &&

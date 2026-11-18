@@ -1073,6 +1073,7 @@ class _LocalJournalPageState extends State<LocalJournalPage>
                               key: ObjectKey(journal.editor),
                               editorState: journal.editor.editorState,
                               preview: _readOnly || _leaving,
+                              previewMediaInteractions: _readOnly && !_leaving,
                               onCloseSection:
                                   _readOnly || _leaving || _submitting
                                   ? null

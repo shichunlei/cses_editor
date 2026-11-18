@@ -1,0 +1,7 @@
+ANDROID_PREVIEW JournalPageMode.preview video played and paused; seek reached 0:00:07.262000
+ANDROID_PREVIEW JournalPageMode.preview audio played and paused; seek reached 0:00:07.394000
+ANDROID_PREVIEW JournalPageMode.preview large image, attachment, hidden menus and readonly verified
+ANDROID_PREVIEW JournalPageMode.edit video played and paused; seek reached 0:00:07.401000
+ANDROID_PREVIEW JournalPageMode.edit audio played and paused; seek reached 0:00:07.604000
+ANDROID_PREVIEW JournalPageMode.edit large image, attachment, hidden menus and readonly verified
+00:09 +1: All tests passed!

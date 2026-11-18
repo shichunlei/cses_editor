@@ -82,8 +82,12 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
   );
 
   /// 通过借用[context]打开当前地址；音频和附件优先交给宿主，失败由菜单统一处理。
-  /// 异步打开完成后只在该上下文仍有效时提示，不修改文档或恢复正文输入。
-  Future<void> openResource(BuildContext context) async {
+  /// [isCurrent] 可额外校验直接打开入口的文档和地址；迟到失败仅在有效上下文提示。
+  /// Future 等待宿主打开或系统接收地址，不修改文档或恢复正文输入。
+  Future<void> openResource(
+    BuildContext context, {
+    bool Function()? isCurrent,
+  }) async {
     final target = url;
     final open = EditorCommandContext.of(editor).services.openMedia;
     if (open != null &&
@@ -101,7 +105,7 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
     } catch (_) {
       // 打开失败统一通过下方提示展示。
     }
-    if (context.mounted) {
+    if (context.mounted && (isCurrent?.call() ?? true)) {
       showEditorBlockFeedback(context, editor, '无法打开此资源，请检查链接');
     }
   }

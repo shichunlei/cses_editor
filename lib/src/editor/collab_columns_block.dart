@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_block_actions.dart';
+import 'package:cses_editor/src/editor/editor_preview_block.dart';
 import 'package:cses_editor/src/model/collab_columns.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -104,8 +105,9 @@ class _ColumnsBlock extends BlockComponentStatelessWidget {
                         width: width * widths[i] / 100,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 6),
-                          child: editor.renderer.build(
+                          child: buildEditorChildBlock(
                             context,
+                            editor,
                             node.children[i],
                           ),
                         ),
