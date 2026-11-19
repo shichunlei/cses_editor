@@ -70,7 +70,10 @@ class _AudioBlockState extends CollabResourceBlockState<_AudioBlock> {
   /// 在借用[context]中展示音频卡；静态作用域只输出卡片，普通模式按 URL 拥有播放器。
   @override
   Widget buildResourceCard(BuildContext context) =>
-      EditorResourceScope.read(context)?.staticMedia == true
+      context
+              .dependOnInheritedWidgetOfExactType<EditorResourceScope>()
+              ?.staticMedia ==
+          true
       ? _frame(
           context,
           const Padding(
@@ -117,6 +120,9 @@ class _AudioPlayer extends StatefulWidget {
 
 /// 持有并释放音频播放器，局部进度借用控制器；换源通过Widget键重建。
 class _AudioPlayerState extends State<_AudioPlayer> {
+  /// 从当前文档借用的关闭观测器，播放器仍由本 State 独占并释放。
+  EditorResourceTracker? _resourceTracker;
+
   /// 此State独占的播放器，释放前等待仍在执行的跳转。
   late final VideoPlayerController _controller;
 
@@ -136,6 +142,7 @@ class _AudioPlayerState extends State<_AudioPlayer> {
   @override
   void initState() {
     super.initState();
+    _resourceTracker = EditorResourceScope.read(context)?.tracker;
     _controller = VideoPlayerController.networkUrl(Uri.parse(widget.url));
     _controller.addListener(_refresh);
     unawaited(_load());
@@ -184,7 +191,8 @@ class _AudioPlayerState extends State<_AudioPlayer> {
     }
   }
 
-  /// 等待当前跳转完成后释放拥有的控制器；失败记录诊断且继续尝试释放。
+  /// 等待当前跳转完成后释放拥有的控制器；跳转失败仍尝试关闭。
+  /// 关闭失败交资源观测器的等待者处理；无观测器时在本组件边界记录原错误/堆栈。
   Future<void> _close() async {
     try {
       await _pendingSeek;
@@ -200,21 +208,29 @@ class _AudioPlayerState extends State<_AudioPlayer> {
     try {
       await _controller.dispose();
     } catch (error, stackTrace) {
-      EditorCommandContext.report(
-        mounted ? context.read<EditorState>() : null,
-        '音频资源释放失败',
-        error: error,
-        stackTrace: stackTrace,
-        tag: 'DocCollab',
-      );
+      final tracker = _resourceTracker;
+      if (tracker != null) {
+        // 交给等待截图/退场的唯一宿主边界处理，释放失败不能被视作资源已就绪。
+        tracker.trackDisposal(Future<void>.error(error, stackTrace));
+      } else {
+        EditorCommandContext.report(
+          mounted ? context.read<EditorState>() : null,
+          '音频资源释放失败',
+          error: error,
+          stackTrace: stackTrace,
+          tag: 'DocCollab',
+        );
+      }
     }
   }
 
-  /// 解除监听并关闭拥有的播放器；异步跳转完成前保留底层资源。
+  /// 解除监听并关闭拥有的播放器；向借用观测器交付关闭 Future，截图/退场可等待跳转与释放。
   @override
   void dispose() {
     _controller.removeListener(_refresh);
-    unawaited(_close());
+    final closing = _close();
+    _resourceTracker?.trackDisposal(closing);
+    unawaited(closing);
     super.dispose();
   }
 

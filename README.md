@@ -80,6 +80,8 @@ final body = DocumentEditorView(
 
 ### 嵌入预览的资源就绪
 
-`EditorResourceScope(tracker: tracker, staticMedia: true, child: view)` 可为测量或截图观察原图片加载器的真实状态。宿主各自创建测量、可见画布的 `EditorResourceTracker`，卸载正文后 dispose；空资源集合就绪，图片须完成真实解码/绘制，失败不能放行。状态同步登记，通知合并至帧后，不修改文档、替换缓存或拥有宿主保存服务。使用 `failed` 显示原因、`value` 等待资源，截图仍需等待宿主实际布局收敛。
+`EditorResourceScope(tracker: tracker, staticMedia: true, child: view)` 可为测量或截图观察原图片加载器的真实状态。宿主各自创建测量、可见画布的 `EditorResourceTracker`，卸载正文并完成该帧后等待 `waitForDisposals()`，再关闭文档及 dispose 观测器；空资源集合就绪，图片须完成真实解码/绘制，失败不能放行。状态同步登记，通知合并至帧后，不修改文档、替换缓存或拥有宿主保存服务。使用 `failed` 显示原因、`value` 等待资源，截图仍需等待宿主实际布局收敛。
 
-静态模式下视频只展示原 poster（无封面时为静态卡），音频只展示静态卡，不初始化播放器。普通编辑默认 false，沿用原播放行为；作用域切换时视频播放器按创建者所有权释放。data 图片继续后台解码，HTTP 图片及 SVG 继续原缓存加载器，读取到字节不等于可截图。宿主应使用公开 `cses_editor.dart` 的 Scope/Tracker/Status，不依赖内部观测 Widget。
+静态模式下视频只展示原 poster（无封面时为静态卡），音频只展示静态卡，不初始化播放器。普通编辑及可交互只读预览默认 false，沿用原播放和进度条；后者还需显式开启 `previewMediaInteractions`。切换静态时音视频播放器按创建者所有权释放；关闭 Future 通过 `trackDisposal` 被当前视图观测器记录，宿主在静态帧后等待 `waitForDisposals()`，再开始截图。观测器不拥有播放器，也不取消下载。data 图片继续后台解码，HTTP 图片及 SVG 继续原缓存加载器，读取到字节不等于可截图。宿主应使用公开 `cses_editor.dart` 的 Scope/Tracker/Status，不依赖内部观测 Widget。
+
+媒体用途与只读权限相互独立：可见预览允许图片放大、附件打开和音视频播放/暂停及进度拖动，文档事务仍由宿主禁止；测量/截图则同时关闭交互并设置 `staticMedia: true`。截图结束或失败恢复可见模式时不自动播放。导航卸载后还应等待媒体关闭（含在途跳转），不能仅以文档订阅已取消判断资源全部释放。父观测器先 dispose 的卸载顺序仍允许子组件登记关闭任务；关闭异常由等待者保留原堆栈向上传播。

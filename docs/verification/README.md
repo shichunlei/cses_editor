@@ -1,5 +1,7 @@
 # 验证索引
 
+- [媒体用途切换与关闭任务等待（2026-11-19）](preview-media-capture-lifecycle-20261119/report.md)
+
 - [嵌入预览资源就绪与静态媒体](embedded-preview-resources-20261119/report.md)
 
 - [嵌入式只读正文验证](embedded-document-preview-20261119/report.md)

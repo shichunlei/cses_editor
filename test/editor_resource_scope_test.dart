@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
 import 'package:cses_editor/src/model/collab_image.dart';
@@ -9,6 +11,36 @@ import 'package:flutter_test/flutter_test.dart';
 
 /// 观测器隔离、异步 data 图片首帧和静态媒体的公共消费契约。
 void main() {
+  test('媒体关闭等待支持并发和关闭后迟到登记，不提前报告完成', () async {
+    final tracker = EditorResourceTracker();
+    final first = Completer<void>();
+    final second = Completer<void>();
+    tracker.trackDisposal(first.future);
+    final wait = tracker.waitForDisposals();
+    expect(identical(wait, tracker.waitForDisposals()), isTrue);
+    var done = false;
+    final observed = wait.then((_) => done = true);
+    tracker.dispose();
+    tracker.trackDisposal(second.future);
+    first.complete();
+    await Future<void>.value();
+    expect(done, isFalse);
+    second.complete();
+    await observed;
+    expect(done, isTrue);
+  });
+
+  test('媒体关闭异常保留原异常和堆栈传播，排空后允许后续正常关闭', () async {
+    final tracker = EditorResourceTracker();
+    final failure = StateError('close failed');
+    final stack = StackTrace.current;
+    tracker.trackDisposal(Future<void>.error(failure, stack));
+    await expectLater(tracker.waitForDisposals(), throwsA(same(failure)));
+    tracker.trackDisposal(Future<void>.value());
+    await tracker.waitForDisposals();
+    tracker.dispose();
+  });
+
   testWidgets('状态同步登记、帧后通知，换作用域及退出不残留凭据', (tester) async {
     final first = EditorResourceTracker();
     final second = EditorResourceTracker();

@@ -1,0 +1,26 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 媒体关闭等待支持并发和关闭后迟到登记，不提前报告完成
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 媒体关闭异常保留原异常和堆栈传播，排空后允许后续正常关闭
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 状态同步登记、帧后通知，换作用域及退出不残留凭据
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +7: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 1 rows into a full PNG
+00:01 +8: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 1 rows into a full PNG
+00:01 +9: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +10: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +11: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +12: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +13: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +14: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +15: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +16: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:01 +17: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:02 +18: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:02 +19: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:02 +20: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 80 rows into a full PNG
+00:02 +21: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=true broken=false
+00:02 +22: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=true broken=true
+00:03 +23: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 静态音视频卡不创建播放器或发起保存
+00:03 +24: All tests passed!

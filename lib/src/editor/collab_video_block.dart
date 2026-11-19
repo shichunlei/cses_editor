@@ -97,12 +97,16 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
   /// 当前展示实例的静态媒体模式，依赖变化时迁移播放器所有权。
   bool _staticMedia = false;
 
+  /// 借用文档的关闭任务观测器，媒体及跳转资源仍由本 State 负责释放。
+  EditorResourceTracker? _resourceTracker;
+
   /// 挂载时为当前视频创建独占播放器；静态测量/截图作用域只展示封面，不初始化播放器。
   /// 初始化结果仍由身份与mounted保护。
   /// 原位属性变化的组件刷新由 AppFlowy BlockComponentContainer 的节点订阅负责。
   @override
   void initState() {
     super.initState();
+    _resourceTracker = EditorResourceScope.read(context)?.tracker;
     _staticMedia = EditorResourceScope.read(context)?.staticMedia == true;
     if (!_staticMedia) {
       unawaited(_initializeVideo());
@@ -124,7 +128,7 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
       final previous = _videoController;
       _videoController = null;
       _videoSource = null;
-      unawaited(_disposeVideo(previous));
+      unawaited(_trackVideoClose(previous));
     } else {
       unawaited(_initializeVideo());
     }
@@ -155,7 +159,7 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
         : null;
     _videoController = controller;
     _videoError = null;
-    await _disposeVideo(previousController);
+    await _trackVideoClose(previousController);
     if (!mounted ||
         !identical(_videoController, controller) ||
         _videoSource != source) {
@@ -187,8 +191,18 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
     }
   }
 
+  /// 启动本 State 拥有的 [controller] 的关闭；null 返回已完成的 Future。
+  /// 将同一 Future 交给文档观测器，换源、静态切换或退出均可等待；不关闭宿主资源。
+  Future<void> _trackVideoClose(VideoPlayerController? controller) {
+    if (controller == null) return Future<void>.value();
+    final closing = _disposeVideo(controller);
+    _resourceTracker?.trackDisposal(closing);
+    return closing;
+  }
+
   /// 释放本视图拥有的 [controller]，null 表示没有资源；调用方先解除当前引用，
-  /// 每个控制器只交接一次，先等待其跳转完成。Future在释放或记录失败后完成。
+  /// 每个控制器只交接一次，先等待其跳转完成；关闭失败交观测器的等待者处理。
+  /// 没有观测器时在本组件边界记录原错误/堆栈，不能将失败视作截图就绪。
   Future<void> _disposeVideo(VideoPlayerController? controller) async {
     if (controller == null) return;
     final pending = _videoSeeks[controller];
@@ -208,13 +222,19 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
     try {
       await controller.dispose();
     } catch (error, stackTrace) {
-      EditorCommandContext.report(
-        mounted ? context.read<EditorState>() : null,
-        '文档视频资源释放失败',
-        error: error,
-        stackTrace: stackTrace,
-        tag: 'DocCollab',
-      );
+      final tracker = _resourceTracker;
+      if (tracker != null) {
+        // 交给等待截图/退场的唯一宿主边界处理，释放失败不能被视作资源已就绪。
+        tracker.trackDisposal(Future<void>.error(error, stackTrace));
+      } else {
+        EditorCommandContext.report(
+          mounted ? context.read<EditorState>() : null,
+          '文档视频资源释放失败',
+          error: error,
+          stackTrace: stackTrace,
+          tag: 'DocCollab',
+        );
+      }
     }
   }
 
@@ -392,7 +412,7 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
   void dispose() {
     final controller = _videoController;
     _videoController = null;
-    unawaited(_disposeVideo(controller));
+    unawaited(_trackVideoClose(controller));
     super.dispose();
   }
 

@@ -13,18 +13,27 @@ enum EditorResourceStatus {
   failed,
 }
 
-/// 聚合一个展示实例的资源状态，不下载资源；测量和画布须各自持有实例。
+/// 聚合一个展示实例的资源状态与媒体关闭等待，不下载或关闭资源；测量和画布各自持有实例。
 ///
 /// ```dart
 /// import 'package:cses_editor/cses_editor.dart';
 /// final resources = EditorResourceTracker();
 /// // EditorResourceScope(tracker: resources, child: body)
-/// // 卸载 body 后 resources.dispose()。
+/// // 卸载 body 并完成该帧后 await resources.waitForDisposals(); resources.dispose()。
 /// ```
 class EditorResourceTracker extends ChangeNotifier
     implements ValueListenable<bool> {
   /// 每个实际视图独占凭据，避免相同地址的旧实例放行新实例。
   final Map<Object, EditorResourceStatus> _entries = {};
+
+  /// 组件拥有的关闭操作之观测 Future；观测器只等待，不关闭播放器。
+  final List<Future<void>> _disposals = [];
+
+  /// 首个未被等待者消费的关闭失败，保留原异常与堆栈。
+  (Object, StackTrace)? _disposalFailure;
+
+  /// 并发等待共享一次排空，防止某个调用提前跳过仍在关闭的播放器。
+  Future<void>? _waitingForDisposals;
 
   /// 关闭后忽略迟到资源报告和帧后回调。
   bool _disposed = false;
@@ -65,6 +74,38 @@ class EditorResourceTracker extends ChangeNotifier
     });
   }
 
+  /// 观测组件创建的 [operation]，不取得其资源所有权，也不启动额外关闭。
+  /// 卸载期间仍允许登记：祖先的 dispose 可能早于媒体子树的 dispose。
+  /// 异常立即被观测并由 [waitForDisposals] 原样传播，避免后台未处理异常。
+  void trackDisposal(Future<void> operation) {
+    _disposals.add(
+      operation.then<void>(
+        (_) {},
+        onError: (Object error, StackTrace stack) {
+          _disposalFailure ??= (error, stack);
+        },
+      ),
+    );
+  }
+
+  /// 等待已登记及等待期间新增的媒体关闭操作；调用者先卸载/切换静态并完成该帧。
+  /// 并发调用共享排空结果；失败保留原异常堆栈向上传播，不通知已释放的 Widget。
+  /// 观测器 dispose 后仍可调用，且不隐式关闭共享客户端或文档。
+  Future<void> waitForDisposals() => _waitingForDisposals ??= _drainDisposals()
+      .whenComplete(() => _waitingForDisposals = null);
+
+  /// 顺序排空已被观测的 Future 批次，避免新到的关闭操作被前一次快照遗漏。
+  Future<void> _drainDisposals() async {
+    while (_disposals.isNotEmpty) {
+      final batch = List<Future<void>>.of(_disposals);
+      _disposals.clear();
+      await Future.wait(batch);
+    }
+    final failure = _disposalFailure;
+    _disposalFailure = null;
+    if (failure != null) Error.throwWithStackTrace(failure.$1, failure.$2);
+  }
+
   /// 关闭此展示实例的观测，迟到通知不再发布；不接管宿主文档。
   @override
   void dispose() {
@@ -84,7 +125,7 @@ class EditorResourceTracker extends ChangeNotifier
 /// // 卸载 view 后 tracker.dispose()。
 /// ```
 class EditorResourceScope extends InheritedWidget {
-  /// [key] 标识作用域；[tracker] 由宿主拥有；[staticMedia] 默认 false，true 时视频仅显示封面。
+  /// [key] 标识作用域；[tracker] 由宿主拥有；[staticMedia] 默认 false，true 时音视频仅显示静态封面或卡片。
   /// [child] 借用正文子树，作用域不创建或关闭媒体、文档及观测器。
   const EditorResourceScope({
     super.key,
@@ -96,7 +137,7 @@ class EditorResourceScope extends InheritedWidget {
   /// 宿主持有的资源观测器，各个展示实例不得共享。
   final EditorResourceTracker tracker;
 
-  /// true 时媒体只输出静态卡片，测量和图片分享不初始化视频播放器。
+  /// true 时媒体只输出静态封面/卡片，不初始化音视频播放器；切换时由媒体创建者关闭。
   final bool staticMedia;
 
   /// 在 [context] 中读取可空作用域；初始化阶段只读取，不注册依赖。

@@ -1,0 +1,3 @@
+cses_editor: git diff --check: exit=0
+cses_editor: git diff HEAD --check -- touched source/docs: exit=0
+cses_editor: 暂存文件范围与开始时相同；本轮未执行暂存、撤销暂存、提交或回滚。
