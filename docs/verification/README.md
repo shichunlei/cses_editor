@@ -1,5 +1,6 @@
 # 验证索引
 
+- [日导向划词创建任务](guidance-selection-create-task-20261118/report.md)
 - [SaaS 日填写旧主区保存与回读](saas-guidance-legacy-primary-20261118/report.md)
 - [今日导向预览媒体交互](journal-preview-media-20261118/report.md)
 - [SaaS 日填写上传保留 HTTP 和 HTTPS 地址](saas-guidance-upload-http-20261117/report.md)

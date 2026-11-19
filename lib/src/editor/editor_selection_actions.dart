@@ -1,9 +1,12 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/blockcraft_json_codec.dart';
+import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/collab_formula_sheet.dart';
 import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
 import 'package:cses_editor/src/model/collab_inline_formula.dart';
 import 'package:cses_editor/src/model/collab_meeting.dart';
+import 'package:cses_editor/src/model/collab_mention_tap.dart';
+import 'package:cses_editor/src/model/collab_task_card.dart';
 import 'package:cses_editor/src/model/collab_text_range.dart';
 import 'package:cses_editor/src/model/collab_user_mention.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
@@ -14,21 +17,26 @@ import 'package:cses_editor/src/ui/modal/collab_modal_field.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-/// 在借用的 [context] 中以 [range] 预填宿主会议表单；[editor] 及正文由调用方拥有。
+/// 在借用的 [context] 中按 [type] 调用宿主的创建流程；[editor] 及正文由调用方拥有。
+/// [range] 用于锚定原文，并为会议主题或任务标题提供本次选中的文字。
 /// [isEditorCurrent] 由调用方提供，用于拒绝组件更换编辑器后的迟到结果。
 /// 等待表单退场，复核稳定块身份及权限后以独立撤销项替换原选区。取消保留原文；
 /// 已创建但无法写入时提示。本函数只拥有临时权限信号，发布异常透传菜单。
-Future<void> showEditorSelectionMeeting(
+Future<void> showEditorSelectionReference(
   BuildContext context,
   EditorState editor,
   CollabTextRange range, {
+  required CollabMentionType type,
   required bool Function() isEditorCurrent,
 }) async {
   final commands = EditorCommandContext.of(editor);
   final services = commands.services;
-  final create = services.createMeetingFromText;
-  if (create == null ||
-      (services.onMeetingMentionTap == null && services.onMentionTap == null) ||
+  final kind = switch (type) {
+    CollabMentionType.meeting => '会议',
+    CollabMentionType.task => '任务',
+    _ => null,
+  };
+  if (kind == null ||
       !range.canConvert ||
       !commands.configuration.allowsFormat(collabInlineMentionAttribute)) {
     return;
@@ -45,46 +53,69 @@ Future<void> showEditorSelectionMeeting(
 
   if (!isCurrent() || !editor.canInputAt(range.resolve(editor))) return;
   final canEdit = ValueNotifier(true);
+  final locks = CollabBlockLocks.of(editor);
 
   /// 永久撤销本次发布授权；发布页只借用该信号。
   void revoke() => canEdit.value = false;
 
   /// 编辑权限丢失后，重新授权只影响下一次划词。
   void trackEditable() {
-    if (!editor.editable) revoke();
+    if (!isCurrent() || !editor.canInputAt(range.resolve(editor))) revoke();
   }
 
   Selection? landing;
   editor.editableNotifier.addListener(trackEditable);
+  locks?.addListener(trackEditable);
   editor.onDispose.addListener(revoke);
   try {
     await runEditorHeaderAction<void>(
       context,
       editor,
       () async {
-        final meeting = await create(
-          context,
-          initialTitle: range.text.trim(),
-          canEdit: canEdit,
-        );
-        if (meeting == null || !isCurrent()) return;
+        final (String, String)? reference;
+        if (type == CollabMentionType.meeting) {
+          final meeting = await services.createMeetingFromText?.call(
+            context,
+            initialTitle: range.text.trim(),
+            canEdit: canEdit,
+          );
+          reference = meeting == null
+              ? null
+              : (meeting.meetingId, meeting.title);
+        } else {
+          final task = await services.createTaskFromSelection?.call(
+            context,
+            initialTitle: range.text.trim(),
+            canEdit: canEdit,
+          );
+          reference = task == null ? null : (task.taskId, task.title);
+        }
+        if (reference == null || !isCurrent()) return;
+        final (id, title) = reference;
         final selection = range.resolve(editor);
-        final values = {'meetingId': meeting.meetingId, 'title': meeting.title};
+        final valid = switch (type) {
+          CollabMentionType.meeting => CollabMeeting.valid({
+            'meetingId': id,
+            'title': title,
+          }),
+          CollabMentionType.task => CollabTaskCard.valid({
+            'taskId': id,
+            'title': title,
+          }),
+          _ => false,
+        };
         if (canEdit.value &&
             selection != null &&
             editor.canInputAt(selection) &&
-            meeting.title.trim().isNotEmpty &&
-            CollabMeeting.valid(values)) {
+            title.trim().isNotEmpty &&
+            valid) {
           final node = editor.getNodeAtPath(selection.start.path)!;
           final start = selection.start.offset;
           final before = node.delta!.slice(start, selection.end.offset);
           final after = BlockCraftJsonCodec.decodeInline([
             {
-              'insert': {'mention': meeting.title},
-              'attributes': {
-                'mentionId': meeting.meetingId,
-                'mentionType': 'meeting',
-              },
+              'insert': {'mention': title},
+              'attributes': {'mentionId': id, 'mentionType': type.name},
             },
           ]);
           final caret = Selection.single(
@@ -102,7 +133,7 @@ Future<void> showEditorSelectionMeeting(
               historyAfterSelection: caret,
             );
           } catch (error, stack) {
-            services.report('已创建的会议引用写入失败', error, stack, 'DocCollab');
+            services.report('已创建的$kind引用写入失败', error, stack, 'DocCollab');
           }
           if (!isCurrent()) return;
           final current = editor.getNodeAtPath(node.path);
@@ -112,7 +143,7 @@ Future<void> showEditorSelectionMeeting(
             return;
           }
         }
-        const message = '会议已创建，未能添加到正文';
+        final message = '$kind已创建，未能添加到正文';
         final feedback = services.showFeedback;
         if (feedback == null) {
           if (context.mounted) _selectionMessage(context, message);
@@ -128,6 +159,7 @@ Future<void> showEditorSelectionMeeting(
     );
   } finally {
     editor.editableNotifier.removeListener(trackEditable);
+    locks?.removeListener(trackEditable);
     editor.onDispose.removeListener(revoke);
     canEdit.dispose();
   }

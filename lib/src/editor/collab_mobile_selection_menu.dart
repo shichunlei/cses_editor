@@ -5,13 +5,14 @@ import 'package:cses_editor/src/editor/collab_block_locks.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/editor/editor_selection_actions.dart';
 import 'package:cses_editor/src/editor/editor_shortcut_toolbar.dart';
+import 'package:cses_editor/src/model/collab_mention_tap.dart';
 import 'package:cses_editor/src/model/collab_text_range.dart';
 import 'package:cses_editor/src/model/collab_user_mention.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// 移动正文的划词菜单，复用 AppFlowy 选区定位、拖动结束和滚动后的浮栏生命周期。
-/// 编辑模式提供剪贴板、格式、链接、公式转换及宿主会议创建；只读仅复制与全选。
+/// 编辑模式提供剪贴板、格式、链接、公式转换及宿主会议和任务创建；只读仅复制与全选。
 /// ```dart
 /// import 'package:flutter/material.dart';
 /// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
@@ -95,6 +96,11 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
             state.editable &&
             (state.selection == null || state.canInputAt(state.selection));
         final commands = EditorCommandContext.of(state);
+        final services = commands.services;
+        final canCreateReference =
+            editable &&
+            range.canConvert &&
+            commands.configuration.allowsFormat(collabInlineMentionAttribute);
         return AdaptiveTextSelectionToolbar.buttonItems(
           key: const ValueKey('editor-selection-menu'),
           anchors: TextSelectionToolbarAnchors(primaryAnchor: anchor),
@@ -104,20 +110,32 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
               _button('剪切', () => _copy(state, range, cut: true), close),
             if (editable) _button('粘贴', () => _paste(state, range), close),
             _button('全选', () => _selectAll(state), close),
-            if (editable &&
-                range.canConvert &&
-                commands.configuration.allowsFormat(
-                  collabInlineMentionAttribute,
-                ) &&
-                commands.services.createMeetingFromText != null &&
-                (commands.services.onMeetingMentionTap != null ||
-                    commands.services.onMentionTap != null))
+            if (canCreateReference &&
+                services.createMeetingFromText != null &&
+                (services.onMeetingMentionTap != null ||
+                    services.onMentionTap != null))
               _button(
                 '创建会议',
-                () => showEditorSelectionMeeting(
+                () => showEditorSelectionReference(
                   this.context,
                   state,
                   range,
+                  type: CollabMentionType.meeting,
+                  isEditorCurrent: () => identical(widget.editorState, state),
+                ),
+                close,
+              ),
+            if (canCreateReference &&
+                services.createTaskFromSelection != null &&
+                (services.onTaskMentionTap != null ||
+                    services.onMentionTap != null))
+              _button(
+                '创建任务',
+                () => showEditorSelectionReference(
+                  this.context,
+                  state,
+                  range,
+                  type: CollabMentionType.task,
                   isEditorCurrent: () => identical(widget.editorState, state),
                 ),
                 close,

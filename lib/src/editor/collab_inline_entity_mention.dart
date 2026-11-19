@@ -2,6 +2,7 @@ import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/model/collab_entity_mention.dart';
 import 'package:cses_editor/src/ui/modal/collab_bottom_sheet.dart';
+import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:cses_editor/src/ui/modal/collab_menu_row.dart';
 import 'package:cses_editor/src/ui/modal/collab_modal.dart';
 import 'package:cses_editor/src/ui/modal/collab_modal_colors.dart';
@@ -154,8 +155,8 @@ TextStyle collabTaskMentionTextStyle(TextStyle style) => style.copyWith(
 
 /// 在借用 [context] 中展示 [state] 的 [node] 在 UTF-16 [offset] 处的引用操作。
 /// Future 等待面板及选定操作完成，退场后复核目标与会话，不拥有编辑器或路由。
-/// 标题沿用行内引用图标。打开详情调用所属宿主回调；会议优先用专用端口，视图切换和删除均在正文内执行。
-/// 删除使用与块菜单一致的红色整行操作；预览/只读时保持禁用，不修改实体业务数据。
+/// 标题沿用行内引用图标。会议和任务详情优先调用各自的宿主回调，视图切换和删除在正文内执行。
+/// 预览只允许宿主显式启用的任务详情。编辑时删除仅改正文，不修改实体业务数据。
 Future<void> showCollabEntityMentionActions(
   BuildContext context,
   EditorState state,
@@ -164,11 +165,20 @@ Future<void> showCollabEntityMentionActions(
 ) async {
   final target = CollabEntityMentionTarget.capture(node, offset);
   if (target == null) return;
+  final display = CollabEditorDisplayScope.maybeOf(context);
+  final preview = display?.preview == true;
+  if (preview &&
+      (target.entityType != 'task' ||
+          display?.previewTaskMentionInteractions != true)) {
+    return;
+  }
   final canSwitchView = target.entityType == 'meeting';
   await runCollabMentionInteraction(context, state, (services) async {
-    final openDetails = canSwitchView
-        ? services.onMeetingMentionTap ?? services.onMentionTap
-        : services.onMentionTap;
+    final openDetails = switch (target.entityType) {
+      'meeting' => services.onMeetingMentionTap ?? services.onMentionTap,
+      'task' => services.onTaskMentionTap ?? services.onMentionTap,
+      _ => services.onMentionTap,
+    };
     final kind = switch (target.entityType) {
       'meeting' => '会议',
       'task' => '任务',
@@ -191,44 +201,45 @@ Future<void> showCollabEntityMentionActions(
               enabled: openDetails != null,
               onTap: () => Navigator.of(sheetContext).pop(_EntityAction.detail),
             ),
-            ListenableBuilder(
-              listenable: state.editableNotifier,
-              builder: (context, _) => Column(
-                children: [
-                  if (canSwitchView)
+            if (!preview)
+              ListenableBuilder(
+                listenable: state.editableNotifier,
+                builder: (context, _) => Column(
+                  children: [
+                    if (canSwitchView)
+                      CollabMenuRow(
+                        key: const ValueKey('entity-mention-switch-view'),
+                        leading: const Icon(LucideIcons.panelTop),
+                        title: const Text('切换为卡片视图'),
+                        subtitle: const Text('当前：链接视图'),
+                        enabled: state.editable,
+                        onTap: () => Navigator.of(
+                          sheetContext,
+                        ).pop(_EntityAction.switchView),
+                      ),
                     CollabMenuRow(
-                      key: const ValueKey('entity-mention-switch-view'),
-                      leading: const Icon(LucideIcons.panelTop),
-                      title: const Text('切换为卡片视图'),
-                      subtitle: const Text('当前：链接视图'),
+                      key: const ValueKey('entity-mention-delete'),
                       enabled: state.editable,
-                      onTap: () => Navigator.of(
-                        sheetContext,
-                      ).pop(_EntityAction.switchView),
+                      leading: Icon(
+                        LucideIcons.trash2,
+                        color: state.editable
+                            ? CollabModalColors.of(context).danger
+                            : null,
+                      ),
+                      title: Text(
+                        '删除提及',
+                        style: state.editable
+                            ? TextStyle(
+                                color: CollabModalColors.of(context).danger,
+                              )
+                            : null,
+                      ),
+                      onTap: () =>
+                          Navigator.of(sheetContext).pop(_EntityAction.delete),
                     ),
-                  CollabMenuRow(
-                    key: const ValueKey('entity-mention-delete'),
-                    enabled: state.editable,
-                    leading: Icon(
-                      LucideIcons.trash2,
-                      color: state.editable
-                          ? CollabModalColors.of(context).danger
-                          : null,
-                    ),
-                    title: Text(
-                      '删除提及',
-                      style: state.editable
-                          ? TextStyle(
-                              color: CollabModalColors.of(context).danger,
-                            )
-                          : null,
-                    ),
-                    onTap: () =>
-                        Navigator.of(sheetContext).pop(_EntityAction.delete),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
           ],
         ),
       ),
@@ -261,7 +272,7 @@ Future<void> showCollabEntityMentionActions(
           )?.showSnackBar(const SnackBar(content: Text('提及已变化，请重新打开')));
         }
     }
-  });
+  }, restoreFocus: !preview);
 }
 
 /// 面板选择在路由完全退场后执行，不在面板内发起业务导航或正文写入。

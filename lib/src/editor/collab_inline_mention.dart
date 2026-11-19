@@ -1,5 +1,6 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
+import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -54,7 +55,9 @@ class CollabInlineMention extends StatelessWidget {
         ? const Color(0xFF1E3A5F)
         : const Color(0xFFEFF6FF);
     final state = context.read<EditorState>();
-    final canTap = EditorCommandContext.of(state).services.onMentionTap != null;
+    final canTap =
+        CollabEditorDisplayScope.maybeOf(context)?.preview != true &&
+        EditorCommandContext.of(state).services.onMentionTap != null;
     final avatar = buildHostMentionAvatarSlot(
       context,
       userId: userId,

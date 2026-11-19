@@ -46,6 +46,7 @@ export 'src/model/collab_task_card_data.dart'
         CollabTaskCardTag,
         CollabTaskCardPath,
         CollabTaskCardLoader;
+export 'src/model/collab_task_reference.dart';
 export 'src/model/collab_user_mention.dart'
     show CollabMentionUser, CollabMentionDirectory;
 export 'src/model/document_metadata.dart';

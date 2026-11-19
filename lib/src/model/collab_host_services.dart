@@ -13,6 +13,7 @@ import 'collab_meeting_reference.dart';
 import 'collab_mention_tap.dart';
 import 'collab_mention_ui.dart';
 import 'collab_task_card_data.dart';
+import 'collab_task_reference.dart';
 import 'collab_weather.dart';
 import 'collab_person_card.dart';
 import 'document_metadata.dart';
@@ -66,6 +67,8 @@ class CollabHostServices {
   /// [pickMeetingReference] 由宿主选择或创建业务会议后返回引用；null时不提供新增入口。
   /// [createMeetingFromText] 从选中文字预填发布页；null隐藏划词创建会议入口。
   /// [onMeetingMentionTap] 只打开行内会议详情；未配置时沿用 [onMentionTap]。
+  /// [createTaskFromSelection] 打开以本次划词预填标题的任务表单；null 隐藏划词创建任务入口。
+  /// [onTaskMentionTap] 只打开行内任务详情；未配置时沿用 [onMentionTap]。
   /// [loadMeetingCard] 加载会议本地详情及状态，null展示引用和未知状态，资源由宿主持有。
   /// [kr]借用宿主KR查询端口；null显示未配置提示，不拥有请求资源。
   /// [krRankIcons]可选三个名次Widget；null使用金银铜色加粗数字，宿主持有图标资源。
@@ -109,6 +112,8 @@ class CollabHostServices {
     this.pickMeetingReference,
     this.createMeetingFromText,
     this.onMeetingMentionTap,
+    this.createTaskFromSelection,
+    this.onTaskMentionTap,
   });
 
   /// 创建服务视图，仅用[picker]替换人员选择入口；其他资源继续借用，不转移所有权。
@@ -140,6 +145,8 @@ class CollabHostServices {
         pickMeetingReference: pickMeetingReference,
         createMeetingFromText: createMeetingFromText,
         onMeetingMentionTap: onMeetingMentionTap,
+        createTaskFromSelection: createTaskFromSelection,
+        onTaskMentionTap: onTaskMentionTap,
       );
 
   /// 新建人员卡片的资料读取器；返回null表示资料缺失，异常阻止插入并由工具栏报告。
@@ -190,6 +197,12 @@ class CollabHostServices {
 
   /// 行内会议的专用详情入口；宿主持有路由，Future 在详情关闭后完成。
   final CollabMentionTapCallback? onMeetingMentionTap;
+
+  /// 借用宿主的任务表单，以本次划词预填标题；创建成功返回可写入正文的引用快照。
+  final CollabTaskCreator? createTaskFromSelection;
+
+  /// 行内任务的专用详情入口；宿主持有路由，Future 在详情关闭后完成。
+  final CollabMentionTapCallback? onTaskMentionTap;
 
   /// 可选任务卡片详情，业务标题/标签/人员/时间/统计仅本地展示。
   /// null保留共享标题且隐藏未知数据；明确缺失/失败禁用详情，失败可重试。

@@ -80,6 +80,7 @@ class DocumentEditorView extends StatefulWidget {
   /// [editorKey] 标识内部正文，[onUserMention] 可接管@，null不调用业务服务。
   /// [preview]默认false；true关闭选区、输入、浮栏和块菜单。
   /// [previewMediaInteractions] 默认false；只在启用的预览中允许查看图片、播放和打开附件。
+  /// [previewTaskMentionInteractions] 默认false；启用后借用宿主回调打开只读任务详情。
   /// [configuration]默认共用展示配置；宿主可注入结构渲染、样式及业务动作，不替换通用命令链。
   const DocumentEditorView({
     super.key,
@@ -89,6 +90,7 @@ class DocumentEditorView extends StatefulWidget {
     this.editable = true,
     this.preview = false,
     this.previewMediaInteractions = false,
+    this.previewTaskMentionInteractions = false,
     this.padding = const EdgeInsets.symmetric(horizontal: 16),
     this.header,
     this.footer,
@@ -114,6 +116,9 @@ class DocumentEditorView extends StatefulWidget {
 
   /// 允许只读预览中的图片、音视频及附件操作。
   final bool previewMediaInteractions;
+
+  /// 仅在只读预览中允许点击任务引用；不启动输入，也不允许修改引用。
+  final bool previewTaskMentionInteractions;
 
   /// 正文留白，默认左右16逻辑像素。
   final EdgeInsets padding;
@@ -494,6 +499,12 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
       preview: widget.preview,
       previewMediaInteractions:
           widget.enabled && widget.preview && widget.previewMediaInteractions,
+      previewTaskMentionInteractions:
+          widget.enabled &&
+          widget.preview &&
+          widget.previewTaskMentionInteractions &&
+          (commandContext.services.onTaskMentionTap != null ||
+              commandContext.services.onMentionTap != null),
       previewContainerTypes: widget.configuration.previewContainerTypes,
       child: EditorInteractionShell(
         key: ObjectKey(state),
@@ -628,14 +639,23 @@ InlineSpan decorateEditorTextSpan(
   TextSpan before,
   TextSpan after,
 ) {
-  var decorated = mobileTextSpanDecoratorForAttribute(
-    context,
-    node,
-    index,
-    text,
-    supportsCollabParagraph(node) ? after : before,
-    after,
-  );
+  final baseSpan = supportsCollabParagraph(node) ? after : before;
+  final restrictLinkTap =
+      text.attributes?[AppFlowyRichTextKeys.href] != null &&
+      CollabEditorDisplayScope.maybeOf(
+            context,
+          )?.previewTaskMentionInteractions ==
+          true;
+  var decorated = restrictLinkTap
+      ? TextSpan(text: text.text, style: baseSpan.style)
+      : mobileTextSpanDecoratorForAttribute(
+          context,
+          node,
+          index,
+          text,
+          baseSpan,
+          after,
+        );
   if (supportsCollabParagraph(node)) {
     decorated = decorated.copyWith(
       style: collabParagraphTextStyle(
