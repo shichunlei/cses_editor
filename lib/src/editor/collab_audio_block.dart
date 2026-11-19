@@ -1,3 +1,4 @@
+import 'package:cses_editor/src/ui/modal/editor_resource_scope.dart';
 import 'dart:async';
 
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
@@ -66,26 +67,34 @@ class _AudioBlockState extends CollabResourceBlockState<_AudioBlock> {
   @override
   String get resourceLabel => '音频';
 
-  /// 在借用[context]中展示名称标题栏与独立播放内容区；换源按URL重建播放器。
+  /// 在借用[context]中展示音频卡；静态作用域只输出卡片，普通模式按 URL 拥有播放器。
   @override
-  Widget buildResourceCard(BuildContext context) => _AudioPlayer(
-    key: ValueKey('audio:$url'),
-    url: url,
-    builder: (context, progress) => CollabCardFrame(
-      surfaceKey: bodyKey,
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      header: CollabCardHeader(
-        leading: const Icon(LucideIcons.music2),
-        title: Text(
-          resource.string('name').isNotEmpty
-              ? resource.string('name')
-              : resourceLabel,
-        ),
-        readOnly: !editor.editable,
-        more: buildResourceMore(openLabel: '在浏览器打开'),
+  Widget buildResourceCard(BuildContext context) =>
+      EditorResourceScope.read(context)?.staticMedia == true
+      ? _frame(
+          context,
+          const Padding(
+            padding: EdgeInsets.all(12),
+            child: Icon(LucideIcons.music2),
+          ),
+        )
+      : _AudioPlayer(key: ValueKey('audio:$url'), url: url, builder: _frame);
+
+  /// 在 [context] 用原音频卡外壳显示 [progress]，静态模式不创建播放器。
+  Widget _frame(BuildContext context, Widget progress) => CollabCardFrame(
+    surfaceKey: bodyKey,
+    margin: const EdgeInsets.symmetric(vertical: 6),
+    header: CollabCardHeader(
+      leading: const Icon(LucideIcons.music2),
+      title: Text(
+        resource.string('name').isNotEmpty
+            ? resource.string('name')
+            : resourceLabel,
       ),
-      child: progress,
+      readOnly: !editor.editable,
+      more: buildResourceMore(openLabel: '在浏览器打开'),
     ),
+    child: progress,
   );
 }
 

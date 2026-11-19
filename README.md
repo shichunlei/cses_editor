@@ -54,3 +54,32 @@ python3 tool/verify_independence.py example/build/app/outputs/flutter-apk/app-de
 编辑器依赖使用 pub.dev 发布的 [`applowy_editor_fork`](https://pub.dev/packages/applowy_editor_fork)，版本约束为 `^6.2.1`。
 
 示例在宿主层通过 `createDemoGuidanceHostServices` 注入用户头像，普通 @、都来帮、领航员及旧用户引用共用头像槽。可传入用户 ID 到头像 URL 的映射；未提供图片时显示离线姓名首字头像，不向正文 JSON 写入头像展示数据。任务引用图标与样式保持原样。
+
+
+## 嵌入只读正文
+
+`DocumentEditorView(embeddedPreview: true, preview: true)` 按内容自然高度渲染全部块，适用于外层统一滚动的模板画布、测量与整幅截图。该模式复用块构建器与只读交互规则，不创建 Overlay、内部滚动、键盘或选区服务。默认 `embeddedPreview: false` 保持原独立编辑视图行为。
+
+宿主必须提供独立只读会话，配置自身事务权限；测量和可见正文不得共享同一个 EditorState、节点 Key 或 renderer。视图不接管控制器，不发起保存，卸载后由创建者等待关闭。只读媒体交互按现有参数显式开启，测量与静态截图应保持关闭；异步资源加载与截图就绪由宿主协调。
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:cses_editor/cses_editor.dart';
+
+final controller = DocumentEditorController();
+controller.editorState
+  ..editable = false
+  ..transactionGuard = (_) => false;
+final body = DocumentEditorView(
+  editorState: controller.editorState,
+  preview: true,
+  embeddedPreview: true,
+);
+// 将 body 放入外层画布；从组件树卸载后 await controller.close()。
+```
+
+### 嵌入预览的资源就绪
+
+`EditorResourceScope(tracker: tracker, staticMedia: true, child: view)` 可为测量或截图观察原图片加载器的真实状态。宿主各自创建测量、可见画布的 `EditorResourceTracker`，卸载正文后 dispose；空资源集合就绪，图片须完成真实解码/绘制，失败不能放行。状态同步登记，通知合并至帧后，不修改文档、替换缓存或拥有宿主保存服务。使用 `failed` 显示原因、`value` 等待资源，截图仍需等待宿主实际布局收敛。
+
+静态模式下视频只展示原 poster（无封面时为静态卡），音频只展示静态卡，不初始化播放器。普通编辑默认 false，沿用原播放行为；作用域切换时视频播放器按创建者所有权释放。data 图片继续后台解码，HTTP 图片及 SVG 继续原缓存加载器，读取到字节不等于可截图。宿主应使用公开 `cses_editor.dart` 的 Scope/Tracker/Status，不依赖内部观测 Widget。

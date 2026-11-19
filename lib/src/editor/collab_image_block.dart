@@ -1,3 +1,4 @@
+import 'package:cses_editor/src/ui/modal/editor_resource_scope.dart';
 import 'dart:async';
 import 'dart:math' as math;
 
@@ -457,45 +458,93 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
     return _buildImage(null, fit: BoxFit.contain);
   }
 
+  /// 资源观测作用域存在时，加载、失败和真实解码帧会在帧后更新，不写正文。
   /// 构建当前地址的图片加载器；[width] 为可选宽度，[fit] 控制正文裁切或完整大图显示。
   /// 位图和SVG共用App私有文件缓存，不使用数据库，重启后可离线读取已缓存图片。
   /// 无扩展名SVG在位图解码失败后仅检查已缓存文件，不额外重试网络。
   /// data URI在后台解码后按MIME区分SVG和位图；换源不沿用旧图。
   Widget _buildImage(double? width, {required BoxFit fit}) {
     final uri = Uri.tryParse(_url);
-    if (_url.isEmpty) return _placeholder('未设置图片');
-    if (uri?.scheme == 'blob') return _placeholder('图片正在其他设备上传');
+    if (_url.isEmpty) {
+      return EditorResourceView(
+        status: EditorResourceStatus.failed,
+        child: _placeholder('未设置图片'),
+      );
+    }
+    if (uri?.scheme == 'blob') {
+      return EditorResourceView(
+        status: EditorResourceStatus.failed,
+        child: _placeholder('图片正在其他设备上传'),
+      );
+    }
     if (_url.startsWith('data:')) {
-      if (_dataFailed) return _placeholder('图片数据无法读取');
-      if (_data == null) return _placeholder('图片加载中');
+      if (_dataFailed) {
+        return EditorResourceView(
+          status: EditorResourceStatus.failed,
+          child: _placeholder('图片数据无法读取'),
+        );
+      }
+      if (_data == null) {
+        return EditorResourceView(
+          status: EditorResourceStatus.loading,
+          child: _placeholder('图片加载中'),
+        );
+      }
       if (uri?.data?.mimeType.toLowerCase() == 'image/svg+xml') {
-        return SvgPicture.memory(
-          _data!,
-          width: width,
-          fit: fit,
-          placeholderBuilder: (_) => _placeholder('图片加载中'),
-          errorBuilder: (_, _, _) => _placeholder('图片加载失败'),
+        return EditorResourceView(
+          status: EditorResourceStatus.ready,
+          child: SvgPicture.memory(
+            _data!,
+            width: width,
+            fit: fit,
+            placeholderBuilder: (_) => EditorResourceView(
+              status: EditorResourceStatus.loading,
+              child: _placeholder('图片加载中'),
+            ),
+            errorBuilder: (_, _, _) => EditorResourceView(
+              status: EditorResourceStatus.failed,
+              child: _placeholder('图片加载失败'),
+            ),
+          ),
         );
       }
       return Image.memory(
         _data!,
+        frameBuilder: (_, child, frame, _) => EditorResourceView(
+          status: frame == null
+              ? EditorResourceStatus.loading
+              : EditorResourceStatus.ready,
+          child: child,
+        ),
         width: width,
         fit: fit,
-        errorBuilder: (_, _, _) => _placeholder('图片加载失败'),
+        errorBuilder: (_, _, _) => EditorResourceView(
+          status: EditorResourceStatus.failed,
+          child: _placeholder('图片加载失败'),
+        ),
       );
     }
     if (uri == null ||
         !['http', 'https'].contains(uri.scheme) ||
         uri.host.isEmpty) {
-      return _placeholder('暂不支持的图片来源');
+      return EditorResourceView(
+        status: EditorResourceStatus.failed,
+        child: _placeholder('暂不支持的图片来源'),
+      );
     }
     return CollabCachedImage(
       key: ValueKey('collab-image-network:$_url'),
       url: _url,
       width: width,
       fit: fit,
-      loading: _placeholder('图片加载中'),
-      failure: _placeholder('图片加载失败'),
+      loading: EditorResourceView(
+        status: EditorResourceStatus.loading,
+        child: _placeholder('图片加载中'),
+      ),
+      failure: EditorResourceView(
+        status: EditorResourceStatus.failed,
+        child: _placeholder('图片加载失败'),
+      ),
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:cses_editor/src/ui/modal/editor_resource_scope.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -121,16 +122,25 @@ class _CachedSvgImageState extends State<_CachedSvgImage> {
     super.dispose();
   }
 
-  /// 借用[context]渲染当前请求，保留适配/对齐/尺寸并使用调用方占位。
+  /// 借用[context]渲染当前请求并在帧后报告真实图片状态；SVG 加载占位退出前保持未就绪。
+  /// 保留原加载器、缓存和错误占位，不把字节下载成功当成图片已绘制。
   @override
   Widget build(BuildContext context) => FutureBuilder<Uint8List?>(
     future: _request,
     builder: (context, snapshot) {
       final image = widget.image;
       if (snapshot.connectionState != ConnectionState.done) {
-        return image.loading;
+        return EditorResourceView(
+          status: EditorResourceStatus.loading,
+          child: image.loading,
+        );
       }
-      if (snapshot.hasError || snapshot.data == null) return image.failure;
+      if (snapshot.hasError || snapshot.data == null) {
+        return EditorResourceView(
+          status: EditorResourceStatus.failed,
+          child: image.failure,
+        );
+      }
       if (!_looksLikeSvg(snapshot.data!)) {
         return Image.memory(
           snapshot.data!,
@@ -138,17 +148,35 @@ class _CachedSvgImageState extends State<_CachedSvgImage> {
           alignment: image.alignment,
           width: image.width,
           height: image.height,
-          errorBuilder: (_, _, _) => image.failure,
+          frameBuilder: (_, child, frame, _) => EditorResourceView(
+            status: frame == null
+                ? EditorResourceStatus.loading
+                : EditorResourceStatus.ready,
+            child: child,
+          ),
+          errorBuilder: (_, _, _) => EditorResourceView(
+            status: EditorResourceStatus.failed,
+            child: image.failure,
+          ),
         );
       }
-      return SvgPicture.memory(
-        snapshot.data!,
-        fit: image.fit,
-        alignment: image.alignment,
-        width: image.width,
-        height: image.height,
-        placeholderBuilder: (_) => image.loading,
-        errorBuilder: (_, _, _) => image.failure,
+      return EditorResourceView(
+        status: EditorResourceStatus.ready,
+        child: SvgPicture.memory(
+          snapshot.data!,
+          fit: image.fit,
+          alignment: image.alignment,
+          width: image.width,
+          height: image.height,
+          placeholderBuilder: (_) => EditorResourceView(
+            status: EditorResourceStatus.loading,
+            child: image.loading,
+          ),
+          errorBuilder: (_, _, _) => EditorResourceView(
+            status: EditorResourceStatus.failed,
+            child: image.failure,
+          ),
+        ),
       );
     },
   );

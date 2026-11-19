@@ -1,0 +1,26 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 状态同步登记、帧后通知，换作用域及退出不残留凭据
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +4: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +5: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +6: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +6: /System/Volumes/Data/workspace/cses_editor/test/collab_image_cache_test.dart: cache failure does not prevent image download
+图片缓存不可用: FileSystemException: no cache, path = ''
+00:00 +7: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +8: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +9: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +10: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +11: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=false 图片铺满宽度且高度最多为正方形
+00:01 +12: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=false 图片铺满宽度且高度最多为正方形
+00:01 +13: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=false 图片铺满宽度且高度最多为正方形
+00:02 +14: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=true broken=false
+00:02 +15: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:02 +16: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:02 +17: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:02 +18: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +19: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=true 图片铺满宽度且高度最多为正方形
+00:04 +20: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: portrait preview=false 图片铺满宽度且高度最多为正方形
+00:04 +21: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: portrait preview=true 图片铺满宽度且高度最多为正方形
+00:05 +22: All tests passed!

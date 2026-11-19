@@ -1,3 +1,6 @@
+import 'package:cses_editor/src/ui/modal/editor_resource_scope.dart';
+import 'package:cses_editor/src/ui/modal/collab_cached_image.dart';
+import 'package:cses_editor/src/model/collab_resource.dart';
 import 'dart:async';
 
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
@@ -91,12 +94,40 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
   /// 已开始加载的源字符串；Node 为可变对象，不能从 oldWidget 恢复旧 URL。
   String? _videoSource;
 
-  /// 挂载时为当前视频创建独占播放器；初始化结果仍由身份与mounted保护。
+  /// 当前展示实例的静态媒体模式，依赖变化时迁移播放器所有权。
+  bool _staticMedia = false;
+
+  /// 挂载时为当前视频创建独占播放器；静态测量/截图作用域只展示封面，不初始化播放器。
+  /// 初始化结果仍由身份与mounted保护。
   /// 原位属性变化的组件刷新由 AppFlowy BlockComponentContainer 的节点订阅负责。
   @override
   void initState() {
     super.initState();
-    unawaited(_initializeVideo());
+    _staticMedia = EditorResourceScope.read(context)?.staticMedia == true;
+    if (!_staticMedia) {
+      unawaited(_initializeVideo());
+    }
+  }
+
+  /// 作用域切换时迁移播放器资源；静态模式的迟到初始化不能回写或继续播放。
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final next =
+        context
+            .dependOnInheritedWidgetOfExactType<EditorResourceScope>()
+            ?.staticMedia ==
+        true;
+    if (next == _staticMedia) return;
+    _staticMedia = next;
+    if (next) {
+      final previous = _videoController;
+      _videoController = null;
+      _videoSource = null;
+      unawaited(_disposeVideo(previous));
+    } else {
+      unawaited(_initializeVideo());
+    }
   }
 
   /// [oldWidget] 为同一状态的旧配置；即使其 Node 已被原位更新，也按保存的源
@@ -104,7 +135,8 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
   @override
   void didUpdateWidget(covariant _VideoBlock oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (_videoSource != url) {
+    if (_videoSource != url &&
+        EditorResourceScope.read(context)?.staticMedia != true) {
       unawaited(_initializeVideo());
     }
   }
@@ -187,11 +219,39 @@ class _VideoBlockState extends CollabMediaBlockState<_VideoBlock> {
   }
 
   /// 使用借用的[context]展示视频、直接播放按钮和画面内底部进度条，编辑/预览均可播放。
+  /// 静态资源作用域只显示封面和播放标记，封面按原缓存加载器报告就绪。
   /// 高频播放位置仅更新进度区域；视频控制器仍由此State创建与释放。
   /// 外框与加载/失败占位统一固定16:9；画面按原始比例居中完整显示，空余区域留黑，不拉伸或裁切。
   /// 播放按钮相对整个16:9外框水平、垂直居中；进度条固定底部，时间标签位于轨道上方。
   /// 播放与暂停图标使用主题主色对应的前景色，避免继承正文图标颜色。
   Widget _buildVideoCard(BuildContext context) {
+    if (EditorResourceScope.read(context)?.staticMedia == true) {
+      final poster = CollabResource.fromAttributes(
+        node.attributes,
+      ).string('poster');
+      return AspectRatio(
+        aspectRatio: 16 / 9,
+        child: ColoredBox(
+          color: Colors.black,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (poster.isNotEmpty)
+                CollabCachedImage(
+                  url: poster,
+                  loading: const SizedBox.shrink(),
+                  failure: const Icon(
+                    LucideIcons.videoOff,
+                    color: Colors.white,
+                  ),
+                  fit: BoxFit.contain,
+                ),
+              const Center(child: Icon(LucideIcons.play, color: Colors.white)),
+            ],
+          ),
+        ),
+      );
+    }
     final controller = _videoController;
     if (controller?.value.isInitialized != true) {
       return _VideoPlaceholder(url: url, hasError: _videoError != null);

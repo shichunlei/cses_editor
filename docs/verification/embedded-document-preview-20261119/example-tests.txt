@@ -1,0 +1,4 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_spacing_test.dart
+00:00 +0: edit and preview section gaps match within two lines at (390.0, 1.0)
+00:01 +1: edit and preview section gaps match within two lines at (320.0, 2.0)
+00:01 +2: All tests passed!

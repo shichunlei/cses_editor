@@ -1,0 +1,4 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_preview_media_test.dart
+00:00 +0: JournalPageMode.edit preview opens media without editing the journal
+00:01 +1: JournalPageMode.preview preview opens media without editing the journal
+00:02 +2: All tests passed!

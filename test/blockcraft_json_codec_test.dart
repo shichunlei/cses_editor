@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/cses_editor.dart';
-import 'package:cses_editor/src/model/editor_media_upload.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

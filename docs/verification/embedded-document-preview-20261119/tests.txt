@@ -1,0 +1,27 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 1 rows into a full PNG
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 80 rows into a full PNG
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=false 图片铺满宽度且高度最多为正方形
+00:02 +4: /System/Volumes/Data/workspace/cses_editor/test/document_editor_text_color_test.dart: document colors with left alignment, default, preview=false (variant: TargetPlatform.android)
+00:02 +5: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:02 +6: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:03 +10: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: landscape preview=true 图片铺满宽度且高度最多为正方形
+00:03 +11: /System/Volumes/Data/workspace/cses_editor/test/document_editor_text_color_test.dart: document colors with distributed alignment, default, preview=true (variant: TargetPlatform.android)
+00:03 +12: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +13: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +14: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +15: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +16: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +17: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +18: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +19: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +20: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +21: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=false 图片铺满宽度且高度最多为正方形
+00:03 +22: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: square preview=true 图片铺满宽度且高度最多为正方形
+00:04 +23: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: portrait preview=false 图片铺满宽度且高度最多为正方形
+00:05 +24: /System/Volumes/Data/workspace/cses_editor/test/collab_image_layout_test.dart: portrait preview=true 图片铺满宽度且高度最多为正方形
+00:05 +25: All tests passed!

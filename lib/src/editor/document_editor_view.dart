@@ -53,6 +53,7 @@ import 'package:cses_editor/src/model/collab_task_card.dart';
 import 'package:cses_editor/src/model/collab_user_mention.dart';
 import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'collab_inline_entity_mention.dart';
 import 'collab_table_block.dart';
@@ -81,6 +82,9 @@ class DocumentEditorView extends StatefulWidget {
   /// [preview]默认false；true关闭选区、输入、浮栏和块菜单。
   /// [previewMediaInteractions] 默认false；只在启用的预览中允许查看图片、播放和打开附件。
   /// [previewTaskMentionInteractions] 默认false；启用后借用宿主回调打开只读任务详情。
+  /// [embeddedPreview] 默认 false；true 只允许 [preview] 且借用正文必须已只读。
+  /// 此模式按自然高度渲染全部块，由外层滚动及截图，不创建输入、选区或内层滚动服务；
+  /// 不可与另一视图同时借用同一 [editorState]，宿主须在卸载后释放正文。
   /// [configuration]默认共用展示配置；宿主可注入结构渲染、样式及业务动作，不替换通用命令链。
   const DocumentEditorView({
     super.key,
@@ -89,6 +93,7 @@ class DocumentEditorView extends StatefulWidget {
     this.enabled = true,
     this.editable = true,
     this.preview = false,
+    this.embeddedPreview = false,
     this.previewMediaInteractions = false,
     this.previewTaskMentionInteractions = false,
     this.padding = const EdgeInsets.symmetric(horizontal: 16),
@@ -97,7 +102,7 @@ class DocumentEditorView extends StatefulWidget {
     this.editorKey,
     this.onUserMention,
     this.configuration = EditorViewConfiguration.standard,
-  });
+  }) : assert(!embeddedPreview || preview);
 
   /// 必填借用正文，视图不释放文档或同步资源。
   final EditorState editorState;
@@ -113,6 +118,10 @@ class DocumentEditorView extends StatefulWidget {
 
   /// 是否为只读展示，默认false；文档写入权限仍由会话约束。
   final bool preview;
+
+  /// 按内容自然高度嵌入外层画布，默认 false；必须搭配只读会话及 preview。
+  /// 测量与实际画布应各持有独立正文会话，不共享节点 Key 或 renderer。
+  final bool embeddedPreview;
 
   /// 允许只读预览中的图片、音视频及附件操作。
   final bool previewMediaInteractions;
@@ -145,7 +154,8 @@ class DocumentEditorView extends StatefulWidget {
 
 /// 为每个视图创建独立builder，避免跨文档修改共享配置。
 class _DocumentEditorViewState extends State<DocumentEditorView> {
-  late EditorScrollController _scroll;
+  /// 普通视图拥有或借用滚动控制器；嵌入预览不创建内层滚动资源。
+  EditorScrollController? _scroll;
   late Map<String, BlockComponentBuilder> _builders;
 
   /// 创建滚动和渲染资源；网络与存储由外部数据绑定管理。
@@ -157,9 +167,13 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
 
   /// 绑定当前会话的滚动资源；自建资源由视图释放，外部滚动控制器仅借用。
   void _bind() {
-    _scroll =
-        widget.scrollController ??
-        EditorScrollController(editorState: widget.editorState);
+    if (widget.embeddedPreview && widget.editorState.editable) {
+      throw StateError('嵌入预览需要宿主提供只读正文');
+    }
+    _scroll = widget.embeddedPreview
+        ? null
+        : widget.scrollController ??
+              EditorScrollController(editorState: widget.editorState);
     _configureBuilders();
   }
 
@@ -188,6 +202,12 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
     }
     _builders =
         widget.configuration.blockBuilders?.call(_builders) ?? _builders;
+    if (widget.embeddedPreview) {
+      // 嵌入模式只替换页面根容器，其余文字、媒体及宿主栏目沿用相同构建器。
+      // renderer 绑定在视图生命周期内，不能由并发测量视图共享同一正文。
+      _builders[PageBlockKeys.type] = _EmbeddedPreviewPageBuilder();
+      widget.editorState.renderer = BlockComponentRenderer(builders: _builders);
+    }
   }
 
   /// 更换[oldWidget]的会话或滚动配置时成对迁移自有资源；展示配置变化只重建渲染器，借用资源由外部释放。
@@ -195,20 +215,46 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
   void didUpdateWidget(covariant DocumentEditorView oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.editorState != widget.editorState ||
-        oldWidget.scrollController != widget.scrollController) {
-      if (oldWidget.scrollController == null) _scroll.dispose();
+        oldWidget.scrollController != widget.scrollController ||
+        oldWidget.embeddedPreview != widget.embeddedPreview) {
+      if (oldWidget.scrollController == null) _scroll?.dispose();
       _bind();
     } else if (oldWidget.configuration != widget.configuration ||
         oldWidget.preview != widget.preview ||
         oldWidget.footer != widget.footer) {
       _configureBuilders();
     }
+    if (widget.embeddedPreview) _updateEmbeddedStyle();
+  }
+
+  /// 继承的字体、缩放或宿主样式变化时同步纯展示配置，不提交正文事务。
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (widget.embeddedPreview) _updateEmbeddedStyle();
+  }
+
+  /// 在生命周期阶段应用正文样式；宿主 [EditorViewConfiguration] 的样式回调不拥有正文。
+  /// 只更新展示属性，不修改节点、权限或撤销历史。
+  void _updateEmbeddedStyle() {
+    final standard = EditorStyle.mobile(
+      padding: widget.padding,
+      textStyleConfiguration: TextStyleConfiguration(
+        text: blockCraftSnapshotRootStyle(
+          widget.editorState.document.root,
+          const TextStyle(fontSize: 16, color: Colors.black),
+        ),
+      ),
+      textSpanDecorator: decorateEditorTextSpan,
+    );
+    widget.editorState.editorStyle =
+        widget.configuration.style?.call(context, standard) ?? standard;
   }
 
   /// 仅释放自建滚动控制器，不关闭外部会话或借用滚动资源。
   @override
   void dispose() {
-    if (widget.scrollController == null) _scroll.dispose();
+    if (widget.scrollController == null) _scroll?.dispose();
     super.dispose();
   }
 
@@ -387,6 +433,31 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
   Widget build(BuildContext context) {
     final state = widget.editorState;
     final commandContext = EditorCommandContext.of(state);
+    if (widget.embeddedPreview) {
+      return CollabEditorDisplayScope(
+        services: commandContext.services,
+        preview: true,
+        previewMediaInteractions:
+            widget.enabled && widget.previewMediaInteractions,
+        previewTaskMentionInteractions:
+            widget.enabled && widget.previewTaskMentionInteractions,
+        previewContainerTypes: widget.configuration.previewContainerTypes,
+        child: Provider<EditorState>.value(
+          value: state,
+          child: Builder(
+            builder: (context) => IgnorePointer(
+              ignoring: !widget.enabled,
+              child: state.renderer.build(
+                context,
+                state.document.root,
+                header: widget.header,
+                footer: widget.footer,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     final paste = commandContext.pastePlainText;
     final copy = commandContext.copySelection;
     final editable = widget.editable && state.editable && !widget.preview;
@@ -509,7 +580,7 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
       child: EditorInteractionShell(
         key: ObjectKey(state),
         editorState: state,
-        scrollController: _scroll,
+        scrollController: _scroll!,
         enabled: widget.enabled && !widget.preview,
         editable: widget.editable,
         keyboardActions: widget.configuration.keyboardActions,
@@ -792,4 +863,59 @@ InlineSpan decorateEditorTextSpan(
     locale: decorated.locale,
     spellOut: decorated.spellOut,
   );
+}
+
+/// 嵌入预览的自然高度根，不创建 Overlay、滚动、键盘或选区服务。
+class _EmbeddedPreviewPageBuilder extends BlockComponentBuilder {
+  /// 使用共用正文构建器，仅改变页面的布局边界。
+  _EmbeddedPreviewPageBuilder();
+
+  /// 将借用的 [context] 转为自然高度页面，不接管文档资源。
+  @override
+  BlockComponentWidget build(BlockComponentContext context) =>
+      _EmbeddedPreviewPage(
+        key: context.node.key,
+        node: context.node,
+        header: context.header,
+        footer: context.footer,
+      );
+}
+
+/// 由外层画布统一滚动的只读文档根，全部子块参与布局和整幅截图。
+class _EmbeddedPreviewPage extends BlockComponentStatelessWidget {
+  /// [key] 保留根身份；[node] 是借用文档；[configuration] 控制基础样式，
+  /// [header]/[footer] 是可空的画布装饰。
+  /// 不设置最小高度，不写正文或释放外部资源。
+  const _EmbeddedPreviewPage({
+    super.key,
+    required super.node,
+    super.configuration = const BlockComponentConfiguration(),
+    this.header,
+    this.footer,
+  });
+
+  /// 可空的展示头部，不参与正文历史。
+  final Widget? header;
+
+  /// 可空的展示尾部，不参与正文历史。
+  final Widget? footer;
+
+  /// 在 [context] 读取只读正文，逐块沿用已有渲染与交互限制。
+  @override
+  Widget build(BuildContext context) {
+    final state = context.read<EditorState>();
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ?header,
+        for (final child in node.children)
+          Padding(
+            padding: state.editorStyle.padding,
+            child: buildEditorChildBlock(context, state, child),
+          ),
+        ?footer,
+      ],
+    );
+  }
 }

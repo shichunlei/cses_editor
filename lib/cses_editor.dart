@@ -55,3 +55,6 @@ export 'src/model/editor_keyboard_action.dart' show EditorKeyboardAction;
 export 'src/model/collab_weather.dart'
     show CollabWeatherData, CollabWeatherLoader;
 export 'src/model/collab_person_card.dart' show CollabPersonCardData;
+
+export 'src/ui/modal/editor_resource_scope.dart'
+    show EditorResourceStatus, EditorResourceTracker, EditorResourceScope;

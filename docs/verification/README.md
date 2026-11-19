@@ -1,5 +1,9 @@
 # 验证索引
 
+- [嵌入预览资源就绪与静态媒体](embedded-preview-resources-20261119/report.md)
+
+- [嵌入式只读正文验证](embedded-document-preview-20261119/report.md)
+
 - [日导向划词创建任务](guidance-selection-create-task-20261118/report.md)
 - [SaaS 日填写旧主区保存与回读](saas-guidance-legacy-primary-20261118/report.md)
 - [今日导向预览媒体交互](journal-preview-media-20261118/report.md)
