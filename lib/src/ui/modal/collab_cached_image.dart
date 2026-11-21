@@ -182,7 +182,16 @@ class _CachedSvgImageState extends State<_CachedSvgImage> {
   );
 }
 
-/// 只检查[bytes]的前4096字节，识别XML头、BOM和命名空间前缀后的SVG根元素。
-bool _looksLikeSvg(Uint8List bytes) => RegExp(
-  r'<(?:[A-Za-z_][\w.-]*:)?svg(?:\s|>)',
-).hasMatch(utf8.decode(bytes.take(4096).toList(), allowMalformed: true));
+/// 只检查 [bytes] 的前 4096 字节，返回其是否为带 SVG 根元素的 XML 文本。
+/// 先按文件起始内容排除 PNG、JPEG 等二进制位图，防止 C2PA/EXIF 元数据中的
+/// SVG 缩略图片段误选 SVG 解码器；位图仍交给 Flutter 原生图片解码器。
+/// 文本允许 UTF-8 BOM、前导空白、XML 声明和命名空间前缀；不读取整张图片，
+/// 不修改原字节、缓存或资源观测状态，实际解码失败仍由调用方报告。
+bool _looksLikeSvg(Uint8List bytes) {
+  final header = utf8
+      .decode(bytes.take(4096).toList(), allowMalformed: true)
+      .replaceFirst(RegExp(r'^\uFEFF'), '')
+      .trimLeft();
+  return header.startsWith('<') &&
+      RegExp(r'<(?:[A-Za-z_][\w.-]*:)?svg(?:\s|>)').hasMatch(header);
+}

@@ -1,0 +1,27 @@
+Waiting for another flutter command to release the startup lock...
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +4: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +5: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +5: /System/Volumes/Data/workspace/cses_editor/test/collab_image_cache_test.dart: cache failure does not prevent image download
+图片缓存不可用: FileSystemException: no cache, path = ''
+00:00 +6: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +7: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-png renders and releases its resource ticket
+00:00 +8: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: raster-jpg renders and releases its resource ticket
+00:01 +9: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: svg-root renders and releases its resource ticket
+00:01 +10: /System/Volumes/Data/workspace/cses_editor/test/collab_cached_image_format_test.dart: svg-bom-xml renders and releases its resource ticket
+00:09 +11: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 媒体关闭等待支持并发和关闭后迟到登记，不提前报告完成
+00:09 +12: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 媒体关闭异常保留原异常和堆栈传播，排空后允许后续正常关闭
+00:09 +13: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 状态同步登记、帧后通知，换作用域及退出不残留凭据
+00:10 +14: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:10 +15: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:10 +16: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 1 rows into a full PNG
+00:11 +17: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:11 +18: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 80 rows into a full PNG
+00:11 +19: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=true broken=false
+00:11 +20: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=true broken=true
+00:12 +21: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 静态音视频卡不创建播放器或发起保存
+00:12 +22: All tests passed!

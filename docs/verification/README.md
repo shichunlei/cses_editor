@@ -1,5 +1,7 @@
 # 验证索引
 
+- [安卓模板验收中的位图/SVG 类型识别](raster-svg-identification-20261119/report.md)
+
 - [媒体用途切换与关闭任务等待（2026-11-19）](preview-media-capture-lifecycle-20261119/report.md)
 
 - [嵌入预览资源就绪与静态媒体](embedded-preview-resources-20261119/report.md)
