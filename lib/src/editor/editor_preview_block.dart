@@ -1,5 +1,6 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_task_text_flow.dart';
+import 'package:cses_editor/src/editor/collab_mention_tap_handler.dart';
 import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:flutter/widgets.dart';
 
@@ -34,10 +35,13 @@ Widget wrapEditorPreviewBlock(
   final allowsMedia =
       scope.previewMediaInteractions &&
       const {'image', 'video', 'audio', 'attachment'}.contains(node.type);
+  final allowsMention =
+      scope.previewMentionInteractions && hasPreviewableCollabMention(node);
   final allowsTask =
       scope.previewTaskMentionInteractions && hasFlowingTaskMention(node);
   final allowsChildren =
-      (scope.previewMediaInteractions ||
+      (scope.previewMentionInteractions ||
+          scope.previewMediaInteractions ||
           scope.previewTaskMentionInteractions) &&
       (const {
             'callout',
@@ -56,7 +60,7 @@ Widget wrapEditorPreviewBlock(
           }.contains(node.type) ||
           scope.previewContainerTypes.contains(node.type));
   return IgnorePointer(
-    ignoring: !(allowsMedia || allowsTask || allowsChildren),
+    ignoring: !(allowsMedia || allowsTask || allowsMention || allowsChildren),
     child: ExcludeFocus(child: child),
   );
 }

@@ -13,7 +13,8 @@ import 'package:provider/provider.dart';
 import 'collab_mention_tap_handler.dart';
 
 /// 正文会议/任务/文档单字符对象，显示类型图标及名称；不附加@，不加载人员头像。
-/// 点击打开操作面板，打开详情才通知宿主；会议可转卡片，三类均可删除引用，不修改实体业务数据。
+/// 编辑态点击打开操作面板，打开详情才通知宿主；会议可转卡片，三类均可删除引用。
+/// 显式启用的只读预览直接打开会议/任务详情，不显示编辑面板或修改实体业务数据。
 /// ```dart
 /// import 'package:flutter/material.dart';
 /// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
@@ -92,7 +93,12 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
         child: GestureDetector(
           key: ValueKey('collab-inline-entity-$id-$offset'),
           onTap: () =>
-              showCollabEntityMentionActions(context, state, node, offset),
+              CollabEditorDisplayScope.maybeOf(
+                    context,
+                  )?.previewMentionInteractions ==
+                  true
+              ? handleCollabPreviewMentionTap(context, state, node, offset)
+              : showCollabEntityMentionActions(context, state, node, offset),
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),
             child: Container(
@@ -156,7 +162,7 @@ TextStyle collabTaskMentionTextStyle(TextStyle style) => style.copyWith(
 /// 在借用 [context] 中展示 [state] 的 [node] 在 UTF-16 [offset] 处的引用操作。
 /// Future 等待面板及选定操作完成，退场后复核目标与会话，不拥有编辑器或路由。
 /// 标题沿用行内引用图标。会议和任务详情优先调用各自的宿主回调，视图切换和删除在正文内执行。
-/// 预览只允许宿主显式启用的任务详情。编辑时删除仅改正文，不修改实体业务数据。
+/// 新预览开关直接派发会议/任务详情；旧任务专用开关保留原只读面板。编辑时删除仅改正文。
 Future<void> showCollabEntityMentionActions(
   BuildContext context,
   EditorState state,
@@ -168,8 +174,13 @@ Future<void> showCollabEntityMentionActions(
   final display = CollabEditorDisplayScope.maybeOf(context);
   final preview = display?.preview == true;
   if (preview &&
+      display?.previewMentionInteractions != true &&
       (target.entityType != 'task' ||
           display?.previewTaskMentionInteractions != true)) {
+    return;
+  }
+  if (preview && display?.previewMentionInteractions == true) {
+    await handleCollabPreviewMentionTap(context, state, node, offset);
     return;
   }
   final canSwitchView = target.entityType == 'meeting';

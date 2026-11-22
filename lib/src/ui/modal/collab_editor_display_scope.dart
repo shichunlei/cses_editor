@@ -14,6 +14,7 @@ import 'package:flutter/widgets.dart';
 class CollabEditorDisplayScope extends InheritedWidget {
   /// [key]控制身份，[services]借自当前编辑实例，[preview]为true时隐藏编辑装饰。
   /// [previewMediaInteractions] 打开预览媒体操作，[previewTaskMentionInteractions] 打开只读任务详情。
+  /// [previewMentionInteractions] 默认 false，允许会议、任务及人员行内引用直接通知宿主详情回调。
   /// [previewContainerTypes] 借用已冻结的宿主容器类型。
   /// [child]为借用正文子树，不转移任何控制器或回调的所有权。
   const CollabEditorDisplayScope({
@@ -22,6 +23,7 @@ class CollabEditorDisplayScope extends InheritedWidget {
     required this.preview,
     this.previewMediaInteractions = false,
     this.previewTaskMentionInteractions = false,
+    this.previewMentionInteractions = false,
     this.previewContainerTypes = const {},
     required super.child,
   });
@@ -38,6 +40,9 @@ class CollabEditorDisplayScope extends InheritedWidget {
   /// 只读预览是否允许打开任务引用。
   final bool previewTaskMentionInteractions;
 
+  /// 可见只读预览是否直接打开会议、任务及人员行内引用；默认 false，不授予编辑权限。
+  final bool previewMentionInteractions;
+
   /// 由宿主自行约束子块交互的容器类型。
   final Set<String> previewContainerTypes;
 
@@ -50,6 +55,7 @@ class CollabEditorDisplayScope extends InheritedWidget {
   bool updateShouldNotify(CollabEditorDisplayScope oldWidget) =>
       !identical(services, oldWidget.services) ||
       preview != oldWidget.preview ||
+      previewMentionInteractions != oldWidget.previewMentionInteractions ||
       previewMediaInteractions != oldWidget.previewMediaInteractions ||
       previewTaskMentionInteractions !=
           oldWidget.previewTaskMentionInteractions ||

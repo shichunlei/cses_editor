@@ -1,3 +1,4 @@
+import 'package:cses_editor/src/ui/modal/editor_resource_scope.dart';
 import 'dart:async';
 
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
@@ -82,6 +83,8 @@ class DocumentEditorView extends StatefulWidget {
   /// [preview]默认false；true关闭选区、输入、浮栏和块菜单。
   /// [previewMediaInteractions] 默认false；只在启用的预览中允许查看图片、播放和打开附件。
   /// [previewTaskMentionInteractions] 默认false；启用后借用宿主回调打开只读任务详情。
+  /// [previewMentionInteractions] 默认 false，可见预览直接派发会议、任务及人员行内引用；
+  /// 静态资源作用域、disabled 或无回调时不派发，不创建输入或修改正文。
   /// [embeddedPreview] 默认 false；true 只允许 [preview] 且借用正文必须已只读。
   /// 此模式按自然高度渲染全部块，由外层滚动及截图，不创建输入、选区或内层滚动服务；
   /// 不可与另一视图同时借用同一 [editorState]，宿主须在卸载后释放正文。
@@ -96,6 +99,7 @@ class DocumentEditorView extends StatefulWidget {
     this.embeddedPreview = false,
     this.previewMediaInteractions = false,
     this.previewTaskMentionInteractions = false,
+    this.previewMentionInteractions = false,
     this.padding = const EdgeInsets.symmetric(horizontal: 16),
     this.header,
     this.footer,
@@ -128,6 +132,10 @@ class DocumentEditorView extends StatefulWidget {
 
   /// 仅在只读预览中允许点击任务引用；不启动输入，也不允许修改引用。
   final bool previewTaskMentionInteractions;
+
+  /// 可见预览的会议、任务及人员引用直接打开详情，默认 false；仅借用宿主回调。
+  /// 静态测量/截图禁止点击；原任务专用开关保持其既有行为。
+  final bool previewMentionInteractions;
 
   /// 正文留白，默认左右16逻辑像素。
   final EdgeInsets padding;
@@ -437,6 +445,13 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
       return CollabEditorDisplayScope(
         services: commandContext.services,
         preview: true,
+        previewMentionInteractions:
+            widget.enabled &&
+            widget.previewMentionInteractions &&
+            context
+                    .dependOnInheritedWidgetOfExactType<EditorResourceScope>()
+                    ?.staticMedia !=
+                true,
         previewMediaInteractions:
             widget.enabled && widget.previewMediaInteractions,
         previewTaskMentionInteractions:
@@ -568,6 +583,14 @@ class _DocumentEditorViewState extends State<DocumentEditorView> {
     return CollabEditorDisplayScope(
       services: EditorCommandContext.of(state).services,
       preview: widget.preview,
+      previewMentionInteractions:
+          widget.enabled &&
+          widget.preview &&
+          widget.previewMentionInteractions &&
+          context
+                  .dependOnInheritedWidgetOfExactType<EditorResourceScope>()
+                  ?.staticMedia !=
+              true,
       previewMediaInteractions:
           widget.enabled && widget.preview && widget.previewMediaInteractions,
       previewTaskMentionInteractions:

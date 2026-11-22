@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-22",
+  "previewAndRelatedTestsPassed": 33,
+  "meetingEditingTestsPassed": 5,
+  "newPreviewCases": 17,
+  "analyze": "passed",
+  "format": "passed",
+  "consumerSaasTestsPassed": 1227,
+  "consumerPostersIdentical": 468,
+  "consumerAndroidBuild": "passed",
+  "nativeDeviceRetest": false,
+  "staging": "功能提交包含实现、测试和文档；example/pubspec.yaml 原暂存内容不纳入"
+}

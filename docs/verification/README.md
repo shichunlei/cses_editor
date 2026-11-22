@@ -1,5 +1,7 @@
 # 验证索引
 
+- [可见预览会议、任务和人员行内引用直接详情（2026-11-22）](preview-inline-mentions-20261122/report.md)
+
 - [安卓模板验收中的位图/SVG 类型识别](raster-svg-identification-20261119/report.md)
 
 - [媒体用途切换与关闭任务等待（2026-11-19）](preview-media-capture-lifecycle-20261119/report.md)

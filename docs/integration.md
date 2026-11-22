@@ -141,7 +141,7 @@ await session.close();
 |---|---|---|
 | 人员选择与@ | `pickMentionUser` + `handleEditorUserMentionTrigger` | 宿主搜索、鉴权和选择路由；返回 `CollabMentionUser`，取消返回null；无端口不提供选人 |
 | 头像 | `mentionAvatarBuilder` | 宿主决定图片/缓存/占位；模板使用姓名首字，不发网络请求 |
-| 人员/任务/会议/文档详情 | `onMentionTap` | 按type/id派发宿主路由，并等待详情完整退场；模板展示明确的宿主详情对话框 |
+| 人员/任务/会议/文档详情 | `onMentionTap`、`onMeetingMentionTap`、`onTaskMentionTap` | 编辑态保留引用操作面板；显式启用的只读预览直接派发会议、任务和人员，宿主提供详情导航 |
 | 任务卡片数据 | `loadTaskCard` | 返回与请求ID相符的 `CollabTaskCardData`；不存在返回null，失败抛错；模板只识别本地演示任务 |
 | 会议、KR、天气、人员卡片 | `pickMeetingReference`、`createMeetingFromText`、`onMeetingMentionTap`、`loadMeetingCard`、`onMeetingCardTap`、`kr`、`loadWeather`、`loadPersonCardCreator` | 可选；宿主提供真实业务服务或本地缓存 |
 
@@ -218,3 +218,34 @@ example 首页注入虚构用户“示例小陈 / 示例团队 · 前端开发�
 编辑和预览使用相同的栏目间隔，最多两行，不额外补足三行书写区。两种模式的尾部留白均放在整篇文档 footer 中，仅出现一次，不通过根块 padding 重复加在每个栏目后。编辑保留用户实际输入的空段落、光标及回车能力；仅预览折叠栏目末尾普通空段落，正文 JSON 保留。
 
 分享长图的品牌页脚与纸张保持米色，logo 上边距为 8px；截图时最后一个栏目不再叠加自动底部留白，让正文与品牌图片紧凑衔接，普通编辑/预览栏目间距保持原规则。
+
+
+### 可见预览的行内引用详情
+
+`DocumentEditorView(preview: true, previewMentionInteractions: true)` 显式允许会议、任务及人员引用直接通知宿主；默认关闭。会议与任务优先调用 `onMeetingMentionTap`、`onTaskMentionTap`，未配置时回退 `onMentionTap`；人员只调用 `onMentionTap`，未配置不打开默认人员页面。`CollabMentionTap` 交付稳定 ID、名称和深只读原属性，包不读取企业资料或创建业务详情页。
+
+```dart
+import 'package:cses_editor/cses_editor.dart';
+
+final editor = DocumentEditorController(
+  commandContext: EditorCommandContext(localOnly: true, services: CollabHostServices(
+    onMeetingMentionTap: (mention) async { /* 宿主按 mention.id 打开会议详情并等待返回 */ },
+    onTaskMentionTap: (mention) async { /* 宿主按 mention.id 打开任务详情并等待返回 */ },
+    onMentionTap: (mention) async { /* 宿主处理人员 ID/名称/attributes */ },
+  )),
+);
+editor.editorState
+  ..editable = false
+  ..transactionGuard = (_) => false;
+final view = DocumentEditorView(
+  editorState: editor.editorState, preview: true,
+  embeddedPreview: true, previewMentionInteractions: true,
+);
+// 将 view 移出组件树后 await editor.close()。
+```
+
+该开关与编辑权限独立，返回不恢复选区或键盘，不执行块锁租约、删除或卡片转换。详情回调在同一编辑器内共享防重复锁，Future 应等待详情返回；失败交由原错误报告及宿主 showFeedback，失效页面不显示迟到提示。块内引用使用原原子定位校验，嵌套容器与人员标签的局部作用域必须透传预览配置。
+
+`enabled: false`、`EditorResourceScope(staticMedia: true)` 及宿主关闭该开关时均不派发引用；测量/截图不能仅依赖只读事务权限阻止导航。原 `previewTaskMentionInteractions` 保持任务专用的只读操作面板行为，与新开关分开，其他文档引用不因新开关自动开放。
+
+回归见 `test/preview_inline_mentions_test.dart` 和 `docs/verification/preview-inline-mentions-20261122/report.md`。正文协议、缓存及块类型未变化。

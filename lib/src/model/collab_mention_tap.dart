@@ -67,8 +67,10 @@ final class CollabMentionTap {
 }
 
 /// 宿主接管提及点击；[mention] 为独立、深只读的原始快照。
-/// 同步返回或等待Future均可；详情跳转应返回直到详情关闭的Future，期间暂停正文输入。
-/// 配置后替代内置面板，预览也会调用；异常由编辑器报告并提示，不再补开内置面板。
+/// 同步返回或等待 Future 均可；详情跳转应返回直到详情关闭的 Future。
+/// 编辑态人员直接回调，其他引用在面板选择详情后回调；previewMentionInteractions
+/// 显式启用的预览直接派发会议、任务和人员，不创建输入服务或恢复焦点。
+/// 异常由编辑器报告并提示，不再补开内置面板。
 /// 业务跳转、路由生命周期、权限及跨账号异步失效由宿主处理；编辑器不释放宿主资源。
 typedef CollabMentionTapCallback =
     FutureOr<void> Function(CollabMentionTap mention);

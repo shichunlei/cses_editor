@@ -150,6 +150,7 @@ Future<CollabMentionUser?> pickEditorMentionUser(
 /// );
 /// // 调用方在移除body后等待editor.close()。
 /// ```
+/// 人员标签局部作用域完整继承外层预览与静态交互配置，不把缺省值覆盖到可见引用。
 InlineSpan decorateEditorUserMention(
   BuildContext context,
   Node node,
@@ -161,6 +162,7 @@ InlineSpan decorateEditorUserMention(
   final mention = EditorUserMention.tryRead(text.attributes);
   if (mention == null || !text.text.contains('\uFFFC')) return after;
   final state = context.read<EditorState>();
+  final display = CollabEditorDisplayScope.maybeOf(context);
   var offset = index;
   final children = <InlineSpan>[];
   for (final rune in text.text.runes) {
@@ -171,7 +173,15 @@ InlineSpan decorateEditorUserMention(
               child: MediaQuery.withNoTextScaling(
                 child: CollabEditorDisplayScope(
                   services: EditorCommandContext.of(state).services,
-                  preview: !state.editable,
+                  preview: !state.editable || display?.preview == true,
+                  previewMediaInteractions:
+                      display?.previewMediaInteractions ?? false,
+                  previewTaskMentionInteractions:
+                      display?.previewTaskMentionInteractions ?? false,
+                  previewMentionInteractions:
+                      display?.previewMentionInteractions ?? false,
+                  previewContainerTypes:
+                      display?.previewContainerTypes ?? const {},
                   child: CollabInlineMention(
                     node: node,
                     offset: offset,

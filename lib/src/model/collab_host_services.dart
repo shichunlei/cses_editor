@@ -241,7 +241,8 @@ class CollabHostServices {
   final FutureOr<void> Function(String url)? onImageTap;
 
   /// 可选统一提及点击处理，宿主持有其路由/业务资源；预览可调用，异常由编辑器报告。
-  /// 用户未配置时不响应；其他提及点击先显示操作面板，只有打开详情调用此回调。
+  /// 用户未配置时不响应；编辑态其他提及先显示面板，只有打开详情调用此回调。
+  /// previewMentionInteractions 显式启用的预览直接派发人员/会议/任务引用，不显示编辑菜单。
   /// null禁用详情操作，编辑时仍可切换卡片或删除引用；任务卡片详情传共享引用props。
   final CollabMentionTapCallback? onMentionTap;
 

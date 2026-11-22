@@ -55,8 +55,10 @@ class CollabInlineMention extends StatelessWidget {
         ? const Color(0xFF1E3A5F)
         : const Color(0xFFEFF6FF);
     final state = context.read<EditorState>();
+    final display = CollabEditorDisplayScope.maybeOf(context);
     final canTap =
-        CollabEditorDisplayScope.maybeOf(context)?.preview != true &&
+        (display?.preview != true ||
+            display?.previewMentionInteractions == true) &&
         EditorCommandContext.of(state).services.onMentionTap != null;
     final avatar = buildHostMentionAvatarSlot(
       context,
@@ -73,7 +75,16 @@ class CollabInlineMention extends StatelessWidget {
           key: ValueKey('collab-inline-mention-$id-$offset'),
           onTap: canTap
               ? () async {
-                  await handleCollabMentionTap(context, state, node, offset);
+                  if (display?.preview == true) {
+                    await handleCollabPreviewMentionTap(
+                      context,
+                      state,
+                      node,
+                      offset,
+                    );
+                  } else {
+                    await handleCollabMentionTap(context, state, node, offset);
+                  }
                 }
               : null,
           child: ConstrainedBox(

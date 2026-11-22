@@ -1,0 +1,35 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: meeting 预览直接回调 embedded=true
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:00 +4: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:00 +5: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +7: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +8: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +9: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +10: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +11: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +12: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +13: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +14: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +15: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +16: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +17: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +18: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +19: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +20: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长任务引用自然换行，选区、点击、删除和撤销保留单个原子
+00:01 +21: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +22: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +23: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +24: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +25: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:01 +26: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:02 +27: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:02 +28: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:02 +29: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=true
+00:02 +30: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=true broken=false
+00:02 +31: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=true broken=true
+00:03 +32: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 静态音视频卡不创建播放器或发起保存
+00:03 +33: All tests passed!
