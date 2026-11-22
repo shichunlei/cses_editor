@@ -5,7 +5,7 @@ import 'package:cses_editor/src/model/collab_block_colors.dart';
 import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_ordered_marker.dart';
 import 'package:cses_editor/src/editor/collab_inline_entity_mention.dart';
-import 'package:cses_editor/src/editor/collab_task_text_flow.dart';
+import 'package:cses_editor/src/editor/collab_entity_text_flow.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ TextAlign collabTextAlign(Node node) =>
       _ => TextAlign.left,
     };
 
-/// 复用标准块的样式与操作，分散对齐和换行任务引用使用共用文字外壳。
+/// 复用标准块的样式与操作，分散对齐和会议/任务换行引用使用共用文字外壳。
 /// 宿主通过公开排版入口取得包装器，不接管正文资源。
 ///
 /// ```dart
@@ -45,7 +45,7 @@ class CollabTextAlignmentBuilder extends BlockComponentBuilder {
   @override
   BlockComponentWidget build(BlockComponentContext context) {
     if (context.node.attributes[blockComponentAlign] != 'distributed' &&
-        !hasFlowingTaskMention(context.node)) {
+        !hasFlowingEntityMention(context.node)) {
       return standard.build(context);
     }
     final original = standard.build(context);
@@ -100,7 +100,7 @@ class _CollabTextBlockState extends State<_CollabTextBlock>
   Node get node => widget.node;
   @override
   BlockComponentConfiguration get configuration => widget.configuration;
-  late final _flow = CollabTaskTextFlow(
+  late final _flow = CollabEntityTextFlow(
     onTap: (offset) =>
         showCollabEntityMentionActions(context, editorState, node, offset),
   );
@@ -144,7 +144,7 @@ class _CollabTextBlockState extends State<_CollabTextBlock>
   @override
   Selection? getWordEdgeInOffset(Offset offset) {
     final hit = forward.getPositionInOffset(offset);
-    if (_flow.taskAt(hit.offset) != null) {
+    if (_flow.entityAt(hit.offset) != null) {
       return Selection.collapsed(_documentPosition(hit));
     }
     final wordEdge = forward.getWordEdgeInOffset(offset);
@@ -154,17 +154,17 @@ class _CollabTextBlockState extends State<_CollabTextBlock>
   /// Returns the entire atom for a global [offset] within its rendered title.
   @override
   Selection? getWordBoundaryInOffset(Offset offset) {
-    final atom = _flow.taskAt(forward.getPositionInOffset(offset).offset);
+    final atom = _flow.entityAt(forward.getPositionInOffset(offset).offset);
     if (atom != null) return _atomSelection(atom);
     final word = forward.getWordBoundaryInOffset(offset);
     return word == null ? null : _documentSelection(word);
   }
 
-  /// Resolves the word containing document [position], selecting task atoms whole.
+  /// Resolves the word containing document [position], selecting meeting/task atoms whole.
   @override
   Selection? getWordBoundaryInPosition(Position position) {
     final displayOffset = _flow.toDisplay(position.offset);
-    final atom = _flow.taskAt(displayOffset);
+    final atom = _flow.entityAt(displayOffset);
     if (atom != null) return _atomSelection(atom);
     final word = forward.getWordBoundaryInPosition(
       position.copyWith(offset: displayOffset),
@@ -172,7 +172,7 @@ class _CollabTextBlockState extends State<_CollabTextBlock>
     return word == null ? null : _documentSelection(word);
   }
 
-  /// Returns the single document character at task [offset].
+  /// Returns the single document character at meeting/task [offset].
   Selection _atomSelection(int offset) => Selection.single(
     path: node.path,
     startOffset: offset,
@@ -180,7 +180,7 @@ class _CollabTextBlockState extends State<_CollabTextBlock>
   );
 
   /// Maps model [selection] to display rectangles, including every line of a
-  /// selected task. [shiftWithBaseOffset] selects block-local coordinates.
+  /// selected meeting/task. [shiftWithBaseOffset] selects block-local coordinates.
   @override
   List<Rect> getRectsInSelection(
     Selection selection, {
@@ -298,7 +298,7 @@ class _CollabTextBlockState extends State<_CollabTextBlock>
     }
   }
 
-  /// 在借用 [context] 中复用块样式，并将任务标题交给正文排版。
+  /// 在借用 [context] 中复用块样式，并将会议/任务标题交给正文排版。
   /// [withBackgroundColor] 由嵌套布局决定是否由本块绘制背景。
   @override
   Widget buildComponent(

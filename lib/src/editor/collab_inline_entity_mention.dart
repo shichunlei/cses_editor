@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'collab_mention_tap_handler.dart';
 
 /// 正文会议/任务/文档单字符对象，显示类型图标及名称；不附加@，不加载人员头像。
+/// 会议与任务共用无底色蓝字，配置的正文排版器将其标题展开以支持跨行，数据仍为单个原子。
 /// 编辑态点击打开操作面板，打开详情才通知宿主；会议可转卡片，三类均可删除引用。
 /// 显式启用的只读预览直接打开会议/任务详情，不显示编辑面板或修改实体业务数据。
 /// ```dart
@@ -47,7 +48,7 @@ class CollabInlineEntityMention extends StatefulWidget {
   /// 必填实体类型，meeting/task/doc分别显示会议、任务和文档图标。
   final String entityType;
 
-  /// 必填正文格式；任务引用保留字号和字重，按正文亮度选择蓝色。
+  /// 必填正文格式；会议/任务引用保留字号和字重，按正文亮度选择蓝色。
   final TextStyle style;
 
   /// 创建操作面板生命周期状态，不持有业务资源。
@@ -58,7 +59,7 @@ class CollabInlineEntityMention extends StatefulWidget {
 /// 管理提及操作面板；菜单中的卡片转换仅对会议开放。
 class _EntityMentionState extends State<CollabInlineEntityMention> {
   /// 在借用[context]中显示行内实体名称和与操作面板共用的图标。
-  /// 单字符视图中的任务引用随文字同行，以无底色的蓝色文字展示。
+  /// 单字符视图中的会议/任务以无底色蓝字展示；正文投影负责自然跨行和原子偏移映射。
   @override
   Widget build(BuildContext context) {
     final state = context.read<EditorState>();
@@ -68,9 +69,9 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
     final name = widget.name;
     final style = widget.style;
     final fontSize = style.fontSize ?? 16;
-    final isTask = entityType == 'task';
-    final titleStyle = isTask
-        ? collabTaskMentionTextStyle(style)
+    final flowsWithText = const {'meeting', 'task'}.contains(entityType);
+    final titleStyle = flowsWithText
+        ? collabEntityMentionTextStyle(style)
         : style.copyWith(color: style.color ?? const Color(0xFF2563EB));
     final id = node.attributes['cses_collab_block_id'] as String? ?? node.id;
     final kind = switch (entityType) {
@@ -83,9 +84,6 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
       40.0,
       double.infinity,
     );
-    final maxWidth = isTask
-        ? availableWidth.clamp(0.0, fontSize * 9)
-        : availableWidth;
     return Semantics(
       label: '$kind $title',
       button: true,
@@ -100,12 +98,12 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
               ? handleCollabPreviewMentionTap(context, state, node, offset)
               : showCollabEntityMentionActions(context, state, node, offset),
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: maxWidth),
+            constraints: BoxConstraints(maxWidth: availableWidth),
             child: Container(
-              padding: isTask
+              padding: flowsWithText
                   ? EdgeInsets.zero
                   : const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-              decoration: isTask
+              decoration: flowsWithText
                   ? null
                   : BoxDecoration(
                       color: const Color(0xFFEFF6FF),
@@ -115,16 +113,20 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    _entityMentionIcon(entityType),
+                    collabEntityMentionIcon(entityType),
                     size: fontSize,
-                    color: isTask ? titleStyle.color : const Color(0xFF2563EB),
+                    color: flowsWithText
+                        ? titleStyle.color
+                        : const Color(0xFF2563EB),
                   ),
                   const SizedBox(width: 3),
                   Flexible(
                     child: Text(
                       title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      maxLines: flowsWithText ? null : 1,
+                      overflow: flowsWithText
+                          ? TextOverflow.clip
+                          : TextOverflow.ellipsis,
                       style: titleStyle.copyWith(height: 1.2),
                     ),
                   ),
@@ -141,15 +143,17 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
 /// 任务引用与操作面板共用的剪贴板图标，与待办复选框区分。
 const collabTaskMentionIcon = LucideIcons.clipboardList;
 
-/// 为 [entityType] 选取行内引用与操作面板标题共用的图标。
-IconData _entityMentionIcon(String entityType) => switch (entityType) {
+/// 为 [entityType] 选取行内引用、换行投影及操作面板标题共用的默认图标。
+/// 不读取宿主业务数据或修改正文，图标的颜色和尺寸由各展示位置管理。
+IconData collabEntityMentionIcon(String entityType) => switch (entityType) {
   'meeting' => LucideIcons.calendarClock,
   'task' => collabTaskMentionIcon,
   _ => LucideIcons.fileText,
 };
 
-/// 根据借用正文 [style] 的亮度选择蓝色，去掉衬底和下划线，保留删除线。
-TextStyle collabTaskMentionTextStyle(TextStyle style) => style.copyWith(
+/// 为会议/任务按借用正文 [style] 的亮度选择蓝色，去掉衬底和下划线，保留删除线。
+/// 返回独立样式，不改写原格式；浅色正文选浅蓝、深色正文选深蓝，字号和字重沿用正文。
+TextStyle collabEntityMentionTextStyle(TextStyle style) => style.copyWith(
   color: (style.color?.computeLuminance() ?? 0) > .5
       ? const Color(0xFF93C5FD)
       : const Color(0xFF1D4ED8),
@@ -199,7 +203,7 @@ Future<void> showCollabEntityMentionActions(
       context: context,
       builder: (sheetContext) => CollabBottomSheet(
         title: Text(target.name.isEmpty ? '未命名$kind' : target.name),
-        icon: _entityMentionIcon(target.entityType),
+        icon: collabEntityMentionIcon(target.entityType),
         subtitle: '$kind引用 · 当前为链接视图',
         contentPadding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
         child: Column(

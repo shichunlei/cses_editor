@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-22",
+  "before": {
+    "taskPassed": 2,
+    "meetingFailed": 2
+  },
+  "editorRelatedPassed": 57,
+  "consumerSaasPassed": 122,
+  "protocolChanged": false,
+  "nativeDeviceRetest": false,
+  "staging": "功能修改未暂存、未提交；原 example/pubspec.yaml 暂存内容保持原样"
+}

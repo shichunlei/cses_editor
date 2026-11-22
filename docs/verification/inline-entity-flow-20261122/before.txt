@@ -1,0 +1,56 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart
+00:00 +0: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +1: 长 task 引用自然换行、配色与原子操作 dark=false
+00:01 +2: 长 meeting 引用自然换行、配色与原子操作 dark=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following StateError was thrown running a test:
+Bad state: No element
+
+When the exception was thrown, this was the stack:
+#0      List.single (dart:core-patch/growable_array.dart:362:22)
+#1      main.<anonymous closure>.boxAt (file:///System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart:80:10)
+#2      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart:83:12)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  长 meeting 引用自然换行、配色与原子操作 dark=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +2 -1: 长 meeting 引用自然换行、配色与原子操作 dark=true [E]
+  Test failed. See exception logs above.
+  The test description was: 长 meeting 引用自然换行、配色与原子操作 dark=true
+
+00:01 +2 -1: 长 meeting 引用自然换行、配色与原子操作 dark=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following StateError was thrown running a test:
+Bad state: No element
+
+When the exception was thrown, this was the stack:
+#0      List.single (dart:core-patch/growable_array.dart:362:22)
+#1      main.<anonymous closure>.boxAt (file:///System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart:80:10)
+#2      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart:83:12)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  长 meeting 引用自然换行、配色与原子操作 dark=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +2 -2: 长 meeting 引用自然换行、配色与原子操作 dark=false [E]
+  Test failed. See exception logs above.
+  The test description was: 长 meeting 引用自然换行、配色与原子操作 dark=false
+
+00:01 +2 -2: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=false
+  /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=true

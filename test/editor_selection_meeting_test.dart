@@ -94,7 +94,8 @@ void main() {
         ]);
         final meetingIcon = find.byIcon(LucideIcons.calendarClock);
         expect(meetingIcon, findsOneWidget);
-        await tester.tap(find.text('最终主题'));
+        // 引用标题由正文 TextSpan 自然排版，图标与各行标题共用同一原子入口。
+        await tester.tap(meetingIcon);
         await tester.pumpAndSettle();
         expect(
           find.descendant(of: find.byType(BottomSheet), matching: meetingIcon),

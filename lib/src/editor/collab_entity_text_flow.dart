@@ -6,32 +6,39 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-/// Checks whether borrowed [node] has a task atom that needs visual expansion.
-bool hasFlowingTaskMention(Node node) =>
+/// 检查借用 [node] 是否含需展开为可换行文字的会议/任务原子。
+/// [entityTypes] 默认包含两类；旧任务预览策略传入 task 单独筛选，不改变权限。
+/// 无 Delta、名称属性缺失或非对象文字返回 false，不读取业务数据。
+bool hasFlowingEntityMention(
+  Node node, {
+  Set<String> entityTypes = const {'meeting', 'task'},
+}) =>
     node.delta?.whereType<TextInsert>().any(
       (run) =>
-          run.attributes?[collabMentionTypeAttribute] == 'task' &&
+          entityTypes.contains(run.attributes?[collabMentionTypeAttribute]) &&
           run.attributes?[collabInlineMentionAttribute] is String &&
           run.text.contains(collabInlineFormulaCharacter),
     ) ??
     false;
 
-/// Projects task atoms into a wrapping title and maps the visual UTF-16
-/// offsets back to their single document character. The block State owns and
-/// disposes this projection and its tap recognizers.
+/// 将会议/任务原子投影为无底色的蓝色图标与可换行标题，并将显示 UTF-16 偏移映射回单个正文字符。
+/// 投影只参与渲染，不写回 Delta、身份或原属性；前后普通文字和其他内嵌对象保留原样。
+/// 块 State 创建并释放本对象及其点击识别器；重新投影复用仍存在的识别器，移除的立即释放。
 ///
 /// ```dart
-/// final flow = CollabTaskTextFlow(onTap: (offset) => debugPrint('$offset'));
-/// final displayed = flow.project(originalTextSpan);
-/// final logicalOffset = flow.toDocument(displayOffset);
+/// import 'package:cses_editor/src/editor/collab_entity_text_flow.dart';
+/// import 'package:flutter/material.dart';
+/// final flow = CollabEntityTextFlow(onTap: (offset) => debugPrint('$offset'));
+/// final displayed = flow.project(const TextSpan(text: '普通正文'));
+/// final logicalOffset = flow.toDocument(0);
 /// // When the block unmounts:
 /// flow.dispose();
 /// ```
-final class CollabTaskTextFlow {
-  /// [onTap] is borrowed from the block and receives the document atom offset.
-  CollabTaskTextFlow({required this.onTap});
+final class CollabEntityTextFlow {
+  /// [onTap] 借用块的同步派发入口，传入原子在正文中的 UTF-16 偏移；不拥有其导航资源。
+  CollabEntityTextFlow({required this.onTap});
 
-  /// Opens actions for the referenced atom. The owner validates the live node.
+  /// 原子点击入口，由块复核当前节点并选择编辑菜单或只读详情，不修改标题文字。
   final ValueChanged<int> onTap;
 
   final _recognizers = <int, TapGestureRecognizer>{};
@@ -40,8 +47,9 @@ final class CollabTaskTextFlow {
   /// Whether the current paragraph has any visually expanded references.
   bool get isExpanded => _ranges.isNotEmpty;
 
-  /// Builds a display span from borrowed [source]. Only task placeholders are
-  /// replaced. Retains each still-present recognizer and disposes removed ones.
+  /// 从借用 [source] 生成显示 Span，仅展开会议和任务占位符。
+  /// 返回完整标题，空名称按类型显示“未命名会议/任务”；保留字号、字重与删除线。
+  /// 重建显示偏移映射，复用现有识别器并释放已移除项；不修改源 Span 或正文。
   TextSpan project(TextSpan source) {
     final lengths = <int, int>{};
 
@@ -49,14 +57,16 @@ final class CollabTaskTextFlow {
     InlineSpan expand(InlineSpan span) {
       if (span case WidgetSpan(
         child: final CollabInlineEntityMention mention,
-      ) when mention.entityType == 'task') {
-        final style = collabTaskMentionTextStyle(mention.style);
+      ) when const {'meeting', 'task'}.contains(mention.entityType)) {
+        final style = collabEntityMentionTextStyle(mention.style);
         final offset = mention.offset;
         final recognizer = _recognizers.putIfAbsent(
           offset,
           () => TapGestureRecognizer()..onTap = () => onTap(offset),
         );
-        final title = mention.name.isEmpty ? '未命名任务' : mention.name;
+        final title = mention.name.isEmpty
+            ? (mention.entityType == 'meeting' ? '未命名会议' : '未命名任务')
+            : mention.name;
         // The joiners keep the icon, thin space and start of the title together.
         final text = '\u2060\u2009\u2060$title';
         lengths[offset] = 1 + text.length;
@@ -68,13 +78,13 @@ final class CollabTaskTextFlow {
                 behavior: HitTestBehavior.opaque,
                 onTap: recognizer.onTap,
                 child: Icon(
-                  collabTaskMentionIcon,
+                  collabEntityMentionIcon(mention.entityType),
                   size: style.fontSize ?? 16,
                   color: style.color,
                 ),
               ),
             ),
-            _TaskTitleSpan(text: text, style: style, recognizer: recognizer),
+            _EntityTitleSpan(text: text, style: style, recognizer: recognizer),
           ],
         );
       }
@@ -114,8 +124,8 @@ final class CollabTaskTextFlow {
     return offset + extra;
   }
 
-  /// Finds the model atom at a display [offset], or null for ordinary text.
-  int? taskAt(int offset) {
+  /// 返回显示 UTF-16 [offset] 命中的会议/任务原子的正文位置，普通文字返回 null。
+  int? entityAt(int offset) {
     for (final range in _ranges) {
       if (offset < range.start) break;
       if (offset < range.end) return range.document;
@@ -142,7 +152,7 @@ final class CollabTaskTextFlow {
   /// placeholders and any RichText inside the inline widgets.
   RenderParagraph? paragraphIn(RenderObject? object) {
     if (object is RenderParagraph &&
-        !object.text.visitChildren((span) => span is! _TaskTitleSpan)) {
+        !object.text.visitChildren((span) => span is! _EntityTitleSpan)) {
       return object;
     }
     RenderParagraph? result;
@@ -161,9 +171,9 @@ final class CollabTaskTextFlow {
 }
 
 /// Marks an expanded title so caret geometry can locate the display paragraph.
-final class _TaskTitleSpan extends TextSpan {
+final class _EntityTitleSpan extends TextSpan {
   /// [text] is the display-only title with borrowed [style] and [recognizer].
-  const _TaskTitleSpan({
+  const _EntityTitleSpan({
     required super.text,
     required super.style,
     required super.recognizer,

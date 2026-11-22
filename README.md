@@ -53,7 +53,7 @@ python3 tool/verify_independence.py example/build/app/outputs/flutter-apk/app-de
 文件选择、视频、WebView等能力仍使用普通 Flutter 平台插件。
 编辑器依赖使用 pub.dev 发布的 [`applowy_editor_fork`](https://pub.dev/packages/applowy_editor_fork)，版本约束为 `^6.2.1`。
 
-示例在宿主层通过 `createDemoGuidanceHostServices` 注入用户头像，普通 @、都来帮、领航员及旧用户引用共用头像槽。可传入用户 ID 到头像 URL 的映射；未提供图片时显示离线姓名首字头像，不向正文 JSON 写入头像展示数据。任务引用图标与样式保持原样。
+示例在宿主层通过 `createDemoGuidanceHostServices` 注入用户头像，普通 @、都来帮、领航员及旧用户引用共用头像槽。可传入用户 ID 到头像 URL 的映射；未提供图片时显示离线姓名首字头像，不向正文 JSON 写入头像展示数据。会议与任务引用分别保留类型图标，共用无底色蓝字和自然换行的完整标题。
 
 
 ## 嵌入只读正文

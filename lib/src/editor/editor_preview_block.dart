@@ -1,5 +1,5 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
-import 'package:cses_editor/src/editor/collab_task_text_flow.dart';
+import 'package:cses_editor/src/editor/collab_entity_text_flow.dart';
 import 'package:cses_editor/src/editor/collab_mention_tap_handler.dart';
 import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:flutter/widgets.dart';
@@ -38,7 +38,8 @@ Widget wrapEditorPreviewBlock(
   final allowsMention =
       scope.previewMentionInteractions && hasPreviewableCollabMention(node);
   final allowsTask =
-      scope.previewTaskMentionInteractions && hasFlowingTaskMention(node);
+      scope.previewTaskMentionInteractions &&
+      hasFlowingEntityMention(node, entityTypes: const {'task'});
   final allowsChildren =
       (scope.previewMentionInteractions ||
           scope.previewMediaInteractions ||

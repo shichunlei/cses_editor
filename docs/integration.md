@@ -222,6 +222,8 @@ example 首页注入虚构用户“示例小陈 / 示例团队 · 前端开发�
 
 ### 可见预览的行内引用详情
 
+会议与任务行内引用共用无底色蓝字，保留会议/剪贴板图标及正文的字号、字重和删除线，按正文前景亮度选择深蓝或浅蓝。标题完整显示，随段落剩余空间自然换行，不使用单行省略。编辑、普通预览、自然高度预览和静态分享图使用同一显示投影；正文仍保存单个引用原子，UTF-16 选区、光标、删除及撤销通过原子映射处理。同段多个会议和任务引用分别命中对应 ID，显示换行不改变协议或原属性。
+
 `DocumentEditorView(preview: true, previewMentionInteractions: true)` 显式允许会议、任务及人员引用直接通知宿主；默认关闭。会议与任务优先调用 `onMeetingMentionTap`、`onTaskMentionTap`，未配置时回退 `onMentionTap`；人员只调用 `onMentionTap`，未配置不打开默认人员页面。`CollabMentionTap` 交付稳定 ID、名称和深只读原属性，包不读取企业资料或创建业务详情页。
 
 ```dart
