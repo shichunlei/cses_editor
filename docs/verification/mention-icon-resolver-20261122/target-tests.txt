@@ -1,0 +1,19 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +1: /System/Volumes/Data/workspace/cses_editor/test/inline_entity_flow_preview_test.dart: 会议任务混排自然换行并保持只读 embedded=false dark=false
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +7: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +8: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +9: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +10: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +11: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +12: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +13: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +14: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=false
+00:01 +15: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=true
+00:02 +16: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=false
+00:02 +17: All tests passed!

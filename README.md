@@ -88,3 +88,5 @@ final body = DocumentEditorView(
 
 
 可见只读预览可通过 `previewMentionInteractions: true` 显式开放会议、任务及人员行内引用直接详情回调；不开放正文编辑。会议/任务优先使用专用回调，人员借用 `onMentionTap`，没有配置时不创建默认资料页。静态测量/截图始终禁用，原任务专用预览开关保持兼容。接入及资源所有权见 [集成说明](docs/integration.md#可见预览的行内引用详情)。
+
+会议与任务行内引用及编辑引用底部面板的图标可通过 `CollabHostServices.mentionIconResolver` 由宿主统一设置；预览、测量和分享借用同一映射，默认兼容原图标。配置示例及边界见 [图标回调](docs/integration.md#会议与任务图标回调)。

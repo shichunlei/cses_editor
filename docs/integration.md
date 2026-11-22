@@ -220,6 +220,28 @@ example 首页注入虚构用户“示例小陈 / 示例团队 · 前端开发�
 分享长图的品牌页脚与纸张保持米色，logo 上边距为 8px；截图时最后一个栏目不再叠加自动底部留白，让正文与品牌图片紧凑衔接，普通编辑/预览栏目间距保持原规则。
 
 
+### 会议与任务图标回调
+
+`CollabHostServices.mentionIconResolver` 为可选的 `IconData? Function(CollabMentionType type)`。只为 meeting/task 调用；未配置或返回 null 时使用库原默认图标，人员和文档不调用。编辑行内、跨行投影及编辑引用底部面板标题共用映射，颜色、尺寸、基线及换行仍由各原展示位置控制。回调应为无副作用的纯同步映射，不发请求、导航或修改正文；错误沿当前构建/交互边界传播，不静默兜底。
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:cses_editor/cses_editor.dart';
+
+final services = CollabHostServices(
+  mentionIconResolver: (type) => switch (type) {
+    CollabMentionType.meeting => Icons.event_note,
+    CollabMentionType.task => Icons.assignment,
+    _ => null,
+  },
+);
+// 将 services 交给当前文档的 EditorCommandContext；自定义字体由宿主声明和加载。
+```
+
+`withMentionUserPicker` 创建服务视图时保留原回调；宿主另外构造测量、预览或静态分享服务时也须透传它，不依靠正文数据携带图标。测量只配置展示端口，截图禁止导航但保留图标。回调不接收账号或业务对象、不序列化进 JSON，不改变引用 ID、名称、选区或原子协议。现有会议/任务卡片的其他图标不受此行内接口影响。
+
+回归及消费者记录见 [图标回调验收](verification/mention-icon-resolver-20261122/report.md)。
+
 ### 可见预览的行内引用详情
 
 会议与任务行内引用共用无底色蓝字，保留会议/剪贴板图标及正文的字号、字重和删除线，按正文前景亮度选择深蓝或浅蓝。标题完整显示，随段落剩余空间自然换行，不使用单行省略。编辑、普通预览、自然高度预览和静态分享图使用同一显示投影；正文仍保存单个引用原子，UTF-16 选区、光标、删除及撤销通过原子映射处理。同段多个会议和任务引用分别命中对应 ID，显示换行不改变协议或原属性。

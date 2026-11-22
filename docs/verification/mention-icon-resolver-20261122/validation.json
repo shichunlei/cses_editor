@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-22",
+  "beforePassed": 3,
+  "beforeFailed": 6,
+  "newResolverCases": 9,
+  "editorRelatedPassed": 66,
+  "consumerSaasRelatedPassed": 231,
+  "analyze": "passed",
+  "format": "passed",
+  "consumerAndroidBuild": "passed",
+  "nativeDeviceRetest": false,
+  "staging": "实现、测试和文档未暂存未提交；原 example/pubspec.yaml 暂存保留"
+}

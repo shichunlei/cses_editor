@@ -1,0 +1,162 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart
+00:00 +0: meeting 行内与底部面板共用图标 custom
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _IconWidgetFinder:<Found 0 widgets with icon "IconData(U+0E241)": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart:37:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart line 37
+The test description was:
+  meeting 行内与底部面板共用图标 custom
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: meeting 行内与底部面板共用图标 custom [E]
+  Test failed. See exception logs above.
+  The test description was: meeting 行内与底部面板共用图标 custom
+
+00:00 +0 -1: meeting 行内与底部面板共用图标 default
+00:01 +1 -1: meeting 行内与底部面板共用图标 null
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: non-empty
+  Actual: []
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart:47:11)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart line 47
+The test description was:
+  meeting 行内与底部面板共用图标 null
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +1 -2: meeting 行内与底部面板共用图标 null [E]
+  Test failed. See exception logs above.
+  The test description was: meeting 行内与底部面板共用图标 null
+
+00:01 +1 -2: meeting 独立 WidgetSpan 路径也读取同一图标端口
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following StateError was thrown running a test:
+Bad state: No element
+
+When the exception was thrown, this was the stack:
+#0      Iterable.single (dart:core/iterable.dart:694:25)
+#1      WidgetController.widget (package:flutter_test/src/controller.dart:828:30)
+#2      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart:65:27)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  meeting 独立 WidgetSpan 路径也读取同一图标端口
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +1 -3: meeting 独立 WidgetSpan 路径也读取同一图标端口 [E]
+  Test failed. See exception logs above.
+  The test description was: meeting 独立 WidgetSpan 路径也读取同一图标端口
+
+00:01 +1 -3: task 行内与底部面板共用图标 custom
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _IconWidgetFinder:<Found 0 widgets with icon "IconData(U+0E0A5)": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart:37:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart line 37
+The test description was:
+  task 行内与底部面板共用图标 custom
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +1 -4: task 行内与底部面板共用图标 custom [E]
+  Test failed. See exception logs above.
+  The test description was: task 行内与底部面板共用图标 custom
+
+00:01 +1 -4: task 行内与底部面板共用图标 default
+00:01 +2 -4: task 行内与底部面板共用图标 null
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: non-empty
+  Actual: []
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart:47:11)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart line 47
+The test description was:
+  task 行内与底部面板共用图标 null
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +2 -5: task 行内与底部面板共用图标 null [E]
+  Test failed. See exception logs above.
+  The test description was: task 行内与底部面板共用图标 null
+
+00:01 +2 -5: task 独立 WidgetSpan 路径也读取同一图标端口
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following StateError was thrown running a test:
+Bad state: No element
+
+When the exception was thrown, this was the stack:
+#0      Iterable.single (dart:core/iterable.dart:694:25)
+#1      WidgetController.widget (package:flutter_test/src/controller.dart:828:30)
+#2      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart:65:27)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  task 独立 WidgetSpan 路径也读取同一图标端口
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +2 -6: task 独立 WidgetSpan 路径也读取同一图标端口 [E]
+  Test failed. See exception logs above.
+  The test description was: task 独立 WidgetSpan 路径也读取同一图标端口
+
+00:01 +2 -6: 人员和文档不调用会议任务图标端口
+00:01 +3 -6: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 独立 WidgetSpan 路径也读取同一图标端口
+  /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+  /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 null
+  /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: task 独立 WidgetSpan 路径也读取同一图标端口
+  ... and 2 more

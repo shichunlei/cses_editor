@@ -1,0 +1,69 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +1: /System/Volumes/Data/workspace/cses_editor/test/inline_entity_flow_preview_test.dart: 会议任务混排自然换行并保持只读 embedded=false dark=false
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/test/inline_entity_flow_preview_test.dart: 会议任务混排自然换行并保持只读 embedded=false dark=false
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +7: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +8: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +9: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +10: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +11: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +12: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +13: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +14: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +15: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +16: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +17: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +18: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +19: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +20: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +21: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +22: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +23: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +24: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +25: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +26: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +27: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview rejects writable sessions without leaking resources
+00:02 +28: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 旧任务专用预览开关保留原面板，会议仍不放行
+00:02 +29: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: 状态同步登记、帧后通知，换作用域及退出不残留凭据
+00:03 +30: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=true
+00:03 +31: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 1 rows into a full PNG
+00:03 +32: /System/Volumes/Data/workspace/cses_editor/test/embedded_document_preview_test.dart: embedded preview renders all 1 rows into a full PNG
+00:03 +33: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +34: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +35: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +36: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +37: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +38: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +39: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +40: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +41: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +42: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +43: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +44: /System/Volumes/Data/workspace/cses_editor/test/editor_resource_scope_test.dart: data 图片必须真实解码，svg=false broken=false
+00:03 +45: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_meeting_test.dart: 划词创建会议 created
+00:04 +46: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_meeting_test.dart: 划词创建会议 created
+00:04 +47: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:04 +48: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:04 +49: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:04 +50: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:05 +51: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:05 +52: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:05 +53: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:05 +54: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:05 +55: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:05 +56: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:05 +57: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:05 +58: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=false
+00:06 +59: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:06 +60: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:07 +61: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: expanded character spacing handles mixed legacy and live caret
+00:08 +62: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: line height alone exposes the layout toolbar
+00:08 +63: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing controls respect explicit disabled configuration
+00:08 +64: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing preserves heading list quote and other attributes
+00:08 +65: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: line height skips void/code and exclusive next paragraph endpoint
+00:08 +66: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: (tearDownAll)
+00:08 +66: All tests passed!

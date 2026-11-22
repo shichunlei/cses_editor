@@ -1,5 +1,7 @@
 # 验证索引
 
+- [会议任务行内及底部面板图标回调（2026-11-22）](mention-icon-resolver-20261122/report.md)
+
 - [会议与任务行内引用统一蓝字及自然换行（2026-11-22）](inline-entity-flow-20261122/report.md)
 
 - [可见预览会议、任务和人员行内引用直接详情（2026-11-22）](preview-inline-mentions-20261122/report.md)

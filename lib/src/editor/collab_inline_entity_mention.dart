@@ -1,6 +1,7 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:cses_editor/src/model/collab_entity_mention.dart';
+import 'package:cses_editor/src/model/collab_mention_tap.dart';
 import 'package:cses_editor/src/ui/modal/collab_bottom_sheet.dart';
 import 'package:cses_editor/src/ui/modal/collab_editor_display_scope.dart';
 import 'package:cses_editor/src/ui/modal/collab_menu_row.dart';
@@ -113,7 +114,12 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    collabEntityMentionIcon(entityType),
+                    collabEntityMentionIcon(
+                      entityType,
+                      resolver: EditorCommandContext.of(
+                        state,
+                      ).services.mentionIconResolver,
+                    ),
                     size: fontSize,
                     color: flowsWithText
                         ? titleStyle.color
@@ -143,13 +149,26 @@ class _EntityMentionState extends State<CollabInlineEntityMention> {
 /// 任务引用与操作面板共用的剪贴板图标，与待办复选框区分。
 const collabTaskMentionIcon = LucideIcons.clipboardList;
 
-/// 为 [entityType] 选取行内引用、换行投影及操作面板标题共用的默认图标。
-/// 不读取宿主业务数据或修改正文，图标的颜色和尺寸由各展示位置管理。
-IconData collabEntityMentionIcon(String entityType) => switch (entityType) {
-  'meeting' => LucideIcons.calendarClock,
-  'task' => collabTaskMentionIcon,
-  _ => LucideIcons.fileText,
-};
+/// 为 [entityType] 选取行内、换行投影及引用面板共用的图标；不改写正文或持有资源。
+/// [resolver] 可空，仅以 meeting/task 类型同步调用，返回 null 时沿用默认图标。
+/// 文档及未知类型不调用回调，默认使用文档图标；会议默认日历、任务默认剪贴板。
+/// 回调异常沿构建或面板交互边界传播；颜色、大小和基线由各展示位置继续控制。
+IconData collabEntityMentionIcon(
+  String entityType, {
+  IconData? Function(CollabMentionType type)? resolver,
+}) {
+  final type = switch (entityType) {
+    'meeting' => CollabMentionType.meeting,
+    'task' => CollabMentionType.task,
+    _ => null,
+  };
+  return (type == null ? null : resolver?.call(type)) ??
+      switch (entityType) {
+        'meeting' => LucideIcons.calendarClock,
+        'task' => collabTaskMentionIcon,
+        _ => LucideIcons.fileText,
+      };
+}
 
 /// 为会议/任务按借用正文 [style] 的亮度选择蓝色，去掉衬底和下划线，保留删除线。
 /// 返回独立样式，不改写原格式；浅色正文选浅蓝、深色正文选深蓝，字号和字重沿用正文。
@@ -203,7 +222,10 @@ Future<void> showCollabEntityMentionActions(
       context: context,
       builder: (sheetContext) => CollabBottomSheet(
         title: Text(target.name.isEmpty ? '未命名$kind' : target.name),
-        icon: collabEntityMentionIcon(target.entityType),
+        icon: collabEntityMentionIcon(
+          target.entityType,
+          resolver: services.mentionIconResolver,
+        ),
         subtitle: '$kind引用 · 当前为链接视图',
         contentPadding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
         child: Column(

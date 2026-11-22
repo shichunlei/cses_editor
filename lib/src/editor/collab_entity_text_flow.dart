@@ -1,6 +1,7 @@
 import 'package:applowy_editor_fork/applowy_editor_fork.dart';
 import 'package:cses_editor/src/editor/collab_inline_entity_mention.dart';
 import 'package:cses_editor/src/model/collab_inline_formula.dart';
+import 'package:cses_editor/src/model/collab_mention_tap.dart';
 import 'package:cses_editor/src/model/collab_user_mention.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -49,8 +50,13 @@ final class CollabEntityTextFlow {
 
   /// 从借用 [source] 生成显示 Span，仅展开会议和任务占位符。
   /// 返回完整标题，空名称按类型显示“未命名会议/任务”；保留字号、字重与删除线。
+  /// [mentionIconResolver] 借用当前宿主同步映射，null/返回 null 使用默认图标；异常交构建边界。
+  /// 每次投影重新读取调用方传入的映射，不缓存业务图标或依赖初始服务快照。
   /// 重建显示偏移映射，复用现有识别器并释放已移除项；不修改源 Span 或正文。
-  TextSpan project(TextSpan source) {
+  TextSpan project(
+    TextSpan source, {
+    IconData? Function(CollabMentionType type)? mentionIconResolver,
+  }) {
     final lengths = <int, int>{};
 
     /// Walks borrowed [span], preserving text and other embedded objects.
@@ -78,7 +84,10 @@ final class CollabEntityTextFlow {
                 behavior: HitTestBehavior.opaque,
                 onTap: recognizer.onTap,
                 child: Icon(
-                  collabEntityMentionIcon(mention.entityType),
+                  collabEntityMentionIcon(
+                    mention.entityType,
+                    resolver: mentionIconResolver,
+                  ),
                   size: style.fontSize ?? 16,
                   color: style.color,
                 ),

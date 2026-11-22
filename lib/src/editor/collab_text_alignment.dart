@@ -6,6 +6,7 @@ import 'package:cses_editor/src/editor/appflowy_block_editor_adapter.dart';
 import 'package:cses_editor/src/editor/collab_ordered_marker.dart';
 import 'package:cses_editor/src/editor/collab_inline_entity_mention.dart';
 import 'package:cses_editor/src/editor/collab_entity_text_flow.dart';
+import 'package:cses_editor/src/editor/core/editor_command_context.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -338,7 +339,13 @@ class _CollabTextBlockState extends State<_CollabTextBlock>
             }
             // AppFlowy 同时用此回调修饰单个格式分段；只有完整树参与行布局。
             if (span.children == null) return styled;
-            styled = _flow.project(styled);
+            // 当前宿主只提供图标，投影继续负责字号、颜色、换行及原子偏移，不缓存初始服务。
+            styled = _flow.project(
+              styled,
+              mentionIconResolver: EditorCommandContext.of(
+                editorState,
+              ).services.mentionIconResolver,
+            );
             if (!distributed) return styled;
             return distributeTextSpan(
               styled,

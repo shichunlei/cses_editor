@@ -61,6 +61,7 @@ class CollabHostServices {
   /// [openMedia] handles menu opens and direct preview attachment opens; null uses the platform URL action.
   /// [showFeedback] shows transient messages using the host UI; null uses the editor's local feedback.
   /// [mentionAvatarBuilder] 由宿主构建头像；null仅显示姓名，无默认头像或图片请求。
+  /// [mentionIconResolver] 同步提供会议/任务行内及引用面板图标，null 或返回 null 使用默认图标。
   /// [pickMentionUser] 由宿主打开单选人员界面；null禁用选人，已有提及不受影响。
   /// [onMentionTap] 接收用户直接点击、其他提及面板的打开详情及任务卡片详情；切换卡片不调用。
   /// 等待宿主详情关闭；行内提及恢复原输入，卡片不恢复正文键盘，包不创建用户资料界面。
@@ -101,6 +102,7 @@ class CollabHostServices {
     this.showFeedback,
     this.documentMetadata,
     this.mentionAvatarBuilder,
+    this.mentionIconResolver,
     this.pickMentionUser,
     this.onMentionTap,
     this.onMeetingCardTap,
@@ -134,6 +136,7 @@ class CollabHostServices {
         showFeedback: showFeedback,
         documentMetadata: documentMetadata,
         mentionAvatarBuilder: mentionAvatarBuilder,
+        mentionIconResolver: mentionIconResolver,
         pickMentionUser: picker,
         onMentionTap: onMentionTap,
         onMeetingCardTap: onMeetingCardTap,
@@ -245,6 +248,24 @@ class CollabHostServices {
   /// previewMentionInteractions 显式启用的预览直接派发人员/会议/任务引用，不显示编辑菜单。
   /// null禁用详情操作，编辑时仍可切换卡片或删除引用；任务卡片详情传共享引用props。
   final CollabMentionTapCallback? onMentionTap;
+
+  /// 可选的会议/任务图标解析器；[type] 仅接收 meeting 或 task，不为人员及文档调用。
+  /// 默认 null；回调未配置或返回 null 时使用原默认图标。行内、换行投影及引用面板共用它，
+  /// 编辑器持有颜色、字号及基线，宿主只返回 IconData，并负责其自定义字体在应用中可用。
+  /// 在构建或打开面板时同步调用，应为无副作用的纯映射，不请求、导航或改写正文。
+  /// 抛错沿当前构建或交互边界传播，不静默兜底；不拥有宿主资源或将图标写入文档。
+  ///
+  /// ```dart
+  /// import 'package:flutter/material.dart';
+  /// import 'package:cses_editor/cses_editor.dart';
+  /// final services = CollabHostServices(mentionIconResolver: (type) => switch (type) {
+  ///   CollabMentionType.meeting => Icons.event_note,
+  ///   CollabMentionType.task => Icons.assignment,
+  ///   _ => null,
+  /// });
+  /// // 将 services 借给当前文档的 EditorCommandContext。
+  /// ```
+  final IconData? Function(CollabMentionType type)? mentionIconResolver;
 
   /// 可选宿主头像构建器，用于正文用户提及和任务负责人；null正文只显示姓名，任务隐藏头像组。
   /// 头像加载、缓存和占位由宿主负责，编辑器只约束尺寸，不写正文。

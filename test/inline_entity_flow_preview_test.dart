@@ -5,7 +5,6 @@ import 'package:cses_editor/cses_editor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 /// 在同段混排中验证两种预览布局的多引用换行、点击映射及静态截图一致性。
 void main() {
@@ -48,6 +47,9 @@ void main() {
           commandContext: EditorCommandContext(
             localOnly: true,
             services: CollabHostServices(
+              mentionIconResolver: (type) => type == CollabMentionType.meeting
+                  ? Icons.event_note
+                  : Icons.assignment,
               onMeetingMentionTap: events.add,
               onTaskMentionTap: events.add,
             ),
@@ -105,8 +107,8 @@ void main() {
         final plain = render.text.toPlainText();
         expect(plain, contains('$meeting$between'));
         expect(plain, endsWith('$task$suffix'));
-        expect(find.byIcon(LucideIcons.calendarClock), findsOneWidget);
-        expect(find.byIcon(LucideIcons.clipboardList), findsOneWidget);
+        expect(find.byIcon(Icons.event_note), findsOneWidget);
+        expect(find.byIcon(Icons.assignment), findsOneWidget);
         final size = render.size;
 
         /// 返回当前排版中 UTF-16 [offset] 的字符框，不将显示偏移写入正文。
@@ -164,8 +166,8 @@ void main() {
         render = tester.renderObject<RenderParagraph>(rich);
         expect(render.text.toPlainText(), plain);
         expect(render.size, size);
-        expect(find.byIcon(LucideIcons.calendarClock), findsOneWidget);
-        expect(find.byIcon(LucideIcons.clipboardList), findsOneWidget);
+        expect(find.byIcon(Icons.event_note), findsOneWidget);
+        expect(find.byIcon(Icons.assignment), findsOneWidget);
         for (final title in [meeting, task]) {
           final last = plain.indexOf(title) + title.length - 1;
           await tester.tapAt(render.localToGlobal(charAt(last).center));
