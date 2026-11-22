@@ -40,7 +40,7 @@ description: 在 cses_editor 根包与 example 宿主中新增或调整 Flutter 
 - 弹窗配色从 `CollabModalColors.of(context)` 读取，支持亮/暗主题；圆角、按钮、输入、密度复用现有实现，不把设计数值散落到业务调用方。基线与场景位置见 [场景参考](references/modal-decisions.md)。
 - 主要确认放右侧 `actions`；需要左侧删除/移除时用 `leadingAction`。图标/高亮表情的移除与右侧完成同栏；窄屏大字允许换行。菜单中的删除仍用整行 `CollabMenuRow`，不一律移到底部。
 - 可用删除/移除的图标和文字同用 `danger`，禁用态沿用主题。只移除提及/卡片内容，不删除宿主实体。
-- 标题栏说明由 `CollabModalHeader.subtitle` 单行省略、禁止软换行；原始链接完整传递，复制/打开/保存不能使用截短值。主标题可换行。
+- 标题栏说明由 `CollabModalHeader.subtitle` 单行省略、禁止软换行；原始链接完整传递，复制/打开/保存不能使用截短值。主标题默认可换行；会议、任务和文档等实体引用操作面板的标题最多一行、禁止软换行，超出宽度显示省略号，详情回调及正文始终使用完整原始名称。
 - 链接/卡片/嵌入视图项存在时，与上方资源操作加浅分割线。编号和绘图视图/类型/模板锚点宽220，其他默认265；选项显示当前勾选，插入/模板动作不虚构持久选中状态。
 - 核心图标用已安装的 `lucide_icons_flutter`：下方插入 `listEnd`、删除 `trash2`、外部打开 `externalLink`、复制 `copy`；行内公式 `omega`，独立公式 `sigma`。Figma/掘金使用现有通用图标，不额外引入品牌 Logo。
 - 会议与任务行内引用统一使用无底色蓝字，行内、换行投影和编辑引用面板的类型图标共用宿主 `CollabHostServices.mentionIconResolver`；未配置或返回 null 使用原 Lucide 默认图标。宿主只返回 IconData，不控制正文颜色、字号、基线或输入权限；标题随所在正文自然换行并完整显示。复用 `collab_entity_text_flow.dart` 的显示投影及原子偏移映射，不将显示标题写回单字符引用；编辑菜单、预览直接详情与静态截图禁用策略分别沿用原权限。

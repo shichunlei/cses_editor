@@ -184,7 +184,9 @@ TextStyle collabEntityMentionTextStyle(TextStyle style) => style.copyWith(
 
 /// 在借用 [context] 中展示 [state] 的 [node] 在 UTF-16 [offset] 处的引用操作。
 /// Future 等待面板及选定操作完成，退场后复核目标与会话，不拥有编辑器或路由。
-/// 标题沿用行内引用图标。会议和任务详情优先调用各自的宿主回调，视图切换和删除在正文内执行。
+/// 标题沿用行内引用图标，仅显示一行，超出可用宽度以省略号展示；原始名称完整交付详情回调。
+/// 显示限制不影响正文自然换行，也不改变引用原子身份、删除或卡片转换动作。
+/// 会议和任务详情优先调用各自的宿主回调，视图切换和删除在正文内执行。
 /// 新预览开关直接派发会议/任务详情；旧任务专用开关保留原只读面板。编辑时删除仅改正文。
 Future<void> showCollabEntityMentionActions(
   BuildContext context,
@@ -221,7 +223,12 @@ Future<void> showCollabEntityMentionActions(
     final action = await showCollabBottomSheet<_EntityAction>(
       context: context,
       builder: (sheetContext) => CollabBottomSheet(
-        title: Text(target.name.isEmpty ? '未命名$kind' : target.name),
+        title: Text(
+          target.name.isEmpty ? '未命名$kind' : target.name,
+          maxLines: 1,
+          softWrap: false,
+          overflow: TextOverflow.ellipsis,
+        ),
         icon: collabEntityMentionIcon(
           target.entityType,
           resolver: services.mentionIconResolver,

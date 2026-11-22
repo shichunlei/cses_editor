@@ -1,0 +1,247 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart
+00:00 +0: meeting 面板标题单行省略 title=
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  meeting 面板标题单行省略 title=
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:00 +0 -1: meeting 面板标题单行省略 title= [E]
+  Test failed. See exception logs above.
+  The test description was: meeting 面板标题单行省略 title=
+
+00:00 +0 -1: meeting 面板标题单行省略 title=短标题
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  meeting 面板标题单行省略 title=短标题
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -2: meeting 面板标题单行省略 title=短标题 [E]
+  Test failed. See exception logs above.
+  The test description was: meeting 面板标题单行省略 title=短标题
+
+00:01 +0 -2: meeting 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  meeting 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+  第二行仍属于原始名称
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -3: meeting 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称 [E]
+  Test failed. See exception logs above.
+  The test description was: meeting 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+  第二行仍属于原始名称
+
+00:01 +0 -3: task 面板标题单行省略 title=
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  task 面板标题单行省略 title=
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -4: task 面板标题单行省略 title= [E]
+  Test failed. See exception logs above.
+  The test description was: task 面板标题单行省略 title=
+
+00:01 +0 -4: task 面板标题单行省略 title=短标题
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  task 面板标题单行省略 title=短标题
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -5: task 面板标题单行省略 title=短标题 [E]
+  Test failed. See exception logs above.
+  The test description was: task 面板标题单行省略 title=短标题
+
+00:01 +0 -5: task 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  task 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+  第二行仍属于原始名称
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -6: task 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称 [E]
+  Test failed. See exception logs above.
+  The test description was: task 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+  第二行仍属于原始名称
+
+00:01 +0 -6: doc 面板标题单行省略 title=
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  doc 面板标题单行省略 title=
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -7: doc 面板标题单行省略 title= [E]
+  Test failed. See exception logs above.
+  The test description was: doc 面板标题单行省略 title=
+
+00:01 +0 -7: doc 面板标题单行省略 title=短标题
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  doc 面板标题单行省略 title=短标题
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -8: doc 面板标题单行省略 title=短标题 [E]
+  Test failed. See exception logs above.
+  The test description was: doc 面板标题单行省略 title=短标题
+
+00:01 +0 -8: doc 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: <1>
+  Actual: <null>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart:51:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart line 51
+The test description was:
+  doc 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+  第二行仍属于原始名称
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -9: doc 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称 [E]
+  Test failed. See exception logs above.
+  The test description was: doc 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+  第二行仍属于原始名称
+
+00:01 +0 -9: Some tests failed.
+
+Failing tests:
+  /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: doc 面板标题单行省略 title=
+  /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: doc 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称
+  /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: doc 面板标题单行省略 title=短标题
+  /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+  ... and 5 more

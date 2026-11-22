@@ -1,5 +1,7 @@
 # 验证索引
 
+- [实体引用底部弹窗标题单行省略（2026-11-22）](entity-mention-sheet-title-20261122/report.md)
+
 - [会议任务行内及底部面板图标回调（2026-11-22）](mention-icon-resolver-20261122/report.md)
 
 - [会议与任务行内引用统一蓝字及自然换行（2026-11-22）](inline-entity-flow-20261122/report.md)

@@ -1,0 +1,46 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=短标题
+00:01 +2: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=很长的引用名称需要单行省略显示且不能撑高弹窗标题
+第二行仍属于原始名称
+00:01 +3: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +7: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +8: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:01 +9: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:02 +10: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +11: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +12: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +13: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +14: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +15: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +16: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +17: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +18: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +19: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:02 +20: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:03 +21: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:03 +22: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:03 +23: /System/Volumes/Data/workspace/cses_editor/test/inline_entity_flow_preview_test.dart: 会议任务混排自然换行并保持只读 embedded=false dark=false
+00:03 +24: /System/Volumes/Data/workspace/cses_editor/test/inline_entity_flow_preview_test.dart: 会议任务混排自然换行并保持只读 embedded=false dark=false
+00:03 +25: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=false
+00:03 +26: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=false
+00:03 +27: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=false
+00:03 +28: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 旧任务专用预览开关保留原面板，会议仍不放行
+00:03 +29: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 旧任务专用预览开关保留原面板，会议仍不放行
+00:03 +30: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 旧任务专用预览开关保留原面板，会议仍不放行
+00:03 +31: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=true
+00:03 +32: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=true
+00:03 +33: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 预览不越过 disabled 边界
+00:03 +34: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=false
+00:03 +35: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=false
+00:03 +36: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=false
+00:03 +37: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 meeting 引用自然换行、配色与原子操作 dark=false
+00:03 +38: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 静态用途切换立即撤销引用命中，恢复后仍可打开
+00:03 +39: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 引用在嵌套提示块内仍可点击，普通正文不出现编辑菜单
+00:03 +40: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 详情未关闭时跨引用重复点击只派发一次，返回后可继续
+00:03 +41: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 回调在途退出不恢复键盘、不修改正文或迟到报错
+00:04 +42: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 回调失败报告一次并使用宿主提示，之后仍能点击
+00:04 +43: All tests passed!

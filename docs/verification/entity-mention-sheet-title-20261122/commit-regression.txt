@@ -1,0 +1,74 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:00 +1: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:00 +2: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:00 +3: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +4: /System/Volumes/Data/workspace/cses_editor/test/collab_inline_entity_mention_test.dart: 长 task 引用自然换行、配色与原子操作 dark=true
+00:01 +5: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_meeting_test.dart: 划词创建会议 created
+00:01 +6: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_meeting_test.dart: 划词创建会议 created
+00:02 +7: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_meeting_test.dart: 划词创建会议 created
+00:02 +8: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:02 +9: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:02 +10: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:02 +11: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:02 +12: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:02 +13: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:02 +14: /System/Volumes/Data/workspace/cses_editor/test/editor_selection_task_test.dart: 划词创建任务 created
+00:02 +15: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:02 +16: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:02 +17: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:02 +18: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:02 +19: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:02 +20: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:03 +21: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:03 +22: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:03 +23: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:03 +24: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:03 +25: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=true line=true
+00:03 +26: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:03 +27: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:03 +28: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:03 +29: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: meeting 行内与底部面板共用图标 custom
+00:04 +30: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +31: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +32: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +33: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +34: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +35: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +36: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +37: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +38: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: meeting 面板标题单行省略 title=
+00:04 +39: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +40: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +41: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +42: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +43: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +44: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +45: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +46: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +47: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +48: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +49: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=true
+00:04 +50: /System/Volumes/Data/workspace/cses_editor/test/mention_icon_resolver_test.dart: 人员和文档不调用会议任务图标端口
+00:04 +51: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: task 面板标题单行省略 title=短标题
+00:04 +52: /System/Volumes/Data/workspace/cses_editor/test/entity_mention_sheet_title_test.dart: task 面板标题单行省略 title=短标题
+00:04 +53: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:04 +54: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:04 +55: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:04 +56: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +57: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +58: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +59: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +60: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +61: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +62: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +63: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +64: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing applies resets undo and revocation local=false line=false
+00:05 +65: /System/Volumes/Data/workspace/cses_editor/test/preview_inline_mentions_test.dart: 回调失败报告一次并使用宿主提示，之后仍能点击
+00:05 +66: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: expanded character spacing handles mixed legacy and live caret
+00:06 +67: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: line height alone exposes the layout toolbar
+00:06 +68: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing controls respect explicit disabled configuration
+00:06 +69: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: spacing preserves heading list quote and other attributes
+00:06 +70: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: line height skips void/code and exclusive next paragraph endpoint
+00:06 +71: /System/Volumes/Data/workspace/cses_editor/test/editor_spacing_test.dart: (tearDownAll)
+00:06 +71: All tests passed!
