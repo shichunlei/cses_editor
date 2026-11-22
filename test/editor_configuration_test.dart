@@ -8,6 +8,30 @@ import 'package:flutter_test/flutter_test.dart';
 /// 可配置能力的事务、命令、空光标与并存实例回归。
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+  test('图片菜单默认开启，宿主复制继承配置并可独立覆盖', () {
+    for (final config in [
+      EditorConfiguration(),
+      EditorConfiguration.document,
+    ]) {
+      expect(config.showImageEditAction, isTrue);
+      expect(config.showImageCaptionAction, isTrue);
+    }
+    final hidden = EditorConfiguration(
+      showImageEditAction: false,
+      showImageCaptionAction: false,
+    );
+    final inherited = hidden.withHost(mediaContainers: {'journal'});
+    expect(inherited.showImageEditAction, isFalse);
+    expect(inherited.showImageCaptionAction, isFalse);
+    final editOnly = inherited.withHost(showImageEditAction: true);
+    expect(editOnly.showImageEditAction, isTrue);
+    expect(editOnly.showImageCaptionAction, isFalse);
+    final captionOnly = inherited.withHost(showImageCaptionAction: true);
+    expect(captionOnly.showImageEditAction, isFalse);
+    expect(captionOnly.showImageCaptionAction, isTrue);
+    expect(hidden.showImageEditAction, isFalse);
+    expect(hidden.showImageCaptionAction, isFalse);
+  });
   test(
     'configuration copies collections and rejects missing paragraph and invalid limits',
     () {

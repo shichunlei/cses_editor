@@ -161,20 +161,25 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
   }
 
   /// 构建音频/附件共用菜单；[openLabel]为外部打开项标题，权限与只读显隐由具体卡片决定。
-  /// 音频菜单提供复制完整链接；编辑、复制与删除在菜单退场后重新解析稳定块身份，拒绝过期目标。
-  /// 不拥有借用的回调资源，附件保留既有命令。
+  /// 读取当前会话配置，按资源类型决定是否注册修改入口；打开、替换、删除和音频复制链接沿用权限。
+  /// 原命令在菜单退场后执行，修改和删除重新解析稳定块身份；菜单不拥有编辑器或宿主服务。
   Widget buildResourceMore({required String openLabel}) {
     final host = collabBlockActionContext(context);
     final id = blockId;
+    final type = widget.node.type;
+    final command = EditorCommandContext.of(editor);
+    final showEditAction = switch (type) {
+      'attachment' => command.configuration.showAttachmentEditAction,
+      'audio' => command.configuration.showAudioEditAction,
+      _ => true,
+    };
     return CollabBlockMoreButton(
       key: ValueKey('block-more-$id'),
       editor: editor,
       node: widget.node,
       readOnlyActions: [
         (
-          label:
-              widget.node.type == 'audio' &&
-                  EditorCommandContext.of(editor).services.openMedia != null
+          label: type == 'audio' && command.services.openMedia != null
               ? '打开音频'
               : openLabel,
           key: ValueKey('resource-open-$id'),
@@ -188,20 +193,21 @@ abstract class CollabResourceBlockState<T extends CollabResourceBlock>
           widget.node,
           label: '替换$resourceLabel',
         ),
-        if (widget.node.type == 'audio' && url.trim().isNotEmpty)
+        if (type == 'audio' && url.trim().isNotEmpty)
           (
             label: '复制链接',
             key: ValueKey('media-copy-link-$id'),
             run: () => copyCollabMediaLink(host, editor, widget.node),
           ),
-        (
-          label: '修改$resourceLabel',
-          key: ValueKey('resource-edit-$id'),
-          run: () async {
-            final source = findCollabActionNode(editor, id);
-            if (source != null) await editResource(source);
-          },
-        ),
+        if (showEditAction)
+          (
+            label: '修改$resourceLabel',
+            key: ValueKey('resource-edit-$id'),
+            run: () async {
+              final source = findCollabActionNode(editor, id);
+              if (source != null) await editResource(source);
+            },
+          ),
         (
           label: '删除$resourceLabel',
           key: ValueKey('resource-delete-$id'),

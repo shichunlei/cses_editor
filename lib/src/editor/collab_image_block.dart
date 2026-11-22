@@ -298,12 +298,14 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
   /// 使用 [context] 的正文宽度铺满图片，按原图比例自适应，高度最多等于正文宽度。
   /// 竖图在正方形内居中裁切，更多菜单集中编辑、删除和下方插入。
   /// 图片本体点击打开大图并屏蔽正文焦点，题注与更多菜单独立命中。
+  /// 图片编辑和添加/编辑题注入口分别遵循当前会话配置；隐藏入口不改变已有图片和题注。
   /// 布局计算不写入 wr/ar 或题注；编辑及复制链接前等待菜单退场并验证当前身份及权限。
   /// 锁标跟随解析尺寸和对齐后的图片本体右上角，不以题注或整行空白为定位边界。
   @override
   Widget buildMedia(BuildContext context) {
     final host = collabBlockActionContext(context);
     final editor = context.read<EditorState>();
+    final configuration = EditorCommandContext.of(editor).configuration;
     final preview = CollabEditorDisplayScope.maybeOf(context)?.preview == true;
     final id =
         widget.node.attributes['cses_collab_block_id'] as String? ??
@@ -392,35 +394,37 @@ class _CollabImageBlockState extends CollabMediaBlockState<CollabImageBlock> {
                           run: () =>
                               copyCollabMediaLink(host, editor, widget.node),
                         ),
-                      (
-                        label: '编辑图片',
-                        key: const ValueKey('collab-image-edit'),
-                        run: () async {
-                          final source = findCollabActionNode(editor, id);
-                          if (source != null) {
-                            await showCollabImageEditor(host, editor, source);
-                          }
-                        },
-                      ),
-                      (
-                        label:
-                            (image.captions.isEmpty &&
-                                widget.node.children.isEmpty)
-                            ? '添加题注'
-                            : '编辑题注',
-                        key: const ValueKey('collab-image-caption'),
-                        run: () async {
-                          final source = findCollabActionNode(editor, id);
-                          if (source != null) {
-                            await showCollabImageEditor(
-                              host,
-                              editor,
-                              source,
-                              captionOnly: true,
-                            );
-                          }
-                        },
-                      ),
+                      if (configuration.showImageEditAction)
+                        (
+                          label: '编辑图片',
+                          key: const ValueKey('collab-image-edit'),
+                          run: () async {
+                            final source = findCollabActionNode(editor, id);
+                            if (source != null) {
+                              await showCollabImageEditor(host, editor, source);
+                            }
+                          },
+                        ),
+                      if (configuration.showImageCaptionAction)
+                        (
+                          label:
+                              (image.captions.isEmpty &&
+                                  widget.node.children.isEmpty)
+                              ? '添加题注'
+                              : '编辑题注',
+                          key: const ValueKey('collab-image-caption'),
+                          run: () async {
+                            final source = findCollabActionNode(editor, id);
+                            if (source != null) {
+                              await showCollabImageEditor(
+                                host,
+                                editor,
+                                source,
+                                captionOnly: true,
+                              );
+                            }
+                          },
+                        ),
                       (
                         label: '删除图片',
                         key: const ValueKey('collab-image-menu-delete'),

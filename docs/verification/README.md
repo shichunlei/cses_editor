@@ -1,5 +1,9 @@
 # 验证索引
 
+- [日导向附件和音频修改入口配置（2026-11-22）](resource-edit-menu-20261122/report.md)
+
+- [日导向图片菜单配置（2026-11-22）](image-menu-configuration-20261122/report.md)
+
 - [实体引用底部弹窗标题单行省略（2026-11-22）](entity-mention-sheet-title-20261122/report.md)
 
 - [会议任务行内及底部面板图标回调（2026-11-22）](mention-icon-resolver-20261122/report.md)

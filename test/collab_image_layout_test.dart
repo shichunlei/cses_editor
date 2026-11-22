@@ -16,6 +16,80 @@ const _images = {
 
 /// 验证图片自然高度、正方形上限和只读模式的相同布局。
 void main() {
+  for (final edit in [true, false]) {
+    for (final caption in [true, false]) {
+      for (final hasCaption in [false, true]) {
+        testWidgets('图片菜单 edit=$edit caption=$caption existing=$hasCaption', (
+          tester,
+        ) async {
+          final node = Node(
+            type: ImageBlockKeys.type,
+            attributes: {
+              ImageBlockKeys.url: _images['square'],
+              collabImageAttribute: CollabImage(
+                captions: hasCaption
+                    ? const [CollabImageCaption(id: 'caption', text: '已有题注')]
+                    : const [],
+              ).toJson(),
+            },
+          );
+          final controller = DocumentEditorController(
+            document: Document(root: pageNode(children: [node])),
+            commandContext: EditorCommandContext(
+              configuration: EditorConfiguration(
+                showImageEditAction: edit,
+                showImageCaptionAction: caption,
+              ),
+              services: CollabHostServices(mediaUpload: _MenuUploadService()),
+            ),
+          );
+          final before = controller.editorState.document.toJson();
+          final scroll = EditorScrollController(
+            editorState: controller.editorState,
+            shrinkWrap: true,
+          );
+          await tester.pumpWidget(
+            MaterialApp(
+              home: Scaffold(
+                body: SizedBox(
+                  width: 360,
+                  child: DocumentEditorView(
+                    editorState: controller.editorState,
+                    scrollController: scroll,
+                  ),
+                ),
+              ),
+            ),
+          );
+          await tester.pumpAndSettle();
+          expect(find.text('已有题注'), hasCaption ? findsOneWidget : findsNothing);
+          await tester.tap(find.byKey(ValueKey('block-more-${node.id}')));
+          await tester.pumpAndSettle();
+          expect(
+            find.byKey(const ValueKey('collab-image-edit')),
+            edit ? findsOneWidget : findsNothing,
+          );
+          expect(
+            find.byKey(const ValueKey('collab-image-caption')),
+            caption ? findsOneWidget : findsNothing,
+          );
+          expect(
+            find.text(hasCaption ? '编辑题注' : '添加题注'),
+            caption ? findsOneWidget : findsNothing,
+          );
+          expect(find.text('在下方插入'), findsOneWidget);
+          expect(find.text('替换图片'), findsOneWidget);
+          expect(find.text('复制链接'), findsOneWidget);
+          expect(find.text('删除图片'), findsOneWidget);
+          expect(controller.editorState.document.toJson(), before);
+          await tester.pumpWidget(const SizedBox());
+          scroll.dispose();
+          await tester.runAsync(controller.close);
+          expect(tester.takeException(), isNull);
+        });
+      }
+    }
+  }
   for (final entry in _images.entries) {
     for (final preview in [false, true]) {
       testWidgets('${entry.key} preview=$preview 图片铺满宽度且高度最多为正方形', (
@@ -77,3 +151,6 @@ void main() {
     }
   }
 }
+
+/// 只标记宿主具备替换入口；本测试不调用文件选择或上传，不创建外部资源。
+class _MenuUploadService extends Fake implements EditorMediaUploadService {}

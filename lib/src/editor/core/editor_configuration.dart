@@ -344,6 +344,10 @@ final class EditorConfiguration {
   /// 有实际可显示的菜单时自动在最右侧附加收起键盘，不由列表配置。
   /// 菜单展示不改变块/格式能力、快捷输入或其他插入入口。
   /// [hiddenCommonInsertions] 隐藏添加面板「常用」中的指定入口，默认空；不改变已存块的支持范围。
+  /// [showImageEditAction] 默认 true，控制图片更多菜单的编辑图片入口，不改变图片渲染或存储。
+  /// [showImageCaptionAction] 默认 true，控制添加/编辑题注入口；false 时已有题注仍展示和保存。
+  /// [showAttachmentEditAction] 和 [showAudioEditAction] 分别控制附件、音频更多菜单的修改入口，默认 true。
+  /// 两项只控制入口，资源展示、保存、打开、替换和删除沿用原能力。
   /// [insertLinksAsText] 让「链接」使用行内格式，默认 false 沿用独立链接块。
   /// [listConversionContainerTypes]显式允许无Delta结构容器中的同父扁平列表互换类型，默认空。
   /// 类型须为非空字符串；不注册块、不扩展Enter/Backspace或缩进范围，也不允许跨父容器转换。
@@ -372,6 +376,10 @@ final class EditorConfiguration {
     Iterable<EditorKeyboardToolbarItem> keyboardToolbarItems =
         EditorKeyboardToolbarItem.defaults,
     Iterable<EditorKeyboardToolbarItem> hiddenCommonInsertions = const {},
+    bool showImageEditAction = true,
+    bool showImageCaptionAction = true,
+    bool showAttachmentEditAction = true,
+    bool showAudioEditAction = true,
     bool insertLinksAsText = false,
     Iterable<String> listConversionContainerTypes = const {},
     Iterable<String> listIndentContainerTypes = const {},
@@ -433,6 +441,10 @@ final class EditorConfiguration {
       false,
       keyboardToolbarItems: toolbarItems,
       hiddenCommonInsertions: Set.unmodifiable(hiddenCommonInsertions),
+      showImageEditAction: showImageEditAction,
+      showImageCaptionAction: showImageCaptionAction,
+      showAttachmentEditAction: showAttachmentEditAction,
+      showAudioEditAction: showAudioEditAction,
       insertLinksAsText: insertLinksAsText,
       listConversionContainerTypes: listContainers,
       listIndentContainerTypes: indentContainers,
@@ -450,6 +462,8 @@ final class EditorConfiguration {
   /// [documentFeatures]仅用于保留原协同装配，不能由本地入口开启。
   /// [keyboardToolbarItems]为冻结的工具栏入口及顺序，默认原六项。
   /// [hiddenCommonInsertions]为冻结的「常用」入口隐藏集合，默认空。
+  /// [showImageEditAction]/[showImageCaptionAction]分别控制图片编辑和题注菜单，默认 true，不修改正文。
+  /// [showAttachmentEditAction] 和 [showAudioEditAction] 分别控制附件、音频的修改入口，默认 true。
   /// [insertLinksAsText] 选择链接入口使用行内格式，默认 false。
   /// [listConversionContainerTypes]为冻结的列表类型转换父容器集合，默认空，不转移任何编辑资源。
   /// [listIndentContainerTypes]为冻结的平面列表编辑父容器集合，默认空。
@@ -469,6 +483,10 @@ final class EditorConfiguration {
     this.documentFeatures, {
     this.keyboardToolbarItems = EditorKeyboardToolbarItem.defaults,
     this.hiddenCommonInsertions = const {},
+    this.showImageEditAction = true,
+    this.showImageCaptionAction = true,
+    this.showAttachmentEditAction = true,
+    this.showAudioEditAction = true,
     this.insertLinksAsText = false,
     this.listConversionContainerTypes = const {},
     this.listIndentContainerTypes = const {},
@@ -520,6 +538,8 @@ final class EditorConfiguration {
   /// [structuralIndentation]为null时沿用当前值；false可为仅接受文字叶块的宿主关闭真实嵌套快捷键。
   /// [mediaContainers]合并允许四类媒体执行同父操作的结构容器。
   /// [hiddenCommonInsertions]叠加添加面板「常用」的隐藏入口；默认空，保留原配置。
+  /// [showImageEditAction]/[showImageCaptionAction]分别覆盖图片编辑/题注菜单可见性；null 保留当前值。
+  /// [showAttachmentEditAction] 和 [showAudioEditAction] 分别覆盖附件、音频修改入口的可见性，null 保留原值。
   /// [insertLinksAsText] 覆盖链接入口的插入形式，null 保留当前设置。
   /// 集合均复制并冻结；空白键抛ArgumentError，其余格式、容量与协同兼容开关保持。
   EditorConfiguration withHost({
@@ -528,6 +548,10 @@ final class EditorConfiguration {
     Iterable<String> listIndentContainers = const {},
     Iterable<String> mediaContainers = const {},
     Iterable<EditorKeyboardToolbarItem> hiddenCommonInsertions = const {},
+    bool? showImageEditAction,
+    bool? showImageCaptionAction,
+    bool? showAttachmentEditAction,
+    bool? showAudioEditAction,
     bool? insertLinksAsText,
     bool? structuralIndentation,
   }) {
@@ -571,6 +595,12 @@ final class EditorConfiguration {
         ...this.hiddenCommonInsertions,
         ...hiddenCommonInsertions,
       }),
+      showImageEditAction: showImageEditAction ?? this.showImageEditAction,
+      showImageCaptionAction:
+          showImageCaptionAction ?? this.showImageCaptionAction,
+      showAttachmentEditAction:
+          showAttachmentEditAction ?? this.showAttachmentEditAction,
+      showAudioEditAction: showAudioEditAction ?? this.showAudioEditAction,
       insertLinksAsText: insertLinksAsText ?? this.insertLinksAsText,
       listConversionContainerTypes: containers,
       listIndentContainerTypes: indentContainers,
@@ -631,6 +661,18 @@ final class EditorConfiguration {
 
   /// 添加面板「常用」中要隐藏的入口，默认空，配置持有不可变副本。
   final Set<EditorKeyboardToolbarItem> hiddenCommonInsertions;
+
+  /// 图片更多菜单是否展示编辑图片入口，默认 true；仅控制入口，不影响图片显示、保存和其他操作。
+  final bool showImageEditAction;
+
+  /// 图片更多菜单是否展示添加/编辑题注入口，默认 true；关闭后仍渲染并保存已有题注。
+  final bool showImageCaptionAction;
+
+  /// 附件更多菜单是否展示「修改附件」，默认 true。只控制入口，文件、元数据及其他操作保持原契约。
+  final bool showAttachmentEditAction;
+
+  /// 音频更多菜单是否展示「修改音频」，默认 true。只控制入口，播放、存储及其他操作保持原契约。
+  final bool showAudioEditAction;
 
   /// 链接入口改用行内格式；默认 false 时沿用独立链接块。
   final bool insertLinksAsText;
