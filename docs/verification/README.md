@@ -1,5 +1,7 @@
 # 验证索引
 
+- [实体引用菜单按类型显示删除文案（2026-11-24）](entity-mention-delete-label-20261124/report.md)
+
 - [日导向附件和音频修改入口配置（2026-11-22）](resource-edit-menu-20261122/report.md)
 
 - [日导向图片菜单配置（2026-11-22）](image-menu-configuration-20261122/report.md)

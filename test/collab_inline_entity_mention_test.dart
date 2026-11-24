@@ -148,7 +148,7 @@ void main() {
 
         await tester.tapAt(lastTitlePoint);
         await tester.pumpAndSettle();
-        await tester.tap(find.text('删除提及'));
+        await tester.tap(find.text('删除$kindName'));
         await tester.pumpAndSettle();
         expect(node.delta!.toPlainText(), '$before$after');
         controller.editorState.undoManager.undo();

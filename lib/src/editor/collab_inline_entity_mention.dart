@@ -187,7 +187,8 @@ TextStyle collabEntityMentionTextStyle(TextStyle style) => style.copyWith(
 /// 标题沿用行内引用图标，仅显示一行，超出可用宽度以省略号展示；原始名称完整交付详情回调。
 /// 显示限制不影响正文自然换行，也不改变引用原子身份、删除或卡片转换动作。
 /// 会议和任务详情优先调用各自的宿主回调，视图切换和删除在正文内执行。
-/// 新预览开关直接派发会议/任务详情；旧任务专用开关保留原只读面板。编辑时删除仅改正文。
+/// 新预览开关直接派发会议/任务详情；旧任务专用开关保留原只读面板。
+/// 编辑态的删除按钮按类型显示「删除会议」「删除任务」或「删除文档」，只移除正文中的引用。
 Future<void> showCollabEntityMentionActions(
   BuildContext context,
   EditorState state,
@@ -271,7 +272,7 @@ Future<void> showCollabEntityMentionActions(
                             : null,
                       ),
                       title: Text(
-                        '删除提及',
+                        '删除$kind',
                         style: state.editable
                             ? TextStyle(
                                 color: CollabModalColors.of(context).danger,

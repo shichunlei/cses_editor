@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-/// 验证实体引用面板仅截断显示标题，窄屏大字、空名称和详情原始参数均保持可用。
+/// 验证实体引用面板的标题省略、详情参数及按类型显示的删除动作；文档引用可撤销删除。
 void main() {
   for (final kind in ['meeting', 'task', 'doc']) {
     for (final title in ['', '短标题', '很长的引用名称需要单行省略显示且不能撑高弹窗标题\n第二行仍属于原始名称']) {
@@ -84,11 +84,25 @@ void main() {
         expect(paragraph.overflow, TextOverflow.ellipsis);
         expect(paragraph.didExceedMaxLines, long);
         expect(find.byTooltip('关闭'), findsOneWidget);
+        expect(find.text('删除$kindName'), findsOneWidget);
         await tester.tap(find.text('打开$kindName详情'));
         await tester.pumpAndSettle();
         expect(events.single.id, '$kind-id');
         expect(events.single.name, title);
         expect(jsonEncode(editor.editorState.document.toJson()), snapshot);
+
+        if (kind == 'doc' && title == '短标题') {
+          await tester.tap(find.text('打开引用'));
+          await tester.pumpAndSettle();
+          await tester.tap(find.text('删除文档'));
+          await tester.pumpAndSettle();
+          expect(node.delta!.toPlainText(), isEmpty);
+          expect(events, hasLength(1));
+          editor.editorState.undoManager.undo();
+          await tester.pumpAndSettle();
+          expect(jsonEncode(editor.editorState.document.toJson()), snapshot);
+        }
+
         await tester.pumpWidget(const SizedBox());
         await tester.runAsync(editor.close);
         expect(tester.takeException(), isNull);
