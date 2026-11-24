@@ -94,3 +94,5 @@ final body = DocumentEditorView(
 图片更多菜单可通过 `EditorConfiguration(showImageEditAction: false, showImageCaptionAction: false)` 隐藏编辑图片及添加/编辑题注入口，默认均为 `true`。`withHost` 可覆盖这两个开关，未传时继承原值。开关只影响菜单展示，已有图片和题注继续按原协议渲染、保存，其他媒体操作沿用原能力。
 
 附件和音频的更多菜单可分别通过 `EditorConfiguration(showAttachmentEditAction: false, showAudioEditAction: false)` 隐藏修改入口。两项默认开启，`withHost` 未传时继承原值，打开、替换、删除及其他操作沿用原能力。
+
+会议和任务行内引用的「切换为卡片视图」由 `EditorConfiguration` 的 `showMeetingMentionCardAction` 和 `showTaskMentionCardAction` 并列控制，会议默认开启，任务默认关闭。`withHost` 分别继承未传入的值。文档引用当前没有卡片切换能力。

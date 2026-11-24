@@ -8,6 +8,30 @@ import 'package:flutter_test/flutter_test.dart';
 /// 可配置能力的事务、命令、空光标与并存实例回归。
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+  test('会议和任务的卡片切换开关独立生效，宿主复制保留各自的值', () {
+    for (final config in [EditorConfiguration(), EditorConfiguration.document]) {
+      expect(config.allowsMentionCardAction('meeting'), isTrue);
+      expect(config.allowsMentionCardAction('task'), isFalse);
+    }
+
+    final taskOnly = EditorConfiguration(
+      showMeetingMentionCardAction: false,
+      showTaskMentionCardAction: true,
+    ).withHost();
+    expect(taskOnly.allowsMentionCardAction('meeting'), isFalse);
+    expect(taskOnly.allowsMentionCardAction('task'), isTrue);
+
+    final both = taskOnly.withHost(showMeetingMentionCardAction: true);
+    expect(both.allowsMentionCardAction('meeting'), isTrue);
+    expect(both.allowsMentionCardAction('task'), isTrue);
+    expect(both.allowsMentionCardAction('doc'), isFalse);
+
+    final neither = taskOnly.withHost(showTaskMentionCardAction: false);
+    expect(neither.allowsMentionCardAction('meeting'), isFalse);
+    expect(neither.allowsMentionCardAction('task'), isFalse);
+    expect(neither.allowsBlock(EditorBlock.meeting.type), isTrue);
+    expect(neither.allowsBlock(EditorBlock.task.type), isTrue);
+  });
   test('图片菜单默认开启，宿主复制继承配置并可独立覆盖', () {
     for (final config in [
       EditorConfiguration(),

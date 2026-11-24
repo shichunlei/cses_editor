@@ -8,8 +8,15 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 /// 验证会议与任务提及在窄屏真实编辑段落中的换行、配色、原子选区和操作菜单。
 void main() {
   for (final kind in ['task', 'meeting']) {
-    for (final dark in [true, false]) {
-      testWidgets('长 $kind 引用自然换行、配色与原子操作 dark=$dark', (tester) async {
+    for (final (dark, showMeeting, showTask) in [
+      (true, true, false),
+      (false, true, false),
+      (false, false, true),
+      (false, false, false),
+    ]) {
+      final cardAction = kind == 'meeting' ? showMeeting : showTask;
+      final name = '长 $kind 引用换行、配色与原子操作 dark=$dark card=$cardAction';
+      testWidgets(name, (tester) async {
         const before = '前面的正文';
         const after = '后';
         final kindName = kind == 'task' ? '任务' : '会议';
@@ -35,6 +42,10 @@ void main() {
         final controller = DocumentEditorController(
           document: Document(root: pageNode(children: [node])),
           commandContext: EditorCommandContext(
+            configuration: EditorConfiguration.document.withHost(
+              showMeetingMentionCardAction: showMeeting,
+              showTaskMentionCardAction: showTask,
+            ),
             localOnly: true,
             services: CollabHostServices(onMentionTap: events.add),
           ),
@@ -139,7 +150,7 @@ void main() {
         expect(find.text('打开$kindName详情'), findsOneWidget);
         expect(
           find.text('切换为卡片视图'),
-          kind == 'meeting' ? findsOneWidget : findsNothing,
+          cardAction ? findsOneWidget : findsNothing,
         );
         await tester.tap(find.text('打开$kindName详情'));
         await tester.pumpAndSettle();
@@ -155,6 +166,24 @@ void main() {
         await tester.pumpAndSettle();
         expect(node.delta!.toPlainText(), '$before\uFFFC$after');
         expect(paragraph, findsOneWidget);
+
+        if (kind == 'task' && showTask) {
+          await tester.tapAt(lastTitlePoint);
+          await tester.pumpAndSettle();
+          await tester.tap(find.text('切换为卡片视图'));
+          await tester.pumpAndSettle();
+          final children = controller.editorState.document.root.children;
+          expect(children.map((child) => child.type), [
+            'paragraph',
+            'task',
+            'paragraph',
+          ]);
+          expect(children.first.delta!.toPlainText(), before);
+          expect(children.last.delta!.toPlainText(), after);
+          controller.editorState.undoManager.undo();
+          await tester.pumpAndSettle();
+          expect(node.delta!.toPlainText(), '$before\uFFFC$after');
+        }
 
         await tester.pumpWidget(const SizedBox());
         await tester.pumpAndSettle();

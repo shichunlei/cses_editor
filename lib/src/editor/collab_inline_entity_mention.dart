@@ -15,7 +15,7 @@ import 'collab_mention_tap_handler.dart';
 
 /// 正文会议/任务/文档单字符对象，显示类型图标及名称；不附加@，不加载人员头像。
 /// 会议与任务共用无底色蓝字，配置的正文排版器将其标题展开以支持跨行，数据仍为单个原子。
-/// 编辑态点击打开操作面板，打开详情才通知宿主；会议可转卡片，三类均可删除引用。
+/// 编辑态点击打开操作面板，打开详情才通知宿主；会议和任务按会话配置提供卡片转换，三类均可删除引用。
 /// 显式启用的只读预览直接打开会议/任务详情，不显示编辑面板或修改实体业务数据。
 /// ```dart
 /// import 'package:flutter/material.dart';
@@ -57,7 +57,7 @@ class CollabInlineEntityMention extends StatefulWidget {
   State<CollabInlineEntityMention> createState() => _EntityMentionState();
 }
 
-/// 管理提及操作面板；菜单中的卡片转换仅对会议开放。
+/// 管理提及操作面板；卡片转换由引用类型及当前会话配置共同控制。
 class _EntityMentionState extends State<CollabInlineEntityMention> {
   /// 在借用[context]中显示行内实体名称和与操作面板共用的图标。
   /// 单字符视图中的会议/任务以无底色蓝字展示；正文投影负责自然跨行和原子偏移映射。
@@ -185,8 +185,9 @@ TextStyle collabEntityMentionTextStyle(TextStyle style) => style.copyWith(
 /// 在借用 [context] 中展示 [state] 的 [node] 在 UTF-16 [offset] 处的引用操作。
 /// Future 等待面板及选定操作完成，退场后复核目标与会话，不拥有编辑器或路由。
 /// 标题沿用行内引用图标，仅显示一行，超出可用宽度以省略号展示；原始名称完整交付详情回调。
-/// 显示限制不影响正文自然换行，也不改变引用原子身份、删除或卡片转换动作。
+/// 正文标题仍自然换行，面板操作基于捕获的引用原子身份。
 /// 会议和任务详情优先调用各自的宿主回调，视图切换和删除在正文内执行。
+/// 会议和任务的切换入口及退场后的转换执行均读取同一会话配置。
 /// 新预览开关直接派发会议/任务详情；旧任务专用开关保留原只读面板。
 /// 编辑态的删除按钮按类型显示「删除会议」「删除任务」或「删除文档」，只移除正文中的引用。
 Future<void> showCollabEntityMentionActions(
@@ -209,7 +210,8 @@ Future<void> showCollabEntityMentionActions(
     await handleCollabPreviewMentionTap(context, state, node, offset);
     return;
   }
-  final canSwitchView = target.entityType == 'meeting';
+  final configuration = EditorCommandContext.of(state).configuration;
+  final canSwitchView = configuration.allowsMentionCardAction(target.entityType);
   await runCollabMentionInteraction(context, state, (services) async {
     final openDetails = switch (target.entityType) {
       'meeting' => services.onMeetingMentionTap ?? services.onMentionTap,
@@ -290,11 +292,9 @@ Future<void> showCollabEntityMentionActions(
       ),
     );
 
-    if (!context.mounted ||
-        state.isDisposed ||
-        !identical(EditorCommandContext.of(state).services, services)) {
-      return;
-    }
+    if (!context.mounted || state.isDisposed) return;
+    final commandContext = EditorCommandContext.of(state);
+    if (!identical(commandContext.services, services)) return;
     final current = target.resolve(state);
     if (current == null || action == null) return;
     switch (action) {
@@ -302,7 +302,13 @@ Future<void> showCollabEntityMentionActions(
         final event = collabMentionTapAt(current, target.offset);
         if (event != null) await openDetails?.call(event);
       case _EntityAction.switchView:
-        if (!canSwitchView || !state.editable) return;
+        if (!canSwitchView ||
+            !commandContext.configuration.allowsMentionCardAction(
+              target.entityType,
+            ) ||
+            !state.editable) {
+          return;
+        }
         if (!await convertCollabEntityMentionToCard(state, target) &&
             context.mounted) {
           ScaffoldMessenger.maybeOf(
@@ -325,7 +331,7 @@ enum _EntityAction {
   /// 只通知宿主打开详情。
   detail,
 
-  /// 转换为正式会议卡片块。
+  /// 转换为正式会议或任务卡片块。
   switchView,
 
   /// 仅删除正文中的引用。

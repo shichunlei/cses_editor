@@ -1,5 +1,7 @@
 # 验证索引
 
+- [会议与任务行内引用卡片切换入口配置（2026-11-24）](meeting-mention-card-action-20261124/report.md)
+
 - [实体引用菜单按类型显示删除文案（2026-11-24）](entity-mention-delete-label-20261124/report.md)
 
 - [日导向附件和音频修改入口配置（2026-11-22）](resource-edit-menu-20261122/report.md)
