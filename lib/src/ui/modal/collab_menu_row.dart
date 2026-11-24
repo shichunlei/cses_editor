@@ -61,7 +61,7 @@ class CollabMenuRow extends StatelessWidget {
   /// 可用态标题颜色，null 时使用弹窗默认色。
   final Color? textColor;
 
-  /// 按借用 [context] 的密度和主题构建整行点击区，禁用时移除焦点与激活能力。
+  /// 按借用 [context] 的密度和主题构建整行点击区，禁用时移除点击回调。
   @override
   Widget build(BuildContext context) {
     final active = enabled && onTap != null;
@@ -72,7 +72,6 @@ class CollabMenuRow extends StatelessWidget {
         selected: selected,
         child: InkWell(
           onTap: active ? onTap : null,
-          canRequestFocus: active,
           borderRadius: BorderRadius.circular(10),
           child: CollabRowContent(
             title: title,
