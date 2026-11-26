@@ -1,0 +1,6 @@
+00:00 +0: loading /System/Volumes/Data/workspace/cses_editor/example/test/daily_guidance/journal_keyboard_caret_visibility_test.dart
+00:00 +0: caret clears keyboard and menu at (390.0, 1.0) single=false
+00:02 +1: caret clears keyboard and menu at (390.0, 1.0) single=true
+00:02 +2: caret clears keyboard and menu at (320.0, 1.5) single=false
+00:03 +3: caret clears keyboard and menu at (320.0, 1.5) single=true
+00:03 +4: All tests passed!

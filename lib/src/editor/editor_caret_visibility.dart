@@ -96,6 +96,9 @@ class _EditorCaretVisibilityState extends State<EditorCaretVisibility>
 
   /// 使用 [owner] 当前行的全局行框与最终正文视口比较，同步滚动必要距离。
   /// 不对只读、暂停、非当前路由或非折叠选区执行操作，也不重新附着输入连接。
+  /// 视口足够时上下各留 8 逻辑像素；空间紧张时等量缩小留白，优先容纳完整行框。
+  /// 行高超过可见高度时固定对齐行顶，不在互不相容的上下目标之间反复纠偏。
+  /// 无可用高度或无效行框时不滚动；目标仍受现有滚动范围约束，不扩展宿主布局。
   void _revealCaret(EditorState owner) {
     if (owner.isDisposed ||
         !owner.editable ||
@@ -133,15 +136,29 @@ class _EditorCaretVisibilityState extends State<EditorCaretVisibility>
     if (rects.isEmpty) return;
     final line = rects.last;
     final origin = viewport.localToGlobal(Offset.zero);
-    final top = origin.dy + 8;
-    final bottom =
-        math.min(
-          origin.dy + viewport.size.height,
-          view.physicalSize.height / view.devicePixelRatio - keyboardHeight,
-        ) -
-        8;
-    if (bottom <= top || !line.top.isFinite || !line.bottom.isFinite) return;
-    final delta = line.bottom > bottom
+    final visibleTop = origin.dy;
+    final visibleBottom = math.min(
+      origin.dy + viewport.size.height,
+      view.physicalSize.height / view.devicePixelRatio - keyboardHeight,
+    );
+    final visibleHeight = visibleBottom - visibleTop;
+    if (!visibleHeight.isFinite ||
+        visibleHeight <= 0 ||
+        !line.top.isFinite ||
+        !line.bottom.isFinite ||
+        line.height <= 0) {
+      return;
+    }
+    // 留白只能使用行框之外的空间；固定留白会在短视口中制造两个无法同时满足的边界。
+    final padding = math.min(
+      8.0,
+      math.max(0.0, (visibleHeight - line.height) / 2),
+    );
+    final top = visibleTop + padding;
+    final bottom = visibleBottom - padding;
+    final delta = line.height > visibleHeight
+        ? line.top - visibleTop
+        : line.bottom > bottom
         ? line.bottom - bottom
         : line.top < top
         ? line.top - top

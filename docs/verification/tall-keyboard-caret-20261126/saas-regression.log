@@ -1,0 +1,189 @@
+Waiting for another flutter command to release the startup lock...
+package:xbr_plugin_record has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_floating has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:vulcan has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:cses_common has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:flutter_easyrefresh_strong has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:loading_animation_widget has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+package:ai_barcode_scanner has `uses-material-design: true` set but the primary pubspec contains `uses-material-design: false`. If the application needs material icons, then `uses-material-design`  must be set to true.
+00:00 +0: loading /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart
+00:00 +0: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 独立主字段在公司正文测量与可见预览一致，普通正文不带业务标题
+00:00 +1: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 普通和导入日导向均隐藏会议和任务引用转换及媒体修改入口
+00:00 +2: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 公司分享 orient empty 补主标题且空正文零占位
+00:00 +3: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +4: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +5: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +6: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +7: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +8: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +9: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +10: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +11: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +12: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +13: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +14: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +15: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +16: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:01 +17: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:02 +18: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:02 +19: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:02 +20: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:02 +21: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:03 +22: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:03 +23: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:03 +24: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:03 +25: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:03 +26: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 记事本隐藏 Todo 直达按钮，仍能从 T 菜单添加待办并重开勾选
+00:03 +27: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +28: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +29: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +30: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +31: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +32: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +33: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +34: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +35: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +36: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +37: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_body_snapshot_test.dart: 准备截图时描述器重建 changed=false
+00:03 +38: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +39: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +40: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +41: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +42: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +43: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +44: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +45: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:03 +46: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:04 +47: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=20.0
+00:04 +48: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 可见公司预览保留音视频播放、暂停和可拖动进度，正文零写入
+00:04 +49: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 仅编辑封面也弹退出确认，放弃不写入
+00:04 +50: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 按预览海报原高度导出，渠道栏固定且取消直接返回来源 body=1560.0
+00:04 +51: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 可见预览图片点击放大、附件整卡打开并防重复，关闭后不写正文
+00:04 +52: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 键盘打开时连续退格跨过可见折行，正文滚动位置始终稳定
+00:04 +53: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 键盘打开时连续退格跨过可见折行，正文滚动位置始终稳定
+00:04 +54: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 键盘打开时连续退格跨过可见折行，正文滚动位置始终稳定
+00:04 +55: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 默认图片回调打开原 showImagesViewer，关闭后仍是同一只读正文
+00:04 +56: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 默认图片回调打开原 showImagesViewer，关闭后仍是同一只读正文
+00:05 +57: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 默认图片回调打开原 showImagesViewer，关闭后仍是同一只读正文
+00:05 +58: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 默认图片回调打开原 showImagesViewer，关闭后仍是同一只读正文
+00:05 +59: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 默认图片回调打开原 showImagesViewer，关闭后仍是同一只读正文
+00:05 +60: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 默认图片回调打开原 showImagesViewer，关闭后仍是同一只读正文
+00:05 +61: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 默认图片回调打开原 showImagesViewer，关闭后仍是同一只读正文
+00:05 +62: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 长文滚动时固定封面，键盘打开后仍可定位末行
+00:05 +63: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/templates/company_preview_actions_test.dart: 长正文首屏按钮可见，滚动位置固定且末行不被遮挡 inset=24.0
+00:05 +64: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:05 +65: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:05 +66: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:05 +67: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:05 +68: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:05 +69: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:06 +70: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:06 +71: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享截图失败恢复等待播放器关闭，测量和截图静态且无写入
+00:06 +72: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 长文滚动时固定封面，键盘打开后仍可定位末行
+00:06 +73: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 长文滚动时固定封面，键盘打开后仍可定位末行
+00:06 +74: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享媒体关闭失败恢复等待播放器关闭，测量和截图静态且无写入
+00:06 +75: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享媒体关闭失败恢复等待播放器关闭，测量和截图静态且无写入
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [CSES-LOG] [ERROR] [2026-11-26 15:07:15.504] package:cses_saas/modules/templates/state/template_poster_state_mixin.dart:221[0m
+[38;5;1m│ 🚀 Template poster capture failed[0m
+[38;5;1m│ Bad state: native media dispose failed[0m
+[38;5;1m│ #0      _PlaybackPlatform.dispose (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart:1575:20)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #1      VideoPlayerController.dispose (package:video_player/video_player.dart:713:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #2      _VideoBlockState._disposeVideo (package:cses_editor/src/editor/collab_video_block.dart:223:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      EditorResourceTracker.trackDisposal.<anonymous closure> (package:cses_editor/src/ui/modal/editor_resource_scope.dart:83:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #4      Future.wait.<anonymous closure> (dart:async/future.dart:546:21)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #5      EditorResourceTracker._drainDisposals (package:cses_editor/src/ui/modal/editor_resource_scope.dart:102:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #6      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #7      Future.timeout.<anonymous closure> (dart:async/future_impl.dart:1061:7)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #8      _PreviewContentOwnerState._setCaptureMode (package:cses_saas/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page.dart:509:20)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #9      _CompanyTemplateShellState.prepareCapture (package:cses_saas/modules/templates/company/widgets/company_template_shell.dart:507:5)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #10     TemplatePosterStateMixin.share (package:cses_saas/modules/templates/state/template_poster_state_mixin.dart:183:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #11     Future.wait.<anonymous closure> (dart:async/future.dart:546:21)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #12     _waitForClose.<anonymous closure> (file:///System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart:1606:46)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:07 +76: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享媒体关闭失败恢复等待播放器关闭，测量和截图静态且无写入
+00:07 +77: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 统一记事本 result long 保持单编辑树、业务日和横格，生成视口图片
+00:07 +77: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享关闭超时恢复等待播放器关闭，测量和截图静态且无写入
+[38;5;1m┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[38;5;1m│ [CSES-LOG] [ERROR] [2026-11-26 15:07:15.906] package:cses_saas/modules/templates/state/template_poster_state_mixin.dart:221[0m
+[38;5;1m│ 🚀 Template poster capture failed[0m
+[38;5;1m│ TimeoutException after 0:00:15.000000: Future not completed[0m
+[38;5;1m│ #0      Future.timeout.<anonymous closure> (dart:async/future_impl.dart:1042:24)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #1      _PreviewContentOwnerState._setCaptureMode (package:cses_saas/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page.dart:509:20)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #2      _CompanyTemplateShellState.prepareCapture (package:cses_saas/modules/templates/company/widgets/company_template_shell.dart:507:5)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ #3      TemplatePosterStateMixin.share (package:cses_saas/modules/templates/state/template_poster_state_mixin.dart:183:9)[0m
+[38;5;1m│ <asynchronous suspension>[0m
+[38;5;1m│ [0m
+[38;5;1m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+00:07 +78: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 播放中分享关闭超时恢复等待播放器关闭，测量和截图静态且无写入
+00:07 +79: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 空正文 封面必填 Toast，保留正文且补字后可保存
+00:07 +80: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 空正文 封面必填 Toast，保留正文且补字后可保存
+00:07 +81: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 空正文 封面必填 Toast，保留正文且补字后可保存
+00:07 +82: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: result 离屏测量静态音视频、附件保留完整正文，零播放器、零事务并等待关闭
+00:07 +83: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 纯空白 封面必填 Toast，保留正文且补字后可保存
+00:07 +84: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 纯空白 封面必填 Toast，保留正文且补字后可保存
+00:07 +85: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 纯空白 封面必填 Toast，保留正文且补字后可保存
+00:07 +86: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 纯空白 封面必填 Toast，保留正文且补字后可保存
+00:07 +87: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 纯空白 封面必填 Toast，保留正文且补字后可保存
+00:07 +88: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/guidance_company_preview_page_test.dart: 失败可重试，不展示列表正文；重建不重读
+00:07 +89: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 仅图片 封面必填 Toast，保留正文且补字后可保存
+00:07 +90: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 仅图片 封面必填 Toast，保留正文且补字后可保存
+00:07 +91: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 仅视频 封面必填 Toast，保留正文且补字后可保存
+00:08 +92: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 图片和视频 封面必填 Toast，保留正文且补字后可保存
+00:08 +93: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 图片和视频保存后离开 封面必填 Toast，保留正文且补字后可保存
+00:08 +94: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 空正文 封面必填 Toast，保留正文且补字后可保存
+00:08 +95: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 纯空白 封面必填 Toast，保留正文且补字后可保存
+00:08 +96: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 仅图片 封面必填 Toast，保留正文且补字后可保存
+00:08 +97: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 仅视频 封面必填 Toast，保留正文且补字后可保存
+00:08 +98: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 图片和视频 封面必填 Toast，保留正文且补字后可保存
+00:09 +99: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 图片和视频保存后离开 封面必填 Toast，保留正文且补字后可保存
+00:09 +100: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存业务失败后正文可继续编辑，重试提交最新正文
+00:09 +101: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存异常后正文可继续编辑，重试提交最新正文
+00:09 +102: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后离开失败时留在原正文，继续修改后再离开只提交最新内容
+00:09 +103: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 快速重复保存与回执等待期间再次点击只发一次保存请求
+00:09 +104: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 顶部保存时卸载页面，迟到的保存回执不发布事件或重读详情
+00:09 +105: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 顶部保存时替换文档存储，迟到的保存回执不发布事件或重读详情
+00:10 +106: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后离开时卸载页面，迟到的保存回执不发布事件或重读详情
+00:10 +107: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后离开时替换文档存储，迟到的保存回执不发布事件或重读详情
+00:10 +108: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 原模板交付 valid 保存后已有详情只读取一次
+00:10 +109: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 原模板交付 null 保存后已有详情只读取一次
+00:10 +110: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 原模板交付 empty 保存后已有详情只读取一次
+00:10 +111: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 原模板交付 unsupported 保存后已有详情只读取一次
+00:10 +112: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 原模板交付重读失败保留已保存结果，重试只再读详情
+00:10 +113: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 只有旧封面填写区的日导向修改后按 v9 保存并回读同一记录
+00:10 +114: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 旧富文本保留编辑，跨端不支持的数据阻止覆盖原记录
+00:11 +115: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 媒体块选文件、替换、同栏插入、删除、撤销并重开
+00:14 +116: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 媒体块选文件、替换、同栏插入、删除、撤销并重开
+00:17 +117: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后离开用正式 ID 启动重读，读取尚未完成也返回保存成功
+00:18 +118: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 保存后等待详情期间卸载页面，迟到失败不弹 Toast 或改变保存结果
+00:18 +119: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 已有记录重读使用原 ID，宿主卸载后不应用迟到详情
+00:18 +120: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 记事本长文、多业务条目、自定义栏目保存并重开同一记录
+00:19 +121: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 记事本长文、多业务条目、自定义栏目保存并重开同一记录
+00:20 +122: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: SaaS 多选一次填入同一业务行，按真实 ID 去重且取消保留空行
+00:21 +123: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 人员选择期间撤销编辑权限后丢弃迟到的多选结果并保留空业务行
+00:21 +124: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: orient 顶部默认只显示返回和保存
+00:21 +125: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: result 顶部默认只显示返回和保存
+00:21 +126: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 公共栏目表单取消不改正文，确认名称后支持撤销和重做
+00:21 +127: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 公共退出菜单继续编辑和取消均保留修改，保存后离开只提交一次
+00:22 +128: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 划词创建的会议以行内引用保存并在重开后派发详情
+00:22 +129: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 划词任务表单预填本次标题，成功后保存原生引用并可在重开后打开详情
+00:24 +130: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 选人取消后划词浮层仍在时返回并继续编辑不触发构建期间权限通知
+00:24 +131: /System/Volumes/Data/workspace/cses/cses.saas/test/modules/mutualism/presentation/orient_result/editor/saas_guidance_editor_flow_test.dart: 正文格式不支持时展示具体原因，重试不创建编辑器或覆盖记录
+00:24 +132: All tests passed!
