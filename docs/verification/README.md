@@ -282,3 +282,5 @@
 - [当前样例分享图间距确认](share-brand-confirmation-20261030/report.md)
 
 - [今日导向预览与图片分享提交前验证](daily-guidance-commit-20261030/report.md)
+
+- [宿主封面公共入口验证](host-cover-api-20261126/report.md)

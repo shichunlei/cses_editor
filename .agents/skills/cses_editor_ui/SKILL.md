@@ -14,7 +14,7 @@ description: 在 cses_editor 根包与 example 宿主中新增或调整 Flutter 
 - 根包 `lib/` 是可复用离线编辑器；公共展示在 `lib/src/ui/modal/`，选区、命令、草稿应用及编辑会话在 `lib/src/editor/`。沿用已有 `Collab*` 名称，不为样式迁移批量改名。
 - `example/` 是独立宿主包，通过 `path: ..` 使用根包；成果导向留在 `example/lib/daily_guidance/`。页面导航、封面、纸张背景、栏目、预览分享/点赞及宿主服务归 example，不能为统一弹窗把它们移入根库或另拆包。
 - 根包跨目录使用精确 `package:cses_editor/src/...` import；example 内部跨目录使用 `package:cses_offline_example/...`。example 使用根库只能经 `package:cses_editor/cses_editor.dart` 等实际存在的公开入口，不能导入根包 `src/`。
-- 先核对公开入口：当前 `lib/cses_editor.dart` 没有导出公共弹窗 Widget。宿主 UI 可在宿主内按同一视觉/布局规则组合；有实际跨包复用需求时，再设计最小公开契约并验证消费者，不为直接借用内部 Widget 扩大导出。
+- 先核对公开入口：`lib/cses_editor.dart` 为宿主封面操作公开 `showEditorMediaSourceSheet`、`runEditorHeaderAction`、`showCollabBottomSheet` 与 `CollabBottomSheet`，其余内部弹窗不整体导出。宿主拥有业务草稿和保存命令，借用实例上传端口；位置等业务内容由宿主组合，不导入根包 src/。新增跨包能力仍需最小公开契约及消费者验证。
 - 普通页面遵循现有信息层级、间距、Lucide 图标及交互一致性；成果导向保留既有纸张、封面和栏目风格。弹窗紫色主题只应用到弹窗子树，不把整页强制套进弹窗外壳或替换所有背景颜色。
 
 禁止引入原协同包、Common SDK、Rust/FRB/Yrs、协同数据库、外部工作区路径依赖或本地 AppFlowy 副本；依赖约束以根 `AGENTS.md` 和 `pubspec.yaml` 为准。现有锁相关模型只按实例注入能力使用，不因旧名称恢复协同运行时。纯本地 `EditorCommandContext.localOnly` 模式不额外展示账号、锁或分享能力。

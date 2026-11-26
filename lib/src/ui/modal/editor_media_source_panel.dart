@@ -462,7 +462,7 @@ class _MediaSourceSheetState extends State<EditorMediaSourcePanel> {
                   const SizedBox(width: 9),
                   Expanded(
                     child: Text(
-                      '使用网络$_label时，请确保链接可被文档成员访问。',
+                      '请确保可被访问',
                       style: TextStyle(fontSize: 12, color: c.accent),
                     ),
                   ),

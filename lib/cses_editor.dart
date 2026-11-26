@@ -58,3 +58,10 @@ export 'src/model/collab_person_card.dart' show CollabPersonCardData;
 
 export 'src/ui/modal/editor_resource_scope.dart'
     show EditorResourceStatus, EditorResourceTracker, EditorResourceScope;
+
+// 宿主封面操作复用资源面板和输入会话；业务草稿及保存仍由宿主持有。
+export 'src/editor/editor_media_source_sheet.dart'
+    show showEditorMediaSourceSheet;
+export 'src/editor/editor_shortcut_toolbar.dart' show runEditorHeaderAction;
+export 'src/ui/modal/collab_modal.dart' show showCollabBottomSheet;
+export 'src/ui/modal/collab_bottom_sheet.dart' show CollabBottomSheet;

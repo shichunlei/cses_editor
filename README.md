@@ -96,3 +96,24 @@ final body = DocumentEditorView(
 附件和音频的更多菜单可分别通过 `EditorConfiguration(showAttachmentEditAction: false, showAudioEditAction: false)` 隐藏修改入口。两项默认开启，`withHost` 未传时继承原值，打开、替换、删除及其他操作沿用原能力。
 
 会议和任务行内引用的「切换为卡片视图」由 `EditorConfiguration` 的 `showMeetingMentionCardAction` 和 `showTaskMentionCardAction` 并列控制，会议默认开启，任务默认关闭。`withHost` 分别继承未传入的值。文档引用当前没有卡片切换能力。
+
+
+### 宿主封面操作
+
+`package:cses_editor/cses_editor.dart` 提供封面操作所需的最小入口：
+`showEditorMediaSourceSheet`、`runEditorHeaderAction`、`showCollabBottomSheet`、`CollabBottomSheet`。
+业务封面草稿、位置单位和保存接口归宿主，根包只借用实例上传服务、保护输入会话并管理弹窗资源。
+
+```dart
+import 'package:cses_editor/cses_editor.dart';
+import 'package:flutter/material.dart';
+
+Future<EditorMediaSource?> chooseCover(BuildContext context, DocumentEditorController editor) =>
+    runEditorHeaderAction(context, editor.editorState, () => showEditorMediaSourceSheet(
+      context, blockType: 'document_banner', editorState: editor.editorState,
+      canEdit: () => context.mounted && !editor.editorState.isDisposed && editor.editorState.editable,
+    ));
+```
+
+取消返回 null，选择/上传失败留在面板重试；调用方在异步完成后仍须核对所属页面、文档与权限，
+只在有效会话中应用到草稿。上传端口由当前编辑器的 `CollabHostServices.mediaUpload` 提供，不使用账号或服务全局兜底。
