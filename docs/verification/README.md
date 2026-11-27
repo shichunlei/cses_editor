@@ -1,5 +1,7 @@
 # 验证索引
 
+- [iOS 光标菜单选择局部文字（2026-11-27）](ios-selection-menu-20261127/report.md)
+
 - [极高键盘下的光标行可见性与滚动稳定性（2026-11-26）](tall-keyboard-caret-20261126/report.md)
 
 - [会议与任务行内引用卡片切换入口配置（2026-11-24）](meeting-mention-card-action-20261124/report.md)

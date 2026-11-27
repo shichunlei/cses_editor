@@ -12,7 +12,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// 移动正文的划词菜单，复用 AppFlowy 选区定位、拖动结束和滚动后的浮栏生命周期。
-/// 编辑模式提供剪贴板、格式、链接、公式转换及宿主会议和任务创建；只读仅复制与全选。
+/// 编辑模式提供剪贴板、格式、链接、公式转换及宿主会议和任务创建；只读保留选择与复制能力。
 /// ```dart
 /// import 'package:flutter/material.dart';
 /// import 'package:applowy_editor_fork/applowy_editor_fork.dart';
@@ -77,6 +77,7 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
 
   /// 使用 [overlayContext] 和全局 [anchor] 构建系统样式菜单；[close] 归还上游浮层。
   /// 仅捕获受支持正文，跨单元格、容器、未知占位及代码选区不显示菜单。
+  /// iOS 折叠光标可通过“选择”进入词选区；已有范围继续使用同一浮栏和手柄。
   Widget _buildMenu(
     BuildContext overlayContext,
     Offset anchor,
@@ -105,6 +106,10 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
           key: const ValueKey('editor-selection-menu'),
           anchors: TextSelectionToolbarAnchors(primaryAnchor: anchor),
           buttonItems: [
+            if (defaultTargetPlatform == TargetPlatform.iOS &&
+                !expanded &&
+                _wordAtCaret(state, range) != null)
+              _button('选择', () => _selectWord(state, range), close),
             if (expanded) _button('复制', () => _copy(state, range), close),
             if (editable && expanded)
               _button('剪切', () => _copy(state, range, cut: true), close),
@@ -189,6 +194,55 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
     );
   }
 
+  /// 从借用 [state] 的光标快照 [range] 查询可选择的词，不修改正文或选区。
+  /// 菜单展示和执行时均重新校验组件、会话、正文快照及当前光标；旧菜单不能移动新光标。
+  /// 复用已挂载 Selectable 的词边界和行内引用原子映射，不自行分词或拆分行内对象。
+  /// 段尾没有右侧字符时从前一个 Unicode 码点查询末词；段内空白不向两侧猜测。
+  /// 空白、空段落、未布局、越界或跨块结果返回 null；只读正文同样允许选择。
+  Selection? _wordAtCaret(EditorState state, CollabTextRange range) {
+    if (!mounted ||
+        !identical(widget.editorState, state) ||
+        state.isDisposed ||
+        state.selectionType == SelectionType.block) {
+      return null;
+    }
+    final caret = range.resolve(state);
+    if (caret == null || !caret.isCollapsed || state.selection != caret) {
+      return null;
+    }
+    final node = state.getNodeAtPath(caret.start.path);
+    final delta = node?.delta;
+    if (delta == null || delta.isEmpty) return null;
+    final text = delta.toPlainText();
+    final position = caret.start.offset == text.length
+        ? caret.start.copyWith(offset: delta.prevRunePosition(text.length))
+        : caret.start;
+    final word = node?.selectable
+        ?.getWordBoundaryInPosition(position)
+        ?.normalized;
+    if (word == null ||
+        word.isCollapsed ||
+        !word.start.path.equals(caret.start.path) ||
+        !word.end.path.equals(caret.start.path) ||
+        word.start.offset < 0 ||
+        word.end.offset > text.length ||
+        text.substring(word.start.offset, word.end.offset).trim().isEmpty) {
+      return null;
+    }
+    return word;
+  }
+
+  /// 将借用 [state] 的有效光标快照 [range] 扩展为词选区；失效时不产生副作用。
+  /// 同步发布选区通知，由现有服务恢复双端手柄及范围菜单，不写正文或撤销历史。
+  /// 清除光标拖动附加状态，避免继承长按期间的隐藏菜单/暂停输入标记。
+  void _selectWord(EditorState state, CollabTextRange range) {
+    final word = _wordAtCaret(state, range);
+    if (word == null) return;
+    state.selectionType = SelectionType.inline;
+    state.selectionExtraInfo = null;
+    state.selection = word;
+  }
+
   /// 在借用 [state] 的 [range] 仍有效且可编辑时等待 [action]；旧浮栏不得改写远端更新后的文字。
   Future<void> _withRange(
     EditorState state,
@@ -205,10 +259,11 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
     await action();
   }
 
-  /// 用 [label] 标注动作，[action] 必须等待全部异步工作，[close] 在动作开始前移除浮栏。
+  /// 用 [label] 标注动作，[action] 可同步更新选区或返回完整异步任务，[close] 在动作开始前移除浮栏。
+  /// 返回菜单项；所有动作共用执行锁与异常边界，异步动作完成前拒绝重复操作。
   ContextMenuButtonItem _button(
     String label,
-    Future<void> Function() action,
+    FutureOr<void> Function() action,
     VoidCallback close,
   ) => ContextMenuButtonItem(
     label: label,
@@ -219,8 +274,9 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
     },
   );
 
-  /// 串行等待借用 [action]，处理异常并检查组件存活；迟到动作不重新打开浮层。
-  Future<void> _run(Future<void> Function() action) async {
+  /// 执行并等待借用 [action] 的同步或异步操作，失败由菜单边界报告并在存活时提示。
+  /// 返回的 Future 在操作与错误处理结束后完成；finally 释放执行锁，不持有额外资源。
+  Future<void> _run(FutureOr<void> Function() action) async {
     _busy = true;
     try {
       await action();
