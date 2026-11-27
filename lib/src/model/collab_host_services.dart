@@ -39,6 +39,54 @@ typedef EditorMediaOpener =
       String? name,
     );
 
+/// 在 [context] 中提供宿主文字链接表单，不写正文或持有导航上下文。
+/// [initialUrl] 为选区统一的原链接；缺失或混合链接时传空字符串。
+/// [canRemove] 表示选区存在可移除的链接；[validate] 用编辑器规则校验原始输入，
+/// 返回 null 表示有效，非空错误说明用于表单。等弹层完整退场后返回确认的地址，
+/// null 表示取消，空字符串只用于显式移除。表单及输入资源由宿主持有和释放。
+///
+/// ```dart
+/// import 'package:cses_editor/cses_editor.dart';
+/// import 'package:flutter/material.dart';
+///
+/// final linkServices = CollabHostServices(
+///   editTextLink: (context, {required initialUrl, required canRemove, required validate}) async {
+///     final form = GlobalKey<FormState>();
+///     var value = initialUrl;
+///     final route = MaterialPageRoute<String>(
+///       builder: (formContext) => Scaffold(
+///         body: Form(
+///           key: form,
+///           child: Column(children: [
+///             TextFormField(initialValue: initialUrl, onChanged: (text) => value = text,
+///               validator: (text) => validate(text ?? '')),
+///             if (canRemove)
+///               TextButton(onPressed: () => Navigator.pop(formContext, ''), child: const Text('移除')),
+///             TextButton(onPressed: () => Navigator.pop(formContext), child: const Text('取消')),
+///             TextButton(
+///               onPressed: () {
+///                 if (form.currentState!.validate()) Navigator.pop(formContext, value);
+///               },
+///               child: const Text('保存'),
+///             ),
+///           ]),
+///         ),
+///       ),
+///     );
+///     final result = await Navigator.of(context).push(route);
+///     await route.completed;
+///     return result;
+///   },
+/// );
+/// ```
+typedef CollabTextLinkEditor =
+    Future<String?> Function(
+      BuildContext context, {
+      required String initialUrl,
+      required bool canRemove,
+      required String? Function(String input) validate,
+    });
+
 /// Host integrations used by the single active document, without session globals.
 ///
 /// ```dart
@@ -60,6 +108,7 @@ class CollabHostServices {
   /// [mediaUpload] is borrowed and must use the host's current authentication.
   /// [openMedia] handles menu opens and direct preview attachment opens; null uses the platform URL action.
   /// [showFeedback] shows transient messages using the host UI; null uses the editor's local feedback.
+  /// [editTextLink] 借用宿主链接表单；未注入时用内置表单，链接写入仍由编辑器负责。
   /// [mentionAvatarBuilder] 由宿主构建头像；null仅显示姓名，无默认头像或图片请求。
   /// [mentionIconResolver] 同步提供会议/任务行内及引用面板图标，null 或返回 null 使用默认图标。
   /// [pickMentionUser] 由宿主打开单选人员界面；null禁用选人，已有提及不受影响。
@@ -100,6 +149,7 @@ class CollabHostServices {
     this.mediaUpload,
     this.openMedia,
     this.showFeedback,
+    this.editTextLink,
     this.documentMetadata,
     this.mentionAvatarBuilder,
     this.mentionIconResolver,
@@ -134,6 +184,7 @@ class CollabHostServices {
         mediaUpload: mediaUpload,
         openMedia: openMedia,
         showFeedback: showFeedback,
+        editTextLink: editTextLink,
         documentMetadata: documentMetadata,
         mentionAvatarBuilder: mentionAvatarBuilder,
         mentionIconResolver: mentionIconResolver,
@@ -151,6 +202,9 @@ class CollabHostServices {
         createTaskFromSelection: createTaskFromSelection,
         onTaskMentionTap: onTaskMentionTap,
       );
+
+  /// 由宿主展示的文字链接表单。可空，编辑器不会释放宿主的导航或输入资源。
+  final CollabTextLinkEditor? editTextLink;
 
   /// 新建人员卡片的资料读取器；返回null表示资料缺失，异常阻止插入并由工具栏报告。
   /// 宿主持有账号与请求，结果只在原编辑会话仍有效时使用；不在打开旧卡片时调用。

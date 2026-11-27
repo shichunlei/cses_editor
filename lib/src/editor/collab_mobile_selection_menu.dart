@@ -170,7 +170,11 @@ class _CollabMobileSelectionMenuState extends State<CollabMobileSelectionMenu> {
                 () => _withRange(
                   state,
                   range,
-                  () => showEditorTextLink(this.context, state),
+                  () => showEditorTextLink(
+                    this.context,
+                    state,
+                    isEditorCurrent: () => identical(widget.editorState, state),
+                  ),
                 ),
                 close,
               ),

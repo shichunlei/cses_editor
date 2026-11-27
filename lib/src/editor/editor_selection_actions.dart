@@ -165,16 +165,35 @@ Future<void> showEditorSelectionReference(
   }
 }
 
-/// 在借用 [context]/[editor] 中编辑单段文字链接；取消不写入。
-/// 仅修改 href，保留原文和其他格式；弹窗完整退场后重新核对稳定身份、原文及权限。
-/// 错误由此边界报告，失败保留原文并显示提示，不拥有编辑器。
+/// 在借用 [context] 中为 [editor] 的单段选区打开文字链接表单。
+/// [isEditorCurrent] 由调用方校验当前视图仍使用原编辑器。弹窗的资源由展示方持有；
+/// Future 等待退场、选区复核、独立撤销事务以及正文焦点收口。取消不写入，
+/// 失效结果不导航或改正文。仅修改 href，保留文字及其他格式。
 Future<void> showEditorTextLink(
   BuildContext context,
-  EditorState editor,
-) async {
+  EditorState editor, {
+  required bool Function() isEditorCurrent,
+}) async {
+  final commands = EditorCommandContext.of(editor);
+  final document = editor.document;
   final range = CollabTextRange.capture(editor);
-  if (!editor.editable || range == null || !range.canConvert) return;
-  final selection = range.resolve(editor)!;
+
+  /// 确认当前页面仍借用同一编辑视图、文档和命令上下文。
+  bool isCurrent() =>
+      context.mounted &&
+      isEditorCurrent() &&
+      !editor.isDisposed &&
+      identical(editor.document, document) &&
+      identical(EditorCommandContext.of(editor), commands);
+
+  if (!isCurrent() ||
+      range == null ||
+      !range.canConvert ||
+      !commands.configuration.allowsFormat(AppFlowyRichTextKeys.href)) {
+    return;
+  }
+  final selection = range.resolve(editor);
+  if (selection == null || !editor.canInputAt(selection)) return;
   final node = editor.getNodeAtPath(selection.start.path)!;
   final selected = node.delta!.slice(
     selection.start.offset,
@@ -183,26 +202,49 @@ Future<void> showEditorTextLink(
   final links = selected
       .map((op) => op.attributes?[AppFlowyRichTextKeys.href])
       .toList();
+  if (links.isEmpty) return;
   final initial =
       links.every((link) => link == links.first) && links.first is String
       ? links.first as String
       : '';
+  final canRemove = links.any((link) => link is String);
+  final present = commands.services.editTextLink;
+  var revoked = false;
+
+  /// 记录弹窗期间的只读切换；即使权限后来恢复，也不能复用旧编辑结果。
+  void checkPermission() {
+    if (!editor.editable) revoked = true;
+  }
+
+  editor.editableNotifier.addListener(checkPermission);
   try {
     await runEditorHeaderAction<void>(context, editor, () async {
-      final result = await showCollabDialog<String>(
-        context: context,
-        builder: (dialogContext) {
-          return _TextLinkDialog(
-            initial: initial,
-            canRemove: links.any((link) => link is String),
-          );
-        },
-      );
+      final result = present == null
+          ? await showCollabDialog<String>(
+              context: context,
+              builder: (_) =>
+                  _TextLinkDialog(initial: initial, canRemove: canRemove),
+            )
+          : await present(
+              context,
+              initialUrl: initial,
+              canRemove: canRemove,
+              validate: _validateTextLink,
+            );
 
       if (result == null ||
           !context.mounted ||
-          editor.isDisposed ||
+          revoked ||
+          !isCurrent() ||
           !editor.editable) {
+        return;
+      }
+      // 继续在写入边界验证，宿主只能交付地址或移除指令，无法绕过链接规则。
+      final error = result.isEmpty && canRemove
+          ? null
+          : _validateTextLink(result);
+      if (error != null) {
+        _selectionMessage(context, error);
         return;
       }
       final current = range.resolve(editor);
@@ -210,6 +252,7 @@ Future<void> showEditorTextLink(
         _selectionMessage(context, '选中文字已变化，请重新选择');
         return;
       }
+      if (!editor.canInputAt(current)) return;
       if (editor.undoManager.undoStack.isNonEmpty) {
         editor.undoManager.undoStack.last.seal();
       }
@@ -219,18 +262,35 @@ Future<void> showEditorTextLink(
           target,
           current.start.offset,
           current.end.offset - current.start.offset,
-          {AppFlowyRichTextKeys.href: result.isEmpty ? null : result},
+          {AppFlowyRichTextKeys.href: result.isEmpty ? null : result.trim()},
         ),
         withUpdateSelection: false,
         skipHistoryDebounce: true,
       );
-    });
+    }, canRestore: () => !revoked && isCurrent() && editor.editable);
   } catch (error, stack) {
-    EditorCommandContext.of(
-      editor,
-    ).services.report('文字链接修改失败', error, stack, 'DocCollab');
-    if (context.mounted) _selectionMessage(context, '链接修改失败，请重试');
+    commands.services.report('文字链接修改失败', error, stack, 'DocCollab');
+    if (context.mounted && !revoked && isCurrent()) {
+      _selectionMessage(context, '链接修改失败，请重试');
+    }
+  } finally {
+    editor.editableNotifier.removeListener(checkPermission);
   }
+}
+
+/// 校验 [input] 去首尾空格后的 URL。支持 HTTP(S)、邮箱及电话，保留原有的长度限制。
+/// 返回 null 表示有效；无效结果提供同一份字段错误。空字符串移除指令由调用方独立处理。
+String? _validateTextLink(String input) {
+  final value = input.trim();
+  final uri = Uri.tryParse(value);
+  final valid =
+      value.length <= 4096 &&
+      !RegExp(r'\s').hasMatch(value) &&
+      uri != null &&
+      ((const {'http', 'https'}.contains(uri.scheme) && uri.host.isNotEmpty) ||
+          (const {'mailto', 'tel'}.contains(uri.scheme) &&
+              uri.path.isNotEmpty));
+  return valid ? null : '请输入完整的 http(s)、mailto 或 tel 链接';
 }
 
 /// 在借用 [context]/[editor] 中预填选中文字并预览 LaTeX，确认后复用行内公式原子命令。
@@ -319,17 +379,9 @@ class _TextLinkDialogState extends State<_TextLinkDialog> {
   /// 校验显式协议，禁止脚本或不完整地址；合法结果只返回调用方，尚不写正文。
   void _confirm() {
     final value = _input.text.trim();
-    final uri = Uri.tryParse(value);
-    final valid =
-        value.length <= 4096 &&
-        !RegExp(r'\s').hasMatch(value) &&
-        uri != null &&
-        ((const {'http', 'https'}.contains(uri.scheme) &&
-                uri.host.isNotEmpty) ||
-            (const {'mailto', 'tel'}.contains(uri.scheme) &&
-                uri.path.isNotEmpty));
-    if (!valid) {
-      setState(() => _error = '请输入完整的 http(s)、mailto 或 tel 链接');
+    final error = _validateTextLink(value);
+    if (error != null) {
+      setState(() => _error = error);
       return;
     }
     Navigator.pop(context, value);

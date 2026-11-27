@@ -26,7 +26,7 @@ description: 在 cses_editor 根包与 example 宿主中新增或调整 Flutter 
 | 形式 | 根包展示函数 | 内容外壳 | 场景 |
 |---|---|---|---|
 | 底部弹窗 | `showCollabBottomSheet<T>` | `CollabBottomSheet` | 媒体来源、图标、日期/天气设置、绘图源码、块操作 |
-| 居中弹窗 | `showCollabDialog<T>` | `CollabDialog` | 图片/资源属性、文字链接、导入或离开确认 |
+| 居中弹窗 | `showCollabDialog<T>` | `CollabDialog` | 图片/资源属性、未注入宿主表单时的文字链接、导入或离开确认 |
 | 锚点菜单 | `showCollabPopover<T>` | 函数自动创建 `CollabPopover` | 编号、代码语言、表格行列、绘图视图/类型/模板 |
 
 复用 `CollabModalHeader`、`CollabModalActions`、`CollabModalField`、`CollabModalSegments<T>`；组件不足时优先增加保留旧默认值的可选参数，不另造定位和主题系统。
@@ -66,6 +66,7 @@ description: 在 cses_editor 根包与 example 宿主中新增或调整 Flutter 
 - 图片更多菜单通过当前会话的 `EditorConfiguration.showImageEditAction` 和 `showImageCaptionAction` 分别控制编辑图片、添加/编辑题注入口，默认均开启。隐藏入口不清理已有题注、不改变图片渲染或保存，也不影响其他媒体操作；宿主普通及导入配置应保持一致。
 - 附件和音频的共用菜单按会话的 `showAttachmentEditAction` 和 `showAudioEditAction` 独立控制各自的修改入口，默认开启；日导向普通及导入文档使用相同策略。
 - 权限来自当前实例的只读/能力配置和显式宿主端口，未注入服务按既有契约隐藏或禁用，禁止进程级账号/服务兜底。已有锁能力时保留继承锁、解锁授权及旧草稿失效；锁定保留打开/复制，禁止写入动作。
+- 文字链接允许宿主通过 `CollabHostServices.editTextLink` 注入表单。是否可移除、预填地址和校验由编辑器提供；宿主等表单完整退场后仅交付确认值。编辑器复核文档、选区和权限，以原 href 事务写入并保留撤销。未注入继续使用内置居中表单。
 - 取消丢弃草稿，确认沿用原事务/撤销；原本即时应用的入口不擅自改成延迟保存。上传/保存/分享有忙碌与异常边界，按钮迁出选择器时同步迁移防重入和错误提示。
 - 创建者释放 Controller、订阅、定时器、客户端；展示层不释放借用资源。删除需保留末块补空段落、撤销及资源释放，不能只验红色入口。
 - 成果导向 UI 保留宿主身份检查、编辑/预览模式、存储和正文协议；分享/点赞等能力由宿主提供，不迁入通用展示层。

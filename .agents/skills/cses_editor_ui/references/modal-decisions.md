@@ -32,6 +32,7 @@
 | 图片/资源 | `collab_image_editor.dart`、`collab_resource_settings.dart`、`collab_resource_block_base.dart` | 居中编辑、原始链接复制、删除及资源释放 |
 | 媒体来源 | `editor_media_source_sheet.dart`、`lib/src/ui/modal/editor_media_source_panel.dart` | 展示与上传注入分离，上传归当前宿主实例 |
 | 宿主封面/预览 | `example/lib/daily_guidance/local_journal_page.dart`（宿主） | 保留当前封面展示；后续增加编辑时按 skill 的移除/保存与拖动规则设计 |
+| 划词文字链接 | `editor_selection_actions.dart` | 默认居中，宿主可提供底部表单；校验、选区复核、明确移除与撤销保留在编辑器 |
 | 链接/网页 | `collab_link_actions.dart`、`collab_web_embed_block.dart` | 完整 URL、视图分组、宿主能力与旧菜单失效 |
 | 提及 | `collab_inline_entity_mention.dart`、`editor_user_mentions.dart` | 仅删提及、实体不受影响、头像/目录/点击由宿主注入 |
 | 公式/绘图 | `collab_formula_sheet.dart`、`collab_mermaid_sheet.dart` | 新建/编辑区分、草稿、块动作与固定操作栏、长菜单滚动 |
