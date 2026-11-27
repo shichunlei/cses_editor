@@ -18,7 +18,8 @@ import 'package:flutter/widgets.dart';
 /// ```
 @immutable
 class EditorKeyboardAction {
-  /// [id]为同一工具栏内唯一且稳定的非空标识，[label]为可见短文字和无障碍名称。
+  /// [id] 为同一工具栏内唯一且稳定的非空标识，[label] 用作文字提示及动作名称。
+  /// [showLabel] 默认 true，在图标旁绘制 [label]；false 时仅绘制图标，仍沿用文字提示。
   /// [icon]提供动作图标；[enabled]默认true，false时保留入口并禁用点击。
   /// [onPressed]由宿主持有，返回的Future须等待业务及弹窗退场完成；
   /// 失败可抛出异常由当前工具栏反馈，不得向已失效的业务会话回写。
@@ -28,14 +29,18 @@ class EditorKeyboardAction {
     required this.icon,
     required this.onPressed,
     this.enabled = true,
+    this.showLabel = true,
   }) : assert(id != ''),
        assert(label != '');
 
   /// 宿主提供的稳定身份；同一工具栏内不得重复，不进入正文数据。
   final String id;
 
-  /// 必填短文字；随工具栏横向滚动，大字时保持单行。
+  /// 必填的动作名称，用作工具栏文字提示及错误反馈；可见短文字随工具栏横向滚动。
   final String label;
+
+  /// 是否在图标旁显示 [label]，默认 true。false 时去掉可见文字及其间距。
+  final bool showLabel;
 
   /// 必填视觉图标，不改变业务含义或文档协议。
   final IconData icon;

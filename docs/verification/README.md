@@ -1,5 +1,7 @@
 # 验证索引
 
+- [键盘栏纯图标动作（2026-11-27）](keyboard-icon-actions-20261127/report.md)
+
 - [划词文字链接宿主表单（2026-11-27）](text-link-host-sheet-20261127/report.md)
 
 - [iOS 光标菜单选择局部文字（2026-11-27）](ios-selection-menu-20261127/report.md)

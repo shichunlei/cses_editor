@@ -174,6 +174,8 @@ final viewConfiguration = EditorViewConfiguration(
 // DocumentEditorView(configuration: viewConfiguration, editorState: ...)
 ```
 
+快捷动作默认显示图标与文字。设置 `showLabel: false` 后仅绘制图标，`label` 仍用于提示和动作反馈。
+
 业务动作的异步结果应复核所属文档、账号和权限。实际账号场景捕获 `(companyId, userId, sessionGeneration)`；服务回调只在捕获身份仍等于宿主当前身份时使用结果。账号切换先让旧页拒绝新命令、关闭选择/详情路由并等待保存及释放，再为新分区打开页面。模板的 `active`只演示单次路由有效性，固定的 `local-demo-user`须替换为实际分区；不能拿它跨账号复用。
 
 ## 5. 从模板放入你的 App

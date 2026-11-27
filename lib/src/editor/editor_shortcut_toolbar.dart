@@ -320,33 +320,36 @@ class _EditorShortcutToolbarState extends State<EditorShortcutToolbar> {
     }
   }
 
-  /// 为借用[action]构建图标和可见标签，不保存业务状态；禁用由外层工具栏统一处理。
+  /// 为借用的 [action] 构建图标及可选标签，沿用同一提示、点击和禁用逻辑。
+  /// 返回工具栏动作，不保存业务状态或取得回调所有权。
   MobileToolbarItem _hostKeyboardItem(EditorKeyboardAction action) =>
       MobileToolbarItem.action(
         itemIconBuilder: (_, _, _) => Tooltip(
           message: action.label,
           child: KeyedSubtree(
             key: ValueKey('editor-keyboard-host-${action.id}'),
-            child: Builder(
-              builder: (context) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(action.icon, size: 20),
-                    const SizedBox(width: 4),
-                    Text(
-                      action.label,
-                      maxLines: 1,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: IconTheme.of(context).color,
+            child: action.showLabel
+                ? Builder(
+                    builder: (context) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(action.icon, size: 20),
+                          const SizedBox(width: 4),
+                          Text(
+                            action.label,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: IconTheme.of(context).color,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
+                  )
+                : Icon(action.icon),
           ),
         ),
         actionHandler: (_, _) {

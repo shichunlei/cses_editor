@@ -480,6 +480,58 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('host keyboard action can show only its icon and still run', (
+    tester,
+  ) async {
+    final state = _editorState(text: 'Hello');
+    state.selection = Selection.collapsed(Position(path: [0], offset: 5));
+    addTearDown(() async {
+      await tester.pumpWidget(const SizedBox.shrink());
+      state.dispose();
+    });
+    var taps = 0;
+    await tester.pumpWidget(
+      _toolbarApp(
+        state,
+        keyboardActions: [
+          EditorKeyboardAction(
+            id: 'icon-only',
+            label: '人员',
+            icon: LucideIcons.atSign,
+            showLabel: false,
+            onPressed: () async {
+              taps++;
+            },
+          ),
+          EditorKeyboardAction(
+            id: 'with-label',
+            label: '辅助动作',
+            icon: LucideIcons.compass,
+            onPressed: () async {},
+          ),
+        ],
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final iconOnly = find.byKey(
+      const ValueKey('editor-keyboard-host-icon-only'),
+    );
+    expect(
+      find.descendant(of: iconOnly, matching: find.byIcon(LucideIcons.atSign)),
+      findsOneWidget,
+    );
+    expect(
+      find.descendant(of: iconOnly, matching: find.byType(Text)),
+      findsNothing,
+    );
+    expect(find.byTooltip('人员'), findsOneWidget);
+    expect(find.text('辅助动作'), findsOneWidget);
+    await tester.tap(iconOnly);
+    await tester.pumpAndSettle();
+    expect(taps, 1);
+  });
+
   testWidgets('keyboard bar and open menu follow the app brightness', (
     tester,
   ) async {
